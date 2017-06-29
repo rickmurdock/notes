@@ -97,3 +97,38 @@ Dumping a database:
 ```
 pg_dump --no-owner [dbname] > dump.sql
 ```
+
+If students have not yet learned about shell redirection, this may be a good place to teach that.
+
+Dumping a database with `DROP TABLE` statements:
+
+```
+pg_dump --no-owner --clean [dbname] > dump.sql
+```
+
+Dumping just the data:
+
+```
+pg_dump --data-only [dbname] > dump.sql
+```
+
+Dumping just the schema:
+
+```
+pg_dump --no-owner --schema-only [dbname] > dump.sql
+```
+
+Restoring any of these:
+
+```
+psql [dbname] < dump.sql
+```
+
+### References
+
+[pg_dump documentation](https://www.postgresql.org/docs/9.6/static/app-pgdump.html)
+
+---
+
+
+
