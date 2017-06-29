@@ -30,7 +30,9 @@ Make sure you have run `npm install -g sequelize-cli`!
 ### Creating a model
 To create a model with Sequelize, you run `sequelize model:create` on the command line with a set of flags. As an example, to create a `User` model with a name, an email, and a bio:
 
-> sequelize model:create --name User --attributes 'name:string email:string bio:text'
+```
+sequelize model:create --name User --attributes 'name:string email:string bio:text'
+```
 
 The types specified here are named differently than PostgreSQL calls them. See ["Data Types"](http://docs.sequelizejs.com/manual/tutorial/models-definition.html#data-types) to get a full list. While these are upper-cased in the documentation, they can be lower-case on the command line. Options passed to them, like `Sequelize.TEXT('tiny')`, will have to be edited in the generated migration.
 
@@ -43,3 +45,51 @@ Run `sequelize db:migrate` to run the migration and update your database.
 * "Data types" in [Model definition](http://docs.sequelizejs.com/manual/tutorial/models-definition.html)
 
 * [Migrations](http://docs.sequelizejs.com/manual/tutorial/migrations.html)
+
+## Use Sequelize models
+
+### Terminology
+
+
+* *promise*: an alternative to callbacks for handling asynchronous code. See [Why Promises?](http://bluebirdjs.com/docs/why-promises.html)
+
+### Examples
+
+REQUIRING MODELS
+
+To require a model, `const models = require("./models")` and use the `models` object to access the model, like so:
+
+```
+const models = require("./models");
+models.User.findOne().then(function (user) {
+  console.log(user);
+})
+```
+
+If you try to require the model file directly (like `require("./models/user")`), you will get a function, not your model class.
+
+BUILDING AND SAVING MODEL INSTANCES
+
+To build an unsaved instance:
+
+```
+const todo = models.Todo.build({
+  title: 'Finish writing learning objective',
+  description: 'Sequelize has a lot of concepts to learn',
+  deadline: new Date()
+});
+```
+
+To save the instance, call `save`. If you want to do something with the saved instance, you will have to use `.then` on the returned value from `save`.
+
+````
+todo.save().then(function (newTodo) {
+  console.log(newTodo.id);
+})
+````
+
+`todo` will be updated, but it is asynchronous, so there isn't a guarantee when that will happen. `save()` returns a promise.
+
+`create` will build and save in one step. It is really easy to make a mistake with `create`, though: it returns a promise, not a model instance.
+
+
