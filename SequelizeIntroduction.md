@@ -55,7 +55,7 @@ Run `sequelize db:migrate` to run the migration and update your database.
 
 ### Examples
 
-REQUIRING MODELS
+##### REQUIRING MODELS
 
 To require a model, `const models = require("./models")` and use the `models` object to access the model, like so:
 
@@ -68,7 +68,7 @@ models.User.findOne().then(function (user) {
 
 If you try to require the model file directly (like `require("./models/user")`), you will get a function, not your model class.
 
-BUILDING AND SAVING MODEL INSTANCES
+##### BUILDING AND SAVING MODEL INSTANCES
 
 To build an unsaved instance:
 
@@ -92,4 +92,68 @@ todo.save().then(function (newTodo) {
 
 `create` will build and save in one step. It is really easy to make a mistake with `create`, though: it returns a promise, not a model instance.
 
+```
+// BAD
+const todo = models.Todo.create({
+  title: 'Finish writing learning objective',
+  description: 'Sequelize has a lot of concepts to learn',
+  deadline: new Date()
+});
+console.log(todo);
+
+// output
+// Promise {
+//   _bitField: 67108864,
+//   _fulfillmentHandler0: undefined,
+// ...
+```
+
+##### QUERYING FOR MODELS
+
+###### FINDING BY ATTRIBUTES USING FINDONE()
+
+* Returns the first instance that matches the `where` clause.
+
+* Returns `null` if not found.
+
+```
+User.findOne({
+  where: {
+    username: 'kerry'
+  }
+}).then(function (user) {
+  //Code here
+});
+```
+
+###### FINDING BY ID USING FINDBYID()
+
+* Returns only one instance.
+
+* Returns null if not found.
+
+* In this example, we use an id of 1234.
+
+```
+User.findById(1234).then(function (user) {
+  //Code here
+})
+```
+
+###### FINDING OR CREATING AN INSTANCE USING FINDORCREATE()
+
+* `spread`: spreads an array of values to parameters. Only used with `findOrCreate()`. Works like `then`, but makes it easier to work with multiple parameters.
+
+```
+User.findOrCreate({
+  where: {
+    username: 'brody'
+  },
+  defaults: {
+    email: 'brody@email.com'
+  }
+}).spread(function (user, created) {
+  console.log(user.id, created);
+});
+```
 
