@@ -157,3 +157,118 @@ User.findOrCreate({
 });
 ```
 
+###### FINDING MULTIPLE INSTANCES USING FINDALL()
+
+* Returns *all* instances.
+
+```
+User.findAll().then(function (users) {
+  // code here
+})
+```
+
+###### SEARCH USING SPECIFIC ATTRIBUTES
+
+* Returns *all* instances that match the `where` clause.
+
+```
+User.findAll({
+  where: {
+    user_name: 'Dan',
+  }
+}).then(function (users) {
+  // code here
+});
+```
+
+###### SEARCH USING A RANGE
+
+* Returns an array containing instances specified in the range.
+
+```
+User.findAll({
+  where: {
+    id: [1234, 1256, 1345]
+  },
+}).then(function (users) {
+  // code here
+});
+```
+
+###### GET A COUNT
+
+```
+User.count({
+  where: { state: 'NC' }
+}).then(function (count) {
+  console.log(count);
+})
+```
+
+##### LIMITING, OFFSETTING, AND ORDERING
+
+###### LIMIT
+
+```
+// Limit the results to 20.
+User.findAll({ limit: 20 })
+```
+
+###### OFFSET
+
+```
+// Steps over the first 5 elements.
+User.findAll({ offset: 5 })
+```
+
+###### OFFSET AND LIMIT
+
+```
+// Step over the first 15 elements, and limits it to 5
+User.findAll({ offset: 15, limit: 5 })
+```
+
+###### ORDER
+
+```
+User.findAll({order: ['startDate']})
+// Returns ORDER BY startDate
+
+User.findAll({order: [['startDate', 'DESC']]})
+// Returns ORDER BY startDate DESC
+```
+
+##### UPDATING AND DESTROYING INSTANCES
+
+###### UPDATING AN INSTANCE USING UPDATE()
+
+```
+User.update({
+  email: 'awesomewinter@email.com',
+  age: 34
+}, {
+  where: {
+    user_name: 'winter',
+  }
+}).then(function (user){
+  // Code here.
+  // Do something after updating instance.
+})
+```
+
+###### DELETING AN INSTANCE USING DESTROY()
+
+```
+User.destroy({
+  where: {
+    user_name: 'ryan'
+  }
+}).then(function(){
+  // Code here.
+  // Do something after destroying instance.
+});
+```
+
+
+
+
