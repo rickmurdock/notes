@@ -40,3 +40,4 @@
 
 ### Examples
 
+![Server Client Image](https://github.com/rickmurdock/notes/blob/master/imageFiles/ServerClient.png)
