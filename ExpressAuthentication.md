@@ -98,7 +98,7 @@ app.get('/foo', function (req, res, next) {
 app.get('/bar', function (req, res, next) {
   res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
 })
-'''
+```
 
 ### References
 
