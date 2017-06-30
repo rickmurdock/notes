@@ -10,7 +10,7 @@ Lecture notes from The Iron Yard
 
 * Express Forms
 
-* Express Authentication
+* [Express Authentication](https://github.com/rickmurdock/notes/blob/master/ExpressAuthentication.md)
 
 * [SQL: Introduction](https://github.com/rickmurdock/notes/blob/master/SQLIntroduction.md)
 
