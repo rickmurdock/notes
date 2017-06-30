@@ -8,7 +8,7 @@ Lecture notes from The Iron Yard
 
 * Express: Dynamic
 
-* Express Forms
+* [Express Forms](https://github.com/rickmurdock/notes/blob/master/ExpressForms.md)
 
 * [Express Authentication](https://github.com/rickmurdock/notes/blob/master/ExpressAuthentication.md)
 
