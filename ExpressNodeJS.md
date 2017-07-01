@@ -4,45 +4,58 @@
 
 * `IP address` (Internet protocol): a device's unique numeric identifier.
 
-* Internet Protocol Versions:
+* **Internet Protocol Versions**:
 
-* IPv4: Most widely used Internet protocol. (Covered in this lesson)
+  * `IPv4`: Most widely used Internet protocol. (Covered in this lesson)
 
-  * Made up of four sets of numbers divided by periods.
+    * Made up of four sets of numbers divided by periods.
   
-  * Each set containing 1-3 digits, ranging from 0 to 255.
+    * Each set containing 1-3 digits, ranging from 0 to 255.
   
-  * Static: number never changes.
+    * `Static`: number never changes.
   
-    * Reveals a device's continent, country, region, and city.
+      * Reveals a device's continent, country, region, and city.
     
-  * Dynamic: temporary. Assigned each time a machine accesses the internet.
+    * `Dynamic`: temporary. Assigned each time a machine accesses the internet.
   
-* IPv6: Evolutionary upgrade to IPv4. Designed to address the decreasing number of Internet addresses.
+  * `IPv6`: Evolutionary upgrade to `IPv4`. Designed to address the decreasing number of Internet addresses.
 
-  * Uses a 128-bit address scheme that uses hexadecimal and separated by colons. i.e., 2bbe:1850:3:300:h8gg:ba21:68ce
+    * Uses a 128-bit address scheme that uses hexadecimal and separated by colons. i.e., 2bbe:1850:3:300:h8gg:ba21:68ce
   
-  * See references for more details.
+    * See references for more details.
   
-Ports: an operating system's communication endpoint.
+* `Ports`: an operating system's communication endpoint.
 
-Port number: 16-bit integer, ranging from 0 to 65535.
-0 - 1023: system/well-know ports. Widely used network services. i.e., 80 HTTP, 443 HTTPS, 22 SSH, 21 FTP, 70 gopher, etc. (see references)
-1024 - 49151: registered ports. Assigned by IANA to an entity. i.e., 1020 Quicktime, 23399 Skype, 2375 Docker REST API.
-49152 - 65536: private/dynamic ports. Cannot be registered with IANA.
-Transport layer: specify source and destination port number in the header.
-Protocol: interaction rules used by endpoints in order to communicate.
-TCP (Transmission Control Protocol): connection-based transmission of data.
-Dependent on successful connection between endpoints.
-Data is sent and received in sequential order.
-IP/Port relationship: the IP address is used to locate a particular device. The port is used to access a network service on that device.
+  * **Port number**: 16-bit integer, ranging from 0 to 65535.
+  
+    * 0 - 1023: system/well-know ports. Widely used network services. i.e., 80 HTTP, 443 HTTPS, 22 SSH, 21 FTP, 70 gopher, etc. (see references)
 
-All communication on the internet is from IP address to IP address.
-A router assigns both 'private' and 'public' IP addresses. 'Public' addresses can be accessed over the internet. 'Private' addresses are only accessible from within the device's network.
-Example
+    * 1024 - 49151: registered ports. Assigned by [**IANA**](https://www.iana.org/) to an entity. i.e., 1020 Quicktime, 23399 Skype, 2375 Docker REST API.
+    
+    * 49152 - 65536: private/dynamic ports. Cannot be registered with IANA.
+
+  * **Transport layer**: specify source and destination port number in the header.
+  
+  * **Protocol**: interaction rules used by endpoints in order to communicate.
+  
+    * `TCP` (Transmission Control Protocol): connection-based transmission of data.
+
+      * Dependent on successful connection between endpoints.
+      
+      * Data is sent and received in sequential order.
+      
+* **IP/Port relationship**: the `IP address` is used to locate a particular device. The `port` is used to access a network service on that device.
+
+> * All communication on the internet is from IP address to IP address.
+> * A router assigns both 'private' and 'public' IP addresses. 'Public' addresses can be accessed over the internet. 'Private' addresses are only accessible from within the device's network.
+
+### Example
+
 In this example we run a local server on a local network, accessing port 3000.
 
+```
 192.168.2.1:3000
+```
 
 > Consider mentioning how to make a server available over the internet via port 80 and the global public ip address. This would entail opening port 80 on the router, setting up port forwarding, running the server on port 80 (proxies to port 3000), etc.
 
