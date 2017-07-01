@@ -200,27 +200,39 @@ Try it!
 This sample does not contain the 'utilities' directory as per the example above.
 
 serve-static-files.zip (2 MB)
-Authoring A Trivial Node App
 
-A Fill Murray Image App
-mkdir: trivial
-cd into 'trivial' directory.
-npm init: accept all default options.
-npm install, then:
+---
 
-Add express web server dependency: npm install express --save
-mkdir: 'files'
+# Authoring A Trivial Node App
 
-Add images files.
-touch: index.html
+### A Fill Murray Image App
 
-Add content.
-touch: 'trivial-app.js'
+* `mkdir`: trivial
+* `cd` into 'trivial' directory.
+* `npm init`: accept all default options.
+* `npm install`, then:
 
-configure express.static to use a relative path.
+  * Add `express web server` dependency: `npm install express --save`
+
+* `mkdir`: 'files'
+
+  * Add images files.
+  
+* `touch`: index.html
+
+  * Add content.
+  
+* `touch`: 'trivial-app.js'
+
+  * configure `express.static` to use a relative path.
+
+```
     app.use('/files', express.static('files'));
-configure app.get() to listen on root ('/').
-configure app.get() to serve index.html from root.
+```
+    
+* configure `app.get()` to listen on root ('/').
+
+* configure `app.get()` to serve `index.html` from `root`.
 
 ```
 //Listening on root
@@ -231,9 +243,9 @@ app.get('/', function (req, res) {
 })
 ```
 
-IMPLEMENTATION
+#### IMPLEMENTATION
 
-trivial-app.js:
+**trivial-app.js:**
 
 ```
 const express = require('express');
@@ -342,7 +354,11 @@ res.sendFile(path.join(__dirname + '/index.html'));
 </html>
 ```
 
-Start application
+### Start application
+
+```
 node trivial-app.js
-Open browser to: localhost:3000
-Try it!
+```
+* Open browser to: `localhost:3000`
+
+### Try it!
