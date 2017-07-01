@@ -63,30 +63,57 @@ In this example we run a local server on a local network, accessing port 3000.
 
 # Starting A Node Application
 
-Terminology
-Node.js: open-source and cross-platform JavaScript runtime used to build network application.
-Provides JavaScript modules for web application development.
-It is fast and never buffers data.
-Scalable.
-Express.js: open-source Node.js framework designed to build web applications and API's.
-Pre-requisite
-Install node:
+### Terminology
+
+* Node.js: open-source and cross-platform JavaScript runtime used to build network application.
+
+  * Provides JavaScript modules for web application development.
+  
+  * It is fast and never buffers data.
+  
+  * Scalable.
+
+* Express.js: open-source Node.js framework designed to build web applications and API's.
+
+### Pre-requisite
+
+* Install node:
+
 Check node version:
 
+```
   $ node -v
-Install node: brew install node
+```
 
+Install node: `brew install node`
+
+```
   $ brew install node
-Application Setup
-mkdir: express-app.
-cd into 'express-app' directory.
-npm init: accept all default options.
-npm install, then:
-Add express.js dependency to package.json
+```
+
+### Application Setup
+
+* `mkdir`: express-app.
+
+* `cd into` 'express-app' directory.
+
+* `npm init`: accept all default options.
+
+* `npm install`, then:
+
+  * Add `express.js` dependency to package.json
+  
+```
 $ npm install express --save
-Author Application
-touch: express-app.js
-Then:
+```
+
+### Author Application
+
+* `touch`: express-app.js
+
+* Then:
+
+```
 const express = require('express');
 const app = express();
 
@@ -97,16 +124,26 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
   console.log('Successfully started express application!')
 });
-Start application:
+```
+
+### Start application:
 
 Simply call 'node' followed by the app's name in terminal.
 
+```
 $ node express-app.js
-Open browser to: localhost:3000
+```
+
+* Open browser to: localhost:3000
+
 starting-node-app.jpeg
-Try it!
+
+### Try it!
 Starting Node.zip (424 KB)
-Configure Node to Serve Static Files in a Directory
+
+---
+
+# Configure Node to Serve Static Files in a Directory
 
 Terminology
 express.static(): built-in middleware function used to configure the location of files to be served by an express.js application.
@@ -184,16 +221,21 @@ configure express.static to use a relative path.
     app.use('/files', express.static('files'));
 configure app.get() to listen on root ('/').
 configure app.get() to serve index.html from root.
+
+```
 //Listening on root
 app.get('/', function (req, res) {
   //serve 'index.html'
   res.sendFile(path.join(__dirname + '/index.html'));
   //__dirname: resolves to  project folder.
 })
+```
+
 IMPLEMENTATION
 
 trivial-app.js:
 
+```
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -211,8 +253,11 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
   console.log('Successfully started express application!');
 })
+```
+
 index.html:
 
+```
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -295,6 +340,8 @@ res.sendFile(path.join(__dirname + '/index.html'));
 
 </body>
 </html>
+```
+
 Start application
 node trivial-app.js
 Open browser to: localhost:3000
