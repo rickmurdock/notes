@@ -130,3 +130,40 @@ var User = sequelize.define('user', {
 });
 ```
 
+### Handling validation and other errors
+
+When an error occurs in a Sequelize method that returns a promise (like `create` or `save`), you have to use a `catch` method to handle it. An example:
+
+```
+// invalid username
+User.create({username: "!!!", email: "a@example.org"}).then(function (user) {
+  console.log(user);
+}).catch(function (err) {
+  console.log("Error", err);
+})
+// will log the error
+```
+
+You can handle specific types of errors by passing the error type as the first argument to `catch`.
+
+```
+User.create({username: "me", email: "me@example.org"})
+
+// creating a second one will cause a UniqueConstraintError
+User.create({username: "me", email: "woot@example.org"}).then(function (user) {
+  console.log(user);
+}).catch(Sequelize.UniqueConstraintError, function (err) {
+  console.log("Username not unique!");
+}).catch(Sequelize.ValidationError, function (err) {
+  console.log("Not valid!", err);
+}).catch(function (err) {
+  // handle all other errors
+  console.log("Oh no!", err);
+})
+```
+
+### Bulk methods
+
+##### CREATE INSTANCES IN BULK
+
+Use the `bulkCreate()` method to create multiple instances at once. An example:
