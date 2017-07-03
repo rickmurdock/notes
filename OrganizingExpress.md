@@ -152,3 +152,92 @@ app.get('/popular', function (req, res) {
 * [Express.js API Docs on express.Router](https://expressjs.com/en/4x/api.html#router)
 
 * [Express Routing - Advanced Techniques](http://jilles.me/express-routing-advanced-techniques/)
+
+---
+
+# Understanding middleware
+
+### Terminology
+
+* *middleware*: a function used with Express that takes a request, response, and `next`, which is a function to call to pass control to the next middleware or route handler in the chain. The concept of middleware is used in other web frameworks and software.
+
+### Examples
+
+An example of logging requests with a middleware:
+
+```
+app.use(function (req, res, next) {
+    console.log("Request at", new Date());
+    console.log("URL:", req.url);
+    console.log("Query:", req.query, "\n");
+    next();
+})
+```
+
+An example of setting a header. The `Server` header is the name of the server.
+
+```
+const setServerName = function (name) {
+  return function (req, res, next) {
+      res.header("Server", name);
+      next();
+  }
+}
+
+app.use(setServerName("Dynamo 1000"));
+```
+
+---
+
+# Output logs using the `morgan` package
+
+Morgan is an HTTP request logger middleware for node.js.
+
+The `morgan()` function accepts 2 arguments: `format` and `options`.
+
+`format` can be a predefined string name, a string of a format string, or a function that will produce a log entry.
+
+The `options` object accepts a number of properties.
+
+### Terminology
+
+### Examples
+
+The following example demonstrates using the `'combined'` format (standard for Apache servers):
+
+```
+var express = require('express')
+var morgan = require('morgan')
+
+var app = express()
+
+app.use(morgan('combined'))
+
+app.get('/', function (req, res) {
+  res.send('hello, world!')
+})
+```
+
+This example demonstrates using a conditional statement to check whether the app is running in the `'dev'` environment or in `'production'`. While in production morgan is using the `'common'` format and passing an `options` object. The `options` object, in this case, is set to skip logging if the response status code is less than `400` and stream logs to an external file: (__dirname + '/../morgan.log'). While in development morgan uses the `'dev'` format.
+
+```
+var express = require('express')
+var morgan = require('morgan')
+
+var app = express()
+
+if (app.get('env') == 'production') {
+  app.use(morgan('common', {
+    skip: function(req, res) {
+      return res.statusCode < 400
+    },
+    stream: __dirname + '/../morgan.log'
+  }));
+} else {
+  app.use(morgan('dev'));
+}
+```
+
+### References
+
+[GitHub - Express, Morgan](https://github.com/expressjs/morgan)
