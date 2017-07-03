@@ -12,7 +12,7 @@ Lecture notes from The Iron Yard
 
 * [Express Authentication](https://github.com/rickmurdock/notes/blob/master/ExpressAuthentication.md)
 
-* Organizing large Express applications 
+* [Organizing large Express applications](https://github.com/rickmurdock/notes/blob/master/OrganizingExpress.md) 
 
 * [SQL: Introduction](https://github.com/rickmurdock/notes/blob/master/SQLIntroduction.md)
 
