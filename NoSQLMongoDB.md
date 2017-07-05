@@ -107,6 +107,32 @@ db.restaurants.find()
 db.restaurants.findOne()
 ```
 
+#### FILTERING RECORDS WHILE FINDING
+
+Use a query filter document to filter records.
+
+```
+db.restaurants.find({name: "Wendy'S"})
+db.restaurants.find({cuisine: "Chinese", borough: "Brooklyn"})
+db.restaurants.find({cuisine: {$in: ["Chinese", "Thai", "Vietnamese"]}})
+db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}})
+```
+
+See [all the MongoDB query operators](https://docs.mongodb.com/manual/reference/operator/query/#query-selectors).
+
+You can sort by calling `.sort` on the results with an object of fields to sort by:
+
+```
+db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"name": 1})
+```
+
+`1` means to sort ascending, `-1` means to sort descending. The order of keys in the object is preserved, so you can specify multiple fields and it will sort in order.
+
+```
+db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"borough": 1, "name": 1})
+```
+
+
 
 
 
