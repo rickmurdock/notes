@@ -50,3 +50,63 @@ testdb
 Not exactly. There is a [formal list of what you can store](https://docs.mongodb.com/manual/reference/bson-types/), but for all purposes, you can store whatever you could use in a JSON object.
 
 ---
+
+# Importing and exporting data from MongoDB
+
+### Vocabulary
+
+* *JSON*: JavaScript Object Notation. A restricted version of object literals and JavaScript. Used for MongoDB exports.
+
+* *BSON*: [Binary JSON](https://en.wikipedia.org/wiki/BSON), the format used by MongoDB internally. Can store more types than JSON.
+
+### Importing and exporting from MongoDB
+
+```
+$ mongoimport --db databaseName --collection collectionName --file inputFile.json
+2017-06-28T23:34:57.090-0400    connected to: localhost
+2017-06-28T23:34:58.550-0400    imported 25359 documents
+
+$ mongoexport --db databaseName --collection collectionName --out outputFile.json
+2017-06-28T23:35:53.000-0400    connected to: localhost
+2017-06-28T23:35:54.001-0400    [........................]  newdb.restaurants  0/25359  (0.0%)
+2017-06-28T23:35:55.004-0400    [###############.........]  newdb.restaurants  16000/25359  (63.1%)
+2017-06-28T23:35:55.452-0400    [########################]  newdb.restaurants  25359/25359  (100.0%)
+2017-06-28T23:35:55.452-0400    exported 25359 records
+```
+
+---
+
+# MongoDB Operations
+
+### Terminology
+
+### Examples
+
+All the below examples were written using the provided sample database. To import the database, run:
+
+```
+curl -o primer-dataset.json https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json
+mongoimport --db newdb --collection restaurants --file primer-dataset.json
+```
+
+#### SETTING THE DEFAULT NUMBER OF RECORDS TO SHOW AT ONCE
+
+```
+> DBQuery.shellBatchSize = 4
+```
+
+#### FINDING ALL DOCUMENTS
+
+```
+db.restaurants.find()
+```
+
+#### FINDING ONE DOCUMENT
+
+```
+db.restaurants.findOne()
+```
+
+
+
+
