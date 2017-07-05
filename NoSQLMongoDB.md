@@ -132,6 +132,27 @@ db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"name": 1})
 db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"borough": 1, "name": 1})
 ```
 
+#### FILTERING USING NESTED DOCUMENTS
+
+You can use dot notation to search inside nested documents.
+
+```
+db.restaurants.find({"address.zipcode": "11218"});
+```
+
+If you want to search for all documents based off an array value, you can reference the array like normal and you will get all records where any value in the array matches.
+
+// Find all restaurants that have ever gotten a C score.
+
+```
+db.restaurants.find({"grades.grade": "C"})
+```
+
+To get records where all values in the array match, you have to get tricky. Here's one to get all restaurants that have only ever had "A" scores:
+
+```
+db.restaurants.find({"grades.grade": {$not: {$in: ["B", "C", "Z"]}}});
+```
 
 
 
