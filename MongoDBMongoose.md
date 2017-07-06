@@ -49,8 +49,9 @@ const Recipe = mongoose.model('Recipe', recipeSchema);
 module.exports = Recipe;
 ```
 
-MAKING AN INSTANCE OF YOUR MODEL
+#### MAKING AN INSTANCE OF YOUR MODEL
 
+```
 var recipe = new Recipe({name: "Pancakes"});
 recipe.ingredients.push({ingredient: 'sugar', measure: " Tbsp"});
 console.log(recipe.toObject());
@@ -62,17 +63,23 @@ console.log(recipe.toObject());
 //        measure: 'tbsp',
 //        _id: 59553335625ccdda459e09b5,
 //        amount: 1 } ] }
-References
-Mongoose.js
-MDN Express Tutorial - Part 3 - Using Mongoose
+```
+
+### References
+
+* [Mongoose.js](http://mongoosejs.com/)
+
+* [MDN Express Tutorial - Part 3 - Using Mongoose](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)
 
 ---
 
 # Create, query, update, and delete models with Mongoose
 
-Examples
+### Examples
+
 Creating an unsaved model:
 
+```
 const recipe = new Recipe({name: "Pancakes", source: "Grandma"});
 recipe.save()
   .then(function () {
@@ -81,23 +88,35 @@ recipe.save()
   .catch(function () {
     // handle error
   })
+```
+
 Creating a model and saving in one command:
 
+```
 Recipe.create({name: "Pancakes"})
   .then(handleSuccess)
   .catch(handleError);
+```
+
 Finding one record:
 
+```
 Recipe.findOne({name: "Pancakes"})
   .then(handleSuccess)
   .catch(handleError);
+```
+
 Finding multiple records:
 
+```
 Recipe.find({cookTime: {$gt: 15, $lt: 60}})
   .then(handleSuccess)
   .catch(handleError);
+``
+
 Complex queries:
 
+```
 Recipe.find({source: "Grandma"})
   .where('cookTime').lt('30') // only cookTimes < 30
   .where({ingredients: {
@@ -106,6 +125,8 @@ Recipe.find({source: "Grandma"})
   .skip(5) // skip the first five
   .sort("-cookTime") // sort by cookTime descending
   .select("name cookTime") // only return name and cookTime
+```
+
 Updating one model:
 
 Recipe.updateOne({source: "Grandma"},
