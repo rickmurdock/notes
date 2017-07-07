@@ -258,3 +258,52 @@ db.restaurants.updateOne({restaurant_id: "30191841"},
 db.restaurants.updateMany({"address.street": "West   57 Street"},
   {$set: {"address.street": "West 57 Street"}})
 ```
+
+You can also upsert documents. Upsert means to update if records are found, or insert a document if they are not found. Add a third object of options with `upsert` equal to true to do so.
+
+```
+db.restaurants.updateOne(
+  {restaurant_id: "99"},
+  {
+    $set: {name: "Spaniel's Place"},
+    $push: {grades: {"grade": "A", "score": 7, "date": new Date()}}
+  },
+  {upsert: true}
+);
+```
+
+Your search parameters must be unique for an upsert to work.
+
+### Deleting records  
+
+To delete records, use `deleteOne` or `deleteMany`. These take a query like `find` and `findOne`.
+
+```
+// Delete restaurant id 99
+db.restaurants.deleteOne({restaurant_id: "99"})
+
+// Delete all restaurants in Manhattan which is not a real borough
+db.restaurants.deleteMany({"borough": "Manhattan"})
+
+// Delete all restaurants
+db.restaurants.deleteMany({})
+```
+
+### Using MongoDB from Node  
+
+All the commands we have run so far run inside the MongoDB shell, but you can run them from Node, too. To do so, install the Node MongoDB library:
+
+```
+npm install mongodb --save
+```
+
+The majority of method names are the same, but instead of directly returning data, they take callbacks, or if you don't provide a callback, return promises. See ]the Node.js MongoDB quickstart](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/) to see it in action.
+
+### References  
+
+* [MongoDB shell quickstart](https://docs.mongodb.com/getting-started/shell/)
+* [Node.js MongoDB quickstart](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/)
+* [Query operators](https://docs.mongodb.com/manual/reference/operator/query/#query-selectors)
+* [Update operators](https://docs.mongodb.com/manual/reference/operator/update/)
+
+
