@@ -23,3 +23,5 @@ Lecture notes from The Iron Yard
 * NoSQL: MongoDB
 
 * MongoDB with Mongoose
+
+* Express: JSON APIs(https://github.com/rickmurdock/notes/blob/master/ExpressJSONAPIs.md)
