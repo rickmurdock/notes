@@ -297,7 +297,7 @@ All the commands we have run so far run inside the MongoDB shell, but you can ru
 npm install mongodb --save
 ```
 
-The majority of method names are the same, but instead of directly returning data, they take callbacks, or if you don't provide a callback, return promises. See ]the Node.js MongoDB quickstart](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/) to see it in action.
+The majority of method names are the same, but instead of directly returning data, they take callbacks, or if you don't provide a callback, return promises. See [the Node.js MongoDB quickstart](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/) to see it in action.
 
 ### References  
 
