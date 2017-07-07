@@ -154,6 +154,107 @@ To get records where all values in the array match, you have to get tricky. Here
 db.restaurants.find({"grades.grade": {$not: {$in: ["B", "C", "Z"]}}});
 ```
 
+To understand how this works, step through it:
 
+1. `$in` matches values that are in the array `["B", "C", "Z"]`. This will bring back records where any `grade` in the array `grades` returns true for this test.
 
+2. This brings back all records where the restaurant has ever gotten a "B", "C", or "Z" (the only grades outside of "A" I saw.)
 
+3. `$not` gives us the opposite of that -- all records that the $in didn't match.
+
+4. So, we get all records where no `grades.grade` was "B", "C", or "Z".
+
+You can simplify the above a little:
+
+``
+db.restaurants.find({"grades.grade": {$nin: ["B", "C", "Z"]}});
+``
+
+You can reference specific elements of an array using dot notation. To find all restaurants where their last grade was an "A" (assuming that the grades are in descending order by date):
+
+``
+db.restaurants.find({"grades.0.grade": "A"});
+``
+
+### Inserting documents  
+
+When you insert a document, it will be given a unique _id unless you provide one.
+
+```
+// This will insert a new document. The result object contains two values,
+// `acknowledged` and `insertedId`. `insertedId` lets us look up the document
+// we inserted.
+var result = db.restaurants.insertOne({
+  "address": {"building": "100", "street": "Fiction St", "zipcode": "00001" },
+  "borough": "Yonkers", "cuisine": "Awesome",
+  "grades": [
+    { "date": ISODate("2017-06-01T00:00:00Z"), "grade": "A+", "score": 0 }
+  ],
+  "name": "Favorite Delights", "restaurant_id": "1"})
+db.restaurants.findOne({"_id": result.insertedId})
+```
+
+`insertMany` can insert more than one document at a time:
+
+```
+db.restaurants.insertMany([{
+  "address": {"building": "100", "street": "Fiction St", "zipcode": "00001" },
+  "borough": "Yonkers",
+  "cuisine": "Awesome",
+  "grades": [
+    { "date": ISODate("2017-06-01T00:00:00Z"), "grade": "A+", "score": 0 }
+  ],
+  "name": "Favorite Delights",
+  "restaurant_id": "1"
+}, {
+  "address": {"building": "101", "street": "Fiction St", "zipcode": "00001" },
+  "borough": "Yonkers",
+  "cuisine": "Garbage",
+  "grades": [
+    { "date": ISODate("2017-06-01T00:00:00Z"), "grade": "C", "score": 50 }
+  ],
+  "name": "Garbage Delights",
+  "restaurant_id": "2"}])
+```
+
+### Creating a unique index  
+
+You will have fields in your documents that you want to ensure are unique. To do this, you need to [create a unique index](https://docs.mongodb.com/manual/core/index-unique/#index-type-unique).
+
+```
+// Ensure restaurant_id is unique.
+db.restaurants.createIndex( { "restaurant_id": 1 }, { unique: true } )
+```
+
+You can see your collection's indexes like so:
+
+```
+db.restaurants.getIndexes()
+```
+
+### Updating documents  
+
+There are two main functions to update documents, `updateOne` and `updateMany`. Each of these take a filter -- like we used with `find` -- and an object made of [update operators](https://docs.mongodb.com/manual/reference/operator/update/). These operators tell us how to manipulate the document.
+
+Some examples:
+
+```
+// Add city and state to all addresses
+db.restaurants.updateMany({},
+  {$set: {"address.city": "New York", "address.state": "NY"}});
+
+// Add a new review to one restaurant
+// We can use new Date() because the Mongo shell uses JavaScript.
+db.restaurants.updateOne({restaurant_id: "30191841"},
+  {$push: {grades: {"grade": "A", "score": 7, "date": new Date()}}});
+
+// Add a new review to one restaurant and keep them in order
+db.restaurants.updateOne({restaurant_id: "30191841"},
+  {$push: {grades: {
+    $each: [{"grade": "A", "score": 7, "date": new Date()}],
+    $sort: {"date": -1}}}})
+
+// Fix an error in data entry across multiple documents
+db.restaurants.updateMany({"address.street": "West   57 Street"},
+  {$set: {"address.street": "West 57 Street"}})
+```
