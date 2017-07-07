@@ -25,7 +25,7 @@ testdb
 
 ### References
 
-[MongoDB docs](https://docs.mongodb.com/)
+* [MongoDB docs](https://docs.mongodb.com/)
 
 ---
 
