@@ -363,6 +363,7 @@ Recipe.findByMaxIngredients(3).then(handleSuccess).catch(handleError);
 
 ### QUERY METHODS
 
+```
 recipeSchema.query.maxIngredients = function (maxIngredients, callback) {
     return this.where({ingredients: {$lte: {$size: maxIngredients}}});
 };
