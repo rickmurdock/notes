@@ -132,7 +132,7 @@ Updating one model:
 ```
 Recipe.updateOne({source: "Grandma"},
   {$push: {steps: "Call Grandma and tell her how it was."}})
-``
+```
 
 Updating multiple models:
 
