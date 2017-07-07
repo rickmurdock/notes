@@ -170,69 +170,114 @@ Use appropriate HTTP verb for the action being performed:
 
 ### Terminology
 
-HTTP verbs also known as HTTP request methods. Verbs used by an application to indicate the desired action to be performed for a given resource.
-Examples
+* **HTTP verbs** also known as HTTP request methods. Verbs used by an application to indicate the desired action to be performed for a given resource.
+
+### Examples
+
 Use nouns for resources (route names)
 
-GET /items - Retrieves a list of items
-GET /items/7 - Retrieves a specific item
-POST /items - Creates a new item
-PUT /items/7 - Updates item #7
-PATCH /items/7 - Partially updates item #7
-DELETE /items/7 - Deletes item #7
-Notice the single endpoint /items has multiple functionalities based on the HTTP method. Also, we're using the plural /items instead of a potential /item, even for requests that only effect one model instance. This is for consistency and makes the API easier to implement and use.
+* `GET /items` - Retrieves a list of items
+
+* `GET /items/7` - Retrieves a specific item
+
+* `POST /items` - Creates a new item
+
+* `PUT /items/7` - Updates item #7
+
+* `PATCH /items/7` - Partially updates item #7
+
+* `DELETE /items/7` - Deletes item #7
+
+Notice the single endpoint `/items` has multiple functionalities based on the HTTP method. Also, we're using the plural `/items` instead of a potential `/item`, even for requests that only effect one model instance. This is for consistency and makes the API easier to implement and use.
 
 Relations can be defined by extending a resource route in cases where the relation is commonly requested along with the resource.
 
-GET /items/7/relations - Retrieves list of relations for item #7
-GET /items/7/relations/3 - Retrieves relation #3 for item #7
-POST /items/7/relations - Creates a new relation in item #7
-PUT /items/7/relations/3 - Updates relation #3 for item #7
-PATCH /items/7/relations/3 - Partially updates relation #3 for item #7
-DELETE /items/7/relations/3 - Deletes relation #3 for item #7
-Furthermore, if the id of a relation is unique among other relations it is possible to eliminate the use of /items in the routes used to update or delete an existing relation.
+* `GET /items/7/relations` - Retrieves list of relations for item #7
 
-PUT /relations/3 - Updates relation #3 for item #7
-PATCH /relations/3 - Partially updates relation #3 for item #7
-DELETE /relations/3 - Deletes relation #3 for item #7
-Describe standard REST conventions in NodeJS
+* `GET /items/7/relations/3` - Retrieves relation #3 for item #7
 
-Terminology
-spinal-case: using a hyphen "-" to separate words
-Examples
+* `POST /items/7/relations` - Creates a new relation in item #7
+
+* `PUT /items/7/relations/3` - Updates relation #3 for item #7
+
+* `PATCH /items/7/relations/3` - Partially updates relation #3 for item #7
+
+* `DELETE /items/7/relations/3` - Deletes relation #3 for item #7
+
+Furthermore, if the `id` of a relation is unique among other relations it is possible to eliminate the use of `/items` in the routes used to update or delete an existing relation.
+
+* `PUT /relations/3` - Updates relation #3 for item #7
+
+* `PATCH /relations/3` - Partially updates relation #3 for item #7
+
+* `DELETE /relations/3` - Deletes relation #3 for item #7
+
+---
+
+# Describe standard REST conventions in NodeJS
+
+### Terminology
+
+* **spinal-case**: using a hyphen "-" to separate words
+
+### Examples
+
 Use best practices when defining resources (URIs)
 
-Describe resources with nouns, not verbs.
-In NodeJS, spinal-case is most commonly used to describe a resource name.
+* Describe resources with nouns, not verbs.
+
+* In NodeJS, spinal-case is most commonly used to describe a resource name.
+
 Use the appropriate HTTP methods for the related CRUD operations.
 
-GET: Gets data from the server
-POST: Sends data to the server
-PUT: Update data on a server; overwrites a resource with a complete new body
-PATCH: Update data on a server; applies partial modifications to a resource
-DELETE: Deletes data from the server
+* `GET`: Gets data from the server
+
+* `POST`: Sends data to the server
+
+* `PUT`: Update data on a server; overwrites a resource with a complete new body
+
+* `PATCH`: Update data on a server; applies partial modifications to a resource
+
+* `DELETE`: Deletes data from the server
+
 Use HTTP headers to provide information about the request or response or about the object sent in the body.
 
 Make proper use of the various types HTTP headers.
 
-General Header: For general use in both request and response
-Client Request Header: Used only for request headers
-Server Response Header: used only for response headers
-Entity Header: Used to communicate meta information about the body or the resource identified by the request.
+* General Header: For general use in both request and response
+
+* Client Request Header: Used only for request headers
+
+* Server Response Header: used only for response headers
+
+* Entity Header: Used to communicate meta information about the body or the resource identified by the request.
+
 Use query parameters to provide further specificity to queried results
 
-Paging: When limiting the release of data to small increments or page-fulls
-Filtering: Restrict queried results to certain attributes containing specific values
-Sorting: Organize a set of queried results based on attributes' values
-Searching: Like filtering but with approximate matching
+* Paging: When limiting the release of data to small increments or page-fulls
+
+* Filtering: Restrict queried results to certain attributes containing specific values
+
+* Sorting: Organize a set of queried results based on attributes' values
+
+* Searching: Like filtering but with approximate matching
+
 Make proper use of status codes in API responses
 
-200: OK
-201: New resource created
-204: Successful action, no response body
-304: Data returned has not been modified
-400: Bad request
-401: Unauthorized request, requires authentication
-403: Valid request but the server refuses access
-404: Not Found, no resource at the provided URI
-500: Internal server error, these should not be returned to the client. The error should be logged server-side
+* `200`: OK
+
+* `201`: New resource created
+
+* `204`: Successful action, no response body
+
+* `304`: Data returned has not been modified
+
+* `400`: Bad request
+
+* `401`: Unauthorized request, requires authentication
+
+* `403`: Valid request but the server refuses access
+
+* `404`: Not Found, no resource at the provided URI
+
+* `500`: Internal server error, these should not be returned to the client. The error should be logged server-side
