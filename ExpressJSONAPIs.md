@@ -82,13 +82,17 @@ curl --data "price=19%2E99&qty=3"  https://someserver.com/api
 
 # Return objects and arrays of data using JSON
 
-Terminology
-Content type: 1In responses, a Content-Type header tells the client what the content type of the returned content actually is.
+### Terminology
+
+* Content type: 1In responses, a `Content-Type` header tells the client what the content type of the returned content actually is.
+
 When sending a JSON response we have to tell the client that the response we're sending is JSON in order for the client to accurately communicate and interpret the response.
 
-Examples
-Using the Express res.json() method to send an object and an array of objects.
+### Examples
 
+Using the Express `res.json()` method to send an object and an array of objects.
+
+```
 app.get('/todo', function(req, res) {
   res.json({title: 'Return some JSON data', complete: false});
 })
@@ -110,8 +114,11 @@ app.get('/todos', function(req, res) {
   ]
   res.json(todos);
 })
-Using the Express res.jsonp() method to send an object and an array of objects with support for JSONP.
+```
 
+Using the Express `res.jsonp()` method to send an object and an array of objects with support for JSONP.
+
+```
 app.get('/todo', function(req, res) {
   res.jsonp({title: 'Return some JSONP data', complete: false});
 })
@@ -133,21 +140,36 @@ app.get('/todos', function(req, res) {
   ]
   res.jsonp(todos);
 })
-References
-MDN - Content Type
-Express - res.json
-LESSON FOOTNOTES
-1: MDN - Content Type
-Use routing appropriately for RESTful URL structure and HTTP verbs
+```
+
+### References
+
+* [MDN - Content Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+
+* [Express - res.json](https://expressjs.com/en/api.html#res.json)
+
+##### LESSON FOOTNOTES
+
+1: [MDN - Content Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+
+---
+
+# Use routing appropriately for RESTful URL structure and HTTP verbs
 
 Use appropriate HTTP verb for the action being performed:
 
-GET: Gets data from the server
-POST: Sends data to the server
-PUT: Update data on a server; overwrites a resource with a complete new body
-PATCH: Update data on a server; applies partial modifications to a resource
-DELETE: Deletes data from the server
-Terminology
+* `GET`: Gets data from the server
+
+* `POST`: Sends data to the server
+
+* `PUT`: Update data on a server; overwrites a resource with a complete new body
+
+* `PATCH`: Update data on a server; applies partial modifications to a resource
+
+* `DELETE`: Deletes data from the server
+
+### Terminology
+
 HTTP verbs also known as HTTP request methods. Verbs used by an application to indicate the desired action to be performed for a given resource.
 Examples
 Use nouns for resources (route names)
