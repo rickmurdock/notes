@@ -145,25 +145,36 @@ app.get('/todos/range', function(req, res){
   
   * `Payload`.
   
-  * `Signatur`e.
+  * `Signature'.
   
-Header  
+#### Header  
 
-Includes the token type and hashing algorithm.
+* Includes the token type and hashing algorithm.
+
+```
 {
   "alg": "HS256",
   "typ": "JWT"
 }
-Payload  
+```
 
-Claims: user statements.
-3 types of claims:
-public: defined at will by the JWT user (developer).
-private: share predefined information between parties.
-reversed: predefined claims: iss, issuer; exp, expiration time; sub, subject; aud, audience.
-Base64Url encoded.
-Example
+#### Payload  
 
+* Claims: user statements.
+
+* 3 types of claims:
+
+  * `public`: defined at will by the JWT user (developer).
+  
+  * `private`: share predefined information between parties.
+
+  * `reversed`: predefined claims: iss, issuer; exp, expiration time; sub, subject; aud, audience.
+  
+* Base64Url encoded.
+
+##### Example
+
+```
 {
     "iss": "https://www.theironyard.com", // issuer
     "iat": 1497892326, // issued date
@@ -173,25 +184,36 @@ Example
     "name": "John", // additional public claim
     "admin": "true" // additional public claim
 }
-Signature  
+```
 
-Structure: encoded header, encoded payload, asecret and encryption algorithm.
-Example
+#### Signature  
+
+* Structure: `encoded header`, `encoded payload`, a `secret` and `encryption algorithm`.
+
+##### Example
 
 The above JWT object, along with a key and HS256 encryption would generate:
 
 Key: qwertyuiopasdfghjklzxcvbnm123456
 
+```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3d3dy50aGVpcm9ueWFyZC5jb20iLCJpYXQiOjE0OTc4OTIzMjYsImV4cCI6MTUyOTQyODMyNiwiYXVkIjoiaHR0cHM6Ly93d3cubWVkaXVtLmNvbSIsInN1YiI6ImV4YW1wbGUiLCJuYW1lIjoiSm9obiIsImFkbWluIjoidHJ1ZSJ9.fYSVpviIN3Igi55RtVQaygTm2b7NDlrHXP5oboTiOhI
-Decode the token here
+```
 
-Generating And Verifying A JWT  
+Decode the token [here](https://jwt.io/#debugger)
 
-For this demonstration we are not using views.
-Prerequisites  
+### Generating And Verifying A JWT  
 
-Install jsonwebtoken.
+* For this demonstration we are not using views.
+
+#### Prerequisites  
+
+* Install `jsonwebtoken`.
+
+```
 npm install jsonwebtoken --save
+```
+
 Install Express.
 Install Body parser.
 Connect to Database (optional)
