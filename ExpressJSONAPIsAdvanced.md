@@ -375,13 +375,17 @@ module.exports = function(router){
 }
 ```
 
-token verification - middlewares/auth.js  
+**token verification - middlewares/auth.js**  
 
-Here we verify the JWT.
-We check for a token. If token is available, we verify.
-If it is invalid, or it has expired, we return a 401 status code with an error message.
-If token is not found, we redirect back to login.
+* Here we verify the JWT.
 
+* We check for a token. If token is available, we verify.
+
+  * If it is invalid, or it has expired, we return a 401 status code with an error message.
+
+  * If token is not found, we redirect back to login.
+
+```
 var jwt = require('jsonwebtoken');
 var config = require('../config.js');
 
@@ -402,17 +406,24 @@ var auth = function(req, res, next) {
    res.redirect(401, '/')
    }
 }
-controllers/example.js  
+```
 
-Here we create a route, which we will protect later.
+**controllers/example.js**  
+
+* Here we create a route, which we will protect later.
+
+```
 module.exports = function(router){
   router.get('/example', function(req, res){
     res.json({data: 'JWT authentication implementation!'});
   });
   return router;
 }
-Implementation in index.js  
+```
 
+**Implementation in index.js**  
+
+```
 var express = require('express');
 var app = express();
 var router = express.Router();
@@ -430,11 +441,18 @@ app.use('/api', require('./controllers/example.js')(router));
 app.use('/', require('./controllers/user.js')(router));
 
 app.listen(3000);
-client side  
+```
 
-Manually set headers so that the middleware knows if the route is authenticated.
+**client side** 
+
+* Manually set headers so that the middleware knows if the route is authenticated.
+
+```
 headers[‘x-access-token’] = [jwt-token]
-Changing Default Algorithm And Signing Asynchronously  
+```
+
+
+### Changing Default Algorithm And Signing Asynchronously  
 
 // Default algorith (HMAC SHA256)
 var jwt = require('jsonwebtoken');
