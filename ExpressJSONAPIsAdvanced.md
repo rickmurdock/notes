@@ -214,36 +214,60 @@ Decode the token [here](https://jwt.io/#debugger)
 npm install jsonwebtoken --save
 ```
 
-Install Express.
-Install Body parser.
-Connect to Database (optional)
-Install, configure, and initialize Sequelize.
-Create a user model with user_name, password and user_email Sequelize attributes.
-Run migration.
-Structure  
+* Install Express.
 
-JWT-auth-example
-Controllers
-example.js
-user.js
-Middlewares
-auth.js
-Models
-user.js
-index.js
-config.js
-package.json
+* Install Body parser.
+
+* Connect to Database (optional)
+
+* Install, configure, and initialize Sequelize.
+
+  * Create a user model with user_name, password and user_email Sequelize attributes.
+
+  *Run migration.
+  
+### Structure  
+
+* JWT-auth-example
+
+  * Controllers
+  
+    * example.js
+    
+    * user.js
+    
+  * Middlewares
+  
+    * auth.js
+    
+  * Models
+  
+    * user.js
+    
+  * index.js
+  
+  * config.js
+  
+  * package.json
+  
 config.js  
 
-Author a configuration file.
-Here we will store the key we use to sign the JWT. For best practices and security reasons it is best not to commit into the repository.
+* Author a configuration file.
+
+* Here we will store the key we use to sign the JWT. For best practices and security reasons it is best **not to commit** into the repository.
+
+```
 module.exports = {
   // You may include other configuration options here.
   secret: 'supersecurepassword'
 }
+```
+
 models/user.js  
 
-Model sample.
+* Model sample.
+
+```
 var Sequelize = require('sequelize');
 // Set database
 var sequelize = {}; // Dev. Database
@@ -283,10 +307,15 @@ module.export = function(sequelize, DataTypes){
   });
   return User;
 };
-generating the JWT - controllers/user.js  
+```
 
-Here a JWT object is created and sent with the request.
-In this example, the app will look for the user. If not found it will use the sequelize create() method to create one.
+**generating the JWT - controllers/user.js**  
+
+* Here a JWT object is created and sent with the request.
+
+* In this example, the app will look for the user. If not found it will use the sequelize create() method to create one.
+
+```
 var jwt = require('jsonwebtoken');
 // Require the config file containing the key to sign the JWT.
 var config = require('../config.js');
@@ -344,6 +373,7 @@ module.exports = function(router){
   });
   return router;
 }
+```
 
 token verification - middlewares/auth.js  
 
