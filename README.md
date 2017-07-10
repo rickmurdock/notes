@@ -25,3 +25,5 @@ Lecture notes from The Iron Yard
 * MongoDB with Mongoose
 
 * [Express: JSON APIs](https://github.com/rickmurdock/notes/blob/master/ExpressJSONAPIs.md)
+
+* Express JSON APIs: Advanced
