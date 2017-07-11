@@ -66,7 +66,7 @@ TDD Limitations and Considerations:
 
 * tests require additional maintenance
 
-###Terminology  
+### Terminology  
 
 * Test Driven Development (TDD): the process of writing tests that gauge functionality against a set of requirements, then writing the software to match the tests. Software that does not meet requirements is not allowed in the code base. The process of writing tests, programming to pass tests, and improving code is repeated indefinitely in a growing application. New features are are added through TDD. Legacy code (including tests) are refactored along the same cycle. TDD can and should be applied to applications from conception through development but it can also be used to refactor legacy applications. TDD inspires confidence in development by ensuring code is functionally sound and meets requirements.
 
@@ -96,14 +96,19 @@ function multiplier(x, y) {
 
 # Author feature tests using Mocha and Chai for an Express app  
 
-Terminology  
+### Terminology  
 
-MochaJS: MochaJS is a testing framework for NodeJS and client side JavaScript applications. MochaJS provides asynchronous testing with reporting.
-assert: assert is a built-in Node library for asserting truth in tests.
-ChaiJS: ChaiJS is an assertion library for BDD and TDD that uses different syntax than assert.
-Supertest: Supertest is a library that allows to you make and test web requests and responses. Uses Superagent methods as well as its own .expect method.
-Examples  
+* *MochaJS*: [MochaJS](https://mochajs.org/) is a testing framework for NodeJS and client side JavaScript applications. MochaJS provides asynchronous testing with reporting.
 
+* *assert*: [assert](https://nodejs.org/api/assert.html) is a built-in Node library for asserting truth in tests.
+
+* *ChaiJS*: [ChaiJS](http://chaijs.com/) is an assertion library for BDD and TDD that uses different syntax than assert.
+
+* *Supertest*: [Supertest](https://github.com/visionmedia/supertest) is a library that allows to you make and test web requests and responses. Uses Superagent methods as well as its own .expect method.
+
+### Examples  
+
+```
 // app.js
 const express = require('express');
 const app = express();
@@ -119,6 +124,9 @@ if (require.main === "module") {
 }
 
 module.exports = app;
+```
+
+```
 // test/hello_test.js
 const request = require("supertest");
 const assert = require("assert");
@@ -136,14 +144,17 @@ describe("GET /hello", function () {
       .end(done);
   })
 })
-Mocha.js  
+```
+
+### Mocha.js  
 
 Mocha is a library for writing tests. It must be paired with an assertion library like assert or Chai.
 
-By default, Mocha runs all .js files in your test/ directory.
+By default, Mocha runs all `.js` files in your `test/` directory.
 
-Mocha uses two functions, describe and it, to define tests. The important thing to remember about these is that you do not have to require them. They are made available to your tests by Mocha.
+Mocha uses two functions, `describe` and `it`, to define tests. The important thing to remember about these is that you do not have to require them. They are made available to your tests by Mocha.
 
+```
 // test/sample_test.js
 const assert = require("assert");
 
@@ -156,6 +167,8 @@ describe("A string", function () {
     assert.equal("Hello".toLowerCase(), "hello");
   })
 });
+```
+```
 $ mocha
 
   A string
@@ -163,24 +176,29 @@ $ mocha
     ✓ can be lowercased
 
   2 passing (12ms)
-describe is used to set a context for tests. It can be nested, with multiple describe calls inside a parent. it is used to write individual test cases.
+```
+
+`describe` is used to set a context for tests. It can be nested, with multiple `describe` calls inside a parent. `it` is used to write individual test cases.
 
 You can test simple functions and methods this way.
 
-Testing controller functions  
+### Testing controller functions  
 
-In an Express app, you often want to test the functions that handle your routes -- your controller functions. To do this, install the library supertest. This library lets you make HTTP requests and run tests against the results. In addition, you will need to make your app object available. To do that, add module.exports = app; to the bottom of your app.js file (or whatever you have called the file where your Express app is created.)
+In an Express app, you often want to test the functions that handle your routes -- your controller functions. To do this, install the library `supertest`. This library lets you make HTTP requests and run tests against the results. In addition, you will need to make your `app` object available. To do that, add `module.exports = app;` to the bottom of your `app.js` file (or whatever you have called the file where your Express app is created.)
 
-You will also want to change your code that calls app.listen to look like the following:
+You will also want to change your code that calls `app.listen` to look like the following:
 
+```
 if (require.main === "module") {
   app.listen(3000, function () {
       console.log('Express running on http://localhost:3000/.')
   });
 }
-require is an object available in your module. When your module is run as a script (node app.js), require.main will equal "module" and the app.listen code will be run. When your module is required from another module -- like we will do with the tests -- the app.listen code will not be run.
+```
 
-To test your controller functions, you will need to require supertest and learn about how Mocha handles asynchronous code. Let's look at an app and a controller test and then see how they work.
+`require` is an object available in your module. When your module is run as a script `(node app.js)`, `require.main` will equal "module" and the `app.listen` code will be run. When your module is required from another module -- like we will do with the tests -- the `app.listen` code will not be run.
+
+To test your controller functions, you will need to require `supertest` and learn about how Mocha handles asynchronous code. Let's look at an app and a controller test and then see how they work.
 
 // app.js
 const express = require('express');
