@@ -168,6 +168,7 @@ describe("A string", function () {
   })
 });
 ```
+
 ```
 $ mocha
 
@@ -200,6 +201,7 @@ if (require.main === "module") {
 
 To test your controller functions, you will need to require `supertest` and learn about how Mocha handles asynchronous code. Let's look at an app and a controller test and then see how they work.
 
+```
 // app.js
 const express = require('express');
 const app = express();
@@ -215,6 +217,9 @@ if (require.main === "module") {
 }
 
 module.exports = app;
+```
+
+```
 // test/hello_test.js
 const request = require("supertest");
 const assert = require("assert");
@@ -232,19 +237,25 @@ describe("GET /hello", function () {
       .end(done);
   })
 })
+```
+
 The first line to notice is the line:
 
+```
 it("should return successfully", function (done) {
   // ...
 })
-done is a function that it will pass to your test that will tell Mocha that your test is done when called. If you pass an argument to done, it will count that as a failed test.
+```
+
+`done` is a function that it will pass to your test that will tell Mocha that your test is done when called. If you pass an argument to done, it will count that as a failed test.
 
 The next line, request(app), sets up Supertest to make requests against your app. This handles running the app for you, so you don't have to know the address and port of the web application.
 
-.get("/hello") makes a GET web request to /hello, as you might expect. This returns a promise that we can then run tests against.
+`.get("/hello")` makes a `GET` web request to `/hello`, as you might expect. This returns a promise that we can then run tests against.
 
-.expect is a Supertest method that is very flexible and allows you to test multiple features of the response from the server. See the API documentation to learn all the ways in which .expect can be called. We are calling it three ways here:
+`.expect` is a Supertest method that is very flexible and allows you to test multiple features of the response from the server. See the API documentation to learn all the ways in which .expect can be called. We are calling it three ways here:
 
+```
 request(app)
   .get("/hello")
   // Checks to see if the status code is 200.
@@ -257,8 +268,11 @@ request(app)
     assert.equal(res.body['hello'], "world");
   })
   .end(done);
+```
+
 Lastly, we call .end(done). To understand this line, let's give .end a function we define:
 
+```
 request(app)
   .get("/hello")
   // tests ...
@@ -269,6 +283,8 @@ request(app)
       done();
     }
   });
+```
+
 If we have an error, we pass it to done, otherwise we do not. By using the shorter statement, .end(done), we do a similar thing. The err and res are passed directly to done. If err is null, which it will be if there is no error, then that's great! If err is not null, then an error is passed to done and that lets us know about the error.
 
 npm test  
