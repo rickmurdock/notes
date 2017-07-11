@@ -270,7 +270,7 @@ request(app)
   .end(done);
 ```
 
-Lastly, we call .end(done). To understand this line, let's give .end a function we define:
+Lastly, we call `.end(done)`. To understand this line, let's give `.end` a function we define:
 
 ```
 request(app)
@@ -285,12 +285,13 @@ request(app)
   });
 ```
 
-If we have an error, we pass it to done, otherwise we do not. By using the shorter statement, .end(done), we do a similar thing. The err and res are passed directly to done. If err is null, which it will be if there is no error, then that's great! If err is not null, then an error is passed to done and that lets us know about the error.
+If we have an error, we pass it to `done`, otherwise we do not. By using the shorter statement, `.end(done)`, we do a similar thing. The `err` and `res` are passed directly to `done`. If `err` is null, which it will be if there is no error, then that's great! If `err` is not null, then an error is passed to `done` and that lets us know about the error.
 
-npm test  
+### npm test  
 
-Our package.json file has a section we have not explored until now. The scripts object can contain terminal commands that we need to run frequently, including a command to test our code. Change your package.json to have the following scripts object:
+Our `package.json` file has a section we have not explored until now. The `scripts` object can contain terminal commands that we need to run frequently, including a command to test our code. Change your `package.json` to have the following `scripts` object:
 
+```
 {
   "private": true,
   "dependencies": {
@@ -300,16 +301,21 @@ Our package.json file has a section we have not explored until now. The scripts 
     "test": "mocha"
   }
 }
-Now run npm test. Mocha should run. This gives us an easy-to-remember standard way to run tests for any Node project we come across, no matter what tools or configuration those tests may need.
+```
 
-Author unit tests for Express models  
+Now run `npm test`. Mocha should run. This gives us an easy-to-remember standard way to run tests for any Node project we come across, no matter what tools or configuration those tests may need.
 
-Configuration  
+---
 
-To test more complicated applications -- ones with databases, for example -- we will require more set up. This has two steps. First, you will need to configure your application differently depending on how you are running it. A common way to do this is to set the NODE_ENV environment variable to a value like development, production, or test and then use that value to look up a configuration object. If you've looked at the models/index.js file that Sequelize creates, then you may have seen this.
+# Author unit tests for Express models  
 
-To do this yourself, first create a file called config.json. Here is one for an app that uses MongoDB.
+### Configuration  
 
+To test more complicated applications -- ones with databases, for example -- we will require more set up. This has two steps. First, you will need to configure your application differently depending on how you are running it. A common way to do this is to set the `NODE_ENV` environment variable to a value like `development`, `production`, or `test` and then use that value to look up a configuration object. If you've looked at the `models/index.js` file that Sequelize creates, then you may have seen this.
+
+To do this yourself, first create a file called `config.json`. Here is one for an app that uses MongoDB.
+
+```
 // config.json
 {
   "development": {
@@ -319,8 +325,11 @@ To do this yourself, first create a file called config.json. Here is one for an 
     "mongoURL": "mongodb://localhost:27017/coolapp_test"
   }
 }
+```
+
 Then in app.js, we would write code like this:
 
+```
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -330,19 +339,25 @@ const nodeEnv = process.env.NODE_ENV || "development";
 const config = require("./config.json")[nodeEnv];
 
 mongoose.connect(config.mongoURL);
-You can set up any configuration variables you need to in this way. Note that to make sure your tests use the test configuration, you will have to run NODE_ENV=test mocha. Change your test script in package.json to run this:
+```
 
+You can set up any configuration variables you need to in this way. Note that to make sure your tests use the test configuration, you will have to run `NODE_ENV=test mocha`. Change your `test` script in `package.json` to run this:
+
+```
 {
   "scripts": {
     "test": "NODE_ENV=test mocha"
   }
 }
-There is a config library you can install via NPM that takes this pattern and extends it. You may want to look at it if you need more support than this provides.
+```
 
-Test hooks  
+There is a `config` [library you can install via NPM](https://www.npmjs.com/package/config) that takes this pattern and extends it. You may want to look at it if you need more support than this provides.
+
+### Test hooks  
 
 Mocha provides four hooks for us to use in our tests.
 
+```
 describe('hooks', function() {
   before(function() {
     // runs before all tests in this block
@@ -362,10 +377,13 @@ describe('hooks', function() {
 
   // test cases
 });
-These hooks can be used to set up data we need for our tests, clear out databases, or anything else we might need. They apply both inside the same describe function they are in and in any nested describe functions. They can even be defined outside of a describe. In that case, they will apply to all tests in the module. They also provide a done function in the case we have asynchronous actions we want to take.
+```
+
+These hooks can be used to set up data we need for our tests, clear out databases, or anything else we might need. They apply both inside the same `describe` function they are in and in any nested `describe` functions. They can even be defined outside of a `describe`. In that case, they will apply to all tests in the module. They also provide a `done` function in the case we have asynchronous actions we want to take.
 
 For example, we may want to connect to MongoDB before our tests, and clear out a collection before each test in order to make sure we have a clean setup. Here is an example:
 
+```
 const assert = require('assert');
 const mongoose = require('mongoose');
 const config = require("../config")[process.env.NODE_ENV || 'test'];
@@ -396,80 +414,135 @@ describe("Recipe", function () {
         });
     });
 })
-Why worry about this?  
+```
 
-You want to make sure your tests are deterministic -- that is, that when you run them, you get the same results each time. In the above code, it's assumed that the name field on recipes is unique. In this case, the test would fail if we didn't delete all recipes before each test and had multiple tests making a recipe with the name "Pancakes." Having a fresh database for each test is imperative to ensure your tests are deterministic.
+### Why worry about this?  
 
-Naming Conventions and Class/Function Length Best Practices  
+You want to make sure your tests are *deterministic* -- that is, that when you run them, you get the same results each time. In the above code, it's assumed that the `name` field on recipes is unique. In this case, the test would fail if we didn't delete all recipes before each test and had multiple tests making a recipe with the name "Pancakes." Having a fresh database for each test is imperative to ensure your tests are deterministic.
+
+---
+
+# Naming Conventions and Class/Function Length Best Practices  
 
 Terminology  
 
-function scope: Functions create a pocket of scope. Nested functions create internal pockets of scope which can access outer functions' scopes and global scopes. Outer scopes cannot access inner functions' scopes.
-block scope: Encapsulating scope in contexts other than functions; if statements and for loops, for example.
-let: The let keyword includes the variable declaration in the scope of any block it's contained in (usually a { .. } pair). let implicitly uses any block's scope for its variable declaration.
-const: Like let, const uses block scope, however, const has a value which is fixed. Attempts to change a const declared variable will result in an error.
-Variables  
+* **function scope**: Functions create a pocket of scope. Nested functions create internal pockets of scope which can access outer functions' scopes and global scopes. Outer scopes cannot access inner functions' scopes.
 
-Variables should be declared with const or let before they are used.
-var is declared with function scope.
-const and let are declared with block scope.
-Use let and const in order isolate scope to containing blocks.
-Use let if a variable's value will change.
-Use const to declare variables whose values will not change (preferred method).
-Make variable names descriptive.
-Never use abbreviations in variables.
-Use camel case for two word variables.
-Avoid global variables.
-Avoid changing the type of a variable.
+* **block scope**: Encapsulating scope in contexts other than functions; `if` statements and `for` loops, for example.
+
+* **let**: The `let` keyword includes the variable declaration in the scope of any block it's contained in (usually a `{ .. }` pair). `let` implicitly uses any block's scope for its variable declaration.
+
+* **const**: Like `let`, `const` uses block scope, however, `const` has a value which is fixed. Attempts to change a `const` declared variable will result in an error.
+
+### Variables  
+
+* Variables should be declared with `const` or `let` before they are used.
+
+  * `var` is declared with function scope.
+  
+  * `const` and `let` are declared with block scope.
+  
+  * Use `let` and `const` in order isolate scope to containing blocks.
+  
+  * Use `let` if a variable's value will change.
+  
+  * Use `const` to declare variables whose values will not change (preferred method).
+  
+* Make variable names descriptive.
+
+* Never use abbreviations in variables.
+
+* Use camel case for two word variables.
+
+* Avoid global variables.
+
+* Avoid changing the type of a variable.
+
 Functions  
 
-Functions should be declared before they are used.
-Inner functions should be stored in a variable. Doing so makes it easier to read scope.
-Always use a verb in function names.
-Function names should be descriptive of their actions performed.
-Never use abbreviations in function names.
-Use camel case for two word function names.
-Each function/method should do only one thing.
-Characters in Naming  
+* Functions should be declared before they are used.
 
-Use any letter of the alphabet, uppercase or lowercase.
-Use any number, 0 - 9.
-Do not use backslash \.
-Most variables start with a lowercase letter.
-Constructors start with an uppercase letter.
-Whitespace  
+ * Inner functions should be stored in a variable. Doing so makes it easier to read scope.
+ 
+* Always use a verb in function names.
 
-The word function should be followed with one space.
-Apply one space after a keyword when followed by a left parentheses (.
-Functions are the exception to this rule.
-The second parentheses ) following a function, before an opening brace { should be followed by a space.
-Follow a comma , with one space.
-Within a for statement, follow a semicolon ; with one space.
-A semicolon ; at the end of a statement should be followed by a line break.
-When using a plus symbol + to concatenate values, include a space before and after the plus +.
-Line Breaks  
+* Function names should be descriptive of their actions performed.
 
-Nested statements should be indented.
-Avoid excessively long lines.
-When breaking a line, do so after a left brace {, left bracket [, left parentheses (, comma ,, or before a period ., question mark ?, or colon :.
-Try to include just one statement per line.
-When a function statement is broken onto multiple lines, the closing brace } should be on the same level of indentation as the beginning of the function declaration.
-When an array is broken onto multiple lines, the closing bracket ] should be on the same level of indentation as the beginning of the array.
-When an object is broken onto multiple lines, the closing brace } should be on the same level of indentation as the beginning of the object.
-Comments  
+* Never use abbreviations in function names.
 
-Use comments sparingly.
-Using descriptive keywords and writing smaller statements will provide clarity to the reader, requiring no comments.
-When writing a comment make sure it is describing something that may not be immediately recognizable.
-Other  
+* Use camel case for two word function names.
 
-Use === whenever possible to ensure matching data types and to avoid type conversion. Avoid == value matching only.
-In general, make classes and objects as short as possible.
-Use prototypal inheritance to distribute properties and methods.
-Try to isolate values and functionality to small reusable components or modules.
-Don't repeat yourself (DRY).
-Examples  
+* Each function/method should do only one thing.
 
+### Characters in Naming  
+
+* Use any letter of the alphabet, uppercase or lowercase.
+
+* Use any number, 0 - 9.
+
+* Do not use backslash `\`.
+
+* Most variables start with a lowercase letter.
+
+* Constructors start with an uppercase letter.
+
+### Whitespace  
+
+* The word `function` should be followed with one space.
+
+* Apply one space after a keyword when followed by a left parentheses `(`.
+
+ * Functions are the exception to this rule.
+ 
+* The second parentheses `)` following a function, before an opening brace `{` should be followed by a space.
+
+* Follow a comma `,` with one space.
+
+* Within a `for` statement, follow a semicolon `;` with one space.
+
+* A semicolon `;` at the end of a statement should be followed by a line break.
+
+* When using a plus symbol `+` to concatenate values, include a space before and after the plus `+`.
+
+### Line Breaks  
+
+* Nested statements should be indented.
+
+* Avoid excessively long lines.
+
+* When breaking a line, do so after a left brace `{`, left bracket `[`, left parentheses `(`, comma `,`, or before a period `.`, question mark `?`, or colon `:`.
+
+* Try to include just one statement per line.
+
+* When a function statement is broken onto multiple lines, the closing brace `}` should be on the same level of indentation as the beginning of the function declaration.
+
+* When an array is broken onto multiple lines, the closing bracket `]` should be on the same level of indentation as the beginning of the array.
+
+* When an object is broken onto multiple lines, the closing brace `}` should be on the same level of indentation as the beginning of the object.
+
+### Comments  
+
+* Use comments sparingly.
+
+* Using descriptive keywords and writing smaller statements will provide clarity to the reader, requiring no comments.
+
+* When writing a comment make sure it is describing something that may not be immediately recognizable.
+
+### Other  
+
+* Use `===` whenever possible to ensure matching data types and to avoid type conversion. Avoid `==` value matching only.
+
+* In general, make classes and objects as short as possible.
+
+  * Use prototypal inheritance to distribute properties and methods.
+  
+  * Try to isolate values and functionality to small reusable components or modules.
+  
+* Don't repeat yourself (DRY).
+
+### Examples  
+
+```
 const bookList = [
   {
     title: 'Turtles All the Way Down',
@@ -494,4 +567,6 @@ function makeSentence(object) {
 for (let i = 0; i < bookList.length; i++) {
   makeSentence(bookList[i]);
 }
-The use of the variable i obviously ins't very descriptive here. In this case i is a commonly known and widely used variable to describe an iterator. Another common one character variable you may encounter is e in place of event.
+```
+
+> The use of the variable `i` obviously ins't very descriptive here. In this case `i` is a commonly known and widely used variable to describe an `iterator`. Another common one character variable you may encounter is `e` in place of `event`.
