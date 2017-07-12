@@ -505,13 +505,13 @@ app.get('/mutants/:role', function(req, res, next){
   
   * The injected code is reflected off the server in a search result, error message, or another `response` which includes all or part of the `input` sent to the server as a `request`.
   
-  1. A URL containing the malicious code is sent to the victim.
+    1. A URL containing the malicious code is sent to the victim.
   
-  2. The victim then `requests` the URL from the website.
+    2. The victim then `requests` the URL from the website.
   
-  3. The website includes the malicious string from the URL in the `response`.
+    3. The website includes the malicious string from the URL in the `response`.
   
-  4. The victim's browser executes the code sending the victims data back to the attacker's server.
+    4. The victim's browser executes the code sending the victims data back to the attacker's server.
 
 * **Persistent (stored) XSS**: the malicious code is stored in a target's server, where it is later retrieved by the victim via a `request` for data containing the malicious code.
 
