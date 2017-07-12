@@ -1,42 +1,68 @@
-Appropriate Use cases To Run next()  
+# Appropriate Use cases To Run `next()` 
 
-Terminology  
+### Terminology  
 
-middleware:
-A function that comes before route handlers or even other middleware functions.
-It has access to the request and response, as well as the next callback in the request - response cycle.
-Use middleware functions to:
-Execute code:
-body parsing.
-cookie parsing.
-json request.
-etc.
-Change the request and/or the response objects.
-End the request - response cycle.
-Call the next middleware function.
-next:
-When authoring middleware, use next to indicate that the middleware function has finished.
-next functions as a callback.
-Calling next continues the processing of the request.
-Failing to call next will cause the process to hang.
-This is because Express has no way of knowing that the operation is done and that it needs to move down the pipeline to the next middleware or route.
-Using Next  
+* `middleware`:
 
-Asynchronous setting:
-Example: looking up data that results in a callback.
-Call next inside the callback.
-Invoking a route:
-invoking next('route') will skip to the next route handler.
-Subsequent functions will not be executed.
-Passing errors:
-Pass errors to next to handle them separately.
-If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging. - Expressjs.com
+  * A function that comes before route handlers or even other middleware functions.
+  
+  * It has access to the request and response, as well as the next callback in the request - response cycle.
+  
+  * Use middleware functions to:
+  
+    * Execute code:
+    
+      * body parsing.
+      
+      * cookie parsing.
+      
+      * json request.
+      
+      * etc.
+      
+    * Change the request and/or the response objects.
+    
+    * End the request - response cycle.
+    
+    * Call the next middleware function.
+    
+* next:
 
-Calling Next()  
+    * When authoring middleware, use next to indicate that the middleware function has finished.
+    
+    * next functions as a callback.
+    
+    * Calling next continues the processing of the request.
+    
+    * Failing to call next will cause the process to hang.
+    
+    * This is because Express has no way of knowing that the operation is done and that it needs to move down the pipeline to     the * next middleware or route.
+    
+#### Using Next  
 
-Example  
+* Asynchronous setting:
 
+  * Example: looking up data that results in a callback.
+  
+  * Call next inside the callback.
+  
+* Invoking a route:
 
+  * invoking next('route') will skip to the next route handler.
+  
+  * Subsequent functions will not be executed.
+  
+* Passing errors:
+
+  * Pass errors to next to handle them separately.
+
+> If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging. - Expressjs.com
+
+### Calling Next()  
+
+#### Example  
+
+```
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -62,11 +88,15 @@ app.get('/', function(req, res, next){
   // We can now use the req.session.user object in the view template.
   res.render('index', {title: 'home'});
 });
-Invoking The Next Route  
+```
 
-Example  
+### Invoking The Next Route  
 
-Use next('route') when using multiple callback function in the route handler.
+#### Example  
+
+* Use next('route') when using multiple callback function in the route handler.
+
+```
 app.get('/foo',
 function checkRegistration (req, res, next){
   if(!req.user.registered){
@@ -80,14 +110,20 @@ function checkRegistration (req, res, next){
     res.json(data)
   });
 });
-Passing anything into next other than the string 'route', will cause Express to process the request as being in error. Subsequent middleware functions and non-error handling routing will be skipped.
-Passing Errors  
+```
 
-Example  
+> Passing anything into `next` other than the string 'route', will cause `Express` to process the request as being in *error*. Subsequent `middleware` functions and non-error handling routing will be skipped.
 
-Passing an error into next() instructs Express to process the error middleware.
-Using next() to pass an error(s) helps consolidate error processing into a single point in the application, instead of defining an error from within each route.
 
+### Passing Errors  
+
+# Example  
+
+* Passing an error into next() instructs Express to process the error middleware.
+
+* Using next() to pass an error(s) helps consolidate error processing into a single point in the application, instead of defining an error from within each route.
+
+```
 var express = require('express');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
@@ -145,14 +181,19 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000);
-Default Error Handler  
+```
 
-Express comes with a built-in error handler, which takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.
+#### Default Error Handler  
 
-If you pass an error to next() and you do not handle it in an error handler, it will be handled by the built-in error handler; the error will be written to the client with the stack trace. The stack trace is not included in the production environment. - expressjs.com
+> Express comes with a built-in error handler, which takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.
 
-Custom error handler:
-When the headers have already been sent, delegate the default error handling mechanism in Express.
+> If you pass an error to next() and you do not handle it in an error handler, it will be handled by the built-in error handler; the error will be written to the client with the stack trace. The stack trace is not included in the production environment. - expressjs.com
+
+* Custom error handler:
+
+  * When the headers have already been sent, delegate the default error handling mechanism in Express.
+  
+```  
 function errorHandler (err, req, res, next) {
   if (res.headersSent) {
     return next(err)
@@ -160,7 +201,10 @@ function errorHandler (err, req, res, next) {
   res.status(500)
   res.render('error', { error: err })
 }
-Lecture Notes  
+```
+---
+
+# Lecture Notes  
 
 Terminology  
 
