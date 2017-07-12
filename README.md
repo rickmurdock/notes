@@ -34,3 +34,5 @@ Lecture notes from The Iron Yard
 * Express JSON APIs: Advanced
 
 * Tests and Test Driven Design
+
+* Web Security: Introduction
