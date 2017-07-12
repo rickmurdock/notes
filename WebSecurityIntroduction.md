@@ -94,7 +94,7 @@ app.get('/', function(req, res, next){
 
 #### Example  
 
-* Use next('route') when using multiple callback function in the route handler.
+* Use `next('route')` when using multiple callback function in the route handler.
 
 ```
 app.get('/foo',
@@ -119,9 +119,9 @@ function checkRegistration (req, res, next){
 
 # Example  
 
-* Passing an error into next() instructs Express to process the error middleware.
+* Passing an error into `next()` instructs `Express` to process the `error` middleware.
 
-* Using next() to pass an error(s) helps consolidate error processing into a single point in the application, instead of defining an error from within each route.
+* Using `next()` to pass an error(s) helps consolidate error processing into a single point in the application, instead of defining an error from within each route.
 
 ```
 var express = require('express');
@@ -208,7 +208,7 @@ function errorHandler (err, req, res, next) {
 
 ### Terminology  
 
-* Injection: text-based attack that exploits an interpreter's syntax.
+* `Injection`: text-based attack that exploits an interpreter's syntax.
 
   * Implications: data corruption, data loss, data theft, denial of access.
 
@@ -255,11 +255,11 @@ app.get('/mutants/:role', function(req, res, next){
 
 #### Legitimate Query  
 
-* Searching for all fields, *, who are admins.
+* Searching for all fields, `*`, who are admins.
 
-  * Input query: admin
+  * **Input query**: `admin`
 
-  * Resulting query:
+  * **Resulting query**:
  
 ``` 
 SELECT * FROM accounts WHERE role = ('admin')
@@ -274,21 +274,21 @@ beast
 
 #### Malicious Query  
 
-* Here Magneto uses a single-quote ' to break out of the string context and into the query.
+* Here Magneto uses a single-quote `'` to break out of the string context and into the query.
 
 * Then, he passes in the following malicious query:
 
-  * Input query: ') UNION SELECT username||'_'||password FROM accounts --
+  * **Input query**: `') UNION SELECT username||'_'||password FROM accounts --`
   
   * This would append the username and passwords for all X-Men in the database who are admins!
   
-    * double pipes, ||, are used for concatenating.
+    * double pipes, `||`, are used for concatenating.
     
-    * The -- comments out the remaining text. This "consumes" the final code provided by the application.
+    * The `--` comments out the remaining text. This "consumes" the final code provided by the application.
     
- * Resulting query:
+ * **Resulting query**:
 
-> SELECT * FROM accounts WHERE role = ('%') UNION SELECT username || '_' ||password FROM accounts --
+> SELECT * FROM accounts WHERE role = (`'%') UNION SELECT username || '_' ||password FROM accounts --`
 
 * This query would return the following:
 
@@ -393,23 +393,23 @@ app.get('/mutants/:role', function(req, res, next){
 
 ### Prepared Statements  
 
-* The SQL query code is predefined by the developer so that parameters are passed into the query later.
+* The `SQL` query code is predefined by the developer so that parameters are passed into the query later.
 
-* The variable data is replaced by a placeholder, such as a ?, which is then processed by the database as a parameter.
+* The variable data is replaced by a placeholder, such as a `?`, which is then processed by the database as a parameter.
 
-* Prepared statements (parameterized statements) are parsed, compiled, and optimized by the database separately from any parameters before they are executed.
+* `Prepared statements (parameterized statements)` are parsed, compiled, and optimized by the database **separately** from any parameters before they are executed.
 
 * Why is it effective against injections?
 
-  * The input values in an SQL query are sent to the server after the query is sent to the server.
+  * The input values in an `SQL` query are sent to the server after the query is sent to the server.
   
-  * Incoming input is interpreted as data, instead of SQL code.
+  * Incoming input is interpreted as data, instead of `SQL` code.
   
 * Check ORM and database documentation for details.
 
 Implementation  
 
-* Sequelize example.
+* `Sequelize example`.
 
 ```
 var sequelize = require('sequelize');
