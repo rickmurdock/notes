@@ -4,11 +4,11 @@
 
 * `middleware`:
 
-  * A function that comes before route handlers or even other middleware functions.
+  * A function that comes before `route handlers` or even other `middleware` functions.
   
-  * It has access to the request and response, as well as the next callback in the request - response cycle.
+  * It has access to the `request` and `response`, as well as the `next` callback in the `request - response` cycle.
   
-  * Use middleware functions to:
+  * Use `middleware` functions to:
   
     * Execute code:
     
@@ -20,41 +20,41 @@
       
       * etc.
       
-    * Change the request and/or the response objects.
+    * Change the `request` and/or the `response` objects.
     
-    * End the request - response cycle.
+    * End the `request - response` cycle.
     
-    * Call the next middleware function.
+    * **Call the** `next` `middleware` **function**.
     
-* next:
+* `next`:
 
-    * When authoring middleware, use next to indicate that the middleware function has finished.
+    * When authoring `middleware`, use `next` to indicate that the `middleware` function has finished.
     
-    * next functions as a callback.
+    * `next` functions as a callback.
     
-    * Calling next continues the processing of the request.
+    * Calling next continues the processing of the `request`.
     
-    * Failing to call next will cause the process to hang.
+    * Failing to call `next` will cause the process to hang.
     
-    * This is because Express has no way of knowing that the operation is done and that it needs to move down the pipeline to     the * next middleware or route.
+    * This is because `Express` has no way of knowing that the operation is done and that it needs to move down the pipeline to the * next `middleware` or route.
     
 #### Using Next  
 
 * Asynchronous setting:
 
-  * Example: looking up data that results in a callback.
+  * Example: looking up data that results in a `callback`.
   
-  * Call next inside the callback.
+  * Call `next` inside the callback.
   
 * Invoking a route:
 
-  * invoking next('route') will skip to the next route handler.
+  * invoking `next('route')` will skip to the next route handler.
   
   * Subsequent functions will not be executed.
   
 * Passing errors:
 
-  * Pass errors to next to handle them separately.
+  * Pass errors to `next` to handle them separately.
 
 > If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging. - Expressjs.com
 
@@ -476,25 +476,25 @@ app.get('/mutants/:role', function(req, res, next){
 
 ### Terminology  
 
-* XSS (Cross-site scripting):
+* `XSS` (Cross-site scripting):
 
   * Allows an attacker to inject malicious code into a website through various methods.
   
-  * The request / response cycle is used as a mechanism to execute the code from the victim's browser.
+  * The `request` / `response` cycle is used as a mechanism to execute the code from the victim's browser.
   
   * Vulnerable websites are exploited, not the victim's machine.
   
 ### How?  
 
-* An attacker uses a vulnerable input to inject a string containing malicious code, which subsequently runs in the victim's browser as legitimate code.
+* An attacker uses a vulnerable `input` to *inject* a `string` containing malicious code, which subsequently runs in the victim's browser as legitimate code.
 
 * The JavaScript Code:
 
-  * Can be used to modify the HTML by using DOM manipulation methods.
+  * Can be used to modify the `HTML` by using `DOM` manipulation methods.
   
-  * Can access sensitive information, such as cookies.
+  * Can access sensitive information, such as `cookies`.
   
-  * Use XMLHttpRequest to send arbitrary content to arbitrary destinations.
+  * Use `XMLHttpRequest` to send arbitrary content to arbitrary destinations.
 
 ### Types of attack:  
 
