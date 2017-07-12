@@ -202,6 +202,7 @@ function errorHandler (err, req, res, next) {
   res.render('error', { error: err })
 }
 ```
+
 ---
 
 # Lecture Notes  
@@ -516,15 +517,15 @@ app.get('/mutants/:role', function(req, res, next){
 
   1. The attacker inject the malicious code into the server via a vulnerable form, which is stored in the database.
   
-  2.The victims makes a `request` to the website.
+  2. The victims makes a `request` to the website.
   
-  3.The `response`, containing the malicious code, is sent to the victim.
+  3. The `response`, containing the malicious code, is sent to the victim.
   
-  4.The victim's browser executes the code sending the victims data back to the attacker's server.
+  4. The victim's browser executes the code sending the victims data back to the attacker's server.
 
 * **DOM-based XSS**: a combination of both `persistent` and `reflected` `XSS`:
 
-  1. A URL containing the malicious code is sent to the victim.
+1. A URL containing the malicious code is sent to the victim.
   
   2. The victim then `requests` the URL from the website.
   
