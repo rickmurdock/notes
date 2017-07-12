@@ -206,25 +206,32 @@ function errorHandler (err, req, res, next) {
 
 # Lecture Notes  
 
-Terminology  
+### Terminology  
 
-Injection: text-based attack that exploits an interpreter's syntax.
-Implications: data corruption, data loss, data theft, denial of access.
-SQL Injection  
+* Injection: text-based attack that exploits an interpreter's syntax.
 
-Database  
+  * Implications: data corruption, data loss, data theft, denial of access.
 
-In this example the X-Men have an 'accounts' database with three fields: username, role, and password.
-To make the problems worse, the passwords are stored as plain text!
+### SQL Injection  
+
+#### Database  
+
+* In this example the X-Men have an 'accounts' database with three fields: username, role, and password.
+
+* To make the problems worse, the passwords are stored as plain text!
+
 id	username	role	password
 1	wolverine	owner	claws!
 2	profx	admin	mindgames
 3	cyclops	owner	lookskill
 4	storm	owner	umbrella
 5	beast	admin	bluevelvet
-Vulnerable Code  
 
-Even though legitimate, the code is vulnerable to injections since anything can be passed into the query.
+#### Vulnerable Code  
+
+* Even though legitimate, the code is vulnerable to injections since anything can be passed into the query.
+
+```
 var sequelize = require('sequelize');
 ​var​ app = express();
 
@@ -244,36 +251,65 @@ app.get('/mutants/:role', function(req, res, next){
     // Handle errors
   }
 });
-Legitimate Query  
+```
 
-Searching for all fields, *, who are admins.
-Input query: admin
-Resulting query:
+#### Legitimate Query  
+
+* Searching for all fields, *, who are admins.
+
+  * Input query: admin
+
+  * Resulting query:
+ 
+``` 
 SELECT * FROM accounts WHERE role = ('admin')
-This query would return:
+```
+
+# This query would return:
+
+```
 profx
 beast
-Malicious Query  
+```
 
-Here Magneto uses a single-quote ' to break out of the string context and into the query.
-Then, he passes in the following malicious query:
-Input query: ') UNION SELECT username||'_'||password FROM accounts --
-This would append the username and passwords for all X-Men in the database who are admins!
-double pipes, ||, are used for concatenating.
-The -- comments out the remaining text. This "consumes" the final code provided by the application.
-Resulting query:
-SELECT * FROM accounts WHERE role = ('%') UNION SELECT username || '_' ||password FROM accounts --
-This query would return the following:
+#### Malicious Query  
+
+* Here Magneto uses a single-quote ' to break out of the string context and into the query.
+
+* Then, he passes in the following malicious query:
+
+  * Input query: ') UNION SELECT username||'_'||password FROM accounts --
+  
+  * This would append the username and passwords for all X-Men in the database who are admins!
+  
+    * double pipes, ||, are used for concatenating.
+    
+    * The -- comments out the remaining text. This "consumes" the final code provided by the application.
+    
+ * Resulting query:
+
+> SELECT * FROM accounts WHERE role = ('%') UNION SELECT username || '_' ||password FROM accounts --
+
+* This query would return the following:
+
+```
 profx_mindgames
 beast_bluevelvet
-Input Validation  
+```
 
-Input sanitation is one way of preventing injections by limiting input in order to avoid problem characters.
-One method of sanitation is whitelisting.
-Whitelisting  
+### Input Validation  
 
-Defining allowed inputs values (letters, digits, spaces) and conditions.
-Example
+* Input sanitation is one way of preventing injections by limiting input in order to avoid problem characters.
+
+* One method of sanitation is whitelisting.
+
+#### Whitelisting  
+
+* Defining allowed inputs values (letters, digits, spaces) and conditions.
+
+##### Example
+
+```
 // Limiting input to letters.
 /[a-zA-Z]/
 
@@ -285,10 +321,15 @@ Example
 
 // Limiting input to letters, digits and Spaces
 /[a-zA-Z0-9 ]/
-Implementation
-Validate that the role contains only letters.
+```
+
+##### Implementation
+
+* Validate that the role contains only letters.
+
+```
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -315,14 +356,19 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // varError middleware.
-Escaping  
+```
 
-Escaping is a widely used method.
-It is a ready-to-go function, provided by many libraries, for escaping well-know problem characters.
-Implementation  
+### Escaping  
 
+* Escaping is a widely used method.
+
+* It is a ready-to-go function, provided by many libraries, for escaping well-know problem characters.
+
+#### Implementation  
+
+```
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -343,20 +389,31 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // Error handlers
-Prepared Statements  
+```
 
-The SQL query code is predefined by the developer so that parameters are passed into the query later.
-The variable data is replaced by a placeholder, such as a ?, which is then processed by the database as a parameter.
-Prepared statements (parameterized statements) are parsed, compiled, and optimized by the database separately from any parameters before they are executed.
-Why is it effective against injections?
-The input values in an SQL query are sent to the server after the query is sent to the server.
-Incoming input is interpreted as data, instead of SQL code.
-Check ORM and database documentation for details.
+### Prepared Statements  
+
+* The SQL query code is predefined by the developer so that parameters are passed into the query later.
+
+* The variable data is replaced by a placeholder, such as a ?, which is then processed by the database as a parameter.
+
+* Prepared statements (parameterized statements) are parsed, compiled, and optimized by the database separately from any parameters before they are executed.
+
+* Why is it effective against injections?
+
+  * The input values in an SQL query are sent to the server after the query is sent to the server.
+  
+  * Incoming input is interpreted as data, instead of SQL code.
+  
+* Check ORM and database documentation for details.
+
 Implementation  
 
-Sequelize example.
+* Sequelize example.
+
+```
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -377,15 +434,21 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // Error handlers
-ORM Built-in Query Methods  
+```
 
-ORM built in methods automatically take care of escaping.
-Check ORM documentation for details.
-Example
+### ORM Built-in Query Methods  
 
-Sequelize example.
+* ORM built in methods automatically take care of escaping.
+
+* Check ORM documentation for details.
+
+#### Example
+
+* Sequelize example.
+
+```
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -401,50 +464,86 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // Error handlers
-Programming Culture  
+```
 
-Bobby Tables
+### Programming Culture  
 
-The Impact Of XSS On User Privacy  
+[Bobby Tables](http://www.bobby-tables.com/)
 
-Terminology  
+---
 
-XSS (Cross-site scripting):
-Allows an attacker to inject malicious code into a website through various methods.
-The request / response cycle is used as a mechanism to execute the code from the victim's browser.
-Vulnerable websites are exploited, not the victim's machine.
-How?  
+# The Impact Of XSS On User Privacy  
 
-An attacker uses a vulnerable input to inject a string containing malicious code, which subsequently runs in the victim's browser as legitimate code.
-The JavaScript Code:
-Can be used to modify the HTML by using DOM manipulation methods.
-Can access sensitive information, such as cookies.
-Use XMLHttpRequest to send arbitrary content to arbitrary destinations.
-Types of attack:  
+### Terminology  
 
-Reflected XSS: it does not originate from the targeted server, but from the victim's request.
-This attacked can be delivered via another website or an email.
-The injected code is reflected off the server in a search result, error message, or another response which includes all or part of the input sent to the server as a request.
-A URL containing the malicious code is sent to the victim.
-The victim then requests the URL from the website.
-The website includes the malicious string from the URL in the response.
-The victim's browser executes the code sending the victims data back to the attacker's server.
-Persistent (stored) XSS: the malicious code is stored in a target's server, where it is later retrieved by the victim via a request for data containing the malicious code.
-The attacker inject the malicious code into the server via a vulnerable form, which is stored in the database.
-The victims makes a request to the website.
-The response, containing the malicious code, is sent to the victim.
-The victim's browser executes the code sending the victims data back to the attacker's server.
-DOM-based XSS: a combination of both persistent and reflected XSS:
-A URL containing the malicious code is sent to the victim.
-The victim then requests the URL from the website.
-The targeted website receives the request, but it does not include the malicious code in the response.
-The victim's browser executes the legitimate code inside the response, inserting the malicious code into the website.
-The victim's browser executes the inserted malicious code and sends the response back to the attacker's server containing the victims data.
-What makes it different?
-No malicious code is inserted into the website.
-The website's own code uses the user's input in order to add HTML into the page using innerHTML.
-The code is parsed as HTML, which in turn executes the code after the page has loaded.
-Key-logging: malicious code is using addEventListener is used to send a victim's keystrokes back to the attacker's server.
+* XSS (Cross-site scripting):
+
+  * Allows an attacker to inject malicious code into a website through various methods.
+  
+  * The request / response cycle is used as a mechanism to execute the code from the victim's browser.
+  
+  * Vulnerable websites are exploited, not the victim's machine.
+  
+### How?  
+
+* An attacker uses a vulnerable input to inject a string containing malicious code, which subsequently runs in the victim's browser as legitimate code.
+
+* The JavaScript Code:
+
+  * Can be used to modify the HTML by using DOM manipulation methods.
+  
+  * Can access sensitive information, such as cookies.
+  
+  * Use XMLHttpRequest to send arbitrary content to arbitrary destinations.
+
+### Types of attack:  
+
+* Reflected XSS: it does not originate from the targeted server, but from the victim's request.
+
+  * This attacked can be delivered via another website or an email.
+  
+  * The injected code is reflected off the server in a search result, error message, or another response which includes all or part of the input sent to the server as a request.
+  
+  1. A URL containing the malicious code is sent to the victim.
+  
+  2. The victim then requests the URL from the website.
+  
+  3. The website includes the malicious string from the URL in the response.
+  
+  4. The victim's browser executes the code sending the victims data back to the attacker's server.
+
+* Persistent (stored) XSS: the malicious code is stored in a target's server, where it is later retrieved by the victim via a request for data containing the malicious code.
+
+  1. The attacker inject the malicious code into the server via a vulnerable form, which is stored in the database.
+  
+  2.The victims makes a request to the website.
+  
+  3.The response, containing the malicious code, is sent to the victim.
+  
+  4.The victim's browser executes the code sending the victims data back to the attacker's server.
+
+* DOM-based XSS: a combination of both persistent and reflected XSS:
+
+  1. A URL containing the malicious code is sent to the victim.
+  
+  2. The victim then requests the URL from the website.
+  
+  3. The targeted website receives the request, but it does not include the malicious code in the response.
+  
+  4. The victim's browser executes the legitimate code inside the response, inserting the malicious code into the website.
+  
+  5. The victim's browser executes the inserted malicious code and sends the response back to the attacker's server containing the victims data.
+  
+  6. What makes it different?
+  
+  7. No malicious code is inserted into the website.
+  
+  8. The website's own code uses the user's input in order to add HTML into the page using innerHTML.
+  
+  9. The code is parsed as HTML, which in turn executes the code after the page has loaded.
+
+* Key-logging: malicious code is using addEventListener is used to send a victim's keystrokes back to the attacker's server.
+
 Impact On User Privacy  
 
 Stealing sensitive data  
