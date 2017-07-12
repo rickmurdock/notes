@@ -636,76 +636,129 @@ app.post('/login', function(request, response){
 
 # Protecting User Password  
 
-Terminology  
+### Terminology  
 
-PBKDF2: a “password-strengthening algorithm” (HMAC) use to safeguard a password during a brute force attack by making it difficult, using iterations, to check whether or not that password is the master password.
-Iterations: the number of times the encryption algorithm is applied.
-increases the strength of a password by increasing the time it takes to test each key in a brute force attack.
-key: the combination of the password, salt, and iterations count.
-SHA-256: Cryptographic Hash Algorithm that generates a unique 256-bit (32-byte) signature.
-Encoding:
-hex: 64 characters.
-base64: 44 characters.
-SHA-512: Cryptographic Hash Algorithm that generates a unique 512-bit (64-byte) signature.
-Encoding:
-hex: 128 characters.
-base64: 88 characters.
-HMAC: hash based authentication code.
-Hashing: the process of creating a fixed-length cryptic string from a variable-length string (password).
-Salt: a unique and random string of characters used as an extra input in a hashing function in order to safeguard a stored password.
-salt is added to the password before hashing. This helps randomize the password and increases it's complexity in order to safeguard against rainbow and lookup table attacks.
-A 12 bit salt would require 4096 rainbow tables in order to find a common password.
-Digest: In a cryptographic hash function, the digest is the function's fixed-size alphanumeric output. (also known as message digest, checksum and digital fingerprint)
+* PBKDF2: a “password-strengthening algorithm” (HMAC) use to safeguard a password during a brute force attack by making it difficult, using iterations, to check whether or not that password is the master password.
 
-Crypto (module):
+  * Iterations: the number of times the encryption algorithm is applied.
+  
+    * increases the strength of a password by increasing the time it takes to test each key in a brute force attack.
+    
+    * key: the combination of the password, salt, and iterations count.
+    
+* SHA-256: Cryptographic Hash Algorithm that generates a unique 256-bit (32-byte) signature.
 
-The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. -nodejs.org
+  * Encoding:
+  
+    * hex: 64 characters.
+    
+    * base64: 44 characters.
+    
+* SHA-512: Cryptographic Hash Algorithm that generates a unique 512-bit (64-byte) signature.
 
-Why Salt and Hash?  
+  * Encoding:
+  
+    * hex: 128 characters.
+    
+    * base64: 88 characters.
+    
+* HMAC: hash based authentication code.
 
-Avoid duplicate hashes.
-Hashes of the same password are identical.
-Makes it possible to decipher using a rainbow or lookup table.
-Two users could share the same password, therefore the same hash. A hacker can use this to predict passwords.
-Therefore, adding salt to a password and then hashing it reduces the chance of having duplicated hashes.
-Never, EVER, store a password as plain text. EVER.
-PBKDF2 Implementation  
+* Hashing: the process of creating a fixed-length cryptic string from a variable-length string (password).
 
-Create password hash:
-Input: user password.
-Generate Salt.
-Generate hash:
-Store resulting password hash, salt, and iterations (for validation).
-Validate attempted password:
-Input: attempted password.
-Retrieve password hash, salt, and iterations.
-Generate hash:
-Hash attempted password / stored salt / stored iterations:
-Assert resulting hash against stored hash.
-Recommendation  
+* Salt: a unique and random string of characters used as an extra input in a hashing function in order to safeguard a stored password.
 
-Use Password-Based Key Derivation Function 2 (PBKDF2).1
-Salt should be as unique as possible. Consider creating a random key with a length greater than 16 bytes.
-Iterations should be a number set as high as possible. The higher, the more secure the key will be.
-The higher the iteration, the longer it will take to complete the process.
-keylen: byte length of the digest, derived from the password, salt and iterations.
-digest: use either sha256 or shat512 to encrypt the output.
-AGAIN: never, EVER, store a password as plain text. EVER.
-Example  
+  * salt is added to the password before hashing. This helps randomize the password and increases it's complexity in order to safeguard against rainbow and lookup table attacks.
+  
+  * A 12 bit salt would require 4096 rainbow tables in order to find a common password.
+  
+* Digest: In a cryptographic hash function, the digest is the function's fixed-size alphanumeric output. (also known as message digest, checksum and digital fingerprint)
 
-In this example we use Express's Crypto module.
-Synchronous implementation: crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
-If an error happens, an Error is thrown. If not, the key is returned as a Buffer.
-Learn more
-Your implementation may differ.
-See Node.js docs for asynchronous implementation.
-Creating a hashed password - Implementation suggestion  
+* Crypto (module):
 
-Crypto randomBytes
-Math.ceil(): returns the smallest integer greater than or equal to a given number. 2
-toString('base64'): convert string to base64.
-toString('hex'): convert string to a hexadecimal.
-randomByes(): generates a random string.
+> The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. -nodejs.org
+
+### Why Salt and Hash?  
+
+* Avoid duplicate hashes.
+
+  * Hashes of the same password are identical.
+  
+    * Makes it possible to decipher using a rainbow or lookup table.
+  
+    * Two users could share the same password, therefore the same hash. A hacker can use this to predict passwords.
+    
+  * Therefore, adding salt to a password and then hashing it reduces the chance of having duplicated hashes.
+
+> Never, EVER, store a password as plain text. EVER.
+
+### PBKDF2 Implementation  
+
+1. Create password hash:
+
+  * Input: user password.
+  
+  * Generate Salt.
+  
+  * Generate hash:
+  
+  * Store resulting password hash, salt, and iterations (for validation).
+  
+2. Validate attempted password:
+
+* Input: attempted password.
+
+* Retrieve password hash, salt, and iterations.
+
+* Generate hash:
+
+  * Hash attempted password / stored salt / stored iterations:
+  
+* Assert resulting hash against stored hash.
+
+### Recommendation  
+
+* Use Password-Based Key Derivation Function 2 (PBKDF2).1
+
+* Salt should be as unique as possible. Consider creating a random key with a length greater than 16 bytes.
+
+  * Iterations should be a number set as high as possible. The higher, the more secure the key will be.
+  
+    * The higher the iteration, the longer it will take to complete the process.
+    
+* keylen: byte length of the digest, derived from the password, salt and iterations.
+
+* digest: use either sha256 or shat512 to encrypt the output.
+
+> AGAIN: never, EVER, store a password as plain text. EVER.
+
+### Example  
+
+* In this example we use Express's Crypto module.
+
+* Synchronous implementation: crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
+
+  * If an error happens, an Error is thrown. If not, the key is returned as a Buffer.
+  
+  * Learn more
+  
+* Your implementation may differ.
+
+> See Node.js docs for asynchronous implementation.
+
+### Creating a hashed password - Implementation suggestion  
+
+* Crypto randomBytes
+
+* Math.ceil(): returns the smallest integer greater than or equal to a given number. 2
+
+* toString('base64'): convert string to base64.
+
+* toString('hex'): convert string to a hexadecimal.
+
+* randomByes(): generates a random string.
+
+```
 'use strict';
 
 // Require Crypto module
@@ -751,10 +804,15 @@ function hashPassword(passwordinput){
 // Call hashPassword passing in password input.
 
 hashPassword('password123!');
-Password verification  
+```
 
-Compare saved hash to attempted password hash.
-Your implementation may differ.
+### Password verification  
+
+* Compare saved hash to attempted password hash.
+
+* Your implementation may differ.
+
+```
 var config = {
     keylen: 512,
     digest: 'sha512'
@@ -776,6 +834,10 @@ function isPasswordCorrect(passwordAttempt) {
 //For demonstration purposes:
 
 isPasswordCorrect('myPassword'); // Would return false.
-Lesson Footnotes
-1: PBKDF2 - Wikipedia
-2: MDN - Math.ceil()
+```
+
+##### Lesson Footnotes
+
+* 1: PBKDF2 - Wikipedia
+
+* 2: MDN - Math.ceil()
