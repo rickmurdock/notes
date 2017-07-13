@@ -3,6 +3,16 @@ Lecture notes from The Iron Yard
 
 ## Front-End Fundamentals
 
+*  Basic Computer and Terminal Skills
+
+* HTML Overview and Basic Elements
+
+* HTML Structure and Layout
+
+* Applying Style with CSS
+
+* CSS Layout & Fonts
+
 *
 
 --- 
