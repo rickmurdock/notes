@@ -46,3 +46,7 @@ Lecture notes from The Iron Yard
 * Tests and Test Driven Design
 
 * Web Security: Introduction
+
+* Productivity and UNIX: Introduction
+
+* Cloud Computing: Introduction
