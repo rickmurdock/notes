@@ -1,0 +1,645 @@
+Agile Software Development  
+
+Agile Software Development Manifesto  
+
+Individuals and interactions: self-organization and motivation are an integral part of the collaborative development process.
+
+Working software: functional software is favored over document presentation during meetings.
+
+Customer collaboration: continuous stakeholder and customer involvement is a key aspect of the development process.
+
+Responding to change: Agile Software Development methods are focused on responding and adapting to development changes.
+
+Agile Software Development Principles  
+
+Improve customer satisfaction by delivering software early and continuously.
+Be receptive to changing requirements throughout the development process.
+Frequently deliver working software.
+Developers should collaborate daily with stakeholders.
+Support motivated individuals.
+Face-to-face communication is always best.
+Measure progress by the delivery of working software.
+Stakeholders, developers and users should be able to maintain a constant pace.
+Focused and continuous attention to technical excellence and good design.
+Simplicity is essential.
+Self-organizing teams produce the designs, requirements, and architectures.
+Regularly self assess the team in order to become more effective and to adjust to new circumstances.
+Agile Software Development Terminology  
+
+This represents a handful of core terms. See references for more.
+
+Agile Software Development: methods and practices based on the Agile Manifesto, focusing on the development of solutions through the collaboration of self-organizing and cross-functional teams.
+Scrum: framework for the interactive development of complex products. Comprised of the product owner, scrum master, and scrum team. It is also comprise of iterations and ceremonies.
+Scrum master: responsible for maintaining scrum processes, such as stand-ups, removing obstacles that impede progress, facilitating the self-organization of the team.
+Iteration: period of time in which the team produces an increment of completed software, which encompasses the complete lifecycle phases (requirements, design, code and test).
+Sprint: scrum term for iteration. A sprint starts with a sprint planning meeting, it ends with a review and it is followed by a sprint retrospective meeting.
+Velocity: A form of measurement that measures a teams output.
+Fail-fast: rapid deployment of experiments focused gathering the feedback needed to improve software.
+Pair programming: two programmers working together on the same code from the one workstation. The 'driver' types the code and the 'navigator' reviews each line of code. It is a form of extreme programming.
+Extreme programming: software development framework focused on producing higher quality software. Comprised of frequent releases in short development cycles.
+Test Driven Development: process of 1-writing failing automated test cases focuses on improvement or new functionality. 2-writing code to make the test pass. 3-refactoring code.
+Burndown chart: a public chart displaying the total task hours remaining per day. It shows backlog progress.
+Backlog: a collection of tasks and stories to be completed.
+Story (user): basic unit of communication and planning between the scrum and the team.
+Task: description of work to be performed in order to complete a story.
+Task board: a chart use to organize a team's work by using three columns (at a minimum): "to do", "in progress", and "done".
+Product owner: represents the business stakeholder "voice" to the sprint team
+Stakeholder: anyone, not pertaining to the team, who has a vested interested in the outcome of the project.
+Team: a committed group of people working together to produce a product and improve performance over time.
+Standup: (scrum ceremony) a team meeting in which story progress is discussed focusing on: 1 - What has been done since yesterday. 2 - What is planned for the day. 3 - What obstacles are blocking progress.
+Using npm package.json scripts to start node and run arbitrary tasks  
+
+Terminology  
+
+npm scripts: command strings defined under the scripts property in the package.json main object.
+
+scripts make it possible to automate tasks.
+scripts are executed in subsequent order.
+scripts are accessible in the command line by calling npm run [script-name]:
+Example
+
+npm run build
+For a complete list of available scripts, please check the latest npm-scripts docs.
+For module specific params and options, check the module's docs.
+Basic Scripts  
+
+Starting, Stopping, and Restarting a Node App  
+
+context:  
+
+project
+app.js
+script:  
+
+//package.json
+{
+   "name": "run-node-example",
+   "scripts": {
+    "start": "node app.js",
+    // Other commands, i.e:
+    // "poststart": "echo \"Executing node scripts\""
+    "stop": "node app.js",
+    "restart": "node app.js"
+  },
+  //dependencies...
+}
+running 'app'  
+
+npm run start
+stopping 'app'  
+
+npm run stop
+restarting 'app'  
+
+Runs stop, restart, and start.
+npm run restart
+restart runs in addition to stop and start, not instead of the two.
+Lifecycle scripts  
+
+Hooks  
+
+Use to run a specific script at a lifecycle event.
+
+pre<script-name>
+Use to define a pre-script command
+post<script-name>
+Use to define a post-script command
+See docs for a complete list of lifecycle events.
+
+Example 1  
+
+pre and post install lifecycle scripts
+{
+  "scripts": {
+    "preinstall": "echo INSTALL SOME PACKAGE",
+    //Other scripts here. i.e:
+    //"build:js": "browserify main.js -o bundle.js"
+    "postinstall": "npm run build"
+  }
+}
+Running the lifecycle  
+
+This will run the preinstall script first and then the postinstall script.
+npm install
+Example 2  
+
+// package.json
+{
+  "scripts": {
+    "learncode": "code --learn ./index.js",
+    "prelearncode": "echo GO TO THE IRON YARD",
+    "postlearncode": "echo GET AN AWESOME JOB!"
+  }
+  // Dependencies...
+}
+running 'learncode'
+npm run learncode
+// OUTPUT
+> prelearncode
+GO TO THE IRON YARD
+
+> learncode
+learn frontend and backend...
+done.
+
+> postlearncode
+GET AN AWESOME JOB!
+Customizing Commands  
+
+Passing arguments  
+
+Pass arguments to the underlying command using --:
+Anything that comes after -- is appended to the command.
+npm run <command> [-- <args>]
+Example 1
+Lets specify a port other than 3000 for testing purposes.
+{
+  "scripts": {
+    "start": "node --example app.js",
+    "start:test": "npm start -- 4000"
+  }
+}
+Example 2
+Here we pass two global eslint variable options, in-line.
+{
+  "scripts":{
+    "lint:inlineoptions" : "eslint --env browser --env node app.js"
+  }
+}
+Piping results  
+
+Use | to pipe results from one task to the next.
+Example
+Here the results of browserify are piped into uglify, which in turns compresses (c) and magles (m) them before redirecting them (>) into the bundle.js file.
+{
+  "scripts": {
+    "build-js": "browserify main.js | uglifyjs -mc > bundle.js"
+  }
+}
+Running commands in series / parallel  
+
+Series: ; and &&
+// package.json
+{
+  "scripts": {
+    "lint": "eslint; csslint; htmllint"
+  }
+  // Dependencies...
+}
+Series using run-s (npm-run-all package)
+// package.json
+{
+  "scripts": {
+    "lint": "run-s eslint csslint htmllint"
+  }
+  // Dependencies...
+}
+Parallel: &
+// package.json
+{
+  "scripts": {
+    "lint": "eslint & csslint & htmllint"
+  }
+  // Dependencies...
+}
+Parallel using run-p (npm-run-all package)
+// package.json
+{
+  "scripts": {
+    "lint": "run-p eslint  csslint  htmllint"
+  }
+  // Dependencies...
+}
+Group Commands Scripts  
+
+run-all
+// package.json
+{
+  "scripts": {
+    "lint": "npm run lint:js $ npm run lint:css $ npm run lint:html",
+    "lint:js": "eslint --flag",
+    "lint:css": "csslint --another-flag",
+    "lint:html": "htmllint --yet-another-flat"
+  }
+  // Dependencies...
+}
+running 'run-all'
+This will run all scripts that start with lint:
+npm-run-all lint:*
+Running Arbitrary Tasks  
+
+The following are just a handful of script examples meant to give you an idea of the things you can do using scripts. For a full list of available commands, see the official npm docs.
+Running tests  
+
+context:  
+
+project
+tests
+app-test.js
+app.js
+script:  
+
+//package.json
+{
+   "name": "test-example",
+   "scripts": {
+    "test": "mocha test"
+  },
+    //dependencies...
+}
+Running 'test'  
+
+$ npm run test
+Deploying to GitHub  
+
+Basic Example  
+
+"scripts": {
+    "build:js": "browserify main.js -o bundle.js",
+    "git-commit": "git add -A . && git commit -a -m 'gh-pages update'",
+    "git-push": "git push origin gh-pages --force && git checkout master",
+    "deploy": "npm run build:js && npm run git-commit && npm run git-push"
+  }
+Running 'deploy'  
+
+npm run deploy
+Building  
+
+context:  
+
+An app that uses browserify and SCSS.
+
+It compiles modules in order to be used in the browser.
+Install browserify: npm install --save browserify
+
+Install node-sass: $ npm install -D node-sass
+
+-D: writes modules under devDependencies in package.json
+Project
+
+app.js
+utilities.js
+public
+css
+main.css
+scss
+main.scss
+//app.js
+var utilities = require('./utilities.js');  
+console.log(utilities.somefunction);  
+//utilities.js
+module.exports = {
+  somefunction: function(){
+    console.log("I'm a utility file!")
+  }
+};
+script  
+
+{
+  "name": "build-app",
+  "main": "index.js",
+  "scripts": {
+    "build:js": "browserify main.js -o bundle.js"
+  },
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "node-sass": "^4.5.3"
+  }
+}
+Running 'build'  
+
+This will bundle main.js and its dependencies into one file.
+-o bundle.js tells browserify the specific output of the file to be compiled.
+npm run build:js
+Building And Compiling  
+
+{
+  "name": "build-app",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:js": "browserify main.js -o bundle.js"
+    "build:css": "node-sass --include-path scss scss/main.scss   public/css/main.css"
+    "build": "npm run build:js & npm run build:css"
+  },
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "node-sass": "^4.5.3"
+  }
+}
+Running 'build'  
+
+This will compile the css and bundle the JavaScript
+npm run build
+Example: Using postinstall when deploying to heroku  
+
+We can automatically compile and bundle using npm install by specifying this commands in postinstall.
+{
+  "name": "build-app",
+  "main": "index.js",
+  "scripts": {
+    "build:js": "browserify main.js -o bundle.js",
+    "build:css": "node-sass --include-path scss scss/main.scss   public/css/main.css",
+    "postinstall": "npm run build"
+  },
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "node-sass": "^4.5.3",
+  }
+}
+Running 'install'
+When heroku runs npm install, postinstall will be executed after install is completed, which in turns runs build.
+This makes it easier to deploy the app to heroku.
+npm install
+Automatic Recompiling and Monitoring for Changes  
+
+Recompile bundle.js whenever a source file changes using watchify.
+Monitor for code changes using nodemon (restarts server when changes are detected).
+Install: npm install --save-dev node-sass nodemon
+script  
+
+Let's add it to the script above:
+{
+  "name": "build-app",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build:js & npm run build:css",
+    "watch": "npm run watch:js & npm run watch:css",
+    "build:js": "browserify main.js -o bundle.js",
+    "watch:js": "watchify project/app.js -do project/bundle.js",
+    "build:css": "node-sass --include-path scss scss/main.scss   public/css/main.css",
+    "watch:css": "nodemon -e scss -x \"npm run build:css\""
+  },
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "node-sass": "^4.5.3",
+    "watchify": "^3.9.0",
+    "nodemon": "^1.11.0"
+  }
+}
+Running 'watch'  
+
+npm run watch
+Putting It All Together  
+
+Let's pretend we:
+add an http-server and run it via a serve script.
+want to run all of it from one command via start:
+This script might look something like this:
+  {
+    "name": "build-app",
+    "main": "index.js",
+    "scripts": {
+      "start": "npm run serve & npm run watch",
+      "serve": "http-server",
+      "build": "npm run build:js & npm run build:css", // Runs build scripts.
+      "watch": "npm run watch:js & npm run watch:css", // Runs 'watch' scripts
+      "build:js": "browserify main.js -o bundle.js", // Bundles all JavasScript using browserify
+      "watch:js": "watchify project/app.js -do project/bundle.js", // Recompiles css.
+      "build:css": "node-sass --include-path scss scss/main.scss   public/css/main.css", // Compiles css.
+      "watch:css": "nodemon -e scss -x \"npm run build:css\"" // Monitors for css changes and restarts the server when changes are detected.
+    },
+    "dependencies": {
+      "browserify": "^14.4.0",
+      "node-sass": "^4.5.3",
+      "watchify": "^3.9.0",
+      "nodemon": "^1.11.0"
+    }
+  }
+Running 'start'  
+
+npm run start
+Best Practices  
+
+Don't exit with a non-zero error code unless you really mean it. Except for uninstall scripts, this will cause the npm action to fail, and potentially be rolled back. If the failure is minor or only will prevent some optional features, then it's better to just print a warning and exit successfully.
+
+Try not to use scripts to do what npm can do for you. Read through package.json to see all the things that you can specify and enable by simply describing your package appropriately. In general, this will lead to a more robust and consistent state.
+
+Inspect the env to determine where to put things. For instance, if the npmconfigbinroot environment variable is set to /home/user/bin, then don't try to install executables into /usr/local/bin. The user probably set it up that way for a reason.
+
+Don't prefix your script commands with "sudo". If root permissions are required for some reason, then it'll fail with that error, and the user will sudo the npm command in question.
+
+Don't use install. Use a .gyp file for compilation, and prepublish for anything else. You should almost never have to explicitly set a preinstall or install script. If you are doing this, please consider if there is another option. The only valid use of install or preinstall scripts is for compilation which must be done on the target architecture.
+
+Recommendation  
+
+Watch: Nordic.js 2015 • Kate Hudson - Advanced front-end automation with npm scripts
+Using ESLint to find errors and coding style irregularities  
+
+Terminology  
+
+ESLint: open source JavaScript linting utility used to find problematic patterns or code that doesn't adhere to certain style guidelines.1
+
+Installation  
+
+Global  
+
+npm install --global eslint
+Local from project directory  
+
+When upgrading from a previous version, npm will not update to the latest release, so to be safe use the latest tag.
+npm install eslint@latest --save-dev  
+Editor Installation  
+
+Atom  
+
+Preferences
+Install
+Search for and install: linter-eslint. Docs
+Search for and install: linter by steelbrain. Docs
+Restart atom.
+Sublime  
+
+Preferences
+Browse packages
+Browse up a folder and then go into the Installed Packages folder.
+Download Package Control.sublime-package
+Copy this package into the Installed Packages directory.
+Restart Sublime.
+From the editor:
+shift-command-p
+Type Install packages and click on it.
+Search for SublimeLinter-jshint.
+This will pull up the docs.
+At the bottom it will ask you to npm install the plugin: npm install -g jshint
+You are all done!
+When the linter detects an error, it will highlight it and denote it with a dot. Clicking on the dot will show the error message at the bottom of the editor.
+Editor Examples  
+
+Atom  
+
+atom-eslint.png
+Sublime  
+
+sublim-jshint.png
+Project Specific Configuration  
+
+Adding the configuration file  
+
+Use the ESLint cli command:
+If global installation: eslint --init
+If local installation: ./node_modules/.bin/eslint --init
+The cli will present you with some configuration prompts. Answer according to project specifications.
+eslint-cli.png
+The cli generates three main objects: rules, env, and extends
+Example
+
+{
+  "rules": {
+      "indent": [
+          2,
+          "tab"
+      ],
+      "quotes": [
+          2,
+          "single"
+      ],
+      "linebreak-style": [
+          2,
+          "unix"
+      ],
+      "semi": [
+          2,
+          "always"
+      ]
+  },
+  "env": {
+      "es6": true,
+      "node": true
+  },
+  "extends": "eslint:recommended"
+}
+Adding rules  
+
+Rules are not automatically added by default.
+You can add 'rules' by adding them to the rules object.
+You must specify the error lever for each rule.
+Basic rules:
+0: turns rule off.
+1: turns on warning.
+ESLint exits with a 0 code.
+2: turns on error.
+ESLint exits with a 1 code, breaking the build.
+You can also include error level options for each rule.
+See full rules configuration docs..
+See complete list of rules..
+Node.js and common js rules.
+Example
+
+{
+    "rules": {
+        "quotes": [2, "double"], // Error level of 2 and option
+        "curly": 1 // Error level only
+    }
+}
+Adding environments  
+
+You can specify environment specific behavior by specify the environment you are developing for.
+For example, setting an env of broswer to true, will tell ESLint not to have a meltdown when you use global variables without defining them first.
+To a an environment, simple add the specific environment under the env object.
+Example
+
+//Adding 'browser' to the above example.
+{
+    "rules": {
+      // rules
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "browser": true
+    },
+    // extends
+}
+Adding globals  
+
+You can specify global variables by adding them in globals object.
+Setting the variable name to true allows for the variable to be overwritten.
+Setting the variable name to false disallows overwriting the variable.
+Example
+
+{
+    "globals": {
+        "var1": true,
+        "var2": false
+    }
+}
+Adding extends  
+
+extends makes it possible to add recommended rules in order to prevent bugs.
+recommended rules do not include styling rules.
+In the example above we opted-in for the ESLint recommended rules by adding the line: "extends": "eslint:recommended"
+Specifying Parser  
+
+The defaul parser is Espree.
+See docs for full list of parser options and configuration.
+To specify a different parser, add the following:
+{
+    "parser": "esprima",
+    "rules": {
+        "semi": "error"
+    }
+}
+Specifying parser options  
+
+We can specify parser options by adding this to the parserOptions object.
+For example, if we want to enable ES2015 and enable JSX, we would add the following:
+"parserOptions": {
+  "ecmaVersion": 6,
+  "ecmaFeatures": {
+    "jsx": true
+  }
+},
+Adding plugins  
+
+Plugins come packed with their on set of rules. For example, if working in a react project, you might want to use the react ESLint plugin.
+Install eslin-plugin-react: npm install eslint-plugin-react --save-dev
+Configuration
+
+{
+  "rules": {
+      "indent": [
+          2,
+          "tab"
+      ],
+      "quotes": [
+          2,
+          "single"
+      ],
+      "linebreak-style": [
+          2,
+          "unix"
+      ],
+      "semi": [
+          2,
+          "always"
+      ]
+  },
+  "plugins": {
+    "react"
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "env": {
+      "es6": true,
+      "node": true
+  },
+  "extends": "eslint:recommended"
+}
+Online Rule Generators  
+
+To quickly create rules, you could use an online generator, such as the eslintrc-generator.
+ESLint CLI  
+
+The general cli format is: eslint [options] [file/dir].
+Linting a directory: eslint app.js
+Linting a single file: eslint app-dir/
+Output organization:
+File name			
+line:column	warning/error	error reason	rule name
+Example
+
+lint-cli-output.png
+Lesson Footnotes
+1: About-ESLint
