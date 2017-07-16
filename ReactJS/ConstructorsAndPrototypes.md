@@ -24,7 +24,7 @@ Simply put, a constructor is a function that is invoked by using the keyword new
 
 By placing the word `new` in front of the constructor name, JavaScript recognizes the keyword and creates a constructor.
 
-```
+```javascript
 function Car(){};
 
 let car = new Car();
@@ -41,7 +41,7 @@ When using constructors, `this` takes on a special meaning. When invoked with `n
 `this` is always the new object being constructed. And any properties set inside the constructor on `this` will be attached 
 to the object that is constructed when you use the `new` keyword to instantiate it.
 
-```
+```javascript
 function Car(){
 console.log(this);
 };
@@ -56,7 +56,7 @@ When adding properties to your object, you'll want to attach the properties to `
 When creating a Constructor, you can attach properties and methods to it. Then, when you create an instance, these 
 properties will be copied on to it.
 
-```
+```javascript
 // Defining the properties on a function:
 function Car(make, model){
   'use strict';
@@ -86,7 +86,7 @@ The return value of a constructor is one of two things:
 2. If you do return from the constructor, then the return value is whatever you return from the constructor, as long as 
 it's an object. (otherwise, it's `this`)
 
-```
+```javascript
 function Car(){
   this.make = "Toyota";
 }
@@ -155,7 +155,7 @@ A prototype in JavaScript begins when we create a new function. JavaScript has a
 
 If you were to do the following, you can see what JavaScript has pre-baked into its Object constructor.
 
-```
+```javascript
 let obj = new Object();
 console.log(obj);
 ```
@@ -178,7 +178,7 @@ Because of the mutability of objects and the ability for any function (object) t
 
 Let's take a look below at the constructor function `Fruit`.
 
-```
+```javascript
 function Fruit() {
   this.sweet = true;
   this.hasSeeds = true;
@@ -189,7 +189,7 @@ We can give the `Fruit` constructor properties such as a `sweet`, by using `this
 
 Let's see inheritance in action. We'll create new constructors called `Apple`, `Pear`, and `Grape` that will become children of the Fruit constructor.
 
-```
+```javascript
 function Apple() {
   this.texture = 'crunchy';
 }
@@ -205,25 +205,27 @@ function Grape() {
 
 The `Apple`, `Pear`, and `Grape` constructors do not inherit anything from the `Fruit` constructor. If we were to check if `Apple` was sweet by using `console.log(Apple.sweet)`, we would get back `undefined`. To make `Apple` sweet, we need to set up the prototypal inheritance. Using the `new` keyword let's inherit the `Fruit` object and access the `Fruit.prototype` which will link the chain together.
 
-```
-
+```javascript
 Apple.prototype = new Fruit();
 
 console.log('Apple.prototype:', Apple.prototype);
 // output => 'Apple.prototype: Fruit {sweet: true}'
-
 ```
 
-The Fruit constructor passed its properties down the prototypal chain to the new instance Apple. This is why console.log returns Fruit and its properties.
+The `Fruit` constructor passed its properties down the prototypal chain to the new instance `Apple`. This is why `console.log` returns `Fruit` and its properties.
 
-What about those other prototypes from the JavaScript Object? We haven't defined a valueOf method anywhere, but when we run the following code you can see the output below gives us a value! That's inheritance at work again.
+What about those other prototypes from the JavaScript Object? We haven't defined a `valueOf` method anywhere, but when we run the following code you can see the output below gives us a value! That's inheritance at work again.
 
+```javascript
 console.log(Apple.prototype.valueOf());
 // output => Fruit {sweet: true}
-Continuing Prototypal Chains  
+```
+
+### Continuing Prototypal Chains  
 
 Prototypal chains can continue even further. Take a look at the following code:
 
+```javascript
 const apple = new Apple();
 const pear = new Pear();
 const grape = new Grape();
@@ -236,6 +238,8 @@ console.log('grape.hasSeeds:', grape.hasSeeds);
 //output => 'grape.hasSeeds: false'
 console.log('apple.sweet', apple.sweet);
 //output => 'apple.sweet: true'
+```
+
 The reason apple is crunchy stems from it inheriting crunchy from the Apple constructor when the const apple = new Apple(); was instantiated. It would be impossible without prototypal inheritance for apple to also be sweet without the declaration of Apple.prototype = new Fruit();.
 
 We also learned that properties and methods can be overridden. grape returns false for the hasSeeds property because we gave the Grape constructor a property of being seedless.
