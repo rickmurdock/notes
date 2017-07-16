@@ -20,9 +20,9 @@ instantiation.
 
 Simply put, a constructor is a function that is invoked by using the keyword new.
 
-The new keyword  
+#### The `new` keyword  
 
-By placing the word new in front of the constructor name, JavaScript recognizes the keyword and creates a constructor.
+By placing the word `new` in front of the constructor name, JavaScript recognizes the keyword and creates a constructor.
 
 ```
 function Car(){};
@@ -145,42 +145,51 @@ another lesson.
 
 Prototypal inheritance, sometimes referred to as prototype-based inheritance or delegation, is a powerful tool in JavaScript. It allows JavaScript functions (in the form of functions, arrays, or most common objects) to pass properties and methods down to other functions using prototypes.
 
-How Does Inheritance Work?  
+### How Does Inheritance Work?  
 
-Think of the food chain you may have learned about in Biology class. Sitting at the top of the chain is the Object.prototype. All inheritance starts here and trickles down the prototype chain to each child given access to that chain.
+Think of the food chain you may have learned about in Biology class. Sitting at the top of the chain is the `Object.prototype`. All inheritance starts here and trickles down the prototype chain to each child given access to that chain.
 
-What is a Prototype?  
+### What is a Prototype?  
 
 A prototype in JavaScript begins when we create a new function. JavaScript has a built in Object constructor that by default passes its prototypes to any new functions.
 
 If you were to do the following, you can see what JavaScript has pre-baked into its Object constructor.
 
+```
 let obj = new Object();
 console.log(obj);
+```
+
 The above snippet would render a breakdown of the available properties and methods on the JavaScript Object.
 
 Screen Shot 2017-07-14 at 10.48.31 AM.png
-You can see above is that every object has the ability to be a constructor as mentioned in our previous lesson on Constructors. That ability is because of prototypal inheritance.
-How Do Prototypes Work?  
+
+* You can see above is that every object has the ability to be a constructor as mentioned in our previous lesson on Constructors. That ability is because of prototypal inheritance.
+
+### How Do Prototypes Work?  
 
 A fundamental property of objects in JavaScript is that they are mutable, meaning they can be changed. This plays an important role in prototypal inheritance.
 
-It begins with a prototype object that is an object designed with a specific set of properties and methods available to it.
+It begins with a prototype object that is an `object` designed with a specific set of properties and methods available to it.
 
 Because of the mutability of objects and the ability for any function (object) to be a constructor, we can create new instances of the prototype object that carry on the properties of the original object - while still allowing us to add new properties and methods or change and override inherited ones if necessary.
 
-Inheritance in Action  
+### Inheritance in Action  
 
-Let's take a look below at the constructor function Fruit.
+Let's take a look below at the constructor function `Fruit`.
 
+```
 function Fruit() {
   this.sweet = true;
   this.hasSeeds = true;
 }
-We can give the Fruit constructor properties such as a sweet, by using this.sweet = true. We've also given it the property and value of hasSeeds: true because we are going to create more fruit, and we know that the majority of fruit will be sweet and have seeds.
+```
 
-Let's see inheritance in action. We'll create new constructors called Apple, Pear, and Grape that will become children of the Fruit constructor.
+We can give the `Fruit` constructor properties such as a `sweet`, by using `this.sweet = true`. We've also given it the property and value of `hasSeeds: true` because we are going to create more fruit, and we know that the majority of fruit will be sweet and have seeds.
 
+Let's see inheritance in action. We'll create new constructors called `Apple`, `Pear`, and `Grape` that will become children of the Fruit constructor.
+
+```
 function Apple() {
   this.texture = 'crunchy';
 }
@@ -192,12 +201,19 @@ function Pear() {
 function Grape() {
   this.hasSeeds = false;
 }
-The Apple, Pear, and Grape constructors do not inherit anything from the Fruit constructor. If we were to check if Apple was sweet by using console.log(Apple.sweet), we would get back undefined. To make Apple sweet, we need to set up the prototypal inheritance. Using the new keyword let's inherit the Fruit object and access the Fruit.prototype which will link the chain together.
+```
+
+The `Apple`, `Pear`, and `Grape` constructors do not inherit anything from the `Fruit` constructor. If we were to check if `Apple` was sweet by using `console.log(Apple.sweet)`, we would get back `undefined`. To make `Apple` sweet, we need to set up the prototypal inheritance. Using the `new` keyword let's inherit the `Fruit` object and access the `Fruit.prototype` which will link the chain together.
+
+```
 
 Apple.prototype = new Fruit();
 
 console.log('Apple.prototype:', Apple.prototype);
 // output => 'Apple.prototype: Fruit {sweet: true}'
+
+```
+
 The Fruit constructor passed its properties down the prototypal chain to the new instance Apple. This is why console.log returns Fruit and its properties.
 
 What about those other prototypes from the JavaScript Object? We haven't defined a valueOf method anywhere, but when we run the following code you can see the output below gives us a value! That's inheritance at work again.
