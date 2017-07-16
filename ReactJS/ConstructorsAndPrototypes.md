@@ -304,20 +304,27 @@ console.log('apple.sweet', apple.sweet);
 
 You're already familiar with JavaScript functions, so in this section we'll discuss how to use prototypes to pass properties and methods to different functions.
 
-Defining a function  
+### Defining a function  
 
-As you know, a function is defined using the function keyword, followed by the name of the function, parentheses enclosing the parameters, and curly brackets encasing what the function does. For example:
+As you know, a function is defined using the `function` keyword, followed by the name of the function, parentheses enclosing the parameters, and curly brackets encasing what the function does. For example:
 
+```javascript
 function addTwo(number){
   return number + 2;
 }
-Since functions are just specialized objects, we can add functions as methods inside an object. A function declaration without a name is called a function expression.
+```
 
+Since functions are just specialized objects, we can add functions as methods inside an object. A function declaration without a name is called a `function expression`.
+
+```javascript
 let thing = function(param){
   return param;
 }
-We can also assign a function to a variable and pass that variable as an object. Since we can pass objects as regular variables, it makes sense that we can attach functions as properties of JavaScript objects. A function on an object is referred to as a method.
+```
 
+We can also assign a function to a variable and pass that variable as an object. Since we can pass objects as regular variables, it makes sense that we can attach functions as properties of JavaScript objects. A function on an object is referred to as a `method`.
+
+```javascript
   let thing = {
     one: function(){
       return makeMischief;
@@ -326,10 +333,13 @@ We can also assign a function to a variable and pass that variable as an object.
       return makeMoreMischief;
     }
   }
-Binding an object to the prototype  
+```
 
-Every function in JavaScript has a prototype. Since functions are objects, they inherit properties and methods from their prototypes, but methods can also be passed along in this way. In a previous less you learned that properties on objects can be passed using prototypal inheritance:
+### Binding an object to the prototype  
 
+Every function in JavaScript has a prototype. Since functions are objects, they inherit properties and methods from their prototypes, but methods can also be passed along in this way. In a previous lesson you learned that properties on objects can be passed using prototypal inheritance:
+
+```javascript
 function Fruit() {
   this.sweet = true;
   this.hasSeeds = true;
@@ -343,8 +353,11 @@ Apple.prototype = new Fruit();
 
 console.log('Apple.prototype:', Apple.prototype);
 // output => 'Apple.prototype: Fruit {sweet: true}'
+```
+
 Here's an example of passing a function as a method on the prototype of an object:
 
+```javascript
 Fruit.prototype.biteMe = function(){
     console.log("once bitten, twice shy")
 }
@@ -352,11 +365,13 @@ Fruit.prototype.biteMe = function(){
 let pear = new Fruit();
 
 console.log(pear.biteMe()); //logs "once bitten, twice shy"
+```
 
-How this works in binding Methods  
+### How `this` works in binding Methods  
 
-Remember that with constructors this is always the new object being constructed. So any methods attached to this in a constructor are attached to that new object. This is where prototypes can come in handy. Let's say we wanted to add a method to a constructor:
+Remember that with constructors `thi`s is always the new object being constructed. So any methods attached to `this` in a constructor are attached to that new object. This is where prototypes can come in handy. Let's say we wanted to add a method to a constructor:
 
+```javascript
 function Const(par1, par2){
   this.par1 = par1;
   this.par2 = par2;
@@ -364,14 +379,19 @@ function Const(par1, par2){
     return this.par1 + " " + this.par2;
   };
 }
+```
+
 While the above may look logical, there are two issues with writing it this way.
 
-Binding a method to this inside the function object provides it only to that particular instance.
-any method attached this way will get re-declared for every new instance created, negatively affecting memory usage if you are creating many instances.
+1. Binding a method to `this` inside the function object provides it only to that particular instance.
+
+2. any method attached this way will get re-declared for every new instance created, negatively affecting memory usage if you are creating many instances.
+
 Prototypes to the rescue!
 
 If you apply the method to the object's prototype, it is only stored in the memory once, and all instances of that object will have access to that method.
 
+```javascript
 function Const(par1, par2){
   this.par1 = par1;
   this.par2 = par2;
@@ -380,8 +400,10 @@ function Const(par1, par2){
 Const.prototype.someMethod = function(){
   return this.par1 + " " + this.par2;
 };
+```
+
 While there are advantages to using the prototype approach, how you write code will always depend on the situation. There may be times when you will need to access local private variables for a method.
 
-Conclusion  
+### Conclusion  
 
 Functions can be defined in a few different ways. When you attach a function onto an object it's called a method. Methods can be inherited the same way that properties can using prototypal inheritance.
