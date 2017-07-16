@@ -162,7 +162,7 @@ console.log(obj);
 
 The above snippet would render a breakdown of the available properties and methods on the JavaScript Object.
 
-Screen Shot 2017-07-14 at 10.48.31 AM.png
+![Object image](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/object.png)
 
 * You can see above is that every object has the ability to be a constructor as mentioned in our previous lesson on Constructors. That ability is because of prototypal inheritance.
 
