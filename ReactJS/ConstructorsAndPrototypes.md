@@ -166,15 +166,15 @@ The above snippet would render a breakdown of the available properties and metho
 
 * You can see above is that every object has the ability to be a constructor as mentioned in our previous lesson on Constructors. That ability is because of prototypal inheritance.
 
-### How Do Prototypes Work?  
+## How Do Prototypes Work?  
 
 A fundamental property of objects in JavaScript is that they are mutable, meaning they can be changed. This plays an important role in prototypal inheritance.
 
-It begins with a prototype object that is an `object` designed with a specific set of properties and methods available to it.
+It begins with a prototype object that is an **object** designed with a specific set of properties and methods available to it.
 
 Because of the mutability of objects and the ability for any function (object) to be a constructor, we can create new instances of the prototype object that carry on the properties of the original object - while still allowing us to add new properties and methods or change and override inherited ones if necessary.
 
-### Inheritance in Action  
+## Inheritance in Action  
 
 Let's take a look below at the constructor function `Fruit`.
 
@@ -221,7 +221,7 @@ console.log(Apple.prototype.valueOf());
 // output => Fruit {sweet: true}
 ```
 
-### Continuing Prototypal Chains  
+## Continuing Prototypal Chains  
 
 Prototypal chains can continue even further. Take a look at the following code:
 
@@ -240,93 +240,63 @@ console.log('apple.sweet', apple.sweet);
 //output => 'apple.sweet: true'
 ```
 
-The reason apple is crunchy stems from it inheriting crunchy from the Apple constructor when the const apple = new Apple(); was instantiated. It would be impossible without prototypal inheritance for apple to also be sweet without the declaration of Apple.prototype = new Fruit();.
+The reason `apple` is crunchy stems from it inheriting crunchy from the `Apple` constructor when the `const apple = new Apple();` was instantiated. It would be impossible without prototypal inheritance for `apple` to also be sweet without the declaration of `Apple.prototype = new Fruit();`.
 
-We also learned that properties and methods can be overridden. grape returns false for the hasSeeds property because we gave the Grape constructor a property of being seedless.
+We also learned that properties and methods can be overridden. `grape` returns `false` for the `hasSeeds` property because we gave the `Grape` constructor a property of being seedless.
 
-In the Wild  
+### In the Wild  
 
 Below is the code from above in runnable examples. Take a few minutes to run the code and play around with prototypal inheritance.
 
-
-1
+```javascript
 function Fruit() {
-2
   this.sweet = true;
-3
   this.hasSeeds = true;
-4
 }
-5
-​
-6
+
 function Apple() {
-7
   this.texture = 'crunchy';
-8
 }
-9
-​
-10
+
 function Pear() {
-11
   this.texture = 'weirdly crunchy and soft simultaneously';
-12
 }
-13
-​
-14
+
 function Grape() {
-15
   this.hasSeeds = false;
-16
 }
-17
-​
-18
+
 Apple.prototype = new Fruit();
-19
-​
-20
+
 console.log('Apple.prototype:', Apple.prototype);
-21
-​
-22
+
 console.log(Apple.prototype.valueOf());
-23
-​
-24
+
 const apple = new Apple();
-25
 const pear = new Pear();
-26
 const grape = new Grape();
-27
-​
-28
+
 console.log('apple.texture:', apple.texture);
-29
 console.log('pear.texture:', pear.texture);
-30
 console.log('grape.hasSeeds:', grape.hasSeeds);
-31
 console.log('apple.sweet', apple.sweet);
+```
 
-Fullscreen
+## Conclusion  
 
-Reset Code
-Run Code 
-Conclusion  
+* Properties and methods can be passed down the prototype chain and inherited by their children functions.
 
-Properties and methods can be passed down the prototype chain and inherited by their children functions.
-It's possible to override inheritance when necessary to do so, allowing us to blanket much of an objects properties with generalized statements, but make them more specific when needed.
-Inheritance allows us to program in a 'DRY' method, saving us from repeated tons of code by rewriting objects with the same properties.
-The prototype chain searches locally on a function and then traverses up the chain looking for matching prototype data.
-References  
+* It's possible to override inheritance when necessary to do so, allowing us to blanket much of an objects properties with generalized statements, but make them more specific when needed.
 
-Object Playground
-Crockford's JavaScript
-Stack Overflow Discussion
+* Inheritance allows us to program in a 'DRY' method, saving us from repeated tons of code by rewriting objects with the same properties.
+
+* The prototype chain searches locally on a function and then traverses up the chain looking for matching prototype data.
+
+### References  
+
+* [Object Playground](http://www.objectplayground.com/)
+* [Crockford's JavaScript](http://javascript.crockford.com/prototypal.html)
+* [Stack Overflow Discussion](https://stackoverflow.com/questions/4166616/understanding-the-difference-between-object-create-and-new-somefunction)
 
 ---
 
