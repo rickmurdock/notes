@@ -15,8 +15,8 @@ a cookie cutter, in that it allows you to make multiple objects with the same pr
 ### Instance  
 
 An object created by a constructor is called an *instance* of that constructor. Where a constructor creates a cookie cutter 
-object, the instance is the concrete occurrence of the object - the actual cookie. The creation of an instance is called 
-instantiation.
+object, the instance is the concrete occurrence of the object - the actual cookie. *The creation of an instance is called 
+instantiation*.
 
 Simply put, a constructor is a function that is invoked by using the keyword `new`.
 
@@ -81,7 +81,7 @@ mode prevents you from accidentally calling a constructor without the `new` keyw
 
 The return value of a constructor is one of two things:
 
-1. If you don't return from a constructor, the value is `this`, which is set to an empty object.
+1. If you *don't* return from a constructor, the value is `this`, which is set to an empty object.
 
 2. If you do return from the constructor, then the return value is whatever you return from the constructor, as long as 
 it's an object. (otherwise, it's `this`)
@@ -145,11 +145,11 @@ another lesson.
 
 Prototypal inheritance, sometimes referred to as prototype-based inheritance or delegation, is a powerful tool in JavaScript. It allows JavaScript functions (in the form of functions, arrays, or most common objects) to pass properties and methods down to other functions using prototypes.
 
-### How Does Inheritance Work?  
+## How Does Inheritance Work?  
 
 Think of the food chain you may have learned about in Biology class. Sitting at the top of the chain is the `Object.prototype`. All inheritance starts here and trickles down the prototype chain to each child given access to that chain.
 
-### What is a Prototype?  
+## What is a Prototype?  
 
 A prototype in JavaScript begins when we create a new function. JavaScript has a built in Object constructor that by default passes its prototypes to any new functions.
 
