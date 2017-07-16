@@ -14,11 +14,11 @@ a cookie cutter, in that it allows you to make multiple objects with the same pr
 
 ### Instance  
 
-An object created by a constructor is called an instance of that constructor. Where a constructor creates a cookie cutter 
+An object created by a constructor is called an *instance* of that constructor. Where a constructor creates a cookie cutter 
 object, the instance is the concrete occurrence of the object - the actual cookie. The creation of an instance is called 
 instantiation.
 
-Simply put, a constructor is a function that is invoked by using the keyword new.
+Simply put, a constructor is a function that is invoked by using the keyword `new`.
 
 ### The `new` keyword  
 
