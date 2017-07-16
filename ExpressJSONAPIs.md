@@ -92,7 +92,7 @@ When sending a JSON response we have to tell the client that the response we're 
 
 Using the Express `res.json()` method to send an object and an array of objects.
 
-```
+```javascript
 app.get('/todo', function(req, res) {
   res.json({title: 'Return some JSON data', complete: false});
 })
@@ -118,7 +118,7 @@ app.get('/todos', function(req, res) {
 
 Using the Express `res.jsonp()` method to send an object and an array of objects with support for JSONP.
 
-```
+```javascript
 app.get('/todo', function(req, res) {
   res.jsonp({title: 'Return some JSONP data', complete: false});
 })
