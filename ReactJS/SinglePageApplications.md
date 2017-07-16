@@ -87,8 +87,8 @@ sure only the component with new data is refreshed, leaving the rest of the comp
 
 Think of a React app as a larger component made up of smaller 'smart' components. These components hold the logic needed 
 to process data. Each 'smart' component is made up of even smaller 'simple' components. These 'simple' components are 
-presentational components, responsible for rendering the 'smart' components' data. Each component is responsible for one 
-thing, only. This is known as the Single Responsibility Principle.. Using small components creates separation of concerns 
+presentational components, responsible for rendering the 'smart' components' data. Each component is responsible for *one 
+thing*, only. This is known as the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle). Using small components creates separation of concerns 
 and maximizes code reuse. This also generates modular testable code.
 
 #### Component Basic Architecture and Hierarchy
@@ -96,9 +96,13 @@ and maximizes code reuse. This also generates modular testable code.
 In the example below, each box represents a component:
 
 * FilterableProductTable (orange): contains the entirety of the example.
+
 * SearchBar (blue): receives all user input.
+
 * ProductTable (green): displays and filters the data collection based on user input.
+
 * ProductCategoryRow (teal): displays a heading for each category.
+
 * ProductRow (red): displays a row for each product.
 
 react_components.jpeg
@@ -119,7 +123,7 @@ minimum amount of updates. These updates are then applied to the DOM, maximizing
 #### Routing & Back-end  
 
 React does need help with two things; loading data from the back-end, and client-side routing. As a developer you will need 
-to incorporate other libraries, such as Flux to have a fully functional and robust app.
+to incorporate other libraries, such as `Flux` to have a fully functional and robust app.
 
 > It's worth mentioning that React has other internal processes that make it all work. You will soon learn about JSX, 
 rendering a component's life cycle, props and state.
