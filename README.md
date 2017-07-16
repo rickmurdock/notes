@@ -57,4 +57,4 @@ Lecture notes from The Iron Yard
 
 * [Single Page Applications](https://github.com/rickmurdock/notes/blob/master/ReactJS/SinglePageApplications.md)
 
-* Constructors and Prototypes
+* [Constructors and Prototypes](https://github.com/rickmurdock/notes/blob/master/ReactJS/ConstructorsAndPrototypes.md)
