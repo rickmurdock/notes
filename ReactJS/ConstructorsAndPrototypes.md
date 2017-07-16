@@ -4,7 +4,7 @@ In programming, we need to be able to write code that is efficient. Template sty
 without having to write detailed code over and over again. In JavaScript, we use constructors in order to be efficient 
 with our code.
 
-### What is a Constructor?  
+## What is a Constructor?  
 
 A constructor is a `function` that is used to create objects. JavaScript objects are a way of keeping data contained and 
 well-organized. Objects allow us to group different types of data together into more complex and convenient ways.
@@ -12,7 +12,7 @@ well-organized. Objects allow us to group different types of data together into 
 With a constructor, you can define properties and methods on an object to be set later. You can think of a constructor as 
 a cookie cutter, in that it allows you to make multiple objects with the same properties and methods.
 
-#### Instance  
+### Instance  
 
 An object created by a constructor is called an instance of that constructor. Where a constructor creates a cookie cutter 
 object, the instance is the concrete occurrence of the object - the actual cookie. The creation of an instance is called 
@@ -20,7 +20,7 @@ instantiation.
 
 Simply put, a constructor is a function that is invoked by using the keyword new.
 
-#### The `new` keyword  
+### The `new` keyword  
 
 By placing the word `new` in front of the constructor name, JavaScript recognizes the keyword and creates a constructor.
 
@@ -34,7 +34,7 @@ let car = new Car();
 If you forget the `new` keyword before the constructor, `this` will be set equal to the global object (`window`) and you will 
 be unintentionally modifying the global object.
 
-#### The `this` Keyword  
+### The `this` Keyword  
 
 When using constructors, `this` takes on a special meaning. When invoked with `new`, `this` is the object being constructed.
 
@@ -51,7 +51,7 @@ let car = new Car();
 
 When adding properties to your object, you'll want to attach the properties to `this` inside the function.
 
-### Properties & Methods  
+## Properties & Methods  
 
 When creating a Constructor, you can attach properties and methods to it. Then, when you create an instance, these 
 properties will be copied on to it.
@@ -125,7 +125,7 @@ created, which `this` refers to inside the function.
 Additionally, we can use prototypes to connect properties and methods to an object. This will be covered in detail in 
 another lesson.
 
-### Conclusion  
+## Conclusion  
 
 * a `function` + the `new` keyword equals a constructor
 
@@ -135,7 +135,7 @@ another lesson.
 
 * Beware, if you forget the `new` keyword, `this === window`
 
-#### References  
+### References  
 
 [Object Playground](http://www.objectplayground.com/)
 
