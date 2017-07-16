@@ -105,7 +105,7 @@ In the example below, each box represents a component:
 
 * ProductRow (red): displays a row for each product.
 
-react_components.jpeg
+![react_components](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/reactComponent.png)
 
 > Read more about component architecture and hierarchy on [Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
 
