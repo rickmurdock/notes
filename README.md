@@ -55,6 +55,6 @@ Lecture notes from The Iron Yard
 
 ## Language Specialization: ReactJS
 
-* Single Page Applications(https://github.com/rickmurdock/notes/blob/master/ReactJS/SinglePageApplications.md)
+* [Single Page Applications](https://github.com/rickmurdock/notes/blob/master/ReactJS/SinglePageApplications.md)
 
 * Constructors and Prototypes
