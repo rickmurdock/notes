@@ -12,7 +12,7 @@ Using Express, Sequelize, and Body Parser with a `Todo` model defined, the follo
 
 A `get()` request to the `/todos` endpoint will respond with all model instances in the todo table.
 
-```
+```javascript
 app.get('/todos', function(req, res){
   Todo.findAll().then( function(data) {
     res.send(data);
@@ -24,7 +24,7 @@ A `get()` request to the `/todos/:id` endpoint will respond with the model insta
 
 Ex `/todos/7`
 
-```
+```javascript
 app.get('/todos/:id', function(req, res){
   id = req.query.id
 
@@ -38,7 +38,7 @@ A `get()` request to the `/todos/complete/:bool` endpoint will respond with the 
 
 Ex: `/todos/complete/true`
 
-```
+```javascript
 app.get('/todos/complete/:bool', function(req, res){
   isComplete = req.query.bool
 
@@ -57,7 +57,7 @@ A `get()` request to the `/todos/length/:num` endpoint will respond with the mod
 
 Ex: `/todos/length/12`
 
-```
+```javascript
 app.get('/todos/length/:num', function(req, res){
   num = req.query.num
 
@@ -74,7 +74,7 @@ Using query parameters, a `get()` request to the `/todos/range` endpoint will re
 
 Ex: `GET /todos/range?min=3&max=6`
 
-```
+```javascript
 app.get('/todos/range', function(req, res){
   const min = req.query.min;
   const max = req.query.max;
@@ -151,7 +151,7 @@ app.get('/todos/range', function(req, res){
 
 * Includes the token type and hashing algorithm.
 
-```
+```javascript
 {
   "alg": "HS256",
   "typ": "JWT"
@@ -174,7 +174,7 @@ app.get('/todos/range', function(req, res){
 
 ##### Example
 
-```
+```javascript
 {
     "iss": "https://www.theironyard.com", // issuer
     "iat": 1497892326, // issued date
@@ -196,7 +196,7 @@ The above JWT object, along with a key and HS256 encryption would generate:
 
 Key: qwertyuiopasdfghjklzxcvbnm123456
 
-```
+```javascript
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3d3dy50aGVpcm9ueWFyZC5jb20iLCJpYXQiOjE0OTc4OTIzMjYsImV4cCI6MTUyOTQyODMyNiwiYXVkIjoiaHR0cHM6Ly93d3cubWVkaXVtLmNvbSIsInN1YiI6ImV4YW1wbGUiLCJuYW1lIjoiSm9obiIsImFkbWluIjoidHJ1ZSJ9.fYSVpviIN3Igi55RtVQaygTm2b7NDlrHXP5oboTiOhI
 ```
 
@@ -256,7 +256,7 @@ config.js
 
 * Here we will store the key we use to sign the JWT. For best practices and security reasons it is best **not to commit** into the repository.
 
-```
+```javascript
 module.exports = {
   // You may include other configuration options here.
   secret: 'supersecurepassword'
@@ -267,7 +267,7 @@ models/user.js
 
 * Model sample.
 
-```
+```javascript
 var Sequelize = require('sequelize');
 // Set database
 var sequelize = {}; // Dev. Database
@@ -315,7 +315,7 @@ module.export = function(sequelize, DataTypes){
 
 * In this example, the app will look for the user. If not found it will use the sequelize create() method to create one.
 
-```
+```javascript
 var jwt = require('jsonwebtoken');
 // Require the config file containing the key to sign the JWT.
 var config = require('../config.js');
@@ -385,7 +385,7 @@ module.exports = function(router){
 
   * If token is not found, we redirect back to login.
 
-```
+```javascript
 var jwt = require('jsonwebtoken');
 var config = require('../config.js');
 
@@ -412,7 +412,7 @@ var auth = function(req, res, next) {
 
 * Here we create a route, which we will protect later.
 
-```
+```javascript
 module.exports = function(router){
   router.get('/example', function(req, res){
     res.json({data: 'JWT authentication implementation!'});
@@ -423,7 +423,7 @@ module.exports = function(router){
 
 **Implementation in index.js**  
 
-```
+```javascript
 var express = require('express');
 var app = express();
 var router = express.Router();
@@ -447,7 +447,7 @@ app.listen(3000);
 
 * Manually set headers so that the middleware knows if the route is authenticated.
 
-```
+```javascript
 headers[‘x-access-token’] = [jwt-token]
 ```
 
