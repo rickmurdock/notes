@@ -27,9 +27,9 @@ Lecture notes from The Iron Yard
 
 * [Express Authentication](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressAuthentication.md)
 
-* [Organizing large Express applications](https://github.com/rickmurdock/notes/blob/master/OrganizingExpress.md) 
+* [Organizing large Express applications](https://github.com/rickmurdock/notes/blob/master/BackEnd/OrganizingExpress.md) 
 
-* [SQL: Introduction](https://github.com/rickmurdock/notes/blob/master/SQLIntroduction.md)
+* [SQL: Introduction](https://github.com/rickmurdock/notes/blob/master/BackEnd/SQLIntroduction.md)
 
 * [Sequelize: Introduction](https://github.com/rickmurdock/notes/blob/master/SequelizeIntroduction.md)
 
