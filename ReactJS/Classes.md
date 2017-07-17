@@ -117,7 +117,7 @@ The new `class` syntax also has access to `static` methods. Static methods are d
 which they are described and cannot be passed down to any children. We will also take a look at how to apply default 
 properties to a constructor.
 
-```
+```javascript
 class Chameleon {
  static colorChange(newColor) {
    this.newColor = newColor;
@@ -134,7 +134,7 @@ console.log(pantherChameleon.newColor);
 
 Everything works as expected. However, if we try to use `pantherChameleon` to run the `colorChange` function it won't work because of the `static` method.
 
-```static
+```javascript
 class Chameleon {
  static colorChange(newColor) {
    this.newColor = newColor;
