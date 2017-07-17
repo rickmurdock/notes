@@ -41,7 +41,7 @@ Lecture notes from The Iron Yard
 
 * [Express: JSON APIs](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressJSONAPIs.md)
 
-* Express JSON APIs: Advanced
+* [Express JSON APIs: Advanced](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressJSONAPIsAdvanced.md)
 
 * [Tests and Test Driven Design](https://github.com/rickmurdock/notes/blob/master/BackEnd/TestsandTestDrivenDesign.md)
 
