@@ -62,7 +62,7 @@ Use the npm package express-session to set up user authentication.
 
 ### Examples
 
-```
+```javascript
 var express = require('express')
 var parseurl = require('parseurl')
 var session = require('express-session')
