@@ -74,7 +74,7 @@ TDD Limitations and Considerations:
 
 A basic Chai unit test example:
 
-```
+```javascript
 describe("multiplier", function() {
   chai.should();
 
@@ -87,7 +87,7 @@ describe("multiplier", function() {
 
 The corresponding function:
 
-```
+```javascript
 function multiplier(x, y) {
   return x * y;
 }
@@ -108,7 +108,7 @@ function multiplier(x, y) {
 
 ### Examples  
 
-```
+```javascript
 // app.js
 const express = require('express');
 const app = express();
@@ -126,7 +126,7 @@ if (require.main === "module") {
 module.exports = app;
 ```
 
-```
+```javascript
 // test/hello_test.js
 const request = require("supertest");
 const assert = require("assert");
@@ -154,7 +154,7 @@ By default, Mocha runs all `.js` files in your `test/` directory.
 
 Mocha uses two functions, `describe` and `it`, to define tests. The important thing to remember about these is that you do not have to require them. They are made available to your tests by Mocha.
 
-```
+```javascript
 // test/sample_test.js
 const assert = require("assert");
 
@@ -189,7 +189,7 @@ In an Express app, you often want to test the functions that handle your routes 
 
 You will also want to change your code that calls `app.listen` to look like the following:
 
-```
+```javascript
 if (require.main === "module") {
   app.listen(3000, function () {
       console.log('Express running on http://localhost:3000/.')
@@ -201,7 +201,7 @@ if (require.main === "module") {
 
 To test your controller functions, you will need to require `supertest` and learn about how Mocha handles asynchronous code. Let's look at an app and a controller test and then see how they work.
 
-```
+```javascript
 // app.js
 const express = require('express');
 const app = express();
@@ -219,7 +219,7 @@ if (require.main === "module") {
 module.exports = app;
 ```
 
-```
+```javascript
 // test/hello_test.js
 const request = require("supertest");
 const assert = require("assert");
@@ -241,7 +241,7 @@ describe("GET /hello", function () {
 
 The first line to notice is the line:
 
-```
+```javascript
 it("should return successfully", function (done) {
   // ...
 })
@@ -255,7 +255,7 @@ The next line, request(app), sets up Supertest to make requests against your app
 
 `.expect` is a Supertest method that is very flexible and allows you to test multiple features of the response from the server. See the API documentation to learn all the ways in which .expect can be called. We are calling it three ways here:
 
-```
+```javascript
 request(app)
   .get("/hello")
   // Checks to see if the status code is 200.
@@ -272,7 +272,7 @@ request(app)
 
 Lastly, we call `.end(done)`. To understand this line, let's give `.end` a function we define:
 
-```
+```javascript
 request(app)
   .get("/hello")
   // tests ...
@@ -291,7 +291,7 @@ If we have an error, we pass it to `done`, otherwise we do not. By using the sho
 
 Our `package.json` file has a section we have not explored until now. The `scripts` object can contain terminal commands that we need to run frequently, including a command to test our code. Change your `package.json` to have the following `scripts` object:
 
-```
+```javascript
 {
   "private": true,
   "dependencies": {
@@ -315,7 +315,7 @@ To test more complicated applications -- ones with databases, for example -- we 
 
 To do this yourself, first create a file called `config.json`. Here is one for an app that uses MongoDB.
 
-```
+```javascript
 // config.json
 {
   "development": {
@@ -329,7 +329,7 @@ To do this yourself, first create a file called `config.json`. Here is one for a
 
 Then in app.js, we would write code like this:
 
-```
+```javascript
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -343,7 +343,7 @@ mongoose.connect(config.mongoURL);
 
 You can set up any configuration variables you need to in this way. Note that to make sure your tests use the test configuration, you will have to run `NODE_ENV=test mocha`. Change your `test` script in `package.json` to run this:
 
-```
+```javascript
 {
   "scripts": {
     "test": "NODE_ENV=test mocha"
@@ -357,7 +357,7 @@ There is a `config` [library you can install via NPM](https://www.npmjs.com/pack
 
 Mocha provides four hooks for us to use in our tests.
 
-```
+```javascript
 describe('hooks', function() {
   before(function() {
     // runs before all tests in this block
@@ -383,7 +383,7 @@ These hooks can be used to set up data we need for our tests, clear out database
 
 For example, we may want to connect to MongoDB before our tests, and clear out a collection before each test in order to make sure we have a clean setup. Here is an example:
 
-```
+```javascript
 const assert = require('assert');
 const mongoose = require('mongoose');
 const config = require("../config")[process.env.NODE_ENV || 'test'];
@@ -542,7 +542,7 @@ Functions
 
 ### Examples  
 
-```
+```javascript
 const bookList = [
   {
     title: 'Turtles All the Way Down',
