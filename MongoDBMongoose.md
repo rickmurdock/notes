@@ -202,7 +202,7 @@ Recipe.deleteOne({prepTime: {$gt: 60}})
 
 ### Examples
 
-```
+```javascript
 const recipeSchema = new mongoose.Schema({
   // Using the `required` validator
   name: { type: String, required: true, unique: true },
@@ -269,7 +269,7 @@ recipe.save(function(error) {
 
 #### RECIPE SCHEMA USED THROUGHOUT LESSON
 
-```
+```javascript
 const recipeSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
     prepTime: Number,
@@ -288,7 +288,7 @@ const Recipe = mongoose.model(recipeSchema);
 
 ### VIRTUAL FIELDS
 
-```
+```javascript
 recipeSchema.virtual('totalTime').get(function () {
   return (this.prepTime || 0) + (this.cookTime || 0);
 });
@@ -303,7 +303,7 @@ console.log(pancakes.totalTime);
 
 You can even have a virtual field that you can set:
 
-```
+```javascript
 recipeSchema.virtual('allSteps')
     .get(function () {
         return this.steps.join("\n");
@@ -332,7 +332,7 @@ console.log(steps[2]);
 
 ### INSTANCE METHODS
 
-```
+```javascript
 recipeSchema.methods.findRecipesFromSameSource = function (callback) {
   return this.model('Recipe').find({
     source: this.source,
@@ -351,7 +351,7 @@ grandmasPancakes.findRecipesFromSameSource()
 
 ### STATIC METHODS
 
-```
+```javascript
 recipeSchema.statics.findByMaxIngredients = function (maxIngredients, callback) {
     return this.find({ingredients: {$lte: {$size: maxIngredients}}});
 };
@@ -363,7 +363,7 @@ Recipe.findByMaxIngredients(3).then(handleSuccess).catch(handleError);
 
 ### QUERY METHODS
 
-```
+```javascript
 recipeSchema.query.maxIngredients = function (maxIngredients, callback) {
     return this.where({ingredients: {$lte: {$size: maxIngredients}}});
 };
