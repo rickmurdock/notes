@@ -130,7 +130,7 @@ Examples
 
 `./app.js`
 
-```javasript
+```javascript
 // requires and environment setup ...
 
 const mustacheExpress = require('mustache-express');
