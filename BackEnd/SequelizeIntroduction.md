@@ -61,7 +61,7 @@ Run `sequelize db:migrate` to run the migration and update your database.
 
 To require a model, `const models = require("./models")` and use the `models` object to access the model, like so:
 
-```
+```javascript
 const models = require("./models");
 models.User.findOne().then(function (user) {
   console.log(user);
@@ -74,7 +74,7 @@ If you try to require the model file directly (like `require("./models/user")`),
 
 To build an unsaved instance:
 
-```
+```javascript
 const todo = models.Todo.build({
   title: 'Finish writing learning objective',
   description: 'Sequelize has a lot of concepts to learn',
@@ -84,7 +84,7 @@ const todo = models.Todo.build({
 
 To save the instance, call `save`. If you want to do something with the saved instance, you will have to use `.then` on the returned value from `save`.
 
-````
+````javascript
 todo.save().then(function (newTodo) {
   console.log(newTodo.id);
 })
@@ -94,7 +94,7 @@ todo.save().then(function (newTodo) {
 
 `create` will build and save in one step. It is really easy to make a mistake with `create`, though: it returns a promise, not a model instance.
 
-```
+```javascript
 // BAD
 const todo = models.Todo.create({
   title: 'Finish writing learning objective',
@@ -118,7 +118,7 @@ console.log(todo);
 
 * Returns `null` if not found.
 
-```
+```javascript
 User.findOne({
   where: {
     username: 'kerry'
@@ -136,7 +136,7 @@ User.findOne({
 
 * In this example, we use an id of 1234.
 
-```
+```javascript
 User.findById(1234).then(function (user) {
   //Code here
 })
@@ -146,7 +146,7 @@ User.findById(1234).then(function (user) {
 
 * `spread`: spreads an array of values to parameters. Only used with `findOrCreate()`. Works like `then`, but makes it easier to work with multiple parameters.
 
-```
+```javascript
 User.findOrCreate({
   where: {
     username: 'brody'
@@ -163,7 +163,7 @@ User.findOrCreate({
 
 * Returns *all* instances.
 
-```
+```javascript
 User.findAll().then(function (users) {
   // code here
 })
@@ -173,7 +173,7 @@ User.findAll().then(function (users) {
 
 * Returns *all* instances that match the `where` clause.
 
-```
+```javascript
 User.findAll({
   where: {
     user_name: 'Dan',
@@ -187,7 +187,7 @@ User.findAll({
 
 * Returns an array containing instances specified in the range.
 
-```
+```javascript
 User.findAll({
   where: {
     id: [1234, 1256, 1345]
@@ -199,7 +199,7 @@ User.findAll({
 
 ###### GET A COUNT
 
-```
+```javascript
 User.count({
   where: { state: 'NC' }
 }).then(function (count) {
@@ -211,28 +211,28 @@ User.count({
 
 ###### LIMIT
 
-```
+```javascript
 // Limit the results to 20.
 User.findAll({ limit: 20 })
 ```
 
 ###### OFFSET
 
-```
+```javascript
 // Steps over the first 5 elements.
 User.findAll({ offset: 5 })
 ```
 
 ###### OFFSET AND LIMIT
 
-```
+```javascript
 // Step over the first 15 elements, and limits it to 5
 User.findAll({ offset: 15, limit: 5 })
 ```
 
 ###### ORDER
 
-```
+```javascript
 User.findAll({order: ['startDate']})
 // Returns ORDER BY startDate
 
@@ -244,7 +244,7 @@ User.findAll({order: [['startDate', 'DESC']]})
 
 ###### UPDATING AN INSTANCE USING UPDATE()
 
-```
+```javascript
 User.update({
   email: 'awesomewinter@email.com',
   age: 34
@@ -260,7 +260,7 @@ User.update({
 
 ###### DELETING AN INSTANCE USING DESTROY()
 
-```
+```javascript
 User.destroy({
   where: {
     user_name: 'ryan'
@@ -282,7 +282,7 @@ User.destroy({
 ### Examples
 Here is an example set of routes for a bookmarking application that show a list of links; let you add, edit, and delete links; and track the number of clicks on each link. You can find the entire application with discrete commits to see how it was built at [world-of-links](https://github.com/tiycnd/world-of-links).
 
-```
+```javascript
 // index of all links
 router.get("/links", function (req, res) {
     models.Link.findAll().then(function (links) {
