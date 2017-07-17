@@ -58,7 +58,7 @@ $ npm install body-parser --save
 
 #### BODY-PARSER IMPLEMENTATION
 
-```
+```javascript
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -100,7 +100,7 @@ $ npm install express-validator --save
 
 #### BODYPARSER AND EXPRESS-VALIDATOR IMPLEMENTATION
 
-```
+```javascript
 var express = require('express');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
@@ -213,7 +213,7 @@ By default, express will add a status of 200 when we render, and a 302 when we r
 
 But what if we want to prevent a user from accessing a particular route in our application? We'll want to return a 403 ("forbidden").
 
-```
+```javascript
 const express = require('express');
 const path = require('path');
 const mustacheExpress = require('mustache-express');
@@ -270,7 +270,7 @@ npm install busboy --save
 
 #### INCLUDE
 
-```
+```javascript
   var http = require('http'), //If using HTTP server and client
   var path = require('path'),
   var os = require('os'),
@@ -283,7 +283,7 @@ npm install busboy --save
 
 Instantiate `busboy`:
 
-```
+```javascript
 var busboy = new Busboy({ headers: req.headers });
 ```
 
@@ -291,7 +291,7 @@ Configure `busboy` to save upload file:
 
 * You must include five parameters in the `busboy` middleware function: (fieldname, file, filename, encoding, mimetype)
 
-```
+```javascript
 busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
     // Set a temporary directory to save incoming file.
      var saveTo = path.join(os.tmpDir(), path.basename(fieldname));
@@ -305,7 +305,7 @@ busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
 
 #### FINISHING THE UPLOAD
 
-```
+```javascript
 busboy.on('finish', function() {
   console.log('Upload complete');
   // Send back HTTP response.
@@ -323,7 +323,7 @@ In this example we do not use the `HTTP` module and we use `views` and `routes`.
 
 * We also use fs-extra, which adds file system methods that aren't included in the native fs module and adds promise support to the fs methods.
 
-```
+```javascript
 var express = require('express');
 var path = require('path');
 var index = require('./routes/index');
