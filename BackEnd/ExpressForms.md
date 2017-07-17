@@ -363,7 +363,7 @@ app.listen(3000, function () {
 
 > Remember to set the enctype in your HTML Form to "multipart/form-data"
 
-```
+```html
 <form action="/upload" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <input type="submit" value="Upload file">
