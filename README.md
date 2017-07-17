@@ -19,13 +19,13 @@ Lecture notes from The Iron Yard
 
 ## Back-End Fundamentals
 
-* [Express and NodeJS: Hello World](https://github.com/rickmurdock/notes/blob/master/FrontEnd/ExpressNodeJS.md)
+* [Express and NodeJS: Hello World](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressNodeJS.md)
 
-* [Express: Dynamic](https://github.com/rickmurdock/notes/blob/master/ExpressDynamic.md)
+* [Express: Dynamic](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressDynamic.md)
 
-* [Express Forms](https://github.com/rickmurdock/notes/blob/master/ExpressForms.md)
+* [Express Forms](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressForms.md)
 
-* [Express Authentication](https://github.com/rickmurdock/notes/blob/master/ExpressAuthentication.md)
+* [Express Authentication](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressAuthentication.md)
 
 * [Organizing large Express applications](https://github.com/rickmurdock/notes/blob/master/OrganizingExpress.md) 
 
