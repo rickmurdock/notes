@@ -1,23 +1,39 @@
-Platform-as-a-service And Virtual-private-servers  
+# Platform-as-a-service And Virtual-private-servers  
 
-Platform-as-a-service  
+## Platform-as-a-service  
 
-A cloud computing model which delivers applications over the internet.
-Users access PaaS services through the web browsers and providers charge a flat monthly fee or a per-use fee.
-A PaaS provider, such as Heroku, delivers a pre-configuredplatform (both the hardware and software tools) needed for the development of applications.
-This makes it possible for developers to include cloud-hosted software logic into their applications.
-This platform is fully managed by the provider. The user does not have control or manages the underlying infrastructure.
-This enables developers to focus on application development without having to worry with the installation and maintenance of in-house hardware and software tools.
-Underlying infrastructure:
-Hardware: servers, networks, and storage.
-Software: OS, libraries, programming languages, database management system, server software, runtime environments, integration software and security software.
-Some of the cloud characteristics of PaaS are: high-availability, scalability, and multi-tenancy.
-PaaS makes it possible for developers to make frequent code changes, even change or upgrade OS features.
-PaaS makes the app development, testing and deployment quicker, simpler and more cost effective.
-The nature of PaaS makes collaboration easier.
-Other benefits:
-HTTP Caching Server: static contents (CSS, images, etc) are loaded from cache, instead of having to be processed by the application server. This improves performance.
-Redundancy: since resources are spread out geographically over multiple servers, it makes it to overcome failures with little or no downtime.
+* A cloud computing model which delivers applications over the internet.
+
+* Users access `PaaS` services through the web browsers and providers charge a flat monthly fee or a per-use fee.
+
+* A `PaaS` provider, such as `Heroku`, delivers a pre-configured `platform` (both the hardware and software tools) needed for the development of applications.
+
+* This makes it possible for developers to include cloud-hosted software logic into their applications.
+
+* This platform is fully managed by the provider. The user does not have control or manages the underlying infrastructure.
+
+* This enables developers to focus on application development without having to worry with the installation and maintenance of in-house hardware and software tools.
+
+* Underlying infrastructure:
+
+  * Hardware: servers, networks, and storage.
+  
+  * Software: OS, libraries, programming languages, database management system, server software, runtime environments, integration software and security software.
+  
+* Some of the cloud characteristics of PaaS are: high-availability, scalability, and multi-tenancy.
+
+* PaaS makes it possible for developers to make frequent code changes, even change or upgrade OS features.
+
+* PaaS makes the app development, testing and deployment quicker, simpler and more cost effective.
+
+* The nature of PaaS makes collaboration easier.
+
+* Other benefits:
+
+  * HTTP Caching Server: static contents (CSS, images, etc) are loaded from cache, instead of having to be processed by the application server. This improves performance.
+  
+  * Redundancy: since resources are spread out geographically over multiple servers, it makes it to overcome failures with little or no downtime.
+  
 PaaS providers  
 
 These are some PaaS providers: Amazonw Web Services, Heroku, Google App Engine, Azure, and Mendix.
