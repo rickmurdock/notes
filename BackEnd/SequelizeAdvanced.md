@@ -26,7 +26,7 @@
 
 ##### A MIGRATION ADDING A FOREIGN KEY
 
-```
+```javascript
 // migrations/20170625173808-add-user-id-to-todo.js
 'use strict';
 
@@ -54,7 +54,7 @@ module.exports = {
 
 ADD PICS HERE
 
-```
+```javascript
 const User = this.sequelize.define('User', {/* attributes */});
 const Todo  = this.sequelize.define('Todo', {/* attributes */});
 const Author = this.sequelize.define('Author', {/* attributes */});
@@ -74,7 +74,7 @@ Book.belongsToMany(Author, {
 
 **NOTE**: The above associations would be distributed into their models' source file in associate methods, like so:
 
-```
+```javascript
 // models/todo.js
 'use strict';
 module.exports = function(sequelize, DataTypes) {
@@ -110,7 +110,7 @@ module.exports = function(sequelize, DataTypes) {
 
 An example:
 
-```
+```javascript
 var User = sequelize.define('user', {
   username: {
     type: Sequelize.STRING,
@@ -134,7 +134,7 @@ var User = sequelize.define('user', {
 
 When an error occurs in a Sequelize method that returns a promise (like `create` or `save`), you have to use a `catch` method to handle it. An example:
 
-```
+```javascript
 // invalid username
 User.create({username: "!!!", email: "a@example.org"}).then(function (user) {
   console.log(user);
@@ -146,7 +146,7 @@ User.create({username: "!!!", email: "a@example.org"}).then(function (user) {
 
 You can handle specific types of errors by passing the error type as the first argument to `catch`.
 
-```
+```javascript
 User.create({username: "me", email: "me@example.org"})
 
 // creating a second one will cause a UniqueConstraintError
