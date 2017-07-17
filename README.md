@@ -35,7 +35,7 @@ Lecture notes from The Iron Yard
 
 * [Sequelize: Advanced](https://github.com/rickmurdock/notes/blob/master/BackEnd/SequelizeAdvanced.md)
 
-* NoSQL: MongoDB
+* [NoSQL: MongoDB](https://github.com/rickmurdock/notes/blob/master/BackEnd/NoSQLMongoDB.md)
 
 * [MongoDB with Mongoose](https://github.com/rickmurdock/notes/blob/master/BackEnd/MongoDBMongoose.md)
 
