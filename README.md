@@ -60,3 +60,5 @@ Lecture notes from The Iron Yard
 * [Constructors and Prototypes](https://github.com/rickmurdock/notes/blob/master/ReactJS/ConstructorsAndPrototypes.md)
 
 * [Classes](https://github.com/rickmurdock/notes/blob/master/ReactJS/Classes.md)
+
+* [Modules and Build Tools](https://github.com/rickmurdock/notes/blob/master/ReactJS/ModulesAndBuildTools.md)
