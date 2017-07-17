@@ -18,7 +18,7 @@ NOTE: Make sure to use the version number above. Version 4.11 will not work and 
 
 Then in `app.js`:
 
-```
+```javascript
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 // Replace "test" with your database name.
@@ -27,7 +27,7 @@ mongoose.connect('mongodb://localhost:27017/test');
 
 #### CREATING A SCHEMA AND MODEL
 
-```
+```javascript
 // models/recipe.js
 const mongoose = require('mongoose');
 
@@ -51,7 +51,7 @@ module.exports = Recipe;
 
 #### MAKING AN INSTANCE OF YOUR MODEL
 
-```
+```javascript
 var recipe = new Recipe({name: "Pancakes"});
 recipe.ingredients.push({ingredient: 'sugar', measure: " Tbsp"});
 console.log(recipe.toObject());
@@ -79,7 +79,7 @@ console.log(recipe.toObject());
 
 Creating an unsaved model:
 
-```
+```javascript
 const recipe = new Recipe({name: "Pancakes", source: "Grandma"});
 recipe.save()
   .then(function () {
@@ -92,7 +92,7 @@ recipe.save()
 
 Creating a model and saving in one command:
 
-```
+```javascript
 Recipe.create({name: "Pancakes"})
   .then(handleSuccess)
   .catch(handleError);
@@ -100,7 +100,7 @@ Recipe.create({name: "Pancakes"})
 
 Finding one record:
 
-```
+```javascript
 Recipe.findOne({name: "Pancakes"})
   .then(handleSuccess)
   .catch(handleError);
@@ -108,7 +108,7 @@ Recipe.findOne({name: "Pancakes"})
 
 Finding multiple records:
 
-```
+```javascript
 Recipe.find({cookTime: {$gt: 15, $lt: 60}})
   .then(handleSuccess)
   .catch(handleError);
@@ -116,7 +116,7 @@ Recipe.find({cookTime: {$gt: 15, $lt: 60}})
 
 Complex queries:
 
-```
+```javascript
 Recipe.find({source: "Grandma"})
   .where('cookTime').lt('30') // only cookTimes < 30
   .where({ingredients: {
@@ -129,27 +129,27 @@ Recipe.find({source: "Grandma"})
 
 Updating one model:
 
-```
+```javascript
 Recipe.updateOne({source: "Grandma"},
   {$push: {steps: "Call Grandma and tell her how it was."}})
 ```
 
 Updating multiple models:
 
-```
+```javascript
 Recipe.updateMany({source: "Grandma"},
   {$push: {steps: "Call Grandma and tell her how it was."}})
 ```  
   
 Deleting one model:
 
-```
+```javascript
 Recipe.deleteOne({name: "Green Bean Casserole"})
 ```
 
 Deleting multiple models:
 
-```
+```javascript
 Recipe.deleteOne({prepTime: {$gt: 60}})
 ```
 
