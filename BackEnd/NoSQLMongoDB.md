@@ -97,13 +97,13 @@ mongoimport --db newdb --collection restaurants --file primer-dataset.json
 
 #### FINDING ALL DOCUMENTS
 
-```
+```javascript
 db.restaurants.find()
 ```
 
 #### FINDING ONE DOCUMENT
 
-```
+```javascript
 db.restaurants.findOne()
 ```
 
@@ -111,7 +111,7 @@ db.restaurants.findOne()
 
 Use a query filter document to filter records.
 
-```
+```javascript
 db.restaurants.find({name: "Wendy'S"})
 db.restaurants.find({cuisine: "Chinese", borough: "Brooklyn"})
 db.restaurants.find({cuisine: {$in: ["Chinese", "Thai", "Vietnamese"]}})
@@ -122,13 +122,13 @@ See [all the MongoDB query operators](https://docs.mongodb.com/manual/reference/
 
 You can sort by calling `.sort` on the results with an object of fields to sort by:
 
-```
+```javascript
 db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"name": 1})
 ```
 
 `1` means to sort ascending, `-1` means to sort descending. The order of keys in the object is preserved, so you can specify multiple fields and it will sort in order.
 
-```
+```javascript
 db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"borough": 1, "name": 1})
 ```
 
@@ -136,7 +136,7 @@ db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"borough": 1
 
 You can use dot notation to search inside nested documents.
 
-```
+```javascript
 db.restaurants.find({"address.zipcode": "11218"});
 ```
 
@@ -144,13 +144,13 @@ If you want to search for all documents based off an array value, you can refere
 
 // Find all restaurants that have ever gotten a C score.
 
-```
+```javascript
 db.restaurants.find({"grades.grade": "C"})
 ```
 
 To get records where all values in the array match, you have to get tricky. Here's one to get all restaurants that have only ever had "A" scores:
 
-```
+```javascript
 db.restaurants.find({"grades.grade": {$not: {$in: ["B", "C", "Z"]}}});
 ```
 
@@ -166,13 +166,13 @@ To understand how this works, step through it:
 
 You can simplify the above a little:
 
-``
+``javascript
 db.restaurants.find({"grades.grade": {$nin: ["B", "C", "Z"]}});
 ``
 
 You can reference specific elements of an array using dot notation. To find all restaurants where their last grade was an "A" (assuming that the grades are in descending order by date):
 
-``
+``javascript
 db.restaurants.find({"grades.0.grade": "A"});
 ``
 
@@ -180,7 +180,7 @@ db.restaurants.find({"grades.0.grade": "A"});
 
 When you insert a document, it will be given a unique _id unless you provide one.
 
-```
+```javascript
 // This will insert a new document. The result object contains two values,
 // `acknowledged` and `insertedId`. `insertedId` lets us look up the document
 // we inserted.
@@ -196,7 +196,7 @@ db.restaurants.findOne({"_id": result.insertedId})
 
 `insertMany` can insert more than one document at a time:
 
-```
+```javascript
 db.restaurants.insertMany([{
   "address": {"building": "100", "street": "Fiction St", "zipcode": "00001" },
   "borough": "Yonkers",
@@ -221,14 +221,14 @@ db.restaurants.insertMany([{
 
 You will have fields in your documents that you want to ensure are unique. To do this, you need to [create a unique index](https://docs.mongodb.com/manual/core/index-unique/#index-type-unique).
 
-```
+```javascript
 // Ensure restaurant_id is unique.
 db.restaurants.createIndex( { "restaurant_id": 1 }, { unique: true } )
 ```
 
 You can see your collection's indexes like so:
 
-```
+```javascript
 db.restaurants.getIndexes()
 ```
 
@@ -238,7 +238,7 @@ There are two main functions to update documents, `updateOne` and `updateMany`. 
 
 Some examples:
 
-```
+```javascript
 // Add city and state to all addresses
 db.restaurants.updateMany({},
   {$set: {"address.city": "New York", "address.state": "NY"}});
@@ -261,7 +261,7 @@ db.restaurants.updateMany({"address.street": "West   57 Street"},
 
 You can also upsert documents. Upsert means to update if records are found, or insert a document if they are not found. Add a third object of options with `upsert` equal to true to do so.
 
-```
+```javascript
 db.restaurants.updateOne(
   {restaurant_id: "99"},
   {
@@ -278,7 +278,7 @@ Your search parameters must be unique for an upsert to work.
 
 To delete records, use `deleteOne` or `deleteMany`. These take a query like `find` and `findOne`.
 
-```
+```javascript
 // Delete restaurant id 99
 db.restaurants.deleteOne({restaurant_id: "99"})
 
