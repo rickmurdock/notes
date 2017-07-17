@@ -166,15 +166,15 @@ To understand how this works, step through it:
 
 You can simplify the above a little:
 
-``javascript
+```javascript
 db.restaurants.find({"grades.grade": {$nin: ["B", "C", "Z"]}});
-``
+```
 
 You can reference specific elements of an array using dot notation. To find all restaurants where their last grade was an "A" (assuming that the grades are in descending order by date):
 
-``javascript
+```javascript
 db.restaurants.find({"grades.0.grade": "A"});
-``
+```
 
 ### Inserting documents  
 
