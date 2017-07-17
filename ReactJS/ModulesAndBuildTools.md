@@ -113,7 +113,7 @@ When importing multiple modules from a single file, we simply add `{ }` around t
 If we have a lot of modules to export and import from a single file, that might be a bit time consuming. We handle that 
 situation by using the `*` operator. Let's take a look at that in action using our previous example:
 
-```script
+```javascript
 //###### utility.js #######
 export function makeMath(x,y) {
   return ( x * y );
