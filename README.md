@@ -19,7 +19,7 @@ Lecture notes from The Iron Yard
 
 ## Back-End Fundamentals
 
-* [Express and NodeJS: Hello World](https://github.com/rickmurdock/notes/blob/master/ExpressNodeJS.md)
+* [Express and NodeJS: Hello World](https://github.com/rickmurdock/notes/blob/master/FrontEnd/ExpressNodeJS.md)
 
 * [Express: Dynamic](https://github.com/rickmurdock/notes/blob/master/ExpressDynamic.md)
 
