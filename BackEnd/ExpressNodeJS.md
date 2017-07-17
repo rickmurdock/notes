@@ -113,7 +113,7 @@ $ npm install express --save
 
 * Then:
 
-```
+```javascript
 const express = require('express');
 const app = express();
 
@@ -226,7 +226,7 @@ serve-static-files.zip (2 MB)
 
   * configure `express.static` to use a relative path.
 
-```
+```javascript
     app.use('/files', express.static('files'));
 ```
     
@@ -234,7 +234,7 @@ serve-static-files.zip (2 MB)
 
 * configure `app.get()` to serve `index.html` from `root`.
 
-```
+```javascript
 //Listening on root
 app.get('/', function (req, res) {
   //serve 'index.html'
@@ -247,7 +247,7 @@ app.get('/', function (req, res) {
 
 **trivial-app.js:**
 
-```
+```javascript
 const express = require('express');
 const path = require('path');
 const app = express();
