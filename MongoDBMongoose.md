@@ -183,11 +183,17 @@ Recipe.deleteOne({prepTime: {$gt: 60}})
 ### BUILT-IN VALIDATORS
 
 * `required` properties are checked before saving. Their values must be present.
+
 * `min` values can be required of `Number` property types
+
 * `max` values can be required of `Number` property types
+
 * `enum` values can be required of `String` property types
+
 * `match` values can be required of `String` property types
+
 * `maxLength` values can be required of `String` property types
+
 * `minLength` values can be required of `String` property types
 
 ### CUSTOM VALIDATORS
