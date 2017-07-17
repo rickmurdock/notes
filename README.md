@@ -49,7 +49,7 @@ Lecture notes from The Iron Yard
 
 * Productivity and UNIX: Introduction
 
-* Cloud Computing: Introduction
+* [Cloud Computing: Introduction](https://github.com/rickmurdock/notes/blob/master/BackEnd/CloudComputingIntroduction.md)
 
 ---
 
