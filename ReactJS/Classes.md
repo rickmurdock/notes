@@ -131,3 +131,76 @@ let pantherChameleon = new Chameleon({newColor: "purple"});
 
 console.log(pantherChameleon.newColor);
 ```
+
+Everything works as expected. However, if we try to use `pantherChameleon` to run the `colorChange` function it won't work because of the `static` method.
+
+```static
+class Chameleon {
+ static colorChange(newColor) {
+   this.newColor = newColor;
+ } //Let's set a default of green to the constructor
+ constructor({ newColor = 'green'} = {}) {
+   this.newColor = newColor;
+ }
+}
+
+let pantherChameleon = new Chameleon({newColor: "purple"});
+//Try calling the function colorChange from pantherChameleon.
+
+pantherChameleon.colorChange("orange");
+console.log(pantherChameleon.newColor);
+```
+
+The `changeColor` function only works for the `Chameleon` object so we get a type error when trying to use it on the `pantherChameleon` instance.
+
+Instead if we use the `call` method to allow `pantherChameleon` to use the `colorChange` function we will get following:
+
+```javascript
+class Chameleon {
+ static colorChange(newColor) {
+   this.newColor = newColor;
+ } //Let's set a default of green to the constructor
+ constructor({ newColor = 'green'} = {}) {
+   this.newColor = newColor;
+ }
+}
+
+let pantherChameleon = new Chameleon({newColor: "purple"});
+
+//using the call function we can apply the colorChange function to the pantherChameleon
+Chameleon.colorChange.call(pantherChameleon, "orange");
+console.log(pantherChameleon.newColor);
+```
+
+By using `call`, which we'll learn more about later, we can attach the `colorChange` function to `pantherChameleon`. This isn't ideal. Instead, let's rewrite our static method to allow children objects to use it and bypass the call method altogether.
+
+```javascript
+class Chameleon {
+  static colorChange(lizard, newColor) {
+    lizard.newColor = newColor;
+  }
+  constructor({ newColor = 'green'} = {}) {
+    this.newColor = newColor;
+  }
+}
+
+var pantherChameleon = new Chameleon({newColor: "purple"});
+Chameleon.colorChange(pantherChameleon, "neon blue");
+console.log(pantherChameleon.newColor);
+```
+
+You can see the static method still keeps the function `colorChange` locally. By allowing the parameter `lizard` to take place of `this`, we can replace the `call` function and pass in `pantherChameleon` as an argument.
+
+## Conclusion  
+
+* Classes provide a clean method to use prototypal inheritance and create object constructors.
+
+* A `constructor` function must be used to determine what code will be run when creating a new instance of the constructor object.
+
+* Classes can make sub-classes and pass inheritance using the `extend` keyword and the `super` function.
+
+* The `super` function allows for a child object to inherit methods and properties from the parent object.
+
+* Classes are **not** hoisted and will throw a reference error if an instance is declared before the class.
+
+* Using the `static` method allows the parent `class` to retain the method or property and not pass it directly down through prototypal inheritance.
