@@ -145,21 +145,38 @@ Starting Node.zip (424 KB)
 
 # Configure Node to Serve Static Files in a Directory
 
-Terminology
-express.static(): built-in middleware function used to configure the location of files to be served by an express.js application.
+### Terminology
 
-paths:
+ * express.static(): built-in middleware function used to configure the location of files to be served by an express.js application.
 
-Relative path:
+* paths:
+
+  * Relative path:
+  
+```javascript
   app.use(express.static('public'))
-Adding a virtual path:
-Specify mount point.
-Virtual path prefix (non-existent in the file system). i.e., '/files'
+```
+
+* Adding a virtual path:
+
+  * Specify mount point.
+  
+  * Virtual path prefix (non-existent in the file system). i.e., '/files'
+  
+```javascript
   app.use('/static', express.static('public'))
-Absolute path:
-Safer when the app runs from a different directory.
+```
+
+* Absolute path:
+
+  * Safer when the app runs from a different directory.
+  
+```javascript
   app.use('/files', express.static(path.join(__dirname, 'public')))
-Example 1
+```
+
+### Example 1
+
 File: ironyardlogo.png
 
 Directory: serve-static-files/public
@@ -168,26 +185,37 @@ Configuration:
 
 Relative to the static directory.
 
+```javascript
 app.use(express.static('public'))
+```
+
 Accessing file on port 3000:
 
 http://localhost:3000/ironyardlogo.png
+
 Example 2
+
 File: video.mp4
 
 Directory: serve-static-files/public
 
 Configuration:
 
-Absolute path:
+* Absolute path:
+
+```javascript
 app.use('/files', express.static(path.join(__dirname, 'public')))
+```
+
 Accessing file on port 3000:
 
 http://localhost:3000/files/video.mp4
+
 MULTIPLE DIRECTORIES
 
 To add multiple directories, simply add them in the order you would like express.jsto search for a particular file.
 
+```javascript
 // Relative to the static directories
 app.use(express.static('public'))
 app.use(express.static('utilities'))
@@ -195,6 +223,8 @@ app.use(express.static('utilities'))
 // Absolute path to the directories
 app.use('/files', express.static(path.join(__dirname, 'public')))
 app.use('/utilities', express.static(path.join(__dirname, 'utilities')))
+```
+
 The order of the static files determines how Express searches for a file.
 Try it!
 This sample does not contain the 'utilities' directory as per the example above.
@@ -269,7 +299,7 @@ app.listen(3000, function () {
 
 index.html:
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
