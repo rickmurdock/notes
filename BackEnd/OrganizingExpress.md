@@ -23,7 +23,7 @@ The model controls access to data and ways to manipulate that data.
 
 Example model in its own file:
 
-```
+```javascript
 // models/user.js
 
 const users = [
@@ -91,7 +91,7 @@ project_directory/
 
 Using `express.Router` for an admin section:
 
-```
+```javascript
 // routes/admin.js
 const express = require('express');
 const router = express.Router();
@@ -117,7 +117,7 @@ app.use('/admin', adminRouter);
 
 Using multiple route handlers for a Twitter clone:
 
-```
+```javascript
 const getUser = function (req, res, next) {
   const userId = req.params.userId;
   const user = User.get(userId);
@@ -165,7 +165,7 @@ app.get('/popular', function (req, res) {
 
 An example of logging requests with a middleware:
 
-```
+```javascript
 app.use(function (req, res, next) {
     console.log("Request at", new Date());
     console.log("URL:", req.url);
@@ -176,7 +176,7 @@ app.use(function (req, res, next) {
 
 An example of setting a header. The `Server` header is the name of the server.
 
-```
+```javascript
 const setServerName = function (name) {
   return function (req, res, next) {
       res.header("Server", name);
@@ -205,7 +205,7 @@ The `options` object accepts a number of properties.
 
 The following example demonstrates using the `'combined'` format (standard for Apache servers):
 
-```
+```javascript
 var express = require('express')
 var morgan = require('morgan')
 
@@ -220,7 +220,7 @@ app.get('/', function (req, res) {
 
 This example demonstrates using a conditional statement to check whether the app is running in the `'dev'` environment or in `'production'`. While in production morgan is using the `'common'` format and passing an `options` object. The `options` object, in this case, is set to skip logging if the response status code is less than `400` and stream logs to an external file: (__dirname + '/../morgan.log'). While in development morgan uses the `'dev'` format.
 
-```
+```javascript
 var express = require('express')
 var morgan = require('morgan')
 
