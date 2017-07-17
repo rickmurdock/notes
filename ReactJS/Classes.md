@@ -32,13 +32,13 @@ allowed `Apple` to inherit from the prototypal chain of the `Fruit` constructor.
 
 Classes are syntactic sugar for JavaScript constructors. They provide a means to create objects and deal with inheritance. Classes are special functions that can be expressions or declarations as with any function. Let's take a look at a class declaration. Below is a list of keywords we'll need to know moving forward.
 
-* class
+* `class`
 
-* constructor
+* `constructor`
 
-* extends
+* `extends`
 
-* super
+* `super`
 
 We'll also be taking note of JavaScript's hoisting properties and sub-classes
 
