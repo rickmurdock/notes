@@ -50,15 +50,27 @@ check that we are in the directory that we want to create a project folder insid
 
 * Once we are sure that we are in the right place, we can use the following command to initiate and create a React application.
 
+```
 create-react-app the-name-of-my-application-here
-Just to clarify, after we type *Create React App*, we provide a space, and the name of the folder that we wish our application to be created inside of.
+```
 
-After this builds, we must actually open our project folder. We do so with the following code:
+*Just to clarify, after we type* *Create React App*, *we provide a space, and the name of the folder that we wish our application to be created inside of*.
+
+* After this builds, we must actually open our project folder. We do so with the following code:
+
+```
 cd the-name-of-my-application-here
-Once inside, we can open our project using our code editor, if using Atom, the following command will open our application. (Be sure you are inside of your project folder)
+```
+
+* Once inside, we can open our project using our code editor, if using Atom, the following command will open our application. (Be sure you are inside of your project folder)
+
+```
 atom .
+```
+
 Once Atom is launched, you'll see the layout of what was installed in your project folder. It should look something like this:
 
+```
 my-app/
   README.md
   node_modules/
@@ -74,27 +86,37 @@ my-app/
     index.css
     index.js
     logo.svg
-It is important to note that when the create-react-app command runs, the name given to the folder is also used as the name property for your project in the newly created package.json.
-Development Server  
+```
+
+> It is important to note that when the create-react-app command runs, the name given to the folder is also used as the name property for your project in the newly created package.json.
+
+### Development Server  
 
 We can now also open up our development server. The development server will track changes as we create our application. Each time we save our application the development server will automatically update in the browser and show us our changes.
 
 To get the development server up and running we need to type the following command in the project folder:
 
+```
 npm start
-The above command should open up a browser window with your project ready to go and watching for changes. If it doesn't open automatically, however, you can enter the following address in your browser "http://localhost:3000". We're now ready to start building our React app.
-Monitoring Changes  
+```
+
+* The above command should open up a browser window with your project ready to go and watching for changes. If it doesn't 
+open automatically, however, you can enter the following address in your browser "http://localhost:3000". We're now ready 
+to start building our React app.
+
+### Monitoring Changes  
 
 React creates something called the "Virtual DOM". The Virtual DOM is a lightweight version of the DOM detached from the browser-specific implementation details. React works by constantly comparing the Virtual DOM to the actual DOM of our application. When React sees a change it automatically re-renders the application for us. Data being received, data being given by a user, interface animations, all of these change the DOM. React listens and renders the application accordingly.
 
-Translating HTML into JSX  
+## Translating HTML into JSX  
 
 Most common practice is to create an HTML page with one <div id="root"></div> inside the body of the HTML document. This <div> is the source for the entire application. That's really all of the HTML you are going to need to write. The rest of our project is going to be made up of components and JavaScript. The components are written in the language of JSX, which is XML syntax combined with JavaScript. It should be noted that you can use vanilla JavaScript to create components, but JSX makes the project much more streamlined, elegant and prevents us from directly incorporating vanilla HTML into our JavaScript files.
 
-Demo App  
+### Demo App  
 
 Let's create a simple app to get started exploring React. We'll focus on the translation of HTML into JavaScript and how we tackle getting started with our Create React App format. Let's first look at boilerplate HTML below. This code is the beginnings of an application that allows you to input your favorite Bill Murray movie and displays something about it depending on what the input was.
 
+```html
 <body>
   <nav class="navbar">
     <h1 class="title">Favorite Murray</h1>
@@ -130,24 +152,33 @@ Let's create a simple app to get started exploring React. We'll focus on the tra
   </div>
   <script src="js/bundle.js"></script>
 </body>
-Setup and Writing JSX  
+```
+
+## Setup and Writing JSX  
 
 The three documents we'll focus on in our app are:
 
-public/index.html
-src/index.js
-src/App.js
-public/index.html  
+1. public/index.html
 
-The only concern for us with HTML moving forward is the <div></div> in which our application will be inserted. Create React App has already provided us with HTML to get started and given us the following <div>:
+2. src/index.js
 
+3. src/App.js
+
+### public/index.html  
+
+The only concern for us with HTML moving forward is the `<div></div>` in which our application will be inserted. **Create React App** has already provided us with HTML to get started and given us the following `<div>`:
+
+```html
 <div id="root"></div>
+```
+
 That's all we need to know about this page. We won't write anything else in this document, but just know this is where React will yield our application.
 
-src/index.js  
+### src/index.js  
 
 This is our main JavaScript file. Inside of this file you'll see very little written already by our Create React App setup. We won't touch this file any further, but let's examine what's going on inside below.
 
+```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -156,19 +187,26 @@ import './index.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
+```
+
 Let's take a look at a few of the import statements at the top of this file. The first line imports React into our project. All React projects will begin with this import. The second line imports ReactDOM. ReactDOM is the glue that holds our React project and the DOM together. We use the ReactDOM to render our application and tell it where to insert itself into the DOM.
 
 In our ReactDOM statement above you can see that we call:
 
+```
 ReactDOM.render(<App />, document.getElementById('root'));
-This line of code states that we want to use our <App /> and insert it into the HTML page at the element with an ID of root. We've already looked at our HTML and saw the <div id="root"> tag in the body. ReactDOM will render the <App /> tag inside of the <div id="root">.
+```
 
-The 3rd line contains the importing of our app from the src/App.js file. This allows us to call our app inside the index.js and render it using ReactDOM.
+This line of code states that we want to use our `<App />` and insert it into the HTML page at the element with an ID of `root`. We've already looked at our HTML and saw the `<div id="root">` tag in the body. ReactDOM will render the `<App />` 
+tag inside of the `<div id="root">`.
 
-src/App.js  
+The 3rd line contains the importing of our app from the `src/App.js` file. This allows us to call our app inside the `index.js` and render it using ReactDOM.
 
-The final piece of the puzzle is the App.js file. The App.js file has already been setup to get us started. Let's take a look at what's included below.
+### src/App.js  
 
+The final piece of the puzzle is the `App.js` file. The `App.js` file has already been setup to get us started. Let's take a look at what's included below.
+
+```javascript
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -190,6 +228,8 @@ class App extends Component {
 }
 
 export default App;
+```
+
 We're already familiar with classes and extending, as well as importing, so none of this should be too confusing. Let's break it down below so we can get started.
 
 At the top, we import React, and the Component library from React in the first statement import React, { Component } from 'react';. We also import a logo and our style sheet, which we won't be covering in this lesson. The App class extends (inherits) from the React.Component library. We'll call a render method on that component, and return our first JSX.
