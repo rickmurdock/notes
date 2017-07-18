@@ -155,48 +155,80 @@ heroku open
 
 heroku_1.jpeg
 
-Next, give your app a name or a random name will be generated.
+* Next, give your app a name or a random name will be generated.
 
-Select the appropriate 'Deployment method'. Since we covered the Heroku CLI method already, select 'connect to GitHub'.
+* Select the appropriate 'Deployment method'. Since we covered the `Heroku CLI` method already, select 
+**'connect to GitHub'**.
 
 heroku_method.jpeg
-Search for and select (click on 'connect') your repository from 'Connect to GitHub'.
+
+* Search for and select (click on **'connect'**) your repository from **'Connect to GitHub'**.
+
 heroku_github.png
-Then, select 'Enable Automatic Deploys' from 'Automatic deploys'.
+
+* Then, select **'Enable Automatic Deploys'** from **'Automatic deploys'**.
+
 heroku_autodeploy.jpeg
-Select 'Deploy Branch' from 'Manual deploy'.
+
+* Select **'Deploy Branch'** from **'Manual deploy'**.
+
 heroku_manuldeploy.jpeg
-Finally, open your app by selecting 'view'.
-Provisioning add-ons  
 
-From the Heroku console, select the desired app.
-Under 'Resources' look for the desired resource using the 'add-ons' search box, for example: mongo.
-Select, for example, 'mLab MongoDB'.
-Select 'Sandbox -- Free' under 'Plan Name'.
-Then, select 'provision'.
-Configuring And Accessing App Environmental Variables  
+* Finally, open your app by selecting **'view'**.
 
-Many APIs require certain variables in order to operate, such as API keys, secrets, tokens, etc. There are two ways to set these variables.
+### Provisioning add-ons  
 
-Heroku CLI  
+* From the `Heroku` console, select the desired app.
 
-Setting variables:
+  * Under **'Resources'** look for the desired resource using the 'add-ons' search box, for example: mongo.
+  
+  * Select, for example, 'mLab MongoDB'.
+  
+  * Select 'Sandbox -- Free' under **'Plan Name'**.
+  
+  Then, select **'provision'**.
+  
+## Configuring And Accessing App Environmental Variables  
+
+Many `APIs` require certain variables in order to operate, such as `API` keys, secrets, tokens, etc. There are two ways to set these variables.
+
+### Heroku CLI  
+
+* Setting variables:
+
+```
 $ heroku config:set VARIABLE_NAME=VALUE
-Then, do the following to set the variables in the app.
+```
+
+* Then, do the following to set the variables in the app.
+
+```
 $ heroku local
-Viewing variables
+```
+
+* Viewing variables
+
+```
 $ heroku config
-Manually  
+```
 
-Select the desired app.
-Under 'Settings' select Reveal Config Vars ('Config Variables')
-Enter the required configuration variables, such as API key, secrets, etc.
+### Manually  
+
+* Select the desired app.
+
+* Under **'Settings'** select **Reveal Config Vars** ('Config Variables')
+
+  * Enter the required configuration variables, such as API key, secrets, etc.
+  
 heroku_env.jpeg
-Accessing the variables  
 
-In this example we created the following environmental variable: API_KEY=foo
+### Accessing the variables  
+
+* In this example we created the following environmental variable: API_KEY=foo
+
 Example
 
+```javascript
 app.get('/example', function(request, response) {
     var result = ''
     var key = process.env.API_KEY;
@@ -205,50 +237,75 @@ app.get('/example', function(request, response) {
     }
   res.send('Successfully connected to API');
 });
-Lesson Footnotes
-1: Heroku
-Sending Emails with SendGrid  
+```
 
-Terminology  
+#### Lesson Footnotes
 
-SendGrid: cloud-based SMTP provider.
+* 1: [Heroku](https://www.heroku.com/what)
 
-Setup and Installation  
+---
 
-Register for a trial SendGrid account.
-Login and retrieve your API key from 'settings' in the dashboard.
-Install SendGrid in your project directory: $ npm install sendgrid --save
-SendGrid API  
+# Sending Emails with SendGrid  
 
-See docs for full implementation details.
-Node.js implementation with mail helper class and without mail helper class.
-Basic Implementation  
+## Terminology  
 
-In this example we use the 'mail helper class'.
-Context  
+`SendGrid`: cloud-based SMTP provider.
 
-An app that uses a basic form to send emails.
-Email form:
+## Setup and Installation  
+
+* Register for a trial [SendGrid account.](https://app.sendgrid.com/signup?id=71713987-9f01-4dea-b3d4-8d0bcd9d53ed&co=true)
+
+  * Login and retrieve your API key from 'settings' in the dashboard.
+
+* Install SendGrid in your project directory: `$ npm install sendgrid --save`
+
+## SendGrid API  
+
+* See [docs](https://sendgrid.com/docs/API_Reference/api_v3.html) for full implementation details.
+
+  * [Node.js implementation with mail helper class and without mail helper class.](https://github.com/sendgrid/sendgrid-nodejs)
+  
+## Basic Implementation  
+
+* In this example we use the 'mail helper class'.
+
+### Context  
+
+* An app that uses a basic form to send emails.
+
+**Email form:**
 
 sendgrid-send.jpeg
-Confirmation page:
+
+**Confirmation page:**
 
 sendgrid-sent.jpeg
-App Structure  
 
-App
-views
-index.mustache
-sent.mustache
-app.js
-package.json
-Environmental Variable Setup  
+## App Structure  
 
+* `App`
+
+  * `views`
+
+    * index.mustache
+    
+    * sent.mustache
+    
+  * app.js
+  
+  * package.json
+  
+## Environmental Variable Setup  
+
+```
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
 echo "sendgrid.env" >> .gitignore
 source ./sendgrid.env
-App Setup  
+```
 
+## App Setup  
+
+```javascript
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -313,30 +370,37 @@ var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 app.listen(3000, function () {
   console.log('Successfully started node application!')
 })
-Try it!  
+```
+
+## Try it!  
 
 SendGrid App Example
 
-Storing and retrieving objects in S3 block storage  
+---
 
-Terminology  
+# Storing and retrieving objects in S3 block storage  
 
-S3: stands for simple storage service.
+## Terminology  
 
-Amazon Simple Storage Service (Amazon S3) is object storage with a simple web service interface to store and retrieve any amount of data from anywhere on the web. It is designed to deliver 99.999999999% durability, and scale past trillions of objects worldwide.1
+`S3`: stands for simple storage service.
 
-Bucket: AWS S3 storage resource for storing objects.2
+> Amazon Simple Storage Service (Amazon S3) is object storage with a simple web service interface to store and retrieve any amount of data from anywhere on the web. It is designed to deliver 99.999999999% durability, and scale past trillions of objects worldwide.1
 
-Bucket names are globally unique.
-Buckets are region specific.
-S3 Storage Methods  
+`Bucket`: `AWS S3` storage resource for storing objects.2
 
-Creating a bucket  
+* Bucket names are globally unique.
 
-For the latest method, see the CreateBucket docs.
+* Buckets are region specific.
 
-Basic bucket creation.
+## S3 Storage Methods  
 
+### Creating a bucket  
+
+* For the latest method, see the CreateBucket docs.
+
+* Basic bucket creation.
+
+```javascript
 var params = {
  Bucket: "examplebucket" /* required */
 };
@@ -344,7 +408,11 @@ s3.createBucket(params, function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
 })
-Advanced bucket creation, specifying access rights and location constraints.
+```
+
+* Advanced bucket creation, specifying access rights and location constraints.
+
+```javascript
 var params = {
   Bucket: 'STRING_VALUE', /* required */
   ACL: private | public-read | public-read-write | authenticated-read,
@@ -361,6 +429,8 @@ s3.createBucket(params, function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
 });
+```
+
 Uploading an object  
 
 For the latest method, see the putObject docs.
