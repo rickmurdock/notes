@@ -34,82 +34,127 @@
   
   * Redundancy: since resources are spread out geographically over multiple servers, it makes it to overcome failures with little or no downtime.
   
-PaaS providers  
+### PaaS providers  
 
-These are some PaaS providers: Amazonw Web Services, Heroku, Google App Engine, Azure, and Mendix.
-Virtual-private-servers  
+* These are some `PaaS` providers: [Amazonw Web Services](https://aws.amazon.com/), [Heroku](https://www.heroku.com/), 
+[Google App Engine](https://cloud.google.com/appengine/), [Azure](https://azure.microsoft.com/en-us/), and [Mendix](https://www.mendix.com/).
 
-A VPS or a virtual personal server is a software-created emulation of a physical server.
-A VPS runs from a powerful host server (running Linux, FreeBSD or Windows) making it possible to run several virtual machines (using virtualization software such as hypervisor), each with their own specific configuration (OS, memory, storage, application, etc) and restricted access to a portion of the physical server's resources.
+###  Virtual-private-servers  
 
-Virtualiztion:
-Containers: it runs on the same OS as the host. It uses software to mimic the functionality of an independent server.
-Hardware virtualization: all hardware components are emulated.
-A dynamic VPS makes it possible to upgrade memory, storage, bandwidth, and processor while the server is running.
-Upon signing up for the service, a user is assigned root administrative privileges and has full control over the server.
-The user then selects the desired OS and subsequently can customize the server, and install, uninstall or update any OS compatible software.
-Hosting:
-A user can host multiple websites, such as a development website and a production website simultaneously.
-A user can host services such as e-commerce, a mail server, or File Transfer Protocol.
-A VPS offers a flexible, scalable and affordable service where users have full control over the server, ranging from root access, IPs assignments, self-service reboots, and flexible OS switching.
+* A `VPS` or a `virtual personal server` is a software-created emulation of a physical server.
 
-On the flip side, performance can be an issue. In some cases some VM's might consume too many resources affecting the performance of adjacent VM's. Some VPS providers may throttle a server's performance in order to maximize the number of VM's running on the server. A VPS is also more expensive than shared hosting.
+* A `VPS` runs from a powerful host server (running Linux, FreeBSD or Windows) making it possible to run several `virtual 
+machines` (using virtualization software such as `hypervisor`), each with their own specific configuration (OS, memory, storage, application, etc) and restricted access to a portion of the physical server's resources.
 
-Even though scalable (vertical or horizontal), the process is more involved that with PaaS, which can be scaled through a CLI or web portal.
+  * **Virtualiztion**:
+  
+    * `Containers`: it runs on the same OS as the host. It uses software to mimic the functionality of an independent server.
 
-More importantly, compared to PaaS, the user manages and maintains the system.
+    * `Hardware virtualization`: all hardware components are emulated.
+    
+  * A dynamic `VPS` makes it possible to upgrade memory, storage, bandwidth, and processor while the server is running.
 
-VPS providers  
+  * Upon signing up for the service, a user is assigned root administrative privileges and has full control over the server.
 
-Some VPS providers: Digital Ocean, Linode.
-Deploying A Node application on Heroku  
+    * The user then selects the desired OS and subsequently can customize the server, and install, uninstall or update any OS compatible software.
+    
+  * **Hosting**:
+  
+    * A user can host multiple websites, such as a development website and a production website simultaneously.
 
-Terminology  
+    * A user can host services such as e-commerce, a mail server, or File Transfer Protocol.
 
-Heroku: a cloud platform as a service used for the deployment of web applications.1
+* A `VPS` offers a flexible, scalable and affordable service where users have full control over the server, ranging from root access, IPs assignments, self-service reboots, and flexible OS switching.
 
-Heroku Account  
+* On the flip side, performance can be an issue. In some cases some `VM`'s might consume too many resources affecting the performance of adjacent `VM`'s. Some `VPS` providers may throttle a server's performance in order to maximize the number of `VM`'s running on the server. A `VPS` is also more expensive than `shared hosting`.
 
-Create a Heroku Account.
-Deployment Using The Heroku CLI  
+* Even though scalable (vertical or horizontal), the process is more involved that with `PaaS`, which can be scaled through a CLI or web portal.
 
-Prerequisite  
+* More importantly, compared to `PaaS`, **the user manages and maintains the system**.
 
-Create a local repository of your project.
-Install the Heroku Command Line Interface (CLI).
-Download it here.
-Login to Heroku using the Heroku CLI.
+*** VPS providers  
+
+* Some `VPS` providers: [Digital Ocean](https://www.digitalocean.com/), [Linode](https://www.linode.com/).
+
+---
+
+# Deploying A Node application on Heroku  
+
+## Terminology  
+
+`Heroku`: a `cloud platform as a service` used for the deployment of web applications.1
+
+## Heroku Account  
+
+* Create a [Heroku Account](https://signup.heroku.com/).
+
+## Deployment Using The Heroku CLI  
+
+### Prerequisite  
+
+* Create a local repository of your project.
+
+* Install the Heroku Command Line Interface (CLI).
+
+  * Download it [here](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up).
+  
+* Login to Heroku using the Heroku CLI.
+
+```
 $ heroku login
 Enter your Heroku credentials.
 Email: zeke@example.com
 Password:
 ...
-Deploying to Heroku  
+```
 
-cd into the project directory.
+### Deploying to Heroku  
 
-Create the app on Heroku:
+* `cd` into the project directory.
 
+* Create the app on Heroku:
+
+```
 heroku create
-This creates a git remote (named heroku), which is associated with the local git repository.
-Heroku also generates a random name for the app. To add a name of your choice, simply add it to the end of the command: $ heroku create APP-NAME
+```
 
-Then, deploy the app:
+* This creates a git remote (named `heroku`), which is associated with the local git repository.
 
+* Heroku also generates a random name for the app. To add a name of your choice, simply add it to the end of the command: 
+`$ heroku create APP-NAME`
+
+* Then, deploy the app:
+
+```
 git push heroku master
-Ensure that an instance of the app is running:
+```
+
+* Ensure that an instance of the app is running:
+
+```
 heroku ps:scale web=1
-Open the app:
+```
+
+* Open the app:
+
+```
 heroku open
-Provisioning add-ons and databases  
+```
 
-Provisioning add-ons.
-Provisioning a database.
-Manual Deployment  
+### Provisioning add-ons and databases  
 
-Login to your Heroku account and then head over to 'apps'.
-Click on new and then, create new app.
+* [Provisioning add-ons.](https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-add-ons)
+
+* [Provisioning a database.](https://devcenter.heroku.com/articles/getting-started-with-nodejs#provision-a-database)
+
+## Manual Deployment  
+
+* Login to your Heroku account and then head over to 'apps'.
+
+* Click on new and then, create new app.
+
 heroku_1.jpeg
+
 Next, give your app a name or a random name will be generated.
 
 Select the appropriate 'Deployment method'. Since we covered the Heroku CLI method already, select 'connect to GitHub'.
