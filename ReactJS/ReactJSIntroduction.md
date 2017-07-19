@@ -805,7 +805,7 @@ return (
 
 The resulting product is pretty amazing, React renders each scientist in it's own `<div>` on our page!
 
-science.png
+![scientists](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/science.png)
 
 ## Conclusion  
 
