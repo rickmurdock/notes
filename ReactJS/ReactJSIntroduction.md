@@ -88,7 +88,7 @@ my-app/
     logo.svg
 ```
 
-> It is important to note that when the create-react-app command runs, the name given to the folder is also used as the name property for your project in the newly created package.json.
+> It is important to note that when the `create-react-app` command runs, the name given to the folder is also used as the `name` property for your project in the newly created `package.json`.
 
 ### Development Server  
 
@@ -364,7 +364,7 @@ function Welcome(props) {
   );
 }
 ```
-The use of { } allows for pure JavaScript to be inserted into the JSX, and in this case assumes that somewhere data with a name property is being passed along.
+The use of `{ }` allows for pure JavaScript to be inserted into the JSX, and in this case assumes that somewhere data with a name property is being passed along.
 
 We can also write Components using the new ES2015 classes, that same function above would now be written as the following :
 
