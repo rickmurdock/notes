@@ -235,12 +235,17 @@ We're already familiar with classes and extending, as well as importing, so none
 At the top, we import React, and the Component library from React in the first statement import React, { Component } from 'react';. We also import a logo and our style sheet, which we won't be covering in this lesson. The App class extends (inherits) from the React.Component library. We'll call a render method on that component, and return our first JSX.
 
 In a return statement a component can only render one div or piece of JSX. Everything must be contained within that div. Let's take a look below.
+
+```javascript
 return (
   <div></div>
   <div></div>
 )
-The above code is invalid because everything needs to be in one container. For what we're after, we can go ahead and delete everything so we're left with the following:
+```
 
+**The above code is invalid** because everything needs to be in one container. For what we're after, we can go ahead and delete everything so we're left with the following:
+
+```javascript
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -256,12 +261,15 @@ class App extends Component {
 }
 
 export default App;
+```
+
 Since we are writing in JavaScript (JSX), reserved words such as class can not be used. If we want to give a class name to our JSX tags, they must be camelCased into className. In general, any HTML attributes will be camelCased in JSX. The HTML for attribute is also a reserved word in JavaScript, so it becomes htmlFor.
 
 All single line tags such as <img > and <input > must become self-closing tags in JSX. In JSX all tags must have a closing tag or be self-closing. The two examples above would now be written as <img /> and <input />. If you think back to our index.js file, you would notice that our <App /> tag was self-closing too.
 
 Let's see our app in JSX below.
 
+```javascript
 class App extends Component {
   render() {
     return (
@@ -304,10 +312,11 @@ class App extends Component {
 }
 
 export default App;
+```
 
 By exporting our App and then importing into our index.js, we can see the power of React in a Single Page Application. This lesson barely scratches the surface of what React has to offer, but hopefully, it demonstrates how easy it is to get started.
 
-Conclusion  
+## Conclusion  
 
 Create React App is installed with the npm install -g create-react-app command.
 To get a project started simply use the create-react-app my-app-folder-name command.
@@ -319,6 +328,9 @@ JSX requires camelCasing and special words to take place for reserved words such
 References  
 
 React Docs
+
+---
+
 - Create React App Docs  
 
 -  
@@ -345,15 +357,18 @@ In our App, we had just one component. In an ideal application, components are r
 
 Components can actually be defined as a function :
 
+```javascript
 function Welcome(props) {
   return (
     <h1>Hello, {props.name}</h1>
   );
 }
+```
 The use of { } allows for pure JavaScript to be inserted into the JSX, and in this case assumes that somewhere data with a name property is being passed along.
 
 We can also write Components using the new ES2015 classes, that same function above would now be written as the following :
 
+```javascript
 class Welcome extends Component {
   render() {
     return (
@@ -361,6 +376,8 @@ class Welcome extends Component {
     );
   }
 }
+```
+
 These two examples are the same essentially, but ES2015 classes give us a bit more functionality that we will visit later.
 
 Nesting Components - A look at Component hierarchy  
@@ -369,6 +386,7 @@ We've touched on the fact that our components should really be accountable for u
 
 The first step of building React applications requires looking at the big picture, a wireframe or something along those lines. Let's take a look at the Favorite Murray website again - we are looking only at the most simplistic of ideas to make sure the complicated concept of nesting will hatch some understanding.
 
+```javascript
 class App extends Component {
   render() {
     return (
@@ -411,24 +429,33 @@ class App extends Component {
 }
 
 export default App;
+```
+
 The way to think about Components is to divide your application into pieces - each of which should be responsible for a certain portion of the app and independent of the others. There also will be one main component that will be responsible for all of the other components.
 
 Let's take a look at what would be rendered on the screen from our code above, and then break it in to separate pieces using colored boxes, and a dashed outer line to represent the entire main app component.
 
 favoritemurray.jpg
-In pink we have highlighted our very simple navigation bar.
-In light blue we highlighted our top <div>.
-In purple we highlighted our bottom <div>.
-And in orange we highlighted our <div> containing our form.
-Around the outside of all it, we have our dashed line. As our application stands right now, we currently are just using that dashed box to render our entire document with the <App /> component.
+
+* In pink we have highlighted our very simple navigation bar.
+
+* In light blue we highlighted our top `<div>`.
+
+* In purple we highlighted our bottom `<div>`.
+
+* And in orange we highlighted our `<div>` containing our form.
+
+* Around the outside of all it, we have our dashed line. As our application stands right now, we currently are just using that dashed box to render our entire document with the `<App />` component.
+
 So Let's see how we can break these into individual pieces. Let's first create our navigation <div>.
 
-The Nav  
+### The Nav  
 
 If we want to create a component for our navigation we need to pull it out of the current App div.
 
 Just above the App class, we can create a new class for our navigation.
 
+```javascript
 class Navigation extends Component {
   render() {
     return (
@@ -438,6 +465,8 @@ class Navigation extends Component {
     );
   }
 }
+
+```
 
 Now back inside of our App component we can nest our Navigation component back in...
 
