@@ -665,7 +665,7 @@ You can see that we imported the `<TopPara />` and `<BottomPara />` components i
 
 Now let's take a look at the overall file structure of our App from inside of our `<App />` component file : "App.js"
 
-app.png
+![React App structure](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/reactAppStructure.png)
 
 On the left you can see the file tree, with the Components folder containing all of our new component files. Inside of App.js you can see how we imported those components back into our App.js file.
 
