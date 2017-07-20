@@ -62,3 +62,5 @@ Lecture notes from The Iron Yard
 * [Classes](https://github.com/rickmurdock/notes/blob/master/ReactJS/Classes.md)
 
 * [Modules and Build Tools](https://github.com/rickmurdock/notes/blob/master/ReactJS/ModulesAndBuildTools.md)
+
+* [ReactJS: Working wth Props and State](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactJSWorkingWithPropsandState.md)
