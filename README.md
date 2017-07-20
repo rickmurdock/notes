@@ -3,7 +3,7 @@ Lecture notes from The Iron Yard
 
 ## Front-End Fundamentals
 
-*  Basic Computer and Terminal Skills
+* Basic Computer and Terminal Skills
 
 * HTML Overview and Basic Elements
 
@@ -13,7 +13,25 @@ Lecture notes from The Iron Yard
 
 * CSS Layout & Fonts
 
-*
+* CSS Layout and Flexbox
+
+* Responsive Web Design
+
+* Creating HTML Forms and Inspecting Your Code
+
+* Version Control with Git
+
+* Lesson: Functions and Complex Expressions
+
+* Creating Arrays and Loops 
+
+* Using JavaScript to Modify HTML
+
+* Building Objects and Maintaining Proper Scope
+
+* Algorithms and Data Modeling
+
+* Working with Remote Data (Part 2)
 
 --- 
 
