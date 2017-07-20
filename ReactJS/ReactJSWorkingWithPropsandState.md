@@ -117,65 +117,75 @@ In React, a component is used to organize everything that needs to be displayed 
 
 The main responsibility of a component is to translate raw data into rich HTML, so together the props and the state make up the raw data that the HTML output derives from.
 
-You could say props + state = the input data for the render function of a component.
+You could say props + state = the input data for the `render` function of a component.
 
-Simply put, props are a way of passing data from parent to child. State is for data that changes over time.
+Simply put, **props are a way of passing data from parent to child. State is for data that changes over time.**
 
 Of course, it's a little more complex than this, so lets dive deeper.
 
-Common ground
+**Common ground**
 
 Before separating props and state, let's also identify where they overlap.
 
-Both props and state are plain JavaScript objects
-Both props and state changes trigger a render update
-Does this go inside props or state?
+* Both props and state are plain JavaScript objects
+
+* Both props and state changes trigger a render update
+
+**Does this go inside props or state?**
 
 If a component needs to alter one of its attributes at some point in time, that attribute should be part of its state, otherwise it should just be a prop for that component.
 
-Props  
+## Props  
 
-props (short for properties) are a component's configuration. They are received from above and immutable as far as the Component receiving them is concerned. Phrased differently, props are are the options of the component.
+*props* (short for properties) are a component's configuration. They are received from above and immutable as far as the Component receiving them is concerned. Phrased differently, props are are the options of the component.
 
 A component cannot change its props, but it is responsible for putting together the props of its child components.
 
-State  
+## State  
 
 The state starts with a default value when a component mounts, and then undergoes mutations with time (mostly generated from user events). It's a serializable representation of one point in time — a snapshot. Since it's common to pass down callback functions through props, props are not serializable.
 
 A component manages its own state internally, but doesn't change the state of its children. You could say the state is private.
 
-Should this component have state?
+**Should this component have state?**
 
 It's important to remember that state is optional. Since state increases complexity and reduces predictability, a component without state is preferable. Even though you clearly can't do without state in an interactive app, you should avoid having too many stateful components.
 
 COMPONENT TYPES
 
-Stateless Component — A stateless component has only props, no state. There's not much going on besides the render() function and all their logic revolves around the props they receive. This makes them very easy to follow (and test for that matter). We sometimes call these dumb components.
-Stateful Component — A statefull component has both props and state. We also call these state managers. They are in charge of client-server communication, processing data and responding to user events. We sometimes call these smart components. These sort of logistics should be encapsulated in a moderate number of stateful components, while all visualization and formatting logic should move downstream into as many stateless components as possible.
-Conclusion  
+* **Stateless Component** — A stateless component has only props, no state. There's not much going on besides the render() function and all their logic revolves around the props they receive. This makes them very easy to follow (and test for that matter). We sometimes call these dumb components.
+
+* **Stateful Component** — A statefull component has both props and state. We also call these state managers. They are in charge of client-server communication, processing data and responding to user events. We sometimes call these smart components. These sort of logistics should be encapsulated in a moderate number of stateful components, while all visualization and formatting logic should move downstream into as many stateless components as possible.
+
+## Conclusion  
 
 Props and state both deal with relating information to the component. Props holds information that is set by the parent component, passed down to its children, and does not change. State holds information that changes over time, and the component has the ability to create, update and use state with the help of lifecycle methods.
 
-References  
+### References  
 
-Lucy Bain
+[Lucy Bain](http://lucybain.com/blog/2016/react-state-vs-pros/)
 
-Implementing a Form on a React Component  
+---
+
+# Implementing a Form on a React Component  
 
 By now you should have a grasp on some basic fundamentals of React. How do we begin to add functionality to our app? We want to be able to capture the user's input and have the app react accordingly. Forms are a great tool to do this. Forms in React are a little different, in that the HTML form elements already hold some internal state. Let's start by making a simple form to collect the user's name. We'll go through the process of creating the form step by step, and then put it all together at the end.
 
-Collecting Input  
+## Collecting Input  
 
 To collect input from the user you'll first you need to create a Form component. Since we expect the data to change, we will use state to manage the input (rather than props). When we first create the component we can initialize the state of the component. You'll remember from previous lessons and exercises that we create a React component by extending it on a class. We then use the constructor method to initialize the state and include the super function to ensure that the value of this points to the parent constructor class.
 
+```javascript
 class Form extends React.Component {
   constructor(props){
     super(props)
   }
 }
+```
+
 Components must always have a render function. This tells React what to display in the DOM. The render function should return a single React element. We could write it like this:
 
+```javascript
 render(){
   return (
     <form>
@@ -183,8 +193,11 @@ render(){
     </form>
   )
 }
+```
+
 However, this would mean that the value is always set to "name" and cannot be changed by the user. To allow the user to change the value, we can make it dynamic by allowing it to be updated from the state:
 
+```javascript
 render(){
   return (
     <form>
@@ -192,17 +205,23 @@ render(){
     </form>
   )
 }
+```
+
 In order for React to know when a user changes the value of the state for that element, we need to add an event handler to capture the change:
 
+```javascript
 handleNameChange(event){
   this.setState({name: event.target.value})
 }
+```
+
 The event handler is placed in the code above the render method. The event in this case is the user typing into the input form. The event is then passed into the handler and targets the value changed in the event by using the setState method to update the state with the changed value.
 
 You can name event handlers whatever you'd like, but general best practice is to use the word 'handle' along with the change that it's dealing with. Ours is handleNameChange.
 
 But wait, how is the handleNameChange function called? We need to use the onChange event listener to call the handleNameChange function when a change event is fired from our input field. The handleNameChange function will capture the change in input.
 
+```javascript
 render(){
   return (
     <form>
@@ -213,11 +232,17 @@ render(){
     </form>
   )
 }
+```
+
 Now that we've added the handleNameChange function, we need to bind it to the scope of the component. If we forget to bind this to the handler being called on the component, it will cause an error as this will be undefined.
 
+```javascript
 this.handleNameChange = this.handleNameChange.bind(this);
+```
+
 The above code needs to be written inside the constructor method of the component. Since the constructor method is where we set the initial state, we can set the state of the name input to an empty string, as we are expecting the input to be text. Let's put those both into the constructor:
 
+```javascript
 class Form extends React.Component {
   constructor(props){
     super(props)
@@ -226,12 +251,17 @@ class Form extends React.Component {
     this.state = {name: ''};
   }
 }
+```
+
 Our form is coming along nicely, but we're missing one thing. Since this is a form, a user should expect to submit upon hitting enter. Let's create an event handler to handle the form submission and show the user an alert when it happens:
 
+```javascript
 handleSubmit(event){
   event.preventDefault();
   alert('Thank you, ' + this.state.name + ' your name was submitted');
 }
+```
+
 Note that we used the special event.preventDefault() method here. Most people's natural tendency is to hit the enter button after typing in some text. Most of the time you will have more than one input field in a form, and the default behavior when hitting the enter key is that the form is submitted. You would not want this to happen if there are fields the user still needs to fill out before submitting. It's best to get in the habit of placing this function in your handleSubmit to avoid submitting the form early.
 
 Now that we have the handleSubmit method we need to add an event listener to our form. Using the React onSubmit event listener, we will call the handleSubmit method when the form is submitted via <input type="submit" value="Submit" />.
