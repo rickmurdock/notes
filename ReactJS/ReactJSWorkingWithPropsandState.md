@@ -81,28 +81,37 @@ Unmounting is when a component is removed from the DOM.
 
 The following method can be called in relation to component unmounting.
 
-componentWillUnmount
-Invoked immediately before a component is unmounted and destroyed.
-Other methods  
+* `componentWillUnmount`
 
-setState
-This is the primary method used to update the user interface in response to event handlers and server responses. setState causes the component and its children to be re-rendered. Note that changing state using setState is asynchronous, so it does not always immediately update the component.
-forceUpdate
-Will cause the component to re-render. Use if your render method depends on other data and you want to force this component to render. You should try to avoid using this method.
-Conclusion  
+  * Invoked immediately before a component is unmounted and destroyed.
+  
+### Other methods  
+
+* `setState`
+
+  * This is the primary method used to update the user interface in response to event handlers and server responses. setState causes the component and its children to be re-rendered. Note that changing state using setState is asynchronous, so it does not always immediately update the component.
+  
+* `forceUpdate`
+
+  * Will cause the component to re-render. Use if your render method depends on other data and you want to force this component to render. You should try to avoid using this method.
+
+## Conclusion  
 
 The component lifecycle allows us to exert control over the way React applies updates to the DOM. Data flows downward, from parent component to its children. The three main steps of the lifecycle process are mounting, updating, and unmounting. The virtual DOM is re-rendered any time there is an update, but only with the changed elements. We have touched on props and state here, but will delve deeper into the differences in the next lesson.
 
-References/Resources  
+### References/Resources  
 
 react-and-flux-life-cycle-with-jsx-react-router-and-jest-unit-testing-4-638.jpg
-React Lifecycle
 
-React cheatsheet
+[React Lifecycle](https://facebook.github.io/react/docs/react-component.html)
 
-React lifecycle cheatsheet
+[React cheatsheet](https://reactcheatsheet.com/)
 
-State and Props in React Components  
+[React lifecycle cheatsheet](https://gist.github.com/monicao/243958d7498ed9fabe78)
+
+---
+
+# State and Props in React Components  
 
 In React, a component is used to organize everything that needs to be displayed (rendered) in the DOM. By using component lifecycle methods, we can exert control over the way things are rendered. Component lifecycle methods all operate on either the props or state of a component. But what does that mean?
 
@@ -231,6 +240,7 @@ The last bit we need to add is the same thing we did with our other event handle
 
 Here is the final version of the component in it's entirety:
 
+```javascript
 class Form extends React.Component {
   constructor(props){
     super(props);
@@ -259,11 +269,14 @@ class Form extends React.Component {
     )
   }
 }
-Conclusion  
+```
 
-When making a form in React, you can connect the input changes to the state. Initialize the state in the constructor method. Target any changes, as well as the submittal of the form, with an event handler. Use the setState() method to update the state and re-render. Make sure to bind the event handlers to this in the constructor method. Don't forget to use the preventDefault() function to avoid early submittal of the form.
+## Conclusion  
 
-References  
+When making a form in React, you can connect the input changes to the state. Initialize the state in the constructor method. Target any changes, as well as the submittal of the form, with an event handler. Use the `setState()` method to update the state and re-render. Make sure to bind the event handlers to `this` in the constructor method. Don't forget to use the `preventDefault()` function to avoid early submittal of the form.
 
-Site point
-React Forms
+### References  
+
+* [Site point](https://www.sitepoint.com/work-with-forms-in-react/)
+
+* [React Forms](https://facebook.github.io/react/docs/forms.html)
