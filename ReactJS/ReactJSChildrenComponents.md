@@ -41,7 +41,7 @@ How would `<BaseLayout></BaseLayout>` be able to render any other components tha
 
 ### Use `props.children` 
 
-`{this.props.children}` is used to pass components or elements into a parent component component. A parent component doesn't have any inherent awareness of nested components.
+`{this.props.children}` is used to pass components or *elements* into a parent component component. A parent component doesn't have any inherent awareness of nested components.
 
 `{this.props.children}` allows for a component to render things passed into it, and doesn't require that the component even reside inside of the same script sheet.
 
@@ -158,7 +158,7 @@ children.png
 
 # Passing Data via Props to Child Components  
 
-Let's examine how data is passed around between components. We've already been doing this in previous examples, but now we're going to go more in depth on how these processes work.
+Let's examine how data is passed around between components. We've already been doing this in previous examples, but now we're going to go more in depth on *how* these processes work.
 
 Each component should be responsible for a minimal number of elements and minimal functionality. Data management and distribution throughout a project should be handled by multiple components. We should have a lot of "dumb" components that inherit their properties from "smart" components. Each should be compartmentalized so that the code can be accessed and reused in the project multiple times if need be.
 
