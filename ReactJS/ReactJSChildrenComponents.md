@@ -508,16 +508,17 @@ By writing the code this way, we're taking a method and turning it into an expre
 
 ---
 
-Pass the Function  
+# Pass the Function  
 
-We've looked at passing props from a parent component down to it's children components, but we haven't explored all of the different things that can be passed down as props. Not only can we pass data along from state but we can also pass along functions. We can even pass along functions that are executed on the parent component but fired from the child component.
+We've looked at passing `props` from a parent component down to it's children components, but we haven't explored all of the different things that can be passed down as `props`. Not only can we pass data along from `state` but we can also pass along functions. We can even pass along functions that are executed on the parent component but fired from the child component.
 
-Color Me Badd  
+## Color Me Badd  
 
-React works by constantly checking the state against changes in the DOM. Let's create an app that changes the color of the background when we click a button. We will do so by passing down a function via props and firing from the child component but executing it on the parent component.
+React works by constantly checking the `state` against changes in the DOM. Let's create an app that changes the *color* of the background when we click a button. We will do so by passing down a function via props and firing from the child component but executing it on the parent component.
 
 The first step is the parent component:
 
+```javascript
 //An array of colors for us to randomly sort through and apply to the background color
 let colors = ["blue", "green", "red", "yellow", "orange", "purple", "pink", "tomato"];
 
@@ -542,29 +543,38 @@ export default class App extends Component {
     );
   }
 }
-The first thing we did was create an array, colors, that we could randomly pull from and apply that color to the background color of the desired <div>.
+```
 
-Next we followed the usual suspect list and applied our base constructor with super, both receiving props. This should be a given now.
+The first thing we did was create an array, `colors`, that we could randomly pull from and apply that color to the background color of the desired `<div>`.
 
-We then created a method changeColor:
+Next we followed the usual suspect list and applied our base `constructor` with `super`, both receiving `props`. This should be a given now.
 
+We then created a method `changeColor`:
+
+```javascript
 changeColor() {
   let num = Math.floor(Math.random()* colors.length);
   this.setState({color: colors[num]});
 }
-A quick, but not too deep, look at whats going on inside reveals that we are creating a variable num which will be a number between 0 and the length of our colors array. This means if we add colors or remove colors we will still be randomly picking from the entire array.
+```
 
-Inside of our render method we provided minimal elements to return, including the <ColorMaker /> component.
+A quick, but not too deep, look at whats going on inside reveals that we are creating a variable `num` which will be a number between `0` and the length of our `colors` array. This means if we add colors or remove colors we will still be randomly picking from the entire array.
 
-In the <ColorMaker /> component we pass an onClick property with a value of this.changeColor (referencing our changeColor method in the <App /> component).
+Inside of our `render` method we provided minimal elements to return, including the `<ColorMaker />` component.
 
+In the `<ColorMaker />` component we pass an `onClick` property with a value of `this.changeColor` (referencing our `changeColor` method in the `<App />` component).
+
+```javascript
 <ColorMaker onClick={this.changeColor} />
-With those simple steps we are set up to pass the functions down to <ColorMaker />
+```
 
-Kids with Prop Functions  
+With those simple steps we are set up to pass the functions down to `<ColorMaker />`
+
+### Kids with Prop Functions  
 
 As we saw above, we were able to pass a function as a property attribute to a child component. Let's now take a look at the way we handle that function inside the child component.
 
+```javascript
 class ColorMaker extends Component {
   constructor(props) {
     super(props);
@@ -577,17 +587,22 @@ class ColorMaker extends Component {
     )
   }
 }
-Inside of our <ColorMaker /> component, we see constructor and super.
+```
 
-On our <button> we give it an onClick attribute and set it's value to {this.props.onClick}. The props that we are referring to is the changeColor method from the parent component!
+Inside of our `<ColorMaker />` component, we see `constructor` and `super`.
 
-Here it is in action.
+On our `<button>` we give it an `onClick` attribute and set it's value to `{this.props.onClick}`. The props that we are referring to is the `changeColor` method from the parent component!
 
-Conclusion  
+[Here it is in action.](https://screencast-o-matic.com/watch/cbhZIsXkxP)
 
-Passing a function via props works exactly the same way the passing any other data via props would work.
-The child component can actually call and fire the function on the parent component.
-Using this method allows state to reside in the parent component and not be spread into more components than necessary.
-References  
+## Conclusion  
 
-React Docs
+* Passing a function via `props` works exactly the same way the passing any other data via `props` would work.
+
+* The child component can actually call and fire the function on the parent component.
+
+* Using this method allows state to reside in the parent component and not be spread into more components than necessary.
+
+### References  
+
+[React Docs](https://facebook.github.io/react/docs/state-and-lifecycle.html)
