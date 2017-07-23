@@ -1,7 +1,6 @@
 # Rendering Child Components in React  
 
-Inheritance in React can be a tricky thing. Some components may not even be aware of the children components they will 
-have later on. How do we tackle this problem? Let's take a look.
+Inheritance in React can be a tricky thing. Some components may not even be aware of the children components they will have later on. How do we tackle this problem? Let's take a look.
 
 Consider a component that consists of our navigation bar and our footer that we would like rendered on almost every page.
 
@@ -22,8 +21,7 @@ class BaseLayout extends Component {
 }
 ```
 
-This is a very simplistic view, but let's think about what's going on here. We've got a main `div` that holds both our 
-`nav` and footer elements (which most certainly could be components on their own as well).
+This is a very simplistic view, but let's think about what's going on here. We've got a main `div` that holds both our `nav` and footer elements (which most certainly could be components on their own as well).
 
 What if, at the same time, in our main `App.js` file we had something that looked like this?
 
@@ -39,19 +37,15 @@ class App extends Component {
 }
 ```
 
-How would `<BaseLayout></BaseLayout>` be able to render any other components that needed to go between (inside of) the 
-navigation and footer elements? The majority of our content is likely to live there, but how?
+How would `<BaseLayout></BaseLayout>` be able to render any other components that needed to go between (inside of) the navigation and footer elements? The majority of our content is likely to live there, but how?
 
 ### Use `props.children` 
 
-`{this.props.children}` is used to pass components or elements into a parent component component. A parent component 
-doesn't have any inherent awareness of nested components.
+`{this.props.children}` is used to pass components or elements into a parent component component. A parent component doesn't have any inherent awareness of nested components.
 
-`{this.props.children}` allows for a component to render things passed into it, and doesn't require that the component 
-even reside inside of the same script sheet.
+`{this.props.children}` allows for a component to render things passed into it, and doesn't require that the component even reside inside of the same script sheet.
 
-Let's take a look at how this works and what it means. First, let's pretend that our `<BaseLayout />` component lives in 
-a file called `baselayout.js`.
+Let's take a look at how this works and what it means. First, let's pretend that our `<BaseLayout />` component lives in a file called `baselayout.js`.
 
 ```javascript
 // baselayout.js
@@ -84,9 +78,7 @@ Here is what we have for our `<BaseLayout>` component. A few things to take note
 
 * We again are reminded that only one container (`<div className="base"> </div>`) may be returned in a component.
 
-* We see in the portion that would equate to the "body" of the page that we use brackets {} and pass in 
-`{this.props.children}`. We use the `constructor()` and `super()` functions in order to receive access to the `props` and 
-the `this` object.
+* We see in the portion that would equate to the "body" of the page that we use brackets {} and pass in `{this.props.children}`. We use the `constructor()` and `super()` functions in order to receive access to the `props` and the `this` object.
 
 * Another reminder, We could have written this component as a function:
 
@@ -138,13 +130,11 @@ export default class App extends Component {
 }
 ```
 
-Inside of our `<App />` component, you can see we pass in `<BaseLayout>` from our import statement as a pair of tags 
-(`<BaseLayout> </BaseLayout>`).
+Inside of our `<App />` component, you can see we pass in `<BaseLayout>` from our import statement as a pair of tags (`<BaseLayout> </BaseLayout>`).
 
 Inside of our `<BaseLayout>` tags we are able to pass elements or other components.
 
-Our `baselayout.js` file tells the the `<BaseLayout>` component to expect children elements or components because of our 
-`{this.props.children}` statement.
+Our `baselayout.js` file tells the the `<BaseLayout>` component to expect children elements or components because of our `{this.props.children}` statement.
 
 The output you would expect to see from this simple demonstration (plus very minor styling):
 
@@ -152,14 +142,11 @@ children.png
 
 ## Conclusion  
 
-* We can render child components in React by using `{this.props.children}` or `{props.children}`, depending on if we are 
-creating a `class` or `function`.
+* We can render child components in React by using `{this.props.children}` or `{props.children}`, depending on if we are creating a `class` or `function`.
 
-* `{this.props.children}` allows a component to receive other elements or components without really requiring the component 
-to predict which or what will be rendered.
+* `{this.props.children}` allows a component to receive other elements or components without really requiring the component to predict which or what will be rendered.
 
-* We could use our `<BaseLayout>` tags in multiple pages and be able to render relevant material to each page because we 
-are passing the `{this.props.children}` to the portion of the component we wish those children to be rendered in.
+* We could use our `<BaseLayout>` tags in multiple pages and be able to render relevant material to each page because we are passing the `{this.props.children}` to the portion of the component we wish those children to be rendered in.
 
 * This flexibility leads to more reusable code and the ability to keep our code DRY!
 
@@ -175,7 +162,7 @@ Let's examine how data is passed around between components. We've already been d
 
 Each component should be responsible for a minimal number of elements and minimal functionality. Data management and distribution throughout a project should be handled by multiple components. We should have a lot of "dumb" components that inherit their properties from "smart" components. Each should be compartmentalized so that the code can be accessed and reused in the project multiple times if need be.
 
-The List App  
+## The List App  
 
 The following example will demonstrate passing props between components and the functionality we gain by doing so.
 
@@ -183,13 +170,17 @@ Let's envision an application that writes a list, maybe an attendance-list-maker
 
 Before we even look at the code, let's think about some of the parts the application would need:
 
-It needs a way to enter a student's name with a button to submit that name to a list of students.
-It needs some visual representation of the list. We'll use a simple unordered list for this example.
-When a student's name is entered, it will be pushed into an array of students, and then the array will be passed down to the component that renders the list on our web page.
-The App Build  
+* It needs a way to enter a student's name with a button to submit that name to a list of students.
+
+* It needs some visual representation of the list. We'll use a simple unordered list for this example.
+
+* When a student's name is entered, it will be pushed into an array of students, and then the array will be passed down to the component that renders the list on our web page.
+
+### The App Build  
 
 Let's start with the name input form.
 
+```javascript
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -225,10 +216,13 @@ export default class App extends Component {
     );
   }
 }
+```
+
 There's a lot going on, so let's break this into bite size chunks and tackle them one at a time.
 
-Lets start with the render() method on our <App /> component.
+Lets start with the `render()` method on our `<App />` component.
 
+```javascript
 render() {
   return (
     <div className="class-maker">
@@ -242,14 +236,21 @@ render() {
   );
  }
 }
+```
+
 Let's note of a few details:
 
-We have a <form>that contains a text <input /> and a <input type="submit" /> that functions as our submit button.
-On our form we have a onSubmit property and have given it a value of {this.handleSubmit}. We'll go more into this later. For now, just take note that this is happening.
-On our <input type="text" /> we have an onChange= property that has a value of {this.handleName} and we've given the input itself a value of value={this.state.name}.
-We need that value from the input, because that is how we will grab the name that the teacher types into the input.
-Now let's look at the methods we called on our <App /> component. We've already defined where these methods will be used, now let's define what they do.
+* We have a `<form>` that contains a text `<input />` and a `<input type="submit" />` that functions as our submit button.
 
+* On our form we have a `onSubmit` property and have given it a value of `{this.handleSubmit}`. We'll go more into this later. For now, just take note that this is happening.
+
+* On our `<input type="text" />` we have an `onChange=` property that has a value of `{this.handleName}` and we've given the input itself a value of `value={this.state.name}`.
+
+* We need that value from the input, because that is how we will grab the name that the teacher types into the input.
+
+Now let's look at the methods we called on our `<App />` component. We've already defined where these methods will be used, now let's define what they do.
+
+```javascript
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -271,20 +272,28 @@ export default class App extends Component {
     this.setState({students: this.state.students, name: " "});
   }
 }
-Some takeaways from this portion of our <App /> component:
+```
 
-We have a constructor(props) with super(props) called inside of it. This should be familiar as all components created as a class should have a base constructor that receives props.
-We provide reference to this (the component) with each of the handler methods: this.handleName = this.handleName.bind(this); and this.handleSubmit = this.handleSubmit.bind(this);.
+Some takeaways from this portion of our `<App />` component:
+
+* We have a `constructor(props)` with `super(props)` called inside of it. This should be familiar as all components created as a `class` should have a base constructor that receives props.
+
+* We provide reference to `this` (the component) with each of the handler methods: `this.handleName = this.handleName.bind(this);` and `this.handleSubmit = this.handleSubmit.bind(this);`.
+
 The initial state is being set within the constructor:
 
+```javascript
 this.state = {
   students: [],
   name: " ",
 };
-That lets the component know which properties change in order to keep track of them. In this case, we want it to track an empty array called students and a string called name that is initially empty.
+```
 
-Next, let's look at our methods handleSubmit and handleName.
+That lets the component know which properties change in order to keep track of them. In this case, we want it to track an empty array called `students` and a string called `name` that is initially empty.
 
+Next, let's look at our methods `handleSubmit` and `handleName`.
+
+```javascript
 handleName(e){
   this.setState({name: e.target.value});
 }
@@ -293,24 +302,41 @@ handleSubmit(e) {
   this.state.students.push({studentName: this.state.name});
   this.setState({students: this.state.students, name: " "});
 }
-Inside of handleName we pass an argument e that is our event object. The onChange property listens for changes to the value of the <input /> and fires each time a key stroke is registered.
-We then take the e.target.value which gives us the value correlated to our input and store it in the state of name; this.setState({name: e.target.value});.
-This updates our state which can be retrieved throughout our component at any time.
-handleSubmit is also provided with an event object using the shorthand e.
-This allows us to call the e.preventDefault() method which prevents the form from trying to POST to the server.
-Next, we grab the current state value of our name and push that value into our students array:
+```
+
+* Inside of `handleName` we pass an argument `e` that is our `event` object. The `onChange` property listens for changes to the value of the `<input />` and fires each time a key stroke is registered.
+
+* We then take the `e.target.value` which gives us the value correlated to our input and store it in the `state` of `name`; `this.setState({name: e.target.value});`.
+
+* This updates our `state` which can be retrieved throughout our component at any time.
+
+* `handleSubmit` is also provided with an `event` object using the shorthand `e`.
+
+* This allows us to call the `e.preventDefault()` method which prevents the form from trying to POST to the server.
+
+* Next, we grab the current `state` value of our `name` and `push` that value into our `students` array:
+
+```javascript
 this.state.students.push({studentName: this.state.name});
-We pass the array an object with the property studentName and the value this.state.name. This ensures that each time we hit submit, a new name will be added to our array.
+```
 
-After that, we update the state using setState to make sure our component is re-rendered.
+We pass the array an object with the property `studentName` and the value `this.state.name`. This ensures that each time we hit submit, a new name will be added to our array.
+
+After that, we update the `state` using `setState` to make sure our component is re-rendered.
+
+```javascript
 this.setState({students: this.state.students, name: ""});
-We also update the value of state.name back to an empty string. This clears our input box since its value is the value of this.state.name.
-The <App /> component is concerned with handling and updating the state of the student list. Now let's check out how we get that list to render on our application.
+```
 
-Pass the Props  
+* We also update the value of `state.name` back to an empty string. This clears our input box since its value is the value of `this.state.name`.
 
-Inside of our return statement:
+The `<App />` component is concerned with handling and updating the `state` of the student list. Now let's check out how we get that list to render on our application.
 
+## Pass the Props  
+
+Inside of our `return` statement:
+
+```javascript
 return (
   <div className="class-maker">
     <h3>Create Your Class List Here: </h3>
@@ -321,8 +347,11 @@ return (
     <StudentList students={this.state.students}/>
   </div>
 );
-We placed our <StudentList /> component. This component was given a property students and passed the value of this.state.students. This gives access to the state properties to <StudentList /> component in the form of props. Now let's peek inside of our <StudentList /> component and see how it works:
+```
 
+We placed our `<StudentList />` component. This component was given a property `students` and passed the value of `this.state.students`. This gives access to the state properties to `<StudentList />` component in the form of `props`. Now let's peek inside of our `<StudentList />` component and see how it works:
+
+```javascript
 class StudentList extends Component {
   constructor(props){
     super(props);
@@ -344,36 +373,54 @@ class StudentList extends Component {
     );
   }
 }
+```
+
 What to note:
 
-Make sure to pass the constructor() and super() with props to the component.
-Inside of our render method, we declare a variable using the ES2015 let syntax: let kids =.
-We set the value of that to :
+* Make sure to pass the `constructor()` and `super()` with `props` to the component.
+
+* Inside of our render method, we declare a variable using the ES2015 `let` syntax: `let kids =`.
+
+* We set the value of that to :
+
+```javascript
 this.props.students.map((student, index) => {
   return (
     <li key={index}>{student.studentName}</li>
   )
 })
-We map over this.props.students (which was passed down from the <App /> components in the form of this.state.students).
-We extract each student from that array and return an index and student as a list item: <li key={index}>{student.studentName}</li>.
-student.studentName references the studentName property of each student object in the students array.
-Each mapped item needs a unique key, so we use the index of each object being mapped over for simplicity sake. key={index}.
-We then insert the newly created array of list items (kids) using bracket notation with {kids}
-And that's it! We have successfully taken data from a parent component and shared it down to a child component using props.
+```
 
-Conclusion  
+* We `map` over `this.props.students` (which was passed down from the `<App />` components in the form of `this.state.students`).
 
-props allow for the transfer of data, while protecting the state and management of state in the parent component.
-We looked at setting the state (this.setState({})), and how we can keep track of data within a component by using state.
-We looked briefly at binding this to the component's methods (this.handleSubmit = this.handleSubmit.bind(this)) which gave us access to this for the component.
-We examined how e.target.value (or event.target.value) can be used to get value from inputs. The input values can then be stored in the state for later use.
-We used the event.preventDefault() method to stop our form from trying to post to a server.
-References  
+* We extract each student from that array and return an index and student as a list item: `<li key={index}>{student.studentName}</li>`.
 
-React Docs
+* `student.studentName` references the `studentName` property of each `student` object in the `students` array.
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
+* Each mapped item needs a unique `key`, so we use the `index` of each object being mapped over for simplicity sake. `key={index}`.
+
+* We then insert the newly created array of list items (`kids`) using bracket notation with `{kids}`
+
+And that's it! We have successfully taken data from a parent component and shared it down to a child component using `props`.
+
+## Conclusion  
+
+* `props` allow for the transfer of data, while protecting the `state` and management of `state` in the parent component.
+
+* We looked at setting the `state` (`this.setState({})`), and how we can keep track of data within a component by using `state`.
+
+* We looked briefly at binding this to the component's methods (`this.handleSubmit = this.handleSubmit.bind(this)`) which gave us access to `this` for the component.
+
+* We examined how `e.target.value` (or `event.target.value`) can be used to get value from inputs. The input values can then be stored in the state for later use.
+
+* We used the `event.preventDefault()` method to stop our form from trying to post to a server.
+
+### References  
+
+[React Docs](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+
+---
+
 Binding Functions in React  
 
 It's important to remember that functions are special objects. Just as functions are passed around like objects, they can also be bound to the component and passed down as properties. When we made our form we wrote an event handler and bound it to the component.
