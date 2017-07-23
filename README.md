@@ -90,3 +90,5 @@ Lecture notes from The Iron Yard
 * [Webpack for React](https://github.com/rickmurdock/notes/blob/master/ReactJS/WebpackForReact.md)
 
 * Redux Todos Part 1
+
+* [ReactJS: Children Components](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactJSChildrenComponents.md)
