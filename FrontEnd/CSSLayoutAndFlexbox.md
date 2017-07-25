@@ -59,34 +59,41 @@ div {
 
 ---
 
-# Determining Stacking Order with z-index  
+# Determining Stacking Order with `z-index`
 
-Sometimes, elements overlap. Its a natural consequence of positioning and layout. If you move things around the page, they might overlap with other elements. Often, we want to control how things overlap and determine which elements come to the front and which fall to the back. The order in which elements render on top of one another is called "stacking order". CSS provide the z-index property to control stacking order.
+Sometimes, elements overlap. Its a natural consequence of positioning and layout. If you move things around the page, they might overlap with other elements. Often, we want to control how things overlap and determine which elements come to the front and which fall to the back. The order in which elements render on top of one another is called "stacking order". CSS provide the `z-index` property to control stacking order.
 
 In this article, we will discuss the z-index property, how to apply it to elements, and when it is effective.
 
-Visualizing z-index  
+## Visualizing `z-index`  
 
-Before we start digging into code, let's try to conceptually understand z-index by exploring the analogy of a stack of papers.
+Before we start digging into code, let's try to conceptually understand `z-index` by exploring the analogy of a stack of papers.
 
 paper-stack-vertical.jpg
+
 Imagine a stack of four sheets of papers on a desk. You are looking downward on the pages and can see that they overlap one another. One sheet of paper is on the bottom, and one is on top. The other two pages are somewhere in between. This illustrations of concept of stacking order. You can clearly see that the papers have an order from top to bottom.
 
 paper-stack.jpg
+
 Now, imagine that we assign each sheet an integer indicating where it appears in the stack. To keep the ordering simple, we'll give the bottom sheet of paper the lowest number 0. As we move up the stack, we'll give each paper larger numbers until we reach the top sheet of paper. The top sheet of paper will be assigned the largest number. Finally, we'll call these integers "z-index".
 
-The specific numbers don't matter. We could have assigned the bottom page the number 10 or -1 or 100. So long as the next page up the stack has a larger number it will appear on top. A element with a z-index of 101 will appear above of an element with a z-index of 100.
-Our analogy with pages illustrates how z-index works. To determine how elements overlap, we assign them an integer. Larger integers appear on top and smaller integers appear below.
+> The specific numbers don't matter. We could have assigned the bottom page the number 10 or -1 or 100. So long as the next page up the stack has a larger number it will appear on top. A element with a `z-index` of 101 will appear above of an element with a `z-index` of 100.
 
-z-index Rules  
+Our analogy with pages illustrates how `z-index` works. To determine how elements overlap, we assign them an integer. Larger integers appear on top and smaller integers appear below.
 
-z-index has a few rules that determine how it affects stacking order, we should go over those ground rules of z-index to give us a firm ground for evaluating the following code samples.
+## `z-index` Rules  
 
-The values set to z-index should always be an integer (... -2, -1, 0, 1, 2, ...).
-z-index values (other than 0) can only be set on elements that have been positioned relative, absolute, or fixed
-The default z-index value for all elements is 0
-The higher the z-index, the higher an element will appear in the stacking order. i.e. if an element has a z-index value of 10 and another element has a z-index value of 5, then the first element will appear above the second element.
-The z-index Property  
+`z-index` has a few rules that determine how it affects stacking order, we should go over those ground rules of z-index to give us a firm ground for evaluating the following code samples.
+
+1. The values set to z-index should always be an integer (... -2, -1, 0, 1, 2, ...).
+
+2. z-index values (other than 0) can only be set on elements that have been positioned relative, absolute, or fixed
+
+3. The default z-index value for all elements is 0
+
+4. The higher the z-index, the higher an element will appear in the stacking order. i.e. if an element has a z-index value of 10 and another element has a z-index value of 5, then the first element will appear above the second element.
+
+## The `z-index` Property  
 
 Setting z-index is as simple as assigning an element's z-index property an integer value. In the following code snippet, every p tag has had it's z-index set to 4 and the h1 tags have a z-index of 3. p has the greater z-index value, so if p and h1 tags overlap, the p tag will appear on top.
 
