@@ -176,15 +176,15 @@ starwars.png
 
 ### References  
 
-* MDN Then Promises
+* [MDN Then Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
 
-* MDN Body.json()
+* [MDN Body.json()](https://developer.mozilla.org/en-US/docs/Web/API/Body/json)
 
-* MDN Using Fetch
+* [MDN Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
 
-* StarWars API : SWAPI
+* [StarWars API : SWAPI](https://swapi.co/)
 
-* React Component Lifecycles
+* [React Component Lifecycles](https://facebook.github.io/react/docs/react-component.html#componentwillreceiveprops)
 
 ---
 
