@@ -1,13 +1,14 @@
-Fetching JSON  
+# Fetching JSON  
 
-We've started to see how a React application can manage our data and render our application accordingly. We haven't looked at pulling data in from an outside source using fetch and what we can do with that data after we retrieve it.
+We've started to see how a React application can manage our data and render our application accordingly. We haven't looked at pulling data in from an outside source using `fetch` and what we can do with that data after we retrieve it.
 
-Let's examine the flow of a simple application designed to list some of the characters from the Star Wars movie series. We'll use fetch to get the data from the Star Wars API (https://swapi.co/). Next, we'll look at how we store that data and apply it our app.
+Let's examine the flow of a simple application designed to list some of the characters from the **Star Wars** movie series. We'll use `fetch` to get the data from the Star Wars API (https://swapi.co/). Next, we'll look at how we store that data and apply it our app.
 
-Fetching the Data  
+## Fetching the Data  
 
-By now you should be comfortable with using fetch and promises such as then to retrieve data. Let's set up our first component.
+By now you should be comfortable with using `fetch` and promises such as `then` to retrieve data. Let's set up our first component.
 
+```javascript
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -36,13 +37,21 @@ export default class App extends Component {
     );
   }
 }
-The top portion of this should look familiar by now. Inside of our constructor, we are setting the state and giving it a property characters that is initially set to an empty array.
-The next method we see is the componentDidMount method. This method is the preferred method to use when retrieving data with a network request.
-componentDidMount is invoked immediately after the component is mounted on the DOM, so it assures us our data will have a place to live.
-We then begin our network request using the fetch() method. We pass fetch the URI of our API (the specific point at which we wish to retrieve our data)––in this case fetch('http://swapi.co/api/people/').
-Then we initiate and chain together our methods to return a promise. We can use the then method to chain together our promises and complete our request only after the entire cycle of our request is complete.
-A Closer Look  
+```
 
+* The top portion of this should look familiar by now. Inside of our `constructor`, we are setting the `state` and giving it a property `characters` that is initially set to an empty array.
+
+* The next method we see is the `componentDidMount` method. This method is the preferred method to use when retrieving data with a network request.
+
+* `componentDidMount` is invoked immediately after the component is mounted on the DOM, so it assures us our data will have a place to live.
+
+* We then begin our network request using the `fetch()` method. We pass `fetch` the URI of our API (the specific point at which we wish to retrieve our data)––in this case `fetch('http://swapi.co/api/people/')`.
+
+* Then we initiate and chain together our methods to return a promise. We can use the `then` method to chain together our promises and complete our request only after the entire cycle of our request is complete.
+
+### A Closer Look  
+
+```javascript
 fetch('http://swapi.co/api/people/')
 .then(results => results.json())
 .then(responseData => {
@@ -51,25 +60,39 @@ fetch('http://swapi.co/api/people/')
 .catch((error) => {
   console.log("Error with Fetching : ", error);
 });
-After we call fetch, we call our first then method: then(results => results.json()) .
-This first method says that after the request has gone through successfully then run a callback function (in which we pass in the results parameter and return those results as a JSON object using the json method.
-We then call another then method: then(responseData => {this.setState({characters: responseData.results});}) .
-This second then method makes sure that we received our promise and data from the first then.
-When that promise is achieved, we take the responseData and we set the state of our characters array to the responseData.results.
-We use results because we researched our API and saw the object returned from the API had a "results" property in which our data was stored.
-We use the this.setState({characters: responseData.results}) to achieve this.
-This last method, catch is optional.catch takes a function that is passed the parameter of error. It listens for any error messages from the server and allows us to do something with them should they occur.
-In this case we made a simple console.log statement to write the error to the console.
-What We Do With Our Data...  
+```
 
-In this case, we have set our state with the data we pulled in. Now we can use that data to render part of this component or a child component. To keep our learning sharp, we are going to pass our data to our child component.
+* After we call `fetch`, we call our first `then` method: `then(results => results.json())` .
 
-We do this when we give the child component an attribute of people.
+* This first method says that after the request has gone through successfully then run a callback function (in which we pass in the `results` parameter and return those results as a JSON object using the `json` method.
 
-<CharacterList people={this.state.characters}/> inside of our <App />'s render method.
-We pass the state of our characters array down to the child component <CharacterList />.
-Now Let's Look at the Child Component  
+* We then call another `then` method: `then(responseData => {this.setState({characters: responseData.results});})` .
 
+* This second `then` method makes sure that we received our promise and data from the first `then`.
+
+* When that promise is achieved, we take the `responseData` and we set the `state` of our `characters` array to the `responseData.results`.
+
+* We use `results` because we researched our API and saw the object returned from the API had a "results" property in which our data was stored.
+
+* We use the `this.setState({characters: responseData.results})` to achieve this.
+
+* This last method, `catch` is optional. `catch` takes a function that is passed the parameter of error. It listens for any error messages from the server and allows us to do something with them should they occur.
+
+* In this case we made a simple `console.log` statement to write the error to the console.
+
+## What We Do With Our Data...  
+
+In this case, we have set our `state` with the data we pulled in. Now we can use that data to render part of this component or a child component. To keep our learning sharp, we are going to pass our data to our child component.
+
+We do this when we give the child component an attribute of `people`.
+
+* `<CharacterList people={this.state.characters}/>` inside of our `<App />`'s `render` method.
+
+* We pass the state of our `characters` array down to the child component `<CharacterList />`.
+
+### Now Let's Look at the Child Component  
+
+```javascript
 class CharacterList extends Component {
   constructor(props) {
     super(props);
@@ -100,15 +123,25 @@ class CharacterList extends Component {
     )
   }
 }
+```
+
 This should all look familiar, but let's recap what's going on:
 
-We set up our component with a constructor method with super inside of the method. This allows us to receive props.
-Inside of our render method we declare a variable peeps using the the ES2015 let syntax.
-Our peeps variable is a mapping of this.props.people which we passed down from our parent components state.
-When we map over each item in the array we grab each person from that array.
-We create a return statement in the map function that returns a <li> with a key value equal to the index so every list item has a unique identifier and React can render and track of them in the virtual DOM.
-We then extract the properties we want to list (like person.name or person.eye_color) by calling each attribute from our person object.
-We can get these values by examining our console.log statement inside of the render method that we used for reference in our parent component...
+* We set up our `component` with a constructor method with `super` inside of the method. This allows us to receive `props`.
+
+* Inside of our `render` method we declare a variable `peeps` using the the ES2015 `let` syntax.
+
+* Our `peeps` variable is a mapping of `this.props.people` which we passed down from our parent components state.
+
+* When we `map` over each item in the array we grab each `person` from that array.
+
+* We create a `return` statement in the `map` function that returns a `<li>` with a `key` value equal to the `index` so every list item has a unique identifier and React can render and track of them in the virtual DOM.
+
+* We then extract the properties we want to list (like `person.name` or `person.eye_color`) by calling each attribute from our `person` object.
+
+* We can get these values by examining our `console.log` statement inside of the `render` method that we used for reference in our parent component...
+
+```javascript
 render() {
     console.log("characters", this.state.characters);
     return (
@@ -117,40 +150,57 @@ render() {
       </div>
     );
   }
-That console.log() statement returns something we can drill into and examine the data with...
+```
+  
+* That console.log() statement returns something we can drill into and examine the data with...
+
 data.png
+
 Now when we run this we get:
 
 starwars.png
-Conclusion  
 
-We can use the fetch method in React in order to make a network request.
-We use then to manage our promises and make sure our network request is completed.
-We can use catch to listen for error messages from the network and utilize them for functionality in our program, or simply for reference.
-We can store our data in state, using setState inside of our promises.
-componentDidMount is the ideal method in which to make network requests.
-state can be passed down as props to children components.
-References  
+## Conclusion  
 
-MDN Then Promises
-MDN Body.json()
-MDN Using Fetch
-StarWars API : SWAPI
-React Component Lifecycles
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Styling Components with React  
+* We can use the `fetch` method in React in order to make a network request.
 
-We've already covered the building of components and data flow in state and props, but our websites have been pretty underwhelming so far. We haven't concentrated much on the styling aspects available to us when building React applications. The ability to apply a style based on a class or using inline styles in HTML has long been a tool for software engineers. React allows us to do the same sort of styling inside of our components within our JSX elements. The functionality is not much different, though some of the properties and declarations need to be a bit different to function in our JSX.
+* We use `then` to manage our promises and make sure our network request is completed.
+
+* We can use `catch` to listen for error messages from the network and utilize them for functionality in our program, or simply for reference.
+
+* We can store our data in `state`, using `setState` inside of our promises.
+
+* `componentDidMount` is the ideal method in which to make network requests.
+
+* `state` can be passed down as `props` to children components.
+
+### References  
+
+* MDN Then Promises
+
+* MDN Body.json()
+
+* MDN Using Fetch
+
+* StarWars API : SWAPI
+
+* React Component Lifecycles
+
+---
+
+# Styling Components with React  
+
+We've already covered the building of components and data flow in `state` and `props`, but our websites have been pretty underwhelming so far. We haven't concentrated much on the styling aspects available to us when building React applications. The ability to apply a style based on a class or using inline styles in HTML has long been a tool for software engineers. React allows us to do the same sort of styling inside of our components within our JSX elements. The functionality is not much different, though some of the properties and declarations need to be a bit different to function in our JSX.
 
 React's foundation centers around modularizing (creating stand alone pieces of code) our code to keep everything self-contained. React JSX components allow us to write our Javascript and HTML in a single file. React takes the same approach when it comes to styling. Let's take a look at how React suggests we style our components.
 
-Using classNames  
+## Using `classNames`  
 
-In HTML, as in JSX, we have the ability to designate a class (HTML) or classNames (JSX). Let's see the HTML approach first and then we'll examine the same situation within React.
+In HTML, as in JSX, we have the ability to designate a class (HTML) or *classNames* (JSX). Let's see the HTML approach first and then we'll examine the same situation within React.
 
 Below is some boilerplate HTML with a few classes:
 
+```html
 <body>
   <nav>
     <header class="header">Header</header>
@@ -165,8 +215,11 @@ Below is some boilerplate HTML with a few classes:
     <h3 class="title">An Interesting Title</h3>
   </div>
 </body>
+```
+
 Given this HTML we could easily style our elements using CSS. In our CSS stylesheet we'd write something similar to the following:
 
+```css
 .header {
   color: red;
 }
@@ -176,6 +229,8 @@ Given this HTML we could easily style our elements using CSS. In our CSS stylesh
 .title {
   color: white;
 }
+```
+
 We created classes to target within our stylesheet and altered them according to our design. Now, let's visit how we would approach the same problem with React:
 
 class App extends Component {
