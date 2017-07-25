@@ -8,7 +8,7 @@ Let's examine the flow of a simple application designed to list some of the char
 
 By now you should be comfortable with using `fetch` and promises such as `then` to retrieve data. Let's set up our first component.
 
-```javascript
+```jsx
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -51,7 +51,7 @@ export default class App extends Component {
 
 ### A Closer Look  
 
-```javascript
+```jsx
 fetch('http://swapi.co/api/people/')
 .then(results => results.json())
 .then(responseData => {
@@ -92,7 +92,7 @@ We do this when we give the child component an attribute of `people`.
 
 ### Now Let's Look at the Child Component  
 
-```javascript
+```jsx
 class CharacterList extends Component {
   constructor(props) {
     super(props);
@@ -141,7 +141,7 @@ This should all look familiar, but let's recap what's going on:
 
 * We can get these values by examining our `console.log` statement inside of the `render` method that we used for reference in our parent component...
 
-```javascript
+```jsx
 render() {
     console.log("characters", this.state.characters);
     return (
@@ -233,7 +233,7 @@ Given this HTML we could easily style our elements using CSS. In our CSS stylesh
 
 We created classes to target within our stylesheet and altered them according to our design. Now, let's visit how we would approach the same problem with React:
 
-```javascript
+```jsx
 class App extends Component {
   constructor(){
     super();
@@ -321,8 +321,9 @@ class App extends Component {
 }
 ```
 
-<div className="box"> is styled to have a blue background. What if we wanted to control the color for each instance of this div? We could first create a property bgroundCol on each <div className="box">. Then apply the value of each bgroundCol property as the backgroundColor for the boxStyle to be applied to that element. We'll use this.props.bgroundCol to access the value of each element's bgroundCol property.
+`<div className="box">` is styled to have a blue background. What if we wanted to control the color for each instance of this div? We could first create a property `bgroundCol` on each `<div className="box">`. Then apply the value of each `bgroundCol` property as the `backgroundColor` for the `boxStyle` to be applied to that element. We'll use `this.props.bgroundCol` to access the value of each element's `bgroundCol` property.
 
+```jsx
 let headerStyle = {
   color: "red",
 };
@@ -344,43 +345,57 @@ return (
 </div>
   )
 }
-By passing our backgroundColor: property the value of this.props.bgroundCol, we are able to style directly inline as we see fit.
+```
 
-Completely Inline  
+By passing our `backgroundColor:` property the value of `this.props.bgroundCol`, we are able to style directly inline as we see fit.
 
-We can take this one step further by styling everything completely inline. Let's take a look at how this would work by creating a new div and giving it a style attribute. We can then pass in our properties as an object, like so:
+### Completely Inline  
 
+We can take this one step further by styling everything completely inline. Let's take a look at how this would work by creating a new div and giving it a `style` attribute. We can then pass in our properties as an object, like so:
+
+```jsx
 <div className="new" style={{color:"orange", backgroundColor: "purple", fontSize: "33px", textAlign:"right", height: 80}} >Im the best Div ever </div>
-Note that double brackets : we are passing our first set of brackets an object containing our styling
+```
 
-The majority of the properties that involve a default value of pixels (px) can either exist as a string, "33px" or "33", or a straight number such as 80. The compiler knows to add 'px' on the end when it renders. (There are a few exceptions that you may find).
+**Note that double brackets : we are passing our first set of brackets an object containing our styling**
+
+> The majority of the properties that involve a default value of pixels (px) can either exist as a string, `"33px"` or `"33"`, or a straight number such as `80`. The compiler knows to add 'px' on the end when it renders. (There are a few exceptions that you may find).
+
 Hopefully, this provided a comprehensive overview of how to style your React components.
 
-Conclusion  
+** Conclusion  
 
-It's common practice in React to create self-contained components.
-Styling can take place by using the className attribute and creating a stylesheet to transform our component.
-We can also style directly inline with React using a few approaches.
-Multiword style properties should obey the camelCase (backgroundColor) naming convention. Exceptions are the data- and aria- properties, which remain separated by a dash.
-References  
+* It's common practice in React to create self-contained components.
 
-Kirupa.com
-React Docs
-React JSX
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Stateless Components  
+* Styling can take place by using the `className` attribute and creating a stylesheet to transform our component.
+
+* We can also style directly inline with React using a few approaches.
+
+* Multiword style properties should obey the camelCase (`backgroundColor`) naming convention. Exceptions are the `data-` and `aria-` properties, which remain separated by a dash.
+
+### References  
+
+* [Kirupa.com](https://www.kirupa.com/react/styling_in_react.htm)
+
+* [React Docs](https://facebook.github.io/react/docs/dom-elements.html)
+
+* [React JSX](https://facebook.github.io/react/docs/jsx-in-depth.html)
+
+---
+
+# Stateless Components  
 
 State isn't required in React components. In fact, you can have components that rely only on the props. If you're not changing any data in the component, then there's no need for state - simply use props to pass static data.
 
-Component Types  
+## Component Types  
 
-There are three different component types: stateless, stateless Functional, and stateful.
+There are three different component types: *stateless*, *stateless Functional*, and *stateful*.
 
-Stateless Component — Only props, no state. There's not much going on besides the render() function whose logic revolves around the props they receive. This makes them very easy to follow and test.We sometimes call these presentational components.
+**Stateless Component** — Only props, no state. There's not much going on besides the render() function whose logic revolves around the props they receive. This makes them very easy to follow and test.We sometimes call these **presentational** components.
 
-Stateless components are pure functions of their props. They don't have lifecycle methods and don't retain internal state. Another way to think about stateless components is that they deal with the UI rather than behavior. This is why you'll also see them called presentational components.
+Stateless components are pure functions of their props. They don't have lifecycle methods and don't retain internal state. Another way to think about **stateless** components is that they deal with the UI rather than behavior. This is why you'll also see them called **presentational** components.
 
+```jsx
 class List extends Component {
   render() {
   return (
@@ -399,8 +414,11 @@ class List extends Component {
     );
   }
 }
-Stateless Functional Component - If your component only has a render method, you can write it as a stateless functional component, and your function will be passed props as its first argument like so:
+```
 
+**Stateless Functional Component** - If your component only has a render method, you can write it as a stateless functional component, and your function will be passed `props` as its first argument like so:
+
+```jsx
 const List = ({movies}) => {
   return (
     <div>
@@ -418,12 +436,15 @@ const List = ({movies}) => {
     );
   }
 }
-Another thing to note with the stateless functional component above is that there's no this, and there's no binding required.
+```
 
-Stateful Component — Both props and state. We also call these state managers. They are in charge of client-server communication, processing data, and responding to user events. We sometimes call these container components. These sort of logistics should be encapsulated in a moderate number of stateful components, while all visualization and formatting logic should move downstream into as many stateless components as possible.
+Another thing to note with the **stateless functional component** above is that there's no `this`, and there's no binding required.
+
+**Stateful Component**  — Both props and state. We also call these state managers. They are in charge of client-server communication, processing data, and responding to user events. We sometimes call these **container** components. These sort of logistics should be encapsulated in a moderate number of stateful components, while all visualization and formatting logic should move downstream into as many stateless components as possible.
 
 You've seen (and written by now) stateful components. Imagine if you wanted to let the user interact by inputting their favorite movies. Here's an example to compare to the stateless components we looked at above:
 
+```jsx
 export default class List extends Component {
   constructor(props){
     super(props);
@@ -459,21 +480,28 @@ export default class List extends Component {
     );
   }
 }
-To Have or Not Have State?  
+```
 
-Should this Component have state?
+### To Have or Not Have State?  
 
-State is optional. Since state increases complexity and reduces predictability, a component without state is preferable. Even though you can't do without state in an interactive app, you should avoid having many stateful components. Optimally, an app is comprised of mostly stateless components.
+**Should this Component have state?**
+
+**State** is optional. Since state increases complexity and reduces predictability, a component without state is preferable. Even though you can't do without state in an interactive app, you should avoid having many stateful components. Optimally, an app is comprised of mostly stateless components.
 
 Often, apps are organized with higher level "container" components that manage state with multiple stateless components.
 
-Conclusion  
+## Conclusion  
 
-Stateless/presentational/presentational components deal with props only and don't have state or lifecycle methods.
-Stateful/container components manage state and props and deal with processing data that is changing over time.
-Best practice in writing clean code is to have mostly stateless components and a few stateful components.
-References  
+* Stateless/presentational/presentational components deal with props only and don't have state or lifecycle methods.
 
-JSPlayground
-Todd Motto
-Dan Abramov
+* Stateful/container components manage state and props and deal with processing data that is changing over time.
+
+* Best practice in writing clean code is to have mostly stateless components and a few stateful components.
+
+### References  
+
+* [JSPlayground](https://javascriptplayground.com/blog/2017/03/functional-stateless-components-react/)
+
+* [Todd Motto](https://toddmotto.com/stateful-stateless-components)
+
+* [Dan Abramov](https://medium.com/@dan_abramov/react-components-elements-and-instances-90800811f8ca)
