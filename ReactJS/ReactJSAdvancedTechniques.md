@@ -363,7 +363,7 @@ We can take this one step further by styling everything completely inline. Let's
 
 Hopefully, this provided a comprehensive overview of how to style your React components.
 
-** Conclusion  
+## Conclusion  
 
 * It's common practice in React to create self-contained components.
 
