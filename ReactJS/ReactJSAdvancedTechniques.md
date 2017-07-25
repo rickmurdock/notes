@@ -154,11 +154,11 @@ render() {
   
 * That console.log() statement returns something we can drill into and examine the data with...
 
-data.png
+![Star Wars data](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/starWarsData.png)
 
 Now when we run this we get:
 
-starwars.png
+![Star Wars characters](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/starWarsCharacters.png)
 
 ## Conclusion  
 
