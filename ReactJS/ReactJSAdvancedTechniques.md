@@ -233,6 +233,7 @@ Given this HTML we could easily style our elements using CSS. In our CSS stylesh
 
 We created classes to target within our stylesheet and altered them according to our design. Now, let's visit how we would approach the same problem with React:
 
+```javascript
 class App extends Component {
   constructor(){
     super();
@@ -256,8 +257,11 @@ class App extends Component {
     )
   }
 }
+```
+
 With React, our CSS stylesheet would be exactly the same as before. We'll target the same classes as the previous example to apply our styling.
 
+```css
 .header {
   color: red;
 }
@@ -267,20 +271,25 @@ With React, our CSS stylesheet would be exactly the same as before. We'll target
 .title {
   color: white;
 }
+```
+
 Now, let's include our styles in our JSX component instead of an external stylesheet.
 
-Inline Styling  
+## Inline Styling  
 
 Similar to using inline styles in HTML, we can use inline styles in JSX components as well. There are just a few new rules and concepts to abide by:
 
-Multi-word CSS properties (commonly separated by a dash) such as text-align, font-family, or background-color must now adhere to JavaScript standards. They should be written in camelCase (all one word, with the first word lowercased and the second word capitalized). Previous examples would become: textAlign, fontFamily, and backgroundColor.
-Single worded CSS properties such as border, color, and width, will remain unchanged and used as they would be in CSS.
-Let's take a look at a couple of ways we can apply these inline styles in React.
+* Multi-word CSS properties (commonly separated by a dash) such as `text-align`, `font-family`, or `background-color` must now adhere to JavaScript standards. They should be written in *camelCase* (all one word, with the first word lowercased and the second word capitalized). Previous examples would become: `textAlign`, `fontFamily`, and `backgroundColor`.
 
-Using Variables  
+* Single worded CSS properties such as `border`, `color`, and `width`, will remain **unchanged** and used as they would be in CSS.
 
-Inside of our render method before our return statement we can assign our styling to a variable and pass that variable to our elements. We can then add a style attribute to the element or component in question and pass our variable in as the value using {} brackets: style={yourVariableHere}. This method is a great choice when dealing with a lot of styles or a larger component.
+**Let's take a look at a couple of ways we can apply these inline styles in React.**
 
+### Using Variables  
+
+Inside of our `render` method before our `return` statement we can assign our styling to a variable and pass that variable to our elements. We can then add a `style` attribute to the element or component in question and pass our variable in as the value using `{}` brackets: `style={yourVariableHere}`. This method is a great choice when dealing with a lot of styles or a larger component.
+
+```jsx
 class App extends Component {
   constructor(){
     super();
@@ -310,6 +319,8 @@ class App extends Component {
     )
   }
 }
+```
+
 <div className="box"> is styled to have a blue background. What if we wanted to control the color for each instance of this div? We could first create a property bgroundCol on each <div className="box">. Then apply the value of each bgroundCol property as the backgroundColor for the boxStyle to be applied to that element. We'll use this.props.bgroundCol to access the value of each element's bgroundCol property.
 
 let headerStyle = {
