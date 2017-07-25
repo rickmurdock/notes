@@ -1,20 +1,26 @@
-Adjacent values  
+* Adjacent values  
 
 Some properties CSS can be set to multiple adjacent values. These "shorthand" properties set a series of related properties in one declaration.
 
-Shorthand properties  
+## Shorthand properties  
 
 Some common shorthand properties are:
 
-background
-font
-margin
-padding
-border
-Syntax  
+* background
+
+* font
+
+* margin
+
+* padding
+ 
+* border
+
+## Syntax  
 
 Using adjacent values allows web developers to write more readable CSS. For instance, instead of writing four individual margin properties with values, we can assign all four values to one margin property.
 
+```css
 div {
   margin-top: 1em;
   margin-right: 2em;
@@ -26,8 +32,11 @@ div {
 div {
   margin: 1em 2em 3em 4em;
 }
+```
+
 The same applies to other properties that use adjacent values. Such as:
 
+```css
 div {
   background-color: #fff;
   background-image: url(bg.png);
@@ -40,13 +49,17 @@ div {
 div {
   background: #fff url(bg.png) no-repeat fixed right top;
 }
-Additional Resources  
+```
 
-MDN CSS Shorthand
-Sitepoint
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Determining Stacking Order with z-index  
+## Additional Resources  
+
+* [MDN CSS Shorthand](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties)
+
+* [Sitepoint](https://www.sitepoint.com/html-css/css/)
+
+---
+
+# Determining Stacking Order with z-index  
 
 Sometimes, elements overlap. Its a natural consequence of positioning and layout. If you move things around the page, they might overlap with other elements. Often, we want to control how things overlap and determine which elements come to the front and which fall to the back. The order in which elements render on top of one another is called "stacking order". CSS provide the z-index property to control stacking order.
 
