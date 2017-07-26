@@ -167,15 +167,15 @@ export default class PeopleMenu extends Component {
 }
 ```
 
-We first create a component PeopleMenu, and then render that component based on a few specific instructions. We want our application to be able to accept an array of objects as large or small as we want it to be. This is power behind a dynamic application. Our JSON object array could be 3 actors/actresses or 30 in length and we will still render correctly.
+We first create a component `PeopleMenu`, and then render that component based on a few specific instructions. We want our application to be able to accept an array of objects as large or small as we want it to be. This is power behind a dynamic application. Our JSON object array could be 3 actors/actresses or 30 in length and we will still render correctly.
 
 The first step is get access to the match object. The match object has a lot of powerful tools that allow us to utilize the data from the URL and parameters being passed in to the URL and path name.
 
-In this instance we create a variable match using the ES6 let syntax. This just shortens the amount we have to type to access the props.match.url object.
+In this instance we create a variable `match` using the ES6 `let` syntax. This just shortens the amount we have to type to access the `props.match.url` object.
 
-We then map over our JSON data and create a <div> that holds a <NavLink> component for each item in the array. If you will recall, the <NavLink> gives us access to a special <Link> component that can be styled with active styles easily. We could definitely substitue <Link> for <NavLink> and not lose the functionality of our program.
+We then map over our JSON data and create a `<div>` that holds a `<NavLink>` component for each item in the array. If you will recall, the `<NavLink>` gives us access to a special `<Link>` component that can be styled with active styles easily. We could definitely substitue `<Link>` for `<NavLink>` and not lose the functionality of our program.
 
-We make our <NavLink> dynamic with a template literal in the to= property. Template literals are new to ES6 syntax and allow us to use JavaScript inline with strings. This prevents us from having to use a lot of concatenation needed in ES5. We begin a template literal with using "` back-ticks `" (the same key as the tilde: "~" ).
+We make our `<NavLink>` dynamic with a template literal in the `to=` property. Template literals are new to ES6 syntax and allow us to use JavaScript inline with strings. This prevents us from having to use a lot of concatenation needed in ES5. We begin a template literal with using "`` ` back-ticks ` ``" (the same key as the tilde: "~" ).
 
 We then begin our template literal variable with a dollar sign $ and brackets {}. So when completed we've got something like this:
 
