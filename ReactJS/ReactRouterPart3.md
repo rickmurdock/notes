@@ -1,4 +1,4 @@
-Creating a Dynamic App with a Parent and Child Detail page.  
+# Creating a Dynamic App with a Parent and Child Detail page.  
 
 Often times in our programs, we will need to be concerned with having dynamic URLs for our user's experience. It would be impossible to for some applications to manually create a route for every endpoint the application would have, yet it is important that we generate endpoints that make sense in terms of being RESTful.
 
@@ -6,10 +6,11 @@ The goal is to have endpoints that follow a hierarchy that allow users to unders
 
 Confusing? Well let's talk through what that all means as we go through.
 
-The Set Up  
+## The Set Up  
 
-We need data - so we have created a simple JSON object in a data file that we will use to essentially simulate what we would receive from an API. In this case we have will have an array of actor objects. It's not important that you read every detail of this data, just to know that it exists and to see the overall structure it has.
+We need data - so we have created a simple JSON object in a data file that we will use to essentially simulate what we would receive from an API. In this case we have will have an array of actor objects. **It's not important that you read every detail of this data, just to know that it exists and to see the overall structure it has.**
 
+```jsx
 //############ actors.js (in data folder we created) ###########
 const actors =  [{
     firstName: "Bill",
@@ -55,10 +56,13 @@ const actors =  [{
   }];
 
   export default actors;
-Root JavaScript File Set Up  
+```
 
-In our root JavaScript file we need to set up our program to connect to the DOM - this should be a comfortable step by now using ReactDOM and React to pass the component we wish to render inside of the <div> we designated in our HTML file.
+## Root JavaScript File Set Up  
 
+In our root JavaScript file we need to set up our program to connect to the DOM - this should be a comfortable step by now using ReactDOM and React to pass the component we wish to render inside of the `<div>` we designated in our HTML file.
+
+```jsx
 //########### index.js ##############
 //import React
 import React from 'react';
@@ -73,12 +77,15 @@ import App from './scripts/components/App';
 ReactDOM.render(
   <App />,
   document.getElementById('root'));
+```
+  
 Nothing new there. The next step is to really start digging into our program and look at how we will generate our routes dynamically and set up our browser router to handle them.
 
-Router Set Up  
+##Router Set Up  
 
-Our <BrowserRouter /> is going to be set up in our "App.js" file - this absolutely could have been done in our index.js file too - but this is just an example that's been expanded out to help simplify the ideas behind dynamic URLs.
+Our `<BrowserRouter />` is going to be set up in our "App.js" file - this absolutely could have been done in our index.js file too - but this is just an example that's been expanded out to help simplify the ideas behind dynamic URLs.
 
+```jsx
 //######## App.js #########
 import React, { Component } from 'react';
 import '../App.css';
@@ -109,22 +116,25 @@ class App extends Component {
 }
 
 export default App;
-Something to note about this set up is that we have used the path path="/people" twice to render two different components. There are a couple of important things to note about this. We use our most specific router path="/people/:actor" first, because the Router reads downward and will match the first thing to meet the criteria - we don't want our <PeopleMenu> component to render unless we are specifically on the '/people' path.
+```
 
-We could also use the exact path= to acheive the same result, as we did with the / path.
+Something to note about this set up is that we have used the path `path="/people"` twice to render two different components. There are a couple of important things to note about this. We use our most specific router `path="/people/:actor"` first, because the Router reads downward and will match the first thing to meet the criteria - we don't want our `<PeopleMenu>` component to render unless we are specifically on the '`/people`' path.
 
-Secondly we pass in a dynamic route using the : + name of route (in this case we used /people/:actor). We can name our route anything we want to, but it is wise to name it in a way that will make sense to anyone following our code. We could have called it :coolGuy or :person and these endpoints would still make sense in the context of our route. The :actor path allows us to pass anything in to this portion of the URL and it will still render the component associated with it.
+We could also use the `exact path=` to acheive the same result, as we did with the `/` path.
 
-/people is our parent page route. /people/:actor is the child detail page route.
+Secondly we pass in a dynamic route using the `:` + `name of route` (in this case we used `/people/:actor`). We can name our route anything we want to, but it is wise to name it in a way that will make sense to anyone following our code. We could have called it :coolGuy or :person and these endpoints would still make sense in the context of our route. The `:actor` path allows us to pass anything in to this portion of the URL and it will still render the component associated with it.
 
-Setting our Components up Dynamically  
+`/people` is our parent page route. `/people/:actor` is the child detail page route.
 
-So, we see the router set up, but how do we generate a dynamic route. Lets take a top down approach and talk through each piece of the puzzle as we move into the application. Our first stop is going to be the <PeopleMenu> component.
+## Setting our Components up Dynamically  
 
-<PeopleMenu />  
+So, we see the router set up, but how do we generate a dynamic route. Lets take a top down approach and talk through each piece of the puzzle as we move into the application. Our first stop is going to be the `<PeopleMenu>` component.
 
-We have a file "people.js" that houses our <PeopleMenu /> component. This will be our parent page, and we will render this on the path /people. This will give us the options to click on and then view details of (with the child component). Let's walk through the code:
+`<PeopleMenu />`  
 
+We have a file "people.js" that houses our `<PeopleMenu />` component. This will be our parent page, and we will render this on the path `/people`. This will give us the options to click on and then view details of (with the child component). Let's walk through the code:
+
+```jsx
 //############ people.js ############
 
 import React, { Component } from 'react';
@@ -155,6 +165,8 @@ export default class PeopleMenu extends Component {
     );
   }
 }
+```
+
 We first create a component PeopleMenu, and then render that component based on a few specific instructions. We want our application to be able to accept an array of objects as large or small as we want it to be. This is power behind a dynamic application. Our JSON object array could be 3 actors/actresses or 30 in length and we will still render correctly.
 
 The first step is get access to the match object. The match object has a lot of powerful tools that allow us to utilize the data from the URL and parameters being passed in to the URL and path name.
