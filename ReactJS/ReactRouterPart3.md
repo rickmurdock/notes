@@ -177,28 +177,33 @@ We then map over our JSON data and create a `<div>` that holds a `<NavLink>` com
 
 We make our `<NavLink>` dynamic with a template literal in the `to=` property. Template literals are new to ES6 syntax and allow us to use JavaScript inline with strings. This prevents us from having to use a lot of concatenation needed in ES5. We begin a template literal with using "`` ` back-ticks ` ``" (the same key as the tilde: "~" ).
 
-We then begin our template literal variable with a dollar sign $ and brackets {}. So when completed we've got something like this:
+We then begin our template literal variable with a dollar sign `$` and brackets `{}`. So when completed we've got something like this:
 
+```jsx
 <NavLink to={`${match.url}/${actor.firstName}`} />
+```
+
 The above code essentially translates to the following :
 
-"find the url that brought me here + "/" + add the actor's first name to the end of it}"
+"find the url that brought me here + "/" + **add the actor's first name to the end of it**}"
 
-So in the case of how we set our routes up in the Router we get "/people/firstName" or for a real example of our application "/people/Bill". So as we map over our JSON, we create a navigation link to each actor using an endpoint /people/(their name). Cool.. that's dynamic!
+So in the case of how we set our routes up in the Router we get "/people/*firstName*" or for a real example of our application "`/people/Bill`". So as we map over our JSON, we create a navigation link to each actor using an endpoint /people/(their name). Cool.. that's dynamic!
 
 We fill in some other data (like a picture for our link) with data from our JSON opject being mapped over and then return each NavLink in our return statement for our render method.
 
 In our case this yields something along the lines of:
 
 PeopleMenu.png
+
 With each picture being a link to the child detail page of that actor!
 
 Now it's time to look at the child detail page...
 
-<ActorInfo />  
+`<ActorInfo />` 
 
-Stepping down the chain of hierarchy we come to our ActorInfo component. We've created this component inside of a file "actor_info.js". Let's look at this code and work out what is going on with it as we do.
+Stepping down the chain of hierarchy we come to our `ActorInfo` component. We've created this component inside of a file "actor_info.js". Let's look at this code and work out what is going on with it as we do.
 
+```jsx
 //############# actor_info.js #################
 
 import React, { Component } from 'react';
@@ -240,18 +245,24 @@ export default class ActorInfo extends Component {
     );
   }
 }
+```
+
 The first is getting access to the endpoint of our URL, so that we can be sure to render the correct actor depending on the endpoint. This of course could all be hard coded, but setting it up dynamically allows us to reuse this code no matter how many people we have on our JSON data.
 
-We can use some more ES6 syntax with our React Router match object to gain access to the :actor part of our URL. We can create a const variable and access the params method on the match object. Params allow us to use the wildcard (dynamically created endpoints) part of our route.
+We can use some more ES6 syntax with our React Router match object to gain access to the `:actor` part of our URL. We can create a `const` variable and access the `params` method on the `match` object. Params allow us to use the wildcard (dynamically created endpoints) part of our route.
 
-If we were to console.log(this.props.match.params) we would return an Object that had a key "actor" with the value "Bill". If we had more than one dynamic endpoint, we would have access to the whole chain. For instance if /people/:actor/:movies was our route, we would then have an object containing the movies passed into the :movies path variable. By using the {actor} portion of our declaration, we simply have accessed the actor part of the object, returning Bill as our variable.
+If we were to `console.log(this.props.match.params)` we would return an Object that had a key "`actor`" with the value "`Bill`". If we had more than one dynamic endpoint, we would have access to the whole chain. For instance if `/people/:actor/:movies` was our route, we would then have an object containing the movies passed into the `:movies` path variable. By using the `{actor}` portion of our declaration, we simply have accessed the actor part of the object, returning Bill as our variable.
 
+```jsx
 const {actor} = this.props.match.params;
 // actor = "Bill" if we were on /people/Bill route
-What this allows us to do is to match our dynamically created <Actor> component to the actor information from our endpoint. Simply put, if we have /people/Bill then we want to see Bill's information on the page.
+```
 
-We do that with a simply if statement in our render method to make sure we have the right information.
+What this allows us to do is to match our dynamically created `<Actor>` component to the actor information from our endpoint. Simply put, if we have `/people/Bill` then we want to see Bill's information on the page.
 
+We do that with a simply `if` statement in our render method to make sure we have the right information.
+
+```jsx
 let myPeeps = actors.map((celeb) => {
 
   //if actor matches the name of the URL endpoint, render <Actor>
@@ -262,15 +273,17 @@ let myPeeps = actors.map((celeb) => {
       }
     }
   );
+```
 
-So when the endpoint matches the first name of the actor in our JSON data, we will render an <Actor> component with that actor's information.
+So when the endpoint matches the first name of the actor in our JSON data, we will render an `<Actor>` component with that actor's information.
 
-The <Actor> component is in another file, but receives it's data from the data= property being passed in the value of our mapped array {celeb}. This really concludes how the dynamic routes are created, but just for closure, let's take a look at the <Actor> component in our "actor.js" file.
+The `<Actor>` component is in another file, but receives it's data from the `data=` property being passed in the value of our mapped array `{celeb}`. This really concludes how the dynamic routes are created, but just for closure, let's take a look at the `<Actor>` component in our "actor.js" file.
 
-<Actor />  
+`<Actor />`  
 
-Inside of our <Actor> component, we process the information being passed in as data and render it to the page to complete the child detail view.
+Inside of our `<Actor>` component, we process the information being passed in as data and render it to the page to complete the child detail view.
 
+```jsx
 //########## actor.js ###########
 import React from 'react';
 
@@ -303,17 +316,22 @@ const Actor = (props) => {
 };
 
 export default Actor;
+```
 
-We simply use props to pass the data down to the component via data and then create our component to display that data! We have now created a parent component PeopleMenu and a child detail component ActorInfo that are generated using dynamic routes!
+We simply use props to pass the data down to the component via `data` and then create our component to display that data! We have now created a parent component `PeopleMenu` and a child detail component `ActorInfo` that are generated using dynamic routes!
 
 Let's see it in action:
 
 dynamicURL-1.gif
+
 dynamicURL-2.gif
-Conclusion  
 
-Dynamic routes allow for our application to display RESTful endpoints with any data that way may take in and process.
-Using a RESTful means to create endpoints helps the user follow along with where they are inside of the application. A much better experience for them over all.
-References  
+## Conclusion  
 
-MDN
+* Dynamic routes allow for our application to display RESTful endpoints with any data that way may take in and process.
+
+* Using a RESTful means to create endpoints helps the user follow along with where they are inside of the application. A much better experience for them over all.
+
+### References  
+
+* [MDN](https://reacttraining.com/react-router/web/example/basic)
