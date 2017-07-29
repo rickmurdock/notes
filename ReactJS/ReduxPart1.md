@@ -105,23 +105,25 @@ export function selectUser(user) {
 };
 ```
 
-This code is functionally the same as what we saw earlier and simply has the payload as an ES6 syntax where user: user can be whittled down to just user.
+This code is functionally the same as what we saw earlier and simply has the payload as an ES6 syntax where `user: user` can be whittled down to just `user`.
 
 This is really all there is to authoring an action in Redux. Below, we can take a look at some other examples of action creators and actions.
 
-Some more examples...  
+### Some more examples...  
 
 Let's imagine an application in which we wish to keep score of a user and be able to add or delete a user. For this instance we might first have an actionTypes folder to separate our action type variables from our action creator functions. We can also look at incorporating more ES6 syntax into this example as well.
 
+```jsx
 //######### actionTypes/actions.js #############
 
 export const ADD_USER = 'ADD_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
-
+```
 
 Now to create our action creators!
 
+```jsx
 //################ actions/index.js ###############
 
 import * as ActionTypes from '../actionTypes/actions';
@@ -142,22 +144,27 @@ export const UPDATE_SCORE = score => {
   type: ActionTypes.UPDATE_SCORE,
   score
 };
+```
+
 And thus we have authored action creators with actions. This is just the first step in the cycle of information in Redux land. We need to take a look at how these action creators and actions are implemented in our React components and also how we pass them through the dispatcher to the store to the reducers.
 
 Let's go back to our User List example, where we wanted to select a user and display their details after selecting and see how we link it up to our container components.
 
-(Remember: The container component is the component that we designate to handle application state for React - in other words the bridge between Redux and React.)
+**(Remember: The container component is the component that we designate to handle application state for React - in other words the bridge between Redux and React.)**
 
-The Containers  
+### The Containers  
 
 Given this simplistic app: we should envision that we have two components that will rely on application state. We should readily guess that our User detail page would need application state to display the user's details. But also, we should start thinking about the list of users that will need to pass the individual user to another component.
 
-Inside of our containers directory we can create two files.
+Inside of our `containers` directory we can create two files.
 
-user_list.js
-user_detail.js
+1. user_list.js
+
+2. user_detail.js
+
 First look at user_list.js and see how we would set that container component up with some commented notes - and discuss it thoroughly after a peek at it.
 
+```jsx
 //################ containers/user_list.js ################
 
 //normal react imports
@@ -210,33 +217,42 @@ function mapDispatchToProps(dispatch) {
 // promotes UserList from component to container and needs to know about dispatch method selectUser (make available as prop)
 //this "connects" our functions to our container component and really enables the magic to happen.
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
-A deeper look  
+```
 
-We create a class based component to be our designated container component (the link for React and Redux). Inside of that class based component (UserList) it should absolutely look like nothing new is happening. We pass in props and map over them to create a list of user. Something we have done countless times by now. We create an onClick event for list item that is passed in a function (this function { selectUser } is our action creator).
+### A deeper look  
+
+We create a class based component to be our designated container component (the link for React and Redux). Inside of that class based component (`UserList`) it should absolutely look like nothing new is happening. We pass in props and map over them to create a list of user. Something we have done countless times by now. We create an `onClick` event for list item that is passed in a function (this function { `selectUser` } is our **action creator**).
 
 We then display the results as normal and voila we have created a list of users. The real magic and connection happens in the functions below our container component.
 
-The first function mapStateToProps receives and argument of state. It simply returns the state that we wish for our UserList container to receive as props.
+The first function `mapStateToProps` receives and argument of `state`. It simply returns the state that we wish for our `UserList` container to receive as props.
 
-The second function mapDispatchToProps receives an argument of dispatch. We wont go in to detail of how dispatch works behind the scene, but remember it acts a lot like a 911 call center and matches our action with the proper reducer to create new state.
+The second function `mapDispatchToProps` receives an argument of `dispatch`. We wont go in to detail of how dispatch works behind the scene, but remember it acts a lot like a 911 call center and matches our action with the proper reducer to create new state.
 
-Inside of our mapDispatchToProps function we are going to return our action creator function and bind that action using a function bindActionCreators to our dispatch.
+Inside of our mapDispatchToProps function we are going to return our action creator function and bind that action using a function `bindActionCreators` to our `dispatch`.
 
+```jsx
 function mapDispatchToProps(dispatch) {
   //whenever selectUser is called, result should be passed to
   //all of the reducers. (flows through dispatch function -- like a funnel - finding the right reducer for the job)
   //in our return we are binding our action creators to the dispatch function that works behind the scenes for us.
     return bindActionCreators({ selectUser: selectUser }, dispatch)
 }
-The last piece of the puzzle is connecting everything with the proper wiring. We imported a connect function from redux in our imports and now we are going to use it to rig the wiring. We will export this connect function instead of our actual component and will pass it the mapStateToProps and mapDispatchToProps in the first set of arguments and then our container component after in a separated argument UserList
+```
 
+The last piece of the puzzle is connecting everything with the proper wiring. We imported a `connect` function from redux in our imports and now we are going to use it to rig the wiring. We will export this connect function instead of our actual component and will pass it the `mapStateToProps` and `mapDispatchToProps` in the first set of arguments and then our container component after in a separated argument `UserList`
+
+```jsx
 // promotes UserList from component to container and needs to know about dispatch method selectUser (make available as prop)
 //this "connects" our functions to our container component and really enables the magic to happen.
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+```
+
 We are all set up in our UserList to use our action creators. Now a quick glance at our user_detail.js file which will do much of the same thing. We won't go into more detail with this since it behaves exactly as the other container did - except it is focused a detail of the user rather than an entire list.
 
-Also, since this container component is not concerned with selecting a user, but rather displaying one, we dont actually need a dispatchStateToProps function to line up our reducer with our action. That happens in our UserDetail container component.
+**Also, since this container component is not concerned with selecting a user, but rather displaying one, we dont actually need a dispatchStateToProps function to line up our reducer with our action. That happens in our UserDetail container component.**
 
+```jsx
 //################# container/user_detail.js ################
 
 
@@ -286,21 +302,31 @@ function mapStateToProps(state) {
 
 
 export default connect(mapStateToProps)(BookDetail);
+```
 
 Now we are all rigged up to check out the reducers in the next section! We have authored some action creators and actions and are ready to put them to use!
 
-Conclusion  
+## Conclusion  
 
-Action creators are functions that deliver the action to the reducer via dispatch in the store.
-The each action needs/is required to have a type: property which is simply a string description of the event associated with the action.
-An action can also have some other key properties, most commonly payload: in which data can be passed along to the reducer as well.
-We use mapStateToProps to return our state as props inside of our container component.
-We use mapDispatchToProps to bind our action creators to be passed to the reducers with the function bindActionCreators that receives the action creator and the dispatch object.
-We use connect to link up our component to our map functions and export it for use in the program.
-References  
+* Action creators are functions that deliver the action to the reducer via dispatch in the store.
 
-Redux
-React and Redux Workflow  
+* The each action needs/is required to have a `type:` property which is simply a string description of the event associated with the action.
+
+* An action can also have some other key properties, most commonly `payload:` in which data can be passed along to the reducer as well.
+
+* We use `mapStateToProps` to return our state as props inside of our container component.
+
+* We use `mapDispatchToProps` to bind our action creators to be passed to the reducers with the function `bindActionCreators` that receives the action creator and the dispatch object.
+
+* We use `connect` to link up our component to our map functions and export it for use in the program.
+
+### References  
+
+* [Redux](http://redux.js.org/)
+
+---
+
+# React and Redux Workflow  
 
 We've discussed application state and what that means for our program and its data. We'll now dive into Redux and React and how they work together.
 
