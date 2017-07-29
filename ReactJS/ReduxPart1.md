@@ -377,7 +377,7 @@ A lot is going on within a React application, from application state to componen
 
 Imagine a simple app where a user clicks an option which displays data on another screen. Let's look at the flow of events that take place when this happens:
 
-react-redux-workflow1.jpg
+![react redux workflow](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/react-redux-workflow1.jpg)
 
 Upon clicking an *Action Creator* is triggered.
 
