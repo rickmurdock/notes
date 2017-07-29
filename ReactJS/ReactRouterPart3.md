@@ -81,7 +81,7 @@ ReactDOM.render(
   
 Nothing new there. The next step is to really start digging into our program and look at how we will generate our routes dynamically and set up our browser router to handle them.
 
-##Router Set Up  
+## Router Set Up  
 
 Our `<BrowserRouter />` is going to be set up in our "App.js" file - this absolutely could have been done in our index.js file too - but this is just an example that's been expanded out to help simplify the ideas behind dynamic URLs.
 
