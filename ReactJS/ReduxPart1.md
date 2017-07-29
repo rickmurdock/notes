@@ -350,7 +350,7 @@ By now we should be comfortable with having separate folders for scripts and sty
 
 Our file tree should now look something like this:
 
-filetree.png
+![filetree](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/filetree.png)
 
 ### Adding Files  
 
