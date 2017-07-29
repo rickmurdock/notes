@@ -102,3 +102,5 @@ Lecture notes from The Iron Yard
 * React-Router: Part 2
 
 * React-Router: Part 3
+
+* [Redux: Part 1](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart1.md)
