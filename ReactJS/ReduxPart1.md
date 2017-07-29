@@ -1,48 +1,61 @@
-Application State  
+# Application State  
 
 We know that each component has access to state and we can manage the state of the application by passing props to children components. We also know that managing state for all of the different pieces of data in our application is tedious and must be carefully done to maintain state consistently.
 
-There are a few libraries for maintaining state accross components in an application, Flux is one of the original ones. It was created by Facebook to compliment React.js. We won't be covering Flux but it is important to understand that Redux was evolved from Flux and is substantially less complicated. To understand Redux, we must first understand application state.
+There are a few libraries for maintaining state accross components in an application, *Flux* is one of the original ones. It was created by Facebook to compliment React.js. We won't be covering Flux but it is important to understand that *Redux* was evolved from Flux and is substantially less complicated. To understand Redux, we must first understand *application state*.
 
-Application State  
+## Application State  
 
 Application state does not refer to the state of each component but rather the data that flows through the entire application. The real magic of Redux is how it handles data and manages what actions should be taken when events are triggered.
 
-Is A State Management Library Right For My Project?  
+### Is A State Management Library Right For My Project?  
 
 By managing all of the application data for our app in one place, we don't have to figure out which component is responsible for which data. We simply associate the application state into each component as we build our application. Redux ensures only the relevant components receive data and state changes while the rest of the application remains unaffected.
 
 Here a few questions we can ask to determine whether an application state library would benefit your project:
 
-Do other parts of the application care about the data in question?
-Do we need to create more data based on the data in question?
-Is the data in question being used to create multiple components?
-Is there value in having a record of the changes to state in application? (i.e. Would it help you debug your application if you could track events as you test?).
-Do you want to cache (hold on to) your data instead of using multiple requests from another API?
+1. Do other parts of the application care about the data in question?
+
+2. Do we need to create more data based on the data in question?
+
+3. Is the data in question being used to create multiple components?
+
+4. Is there value in having a record of the changes to state in application? (i.e. Would it help you debug your application if you could track events as you test?).
+
+5. Do you want to cache (hold on to) your data instead of using multiple requests from another API?
 If you answer yes to any of these questions, there's the potential for a library like Redux to lower the complexity in your components.
 
-Conclusion  
+## Conclusion  
 
-As our projects get more complex and handle more data there are tools we can use to manage our application state.
-Flux was designed to manage application state.
-Redux evolved from Flux and can help us manage application state in a simple and straight forward way.
-References  
+* As our projects get more complex and handle more data there are tools we can use to manage our application state.
 
-Redux JS: Organizing State
-Flux
-Redux ReadME
-Authoring Actions  
+* Flux was designed to manage application state.
+
+* Redux evolved from Flux and can help us manage application state in a simple and straight forward way.
+
+### References  
+
+* [Redux JS: Organizing State](http://redux.js.org/docs/faq/OrganizingState.html)
+
+* [Flux](https://facebook.github.io/flux/)
+
+* [Redux ReadME](http://redux.js.org/)
+
+---
+
+# Authoring Actions  
 
 We just wrapped up our discussion on the workflow of React and Redux working hand in hand. So let's start to dissect some of the ideas we discovered and take them on piece by piece from the top down. First, we know what actions are: they are the payload of information that send data from your application to the store (through the dispatcher and to the reducers).
 
 This knowledge is fantastic to have, but we have no idea how to implement it yet - so that is our very next step. We are going to walk through setting up some actions for a simple React/Redux application.
 
-In the actions folder...  
+## In the actions folder...  
 
 Inside of our actions folder we need to create an index.js file. This will be our root action folder and house all of our actions and action creators. Remember the action creators are just functions that return an object (which is the action).
 
 Lets pretend for a moment we have an application that allows us to select a user and see details of that user. In this simple example our index.js (inside of our actions folder) would be set up something along the lines of :
 
+```jsx
 //########### actions/index.js ################
 const USER_SELECTED = 'USER_SELECTED';
 
@@ -52,28 +65,35 @@ export function selectUser(user) {
     payload: user
   };
 };
-A couple of things are going on here. First we are declaring a constant variable const USER_SELECTED = 'USER_SELECTED'; (which by convention is all capitol letters) and we are setting it to a string value that is the same name as the variable. This variable will be our type (we will discuss that momentarily). The important thing to take away from this is that this is a means to protect our action. This should prevent someone from accidentally tampering with our action type and messing up a whole lot of things down the line. As our applications grow, it is common to add another folder "actionTypes" to our application file tree and create a file inside to house all of our action types there. Since our application is small - we will forgo that for now.
+```
 
-The next step is exporting our action creator (a function that houses and returns the action) export function selectUser(user){};. Each action we create will be exported individually. We can have multiple export statements in this file and each action should have its own action creator.
+A couple of things are going on here. First we are declaring a constant variable `const USER_SELECTED = 'USER_SELECTED';` (which by convention is all capitol letters) and we are setting it to a string value that is the same name as the variable. This variable will be our **type** (we will discuss that momentarily). The important thing to take away from this is that this is a means to protect our action. *This should prevent someone from accidentally tampering with our action type and messing up a whole lot of things down the line.* As our applications grow, it is common to add another folder "actionTypes" to our application file tree and create a file inside to house all of our action types there. Since our application is small - we will forgo that for now.
 
-The argument we pass into our action creator function is user in this case. We want to select a user and therefore thats the data the function will expect. We then return the action object.
+The next step is exporting our action creator (a function that houses and returns the action) `export function selectUser(user){};`. Each action we create will be exported individually. We can have multiple export statements in this file and each action should have its own action creator.
 
-The action object { }  
+The argument we pass into our action creator function is `user` in this case. We want to select a user and therefore thats the data the function will expect. We then return the action object.
 
-The action object has only one critical require piece:
+### The action object { }  
 
-A type
-There are also a few optional pieces that may be added to the action object should the complexity require it:
+The action object has only one critical *require* piece:
 
-A payload (very common to have)
-An error key
-A meta key that houses data the payload doesn't have.
-The type key is simply a representation of what type of action is being performed. It helps us keep track of our actions. It is a string value, generally represented by a variable (for protection) that describes the type of action expected: "SELECT_USER" for instance.
+1. A type
 
-In our example, we have data that needs to be passed along with the action type. So we have a "payload" key as well. The payload is our user that is passed into our action creator. This ensures that we will have access to the user when we reference our action creator inside of our React container component.
+There are also a few *optional* pieces that may be added to the action object should the complexity require it:
+
+1. A payload (very common to have)
+
+2. An error key
+
+3. A meta key that houses data the payload doesn't have.
+
+The **type** key is simply a representation of what type of action is being performed. It helps us keep track of our actions. It is a string value, generally represented by a variable (for protection) that describes the type of action expected: `"SELECT_USER"` for instance.
+
+In our example, we have data that needs to be passed along with the action type. So we have a "payload" key as well. The payload is our `user` that is passed into our action creator. This ensures that we will have access to the user when we reference our action creator inside of our React container component.
 
 It is not uncommon to see payload without the payload key: you could expect to encounter something like this which would have an identical effect.
 
+```jsx
 //########### actions/index.js ################
 const USER_SELECTED = 'USER_SELECTED';
 
@@ -83,6 +103,8 @@ export function selectUser(user) {
     user
   };
 };
+```
+
 This code is functionally the same as what we saw earlier and simply has the payload as an ES6 syntax where user: user can be whittled down to just user.
 
 This is really all there is to authoring an action in Redux. Below, we can take a look at some other examples of action creators and actions.
