@@ -133,7 +133,7 @@ Reducer functions should also never perform API calls or routing transitions, no
 
 ### Application State  
 
-The application state is updated as a new copy of state with the changes performed by the reducer. Inside of our components, we can utilize this state to help re-render and update our application with the newly changed data. This application state is a bundle of all of our state, which means that we have access to it throughout our entire application. However, we generally reserve the term container for a React component that will bridge between Redux and React. These containers contain the application state and determine how it should flow throughout React.
+The application state is updated as a new copy of state with the changes performed by the reducer. Inside of our components, we can utilize this state to help re-render and update our application with the newly changed data. This application state is a bundle of all of our state, which means that we have access to it throughout our entire application. However, we generally reserve the term *container* for a React component that will bridge between Redux and React. These containers contain the application state and determine how it should flow throughout React.
 
 ## Conclusion  
 
