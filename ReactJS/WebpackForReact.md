@@ -2,18 +2,14 @@
 
 ## Configure Webpack for React.
 
-Configuring Webpack to transpile React code is simple. Once you know how to set up your basic **webpack.config.js** all you 
-have to do is install a new babel preset!
+Configuring Webpack to transpile React code is simple. Once you know how to set up your basic **webpack.config.js** all you have to do is install a new babel preset!
 
 Install the react preset for babel by running: `npm install --save babel-preset-react`.
 
-Now, when you run `webpack` or `webpack-dev-server` your React code will be transpiled from either pure React syntax or JSX 
-into pure JavaScript. If you are using es6 features, such as the es6 class syntax, you will have to use the 
-**babel-preset-2015** to further convert your code to es5 that the browser can understand.
+Now, when you run `webpack` or `webpack-dev-server` your React code will be transpiled from either pure React syntax or JSX into pure JavaScript. If you are using es6 features, such as the es6 class syntax, you will have to use the **babel-preset-2015** to further convert your code to es5 that the browser can understand.
 
 
-Using the sample webpack.config.js file from 
-[http://coursework.vschool.io/intro-to-webpack/](https://coursework.vschool.io/intro-to-webpack/), add your react preset to 
+Using the sample webpack.config.js file from http://coursework.vschool.io/intro-to-webpack/, add your react preset to 
 your presets.
 
 ```javascript
@@ -37,18 +33,14 @@ module.exports = {
 };
 ```
 
-It is important that the *react* preset come before the es2015 preset as webpack will transform the code in the order that 
-you tell it to. Your JSX and React code must first be converted to JavaScript and then from es6 to es5.
+It is important that the *react* preset come before the *es2015* preset as webpack will transform the code in the order that you tell it to. Your JSX and React code must first be converted to JavaScript and then from es6 to es5.
 
 ### .babelrc  
 
-Babel is a fairly common transpiling tool. It is used by most companies and developers in one way or another. Configuring 
-your babel loader in your webpack.config.js file is completely acceptable, but it is more common to move some of your babel 
-configuration into a separate file. This will allow you to add additional configuration properties to Babel and maintain it 
+Babel is a fairly common transpiling tool. It is used by most companies and developers in one way or another. Configuring your babel loader in your *webpack.config.js* file is completely acceptable, but it is more common to move some of your babel configuration into a separate file. This will allow you to add additional configuration properties to Babel and maintain it 
 all in one place.
 
-Create a .babelrc file (the . is important here) by running: touch .babelrc. This will create your .babelrc file. Although 
-there is no file ending like ".js" or ".json", this will default to a JSON file. Then update it as below.
+Create a **.babelrc** file (the . is important here) by running: `touch .babelrc`. This will create your *.babelrc* file. Although there is no file ending like ".js" or ".json", this will default to a JSON file. Then update it as below.
 
 ```json
 {
