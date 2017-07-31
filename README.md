@@ -87,6 +87,8 @@ Lecture notes from The Iron Yard
 
 * [Intro To Webpack](https://github.com/rickmurdock/notes/blob/master/ReactJS/IntroToWebpack.md)
 
+* [State & Props Reviews (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/StateAndPropsReviews.md)
+
 * [Webpack for React](https://github.com/rickmurdock/notes/blob/master/ReactJS/WebpackForReact.md)
 
 * [Redux Todos Part 1 (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTodosPart1.md)
