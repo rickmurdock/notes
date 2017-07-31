@@ -23,6 +23,7 @@ Here a few questions we can ask to determine whether an application state librar
 4. Is there value in having a record of the changes to state in application? (i.e. Would it help you debug your application if you could track events as you test?).
 
 5. Do you want to cache (hold on to) your data instead of using multiple requests from another API?
+
 If you answer yes to any of these questions, there's the potential for a library like Redux to lower the complexity in your components.
 
 ## Conclusion  
