@@ -10,7 +10,7 @@ These tools are extremely popular and very useful. There is, however, another wa
 
 ## What Is Webpack?  
 
-Webpack is what is known as a "module bundler". It takes JavaScript modules (as in `module.exports=whatevs;` & var `whatevs = require('./whatevs')`, understands their dependencies, and then concatenates them together in the most efficient way possible, and outputs a single JS file at the end. It can also do transformations like Gulp and Grunt as well by using things called **loaders**.
+Webpack is what is known as a "module bundler". It takes JavaScript modules (as in `module.exports=whatevs;` & `var whatevs = require('./whatevs')`, understands their dependencies, and then concatenates them together in the most efficient way possible, and outputs a single JS file at the end. It can also do transformations like Gulp and Grunt as well by using things called **loaders**.
 
 Webpack isn't restricted to JavaScript files. By using Loaders, Webpack understands that a JavaScript module may require a CSS file, and that CSS file may require an image. The outputted assets will only contain exactly what is needed with minimum fuss. Webpack finds your files' dependencies, their dependencies, and so forth, and then puts it all together.
 
@@ -72,9 +72,9 @@ bundle.js  1.65 kB       0  [emitted]  main
 
 Now open index.html in your browser to see your page saying hello!
 
-Configuration
+## Configuration
 
-It isn't much fun specifying our input and output files each time we run Webpack. Thankfully, Webpack allows us to use a config file to save us the trouble. Create a file called `webpack.config.js` in the root of your project with the following contents:
+It isn't much fun specifying our input and output files each time we run Webpack. Thankfully, Webpack allows us to use a config file to save us the trouble. Create a file called **webpack.config.js** in the root of your project with the following contents:
 
 ```javascript
 module.exports = {
@@ -128,7 +128,7 @@ module.exports = {
 
 **There are a few important things to note here.**
 
-* The first is the line **test: /.js$/**, is a regular expression telling us to apply this loader to all files with a .js extension.
+* The first is the line **test: /\.js$/**, is a regular expression telling us to apply this loader to all files with a .js extension.
 
 * Similarly **exclude: /node_modules/** tells Webpack to ignore the node_modules directory. loader and query tell webpack which loader and preset to use...in this case, the Babel loader with the ES2015 preset.
 
