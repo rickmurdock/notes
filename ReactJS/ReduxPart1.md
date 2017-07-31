@@ -101,11 +101,11 @@ Upon clicking an *Action Creator* is triggered.
 
 ### Action Creator  
 
-**Action** Creators are functions that return an Action. They give us the specific "action" for our particular event.
+**Action** Creators are functions that return an **Action**. They give us the specific "action" for our particular event.
 
-Actions  
+### Actions  
 
-Actions are payloads which send data from your application to the `dispatch` function.
+**Actions** are payloads which send data from your application to the `dispatch` function.
 
 ### Dispatch  
 
