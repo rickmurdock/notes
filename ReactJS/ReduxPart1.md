@@ -101,7 +101,7 @@ Upon clicking an *Action Creator* is triggered.
 
 ### Action Creator  
 
-**Action** Creators are functions that return an **Action**. They give us the specific "action" for our particular event.
+**Action Creators** are functions that return an **Action**. They give us the specific "action" for our particular event.
 
 ### Actions  
 
@@ -109,7 +109,7 @@ Upon clicking an *Action Creator* is triggered.
 
 ### Dispatch  
 
-The `dispatch` function directs your action payload to the reducer. The function takes action and passes it the *Store* and on down to the correct reducer.
+The `dispatch` function directs your action payload to the *reducer*. The function takes action and passes it the *Store* and on down to the correct reducer.
 
 ### Store  
 
