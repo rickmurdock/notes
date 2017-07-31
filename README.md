@@ -85,7 +85,7 @@ Lecture notes from The Iron Yard
 
 * [ReactJS: Working wth Props and State](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactJSWorkingWithPropsandState.md)
 
-* Intro To Webpack
+* [Intro To Webpack](https://github.com/rickmurdock/notes/blob/master/ReactJS/IntroToWebpack.md)
 
 * [Webpack for React](https://github.com/rickmurdock/notes/blob/master/ReactJS/WebpackForReact.md)
 
