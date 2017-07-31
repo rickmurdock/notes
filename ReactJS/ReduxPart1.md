@@ -44,6 +44,125 @@ If you answer yes to any of these questions, there's the potential for a library
 
 ---
 
+# React and Redux Workflow  
+
+We've discussed application state and what that means for our program and its data. We'll now dive into Redux and React and how they work together.
+
+Let's talk about the following before diving in on Redux:
+
+1. Setting up our application file/folder structure in a conventional way for Redux.
+
+2. Downloading and installing the necessary dependencies to use Redux along with React.
+
+3. The pieces of the Redux puzzle and how they work with the React workflow.
+
+## Folder Structure  
+
+By now we should be comfortable with having separate folders for scripts and styles, as well as a folder for our React components. We'll now need to add a few more folders to our app. In addition to our components folder we need to add the following:
+
+* containers
+
+* actions
+
+* reducers
+
+Our file tree should now look something like this:
+
+![filetree](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/filetree.png)
+
+### Adding Files  
+
+Inside of our `actions` and `reducers` folders we'll need to add an `index.js` file to each folder. We'll touch back on these files a bit later.
+
+## Installing Dependencies  
+
+In a terminal, go to the project directory and use npm to install the following dependencies:
+
+```sh
+npm install --save redux
+npm install --save react-redux
+```
+
+The first command will install Redux. The second command installs React-Redux — a package that allows React and Redux to work together.
+
+### Further Installations  
+
+Some addition installs will come up as we journey through the Redux workflow, but for now, this is enough to get started.
+
+## React and Redux Workflow  
+
+A lot is going on within a React application, from application state to components and component state. For now, we'll focus on the application state.
+
+Imagine a simple app where a user clicks an option which displays data on another screen. Let's look at the flow of events that take place when this happens:
+
+![react redux workflow](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/react-redux-workflow1.jpg)
+
+Upon clicking an *Action Creator* is triggered.
+
+### Action Creator  
+
+**Action** Creators are functions that return an Action. They give us the specific "action" for our particular event.
+
+Actions  
+
+Actions are payloads which send data from your application to the `dispatch` function.
+
+### Dispatch  
+
+The `dispatch` function directs your action payload to the reducer. The function takes action and passes it the *Store* and on down to the correct reducer.
+
+### Store  
+
+The **Store** holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
+
+### Reducers  
+
+There is one reducer in a Redux application. You can split the reducer into multiple functions that work like the root reducer, but you have to use the `combineReducers` function to assemble them into your root reducer. The important part to know is that they receive the action payload. When they receive the action payload, they pair it up with a proper response.
+
+### In Summary  
+
+Actions describe the fact that something happened, but they don't specify how things should change in response. Reducers take that action and respond with the proper change, which manages application state and how it should change. Reducers are pure functions that pair an action and the application state and return a new state based on what the action dictated.
+
+### Complications of State in Redux  
+
+An important thing of note is that application state is never mutated. After an action meets the previous state in the reducer, a brand new object representing the next state is returned. We can't just alter the existing state (which we'll discuss in upcoming examples).
+
+Reducer functions should also never perform API calls or routing transitions, nor should they use non-pure functions like `Date.now` or `Math.random` — as these would mutate state.
+
+> "Given the same arguments, it should calculate the next state and return it. No surprises. No side effects. No API calls. No mutations. Just a calculation." - Redux docs.
+
+### Application State  
+
+The application state is updated as a new copy of state with the changes performed by the reducer. Inside of our components, we can utilize this state to help re-render and update our application with the newly changed data. This application state is a bundle of all of our state, which means that we have access to it throughout our entire application. However, we generally reserve the term container for a React component that will bridge between Redux and React. These containers contain the application state and determine how it should flow throughout React.
+
+## Conclusion  
+
+* The React and Redux workflow cycle is fairly complicated but centers around updating application state.
+
+* A data change or event triggers an Action creator.
+
+* The Action Creator creates an Action.
+
+* An Action is the payload of information and data regarding what happened.
+
+* A dispatcher handles the Action and directs it to the proper Reducer function inside of our Store.
+
+* The reducer function is a pure function that pairs an action with an appropriate piece of application state and updates it accordingly.
+
+* Application state is never mutated, but rather copied and returned as a new object.
+
+* The new application state is sent back to React and utilized by our Container components.
+
+* Container components are the bridge between React and Redux and determine what should be done inside of React with the newly created application state.
+
+### References  
+
+* [Redux Basics](http://redux.js.org/docs/basics/)
+
+* [Redux diagrams GitHub](https://github.com/reactjs/redux/issues/653)
+
+---
+
 # Authoring Actions  
 
 We just wrapped up our discussion on the workflow of React and Redux working hand in hand. So let's start to dissect some of the ideas we discovered and take them on piece by piece from the top down. First, we know what actions are: they are the payload of information that send data from your application to the store (through the dispatcher and to the reducers).
@@ -324,122 +443,3 @@ Now we are all rigged up to check out the reducers in the next section! We have 
 ### References  
 
 * [Redux](http://redux.js.org/)
-
----
-
-# React and Redux Workflow  
-
-We've discussed application state and what that means for our program and its data. We'll now dive into Redux and React and how they work together.
-
-Let's talk about the following before diving in on Redux:
-
-1. Setting up our application file/folder structure in a conventional way for Redux.
-
-2. Downloading and installing the necessary dependencies to use Redux along with React.
-
-3. The pieces of the Redux puzzle and how they work with the React workflow.
-
-## Folder Structure  
-
-By now we should be comfortable with having separate folders for scripts and styles, as well as a folder for our React components. We'll now need to add a few more folders to our app. In addition to our components folder we need to add the following:
-
-* containers
-
-* actions
-
-* reducers
-
-Our file tree should now look something like this:
-
-![filetree](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/filetree.png)
-
-### Adding Files  
-
-Inside of our `actions` and `reducers` folders we'll need to add an `index.js` file to each folder. We'll touch back on these files a bit later.
-
-## Installing Dependencies  
-
-In a terminal, go to the project directory and use npm to install the following dependencies:
-
-```sh
-npm install --save redux
-npm install --save react-redux
-```
-
-The first command will install Redux. The second command installs React-Redux — a package that allows React and Redux to work together.
-
-### Further Installations  
-
-Some addition installs will come up as we journey through the Redux workflow, but for now, this is enough to get started.
-
-## React and Redux Workflow  
-
-A lot is going on within a React application, from application state to components and component state. For now, we'll focus on the application state.
-
-Imagine a simple app where a user clicks an option which displays data on another screen. Let's look at the flow of events that take place when this happens:
-
-![react redux workflow](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/react-redux-workflow1.jpg)
-
-Upon clicking an *Action Creator* is triggered.
-
-### Action Creator  
-
-**Action** Creators are functions that return an Action. They give us the specific "action" for our particular event.
-
-Actions  
-
-Actions are payloads which send data from your application to the `dispatch` function.
-
-### Dispatch  
-
-The `dispatch` function directs your action payload to the reducer. The function takes action and passes it the *Store* and on down to the correct reducer.
-
-### Store  
-
-The **Store** holds the whole state tree of your application. The only way to change the state inside it is to dispatch an action on it.
-
-### Reducers  
-
-There is one reducer in a Redux application. You can split the reducer into multiple functions that work like the root reducer, but you have to use the `combineReducers` function to assemble them into your root reducer. The important part to know is that they receive the action payload. When they receive the action payload, they pair it up with a proper response.
-
-### In Summary  
-
-Actions describe the fact that something happened, but they don't specify how things should change in response. Reducers take that action and respond with the proper change, which manages application state and how it should change. Reducers are pure functions that pair an action and the application state and return a new state based on what the action dictated.
-
-### Complications of State in Redux  
-
-An important thing of note is that application state is never mutated. After an action meets the previous state in the reducer, a brand new object representing the next state is returned. We can't just alter the existing state (which we'll discuss in upcoming examples).
-
-Reducer functions should also never perform API calls or routing transitions, nor should they use non-pure functions like `Date.now` or `Math.random` — as these would mutate state.
-
-> "Given the same arguments, it should calculate the next state and return it. No surprises. No side effects. No API calls. No mutations. Just a calculation." - Redux docs.
-
-### Application State  
-
-The application state is updated as a new copy of state with the changes performed by the reducer. Inside of our components, we can utilize this state to help re-render and update our application with the newly changed data. This application state is a bundle of all of our state, which means that we have access to it throughout our entire application. However, we generally reserve the term container for a React component that will bridge between Redux and React. These containers contain the application state and determine how it should flow throughout React.
-
-## Conclusion  
-
-* The React and Redux workflow cycle is fairly complicated but centers around updating application state.
-
-* A data change or event triggers an Action creator.
-
-* The Action Creator creates an Action.
-
-* An Action is the payload of information and data regarding what happened.
-
-* A dispatcher handles the Action and directs it to the proper Reducer function inside of our Store.
-
-* The reducer function is a pure function that pairs an action with an appropriate piece of application state and updates it accordingly.
-
-* Application state is never mutated, but rather copied and returned as a new object.
-
-* The new application state is sent back to React and utilized by our Container components.
-
-* Container components are the bridge between React and Redux and determine what should be done inside of React with the newly created application state.
-
-### References  
-
-* [Redux Basics](http://redux.js.org/docs/basics/)
-
-* [Redux diagrams GitHub](https://github.com/reactjs/redux/issues/653)
