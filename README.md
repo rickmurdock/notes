@@ -97,7 +97,7 @@ Lecture notes from The Iron Yard
 
 * React-Router: Part 1
 
-* [React Router Intro](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactRouterIntro.md)
+* [React Router Intro (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactRouterIntro.md)
 
 * React-Router: Part 2
 
