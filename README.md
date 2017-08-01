@@ -97,9 +97,9 @@ Lecture notes from The Iron Yard
 
 * [ReactJS: Advanced Techniques](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactJSAdvancedTechniques.md)
 
-* React-Router: Part 1
-
 * [React Router Intro (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactRouterIntro.md)
+
+* [React-Router: Part 1](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactRouterPart1.md)
 
 * React-Router: Part 2
 
