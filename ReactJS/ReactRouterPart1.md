@@ -163,7 +163,7 @@ Here we have a `className="btn"` for each of our `<button>` elements. Inside of 
 
 Here's a simple three page application (with minimal styling for demonstration) built with React router:
 
-![routing.gif]()
+![routing.gif](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/routing.gif)
 
 ## Conclusion  
 
