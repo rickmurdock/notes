@@ -1,15 +1,16 @@
-How to Incorporate a Layout Component into Our React App  
+# How to Incorporate a Layout Component into Our React App  
 
 Now that we have looked a very simple application using the React Router to navigate between views, let's dive deeper into common layouts within a React application.
 
-It's a best practice to store often repeated elements in separate files to avoid duplication of code. A header or a sidebar element are simple examples of elements commonly displayed on multiple pages. These elements are called layout components.
+It's a best practice to store often repeated elements in separate files to avoid duplication of code. A header or a sidebar element are simple examples of elements commonly displayed on multiple pages. These elements are called *layout* components.
 
 Let's take a look at how we can insert a layout component at the top of an application.
 
-Layout Components  
+## Layout Components  
 
-First, create a component. This will our first layout component and the base of all pages on our application. Let's name it <BaseLayout> and store it in a file named base-layout.js.
+First, create a component. This will our first layout component and the base of all pages on our application. Let's name it `<BaseLayout>` and store it in a file named `base-layout.js`.
 
+```jsx
 //############ base-layout.js ##############
 import React, { Component } from 'react';
 
@@ -30,13 +31,15 @@ export default class BaseLayout extends Component {
     )
   }
 }
+```
 
-There isn't much complexity here. We are creating a container <div> to return from our render method and inside of that we have a <div className="header"> and a <footer>. In between these two sections we are passing in {this.props.children} which will allow us to render components inside of this layout.
+There isn't much complexity here. We are creating a container `<div>` to return from our `render` method and inside of that we have a `<div className="header">` and a `<footer>`. In between these two sections we are passing in `{this.props.children}` which will allow us to render components inside of this layout.
 
-Bringing It All Home  
+### Bringing It All Home  
 
-Let's look at our index.js file.
+Let's look at our `index.js` file.
 
+```jsx
 import registerServiceWorker from './registerServiceWorker';
 
 //import React
@@ -69,36 +72,45 @@ ReactDOM.render(
   ,
   document.getElementById('root'));
 registerServiceWorker();
-Within index.js, our entire application is nested inside of <BrowserRouter>. We import our <BaseLayout> layout component the same way we import other components. Then we use <BaseLayout> to wrap the <Switch> component which wraps our <Route> components. By doing this we return one container inside of <BrowserRouter>. <BaseLayout> is ready for rendering child components because of the {this.props.children} included inside of itself.
+```
 
-Let's take a look how this would appear with minor styling. We expect to see the <BaseLayout> to be rendered on each page.
+Within `index.js`, our entire application is nested inside of `<BrowserRouter>`. We import our `<BaseLayout>` layout component the same way we import other components. Then we use `<BaseLayout>` to wrap the `<Switch>` component which wraps our `<Route>` components. By doing this we return one container inside of `<BrowserRouter>`. `<BaseLayout>` is ready for rendering child components because of the `{this.props.children}` included inside of itself.
 
-Here is our main <App> component page...
+Let's take a look how this would appear with minor styling. We expect to see the `<BaseLayout>` to be rendered on each page.
+
+Here is our main `<App>` component page...
 
 main.png
-...and here is our <PageOne> component page.
+
+...and here is our `<PageOne>` component page.
 
 p1.png
+
 We have successfully introduced a layout component and displayed it with nested child components in our web application.
 
-Conclusion  
+## Conclusion  
 
-We can nest many pages within a component using React Router.
-Passing {this.props.children} inside the layout component ensures that it will always be able to render other components inside of itself.
-With React Router, we can use the layout component as a container to wrap all of our <Route> components and our <Switch> component.
- Multiple Choice Exercise View Exercise
-Use Exact Path to Render a Specific Route  
+* We can nest many pages within a component using React Router.
 
-Often times in an application we rely on what is called an index route. An index route holds the base components for the application and generally is the place first visited by the user. Frequently, the route that corresponds to the index route is a simple /, this means that in the address bar of the browser, a user will simply see the base URL. For example, if we had a website moviesite.com/ the trailing / would indicate that we were on our index route.
+* Passing `{this.props.children}` inside the layout component ensures that it will always be able to render other components inside of itself.
 
-Issues with the Index Route  
+* With React Router, we can use the layout component as a container to wrap all of our `<Route>` components and our `<Switch>` component.
 
-The index route is complicated by the fact that it matches ALL of the other routes for an application, at least partially, because they too contain the /. When we first set up our React Router application, we discussed the level of specificity needed to determine which route was rendered on a page. We discussed that we put our most complex routes at the top so as the router moves through each route it is able to determine if they match completely to the route path provided. This works for us. However, there is a better way to guarantee our route matches.
+---
 
-Exact Path  
+# Use Exact Path to Render a Specific Route  
 
-When we declare an index route, we can use the exact attribute to ensure that our path will be met only under strict and exact standards. Not only is this important for our index route but also in a route where exclusive and deliberate matching is needed. Let's take a look at this in action.
+Often times in an application we rely on what is called an *index route*. An index route holds the base components for the application and generally is the place first visited by the user. Frequently, the route that corresponds to the index route is a simple `/`, this means that in the address bar of the browser, a user will simply see the base URL. For example, if we had a website `moviesite.com/` the trailing `/` would indicate that we were on our index route.
 
+## Issues with the Index Route  
+
+The index route is complicated by the fact that it matches ALL of the other routes for an application, at least partially, because they too contain the `/`. When we first set up our React Router application, we discussed the level of specificity needed to determine which route was rendered on a page. We discussed that we put our most complex routes at the top so as the router moves through each route it is able to determine if they match completely to the route path provided. This works for us. However, there is a better way to guarantee our route matches.
+
+### Exact Path  
+
+When we declare an index route, we can use the `exact` attribute to ensure that our path will be met only under strict and exact standards. Not only is this important for our index route but also in a route where exclusive and deliberate matching is needed. Let's take a look at this in action.
+
+```jsx
 class App extends Component {
   render() {
     return (
@@ -114,17 +126,24 @@ class App extends Component {
     );
   }
 }
-In the example above you can see we are no longer confined to leaving our least complex routes (like index route) down at the bottom of our <Switch>. Using <Route exact path="/" component={HomeMenu} />, the route is specifically a / that will render our <HomeMenu /> component. This takes some of the confusion away from our program and also allows us to be sure of what route will render. As a note, using exact will not work for us when creating dynamic routes, such as the /people/:actor and /people paths above. We will discuss this in future lessons but it's important to know that we must use our most complex route /people/:actor above our /people or the <ActorInfo /> component would never render. We can't use exact there because the path is dynamic and set change based on a user selection that our router can not predict.
+```
 
-Conclusion  
+In the example above you can see we are no longer confined to leaving our least complex routes (like index route) down at the bottom of our `<Switch>`. Using `<Route exact path="/" component={HomeMenu} />`, the route is specifically a `/` that will render our `<HomeMenu />` component. This takes some of the confusion away from our program and also allows us to be sure of what route will render. As a note, using `exact` will not work for us when creating dynamic routes, such as the `/people/:actor` and `/people` paths above. We will discuss this in future lessons but it's important to know that we must use our most complex route `/people/:actor` above our `/people` or the `<ActorInfo />` component would never render. We can't use `exact` there because the path is dynamic and set change based on a user selection that our router can not predict.
 
-Using exact guarantees that a certain route will render when the endpoint matches exactly.
-exact is a means for rendering our index route of an application.
-We can't use exact for dynamic routes.
-References  
+## Conclusion  
 
-Exact Path
- Multiple Choice Exercise View Exercise
+* Using `exact` guarantees that a certain route will render when the endpoint matches exactly.
+
+* `exact` is a means for rendering our index route of an application.
+
+* We can't use `exact` for dynamic routes.
+
+### References  
+
+* [Exact Path](https://reacttraining.com/react-router/web/api/Route/exact-bool)
+
+---
+
 Active Navigation Links with React Router  
 
 Let's talk about active navigation links, and how we can style them in React Router easily and efficiently using <NavLink> components.
