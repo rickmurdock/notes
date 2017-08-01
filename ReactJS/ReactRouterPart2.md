@@ -144,18 +144,18 @@ In the example above you can see we are no longer confined to leaving our least 
 
 ---
 
-Active Navigation Links with React Router  
+# Active Navigation Links with React Router  
 
-Let's talk about active navigation links, and how we can style them in React Router easily and efficiently using <NavLink> components.
-
-The NavLink Component  
+Let's talk about active navigation links, and how we can style them in React Router easily and efficiently using `<NavLink>` components.
+## The NavLink Component  
 
 In the following example, we'll create a simple "SPA" with a navigation bar. This navigation bar will be present on all of our pages and should help direct us to the other portions of our application while also signaling the current page.
 
-The Set Up  
+### The Set Up  
 
-Notice in the index.js file we've added NavLink to our list of imported components from react-router-dom. We'll then call that component to create a navigation element that has some useful attributes available.
+Notice in the `index.js` file we've added `NavLink` to our list of imported components from `react-router-dom`. We'll then call that component to create a navigation element that has some useful attributes available.
 
+```jsx
 //########### index.js ##############
 import registerServiceWorker from './registerServiceWorker';
 
@@ -194,35 +194,49 @@ ReactDOM.render(
   ,
   document.getElementById('root'));
 registerServiceWorker();
-It's important to note that inside of our <BrowserRouter> we're limited to return one child element, the same with any of our component render methods. To make this style of code valid, we must wrap both our <NavLink> and <Switch> components in an outside <div>.
+```
 
-We will come back to theNavLink component later on, but first, let's take stock of what we have so far.
+It's important to note that inside of our `<BrowserRouter>` we're limited to return one child element, the same with any of our component render methods. To make this style of code valid, we must wrap both our `<NavLink>` and `<Switch>` components in an outside `<div>`.
 
-Inside of our <nav> we have passed some <NavLink> components. Each <NavLink> component has attributes that we are able to call upon to make our life easier.
+We will come back to the `NavLink` component later on, but first, let's take stock of what we have so far.
 
-We won't go over them all, but here are some of the attributes that <NavLink> has:
+Inside of our `<nav>` we have passed some `<NavLink>` components. Each `<NavLink>` component has attributes that we are able to call upon to make our life easier.
 
-activeClassName(takes a string as value): <navlink> will check against the URL in the browser and when it matches, will add on a special class name that you define (a common one would be "selected" or "active"). This allows us to set a CSS style for the active class, which will allow us to see the active link compared to the others.
+We won't go over them all, but here are some of the attributes that `<NavLink>` has:
 
-activeStyle: the activeStyle attribute will take an object {} filled with style key value pairs. For example, if we wanted our active link to change font color and background color we would pass activeStyle an object like so:
+* `activeClassName`(takes a string as value): `<navlink>` will check against the URL in the browser and when it matches, will add on a special class name that you define (a common one would be "selected" or "active"). This allows us to set a CSS style for the active class, which will allow us to see the active link compared to the others.
 
+* `activeStyle`: the `activeStyle` attribute will take an object `{}` filled with style key value pairs. For example, if we wanted our active link to change font color and background color we would pass `activeStyle` an object like so:
+
+```jsx
 <NavLink
   activeStyle={{
     color: "blue",
     backgroundColor: "white"
   }}>Main Page</NavLink>
-exact is a boolean value that we've seen before. The exact keyword appears before the to= path declaration. This means that in order for any of the other attributes to be true, the path URL must exactly match the to= attribute.
+```
+
+* `exact` is a boolean value that we've seen before. The `exact` keyword appears before the `to=` path declaration. This means that in order for any of the other attributes to be true, the path URL must exactly match the `to=` attribute.
+
+```jsx
 <NavLink activeClassName="selected" className="nav-link" exact to="/">Main</NavLink>
+```
+
 The above snippet would mean that if, and only if, the path was just "/" would any of the attributes work.
 
+```jsx
 <NavLink activeClassName="selected" className="nav-link" strict to="/home/">Main</NavLink>
-Lastly, we have isActive:, which takes a function that's used if you want to do more than verify that the link's pathname matches the URL's pathname. You may only want a link to be active if an id number was odd, or some other similar scenario.
-NavLink activeClassName  
+```
 
-The activeClassName attribute gives us the JavaScript logic needed to check if our link is active without having to write utility functions to determine where we are in our app. This is a big time saver and makes our app even more efficient with out having to write extra code for styling. Simply add a class (in this example we will use "selected") and give a path to match against (i.e. to="/page_one"). Then either use activeStyle or plain CSS to add some styling. When a user navigates to the provided path, the provided class will be applied to that NavLink element only.
+* Lastly, we have `isActive:`, which takes a function that's used if you want to do more than verify that the link's pathname matches the URL's pathname. You may only want a link to be active if an id number was odd, or some other similar scenario.
+
+### NavLink `activeClassName` 
+
+The `activeClassName` attribute gives us the JavaScript logic needed to check if our link is active without having to write utility functions to determine where we are in our app. This is a big time saver and makes our app even more efficient with out having to write extra code for styling. Simply add a class (in this example we will use `"selected"`) and give a path to match against (i.e. `to="/page_one"`). Then either use `activeStyle` or plain CSS to add some styling. When a user navigates to the provided path, the provided class will be applied to that `NavLink` element only.
 
 Let's check the CSS and see what styles are being applied.
 
+```jsx
 nav {
   background-color: #a4ba70;
   padding: 25px 0;
@@ -243,17 +257,21 @@ nav {
   border: 1px solid #ffffff;
   box-shadow: 1px 2px 2px #000000;
 }
-We can see a normal (non-active) class called nav-link, which has default styling for our links in the nav-bar class. Then we add styling for the class selected (which differs from the default) and allows the link to the page we are on to stand out from the others. This helps for both user experience and ease of navigation.
+```
 
-Let's see what this looks like on the main page. We would expect our NavLink to take on the characteristics of the selected class and appear white, while the others remained green.
+We can see a normal (non-active) class called `nav-link`, which has default styling for our links in the `nav-bar` class. Then we add styling for the class `selected` (which differs from the default) and allows the link to the page we are on to stand out from the others. This helps for both user experience and ease of navigation.
+
+Let's see what this looks like on the main page. We would expect our `NavLink` to take on the characteristics of the `selected` class and appear white, while the others remained green.
 
 main-1.png
+
 And it works! Amazingly simple solution for our navigation needs.
 
-Pulling It All Together  
+## Pulling It All Together  
 
-Putting the NavLinks into their own, stand alone component is great for efficiency purposes. Let's clean up our code a little by creating a new component called NavBar, in a new file namednav.js.
+Putting the NavLinks into their own, stand alone component is great for efficiency purposes. Let's clean up our code a little by creating a new component called `NavBar`, in a new file `namednav.js`.
 
+```jsx
 //############## nav.js ################
 import React, { Component } from 'react';
 
@@ -274,13 +292,15 @@ export default class NavBar extends Component {
     )
   }
 }
+```
 
-We extracted our <NavLink> components from the index.js file and put them into their own component. Now we can export and import this component to any other component we wish. We use {this.props.children} to allow this component to render all the other components inside of it when they're called.
+We extracted our `<NavLink>` components from the `index.js` file and put them into their own component. Now we can export and import this component to any other component we wish. We use `{this.props.children}` to allow this component to render all the other components inside of it when they're called.
 
-Because we want this to appear on every page of our app it makes the most sense to render this component inside of our index.js. We could handle that by importing to each of our components but that would not be DRY programming.
+Because we want this to appear on every page of our app it makes the most sense to render this component inside of our `index.js`. We could handle that by importing to each of our components but that would not be DRY programming.
 
-Let's take a look back at our refactored index.js page now. (You can scroll back up and look at what it looked like before the refactor to compare).
+Let's take a look back at our refactored `index.js` page now. (*You can scroll back up and look at what it looked like before the refactor to compare*).
 
+```jsx
 import registerServiceWorker from './registerServiceWorker';
 
 //import React
@@ -313,20 +333,28 @@ ReactDOM.render(
   ,
   document.getElementById('root'));
 registerServiceWorker();
+```
 
-We added the <NavBar> components to our lists of imports and then we use the opening and closing <NavBar></NavBar> tags to wrap our <Switch> component. <NavBar> knows to expect child components because we passed it {this.props.children} inside of its opening and closing tags in the nav.js file. This is a nice and tidy solution for our simple app and demonstrates the capabilities of the <NavLink> component and the efficient means with which we are able to style our active links.
+We added the `<NavBar>` components to our lists of imports and then we use the opening and closing `<NavBar></NavBar>` tags to wrap our `<Switch>` component. `<NavBar>` knows to expect child components because we passed it `{this.props.children}` inside of its opening and closing tags in the `nav.js` file. This is a nice and tidy solution for our simple app and demonstrates the capabilities of the `<NavLink>` component and the efficient means with which we are able to style our active links.
 
 Let's See It in Action  
 
 navlink.gif
-Conclusion  
 
-We can use the NavLink component from react-router-dom to have access to styling attributes for active links in our navigation bar.
-Active links help display the current page a user is on by differentiating the active link from the other links in the navigation bar.
-<NavLink> comes with some key attributes, the most commonly used are the isActive and activeClassName.
-activeStyle takes an object with our styling wishes as a normal React element would receive.
-activeClassName is a class that gets added on to the components classes when the link matches the pathname for the URL.
-We can use exact to ensure the pathname matches exactly to our URL (usually needed for our index route /).
-References  
+## Conclusion  
 
-React Training
+* We can use the NavLink component from react-router-dom to have access to styling attributes for active links in our navigation bar.
+
+* Active links help display the current page a user is on by differentiating the active link from the other links in the navigation bar.
+
+* `<NavLink>` comes with some key attributes, the most commonly used are the `isActive` and `activeClassName`.
+
+  * `activeStyle` takes an object with our styling wishes as a normal React element would receive.
+
+  * `activeClassName` is a class that gets added on to the components classes when the link matches the pathname for the URL.
+
+* We can use `exact` to ensure the pathname matches exactly to our URL (usually needed for our index route `/`).
+
+### References  
+
+* [React Training](https://reacttraining.com/react-router/web/api/NavLink/isActive-func)
