@@ -163,7 +163,7 @@ Here we have a `className="btn"` for each of our `<button>` elements. Inside of 
 
 Here's a simple three page application (with minimal styling for demonstration) built with React router:
 
-routing.gif
+![routing.gif]()
 
 ## Conclusion  
 
@@ -189,53 +189,57 @@ routing.gif
 
 # Hash Based Routing vs. Resource Routing  
 
-Routing simply means your app responds in some way to a change in the browser's URL. By now you are familiar with the client-server model: the web browser is a client program that requests a resource (web page) from the server. Resource routing refers to routing done on the back-end, for example using NodeJS. Hash-based routing is done on the front-end. Let's review what you know about resource routing.
+Routing simply means your app responds in some way to a change in the browser's URL. By now you are familiar with the client-server model: the web browser is a *client* program that requests a resource (web page) from the *server*. Resource routing refers to routing done on the back-end, for example using NodeJS. Hash-based routing is done on the front-end. Let's review what you know about resource routing.
 
-Resource Routing  
+## Resource Routing  
 
 Resource routing refers to back-end routing. We've already covered a bit of this using NodeJS. We used the POST and GET request methods to communicate with the server. In resource routing, those methods send a request to the server, the server then searches for the resource you requested, and responds back with a static file that is stored on the server. Routing, in this case, is handled by the server or back-end.
 
-What is Hash Based Routing?  
+## What is Hash Based Routing?  
 
-Hash based routing is a method of routing that uses the hash symbol to designate the path that the router should direct the browser onto. These symbols are placed after the base URL and before the route. http://myrecipes.com/#/hashbrowncasserole. This essentially separates the URL and creates a fragment of the remaining piece of URL, called a fragment identifier. The baseURL is sent to the server, while the fragment identifier is stored in local storage. The server processes the request for the base URL and returns the default index.html. JavaScript is returned to the browser, the code is run, and a query is sent to the server with the fragment. This is shown to the user in the view. To be able to process the hash-bang URL, the browser it's being sent to needs to be using JavaScript. We'll go into more detail about the issues this may cause in the next lesson.
+Hash based routing is a method of routing that uses the hash symbol to designate the path that the router should direct the browser onto. These symbols are placed after the base URL and before the route. `http://myrecipes.com/#/hashbrowncasserole`. This essentially separates the URL and creates a fragment of the remaining piece of URL, called a fragment identifier. The baseURL is sent to the server, while the fragment identifier is stored in local storage. The server processes the request for the base URL and returns the default `index.html`. JavaScript is returned to the browser, the code is run, and a query is sent to the server with the fragment. This is shown to the user in the view. To be able to process the hash-bang URL, the browser it's being sent to needs to be using JavaScript. We'll go into more detail about the issues this may cause in the next lesson.
 
-With the URL example from above: Given http://myrecipes.com/#/hashbrowncasserole the base URL myrecipes.com will be sent to the server, the fragment identifier /hashbrowncasserole will be stored in local storage. JavaScript code is returned to the browser after the initial page is pulled, prompting the browser to then send back the fragment as a query to the server.
+With the URL example from above: Given `http://myrecipes.com/#/hashbrowncasserole` the base URL `myrecipes.com` will be sent to the server, the fragment identifier `/hashbrowncasserole` will be stored in local storage. JavaScript code is returned to the browser after the initial page is pulled, prompting the browser to then send back the fragment as a query to the server.
 
-hash-bang  
+### hash-bang  
 
-You'll sometimes see the hash symbol followed by the exclamation mark: #!. This is referred to as hash-bang. This was created to allow for Ajax crawlable URL strings, meaning search engines could find your content. However this has since been deprecated by Google, and it's recommended to use the History API.
+You'll sometimes see the hash symbol followed by the exclamation mark: `#!`. This is referred to as *hash-bang*. This was created to allow for Ajax crawlable URL strings, meaning search engines could find your content. However this has since been deprecated by Google, and it's recommended to use the **[History API](https://developer.mozilla.org/en-US/Add-ons/WebExtensions/API/history)**.
 
-Conclusion  
+## Drawbacks of Hash-Based Routing  
+
+If the user has JavaScript disabled in their browser, the routing won't work and the app will not be navigable. Another issue with using hash-based routing is that the URL fragments don't appear in browser history.
+
+A side effect of this is that URLs that differ only in fragments will appear as one entry in browser history, which means users can't hit the back button to navigate on your page. They also can't bookmark a specific page that's pulled from a fragment.
+
+## Conclusion  
 
 When you hear the terms resource routing and hash routing, you now know that they refer to back-end vs front-end routing methods. There are advantages and disadvantages to each which we will cover more fully in the next lesson.
 
-References  
+### References  
 
-Basic resource routing
-Client Server
-Simple summary front-end vs back-end routing
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-The URL http://myrecipes.com/signup.html is most likely an example of which of the following?
+* [Basic resource routing](https://expressjs.com/en/starter/basic-routing.html)
 
-Resource routing
+* [Client Server](https://en.wikipedia.org/wiki/Client%E2%80%93server_model)
 
-Hash-based routing
+* [Simple summary front-end vs back-end routing](https://medium.com/@kennedyjt88/frontend-routing-vs-backend-routing-874b2bc41e5a)
 
-Using BrowserRouter to Enable Browser History  
+---
+
+# Using BrowserRouter to Enable Browser History  
 
 In the past with React Router to avoid using hash based routing and to use resource routing we had to jump through a few hoops. We don't need to go into specifics but just understand it was not as easy as it is now. React Router version 4 has made life much simpler for us.
 
-Enabling Browser History  
+## Enabling Browser History  
 
 React makes life simple by taking the best of both worlds. What this gives us is the ability to track the history of our application within the browser and at the same time render our routes dynamically and with speed like hash-based routing.
 
 By enabling the history API in the browser, we can track a user's endpoints and allow them to get back to a previous page by using the back button and send links to other people that will direct those people to the exact contact the original user wanted them to see.
 
-The Setup  
+### The Setup  
 
-React Router's new <BrowserRouter /> component has the history API included. To use it, we must wrap all of our routes with it. If we want to render one route at a time on our page, we will need to use the <Switch /> component. The <Switch /> component is an exclusive route provider, or exclusive rendering, meaning it seeks the route that matches the path and once found it will not render anything else. This will be our focus as we learn to render multiple pages as a SPA. The alternative would be to use inclusive rendering, in which all routes are displayed on a page. Let's check the code:
+React Router's new `<BrowserRouter />` component has the history API included. To use it, we must wrap all of our routes with it. If we want to render one route at a time on our page, we will need to use the `<Switch />` component. The `<Switch />` component is an exclusive route provider, or `exclusive rendering`, meaning it seeks the route that matches the path and once found it will not render anything else. This will be our focus as we learn to render multiple pages as a SPA. The alternative would be to use `inclusive rendering`, in which all routes are displayed on a page. Let's check the code:
 
+```jsx
 //######### index.js #############
 
 //import React
@@ -265,24 +269,27 @@ ReactDOM.render(
  </BrowserRouter>
 
 , document.getElementById('root'));
+```
+
 We now have access to the browser's history API. We can let users navigate our application and be able to return to each endpoint or direct other users to the same endpoint.
 
-Conclusion  
+## Conclusion  
 
-Using React Router 4's <BrowserRouter /> component, we automatically gain the ability to use the history API.
-Exclusive rendering is rendering a route based on the strict matching of a path.
-Inclusive rendering is rendering of routes based on meeting a partial match of the path allowing for multiple routes to be displayed.
-Use the <Switch /> component to ensure that only one route will be displayed at a time. This is exclusive rendering as opposed to inclusive rendering where all routes would be displayed.
-References  
+* Using React Router 4's `<BrowserRouter />` component, we automatically gain the ability to use the history API.
 
-Switch Component
-BrowserRouter
- Multiple Choice Exercise Collapse Exercise
-The <Switch /> component in React-Router uses which method to render views?
+* **Exclusive rendering** is rendering a route based on the strict matching of a path.
 
-Inclusive rendering
+* **Inclusive rendering** is rendering of routes based on meeting a partial match of the path allowing for multiple routes to be displayed.
 
-Exclusive rendering
+* Use the `<Switch />` component to ensure that only one route will be displayed at a time. This is exclusive rendering as opposed to inclusive rendering where all routes would be displayed.
+
+### References  
+
+* [Switch Component](https://reacttraining.com/react-router/web/api/Switch)
+
+* [BrowserRouter](https://reacttraining.com/react-router/web/api/BrowserRouter)
+
+---
 
 Hash-Based Routing Drawbacks  
 
