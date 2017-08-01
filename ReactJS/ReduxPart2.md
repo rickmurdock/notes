@@ -1,9 +1,10 @@
-Authoring a Reducer  
+# Authoring a Reducer  
 
-We have walked through Redux actions and action creators, and shown how to wire state to our container components. The last piece of the Redux puzzle is the reducer, a function that takes the current state and an action and returns a new state.
+We have walked through Redux actions and action creators, and shown how to wire state to our container components. The last piece of the Redux puzzle is the *reducer*, a function that takes the current state and an action and returns a new state.
 
 Below, we have our action creators and components for reference.
 
+```jsx
 // ### actions.js ###
 const USER_SELECTED = 'USER_SELECTED';
 
@@ -80,26 +81,34 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(UserDetail);
-Creating our reducer  
+```
 
-In this example, we have one action, SELECT_USER. Our state's structure has been defined to be an object with two keys:
+## Creating our reducer  
 
-activeUser: an object with name and bio
-users: an array of objects, each with name and bio
+In this example, we have one action, `SELECT_USER`. Our state's structure has been defined to be an object with two keys:
+
+* `activeUser`: an object with `name` and `bio`
+
+* `users`: an array of objects, each with `name` and `bio`
+
 In most applications, the list of users would come from an external resource, but in our case, it will be hard-coded in our initial state.
 
-Create a new file called reducer.js in the same directory as actions.js. Let's put the simplest possible reducer in there:
+Create a new file called `reducer.js` in the same directory as `actions.js`. Let's put the simplest possible reducer in there:
 
+```jsx
 // ### reducer.js ###
 const reducer = function (state, action) {
   return state;
 }
 
 export default reducer;
+```
+
 This reducer takes our state and an action and does nothing at all with it, which technically is a reducer.
 
-We have a problem: we expect our state be an object with activeUser and user keys. When our application starts, Redux will call our reducer with an undefined state. We can use that to set the initial state:
+We have a problem: we expect our state be an object with `activeUser` and `user` keys. When our application starts, Redux will call our reducer with an undefined state. We can use that to set the initial state:
 
+```jsx
 const initialState = {
   activeUser: null,
   users: [
@@ -123,10 +132,13 @@ const reducer = function (state = initialState, action) {
 }
 
 export default reducer;
+```
+
 The default argument syntax in ES6 -- the version of JavaScript we are using with React -- made this easy.
 
-Let's make our reducer respond to our action. Our one action has a type of USER_SELECTED and a payload of the user object. When writing our reducer, let's assume that we will have more than one action type in the future. Assuming we've imported the action type constants, our reducer could look like this:
+Let's make our reducer respond to our action. Our one action has a `type` of `USER_SELECTED` and a `payload` of the user object. When writing our reducer, let's assume that we will have more than one action type in the future. Assuming we've imported the action type constants, our reducer could look like this:
 
+```jsx
 const reducer = function (state = initialState, action) {
   if (action.type === USER_SELECTED) {
     // ... return a new state
@@ -134,8 +146,11 @@ const reducer = function (state = initialState, action) {
     return state;
   }
 }
+```
+
 Remember that we are creating a new state. We can't use the obvious solution, which would be to write state.activeUser = action.payload. We will use Object.assign, which copies the properties of one or more objects into another. Here it is in action:
 
+```jsx
 const reducer = function (state = initialState, action) {
   if (action.type === USER_SELECTED) {
     return Object.assign({}, state, {activeUser: action.payload})
@@ -143,6 +158,8 @@ const reducer = function (state = initialState, action) {
 
   return state;
 }
+```
+
 Note that we pass an empty object as the first argument to Object.assign. We want to copy all of state's properties into this object, as well as the new activeUser property.
 
 Making immutability easier  
