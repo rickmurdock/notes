@@ -111,4 +111,4 @@ Lecture notes from The Iron Yard
 
 * [Redux Todos Part 2 (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTodosPart2.md)
 
-* [Redux Review (video)]()
+* [Redux Review (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxReview.md)
