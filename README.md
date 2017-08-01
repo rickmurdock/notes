@@ -101,7 +101,7 @@ Lecture notes from The Iron Yard
 
 * [React-Router: Part 1](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactRouterPart1.md)
 
-* React-Router: Part 2
+* [React-Router: Part 2](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactRouterPart2.md)
 
 * React-Router: Part 3
 
