@@ -31,7 +31,7 @@ Lecture notes from The Iron Yard
 
 * Algorithms and Data Modeling
 
-* Working with Remote Data (Part 2)
+* [Working with Remote Data (Part 2)](https://github.com/rickmurdock/notes/blob/master/FrontEnd/WorkingWithRemoteDataPart2.md)
 
 --- 
 
