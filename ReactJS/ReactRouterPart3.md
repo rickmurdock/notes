@@ -193,7 +193,7 @@ We fill in some other data (like a picture for our link) with data from our JSON
 
 In our case this yields something along the lines of:
 
-PeopleMenu.png
+![PeopleMenu](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/PeopleMenu.png)
 
 With each picture being a link to the child detail page of that actor!
 
@@ -322,9 +322,9 @@ We simply use props to pass the data down to the component via `data` and then c
 
 Let's see it in action:
 
-dynamicURL-1.gif
+![dynamicURL-1](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/dynamicURL-1.gif)
 
-dynamicURL-2.gif
+![dynamicURL-2](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/dynamicURL-2.gif)
 
 ## Conclusion  
 
