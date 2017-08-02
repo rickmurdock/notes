@@ -109,7 +109,7 @@ Lecture notes from The Iron Yard
 
 * [Redux: Part 1](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart1.md)
 
-* Redux: Part 2
+* [Redux: Part 2](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart2.md)
 
 * [Redux Todos Part 2 (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTodosPart2.md)
 
