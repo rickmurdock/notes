@@ -148,7 +148,7 @@ const reducer = function (state = initialState, action) {
 }
 ```
 
-Remember that we are creating a new state. We can't use the obvious solution, which would be to write state.activeUser = action.payload. We will use Object.assign, which copies the properties of one or more objects into another. Here it is in action:
+Remember that we are creating a new state. We can't use the obvious solution, which would be to write `state.activeUser = action.payload`. We will use `Object.assign`, which copies the properties of one or more objects into another. Here it is in action:
 
 ```jsx
 const reducer = function (state = initialState, action) {
@@ -160,12 +160,13 @@ const reducer = function (state = initialState, action) {
 }
 ```
 
-Note that we pass an empty object as the first argument to Object.assign. We want to copy all of state's properties into this object, as well as the new activeUser property.
+Note that we pass an empty object as the first argument to `Object.assign`. We want to copy all of `state`'s properties into this object, as well as the new `activeUser` property.
 
-Making immutability easier  
+## Making immutability easier  
 
-Let's add another action, ADD_USER. This action will take a user object as its payload:
+Let's add another action, `ADD_USER`. This action will take a user object as its payload:
 
+```jsx
 // ### actions.js ###
 const USER_SELECTED = 'USER_SELECTED';
 const ADD_USER  = 'ADD_USER';
@@ -183,8 +184,11 @@ export function addUser(user) {
     payload: user
   };
 };
+```
+
 Now to add this to our reducer:
 
+```jsx
 const reducer = function (state = initialState, action) {
   if (action.type === USER_SELECTED) {
     return Object.assign({}, state, {activeUser: action.payload})
@@ -196,10 +200,13 @@ const reducer = function (state = initialState, action) {
 
   return state;
 }
-Array.prototype.concat returns a new array, so this works well, but it would be fair to call it unwieldy. You could imagine that this would get even more unwieldy if you wanted to update the bio of an individual user, for example.
+```
 
-There are multiple libraries that can help make cloning an object and updating that clone easier. One that is commonly used is immutability-helper. This library uses syntax similar to MongoDB update operators to update state. The above reducer, rewritten to use immutability-helper:
+`Array.prototype.concat` returns a new array, so this works well, but it would be fair to call it unwieldy. You could imagine that this would get even more unwieldy if you wanted to update the bio of an individual user, for example.
 
+There are multiple libraries that can help make cloning an object and updating that clone easier. One that is commonly used is `immutability-helper`. This library uses syntax similar to MongoDB update operators to update state. The above reducer, rewritten to use `immutability-helper`:
+
+```jsx
 import update from 'immutability-helper';
 
 const reducer = function (state = initialState, action) {
@@ -211,8 +218,11 @@ const reducer = function (state = initialState, action) {
 
   return state;
 }
-As a last simplification, you can use a switch statement instead of if/else. This makes the action types stand out more, but switch can be tricky as you have to remember to return or use break in each case or "fall through" to the next case. Whether you use switch or if/else is a matter of personal preference.
+```
 
+As a last simplification, you can use a `switch` statement instead of `if/else`. This makes the action types stand out more, but `switch` can be tricky as you have to remember to return or use `break` in each case or "fall through" to the next case. Whether you use `switch` or `if/else` is a matter of personal preference.
+
+```jsx
 import update from 'immutability-helper';
 
 const reducer = function (state = initialState, action) {
@@ -225,15 +235,21 @@ const reducer = function (state = initialState, action) {
       return state;
   }
 }
-Conclusion  
+```
 
-A reducer works with actions to update application state.
-A reducer is a function that takes in state and an action and returns a new state according to the action.
-Using State to Model Events in Redux  
+## Conclusion  
+
+* A reducer works with actions to update application state.
+
+* A reducer is a function that takes in state and an action and returns a new state according to the action.
+
+---
+
+# Using State to Model Events in Redux  
 
 When using Redux, we will have to design a model for our state that matches the events that will occur in our application. Application state is modified by firing an action and using a reducer to create a new updated copy of the state. It will be a single source of truth for our application, and we can apply it to any component that requires it. This is one of the most important concepts behind Redux and helps us manage the complicated idea of state in a singular way. Redux will require the skill to create state objects that model the events of our application.
 
-Finding Your Events  
+## Finding Your Events  
 
 As with any application, thinking ahead before you jump into programming is a must. Planning out your application will help you think logically about the pieces required to achieve the goal you are after. With that in mind, let's design a trivial application and find out what events that application will have.
 
@@ -241,49 +257,63 @@ Let's make an application that lets us create and delete players for a game, and
 
 What are the events we need?
 
-Create a player
-Delete a player
-Increment a player's score (add to it)
-Decrement a player's score (subtract from it)
-Create the State for Your Events  
+* Create a player
+
+* Delete a player
+
+* Increment a player's score (add to it)
+
+* Decrement a player's score (subtract from it)
+
+## Create the State for Your Events  
 
 With the events or actions, in place, we can then begin to understand what our state object should look like. Without writing any code at first, let's break each action/event down to understand what kind of state it may require.
 
-Create a Player  
+### Create a Player  
 
 To create a player we will need the following information:
 
-We will need an id -- a name or number -- representing each player.
-We should probably have an index of the players so that we can refer to a single player.
-We will need a score for the player.
+* We will need an id -- a name or number -- representing each player.
+
+* We should probably have an index of the players so that we can refer to a single player.
+
+* We will need a score for the player.
+
 This is starting to feel like an array of objects, right?
 
-Delete a Player  
+### Delete a Player  
 
 Deleting a player will require the following:
 
-We will need the index of the player we select for deletion.
+* We will need the index of the player we select for deletion.
+
 That should be the extent of the requirements for deleting someone from the score counter.
 
-Increment and Decrement a Score  
+### Increment and Decrement a Score  
 
 These are similar events, differing solely in the outcome of the score. The state for this event will need the following information:
 
-The index of the player whose score will be updated.
-The number of points to increment or decrement.
+* The index of the player whose score will be updated.
+
+* The number of points to increment or decrement.
+
 With that, we have laid down the groundwork to make our state.
 
-Turning Events into Actions  
+## Turning Events into Actions  
 
 Since our actions trigger our reducers to create a new copy of our state, we can look at how they might appear first.
 
-First, think of the types of actions. We will want to be able to add a player, delete a player, and update a player's score. We can set up const values for these.
+First, think of the types of actions. We will want to be able to add a player, delete a player, and update a player's score. We can set up `const` values for these.
 
+```jsx
 const ADD_PLAYER = "ADD_PLAYER";
 const DELETE_PLAYER = "DELETE_PLAYER";
 const UPDATE_SCORE = "UPDATE_SCORE";
+```
+
 Next, let's make action creators for these:
 
+```jsx
 export const addPlayer = function (name) {
   return {
     type: ADD_PLAYER,
@@ -307,12 +337,15 @@ export const updateScore = function (index, amount) {
     }
   }
 }
-We have modeled our events and the state they require. Now let's look at the reducer this application would use to see how we can create a new state object based upon the action that is fired.
+```
 
-Reducing  
+We have modeled our events and the state they require. Now let's look at the reducer this application would use to see how we can create a new state object based upon the `action` that is fired.
 
-In our reducer, we will need a switch statement to account for each action we have created and determine how we will change our state based on the action type we receive.
+## Reducing  
 
+In our reducer, we will need a `switch` statement to account for each action we have created and determine how we will change our state based on the action type we receive.
+
+```jsx
 // Import your action types
 import {
   ADD_PLAYER,
@@ -350,8 +383,11 @@ const reducer = function (state=initialState, action) {
 }
 
 export default reducer;
+```
+
 This reducer will handle our actions and update our state. One piece of syntax to note:
 
+```jsx
 case UPDATE_SCORE:
   return update(state, {
     players: {[action.payload.index]: {
@@ -360,8 +396,11 @@ case UPDATE_SCORE:
       }}
     }}
   })
+```
+
 When you have a variable that holds an object property name, you can put it in square brackets to evaluate it. As a further illustration:
 
+```jsx
 const name = 'sage';
 
 {name: 1}
@@ -369,14 +408,22 @@ const name = 'sage';
 
 {[name]: 1}
 // => { sage: 1 }
-Conclusion  
+```
 
-Planning out your application will help you create the state needed to model your events in Redux.
-It is critical to think what information is necessary for each action.
-Your reducer should be pure and not alter the state but create a new copy that returns the updated state.
-References  
+# Conclusion  
 
-Redux Docs
+* Planning out your application will help you create the state needed to model your events in Redux.
+
+* It is critical to think what information is necessary for each action.
+
+* Your reducer should be pure and not alter the state but create a new copy that returns the updated state.
+
+## References  
+
+* [Redux Docs](http://redux.js.org/docs/basics/)
+
+---
+
 Authoring a Reducer to filter data based on a User Action  
 
 We've seen the actions, we've seen the reducers, we've seen how they all work together, but let's go a step further and see how they interact together and how we can use a reducer to filter our data based upon a given action. A perfect candidate for this scenario is the timeless classic of a Todo Application! Though we most certainly would not need to actually use Redux to help us manage the limited state of a Todo application, it provides a great platform to simply demonstrate how this process works.
