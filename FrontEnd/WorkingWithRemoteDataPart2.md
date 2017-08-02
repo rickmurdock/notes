@@ -102,38 +102,45 @@ APIs use two different types of user authentication in order to keep `state` bet
 
 ---
 
-Understanding CORS  
+# Understanding CORS  
 
-Web apps depend on many resources in order to function. While some apps get all their resources from their own domain, other apps depend on third-party web services in order to function. One of your projects, for example, might depend on resources from a third-party. If there were no evil hackers in the world, then sharing resources between domains would be a breeze, but that is not the case. CORS was developed to make it easier and safer to share web services between domains.
+Web apps depend on many resources in order to function. While some apps get all their resources from their own domain, other apps depend on third-party web services in order to function. One of your projects, for example, might depend on resources from a third-party. If there were no evil hackers in the world, then sharing resources between domains would be a breeze, but that is not the case. `CORS` was developed to make it easier and safer to share web services between domains.
 
-Why CORS?  
+## Why CORS?  
 
-Security is a major concern in modern web development. To protect applications from dangerous scripts, all browsers implement something called the Same-Origin Policy. The Same-Origin Policy allows one web page to access data from another web page so long as both pages have the same origin (basically, they are on the same domain).
+Security is a major concern in modern web development. To protect applications from dangerous scripts, all browsers implement something called the **Same-Origin Policy**. The Same-Origin Policy allows one web page to access data from another web page so long as both pages have the same origin (basically, they are on the same domain).
 
-The trouble with this valuable policy is that it makes communicating data between pages that don't share the same origin rather difficult. Even though document contents are exposed through the responseText property when performing a local XMLHttpRequest, the Same-Origin Policy does not allow the data to be transferred if the data is requested from a page that has a different origin (Cross-Origin Request).
+The trouble with this valuable policy is that it makes communicating data between pages that don't share the same origin rather difficult. Even though document contents are exposed through the `responseText` property when performing a local XMLHttpRequest, the Same-Origin Policy does not allow the data to be transferred if the data is requested from a page that has a different origin (Cross-Origin Request).
 
-CORS (Cross-Origin Resource Sharing) keep things safe while allowing data to be shared between domains. Incidentally, CORS is also compatible with both XMLHttpRequest and Fetch APIs.
+`CORS` (Cross-Origin Resource Sharing) keep things safe while allowing data to be shared between domains. Incidentally, `CORS` is also compatible with both `XMLHttpRequest` and `Fetch APIs`.
 
-How does CORS work?  
+## How does CORS work?  
 
-The first thing that we must point out about CORS is that it does not require any special coding from the front-end developer. In order for CORS to work, it must be enabled in the server's configuration. This is a job for a back-end developer. The server configuration is set to allow CORS by putting a particular value in the Access-Control-Allow-Origin header. When the header is properly configured, making a cross-origin request is just like making any other type of request. The other requirement is that the browser must support CORS.
+The first thing that we must point out about `CORS` is that it does not require any special coding from the front-end developer. In order for `CORS` to work, it must be enabled in the server's configuration. This is a job for a back-end developer. The server configuration is set to allow `CORS` by putting a particular value in the `Access-Control-Allow-Origin` header. When the header is properly configured, making a cross-origin `request` is just like making any other type of `request`. The other requirement is that the browser must support `CORS`.
 
-There are certain methods that must be included in the header when performing a CORS request. These methods will also determine whether we are doing a simple request or a preflight.
+There are certain methods that must be included in the `header` when performing a `CORS request`. These methods will also determine whether we are doing a `simple request` or a `preflight`.
 
-A Simple Request  
+## A Simple Request  
 
-A simple request is one in which the header contains the following methods in the header:
+A simple request is one in which the `header` contains the following methods in the `header`:
 
-GET
-HEAD
-POST
-contentType values allowed:
+* `GET`
 
-application/x-www-form-urlencoded
-multipart/form-data
-text/plain
-Example
+* `HEAD`
 
+* `POST`
+
+`contentType` values allowed:
+
+* `application/x-www-form-urlencoded`
+
+* `multipart/form-data`
+
+* `text/plain`
+
+### Example
+
+```javascript
 let handler;
 var xhr = new XMLHttpRequest();
 var url = 'https://url-to-resource';
@@ -141,39 +148,61 @@ var url = 'https://url-to-resource';
 xhr.open('GET', url, true);
 xhr.onreadystatechange = handler;
 xhr.send();
-Note, that we are using the XMLHttpRequest() here but you could easily just use the fetch library.
+```
 
-Pre-flight  
+Note, that we are using the `XMLHttpRequest()` here but you could easily just use the `fetch` library.
 
-More complicated requests (e.g. security sensitive requests) use something called ​preflighting. This methods validates a request before it is executed. This type of request contains the following methods in the header:
+## Pre-flight  
 
-PUT
-DELETE
-CONNECT
-OPTIONS
-TRACE
-PATCH
-Or, the contentType includes:
+More complicated requests (e.g. security sensitive requests) use something called `preflighting`. This methods validates a `request` before it is executed. This type of request contains the following methods in the `header`:
 
-application/x-www-form-urlencoded
-multipart/form-data
-text/plain
-Finally, it is considered a preflight request if the headers are set automatically by the browser and they include:
+* `PUT`
 
-Accept
-Accept-Language
-Content-Language
-Content-Type (but note the additional requirements below)
-DPR
-Downlink
-Save-Data
-Viewport-Width
-Width
-If cookies are received as part of the response, they are discarded. If these are a requirement, set the withCredentials property to true on the request before the send() method.
-Example
+* `DELETE`
 
-The following is an example of a preflight request, because it uses a Content-Type of application/xml.
+* `CONNECT`
 
+* `OPTIONS`
+
+* `TRACE`
+
+* `PATCH`
+
+Or, the `contentType` includes:
+
+* `application/x-www-form-urlencoded`
+
+* `multipart/form-data`
+
+* `text/plain`
+
+Finally, it is considered a `preflight request` if the `headers` are set automatically by the browser and they include:
+
+* `Accept`
+
+* `Accept-Language`
+
+* `Content-Language`
+
+* `Content-Type (but note the additional requirements below)`
+
+* `DPR`
+
+* `Downlink`
+
+* `Save-Data`
+
+* `Viewport-Width`
+
+* `Width`
+
+> If `cookies` are received as part of the `response`, they are discarded. If these are a requirement, set the `withCredentials` property to `true` on the request before the `send()` method.
+
+### Example
+
+The following is an example of a `preflight` request, because it uses a `Content-Type` of `application/xml`.
+
+```javascript
 var xhr = new XMLHttpRequest();
 
 xhr.open( 'POST', 'url-to-resource', true );
@@ -182,6 +211,8 @@ xhr.setRequestHeader( 'Z-CUSTOM', 'shareme' );
 xhr.setRequestHeader( 'Content-Type', 'application/xml' );
 xhr.onreadystatechange = handler;
 xhr.send(body);
-Conclusion  
+```
 
-While keeping things safe is important, so is sharing resource amongst different domains. This is specially true in open-source projects where we depend on third party services. CORS enables us to easily share and distribute such resources while keeping things safe. It also helps keep apps lighter and less complicated since not all resources must be developed, maintained and stored in the same domain.
+## Conclusion  
+
+While keeping things safe is important, so is sharing resource amongst different domains. This is specially true in open-source projects where we depend on third party services. `CORS` enables us to easily share and distribute such resources while keeping things safe. It also helps keep apps lighter and less complicated since not all resources must be developed, maintained and stored in the same domain.
