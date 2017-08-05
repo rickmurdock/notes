@@ -111,6 +111,8 @@ Lecture notes from The Iron Yard
 
 * [Redux: Part 2](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart2.md)
 
+* [Redux: Part 3](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart3.md)
+
 * [Redux Todos Part 2 (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTodosPart2.md)
 
 * [Redux Review (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxReview.md)
