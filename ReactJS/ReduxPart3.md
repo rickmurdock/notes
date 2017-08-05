@@ -200,9 +200,13 @@ The problem with the above code is that it requires the user to log in on every 
 
 To make working with cookies easier, we will install a small library:
 
+```shell
 npm install --save js-cookie
-We will need to set the cookie in our login action:
+```
 
+We will need to set the cookie in our `login` action:
+
+```jsx
 // actions.js
 import Cookies from 'js-cookie';
 
@@ -218,8 +222,11 @@ export const login = (email, password) => {
             })
     }
 }
-The only other thing we will need to do is to restore the token on page load. This will require us to dispatch an action when our application is going to mount, so we go to our App component, connect it to Redux, and have it dispatch using componentWillMount.
+```
 
+The only other thing we will need to do is to restore the token on page load. This will require us to dispatch an action when our application is going to mount, so we go to our `App` component, connect it to Redux, and have it dispatch using `componentWillMount`.
+
+```jsx
 // App.js
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
@@ -244,8 +251,11 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-When our app starts, our new loadTokenFromCookie action is dispatched. Let's see it:
+```
 
+When our app starts, our new `loadTokenFromCookie` action is dispatched. Let's see it:
+
+```jsx
 // actions.js
 import Cookies from 'js-cookie';
 
@@ -258,11 +268,16 @@ export const loadTokenFromCookie = () => {
         }
     }
 }
-Conclusion  
+```
 
-Using redux-thunk, we can authenticate with an API using Ajax calls.
-Persisting our authorization token is a good idea, and we can do with with a cookie.
-Resources  
+## Conclusion  
 
-Sample redux authentication app
-Documentation on sample API we used
+* Using redux-thunk, we can authenticate with an API using Ajax calls.
+
+* Persisting our authorization token is a good idea, and we can do with with a cookie.
+
+## Resources  
+
+* [Sample redux authentication app](https://github.com/tiycnd/redux-auth-demo)
+
+* [Documentation on sample API we used](https://gist.github.com/twhitacre/4f52489f989e3ce04ebaaf6fd33b4897)
