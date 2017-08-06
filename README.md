@@ -21,7 +21,7 @@ Lecture notes from The Iron Yard
 
 * Version Control with Git
 
-* Lesson: Functions and Complex Expressions
+* Functions and Complex Expressions
 
 * Creating Arrays and Loops 
 
@@ -30,6 +30,8 @@ Lecture notes from The Iron Yard
 * Building Objects and Maintaining Proper Scope
 
 * Algorithms and Data Modeling
+
+* [Working with Remote Data (Part 2)]
 
 * [Working with Remote Data (Part 2)](https://github.com/rickmurdock/notes/blob/master/FrontEnd/WorkingWithRemoteDataPart2.md)
 
@@ -116,3 +118,5 @@ Lecture notes from The Iron Yard
 * [Redux Todos Part 2 (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTodosPart2.md)
 
 * [Redux Review (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxReview.md)
+
+* Unit Tests for React
