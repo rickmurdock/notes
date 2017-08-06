@@ -21,6 +21,8 @@ Lecture notes from The Iron Yard
 
 * Version Control with Git
 
+* Using Git Remotely with a Team 
+
 * Functions and Complex Expressions
 
 * Creating Arrays and Loops 
