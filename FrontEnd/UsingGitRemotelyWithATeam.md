@@ -1,33 +1,44 @@
-Cloning A Remote Repository  
+# Cloning A Remote Repository  
 
-As a developer you will be working in solo projects and collaborative projects. In a collaborative setting, your team will be working off a master mold, the master branch. Think of this branch as the finished product. It is highly unlikely that you will be making changes to the code in the master branch. In a given project you will be assigned responsibility over a specific piece of code. In order to keep the master branch intact, you will have to copy the project locally and create your own working branch. When you finish your task, the changes from your branch will be merged into the master branch. The first step in collaborating in a project is to clone the remote repository.
+As a developer you will be working in solo projects and collaborative projects. In a collaborative setting, your team will be working off a master mold, the `master branch`. Think of this branch as the finished product. It is highly unlikely that you will be making changes to the code in the master branch. In a given project you will be assigned responsibility over a specific piece of code. In order to keep the master branch intact, you will have to copy the project locally and create your own working branch. When you finish your task, the changes from your branch will be merged into the master branch. The first step in collaborating in a project is to clone the remote repository.
 
-Cloning Terminology  
+## Cloning Terminology  
 
 Cloning is straight forward. Learning the following Git commands will help you clone in just a couple of steps.
 
-git clone: Copy a git repository in order to collaborate.
+`git clone`: Copy a git repository in order to collaborate.
 
-git checkout: Switch to a new branch.
+`git checkout`: Switch to a new branch.
 
-git checkout -b: Create and immediately switch to a branch.
+`git checkout -b`: Create and immediately switch to a branch.
 
-How To Clone A Remote Repository  
+## How To Clone A Remote Repository  
 
-Important: replace [project], and [branch-name]
-Cloning a remote repository  
+> Important: replace `[project]`, and `[branch-name]`
 
-$ mkdir [project]Creates a folder in local machine with the name [project].
-$ cd [project]
-Navigate to the main page of the repository on Github.
-Click on the green button that says "Clone or download" on the right-hand side of the page.
-In the Clone with HTTPS section, copy the code URL for the repository.
-Type git clone and paste the url.
-Example
+### Cloning a remote repository  
 
+1. `$ mkdir [project]` Creates a folder in local machine with the name `[project]`.
+
+2. `$ cd [project]`
+
+3. Navigate to the main page of the repository on Github.
+
+4. Click on the green button that says "Clone or download" on the right-hand side of the page.
+
+5. In the `Clone with HTTPS` section, copy the code URL for the repository.
+
+6. Type `git clone` and paste the url.
+
+#### Example
+
+```sh
 $ git clone https://github.com/USERNAME/REPOSITORY
-Output Example
+```
 
+#### Output Example
+
+```sh
 $ git clone https://github.com/schacon/simplegit.git
 Initialized empty Git repository in /private/tmp/simplegit/.git/
 remote: Counting objects: 100, done.
@@ -35,45 +46,58 @@ remote: Compressing objects: 100% (86/86), done.
 remote: Total 100 (delta 35), reused 0 (delta 0)
 Receiving objects: 100% (100/100), 9.51 KiB, done.
 Resolving deltas: 100% (35/35), done.
-Creating a branch and switching into it  
+```
 
-$ git checkout -b [branch-name]
+### Creating a branch and switching into it  
 
-Example
+`$ git checkout -b [branch-name]`
 
+#### Example
+
+```sh
 $ git checkout -b branching-out
 Switched to a new branch 'branching-out'
-Another way of creating a branch and switching into it is to: $ git branch [branch-name] and then $ git checkout [branch-name]
-Going back to the master branch
+```
 
-$ git checkout master
+> Another way of creating a branch and switching into it is to: `$ git branch [branch-name]` and then `$ git checkout [branch-name]`
 
-Example
+#### Going back to the master branch
 
+`$ git checkout master`
+
+#### Example
+
+```sh
 $ git checkout master
 Switched to branch 'master'
-Deleting a branch
+```
 
-$ git branch -d [branch-name]
+#### Deleting a branch
 
-Example
+`$ git branch -d [branch-name]`
 
+#### Example
+
+```sh
 $ git branch -d delete-this-branch
 Deleted branch delete-this-branch (was 78b2670).
-Practice makes perfect  
+```
 
-Practice creating a branch here
+#### Practice makes perfect  
 
-Git Practice  
+[Practice creating a branch here](https://try.github.io/levels/1/challenges/18)
 
-Got to learngitbranching.js.org and complete exercise 1 under the 'remote' tab.
+## Git Practice  
 
-Conclusion  
+> Got to [learngitbranching.js.org](http://learngitbranching.js.org/) and complete exercise 1 under the 'remote' tab.
 
-Whether you just want to look at somebody's code or you need to work in a group project, you will need to get the code into your machine. In order to do so, you use git clone to get a local copy of a Git repository.
+#### Conclusion  
 
- Multiple Choice Exercise View Exercise
-Branches  
+Whether you just want to look at somebody's code or you need to work in a group project, you will need to get the code into your machine. In order to do so, you use `git clone` to get a local copy of a Git repository.
+
+---
+
+# Branches  
 
 When developing an application, you might want to experiment with a new feature. This new feature might require pretty dramatic changes in the code-base that you are developing. Or you might be working on a feature that is likely to break some of the code that one of your peers is developing. If we only have a single code base, then experimentation and potential overlap might make evolving the code base difficult.
 
@@ -81,23 +105,31 @@ To overcome this problem, Git allows us to create "branches" of code. Like tree 
 
 This article will discuss how to create new branches, how to manage multiple branches, and how to merge them back together when.
 
-Merging Branches  
+## Merging Branches  
 
-Incorporating changes from an isolated branch into the main branch is common practice in the world of version control. Doing so is fairly simple using the git command, git merge. Below we will use the 'merge-example' branch to demonstrate a merge. If we create a branch and remove files from it and commit the removals, then this deletions are isolated from the main 'master' branch. In order to include deletions in the 'master' branch, you must merge in the 'merge-example' branch.
+Incorporating changes from an isolated branch into the main branch is common practice in the world of version control. Doing so is fairly simple using the git command, `git merge`. Below we will use the 'merge-example' branch to demonstrate a merge. If we create a branch and remove files from it and commit the removals, then this deletions are isolated from the main 'master' branch. In order to include deletions in the 'master' branch, you must merge in the 'merge-example' branch.
 
-Git Branching & Merging Commands  
+## Git Branching & Merging Commands  
 
-git branch: List all of your branches
-git branch <branch-name>: Creates a new branch with a new name
-git checkout <branch-name>: Switches to the new branch
-git merge <branch>: Merges a branch context into a current branch.
-git merge --abort: Returns to state prior to merge.
-git reset --hard: Rolls back to the commit before the merge.
-Merging Two Branches  
+* `git branch`: List all of your branches
 
-This article assume you already know how to manage a local repo with Git. For the following tutorial, you will first need to create a local repo called "branches". Create a README.md file inside the "branches" repo. Add the text "Branches test file" to the README file. Stage and commit the file to "branches". All of the following code should occur inside the "branches" repo.
-In this example, we'll branch off of our master branch by creating a new one. We'll then make a small change. After committing the changes, we'll merge it back into our master branch. Before you start, you should run git status and ensure you are on the master branch.
+* `git branch <branch-name>`: Creates a new branch with a new name
 
+* `git checkout <branch-name>`: Switches to the new branch
+
+* `git merge <branch>`: Merges a branch context into a current branch.
+
+* `git merge --abort`: Returns to state prior to merge.
+
+* `git reset --hard`: Rolls back to the commit before the merge.
+
+## Merging Two Branches  
+
+> This article assume you already know how to manage a local repo with Git. For the following tutorial, you will first need to create a local repo called "branches". Create a README.md file inside the "branches" repo. Add the text "Branches test file" to the README file. Stage and commit the file to "branches". All of the following code should occur inside the "branches" repo.
+
+In this example, we'll branch off of our `master` branch by creating a new one. We'll then make a small change. After committing the changes, we'll merge it back into our `master` branch. Before you start, you should run `git status` and ensure you are on the master branch.
+
+```sh
 # Creating a branch named "bug-fix"
 # You will still be in the master branch after running
 # this command
@@ -110,12 +142,18 @@ $ git branch bug-fix
 # in the master branch until
 # you merge them back together
 $ git checkout bug-fix
+```
+
 Now that we are on a new branch, let's go ahead and make some changes. Change the text in the README file to "This text is in the bug-fix branch".
 
+```sh
 $ git add README.md
 $ git commit -m "Changed the text"
-Now that we've added and committed to our bug-fix branch, we can go back to master and merge
+```
 
+Now that we've added and committed to our `bug-fix` branch, we can go back to `master` and merge
+
+```sh
 # switches back to our "master" branch
 # If you look in the README file the text will be "Branches test file"
 # This is because you made the changes in the bug-fix branch
@@ -125,55 +163,67 @@ $ git checkout master
 # merges "bug-fix" into "master"
 # this will take any changes in "bug-fix" and transfer them to "master"
 $ git merge bug-fix
-How To Resolve A Merge Conflict  
+```
 
-If both branches contain an identical block of code, a merge conflict will take place. If both the 'master' branch and the 'merge-example' branch contained a link, in the same code block, with different link text, then the merge would fail. When a merge conflicts happens there is no need to panic. First, Git is great at helping us with resolving a merge conflict. Second, when merging from a remote repository, it does not affect the remote repository.
+## How To Resolve A Merge Conflict  
+
+If both branches contain an identical block of code, a merge conflict will take place. If both the 'master' branch and the 'merge-example' branch contained a link, in the same code block, with different link text, then the merge would fail. When a merge conflicts happens there is no need to panic. First, Git is great at helping us with resolving a merge conflict. Second, when merging from a remote repository, it **does not** affect the remote repository.
 
 When a merge conflict is detected, you will get a merge conflict message similar to the one below.
 
-Example
+#### Example
 
+```sh
 $ git merge merge-example
 Auto-merging index.html
 CONFLICT (content): Merge conflict in index.html
 Automatic merge failed; fix conflicts and then commit the result.
+```
+
 We now know the file location of the merge conflict. Now go to your editor and open that file. You will notice that Git has very nicely marked the merge conflict as follows.
 
-Example
+#### Example
 
+```sh
 Please visit us here
 <<<<<<< HEAD
 <a href="https://theironyard.com">The Iron Yard</a>
 =======
 <a href="https://theironyard.com">theironyard.com</a>
 >>>>>>> other-branch
-The conflict is wrapped between <<<<<<< and >>>>>>> and divided by ========. To resolve the conflict, delete the conflicting code (It is always best to discuss this with the other developer when working in a group project) and markers. After you have done so, simply save your work and stage the changes, i.e., $ git add index.html and commit, $ git commit -m 'resolve Iron Yard link merge conflict'.
+```
+
+The conflict is wrapped between `<<<<<<<` and `>>>>>>>` and divided by `========`. To resolve the conflict, delete the conflicting code (It is always best to discuss this with the other developer when working in a group project) and markers. After you have done so, simply save your work and stage the changes, i.e., `$ git add index.html` and commit, `$ git commit -m 'resolve Iron Yard link merge conflict'`.
 
 At this point you can either push or continue working and push at a later time since the merge conflict has been resolved!
 
-Aborting And Reseting A Merge  
+## Aborting And Reseting A Merge  
 
 There is always a was of returning to the state before a merge was executed. This means that you cannot really break anything. You can abort by running the following command:
 
-git merge --abort
+`git merge --abort`
 
 If you incorrectly resolved a conflict, you can easily undo it by rolling back to the commit prior to the merge. You can reset your code using the following command:
 
-git reset --hard
+`git reset --hard`
 
-WARNING: A reset will rewrite commit history. Use it with caution. Mostly this is so because other people you are collaborating with may already have one version of the git history, and if you rewrite it, their current work may be affected very negatively. In general, it is recommended to only use this method (reset) on your own branch (just you) before merging. Read about git revert below for an alternative. 1
-Git Practice  
+> WARNING: A reset will rewrite commit history. Use it with caution. Mostly this is so because other people you are collaborating with may already have one version of the git history, and if you rewrite it, their current work may be affected very negatively. In general, it is recommended to only use this method (reset) on your own branch (just you) before merging. Read about git revert below for an alternative. 1
 
-Got to learngitbranching.js.org and complete exercise 2 under 'To Origin And Beyond' found in the 'remote' tab.
+## Git Practice  
 
-Conclusion  
+> Got to [learngitbranching.js.org](http://learngitbranching.js.org/) and complete exercise 2 under 'To Origin And Beyond' found in the 'remote' tab.
 
-git merge will combine another branch's context into the current working branch. Git does a lot of work under the hood in order to figure out how to best combine both sets of code into a new state with the unique code from both. Merge conflicts do happen, but thankfully Git makes it easy to fix these. Good coding practices and good communication with other developers can help make merge conflicts rare.
+## Conclusion  
 
-Lesson Footnotes
-1: Revert vs Reset
- Multiple Choice Exercise View Exercise
-Git Team Best Practices  
+`git merge` will combine another branch's context into the current working branch. Git does a lot of work under the hood in order to figure out how to best combine both sets of code into a new state with the *unique* code from both. Merge conflicts do happen, but thankfully Git makes it easy to fix these. Good coding practices and good communication with other developers can help make merge conflicts rare.
+
+##### Lesson Footnotes
+
+* 1: [Revert vs Reset](https://www.atlassian.com/git/tutorials/undoing-changes)
+
+---
+
+# Git Team Best Practices  
 
 Working on a solo project is fairly straight forward, but working on a large project with other developers can be complicated. One aspect of software development that can be a challenge is keeping track of who is doing what. Imagine the following. You are working on a cool webapp with two other developers, all from the same branch. You are responsible for the JavaScript. The other two developers are responsible for the HTML and CSS, respectively. The HTML developer changes the JS code without telling you. Your code no longer works, delaying the project three days. Avoiding this kind of situation is a must. Developers must follow good version control practices to keep development productive and deployment smooth.
 
