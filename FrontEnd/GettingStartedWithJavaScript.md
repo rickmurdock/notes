@@ -21,7 +21,7 @@ You'll notice that unlike the `<link>` tag we use to include CSS, this tag has b
 <script src="../js/main.js"></script>
 ```
 
-# Script Tag Location  
+## Script Tag Location  
 
 Where you place the `<script>` tag does matter. It's not uncommon to see it called in the `<head>` tags, like so:
 
@@ -58,7 +58,7 @@ This way, the script won't be called until after all your HTML has loaded. While
 
 > There are ways of including JavaScript in your `<head>` tag and telling it to wait to execute. That is beyond the scope of this lesson.
 
-# JavaScript in the Script Tag  
+## JavaScript in the Script Tag  
 
 While we recommend linking to an external JavaScript file, you can also write code in your HTML. Just use the `<script>` tag to write the code directly onto the HTML.
 
@@ -71,7 +71,7 @@ While we recommend linking to an external JavaScript file, you can also write co
 
 Don't worry about what the code is doing. Just notice that you don't need to use the `src` attribute, you can include JavaScript code right on the page. As you might have guessed, this is why the `<script>` tag has an open and close.
 
-# Linking Dependencies  
+## Linking Dependencies  
 
 Since HTML parses from top to bottom, we should include `<script>` tags at the lower part of the document. The same top down approach applies for adding multiple JavaScript files. Take the following as an example:
 
@@ -186,7 +186,7 @@ Boolean, number, string, null and undefined are used to optimize the data that a
 
 In programming, it's imperative that you have a way to store information. In most programming languages, these are called **variables**. A **variable** is a way for us to store a piece of data that can be used over and over throughout our program. It helps us write way less code and still accomplish our goals.
 
-# Declaring and Assigning  
+## Declaring and Assigning  
 
 When talking about variables, there are two concepts one must understand. The first is the declaration of a variable. The second is the assignment of a value to that variable.
 
@@ -194,7 +194,7 @@ Think of it as a filing cabinet. You know you'll need to store your paperwork, b
 
 Let's look at the keywords we can use to declare and assign variables.
 
-## Let Keyword  
+### Let Keyword  
 
 The `let` keyword is the most common one you will be using. Let's look at how it works.
 
@@ -215,7 +215,7 @@ We've now taken our `firstName` variable and *assigned* a value called `'Bill'` 
 let firstName = 'Bill'; // declaration & assignment
 ```
 
-## Const Keyword  
+### Const Keyword  
 
 The `const` keyword stands for **constant**. We should use it when creating a variable that will never change. For instance, in the above examples, we used `firstName`. That could easily change in your program from `'Bill'` to maybe `'Julie'` and so on. However, let's say that you wanted to keep track of something that will never change in your entire program. That's when you would create the variable using `const`.
 
@@ -236,7 +236,7 @@ const favoriteColor = 'green';
 favoriteColor = 'blue'; // ERROR: Can't reassign "favoriteColor"
 ```
 
-## Var Keyword  
+### Var Keyword  
 
 The `var` keyword is short for **variable** and is the original way to create and store variables. In fact, for a long time, it was the only way to do so.
 
@@ -248,7 +248,7 @@ In the current version of JavaScript, the `let` keyword seeks to fully replace `
 
 Do note that `var` is still completely valid. You'll likely see it only in tutorials, or other developers you work with might still use it. There is nothing wrong with `var`, but the JavaScript community is moving away from using it. Learning the current way of assigning a variable is important.
 
-# Variable Rules  
+## Variable Rules  
 
 When declaring and naming a variable, there are a few rules that you should take into consideration.
 
@@ -264,7 +264,7 @@ When declaring and naming a variable, there are a few rules that you should take
 
   * The standard convention in JS is to use camelCase
 
-# Conclusion  
+## Conclusion  
 
 Variables are a fundamental concept in programming. We use them to create reusable bits of data, and we can pass them around throughout our application. We've looked at a few different ways of creating them, so you'll be ready to move on to more complex concepts.
 
