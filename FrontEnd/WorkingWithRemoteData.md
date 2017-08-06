@@ -399,7 +399,7 @@ The `Fetch API` also has a number of methods available to define and handle the 
 
 Compared to an `XMLHttpRequest`, `fetch` is much simpler to use.
 
-### Example
+#### Example
 
 ```javascript
 fetch(url, options).then(
@@ -423,21 +423,25 @@ When making a `fetch` request, we can pass options ranging from `method` to `cre
 | `headers` |	(Object, Headers) - Default: {} |
 | `credentials` |	(String) - Authentication credentials mode. **Default:** "omit" |
 
-Promises  
+### Promises  
 
-ES6 introduced new Promises functionalities. One of these is .then(). This method replaces callbacks and events. It handles success and failure cases using two callback functions. These must be passed in as arguments. .then() basically says, "once we have data in the queue (promise), do x, y, and z with it."
+ES6 introduced new `Promises` functionalities. One of these is `.then()`. This method replaces `callbacks` and `events`. It handles success and failure cases using two callback functions. These must be passed in as arguments. `.then()` basically says, "once we have data in the queue (`promise`), do x, y, and z with it."
 
-Example
+#### Example
 
+```javascript
 let url = "https://www.theironyard.com";
 
 fetch(url).then(processStatus);
-When a resource is fetched, it returns a promise. One very important thing about promises is that no matter the response from the server (including 400), they will be resolved successfully. This means that we must do something with the response we get back through the promise.
+```
 
-Example
+When a resource is **fetched**, it returns a **promise**. One very important thing about **promises** is that *no matter* the response from the server (including 400), they will be *resolved successfully*. This means that we must do something with the **response** we get back through the **promise**.
+
+#### Example
 
 In the example below, we deal with the response by using a conditional statement. If it returns an error, it returns. If successful, we process the data. Focus on the conditional statement.
 
+```javascript
 fetch("https://api.github.com/users/theironyard")
   // Data is fetched and we get a promise.
   .then(
@@ -456,26 +460,32 @@ fetch("https://api.github.com/users/theironyard")
   .catch(function(err) {
     console.log("Fetch Error :-S", err);
   });
-We got a response. now what?  
+```
 
-It is important to note that the response we get back is not JSON, but an object. This means that we can use certain methods to manipulate the data we get back.
+### We got a response. now what?  
 
-There are a handful of methods you can use, but the one that is most commonly used is .json() method. This method resolves the response with an object literal containing the JSON data.
+It is important to note that the `response` we get back is not JSON, but an object. This means that we can use certain methods to manipulate the data we get back.
 
-Example
+There are a handful of methods you can use, but the one that is most commonly used is `.json()` method. This method resolves the response with an object literal containing the JSON data.
 
+#### Example
+
+```javascript
 response.json().then(function(data) {
   // Do something with your JSON.
   // For example, a 'for' loop.
 });
-GET  
+```
 
-GET is the default fetch method. There is no need to declare this in the request.
+### GET  
 
-Example 1
+`GET` is the default `fetch` method. There is no need to declare this in the request.
 
-In this simple GET request we fetch some cool data from NASA.
+#### Example 1
 
+In this simple `GET` request we `fetch` some cool data from NASA.
+
+```javascript
 fetch(
   "https://api.nasa.gov/planetary/apod?api_key=NNKOjkoul8n1CH18TWA9gwngW1s1SmjESPjNoUFo"
 )
@@ -491,13 +501,17 @@ fetch(
   .catch(function(err) {
     console.log("Fetch Error :-S", err);
   });
-Run the example above in Codepen and checkout the console.
+```
 
-Example 2
+*Run the example above in Codepen and checkout the console.*
 
-The example below is a bit more complex. Notice that in the conditional statement we modify the header request.
+#### Example 2
 
-We can modify header requests using the following methods: append, has, get, set, and delete.
+The example below is a bit more complex. Notice that in the conditional statement we modify the `header` request.
+
+> We can modify header requests using the following methods: `append`, `has`, `get`, `set`, and `delete`.
+
+```javascript
 function fetchGET(url) {
   fetch(url)
     .then(function(response) {
@@ -523,16 +537,19 @@ function fetchGET(url) {
 }
 
 fetchGET("https://api.github.com/users/theironyard");
-Run the example above in Codepen and check out the console.
+```
 
-POST  
+*Run the example above in Codepen and check out the console.*
 
-A fetch POST request is fairly easy to set up. Simply provide the "URL" and declare the POST method. In most cases, you will also have to provide a header so that the request is successfully processed by the server.
+### POST  
 
-Example
+A `fetch POST` request is fairly easy to set up. Simply provide the "URL" and declare the POST method. In most cases, you will also have to provide a `header` so that the request is successfully processed by the server.
 
-The following is a basic example of a POST request using fetch.
+#### Example
 
+The following is a basic example of a `POST` request using `fetch`.
+
+```javascript
 fetch(url, {
   method: "post",
   headers: {
@@ -547,10 +564,13 @@ fetch(url, {
   .catch(function(error) {
     console.log("Request failed", error);
   });
-Example 2
+```
 
-The following is a more complex example. Here we execute the submitGist() function to post data to the Github Gist API.
+#### Example 2
 
+The following is a more complex example. Here we execute the `submitGist()` function to post data to the Github Gist API.
+
+```javascript
 function createGist(opts) {
   console.log("Posting request to GitHub API...");
   fetch("https://api.github.com/gists", {
@@ -583,6 +603,8 @@ function submitGist() {
   }
 }
 submitGist();
-Conclusion  
+```
 
-The Fetch API is a new technology that simplifies HTTP requests. It offers a powerful and yet uncomplicated process over XMLHttpRequests.
+## Conclusion  
+
+The `Fetch API` is a new technology that simplifies HTTP requests. It offers a powerful and yet uncomplicated process over `XMLHttpRequests`.
