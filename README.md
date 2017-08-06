@@ -19,7 +19,7 @@ Lecture notes from The Iron Yard
 
 * Creating HTML Forms and Inspecting Your Code
 
-* Version Control with Git
+* [Version Control with Git](https://github.com/rickmurdock/notes/blob/master/FrontEnd/VersionControlWithGit.md)
 
 * Using Git Remotely with a Team
 
