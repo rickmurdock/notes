@@ -346,53 +346,73 @@ Both Git commands pull down data from a remote repository. The difference is the
 
 ## Git Practice  
 
-> *Go to learngitbranching.js.org and complete exercises 3 and 4 under the 'remote' tab.*
+> *Go to [learngitbranching.js.org](http://learngitbranching.js.org/) and complete exercises 3 and 4 under the 'remote' tab.*
 
 ## Conclusion  
 
-When working on code collaboratively you will most likely have to update your code on a daily basis. Git offers two different tools to get this done. With git pull you will be able to update your local repository in one step. Use git fetch to preview code changes and to cherry pick which changes you merge locally.
+When working on code collaboratively you will most likely have to update your code on a daily basis. Git offers two different tools to get this done. With `git pull` you will be able to update your local repository in one step. Use `git fetch` to preview code changes and to cherry pick which changes you merge locally.
 
-Stashing  
+---
 
-A lot of times as a developer you will be in the middle of a project when suddenly you have to switch to a different branch. Switching is easy, but you will not always want to commit changes before making the switch. For example, you have not had a chance to test the code. git stash will save these changes temporarily so that you can continue work later.
+# Stashing  
 
-Stash Terminology  
+A lot of times as a developer you will be in the middle of a project when suddenly you have to switch to a different branch. Switching is easy, but you will not always want to commit changes before making the switch. For example, you have not had a chance to test the code. `git stash` will save these changes temporarily so that you can continue work later.
 
-git stash: Adds current changes to the stack.
-git stash list: View stashes currently on the stack.
-git stash apply: Applies an item from the stash list to current working directory.
-git stash drop: Removes items from the stash list.
-In the following examples anytime you see a series of xxxxx it would normally be replaced with a unique id.
-Git Stash  
+## Stash Terminology  
 
-git stash also give you back a clean working directory and it leaves the code at the state of the last commit. It will not include untracked files. To do so, use git stash -u (version 1.7.7 and later).
+* `git stash`: Adds current changes to the stack.
+
+* `git stash list`: View stashes currently on the stack.
+
+* `git stash apply`: Applies an item from the stash list to current working directory.
+
+* `git stash drop`: Removes items from the stash list.
+
+> In the following examples anytime you see a series of `xxxxx` it would normally be replaced with a unique id.
+
+## Git Stash  
+
+`git stash` also give you back a clean working directory and it leaves the code at the state of the last commit. It **will not** include untracked files. To do so, use `git stash -u` (version 1.7.7 and later).
 
 Here is an example of stashing some changes. First, let's assume we have made some changes. You'll see those when you run the following:
 
+```sh
 $ git status # will show the status
+```
+
 Let's say we don't want any of those changes to be in this branch. This is where stash comes in.
 
+```sh 
 $ git stash
   Saved working directory and index state WIP on master: xxxxxxx we are trying git stash
   HEAD is now at xxxxxxx we are trying git stash
 $ git status
   # On branch master
   nothing to commit (working directory clean)
-Git Stash List  
+```
+
+## Git Stash List  
 
 If you want to see a list of the stashes in your stack, you can do the following:
 
+```sg
 $ git stash list
   stash@{0}: WIP on master: xxxxxxx we are trying git stash
-Incremental stashes will be noted inside the { }. stash@{0} represents the last stashed item.
+```
 
+Incremental stashes will be noted inside the `{ }`. `stash@{0}` represents the **last** stashed item.
+
+```sh
 $ git stash list
   stash@{0}: WIP on master: xxxxxxx we added one stash
   stash@{1}: WIP on master: xxxxxxx we added two stashes
-Git Stash Apply  
+```
+
+## Git Stash Apply  
 
 When you want to apply a stash to the branch you are in, you can do the following:
 
+```sh
 $ git stash apply
   # On branch master
   # Changes not staged for commit:
@@ -401,15 +421,20 @@ $ git stash apply
   #
   # modified:   hello-world.html
   #
-  no changes added to commit (use "git add" and/or "git commit -a")
+  no changes added to commit (use "git add" and/or "git commit -a
+```
+
 By default, it will reapply the last added stash item to the working directory, stash@{0}. Change stash number to apply a different item.
 
-Git Stash Drop  
+## Git Stash Drop  
 
-Let's say you want to drop one of the stashes on the stack. You should first run git stash list to get the number, then:
+Let's say you want to drop one of the stashes on the stack. You should first run `git stash list` to get the number, then:
 
+```sh
 $ git stash drop stash@{1}
   Dropped stash@{1} (xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx)
-Conclusion  
+```
 
-Quickly saving changes you are not yet ready to commit or save is easy using git stash. This git command will give you the ability to come back to your code at a later time while you work on something else.
+## Conclusion  
+
+Quickly saving changes you are not yet ready to commit or save is easy using `git stash`. This git command will give you the ability to come back to your code at a later time while you work on something else.
