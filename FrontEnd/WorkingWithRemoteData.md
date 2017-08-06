@@ -373,32 +373,35 @@ Using these two techniques, we're ready to take on API calls and implement more 
 
 Your next cool app will depend on two things: getting and posting data.
 
-Until recently, developers relied on XMLHttpRequest to do this. Even though this works, the code can be messy. They also relied on listeners and events. Adding extensive logic to this kind of request has the potential for hard-to-read code. In contrast, the Fetch API provides a much cleaner and simpler interface. This is a relatively new technology, so you'll want to always check the browser support required on your project before using.
+Until recently, developers relied on `XMLHttpRequest` to do this. Even though this works, the code can be messy. They also relied on listeners and events. Adding extensive logic to this kind of request has the potential for hard-to-read code. In contrast, the `Fetch API` provides a much cleaner and simpler interface. This is a relatively new technology, so you'll want to always check the browser support required on your project before using.
 
-Polyfill & Isomorphic  
+## Polyfill & Isomorphic  
 
-Polyfill
-The term polyfill in reference to JavaScript is a browser fall-back that allows the code you write for modern browsers to also work in older browsers.
+### Polyfill
 
-You can keep up with the current support of fetch over at caniuse.com. Since there are some older browsers that you might need to support, you should be made aware of the Fetch Polyfill. You won't need it during this course, since you are using a modern browser (Chrome), however it's something you should be aware of.
+The term *polyfill* in reference to JavaScript is a browser fall-back that allows the code you write for modern browsers to also work in older browsers.
 
-Isomorphic
-Since Fetch is part of the window object and has become so popular, there is a NPM package that allows you to use the Fetch API in both the browser as well as inside of a NodeJS environment.
+You can keep up with the current support of `fetch` over at [caniuse.com](https://caniuse.com/#feat=fetch). Since there are some older browsers that you *might* need to support, you should be made aware of the [Fetch Polyfill](https://github.github.io/fetch/). You won't need it during this course, since you are using a modern browser (Chrome), however it's something you should be aware of.
 
-You can read more about Isomorphic Fetch here.
+### Isomorphic
 
-Using Fetch  
+Since Fetch is part of the `window` object and has become so popular, there is a NPM package that allows you to use the Fetch API in both the browser as well as inside of a NodeJS environment.
 
-The window.fetch() method has one mandatory parameter, the "URL" from where the data will be fetched. Once a resource is fetched, it returns a Promise, which resolves to the response pertaining to the request.
+You can read more about [Isomorphic Fetch here](https://github.com/matthew-andrews/isomorphic-fetch).
 
-The Fetch API also has a number of methods available to define and handle the body of the response.
+## Using Fetch  
 
-Simple example  
+The `window.fetch()` method has one mandatory parameter, the "URL" from where the data will be fetched. Once a **resource** is fetched, it returns a Promise, which resolves to the **response** pertaining to the request.
 
-Compared to an XMLHttpRequest, fetch is much simpler to use.
+The `Fetch API` also has a number of methods available to define and handle the body of the `response`.
 
-Example
+### Simple example  
 
+Compared to an `XMLHttpRequest`, `fetch` is much simpler to use.
+
+### Example
+
+```javascript
 fetch(url, options).then(
   function(response) {
     // handle HTTP response
@@ -407,15 +410,19 @@ fetch(url, options).then(
     // handle network error
   }
 );
-Request Options  
+```
 
-When making a fetch request, we can pass options ranging from method to credentials.
+## Request Options  
 
-Option	Description
-method	(String) HTTP request method. Default: "GET"
-body	(String, body types) - HTTP request body
-headers	(Object, Headers) - Default: {}
-credentials	(String) - Authentication credentials mode. Default: "omit"
+When making a `fetch` request, we can pass options ranging from `method` to `credentials`.
+
+| Option |	Description |
+| --- | --- |
+| `method` |	(String) HTTP request method. **Default:** "GET" |
+| `body` |	(String, body types) - HTTP request body |
+| `headers` |	(Object, Headers) - Default: {} |
+| `credentials` |	(String) - Authentication credentials mode. **Default:** "omit" |
+
 Promises  
 
 ES6 introduced new Promises functionalities. One of these is .then(). This method replaces callbacks and events. It handles success and failure cases using two callback functions. These must be passed in as arguments. .then() basically says, "once we have data in the queue (promise), do x, y, and z with it."
