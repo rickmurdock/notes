@@ -21,7 +21,7 @@ Lecture notes from The Iron Yard
 
 * [Version Control with Git](https://github.com/rickmurdock/notes/blob/master/FrontEnd/VersionControlWithGit.md)
 
-* [Using Git Remotely with a Team]https://github.com/rickmurdock/notes/blob/master/FrontEnd/UsingGitRemotelyWithATeam.md)
+* [Using Git Remotely with a Team](https://github.com/rickmurdock/notes/blob/master/FrontEnd/UsingGitRemotelyWithATeam.md)
 
 * Getting Started with JavaScript
 
