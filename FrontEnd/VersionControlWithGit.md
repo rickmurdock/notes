@@ -6,65 +6,84 @@ Git is a powerful tool that allows you to control versions of your code through 
 
 This article will get you up and running with Git. Learning to properly use Git is the first step toward managing your code like a professional.
 
-A Brief History of Git  
+# A Brief History of Git  
 
 git logo.png
+
 The development of the Linux Kernel, a Unix-like system, is an inspiration to the development of Git. Linux maintenance updates were passed around as patches and archived files (1991-2002). In 2002 the Linux project began using BitKeeper. This was a proprietary free-of-charge Distributed Version Control System. This DVCS simplified the development and maintenance process. Compared to patches and archived files, a DVCS relies on developers “cloning” a copy of a repository. The cloned 'repository' has a full history of the project with all the metadata of the original. From here developers 'pull' and 'push' changes in order update the code.
 
 In 2005, the relationship between the Linux Kernel Project and BitKeeper developer dissolved. BitKeeper became a paid service, prompting the Linux community - including Linus Torvalds - to develop new version control software. Git emerged from that effort.
 
 Git offers a simple, fully distributed, and speedy design. It has strong support for large projects and core document management features for collaboration.
 
-Git Commands  
+# Git Commands  
 
-Once installed, git ships with a handful of commands that you can use to track the changes you make to your files.
+Once installed, `git` ships with a handful of commands that you can use to track the changes you make to your files.
 
-init: This creates a git repository in the current directory.
-add: Adds a file(s) to staging.
-reset: This will remove a file from the staging without changing anything else.
-status: See the current status of your directory and repository.
-commit: Saves a snapshot of the staging area.
-commit -m: Same as just commit but takes a string that will be used as the commit message
-Using Git Locally  
+* `init`: This creates a git repository in the current directory.
+
+* `add`: Adds a file(s) to `staging`.
+
+* `reset`: This will remove a file from the `staging` without changing anything else.
+
+* `status`: See the current status of your directory and repository.
+
+* `commit`: Saves a snapshot of the staging area.
+
+* `commit -m`: Same as just `commit` but takes a string that will be used as the commit message
+
+# Using Git Locally  
 
 Using Git at a local level is a fairly simple process. In order to use git, you must first install it.
 
-Install Git from Git-SCM  
+## Install Git from Git-SCM  
 
-The simplest way is to download and install from their website: Download Link.
+The simplest way is to download and install from their website: [Download Link](https://git-scm.com/download).
 
-Install Git with Homebrew  
+## Install Git with Homebrew  
 
-If you have Homebrew installed, you can also install git with this command:
+If you have [Homebrew](https://brew.sh/) installed, you can also install `git` with this command:
 
+```sh
 $ brew install git
-Git can be installed several ways. Most of those ways depend on the platform (Mac, Windows, Linux) that you are using. As long as you install the latest version, it doesn't matter how you get it installed.
-Configure Git  
+```
+
+> Git can be installed several ways. Most of those ways depend on the platform (Mac, Windows, Linux) that you are using. As long as you install the latest version, it doesn't matter how you get it installed.
+
+## Configure Git  
 
 Git is associated with another common tool called GitHub. Git (a command line tool) and GitHub (a website to store remote repositories) are different things. They have similar names and confusion between them is common. Be sure to recognize the differences between Git and Github.
 
 For now, configure Git with the email address that is associated with your GitHub account. Don't worry, if you don't have a GitHub account. You can go ahead and configure Git with the email address you will use later to sign up for GitHub.
 
-If you are not sure, you can check here to ensure you use one of the emails listed.
+If you are not sure, you can [check here](https://github.com/settings/emails) to ensure you use one of the emails listed.
 
+```sh
 $ git config --global user.email "<Your email>" # configures your email
 $ git config --global user.name "<Your name>" # configures your Full Name
-By default, Git will use a built-in text editor like Vim or Nano. Those editors are advanced tools and are beyond the scope of this class. Instead, we'll configure Git to use Atom. The following command will configure Git to use Atom. Whenever Git opens a file, it will do so using Atom.
+```
 
+By default, Git will use a built-in text editor like Vim or Nano. Those editors are advanced tools and are beyond the scope of this class. Instead, we'll configure Git to use [Atom](https://atom.io/). The following command will configure Git to use Atom. Whenever Git opens a file, it will do so using Atom.
+
+```sh
 $ git config --global core.editor "atom --wait"
-Git can be configured to use other editors. If you choose to use an editor other than Atom, please check out this guide.
-Create a Local Repository  
+```
+
+> Git can be configured to use other editors. If you choose to use an editor other than Atom, please check out this guide.
+
+## Create a Local Repository  
 
 Git novices often have a hard time understanding what Git is doing in the background. The truth is that it takes time to pick up the processes that run when you execute Git commands. The best remedy for ignorance is practice.
 
 Now that you have Git installed, let's go ahead and practice. Follow the steps below to track your very first file.
 
-Navigate to your "Documents" folder in Finder. Once in the "Documents" folder, create another folder called "Projects".
+1. Navigate to your "Documents" folder in Finder. Once in the "Documents" folder, create another folder called "Projects".
 
-Navigate to the "Projects" folder using your command line tool (Terminal, iTerm, etc).
+2. Navigate to the "Projects" folder using your command line tool (Terminal, iTerm, etc).
 
-Create a test repo using the following commands:
+3. Create a test repo using the following commands:
 
+```sh
 # Create a folder called "test-repo" where you will work on your project
 # The folder can be called anything. In this case, "test-repo" is just the
 # name we chose for our demo
@@ -82,15 +101,21 @@ $ git init
 # The contents of this file don't matter,
 # we are just using it for demo purposes
 $ touch README.md
-Open the README.md file with your text editor and add the following text to the file.
+```
 
+4. Open the README.md file with your text editor and add the following text to the file.
+
+```sh
 # Hello World
 
 This is a little bit of markdown to keep things interesting.
-After creating the README file, Git will know about the file. However, Git isn't 'tracking' changes to the README file. What that means is that Git won't record changes that occur to README.md. First, you must add README.md to your 'staging area'. When you stage a file, you tell Git that the file's changes should be recoreded during the next 'commit'. Add the "README" file to your staging area with the git add command.
+```
 
-git add works like this:
+5. After creating the README file, Git will know about the file. However, Git isn't 'tracking' changes to the README file. What that means is that Git won't record changes that occur to `README.md`. First, you must add `README.md` to your 'staging area'. When you stage a file, you tell Git that the file's changes should be recoreded during the next 'commit'. Add the "README" file to your staging area with the `git add` command.
 
+`git add` works like this:
+
+```sh
 # git add [FILE]
 
 # To add README.md
@@ -101,14 +126,20 @@ git add index.html
 
 # To add all the files in the repository
 git add .
+```
+
 This will stage the changes to the repo and prepare Git to commit those changes.
 
+```sh
 # Stage this file to be committed
 $ git add README.md
-Now that the file has been staged, Git will record changes to that file in the next 'commit'. A commit is a "snapshot" of the current state of our repo. Git will save a copy of all the staged files exactly as they are when you make the commit.
+```
+
+6. Now that the file has been staged, Git will record changes to that file in the next 'commit'. A commit is a "snapshot" of the current state of our repo. Git will save a copy of all the staged files *exactly as they are* when you make the commit.
 
 It will save a repo with one file (README.md) and will track the contents of that file (in this case, the two lines of text above).
 
+```sh
 # Create your first commit
 # Always add a commit message (in quotes) to every commit
 # That message tells other developers what the commit contains
@@ -116,35 +147,51 @@ It will save a repo with one file (README.md) and will track the contents of tha
 # As you make additional changes to this repo,
 # The commit messages should change accordingly
 $ git commit -m "initial commit"
-Let's Recap Our Progress: Over the last 6 steps, we did a few things:
+```
 
-We created a new project folder and added a file to it
-Next, we initialized the project folder with Git
-We then added some edits to the file
-Finally, we staged the file changes and committed that file
+**Let's Recap Our Progress:** Over the last 6 steps, we did a few things:
+
+* We created a new project folder and added a file to it
+
+* Next, we initialized the project folder with Git
+
+* We then added some edits to the file
+
+* Finally, we staged the file changes and committed that file
+
 If we make additional changes to that file, we have a time-stamp in history that we can go back to if we make a mistake.
 
-Practice, Practice, Practice  
+## Practice, Practice, Practice  
 
 Now that this project is up and running, make a few additional changes to the README file. Save the file in your text editor, then add it to staging and commit another change. Do this a few times to get some hands-on practice.
 
 Other things you can do to practice:
 
-Create another file in the repository, then add that file to staging and commit it.
-Delete files from the repository, then add and commit.
-Create sub-folders in the repository, then create files inside of those folders.
-Create different types of files (images, word files, .js files, etc.) in your repository
-Use the repository  
+* Create another file in the repository, then add that file to staging and commit it.
 
-Add a file(s) to staging.
-$ git add <file-name>. Add single file.
-$ git add . To track all files in the current directory. You can do this by adding the current directory.
-$ git status
-$ git commit -m <description>
-use $ git reset <file-name> to remove file from staging.
-It is good practice to check the status of the repository after adding a file(s).
-Think of a commit as saving a game. You want to save and save often.
-Conclusion  
+* Delete files from the repository, then add and commit.
+
+* Create sub-folders in the repository, then create files inside of those folders.
+
+* Create different types of files (images, word files, .js files, etc.) in your repository
+
+## Use the repository  
+
+1. Add a file(s) to staging.
+
+  * `$ git add <file-name>`. Add single file.
+
+  * `$ git add .` To track all files in the current directory. You can do this by adding the current directory.
+
+2. `$ git status`
+
+3. `$ git commit -m <description>`
+
+>  * use $ git reset <file-name> to remove file from staging.
+>  * It is good practice to check the status of the repository after adding a file(s).
+>  * Think of a commit as saving a game. You want to save and save often.
+
+## Conclusion  
 
 Regardless of how big or small the project, being able to keep track of the history of code changes is paramount. Version control makes fixing and modifying the code a much simpler process. If we use Git to commit often and check the status of our commits, our code will always be safe and secure.
 
