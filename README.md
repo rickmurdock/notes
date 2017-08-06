@@ -23,7 +23,7 @@ Lecture notes from The Iron Yard
 
 * [Using Git Remotely with a Team](https://github.com/rickmurdock/notes/blob/master/FrontEnd/UsingGitRemotelyWithATeam.md)
 
-* Getting Started with JavaScript
+* [Getting Started with JavaScript](https://github.com/rickmurdock/notes/blob/master/FrontEnd/GettingStartedWithJavaScript.md)
 
 * Functions and Complex Expressions
 
