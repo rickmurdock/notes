@@ -305,18 +305,19 @@ In 2010 Vincent Driessen wrote an article called "A successful Git branching mod
 
 Driessen's branch model is centered around two main branches, `master` and `develop`, and other supporting branches, such as `hotfix`, `feature`, and `release`. Here's the diagram from his article that shows how his new approach organizes your repo's history:
 
-Driessen's branch model
+![Driessen's branch model](https://github.com/rickmurdock/notes/blob/master/FrontEnd/images/driessensBranchModel.png)
 
 We encourage you to read [Vincent's article](http://nvie.com/posts/a-successful-git-branching-model/) and here's some additional tips:
 
 ## Know The Lingo  
 
-There is a plethora of Git commands, each with their own set of options. It is imperative for a developer to be familiar with all the Git commands related to creating a project, staging, branching, merging, sharing, updating, inspecting and comparing. See Git Reference for details.
+There is a plethora of Git commands, each with their own set of options. It is imperative for a developer to be familiar with all the Git commands related to creating a project, staging, branching, merging, sharing, updating, inspecting and comparing. See [Git Reference](https://git-scm.com/docs) for details.
 
-Git Lifecycle Review  
+## Git Lifecycle Review  
 
 1- Create a repo by cloning or initting (only done once per project)
 
+```sh
 cd <projectsDirectory>
 git init .
 
@@ -326,31 +327,49 @@ git pull
 
 # if it doesn't exist on GitHub (default -- new project)
 hub create <projectname>
+```
+
 2- Always check the status before each step.
 
+```sh
 git status
+```
+
 3- If you add files to the directory... nothing is stored in Git until you add it to the staging area.
 
+```sh
 git add <filename> <filename>
 
 # or add everything in the directory
 
 git add .
+```
+
 4- Nothing in the staging area is logged into Git until you commit.
 
+```sh
 git commit -m "a message about the commit"
+```
+
 5- Nothing will be on GitHub until you push.
 
+```sh
 git push origin master
-6- You can create publicly visible websites on GitHub with gh-pages.
+```
 
-GitHub allows you to create a branch called gh-pages. These files (like an index.html file) will then be accessible at <github-username>.github.io/<projectname>/index.html.
+6- You can create publicly visible websites on GitHub with `gh-pages`.
+
+GitHub allows you to create a branch called `gh-pages`. These files (like an index.html file) will then be accessible at `<github-username>.github.io/<projectname>/index.html`.
 
 Here's a Bookmark URL you can use to easily convert project page URLs to gh-pages URLs:
 
+```js
 javascript: (function() {    var s = location.href;    var r = /^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/g;    location.href = s.replace(r, "http:/$5.github.io/$6");})();
-7- Pushing to gh-pages.
+```
 
+7- Pushing to `gh-pages`.
+
+```sh
 # first time pushing to gh-pages
 git branch gh-pages
 git fetch . master:gh-pages
@@ -359,22 +378,32 @@ git push origin --all
 # after first time...
 git fetch . master:gh-pages
 git push origin --all
+```
+
 8- Always modify your README.md file and the GitHub link and description of your repos.
 
 If someone has to type out the gh-pages link to visit it, they won't (including employers). Always put your gh-pages link in the Website field at the top of your repo page.
 
-Git Practice  
+## Git Practice  
 
-Complete Git lifecycle practice  
+### Complete Git lifecycle practice  
 
-Prerequisites
-Ensure that you have followed the "Computer Setup" notes. If you're not sure, you can run the following commands and make sure they run. If you see command not found, you need to follow the instructions to install the command line tools.
+#### Prerequisites
 
-brew --version, should output 0.9.5 or similar.
-git --version, should output git version 2.7.1 or similar.
-Git immersion
-Go to gitimmersion.com.
-Complete Labs 1-12, 24, and 25.
-Create a repository on GitHub named git-immersion and push your local repository to GitHub.
-Lesson Footnotes
-1: git pull --rebase
+Ensure that you have followed the "Computer Setup" notes. If you're not sure, you can run the following commands and make sure they run. If you see `command not found`, you need to follow the instructions to install the command line tools.
+
+* `brew --version`, should output `0.9.5` or similar.
+
+* `git --version`, should output git version `2.7.1` or similar.
+
+#### Git immersion
+
+* Go to gitimmersion.com.
+
+* Complete Labs 1-12, 24, and 25.
+
+* Create a repository on GitHub named `git-immersion` and push your local repository to GitHub.
+
+##### Lesson Footnotes
+
+1: `git pull --rebase`
