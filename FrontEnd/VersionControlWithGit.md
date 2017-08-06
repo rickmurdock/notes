@@ -8,7 +8,7 @@ This article will get you up and running with Git. Learning to properly use Git 
 
 # A Brief History of Git  
 
-git logo.png
+![git logo](https://github.com/rickmurdock/notes/blob/master/FrontEnd/images/gitLogo.png)
 
 The development of the Linux Kernel, a Unix-like system, is an inspiration to the development of Git. Linux maintenance updates were passed around as patches and archived files (1991-2002). In 2002 the Linux project began using BitKeeper. This was a proprietary free-of-charge Distributed Version Control System. This DVCS simplified the development and maintenance process. Compared to patches and archived files, a DVCS relies on developers “cloning” a copy of a repository. The cloned 'repository' has a full history of the project with all the metadata of the original. From here developers 'pull' and 'push' changes in order update the code.
 
