@@ -363,7 +363,7 @@ Developer tools allow developers to interact with the front-end of their website
 
 Conditional statements dictate which parts of a program run, based on a "condition." They determine *if*, and *when* a block of code should run. The condition is an expression that resolves to either `true` or `false`.
 
-## The `If` Statement  
+## The `if` Statement  
 
 The simplest conditional statement is called an `if` statement. The idea of an `if` statement is simple. It allows us to define a condition to determine if a block of code should run. If the condition resolves to `true`, then the code is run. If the condition resolves to `false`, then the code doesn't run.
 
@@ -480,21 +480,25 @@ Let's elaborate on one of our previous examples:
 9 }
 ```
  
-When we run this code, we no longer get the message: "Evaluation complete. Nothing printed to STOUT." because we are always printing something to the console regardless of the condition. If the condition is true, the first block prints. If the condition is false, the second block prints.
+When we run this code, we no longer get the message: "Evaluation complete. Nothing printed to STOUT." because we are always printing something to the console regardless of the condition. If the condition is `true`, the first block prints. If the condition is `false`, the second block prints.
 
-As long as count and minimum store numbers, this code will always produce some output to the console.
+As long as `count` and `minimum` store numbers, this code will always produce some output to the console.
 
-The else if Statement  
+## The `else if` Statement  
 
-We can take the if/else statement a step further. We can define multiple conditions and multiple blocks to respond to those conditions. The else if statement allows us to add more than one conditional statement to determine the code to run.
+We can take the `if/else` statement a step further. We can define multiple conditions and multiple blocks to respond to those conditions. The `else if` statement allows us to add more than one conditional statement to determine the code to run.
 
 The logic looks like this:
 
+```
 if the FIRST CONDITION is TRUE, perform the FIRST ACTION
 else if the SECOND CONDITION is TRUE, perform the SECOND ACTION
 if both CONDITIONS are FALSE, perform the THIRD ACTION
+```
+
 The syntax looks like this:
 
+```js
 if( /* FIRST CONDITION */ ){
   /* FIRST ACTION */
 }
@@ -504,50 +508,39 @@ else if( /* SECOND CONDITION */ ){
 else{
   /* THIRD ACTION */  
 }
-An else/if Statement Comparing Two Variables  
+```
 
+## An `else/if` Statement Comparing Two Variables  
 
-1
-let count = 10;
-2
-let minimum = 12;
-3
-​
-4
-if ( count > minimum ) {
-5
-    console.log( "We have more than enough. Good job." );
-6
-}
-7
-else if( count === minimum ){
-8
-    console.log( "Just right; the perfect number" );
-9
-}
-10
-else{
-11
-    console.log( "Not enough. We need more." );
-12
-}
+```js
+ 1 let count = 10;
+ 2 let minimum = 12;
+ 3 
+ 4 if ( count > minimum ) {
+ 5     console.log( "We have more than enough. Good job." );
+ 6 }
+ 7 else if( count === minimum ){
+ 8     console.log( "Just right; the perfect number" );
+ 9 }
+10 else{
+11     console.log( "Not enough. We need more." );
+12 }
+```
+ 
+Run the code, unchanged. You should see the message: "Not enough. We need more.". Makes sense, right? 10 is less than 12, so the condition `count > minimum` (read as "`count` is greater than `minimum`") is `false`. Likewise, `count === minimum` (read "`count` is exactly equal to `minimum`") is also `false`. If both of our conditions are `false`, then we are left only with the final `else` block, which runs.
 
-Fullscreen
+Now, change the value of `count` to 14 and rerun the block. You should see the message: "We have more than enough. Good job." because the first condition in the `else if` statement evaluates to `true`. The rest of the statement gets ignored, so the second condition isn't even tested.
 
-Reset Code
-Run Code 
-Run the code, unchanged. You should see the message: "Not enough. We need more.". Makes sense, right? 10 is less than 12, so the condition count > minimum (read as "count is greater than minimum") isfalse. Likewise, count === minimum (read "count is exactly equal to minimum") is also false. If both of our conditions are false, then we are left only with the final else block, which runs.
+Now, change the value of `count` to 12 and rerun the block again. You should see the message: "Just right; the perfect number." In this case, the first conditional evaluated to false (`count` isn't greater than `minimum` because it holds the same value as `minimum`). Since the first condition is false, the first code block doesn't run. Then, the second condition gets evaluated. Sure enough, it resolves to `true` (`count` is 12, and `minimum` is 12, so they are equal). Because this second condition is `true`, the `else` block is ignored as well.
 
-Now, change the value of count to 14 and rerun the block. You should see the message: "We have more than enough. Good job." because the first condition in the else if statement evaluates to true. The rest of the statement gets ignored, so the second condition isn't even tested.
+> Another powerful conditional statement is called a `Switch Statement`. We don't cover it in this lesson, but its behavior is somewhat similar to the `else if` statements. If you want to read about it go to the [MDN Switch article](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch). Theoretically, you may never use a switch statement, but its good to be familiar with the basic syntax.
 
-Now, change the value of count to 12 and rerun the block again. You should see the message: "Just right; the perfect number." In this case, the first conditional evaluated to false (count isn't greater than minimum because it holds the same value as minimum). Since the first condition is false, the first code block doesn't run. Then, the second condition gets evaluated. Sure enough, it resolves to true (count is 12, and minimum is 12, so they are equal). Because this second condition is true, the else block is ignored as well.
-
-Another powerful conditional statement is called a Switch Statement. We don't cover it in this lesson, but its behavior is somewhat similar to the else if statements. If you want to read about it go to the MDN Switch article. Theoretically, you may never use a switch statement, but its good to be familiar with the basic syntax.
-Conclusion  
+## Conclusion  
 
 Conditional statements are significant for controlling the flow of your programs. In this lesson, we've used simple examples to show basic conditional statements. Over time, you'll learn to integrate conditional logic into your programs. You will be able to produce truly complex behaviors and sophisticated decision making.
 
-References  
+### References  
 
-if...else - MDN
-Conditional Computer Programming
+* [if...else - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else)
+
+* [Conditional Computer Programming](https://en.wikipedia.org/wiki/Conditional_(computer_programming))
