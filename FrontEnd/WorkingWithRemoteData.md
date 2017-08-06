@@ -1,23 +1,26 @@
-Breaking Down the Event Loop  
+# Breaking Down the Event Loop  
 
-The JavaScript Event Loop is one of the more difficult concepts to grasp in the language. Essentially, it's made up of three parts:
+The JavaScript `Event Loop` is one of the more difficult concepts to grasp in the language. Essentially, it's made up of three parts:
 
-Call Stack
-Event Table
-Event Queue
+* Call Stack
+
+* Event Table
+
+* Event Queue
+
 In this lesson, we will break down the event loop and uncover the mechanisms used to construct it.
 
-The Call Stack  
+## The Call Stack  
 
-It's important to remember that a JavaScript Engine is behind the scenes of your web browser. This engine has the job of processing our JavaScript functions. JavaScript is a single-threaded language, which means that it can only process one thing at a time.
+It's important to remember that a **JavaScript Engine** is behind the scenes of your web browser. This engine has the job of processing our JavaScript functions. JavaScript is a single-threaded language, which means that it can only process one thing at a time.
 
-This is where the call stack comes into play. You can think of the call stack like Pringles potato chips (Stay with me here).
+This is where the `call stack` comes into play. You can think of the call stack like Pringles potato chips (Stay with me here).
 
 Let's say you have an empty Pringles container and you want to place some chips inside, one at a time. The first chip you place in the container will be the last chip you eat since it's located at the bottom of the stack. The same is true for the last chip you place into the container, it will be the first chip you eat.
 
 Let's look at an example to see how this looks:
 
-
+```javascript
 1
 function firstPotatoChip() {
 2
@@ -38,12 +41,9 @@ function secondPotatoChip() {
 ​
 10
 secondPotatoChip(); // Invoked first
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Within our call stack, the secondPotatoChip() is placed into the container first. firstPotatoChip() is placed on top of the secondPotatoChip() since it's called within the second function.
+Within our call stack, the `secondPotatoChip()` is placed into the container first. `firstPotatoChip()` is placed on top of the `secondPotatoChip()` since it's called within the second function.
 
 Visualization of the call stack:
 
