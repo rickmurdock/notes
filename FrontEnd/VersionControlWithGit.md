@@ -113,7 +113,7 @@ This is a little bit of markdown to keep things interesting.
 
 5. After creating the README file, Git will know about the file. However, Git isn't 'tracking' changes to the README file. What that means is that Git won't record changes that occur to `README.md`. First, you must add `README.md` to your 'staging area'. When you stage a file, you tell Git that the file's changes should be recoreded during the next 'commit'. Add the "README" file to your staging area with the `git add` command.
 
-`git add` works like this:
+    `git add` works like this:
 
 ```sh
 # git add [FILE]
@@ -137,7 +137,7 @@ $ git add README.md
 
 6. Now that the file has been staged, Git will record changes to that file in the next 'commit'. A commit is a "snapshot" of the current state of our repo. Git will save a copy of all the staged files *exactly as they are* when you make the commit.
 
-It will save a repo with one file (README.md) and will track the contents of that file (in this case, the two lines of text above).
+    It will save a repo with one file (README.md) and will track the contents of that file (in this case, the two lines of text above).
 
 ```sh
 # Create your first commit
@@ -187,27 +187,27 @@ Other things you can do to practice:
 
 3. `$ git commit -m <description>`
 
->  * use $ git reset <file-name> to remove file from staging.
->  * It is good practice to check the status of the repository after adding a file(s).
->  * Think of a commit as saving a game. You want to save and save often.
+>  * use `$ git reset <file-name>` to remove file from staging.
+>  * It is good practice to check the `status` of the repository after adding a file(s).
+>  * Think of a `commit` as saving a game. You want to save and save often.
 
 ## Conclusion  
 
 Regardless of how big or small the project, being able to keep track of the history of code changes is paramount. Version control makes fixing and modifying the code a much simpler process. If we use Git to commit often and check the status of our commits, our code will always be safe and secure.
 
-Lastly, practice makes perfect! Go to try.github.io and complete the challenges 1-9.
+> *Lastly, practice makes perfect! Go to [try.github.io](https://try.github.io/levels/1/challenges/1) and complete the challenges 1-9.*
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Managing Remote Repositories  
+---
+
+# Managing Remote Repositories  
 
 More often than not, you will collaborate with other developers on large projects. You might need to share code with them, or you might need to work on the same body of code at the same time. This type of collaboration can get pretty messy if you don't stay organized. It can get especially messy if everyone involved isn't tracking their changes. We want to make our local code repos (managed by Git) available to other collaborators with a "remote" repo.
 
-Additionally, you might want to store your code in a remote location in case of an emergency. If your computer gets dropped in the ocean but you have used a remote repo, you won't all your work.
+> Additionally, you might want to store your code in a remote location in case of an emergency. If your computer gets dropped in the ocean but you have used a remote repo, you won't all your work.
+
 This article will talk about "remote" repositories and why we need to maintain them.
 
-Local/Remote Workflow  
+## Local/Remote Workflow  
 
 To start, let's discuss some of the motivations for maintaining a remote.
 
@@ -215,106 +215,140 @@ Let's pretend that I am working on a major project for an international client. 
 
 A typical workflow is as follows:
 
-Before I begin working on my code, I "pull" down any changes that my colleagues made to the remote repo. This will sync my local repo with any new work that my peers have done.
-I then work locally (on my computer) to make changes to my code.
-I track these changes with Git, staging and committing them as necessary. I may do this several times (and should). I write detailed commit messages so that my peers can see what changes have been made in each commit.
-Once I am satisfied with my work, I "push" those changes up to the "remote" location (a server). Pushing my changes syncs the code in the remote to the code in my local repo. This ensures that other developers have access to my changes to the code.
-I have to assume that my peers will follow the same workflow. If we all pull down one another's changes first, we won't constantly overwrite one another. Plus, if we track each change with a commit, then our remote will keep a complete log of everyone's changes. It's pretty neat stuff.
+* Before I begin working on my code, I "pull" down any changes that my colleagues made to the remote repo. This will sync my local repo with any new work that my peers have done.
+
+* I then work locally (on my computer) to make changes to my code.
+
+* I track these changes with Git, staging and committing them as necessary. I may do this several times (and should). I write detailed commit messages so that my peers can see what changes have been made in each commit.
+
+* Once I am satisfied with my work, I "push" those changes up to the "remote" location (a server). Pushing my changes syncs the code in the remote to the code in my local repo. This ensures that other developers have access to my changes to the code.
+
+I have to assume that my peers will follow the same workflow. If we all pull down one another's changes *first*, we won't constantly overwrite one another. Plus, if we track each change with a commit, then our remote will keep a complete log of *everyone's* changes. It's pretty neat stuff.
 
 This should illuminate the value of maintaining a remote. It is the central "hub" where all collaborators intersect.
 
-Github and Managing Remotes  
+## Github and Managing Remotes  
 
 Several sites exist for creating remote repos, but we'll focus on one. Github is the standard place to store remote Git repos. We can use Git to "push" our local changes to our remote Github repo. Git offers several commands to manage our remotes. This section will talk about how to use those commands, how to hook up a connection between local and remote repos, and how to sync data between the two.
 
-Terminology and Commands  
+## Terminology and Commands  
 
-git remote add: Add a new remote repository of to project.
-git remote: View remote alias.
-git remote -v: View alias's URL.
-git remote rm [ALIAS]: Remove an existing remote alias.
-git remote rename [old-alias] [new-alias]: Rename remote aliases.
-git remote set-url: Change an existing remote URL
-git push: Push changes to remote repository.
-Adding A Remote Repository  
+* `git remote add`: Add a new remote repository of to project.
 
-This article assumes you already know how to manage a local repo with Git. For the following tutorial, you will first need to create a local repo called "local-remote". Create a README.md file inside the "local-remote" repo. Add the text "Local Remote Practice File" to the README file. Stage and commit the file to "local-remote".
-To connect our local repo to a remote repository, we must first create the remote repo. Navigate to https://github.com/new. Then enter a "local-remote" in Repository name. Next click on Create repository. This will create a remote repo on your Github account.
+* `git remote`: View remote alias.
+
+* `git remote -v`: View alias's URL.
+
+* `git remote rm [ALIAS]`: Remove an existing remote alias.
+
+* `git remote rename [old-alias] [new-alias]`: Rename remote aliases.
+
+* `git remote set-url`: Change an existing remote URL
+
+* `git push`: Push changes to remote repository.
+
+## Adding A Remote Repository  
+
+> This article assumes you already know how to manage a local repo with Git. For the following tutorial, you will first need to create a local repo called "local-remote". Create a README.md file inside the "local-remote" repo. Add the text "Local Remote Practice File" to the README file. Stage and commit the file to "local-remote".
+
+To connect our local repo to a remote repository, we must first create the remote repo. Navigate to https://github.com/new. Then enter a "local-remote" in `Repository name`. Next click on `Create repository`. This will create a remote repo on your Github account.
 
 On the next screen, you will see your remote's URL. You will need this to add your remote repository to your local repository. Copy this code and then run the following Git command replacing the sample URL with your remote's url.
 
+```sh
 $ git remote add origin git@github.com:[USERNAME]/[REPO-NAME].git
-Other Useful Commands  
+```
+
+# Other Useful Commands  
 
 What follows are several useful commands for managing remotes connected to your local repos.
 
-Listing Remote Repositories  
+## Listing Remote Repositories  
 
 This will show all the remote aliases associated with the local Git repo. This will typically return "origin" when associated with Github.
 
+```sh
 # Will list the Remote Alias
 $ git remote
+```
+
 This will show the URLs to the remote repo. It's useful for fetching and pushing content changes (More on that elsewhere).
 
+```sh
 # Will the Remote URL
 $ git remote -v
-Removing A Remote Repository  
+```
+
+## Removing A Remote Repository  
 
 If you are not using a remote repository anymore, you can delete it.
 
+```sh
 $ git remote rm <ALIAS>
 Renaming A Remote Repository  
+```
 
 You may want to rename a remote alias without having to delete it and add it again. To do so, use the following Git command.
 
+```sh
 $ git remote rename <old-alias> <new-alias>
-Changing A Remote URL  
+```
+
+## Changing A Remote URL  
 
 If you ever need to change the URL of a remote repository, use the following git command.
 
+```sh
 $ git remote set-url <alias> <the-remote-url>
-Conclusion  
+```
+
+## Conclusion  
 
 Git makes it easy to add a remote repository once you are ready to put your code on Github.com. Git also makes it easy to list remotes, view a remote's URL, change a remote's URL, rename a remote, and even remove a remote.
 
-Practice makes perfect! Go to try.github.io and complete challenges 10-12.
+> Practice makes perfect! Go to [try.github.io](https://try.github.io/levels/1/challenges/10) and complete challenges 10-12.
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Git Fetch And Pull and Push  
+---
 
-In version control environment, code changes daily. As a developer, you will work on a team where many individuals work on different parts of a project. Keeping your local repository up-to-date is of the utmost importance. Git offers a set of tools to help you with this process, git pull and git fetch. Both their purpose is similar, but their implementation and execution are different.
+# Git Fetch And Pull and Push  
 
-Git Terminology  
+In version control environment, code changes daily. As a developer, you will work on a team where many individuals work on different parts of a project. Keeping your local repository up-to-date is of the utmost importance. Git offers a set of tools to help you with this process, `git pull` and `git fetch`. Both their purpose is similar, but their implementation and execution are different.
 
-git fetch: Synchronizes local repository with a remote repository and:
+## Git Terminology  
 
-It pulls down any data not found locally.
-It provides bookmarks to where each branch was on the remote after synchronization.
-It does not merge the data.
-git pull: Fetches and merges remote data into current branch
+* `git fetch`: Synchronizes local repository with a remote repository and:
 
-Runs a git fetch pulling down data from a remote repository
-Immediately runs a git merge. This merges data from the remote repository with the local repository.
-git push: Sends all the local commits and changes to the remote branch
+  * It pulls down any data not found locally.
 
-Merges those changes with the remote branch content, thereby syncing them together
-Fetch Vs. Pull  
+  * It provides bookmarks to where each branch was on the remote after synchronization.
+
+  * It *does not*  merge the data.
+  
+* `git pull`: Fetches and merges remote data into current branch
+
+  * Runs a `git fetch` pulling down data from a remote repository
+
+  * Immediately runs a `git merge`. This merges data from the remote repository with the local repository.
+
+* `git push`: Sends all the local commits and changes to the remote branch
+
+  * Merges those changes with the remote branch content, thereby syncing them together
+  
+## Fetch Vs. Pull  
 
 Both Git commands pull down data from a remote repository. The difference is the handling of that data on a local level. Deciding which command to use depends on the situation.
 
-When To Use Fetch And Pull  
+### When To Use Fetch And Pull  
 
-git fetch: This is a good one to use when working in a collaborative environment. Performing a fetch will pull down the data and let you see what has changed. For example, new branches might have been created. This would give you a chance to look at each branch individually and then decide which one to merge. In a nutshell, fetch serves as a data preview.
+`git fetch`: This is a good one to use when working in a collaborative environment. Performing a `fetch` will pull down the data and let you see what has changed. For example, new branches might have been created. This would give you a chance to look at each branch individually and then decide which one to merge. In a nutshell, `fetch` serves as a data preview.
 
-git pull: It is recommended to use pull when starting with a clean working copy. There should be no uncommitted local changes before performing a pull. If you do have local changes and want to avoid conflicts, use git stash to save local changes temporarily. Keep in mind that git pull might cause a merge conflict when merging remote changes with local ones.
+`git pull`: It is recommended to use `pull` when starting with a **clean working copy**. There should be no uncommitted local changes before performing a `pull`. If you do have local changes and want to avoid conflicts, use `git stash` to save local changes *temporarily*. Keep in mind that `git pull` might cause a `merge conflict` when merging remote changes with local ones.
 
-Git Practice  
+## Git Practice  
 
-Go to learngitbranching.js.org and complete exercises 3 and 4 under the 'remote' tab.
+> *Go to learngitbranching.js.org and complete exercises 3 and 4 under the 'remote' tab.*
 
-Conclusion  
+## Conclusion  
 
 When working on code collaboratively you will most likely have to update your code on a daily basis. Git offers two different tools to get this done. With git pull you will be able to update your local repository in one step. Use git fetch to preview code changes and to cherry pick which changes you merge locally.
 
