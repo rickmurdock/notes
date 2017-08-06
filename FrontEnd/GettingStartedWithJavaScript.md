@@ -1,12 +1,16 @@
-Including JavaScript in HTML  
+# Including JavaScript in HTML  
 
-You've already worked with HTML. Before we dive into writing JavaScript, let's talk about how we can link it to our index.html file. This way we can make use of it on the front-end.
+You've already worked with HTML. Before we dive into writing JavaScript, let's talk about how we can link it to our `index.html` file. This way we can make use of it on the front-end.
 
-The best way to add a JavaScript file to your HTML is to use the <script> tag. Here's what it might look like:
+The best way to add a JavaScript file to your HTML is to use the `<script>` tag. Here's what it might look like:
 
+```html
 <script src="main.js"></script>
-You'll notice that unlike the <link> tag we use to include CSS, this tag has both an open and close. We'll see why this is later. After creating the <script> tag, you need to add the src attribute. This attributes points to the location of your JavaScript file. Here are some examples:
+```
 
+You'll notice that unlike the `<link>` tag we use to include CSS, this tag has both an open and close. We'll see why this is later. After creating the `<script>` tag, you need to add the `src` attribute. This attributes points to the location of your JavaScript file. Here are some examples:
+
+```html
 <!-- Located in the root, next to your index.html -->
 <script src="main.js"></script>
 
@@ -15,10 +19,13 @@ You'll notice that unlike the <link> tag we use to include CSS, this tag has bot
 
 <!-- Located up one level and inside of a `js` folder -->
 <script src="../js/main.js"></script>
-Script Tag Location  
+```
 
-Where you place the <script> tag does matter. It's not uncommon to see it called in the <head> tags, like so:
+# Script Tag Location  
 
+Where you place the `<script>` tag does matter. It's not uncommon to see it called in the `<head>` tags, like so:
+
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,8 +36,11 @@ Where you place the <script> tag does matter. It's not uncommon to see it called
   <body>
   </body>
 </html>
-While this could work, it's a best practice to include your script tags as the last elements in the <body> tags, like so:
+```
 
+While this *could* work, it's a best practice to include your script tags as the last elements in the `<body>` tags, like so:
+
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -42,138 +52,170 @@ While this could work, it's a best practice to include your script tags as the l
     <script src="main.js"></script>
   </body>
 </html>
+```
+
 This way, the script won't be called until after all your HTML has loaded. While this might not matter much now, it will matter soon. When your JavaScript interacts with the elements on your page, you will be glad for this placement.
 
-There are ways of including JavaScript in your <head> tag and telling it to wait to execute. That is beyond the scope of this lesson.
-JavaScript in the Script Tag  
+> There are ways of including JavaScript in your `<head>` tag and telling it to wait to execute. That is beyond the scope of this lesson.
 
-While we recommend linking to an external JavaScript file, you can also write code in your HTML. Just use the <script> tag to write the code directly onto the HTML.
+# JavaScript in the Script Tag  
 
+While we recommend linking to an external JavaScript file, you can also write code in your HTML. Just use the `<script>` tag to write the code directly onto the HTML.
+
+```html
 <script>
   let answer = 10 - 5;
   console.log("The answer is " + answer);
 </script>
-Don't worry about what the code is doing. Just notice that you don't need to use the src attribute, you can include JavaScript code right on the page. As you might have guessed, this is why the <script> tag has an open and close.
+```
 
-Linking Dependencies  
+Don't worry about what the code is doing. Just notice that you don't need to use the `src` attribute, you can include JavaScript code right on the page. As you might have guessed, this is why the `<script>` tag has an open and close.
 
-Since HTML parses from top to bottom, we should include <script> tags at the lower part of the document. The same top down approach applies for adding multiple JavaScript files. Take the following as an example:
+# Linking Dependencies  
 
+Since HTML parses from top to bottom, we should include `<script>` tags at the lower part of the document. The same top down approach applies for adding multiple JavaScript files. Take the following as an example:
+
+```html
 <script src="js/parents.js"></script>
 <script src="js/siblings.js"></script>
 <script src="js/family.js"></script>
-The ordering of these JavaScript inclusions is important. When the browser reads the files, it will do so in the order provided. In the above case, parent.js is read first, then sibling.js, and finally family.js. So long as the files included first don't reference code loaded later, all is well.
+```
 
-For instance, family.js can reference code in parent.js without creating errors. parent.js is already loaded by the time that family.js references it.
+The ordering of these JavaScript inclusions is important. When the browser reads the files, it will do so in the order provided. In the above case, `parent.js` is read first, then `sibling.js`, and finally `family.js`. So long as the files included first don't reference code loaded later, all is well.
 
-However, the opposite isn't true. If parent.js references code in family.js, the interpreter will throw an error. If parent.js tries to run code in family.js, it will do so before family.js is loaded and will throw an error.
+For instance, `family.js` can reference code in `parent.js` without creating errors. `parent.js` is already loaded by the time that `family.js` references it.
 
-Conclusion  
+However, the opposite isn't true. If `parent.js` references code in `family.js`, the interpreter will throw an error. If `parent.js` tries to run code in `family.js`, it will do so before `family.js` is loaded and will throw an error.
 
-Turning a simple HTML document into a powerful and cool web app is possible thanks to JavaScript. There are several ways to include JavaScript into your project. You can run a script from within the body and/or link to an external JavaScript file. Following best practices will ensure that your web app loads fast and correctly. JavaScript should be in a separate file and should be loaded after the HTML content.
+## Conclusion  
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Learning a Programming Language  
+Turning a simple HTML document into a powerful and cool web app is possible thanks to JavaScript. There are several ways to include JavaScript into your project. You can run a script from within the body and/or link to an external JavaScript file. Following best practices will ensure that your web app loads fast and correctly. JavaScript should be in a separate file and should be loaded *after* the HTML content.
 
-It's important to know about the fundamental parts of any new language that you are learning. With spoken language, it helps to understand nouns, verbs, and adjectives. In programming, the same concept applies. One of the important parts of any programming language is data types.
+---
 
-types specify what kinds of data can be stored and used in a language.
+# Learning a Programming Language  
 
-JavaScript Primitive Data Types  
+It's important to know about the fundamental parts of any new language that you are learning. With spoken language, it helps to understand nouns, verbs, and adjectives. In programming, the same concept applies. One of the important parts of any programming language is data **types**.
+
+**types specify what kinds of data can be stored and used in a language.**
+
+## JavaScript Primitive Data Types  
 
 JavaScript includes two categories of data types: Primitives and Objects. Objects are a complex subject that we will cover at a later date. Primitives act as simple values that can be passed around and referenced directly. In this lesson, we'll discuss Primitives.
 
 JavaScript provides five primitive types:
 
-Type	Syntax
-String	"hello there!", 'hello there!'
-Number	1, 200, 3.14159
-Boolean	true, false
-Undefined	undefined
-Null	null
-Technically there are six types, but Symbol is new and fairly uncommon. We won't cover it here.
-String  
+| Type |	Syntax |
+| --- | --- |
+| String |	`"hello there!"`, `'hello there!'` |
+| Number |	`1`, `200`, `3.14159` |
+| Boolean |	`true`, `false` |
+| Undefined |	`undefined` |
+| Null |	`null` |
 
-A string is a sequence of characters surrounded by quotation marks. You can use either 'hello there' or "hello there" when writing a string. This convention varies widely between developers. In the JavaScript world, you'll find it more common to use the single quote since it's easier to type. Also, note that if you need to use an apostrophe inside of a string you either have to escape it or use double quotes. Take a look at these examples below.
+> Technically there are six types, but **Symbol** is new and fairly uncommon. We won't cover it here.
 
+## String  
+
+A `string` is a sequence of characters surrounded by quotation marks. You can use either `'hello there'` or `"hello there"` when writing a string. This convention varies widely between developers. In the JavaScript world, you'll find it more common to use the single quote since it's easier to type. Also, note that if you need to use an apostrophe inside of a string you either have to escape it or use double quotes. Take a look at these examples below.
+
+```js
 'The cat isn\'t in the barn' // Escaped
 "The cat isn't in the barn" // Using Double Quotes
-In JavaScript, the \ has a special purpose when dealing with strings. Combining it with another character enables that character to be represented in a string. This is called an escape sequence. It allows you to 'escape' from the normal string interpretation. When writing a string wrapped in single quotes, it would be impossible to write an apostrophe. Using an escape sequence makes this possible. For example:
+```
+
+> In JavaScript, the `\` has a special purpose when dealing with strings. Combining it with another character enables that character to be represented in a string. This is called an `escape sequence`. It allows you to 'escape' from the normal string interpretation. When writing a string wrapped in single quotes, it would be impossible to write an apostrophe. Using an escape sequence makes this possible. For example:
+
+```js
  `'I\'m always right. I can\'t be wrong.'`
-See references for a complete list of escape sequences.
-Number  
+```
 
-A number represents any numeric value. Some languages split numbers into multiple types depending on whether or not they contain decimals. JavaScript only has one number type.
+> See references for a complete list of escape sequences.
 
+## Number  
+
+A `number` represents any numeric value. Some languages split numbers into multiple types depending on whether or not they contain decimals. JavaScript only has one `number type.
+
+```js
 24 // Number
 -5 // Number
 3.15 // Number
 0.0001 // Number
-Boolean  
+```
 
-A boolean can only have two possible values: true or false. Booleans are standard across many languages. In JavaScript, they are used in control structures, like in a conditional statement.
+## Boolean  
 
+A `boolean` can only have two possible values: `true` or `false`. Booleans are standard across many languages. In JavaScript, they are used in control structures, like in a conditional statement.
+
+```js
 true // Boolean
 false // Boolean
-Undefined  
+```
 
-undefined is the default value for any variable that has been declared, but has not been assigned a value.
+## Undefined  
 
+`undefined` is the default value for any variable that has been declared, but **has not been assigned a value.**
 
-1
-var newVar;
+```js
+1 var newVar;
 2
-​
-3
-console.log( newVar );
+3 console.log( newVar );
+```
 
-Fullscreen
+## Null  
 
-Reset Code
-Run Code 
-Null  
+`null` is a representation of the **intentional absence of any object value.** It is often used to indicate that a variable should hold a value and doesn't.
 
-null is a representation of the intentional absence of any object value. It is often used to indicate that a variable should hold a value and doesn't.
-
+```js
 null // null
-Conclusion  
+```
+
+## Conclusion  
 
 Boolean, number, string, null and undefined are used to optimize the data that a variable can contain. Understanding these primitive data types is a basic building block when learning JavaScript.
 
-References  
+### References  
 
-Escape Sequences
-MDN - JavaScript Data Types and Data Structures
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Storing Data  
+* [Escape Sequences](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Escape_notation)
 
-In programming, it's imperative that you have a way to store information. In most programming languages, these are called variables. A variable is a way for us to store a piece of data that can be used over and over throughout our program. It helps us write way less code and still accomplish our goals.
+* [MDN - JavaScript Data Types and Data Structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures)
 
-Declaring and Assigning  
+---
+
+# Storing Data  
+
+In programming, it's imperative that you have a way to store information. In most programming languages, these are called **variables**. A **variable** is a way for us to store a piece of data that can be used over and over throughout our program. It helps us write way less code and still accomplish our goals.
+
+# Declaring and Assigning  
 
 When talking about variables, there are two concepts one must understand. The first is the declaration of a variable. The second is the assignment of a value to that variable.
 
-Think of it as a filing cabinet. You know you'll need to store your paperwork, but before you do so, you actually need to go out and get a place to store it. The filing cabinet is the declaration or creation of a place to hold your paperwork. Once you have that, you can now decide what paperwork to put in the cabinet, thus assigning it.
+Think of it as a filing cabinet. You know you'll need to store your paperwork, but before you do so, you actually need to go out and get a place to store it. The filing cabinet is the *declaration* or creation of a place to hold your paperwork. Once you have that, you can now decide what paperwork to put in the cabinet, thus *assigning* it.
 
 Let's look at the keywords we can use to declare and assign variables.
 
-Let Keyword  
+## Let Keyword  
 
-The let keyword is the most common one you will be using. Let's look at how it works.
+The `let` keyword is the most common one you will be using. Let's look at how it works.
 
+```js
 let firstName; // declaration
-There, we've just declared a new variable named firstName. Now let's assign something to it.
+```
 
+There, we've just *declared* a new variable named `firstName`. Now let's assign something to it.
+
+```js
 let firstName; // declaration
 firstName = 'Bill'; // assignment
-We've now taken our firstName variable and assigned a value called 'Bill' to it. You can also do your declaration and assignment at the same time, by doing the following:
+```
 
+We've now taken our `firstName` variable and *assigned* a value called `'Bill'` to it. You can also do your *declaration* and *assignment* at the same time, by doing the following:
+
+```js
 let firstName = 'Bill'; // declaration & assignment
-Const Keyword  
+```
+
+## Const Keyword  
 
 The const keyword stands for constant. We should use it when creating a variable that will never change. For instance, in the above examples, we used firstName. That could easily change in your program from 'Bill' to maybe 'Julie' and so on. However, let's say that you wanted to keep track of something that will never change in your entire program. That's when you would create the variable using const.
 
