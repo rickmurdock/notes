@@ -21,7 +21,9 @@ Lecture notes from The Iron Yard
 
 * Version Control with Git
 
-* Using Git Remotely with a Team 
+* Using Git Remotely with a Team
+
+* Getting Started with JavaScript
 
 * Functions and Complex Expressions
 
