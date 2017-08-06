@@ -47,18 +47,20 @@ Within our call stack, the `secondPotatoChip()` is placed into the container fir
 
 Visualization of the call stack:
 
-Call Stack (Top most will be executed first)
-firstPotatoChip()
-secondPotatoChip()
+| Call Stack (Top most will be executed first) |
+| --- |
+| firstPotatoChip() |
+| secondPotatoChip() |
+
 Once the top function executes, it will be removed from the stack and each function below will move up.
 
-The Event Table  
+##nThe Event Table  
 
-Since JavaScript is single-threaded, it's possible to block the call stack by executing a function that takes too long time to complete. This issue is solved by a mechanism called asynchronous callback functions. These types of functions don't get executed until a later time.
+Since JavaScript is single-threaded, it's possible to block the call stack by executing a function that takes too long time to complete. This issue is solved by a mechanism called **asynchronous callback functions**. These types of functions don't get executed until a later time.
 
-The method setTimeout() is a great example of an asynchronous callback function. Let's view an example:
+The method `setTimeout()` is a great example of an asynchronous callback function. Let's view an example:
 
-
+```javascript
 1
 function firstPotatoChip() {
 2
@@ -89,40 +91,45 @@ secondPotatoChip(); // Initialized first
 // Logged: "Eat me Second!"
 15
 // (After one second) Logged: "Eat me First!"
+```
+ 
+When `secondPotatoChip()` executes, the call stack will look like this:
 
-Fullscreen
+| Call Stack (Top most will be executed first) |
+| --- |
+| setTimeout() |
+| secondPotatoChip() |
 
-Reset Code
-Run Code 
-When secondPotatoChip() executes, the call stack will look like this:
 
-Call Stack (Top most will be executed first)
-setTimeout()
-secondPotatoChip()
-The callback function from the setTimeout(), firstPotatoChip(), is placed into a table that stores it until a certain event has occurred. This table is called the event table. Think of the event table like the table that holds your potato chips before you place them into the container.
+The callback function from the setTimeout(), `firstPotatoChip()`, is placed into a table that stores it until a certain event has occurred. This table is called the event table. Think of the event table like the table that holds your potato chips before you place them into the container.
 
-The Event Queue  
+# The Event Queue  
 
-Currently, our callback function is stored in the event table and the setTimeout() has been removed from the stack. Once the specific event occurs it is placed into our event queue.
+Currently, our callback function is stored in the event table and the `setTimeout()` has been removed from the stack. Once the specific event occurs it is placed into our **event queue**.
 
-The event queue is a staging area for functions waiting to be invoked and moved over to the call stack. JavaScript engines are always checking to see if the call stack is empty. If the stack is empty, it will check the event queue to see if there are any callback functions in staging. If there is, then that function will be moved to the call stack.
+The **event queue** is a staging area for functions waiting to be invoked and moved over to the call stack. JavaScript engines are always checking to see if the call stack is empty. If the stack is empty, it will check the event queue to see if there are any callback functions in staging. If there is, then that function will be moved to the call stack.
 
-Assuming both setTimeout() and secondPotatoChip() have cleared, our call stack should be empty. Our firstPotatoChip() is placed into the event queue after its event has occurred (which is to wait for one second). It is then passed to the call stack once the call stack has cleared.
+Assuming both `setTimeout()` and `secondPotatoChip()` have cleared, our call stack should be empty. Our `firstPotatoChip()` is placed into the event queue after its event has occurred (which is to wait for one second). It is then passed to the call stack once the call stack has cleared.
 
-Call Stack (Top most will be executed first)
-firstPotatoChip()
+| Call Stack (Top most will be executed first) |
+| --- |
+| firstPotatoChip() |
+
 Now you understand why "Eat me Second!" was logged before "Eat me First!"
 
-Conclusion  
+## Conclusion  
 
 To sum it up, functions are placed into the call stack and executed based on which function is on top of the stack. Asynchronous callback functions are first stored in the event table before being staged in the event queue. This process can be a daunting, but this lesson should have given you a better understanding of the event loop.
 
-There is also an excellent video on how all this works called, What the heck is the event loop anyway?. We strongly suggest that you watch this video before moving on.
+There is also an excellent video on how all this works called, [What the heck is the event loop anyway?](https://www.youtube.com/watch?v=8aGhZQkoFbQ). We strongly suggest that you watch this video before moving on.
 
-Additional Resources  
+## Additional Resources  
 
-The Event Loop - MDN
-Using JavaScript Promises and Callbacks  
+* [The Event Loop - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
+
+---
+
+# Using JavaScript Promises and Callbacks  
 
 Sometimes, when we're programming an application, we want a bit of functionality to execute after something else happens.
 
@@ -130,38 +137,41 @@ Let's think of a scenario where that would be helpful. Consider this:
 
 We have written an app that makes a request to another website (or database) for information. That information is pretty heavy and will take a couple of seconds to get back. We don't want our app to be held up for two seconds while we wait, but that's what can happen if the request isn't handled correctly.
 
-Instead, we want to make our request for data and then let the app execute uninterrupted until the information comes back. Once the data gets back, we want to run the code that handles that data.
+Instead, we want to make our request for data and then *let the app execute uninterrupted* until the information comes back. Once the data gets back, we want to run the code that handles that data.
 
-This process of making requests and waiting for the responses without blocking the rest of the app from running is called asynchronous programming.
+This process of making requests and waiting for the responses without blocking the rest of the app from running is called **asynchronous programming**.
 
 This article introduces two concepts related to asynchronous programming:
 
-Callback Functions - Functions that are passed to other functions and run later.
-Promises - A proxy object that allows us to specify how to respond to the eventual success or failure of an asynchronous operation. You can think of it as: "I promise to do this if the operation fails, and I promise to do that if the operation succeeds."
+* **Callback Functions** - Functions that are passed to other functions and run later.
+
+* **Promises** - A proxy object that allows us to specify how to respond to the eventual success or failure of an asynchronous operation. You can think of it as: "I promise to do this if the operation fails, and I promise to do that if the operation succeeds."
+
 This article will start by discussing callback functions and then demonstrate how to construct and use Promises.
 
-Callback Functions  
+# Callback Functions  
 
-In JavaScript, "callback functions" are functions passed as arguments to other functions. The callback is executed inside another function. The idea is that the one function can make use of another and call it multiple times.
+**In JavaScript, "callback functions" are functions passed as arguments to other functions. The callback is executed inside another function.** The idea is that the one function can make use of another and call it multiple times.
 
-Any Function Can Use Callbacks  
+### Any Function Can Use Callbacks  
 
 Any function can be defined to take a callback function as an argument. In JavaScript, functions can be passed around just like any other object or data, so the interpreter has no problem with a function being passed in as an argument and then being used within another function.
 
 Let's look at a couple of examples.
 
-Callback Example - A Function that Calls Another Function
-calculate is a function that takes one argument callback. callback is a function that gets executed as the last line of calculate. When we call calculate, we pass in a reference to the print function. Notice that we pass the function print instead of calling print. In other words, we are not performing a function call, like print().
+### Callback Example - A Function that Calls Another Function
 
-print is a function that logs whatever is passed into it along with the string "The sum is: ".
+`calculate` is a function that takes one argument `callback`. `callback` is a function that gets executed as the last line of `calculate`. When we call `calculate`, we pass in a reference to the `print` function. Notice that we pass the *function* `print` instead of calling `print`. In other words, we are not performing a function call, like `print()`.
 
-Within calculate, a calculation is performed with a few numbers and then stored in the result variable. That variable is then passed into the execution of callback. Remember that when we call calculate, we are passing it a reference to print, so within calculate, callback is print.
+`print` is a function that logs whatever is passed into it along with the string "The sum is: ".
 
-print is executed and passed result. It then prints the string and the value of result.
+Within `calculate`, a calculation is performed with a few numbers and then stored in the `result` variable. That variable is then passed into the execution of `callback`. Remember that when we call `calculate`, we are passing it a reference to `print`, so within `calculate`, `callback` is `print`.
 
-Note that we do not execute the print() function when calling the calculate() function. We pass print by reference. print is then called by calling the callBack() function inside the calculate() definition.
+`print` is executed and passed `result`. It then prints the string and the value of `result`.
 
+Note that we do not execute the `print()` function when calling the `calculate()` function. We pass `print` by reference. `print` is then called by calling the `callBack()` function inside the `calculate()` definition.
 
+```javascript
 1
 function print( num ){
 2
@@ -182,53 +192,38 @@ function calculate( callback ){
 ​
 10
 calculate( print );
+```
+ 
+In JavaScript, functions are first-class objects and can be passed by reference as an argument to a function or stored as a variable (just like any string, array or number). The use of callback functions is *really common* in JavaScript.
 
-Fullscreen
+### Callback Example - Callbacks Can Make Your Code Simpler and More Flexible
 
-Reset Code
-Run Code 
-In JavaScript, functions are first-class objects and can be passed by reference as an argument to a function or stored as a variable (just like any string, array or number). The use of callback functions is really common in JavaScript.
-
-Callback Example - Callbacks Can Make Your Code Simpler and More Flexible
 In the following example, we define three functions:
 
-printQuiet takes one argument thing and prints it within the string "I whisper the number " + thing + "."
-printLoud takes one argument thing and prints it within the string "I SHOUT THE NUMBER " + thing + "!"
-addTenToNumber take two arguments. The first argument num is a number that will be added to 10. The second argument is a callback function.
-With this setup, I can pass addTenToNumber either printQuiet or printLoud to change the output of addTenToNumber. I can add any number of callback functions to the mix without changing addTenToNumber.
+* `printQuiet` takes one argument `thing` and prints it within the string "I whisper the number " + `thing` + "."
 
+* `printLoud` takes one argument `thing` and prints it within the string "I SHOUT THE NUMBER " + `thing` + "!"
 
-1
-function printQuiet( thing ){
-2
-    console.log( "I whisper the number " + thing + "." );
-3
-}
-4
-function printLoud( thing ){
-5
-    console.log( "I SHOUT THE NUMBER " + thing + "!" );
-6
-}
-7
-function addTenToNumber( num, callback ){
-8
-    let total = num + 10;
-9
-    callback( total );
-10
-}
+* `addTenToNumber` take two arguments. The first argument `num` is a number that will be added to 10. The second argument is a callback function.
+
+With this setup, I can pass `addTenToNumber` either `printQuiet` or `printLoud` to change the output of `addTenToNumber`. I can add any number of callback functions to the mix without changing `addTenToNumber`.
+
+```javascript
+ 1 function printQuiet( thing ){
+ 2     console.log( "I whisper the number " + thing + "." );
+ 3 }
+ 4 function printLoud( thing ){
+ 5     console.log( "I SHOUT THE NUMBER " + thing + "!" );
+ 6 }
+ 7 function addTenToNumber( num, callback ){
+ 8     let total = num + 10;
+ 9     callback( total );
+10 }
 11
-​
-12
-addTenToNumber( 21, printQuiet );
-13
-addTenToNumber( 11, printLoud );
+12 addTenToNumber( 21, printQuiet );
+13 addTenToNumber( 11, printLoud );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Let's add a third callback function to the mix that prints the number 10 times.
 
 
