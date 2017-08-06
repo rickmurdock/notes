@@ -184,7 +184,7 @@ We now know the file location of the merge conflict. Now go to your editor and o
 
 #### Example
 
-```sh
+```
 Please visit us here
 <<<<<<< HEAD
 <a href="https://theironyard.com">The Iron Yard</a>
@@ -227,86 +227,89 @@ If you incorrectly resolved a conflict, you can easily undo it by rolling back t
 
 Working on a solo project is fairly straight forward, but working on a large project with other developers can be complicated. One aspect of software development that can be a challenge is keeping track of who is doing what. Imagine the following. You are working on a cool webapp with two other developers, all from the same branch. You are responsible for the JavaScript. The other two developers are responsible for the HTML and CSS, respectively. The HTML developer changes the JS code without telling you. Your code no longer works, delaying the project three days. Avoiding this kind of situation is a must. Developers must follow good version control practices to keep development productive and deployment smooth.
 
-Workflow  
+## Workflow  
 
-Git and Github are flexible tools that allow for many versioning workflows. The most popular ones are: long-running branches, topic branches, GitHub flow and GitFlow. Which one you use is up to you and your team. The most important things is for everybody to agree on one and stick to the work-flow. Below is a basic introduction to the GitHub flow and GitFlow branch models.
+Git and Github are flexible tools that allow for many versioning workflows. The most popular ones are: long-running branches, topic branches, `GitHub flow` and `GitFlow`. Which one you use is up to you and your team. The most important things is for everybody to agree on one and stick to the work-flow. Below is a basic introduction to the `GitHub flow` and `GitFlow` branch models.
 
-GitHub flow Model  
+## GitHub flow Model  
 
 GitHub flow offers a robust and yet lightweight branch-based model well suited for handling projects, both large and small. Github also offers powerful tools to help support teams that rely on regular deployments. Here is a rundown of the GitHub flow model:
 
-Create A branch  
+### Create A branch  
 
-Creating a branch will give you an environment where you can work on different ideas and features without harming the code in the master branch. In your own branch you are free to try things and commit changes, with the peace of mind that your code will not be merged until it is tested, reviewed and approved for a merge.
+Creating a branch will give you an environment where you can work on different ideas and features without harming the code in the `master` branch. In your own branch you are free to try things and commit changes, with the peace of mind that your code will not be merged until it is *tested, reviewed and approved for a merge*.
 
-The master branch is the deployable branch, keep this in mind. This is a working copy of the code. It should be thoroughly tested and reviewed.
+> The `master` branch is the deployable branch, keep this in mind. This is a working copy of the code. It should be thoroughly tested and reviewed.
+
 Keep your branch names descriptive. 'my-branch' is not a good branch name when working on user authentication. 'user-authentication-module' is a better choice.
 
-Commit Often  
+### Commit Often  
 
 Think of committing as saving a video game - you want to save and save often! Adding commits is how git keeps track of your code changes. These changes are accessible to you and everybody else working on the project. Just like using 'time-machine', a commit lets you go back to a safe point if a bug is found. Each commit is a separate unit of change.
 
 Keep commit messages descriptive and succinct. This will make it easy for you and others to follow along and possibly provide feed back. When writing a commit message, keep it at around 50 characters. The commit message should answer what was the motivation behind the change and how it is different from the previous change. Also, use the present tense. For example, instead of "changed function variable names" to "change function variable names".
 
-It is also recommended to commit small changes, compared to broad code changes. This will make it easier to handle bugs. If you do end up making large changes, consider using $ git add -p. This will let you interactively choose parts of a patch between the index and the work tree, and add them to the index. This will also give you a chance to review the difference before adding changes to the index.
+It is also recommended to commit small changes, compared to broad code changes. This will make it easier to handle bugs. If you do end up making large changes, consider using `$ git add -p`. This will let you interactively choose parts of a patch between the index and the work tree, and add them to the index. This will also give you a chance to review the difference before adding changes to the index.
 
-If you have added many changes to the stage, it is recommended to view the differences between commits. Use $ git diff --staged or alternatively, use $ git commit -v. The latter one will bring up the vim editor, letting you edit commit messages. It will also let you view the 'diff' about to be committed.
-Push Often  
+> If you have added many changes to the stage, it is recommended to view the differences between commits. Use `$ git diff --staged` or alternatively, use `$ git commit -v`. The latter one will bring up the vim editor, letting you edit commit messages. It will also let you view the 'diff' about to be committed.
 
-By commit often, you are creating safe-points in your local machine, but if you computer bites the dust, so do your commits. It is good practice to push your commits often. This will keep your commits in the authoritative upstream repository. Do not use Git as a backup tool. 'committing' should be done semantically.
+### Push Often  
 
-Pull Requests  
+By commit often, you are creating safe-points in your local machine, but if you computer bites the dust, so do your commits. It is good practice to `push` your commits often. This will keep your commits in the authoritative upstream repository. **Do not** use Git as a backup tool. 'committing' should be done semantically.
 
-Integrating you code is the next step. Once you have reviewed and tested your code, open a pull request. A Pull Request initiates a venue for communication in regards to your commits. This gives others the ability to see what changes would be merged, if accepted. Even if you have no code changes, use a Pull Request to share ideas, problems and screenshots. Use @mention to ask for feedback from your team or a specific developer.
+### Pull Requests  
 
-Review And Discussion  
+Integrating you code is the next step. Once you have reviewed and tested your code, open a `pull request`. A Pull Request initiates a venue for communication in regards to your commits. This gives others the ability to see what changes would be merged, if accepted. Even if you have no code changes, use a Pull Request to share ideas, problems and screenshots. Use `@mention` to ask for feedback from your team or a specific developer.
+
+### Review And Discussion  
 
 Think of a Pull Request as 'code therapy'. Your code might be great and ready to be merged, or it might need polishing (you might need to add unit testing, change the style, etc). A Pull Request should start a healthy conversation geared towards productive and seamless integration of your code. While a Pull Request is open, you may continue committing and pushing. Github will show your new commits.
 
-Deployment  
+### Deployment  
 
 Deployment is when the rubber meets the road. Once you have reviewed and tested your code, you can deploy your branch. Deploying your code will verify your changes in a production environment.
 
-Tips  
+## Tips  
 
-DO's  
+### DO's  
 
-Pull the master branch daily. Other people's branches most likely will be merged while you are working on your code. This might affect your current/future code. Therefore, pull in the master branch. Make sure to commit and push your branch changes and checkout into the master branch before pulling. Once you are ready to start new work, go back to the beginning of the GitHub flow cycle by creating a branch, etc.
+* Pull the master branch daily. Other people's branches most likely will be merged while you are working on your code. This might affect your current/future code. Therefore, pull in the master branch. Make sure to commit and push your branch changes and checkout into the master branch before pulling. Once you are ready to start new work, go back to the beginning of the `GitHub flow` cycle by creating a branch, etc.
 
-Test your code thoroughly. Make sure there are no side effects.
+* Test your code thoroughly. Make sure there are no side effects.
 
-Commit related code changes. An HTML change and a JavaScript change should be committed together if the changes are related.
+* Commit related code changes. An HTML change and a JavaScript change should be committed together if the changes are related.
 
-Commit small changes. Large commits make it hard to track down issues.
+* Commit small changes. Large commits make it hard to track down issues.
 
-Be careful when using git reset --hard. This will throw away all your uncommitted changes.
+* Be careful when using `git reset --hard`. This will throw away all your uncommitted changes.
 
-DON'Ts  
+### DON'Ts  
 
-Do not develop on the master branch.
+* Do not develop on the master branch.
 
-Do not merge the upstream master branch with your branch. Remember your code must be tested, reviewed and approved in order to be merged. You merging your branch does not conform with the Gitub-flow model. Rely on Pull Requests for code integration.
+* Do not merge the upstream master branch with your branch. Remember your code must be tested, reviewed and approved in order to be merged. You merging your branch does not conform with the Gitub-flow model. Rely on Pull Requests for code integration.
 
-Do not create a branch to track more than one code change. Each code change should have its own branch.
+* Do not create a branch to track more than one code change. Each code change should have its own branch.
 
-Do not use Git as a backup tool.
+* Do not use Git as a backup tool.
 
-Do not use git pull --rebase in a public environment. Performing a git pull -rebase in a private branch is fine 1, but doing the same on a branch where many developers are working on in a bad idea. This is because it changes the starting point of the branch to your newest commit, effectively removing everybody else's commits! This will create merge conflicts, hurt egos, and in some cases, termination.
+* Do not use `git pull --rebase` in a public environment. Performing a git pull -rebase in a private branch is fine 1, but doing the same on a branch where many developers are working on in a bad idea. This is because it changes the starting point of the branch to your newest commit, effectively removing everybody else's commits! This will create merge conflicts, hurt egos, and in some cases, termination.
 
-Do not use git push --force in a public environment. When your local repository is out of sync with the authoritative repository git push will fail. Do not be tempted to do a git push --force. This will override the structure and sequence of commits of the authoritative repository, deleting other people's commits. Keep your repository synced by performing a git pull daily and/or starting a new branch when needed.
+* Do not use `git push --force` in a public environment. When your local repository is out of sync with the authoritative repository `git push` will fail. **Do not be tempted to do a** `git push --force`. This will override the structure and sequence of commits of the authoritative repository, deleting other people's commits. Keep your repository synced by performing a `git pull` daily and/or starting a new branch when needed.
 
-GitFlow  
+## GitFlow  
 
 Git branches are really powerful because you can use them for lots of things. But historically there wasn't really any information on how to use git branches when working on a team of developers. And most people just made up their own model.
 
 In 2010 Vincent Driessen wrote an article called "A successful Git branching model". This article was aptly named because most people found that working with git branches on their team was not "successful". Vincent described how to properly use git, with great detail, even up to the point of showing the commands you should run at various points in time.
 
-Driessen's branch model is centered around two main branches, master and develop, and other supporting branches, such as hotfix, feature, and release. Here's the diagram from his article that shows how his new approach organizes your repo's history:
+Driessen's branch model is centered around two main branches, `master` and `develop`, and other supporting branches, such as `hotfix`, `feature`, and `release`. Here's the diagram from his article that shows how his new approach organizes your repo's history:
 
 Driessen's branch model
-We encourage you to read Vincent's article and here's some additional tips:
 
-Know The Lingo  
+We encourage you to read [Vincent's article](http://nvie.com/posts/a-successful-git-branching-model/) and here's some additional tips:
+
+## Know The Lingo  
 
 There is a plethora of Git commands, each with their own set of options. It is imperative for a developer to be familiar with all the Git commands related to creating a project, staging, branching, merging, sharing, updating, inspecting and comparing. See Git Reference for details.
 
