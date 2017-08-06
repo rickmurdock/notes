@@ -217,280 +217,269 @@ let firstName = 'Bill'; // declaration & assignment
 
 ## Const Keyword  
 
-The const keyword stands for constant. We should use it when creating a variable that will never change. For instance, in the above examples, we used firstName. That could easily change in your program from 'Bill' to maybe 'Julie' and so on. However, let's say that you wanted to keep track of something that will never change in your entire program. That's when you would create the variable using const.
+The `const` keyword stands for **constant**. We should use it when creating a variable that will never change. For instance, in the above examples, we used `firstName`. That could easily change in your program from `'Bill'` to maybe `'Julie'` and so on. However, let's say that you wanted to keep track of something that will never change in your entire program. That's when you would create the variable using `const`.
 
+```ja
 const pi = 3.14; // won't ever change
+```
+
+```js
 // Let's define our favorite color, then change it.
 let favoriteColor = 'green';
 favoriteColor = 'blue';
+```
+
 While the above works just as you'd expect, the following will throw an error:
 
+```js
 const favoriteColor = 'green';
 favoriteColor = 'blue'; // ERROR: Can't reassign "favoriteColor"
-Var Keyword  
+```
 
-The var keyword is short for variable and is the original way to create and store variables. In fact, for a long time, it was the only way to do so.
+## Var Keyword  
 
+The `var` keyword is short for **variable** and is the original way to create and store variables. In fact, for a long time, it was the only way to do so.
+
+```js
 var firstName = 'Bill';
-In the current version of JavaScript, the let keyword seeks to fully replace var. The reasoning is due to a concept called scoping. This is beyond the scope of this lesson. For now it's just important to understand that you should use let instead of var to store standard variables.
+```
 
-Do note that var is still completely valid. You'll likely see it only in tutorials, or other developers you work with might still use it. There is nothing wrong with var, but the JavaScript community is moving away from using it. Learning the current way of assigning a variable is important.
+In the current version of JavaScript, the `let` keyword seeks to fully replace `var`. The reasoning is due to a concept called **scoping**. This is beyond the scope of this lesson. For now it's just important to understand that you should use `let` instead of `var` to store standard variables.
 
-Variable Rules  
+Do note that `var` is still completely valid. You'll likely see it only in tutorials, or other developers you work with might still use it. There is nothing wrong with `var`, but the JavaScript community is moving away from using it. Learning the current way of assigning a variable is important.
+
+# Variable Rules  
 
 When declaring and naming a variable, there are a few rules that you should take into consideration.
 
-They can only begin with letters, $ or _
-They can only contain letters, $, _ and numbers.
-They are case sensitive (firstName is not the same as firstname)
-You can't use any reserved words (see list)
-You can only use camelCase or snake_case
-The standard convention in JS is to use camelCase
-Conclusion  
+* They can only **begin** with letters, `$` or `_`
+
+* They can only **contain** letters, `$`, `_` and numbers.
+
+* They are case sensitive (`firstName` is not the same as `firstname`)
+
+* You can't use any reserved words ([see list](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords))
+
+* You can only use camelCase or snake_case
+
+  * The standard convention in JS is to use camelCase
+
+# Conclusion  
 
 Variables are a fundamental concept in programming. We use them to create reusable bits of data, and we can pass them around throughout our application. We've looked at a few different ways of creating them, so you'll be ready to move on to more complex concepts.
 
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Truthy Vs. Falsey  
+---
 
-A previous reading described the idea of types in JavaScript. One of those types was the boolean type, which has only two values: true and false. An interesting JavaScript feature is that you can use any type where a boolean is expected. The language will treat that value like a boolean. The terms truthy and falsey are commonly used to describe this phenomenon.
+# Truthy Vs. Falsey  
 
-Unfortunately, this can be a bit confusing. If anything can be a boolean, how do we know if it will be truthy or falsey? This lesson will explain some of the rules for which values will be either truthy or falsey.
+A previous reading described the idea of types in JavaScript. One of those types was the boolean type, which has only two values: `true` and `false`. An interesting JavaScript feature is that you can use any type where a boolean is expected. The language will treat that value like a boolean. The terms `truthy` and `falsey` are commonly used to describe this phenomenon.
 
-Unfortunately, truthy and falsey are not a black or white comparison when we look at the rules for variable comparison.
+Unfortunately, this can be a bit confusing. If anything can be a boolean, how do we know if it will be `truthy` or `falsey`? This lesson will explain some of the rules for which values will be either `truthy` or `falsey`.
 
-However, even though you have true and false, it's not that easy. Sometimes when looking at certain types of values, they could actually be true/false or rather truthy/falsey.
+Unfortunately, `truthy` and `falsey` are not a black or white comparison when we look at the rules for variable comparison.
 
-Falsey Rules  
+However, even though you have `true` and `false`, it's not that easy. Sometimes when looking at certain types of values, they could actually be `true`/`false` or rather `truthy`/`falsey`.
 
-There are certain values that are always falsey in JavaScript, these are:
+## Falsey Rules  
 
+There are certain values that are *always* `falsey` in JavaScript, these are:
+
+```ja
 undefined
 null
 0
 "" // empty string
 NaN // Not a Number
 false
-Truthy Rules  
+```
 
-In JavaScript, anything not false is truthy. It is important to note that when we refer to something as being truthy, it does not just mean that the value is true. It means that the value coerces to true when evaluated in a boolean context.
+## Truthy Rules  
 
+In JavaScript, anything not false is `truthy`. It is important to note that when we refer to something as being `truthy`, it does not just mean that the value is true. It means that the value coerces to `true` when evaluated in a boolean context.
+
+```js
 1 // Truthy
 true // Truthy
 "a" // Truthy
-This might seem a little weird to you, but it's important to keep in mind when writing conditional statements. If a conditional statement doesn't boil down to one of the falsey values, then it's considered truthy and thus true.
+```
 
+This might seem a little weird to you, but it's important to keep in mind when writing conditional statements. If a conditional statement doesn't boil down to one of the `falsey` values, then it's considered `truthy` and thus `true`.
+
+```js
 5 - 5 // 0 -> false
 let x; // undefined -> false
 x = ""; // empty string -> false
 x = "a"; // non-empty string -> true
 5 - 6; // -1 -> true
-Conclusion  
+```
 
-Understanding the intricacies of truthy and falsey will make your JavaScript clear and more concise. Undefined, null,0, "", NaN, and false are always falsey. All other values are truthy.
+## Conclusion  
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Developer Tools  
+Understanding the intricacies of *truthy* and *falsey* will make your JavaScript clear and more concise. `Undefined`, `null`, `0`, `""`, `NaN`, and `false` are **always** falsey. All other values are truthy.
 
-Most modern browsers ship with a built-in set of tools called Developer Tools. These tools allow developers to interact with the front-end of their website. Developers can edit the HTML of your web page and adjust the CSS styles applied to any element. They can also run and debug JavaScript. In this section, we will focus on the console, which is where we can run and debug JavaScript.
+---
 
-The Console Object  
+# Developer Tools  
 
-Even if you haven't learned about JavaScript Objects, you can still use the console object. It's a great tool to get some insight as you develop.
+Most modern browsers ship with a built-in set of tools called **Developer Tools**. These tools allow developers to interact with the front-end of their website. Developers can edit the HTML of your web page and adjust the CSS styles applied to any element. They can also run and debug JavaScript. In this section, we will focus on the `console`, which is where we can run and debug JavaScript.
 
-The console object is made available through a Web API and provides access to the browser's debugging console. Although it can vary from browser to browser, most browsers will ship with a standard set of methods.
+## The Console Object  
 
-While the console object has a fairly large API, we will only be focusing on the log method.
+Even if you haven't learned about JavaScript Objects, you can still use the `console` object. It's a great tool to get some insight as you develop.
 
-Console Log Method  
+The `console` object is made available through a Web API and provides access to the browser's debugging console. Although it can vary from browser to browser, most browsers will ship with a standard set of methods.
 
-The console.log() method is used to output a message to the web console. You can write out any type of data you like. It is a great technique to use when trying to debug something you are working on.
+While the `console` object has a fairly large API, we will only be focusing on the `log` method.
 
-The log method can take unlimited arguments. You can either specify a single piece of data like follows:
+## Console Log Method  
 
+The `console.log()` method is used to output a message to the web console. You can write out any type of data you like. It is a great technique to use when trying to debug something you are working on.
 
-1
-let name = "Jeff";
-2
-console.log(name);
+The `log` method can take unlimited arguments. You can either specify a single piece of data like follows:
 
-Fullscreen
+```js
+1 let name = "Jeff";
+2 console.log(name);
+```
 
-Reset Code
-Run Code 
 You can also specify multiple pieces of data like this.
 
-
-1
-let name1 = "Jeff";
-2
-let name2 = "Martha";
-3
-let name3 = "Stacy"
-4
-let name4 = "Gwen";
+```js
+1 let name1 = "Jeff";
+2 let name2 = "Martha";
+3 let name3 = "Stacy"
+4 let name4 = "Gwen";
 5
-​
-6
-console.log(name1, name2, name3, name4);
-
-Fullscreen
-
-Reset Code
-Run Code 
-Conclusion  
+6 console.log(name1, name2, name3, name4);
+```
+ 
+## Conclusion  
 
 Developer tools allow developers to interact with the front-end of their website. These tools will give you access to the console object, which will help you debug your code. This is an easily accessible and invaluable tool that every developer should use.
 
- Multiple Choice Exercise View Exercise
-else if## Conditional Statements
+---
 
-Conditional statements dictate which parts of a program run, based on a "condition." They determine if, and when a block of code should run. The condition is an expression that resolves to either true or false.
+# if...else Conditional Statements
 
-The If Statement  
+Conditional statements dictate which parts of a program run, based on a "condition." They determine *if*, and *when* a block of code should run. The condition is an expression that resolves to either `true` or `false`.
 
-The simplest conditional statement is called an if statement. The idea of an if statement is simple. It allows us to define a condition to determine if a block of code should run. If the condition resolves to true, then the code is run. If the condition resolves to false, then the code doesn't run.
+## The `If` Statement  
 
-The logic for an if statement is:
+The simplest conditional statement is called an `if` statement. The idea of an `if` statement is simple. It allows us to define a condition to determine if a block of code should run. If the condition resolves to `true`, then the code is run. If the condition resolves to `false`, then the code doesn't run.
 
+The logic for an `if` statement is:
+
+```
 if the CONDITION is TRUE, perform an ACTION
 otherwise, do nothing
+```
+
 The "otherwise, do nothing" line is necessary. It tells us that the code included in the if statement block will only run some of the time.
 
-The syntax for an if statement requires a few items.
+The syntax for an `if` statement requires a few items.
 
-The if keyword specifies that the statement is an if statement
-The parenthesis () contains the condition that is checked, and resolves to either true or false.
-The curly braces define the block of code (ACTION) that will run if the condition is true.
-If the condition is false, then the action doesn't run. Nothing happens.
+* The `if` keyword specifies that the statement is an `if` statement
 
+* The parenthesis `()` contains the condition that is checked, and resolves to either `true` or `false`.
+
+* The curly braces define the block of code (ACTION) that will run if the condition is `true`.
+
+If the condition is `false`, then the action doesn't run. Nothing happens.
+
+```js
 if( /* CONDITION */ ){
   /* ACTION */
 }
 /* do nothing */
-An if Statement with a True Condition  
+```
 
-In this example, the conditional is x > 0. x holds the value 1. The expression evaluates to true because 1 is greater than 0, so if statement runs the block of code. You can read this example as: "If x is greater than 0, log the string 'This will log because the condition is true.'"
+### An `if` Statement with a True Condition  
 
-Because x is greater than 0, the string gets logged.
+In this example, the conditional is `x > 0`. `x` holds the value 1. The expression evaluates to `true` because 1 is greater than 0, so `if` statement runs the block of code. You can read this example as: "If x is greater than 0, log the string 'This will log because the condition is true.'"
 
+Because `x` is greater than 0, the string gets logged.
 
-1
-let x = 1;
-2
-​
-3
-// first if statement
-4
-if ( x > 0 ) {
-5
-    console.log( "This will log because the condition is true" );
-6
-}
+```js
+1 let x = 1;
+2 
+3 // first if statement
+4 if ( x > 0 ) {
+5     console.log( "This will log because the condition is true" );
+6 }
+```
 
-Fullscreen
+### An `if` Statement with a False Condition  
 
-Reset Code
-Run Code 
-An if Statement with a False Condition  
+This time, the conditional is `x < 0`. `x` is 1, so the expression evaluates to `false`. The `if` statement does *not* run the block of code. You can read this example as: "If x is less than 0, log the string 'This will not log because the condition is false.'"
 
-This time, the conditional is x < 0. x is 1, so the expression evaluates to false. The if statement does not run the block of code. You can read this example as: "If x is less than 0, log the string 'This will not log because the condition is false.'"
+Because `x` is *not* less than 0, the string is *not* logged.
 
-Because x is not less than 0, the string is not logged.
+```js
+1 let x = 1;
+2 
+3 // second if statement
+4 if( x < 0 ){
+5   console.log( "This will not log because the condition is false" );
+6 }
+```
 
+### An `if` Statement that Compares Two Variables  
 
-1
-let x = 1;
-2
-​
-3
-// second if statement
-4
-if( x < 0 ){
-5
-  console.log( "This will not log because the condition is false" );
-6
-}
+This third example compares the values of two variables. You can read it as saying: "If `count` is greater than or equal to `minimum`, log the string 'We have enough. Good job.'"
 
-Fullscreen
+Run the following code sample. You should see "Evaluation complete. Nothing printed to STOUT." Because the condition is false, this message states that we did not log anything to the console. The `count` is *not* greater than or equal to `minimum`.
 
-Reset Code
-Run Code 
-An if Statement that Compares Two Variables  
+```js
+1 let count = 10;
+2 let minimum = 12;
+3 
+4 if ( count >= minimum ) {
+5     console.log( "We have enough. Good job." );
+6 }
+```
 
-This third example compares the values of two variables. You can read it as saying: "If count is greater than or equal to minimum, log the string 'We have enough. Good job.'"
+Now, change `count` to the number 14 and rerun the code. When you run it this time, you should see a different message in the console: "We have enough. Good job.". Cool, this means that our condition is `true`. `count` is now 14, and `minimum` is 12. 14 *is* greater than or equal to 12, so the block runs.
 
-Run the following code sample. You should see "Evaluation complete. Nothing printed to STOUT." Because the condition is false, this message states that we did not log anything to the console. The count is not greater than or equal to minimum.
+## The `if/else` Statement  
 
-
-1
-let count = 10;
-2
-let minimum = 12;
-3
-​
-4
-if ( count >= minimum ) {
-5
-    console.log( "We have enough. Good job." );
-6
-}
-
-Fullscreen
-
-Reset Code
-Run Code 
-Now, change count to the number 14 and rerun the code. When you run it this time, you should see a different message in the console: "We have enough. Good job.". Cool, this means that our condition is true. count is now 14, and minimum is 12. 14 is greater than or equal to 12, so the block runs.
-
-The if/else Statement  
-
-if/else statements are slightly more complicated than if statements. Fortunately, they operate on the same basic concept. They contain an if condition that must be true for the first block of code to run. Besides the if block, the statement also includes an else block that will run if the condition is false.
+`if/else` statements are slightly more complicated than `if` statements. Fortunately, they operate on the same basic concept. They contain an `if` condition that must be true for the first block of code to run. Besides the `if` block, the statement also includes an `else` block that will run if the condition is `false`.
 
 The logic looks like this:
 
+```
 if the CONDITION is TRUE, perform the FIRST ACTION
 if the CONDITION is FALSE, perform the SECOND ACTION
+```
+
 The syntax looks like this:
 
+```js
 if( /* CONDITION */ ){
   /* FIRST ACTION */
 }
 else{
   /* SECOND ACTION */  
 }
-You can read if else statements as "If the condition is true, run the first block. If the condition is false, run the second block."
+```
 
-An if/else Statement Comparing Two Variables  
+You can read `if else` statements as "If the condition is true, run the first block. If the condition is false, run the second block."
+
+### An `if/else` Statement Comparing Two Variables  
 
 Let's elaborate on one of our previous examples:
 
-
-1
-let count = 10;
-2
-let minimum = 12;
-3
-​
-4
-if ( count >= minimum ) {
-5
-    console.log( "We have enough. Good job." );
-6
-}
-7
-else{
-8
-    console.log( "Not enough. We need more." );
-9
-}
-
-Fullscreen
-
-Reset Code
-Run Code 
+```js
+1 let count = 10;
+2 let minimum = 12;
+3 
+4 if ( count >= minimum ) {
+5     console.log( "We have enough. Good job." );
+6 }
+7 else{
+8     console.log( "Not enough. We need more." );
+9 }
+```
+ 
 When we run this code, we no longer get the message: "Evaluation complete. Nothing printed to STOUT." because we are always printing something to the console regardless of the condition. If the condition is true, the first block prints. If the condition is false, the second block prints.
 
 As long as count and minimum store numbers, this code will always produce some output to the console.
