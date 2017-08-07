@@ -77,6 +77,8 @@ Lecture notes from The Iron Yard
 
 * [Cloud Computing: Introduction](https://github.com/rickmurdock/notes/blob/master/BackEnd/CloudComputingIntroduction.md)
 
+* Back-End Fundamentals - Encyclopedia
+
 ---
 
 ## Language Specialization: ReactJS
