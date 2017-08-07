@@ -1,252 +1,206 @@
-Functions  
+# Functions  
 
 In programming, functions allow you to write multiple lines of code and assign them to a variable that can be called (or run) at a later time. They are essentially "mini programs" that you use in a larger program, and they help you avoid repeating things.
 
 For instance, if you had a few names, and you wanted to print a greeting to each name, your code might look like this:
 
+```js
+1 let name1 = 'Jessica';
+2 let name2 = 'Blake';
+3 let name3 = 'Meridith';
+4 
+5 console.log('Good morning ' + name1 + ', how are you doing today?');
+6 console.log('Good morning ' + name2 + ', how are you doing today?');
+7 console.log('Good morning ' + name3 + ', how are you doing today?');
+```
 
-1
-let name1 = 'Jessica';
-2
-let name2 = 'Blake';
-3
-let name3 = 'Meridith';
-4
-​
-5
-console.log('Good morning ' + name1 + ', how are you doing today?');
-6
-console.log('Good morning ' + name2 + ', how are you doing today?');
-7
-console.log('Good morning ' + name3 + ', how are you doing today?');
-
-Fullscreen
-
-Reset Code
-Run Code 
 While this doesn't look terrible, imagine if we had 100 or even 1000 names we needed to print greetings to. That would be a nightmare to manage. Also, what if we wanted to change "Good morning" to "Good evening" based on the time of day. This is where functions come in.
 
-Function Syntax  
+## Function Syntax  
 
 Let's take a look at what a fairly simple function looks like, then we'll break it down.
 
+```js
 function greeting (timeOfDay, firstName) {
   console.log('Good ' + timeOfDay + ' ' + firstName + ', how are you doing today?');
 }
-Functions start with the function keyword, followed by a name for the function. Essentially we are creating a variable name to hold the value of our function. After you name the function, you can define some parameters that the function takes. This is where the real power of functions shines through. This way we can have our code run against different sets of data. Lastly, inside of the function, we have the function body, which is where you can write the code that this function performs.
+```
+
+Functions start with the `function` keyword, followed by a name for the function. Essentially we are creating a variable name to hold the value of our `function`. After you name the function, you can define some parameters that the function takes. This is where the real power of functions shines through. This way we can have our code run against different sets of data. Lastly, inside of the function, we have the **function body**, which is where you can write the code that this function performs.
 
 function syntax
-Calling a Function  
 
-Once you have a function written, you can now call it. To call a function, you simply write the name of the function followed by the () characters and include any arguments inside of the parentheses that are needed.
+## Calling a Function  
 
+Once you have a function written, you can now call it. To call a function, you simply write the name of the function followed by the `()` characters and include any arguments inside of the parentheses that are needed.
 
-1
-// Our Greeting Function
-2
-function greeting (timeOfDay, firstName) {
-3
-  console.log('Good ' + timeOfDay + ' ' + firstName + ', how are you doing today?');
-4
-}
-5
-// Calling Our Function
-6
-greeting('morning', 'Teddy');
+```js
+1 // Our Greeting Function
+2 function greeting (timeOfDay, firstName) {
+3   console.log('Good ' + timeOfDay + ' ' + firstName + ', how are you doing today?');
+4 }
+5 // Calling Our Function
+6 greeting('morning', 'Teddy');
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Calling Functions
-Parameters and Arguments  
 
-When you are creating a function and writing the syntax for it, the variables you put inside of the parentheses are called parameters, however, when calling the function, you put arguments inside of the parentheses. This is important, because getting the terminology straight can help you discuss this with other programmers.
+## Parameters and Arguments  
 
+When you are creating a function and writing the syntax for it, the variables you put inside of the parentheses are called **parameters**, however, when *calling* the function, you put **arguments** inside of the parentheses. This is important, because getting the terminology straight can help you discuss this with other programmers.
+
+```js
 function sum (num1, num2) { // num1 and num2 are parameters
   return num1 + num2;
 }
 
 sum(5, 10); // 5 and 10 are arguments
-Also, note that if a function takes 3 parameters and you only pass in 2 arguments, the third parameter will just be set to undefined. Run the code below to see an example of this.
+```
 
+Also, note that if a function takes 3 parameters and you only pass in 2 arguments, the third parameter will just be set to  `undefined`. Run the code below to see an example of this.
 
-1
-function people (person1, person2, person3) {
-2
-  console.log('Person 1:', person1);
-3
-  console.log('Person 2:', person2);
-4
-  console.log('Person 3:', person3);
-5
-}
-6
-people('Jessica', 'Brad');
+```js
+1 function people (person1, person2, person3) {
+2   console.log('Person 1:', person1);
+3   console.log('Person 2:', person2);
+4   console.log('Person 3:', person3);
+5 }
+6 people('Jessica', 'Brad');
+```
 
-Fullscreen
+## Return Keyword  
 
-Reset Code
-Run Code 
-Return Keyword  
+When writing a function in JavaScript, if you wish for a piece of data to come back from the function, you **must** use the `return` keyword. This will allow you to set a variable that stores the value of the response of the function.
 
-When writing a function in JavaScript, if you wish for a piece of data to come back from the function, you must use the return keyword. This will allow you to set a variable that stores the value of the response of the function.
+```js
+1 function sum (num1, num2) {
+2   num1 + num2;
+3 }
+4 
+5 let answer = sum(10, 20);
+6 console.log(answer);
+```
 
+If you run the code above, you'll see that the result is `undefined` because we did not specify that we wanted the data **returned** from our `sum` function. Let's try this again:
 
-1
-function sum (num1, num2) {
-2
-  num1 + num2;
-3
-}
-4
-​
-5
-let answer = sum(10, 20);
-6
-console.log(answer);
+```js
+1 function sum (num1, num2) {
+2   return num1 + num2; // Added Return Keyword
+3 }
+4 
+5 let answer = sum(10, 20);
+6 console.log(answer);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-If you run the code above, you'll see that the result is undefined because we did not specify that we wanted the data returned from our sum function. Let's try this again:
-
-
-1
-function sum (num1, num2) {
-2
-  return num1 + num2; // Added Return Keyword
-3
-}
-4
-​
-5
-let answer = sum(10, 20);
-6
-console.log(answer);
-
-Fullscreen
-
-Reset Code
-Run Code 
-Conclusion  
+##cConclusion  
 
 Functions give us the ability to group bits of code together. These functions help us reduce duplicated code, can take in values, can return values, and in general are a very helpful way for us to organize our code. They give us a tremendous amount of power and are an important part of helping us solve our problems.
 
-Additional Resources  
+## Additional Resources  
 
-Eloquent JavaScript Functions
-JavaScript Functions - MDN
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-The Global Scope and Compartmentalized Code  
+* [Eloquent JavaScript Functions](http://eloquentjavascript.net/03_functions.html)
 
-In JavaScript it is important that you write effective code that serves its purpose but does not override global variables upon execution. We'll examine how to write specific compartmentalized code that doesn't make changes to the entire project or pollute the global scope.
+* [JavaScript Functions - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions)
 
-Compartmentalization: Code is often complex and made up of many components which contain many functions which contain many objects. Compartmentalization of code divides content into separate and distinct blocks with common functionality so that a program runs smoother, is easier to read, and can be reused.
-Proper isolation of variables is key, especially as your code becomes longer and more complex. Let's dial the microscope back two notches and first examine the window object, as well as the term "scope". We'll then take a look at some ways to construct function expressions that are self-contained, and therefore do not affect the global scope.
+---
 
-The Window Object  
+# The Global Scope and Compartmentalized Code  
 
-The window object represents a browser's window. It is the petri dish that all global items grow inside of, including:
+In JavaScript it is important that you write effective code that serves its purpose but does not override global variables upon execution. We'll examine how to write specific **compartmentalized code** that doesn't make changes to the entire project or pollute the global scope.
 
-Global JavaScript objects
-Global functions
-Global variables
-Global variables are properties of the window object whereas global functions are methods of the window. The window.document property points to the DOM document loaded in that window.
-Scope  
+> **Compartmentalization**: Code is often complex and made up of many components which contain many functions which contain many objects. Compartmentalization of code divides content into separate and distinct blocks with common functionality so that a program runs smoother, is easier to read, and can be reused.
 
-Scope refers to the accessibility of functions and variables within a part of code during runtime, essentially determining the visibility of variables in code. There are two types of scope: global scope and local scope.
+Proper isolation of variables is key, especially as your code becomes longer and more complex. Let's dial the microscope back two notches and first examine the `window` object, as well as the term "scope". We'll then take a look at some ways to construct function expressions that are self-contained, and therefore do not affect the global scope.
 
-A variable that's been defined outside of a function is considered to be in the global scope, while a variable defined inside of a function is in the local scope. In other words, all variables in a JavaScript project are in the global scope unless they're defined inside a function.
+## The Window Object  
 
-Global Scope  
+The `window` object represents a browser's window. It is the petri dish that all global items grow inside of, including:
 
+* Global JavaScript objects
 
-1
-const pet = 'dog';
-2
-​
-3
-//The variable "pet" is in the global scope, and may be used within any other function. For example:
-4
-​
-5
-function printPet() {
-6
-  console.log(pet);
-7
-}
-8
-​
-9
-printPet();
+* Global functions
 
-Fullscreen
+* Global variables
 
-Reset Code
-Run Code 
+> Global variables are *properties* of the window object whereas global functions are *methods* of the window. The `window.document` property points to the DOM document loaded in that window.
+
+## Scope  
+
+Scope refers to the accessibility of functions and variables within a part of code during runtime, essentially determining the visibility of variables in code. There are two types of scope: `global scope` and `local scope`.
+
+A variable that's been defined *outside* of a function is considered to be in the `global scope`, while a variable defined *inside* of a function is in the `local scope`. In other words, **all** variables in a JavaScript project are in the `global scope` unless they're defined inside a function.
+
+### Global Scope  
+
+```js
+1 const pet = 'dog';
+2 
+3 //The variable "pet" is in the global scope, and may be used within any other function. For example:
+4 
+5 function printPet() {
+6 console.log(pet);
+7 }
+8 
+9 printPet();
+```
+
 ...logs "dog" because it was defined in the global scope.
 
-Local Scope  
+### Local Scope  
 
 
-1
-const pet = 'dog';
-2
-​
-3
-//The variable "pet" is in the global scope, defined here as "dog".
-4
-​
-5
-function printPet() {
-6
-  const pet = 'cat';
-7
-​
-8
-//Here, the variable "pet" is in the local scope, and defined as "cat".
-9
-​
-10
-  console.log(pet);
-11
-}
-12
-​
-13
-printPet();
+ 1 const pet = 'dog';
+ 2 
+ 3 //The variable "pet" is in the global scope, defined here as "dog".
+ 4 
+ 5 function printPet() {
+ 6   const pet = 'cat';
+ 7 
+ 8 //Here, the variable "pet" is in the local scope, and defined as "cat".
+ 9 
+10   console.log(pet);
+11 }
+12 
+13 printPet();
 
-Fullscreen
-
-Reset Code
-Run Code 
+ 
 ...logs "cat" because it was defined within the function, or in the local scope, and overrides the global variable "dog".
 
-Immediately-Invoked Function Expressions  
+## Immediately-Invoked Function Expressions  
 
 An Immediately-invoked-function-expression, or an IIFE (pronounced like "iffy") is essentially what it sounds like: a function used in JavaScript that runs right after being defined. They allow you to isolate a script environment and they don't pollute the global scope by overriding global variables.
 
 The basic template for an IIFE is as such:
 
+```js
 (function () {
     // main content
 })();
-Sounds crazy, no? Well here in our little village of programming you might ask yourself how did we get here? Well, let's walk the path. Think about functions in JavaScript. There are two ways that they can be created: as a function declaration or a function expression. Function declarations are often the more routine method and look something like:
+```
 
+Sounds crazy, no? Well here in our little village of programming you might ask yourself how did we get here? Well, let's walk the path. Think about functions in JavaScript. There are two ways that they can be created: as a function *declaration* or a function *expression*. Function declarations are often the more routine method and look something like:
+
+```js
 function myDeclaration () {/* Insert logic please */};
+```
+
 A Function expression is when you take a function and assign a property or variable to it. That takes us to this:
 
+```js
 const myExpression = function () { /* Insert logic please */ };
-Function expressions are also functions that are created within the context of an expression. So:
+```
 
+Function expressions are also functions that are created within the *context* of an expression. So:
+
+```js
 (function () { /* Insert logic please */ });
+```
+
 Okay we're in the home stretch now. We're looking for a way to invoke the function expression immediately. JavaScript expressions return a value, and in the above example the return value of the expression is the function. So really all we need to do to create an IIFE is tack on a pair of parenthesis at the end of our last example, which gives us the template for an IIFE that you saw at the start of this section.
 
 And why do we want this? Well it's for the same reason schools have lockers. We want data privacy and any variable declared inside that IIFE is safe from being unintentionally accessed elsewhere in our code.
 
+```js
 (function () {
   const ice = 'cream';
 
@@ -254,10 +208,13 @@ And why do we want this? Well it's for the same reason schools have lockers. We 
 })(); //logs "cream"
 
 console.log(ice); //logs ReferenceError: ice is not defined
+```
+
 You can see from the above example, the variable "ice" is contained within the IIFE so the second attempt to log "cream" returns an error because it is outside of the expression.
 
 We can even test how we've limited the scope by using the same variable name and console logging inside and outside of the IIFE.
 
+```js
 const ice = 'cream';
 
 (function() {
@@ -267,26 +224,37 @@ const ice = 'cream';
 })();
 
 console.log(ice); // -> This logs cream
-Passing Arguments into an IIFE  
+```
+
+### Passing Arguments into an IIFE  
 
 Another benefit of immediately invoked expressions is that arguments can be passed through them as follows:
 
+```js
 const ice = 'ice';
 
 (function (innerIce) {
     console.log(innerIce);
 })(ice);
+```
+
 This logs ice, as it's been passed through the IIFE.
 
-Conclusion  
+## Conclusion  
 
 When asked what the greatest challenge of writing code is, a coder will often tell you that it's coming up with names; names for variables, functions, DIV's, and much more. As a piece of code grows, more names are required and that creates a higher risk of a single piece of code throwing off the entire project. If you're not careful, a name may be accidentally used in more than one space within the global scope. The compartmentalization of code that Immediately-invoked function expressions facilitates is a great way to prevent this error.
 
-References  
+### References  
 
-Window - MDN
-Scope - MDN
-Properly Isolate your Variables in JavaScript
+* [Window - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+
+* [Scope - MDN](https://developer.mozilla.org/en-US/docs/Glossary/Scope)
+
+* [Properly Isolate your Variables in JavaScript](http://www.nicoespeon.com/en/2013/05/properly-isolate-variables-in-JavaScript/)
+
+---
+
+# `this` Keyword
 Before we begin examining this, and how it gets used within a given function, first a bit of housekeeping: The word "this", as in "this lesson" will be written normally, whereas the keyword this will always be identified as such.
 
 Okay, now that that's out of the way, what purpose does this serve in JavaScript? (It varies from language to language). Put simply, this refers to the value of the object that invokes the function, the "antecedent object" (parent object).
