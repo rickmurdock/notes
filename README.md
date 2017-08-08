@@ -25,7 +25,7 @@ Lecture notes from The Iron Yard
 
 * [Getting Started with JavaScript](https://github.com/rickmurdock/notes/blob/master/FrontEnd/GettingStartedWithJavaScript.md)
 
-* Functions and Complex Expressions
+* [Functions and Complex Expressions](./FrontEnd/FunctionsAndComplexExpressions.md)
 
 * Creating Arrays and Loops 
 
