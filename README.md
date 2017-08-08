@@ -127,4 +127,6 @@ Lecture notes from The Iron Yard
 
 * [Redux Review (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxReview.md)
 
-* Unit Tests for React
+* [Unit Tests for React](https://github.com/rickmurdock/notes/blob/master/ReactJS/UnitTestsForReact.md)
+
+* Language Specialization: ReactJS Encyclopedia
