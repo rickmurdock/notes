@@ -19,11 +19,11 @@ Lecture notes from The Iron Yard
 
 * Creating HTML Forms and Inspecting Your Code
 
-* [Version Control with Git](https://github.com/rickmurdock/notes/blob/master/FrontEnd/VersionControlWithGit.md)
+* [Version Control with Git](./FrontEnd/VersionControlWithGit.md)
 
-* [Using Git Remotely with a Team](https://github.com/rickmurdock/notes/blob/master/FrontEnd/UsingGitRemotelyWithATeam.md)
+* [Using Git Remotely with a Team](./FrontEnd/UsingGitRemotelyWithATeam.md)
 
-* [Getting Started with JavaScript](https://github.com/rickmurdock/notes/blob/master/FrontEnd/GettingStartedWithJavaScript.md)
+* [Getting Started with JavaScript](./FrontEnd/GettingStartedWithJavaScript.md)
 
 * [Functions and Complex Expressions](./FrontEnd/FunctionsAndComplexExpressions.md)
 
