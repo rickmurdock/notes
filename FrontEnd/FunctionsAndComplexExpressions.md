@@ -28,7 +28,7 @@ function greeting (timeOfDay, firstName) {
 
 Functions start with the `function` keyword, followed by a name for the function. Essentially we are creating a variable name to hold the value of our `function`. After you name the function, you can define some parameters that the function takes. This is where the real power of functions shines through. This way we can have our code run against different sets of data. Lastly, inside of the function, we have the **function body**, which is where you can write the code that this function performs.
 
-function syntax
+![function syntax](./images/functionSyntax.jpg)
 
 ## Calling a Function  
 
@@ -43,7 +43,7 @@ Once you have a function written, you can now call it. To call a function, you s
 6 greeting('morning', 'Teddy');
 ```
 
-Calling Functions
+![Calling Functions](./images/functionCall.png)
 
 ## Parameters and Arguments  
 
@@ -255,39 +255,53 @@ When asked what the greatest challenge of writing code is, a coder will often te
 ---
 
 # `this` Keyword
-Before we begin examining this, and how it gets used within a given function, first a bit of housekeeping: The word "this", as in "this lesson" will be written normally, whereas the keyword this will always be identified as such.
 
-Okay, now that that's out of the way, what purpose does this serve in JavaScript? (It varies from language to language). Put simply, this refers to the value of the object that invokes the function, the "antecedent object" (parent object).
+Before we begin examining `this`, and how it gets used within a given function, first a bit of housekeeping: The word "this", as in "this lesson" will be written normally, whereas the keyword `this` will always be identified as such.
 
-Different Uses  
+Okay, now that that's out of the way, what purpose does `this` serve in JavaScript? (It varies from language to language). Put simply, `this` refers to the value of the object that invokes the function, the "antecedent object" (parent object).
 
-The way we use this depends on the scenario. For such a common word, there's a whole bunch of different uses for this and it can be a very powerful tool. Here's a list of the uses for this we'll examine:
+## Different Uses  
 
-this, in a function invocation,
-this is the window in non-strict mode. It refers to the outer most global object.
-this is undefined in a function invocation in strict mode.[^1]
-this is the value of the object that owns the method in a method invocation.
-this is the value of the newly created object in a constructor invocation.
-this is the value of the first argument of .call() or .apply() in an indirect invocation.
-Function Invocation  
+The way we use `this` depends on the scenario. For such a common word, there's a whole bunch of different uses for `this` and it can be a very powerful tool. Here's a list of the uses for `this` we'll examine:
 
-Very quickly, function invocation is essentially what it sounds like - it is the process by which a function object is called.
+* `this`, in a function invocation,
+
+  * `this` is the `window` in non-strict mode. It refers to the outer most global object.
+
+  * `this` is undefined in a function invocation in strict mode.[^1]
+
+* `this` is the value of the object that owns the method in a method invocation.
+
+* `this` is the value of the newly created object in a constructor invocation.
+
+* `this` is the value of the first argument of `.call()` or `.apply()` in an indirect invocation.
+
+## Function Invocation  
+
+Very quickly, `function invocation` is essentially what it sounds like - it is the process by which a function object is called.
 
 So if given:
 
+```js
 function welcome(planet) {
   return 'Welcome to ' + planet + '!';;
 }
-The function invocation simply calls it into action...
+```
 
+The `function invocation` simply calls it into action...
+
+```js
 const willSmith = welcome('Earth')
 console.log(willSmith);
+```
+
 ...And would cause the console to produce "Welcome to Earth!"
 
-Non-Strict Mode  
+### Non-Strict Mode  
 
-In a function invocation, this is referred to as the global object, which in turn is established by the execution environment. So under those conditions this is the window object. Take a look at the example below to get a feel for what this means:
+In a function invocation, `this` is referred to as the `global object`, which in turn is established by the execution environment. So under those conditions `this` is the `window` object. Take a look at the example below to get a feel for what this means:
 
+```js
 function sum(x, y) {
   console.log(this===window);
   this.theNumber = 42;
@@ -295,39 +309,48 @@ function sum(x, y) {
 }
 sum(12, 14); // = 26
 window.theNumber; // = 42
-So to examine that a bit, when finding the sum this is set as the global object, and within a browser that would be window.
+```
 
-The same goes for when this is used outside of the context of a function; it still refers to the global object.
+So to examine that a bit, when finding the sum `this` is set as the `global object`, and within a browser that would be `window`.
 
+The same goes for when `this` is used outside of the context of a function; it still refers to the global object.
+
+```js
 console.log(this===window);
 this.smithString = 'Welcome to Earth!';
 console.log(window.smithString);
+```
+
 In ths case the console will read "Welcome to Earth!", as specified.
 
-Strict Mode  
+## Strict Mode
 
-In function invocation in strict mode, this is undefined because its value stays at what it was set at upon entering the execution context.
+In function invocation in strict mode, `this` is *undefined* because its value stays at what it was set at upon entering the execution context.
 
 So to run in strict mode would look something like this:
 
+```js
 function bears() {
   'use strict';
   return this;
 }
 
 bears() === undefined;
-The only reason the result would come out differently is if this had been defined by the execution context.
+```
 
-Other Invocations  
+The only reason the result would come out differently is if `this` had been defined by the execution context.
 
-This is one of about four different ways a JavaScript function can be invoked. Within that there are many ways that this can be used in function invocation.
+## Other Invocations  
 
-Method Invocation  
+`This` is one of about four different ways a JavaScript function can be invoked. Within that there are many ways that `this` can be used in function invocation.
+
+### Method Invocation  
 
 Essentially a method is when an object contains a function as a stored property.
 
 For example:
 
+```js
 var greeting = {
     say: "Hello",
     name: function(firstName, lastName){
@@ -338,14 +361,17 @@ var greeting = {
 };
 greeting.name();
 console.log(greeting.name("John", "Smith"));
-Above: when the method is invoked, this is "greeting", so this.say target the value of "hello". The result should be "Hello John Smith". The main different between function and method invocation is that the latter requires the function or object to be called by a property accessor. Function invocation doesn't have those requirements.
+```
 
-Indirect Invocation, .call() or .apply()  
+Above: when the method is invoked, `this` is "greeting", so `this.say` target the value of "hello". The result should be "Hello John Smith". The main different between function and method invocation is that the latter requires the function or object to be called by a property accessor. Function invocation doesn't have those requirements.
 
-An indirect invocation is the term for calling a function using: (name-of-function).call() or (name-of-function).apply(). These two methods are inhereted by al functions from Function.prototype. The difference between call and apply are .call() takes the items inside the parenthesis as the context of the invocation and as a list of arguments passed to the called function as arguments, whereas .apply() takes the items as an array-like object of values.
+### Indirect Invocation, .call() or .apply()  
+
+An `indirect invocation` is the term for calling a function using: (name-of-function)`.call()` or (name-of-function)`.apply()`. These two methods are inhereted by al functions from `Function.prototype`. The difference between call and apply are `.call()` takes the items inside the parenthesis as the context of the invocation and as *a list of arguments* passed to the called function as arguments, whereas `.apply()` takes the items as an *array-like object of values*.
 
 Let's look at the difference between the two:
 
+```js
 const album = { type: "Mixtape" };
 function printDisc(string) {
     console.log(this === album); Logs: true
@@ -357,77 +383,89 @@ console.log(printDisc.call(album, "Hamilton" + " "))
 
 printDisc.apply(album, ["Hamilton", " "]);
 console.log(printDisc.apply(album, ["Hamilton" + " "]))
+```
+
 Both of these result in a console log of "Hamilton Mixtape" (which you should listen to, PS).
 
-Conclusion  
+## Conclusion  
 
-For such a simple word, this packs a huge punch and is absolutely one of the fundamental building blocks of JavaScript it almost makes you ask yourself why didn't they pick a less common word or even make one up, like flerbot for example. flerbot.type. I don't know, just throwing it out there.
+For such a simple word, `this` packs a huge punch and is absolutely one of the fundamental building blocks of JavaScript it almost makes you ask yourself why didn't they pick a less common word or even make one up, like `flerbot` for example. `flerbot.type`. I don't know, just throwing it out there.
 
-A great way to determine if this is involved (more likely how this is involved) it makes sense to as yourself how a function is being invoked. That should provide some guidance about how to move forward with your use of this this keyword.
+A great way to determine if `this` is involved (more likely *how* `this` is involved) it makes sense to as yourself how a function is being invoked. That should provide some guidance about how to move forward with your use of this `this` keyword.
 
-References  
+### References  
 
-[^1] More on Strict Mode
-this - MDN
-Understand JavaScript’s “this” With Clarity, and Master It
-Logical Operators  
+* [^1] [More on Strict Mode](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Strict_mode)
 
-Logical operators are used to evaluate an expression and return either a true or false value. As a developer, you will use logical operators and expressions to solve logical problems. In this lesson, you will learn how to use each operator and how their order of operation affects evaluations.
+* [this - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this)
+
+* [Understand JavaScript’s “this” With Clarity, and Master It](http://javascriptissexy.com/understand-JavaScripts-this-with-clarity-and-master-it/)
+
+---
+
+# Logical Operators  
+
+Logical operators are used to evaluate an expression and return either a `true` or `false` value. As a developer, you will use logical operators and expressions to solve logical problems. In this lesson, you will learn how to use each operator and how their order of operation affects evaluations.
 
 Here are some you might see:
 
-&& - and
-|| - or
-! - not
-=== - equal
-!== - not equal
-> - greater than
-< - less than
-Note: Often, you'll see both === and just == used when testing equality. You can read more about that here, but it's extremely rare for there ever to be a use case for using ==. Therefore, you should ALWAYS use === when testing for equality.
+* `&& `- and
 
-Logical Operators in the Real World  
+* `||` - or
 
-In the English language, logical operators are used with the words and, or, and not. For example:
+* `!` - not
 
-You will do the dishes IF you have no clean plates AND your kitchen smells.
+* `===` - equal
+
+* `!==` - not equal
+
+* `>` - greater than
+
+* `<` - less than
+
+Note: Often, you'll see both `===` and just `==` used when testing equality. You can read more about that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness), but it's *extremely* rare for there ever to be a use case for using `==`. Therefore, you should ALWAYS use `=== `when testing for equality.
+
+## Logical Operators in the Real World  
+
+In the English language, logical operators are used with the words **and**, **or**, and **not**. For example:
+
+> *You will do the dishes `IF` you have no clean plates `AND` your kitchen smells.*
 
 For you to clean your dishes, two components must be true:
 
-You have no clean plates
-Your kitchen smells
+* You have no clean plates
+
+* Your kitchen smells
+
 This real world example of using logical operators to evaluate an expression is like using JavaScript's logical operators.
 
-If Statement  
+## If Statement  
 
-Before we jump into these three operators, let's take a quick look at the if statement.
+Before we jump into these three operators, let's take a quick look at the `if` statement.
 
-An if statement is comprised of a few different parts. First, we must evaluate a condition.
+An `if` statement is comprised of a few different parts. First, we must evaluate a condition.
 
+```js
 if (condition) {
   // Run this code
 }
-In the sample above, the code inside the if statement will only run if the value of condition is true or "truthy", otherwise it will be skipped entirely. We can also add in the keyword else and chain them together as much as we'd like.
+```
 
+In the sample above, the code inside the `if` statement will only run if the value of `condition` is true or "truthy", otherwise it will be skipped entirely. We can also add in the keyword `else` and chain them together as much as we'd like.
 
-1
-if (5 > 3) {
-2
-  console.log('5 is greater than 3');
-3
-} else {
-4
-  console.log('5 is not greater than 3');
-5
-}
+```js
+1 if (5 > 3) {
+2   console.log('5 is greater than 3');
+3 } else {
+4   console.log('5 is not greater than 3');
+5 }
+```
 
-Fullscreen
+## And Operator  
 
-Reset Code
-Run Code 
-And Operator  
+The `&&` operator is used to evaluate an expression that has two or more components. For the entire logical expression to return true, all components that connect the `&&` operator must also be true. Using the real world example above, let's see how we write that in JavaScript:
 
-The && operator is used to evaluate an expression that has two or more components. For the entire logical expression to return true, all components that connect the && operator must also be true. Using the real world example above, let's see how we write that in JavaScript:
-
+```js
 var hasCleanPlates = false; // We don't have clean dishes
 var doesKitchenSmell = true; // The kitchen smells
 
@@ -436,155 +474,134 @@ if (hasCleanPlates === false && doesKitchenSmell === true) {
 } else {
   console.log('Nah, we will wait till next time');
 }
-In this example, the && operator requires that both expressions return a true boolean. The first expression, hasCleanPlates === false is true and the second expression, doesKitchenSmell === true also returns true.
+```
 
-Or Operator  
+In this example, the `&&` operator requires that both expressions return a `true` boolean. The first expression, `hasCleanPlates === false` is true and the second expression, `doesKitchenSmell === true` also returns true.
 
-The || operator is used to evaluate an expression that has two or more components. It will return true if either component of the logical expression are true.
+## Or Operator  
 
-Let's say that you have a roommate, and your roommate is much more strict with their home upkeep. They aren't as lenient as you when it comes to dishes and will clean the dishes if there are no clean plates OR the kitchen smells.
+The `||` operator is used to evaluate an expression that has two or more components. It will return true if either component of the logical expression are true.
 
+Let's say that you have a roommate, and your roommate is much more strict with their home upkeep. They aren't as lenient as you when it comes to dishes and will clean the dishes if there are no clean plates **OR** the kitchen smells.
 
-1
-let hasCleanPlates = false; // We don't have clean dishes
-2
-let doesKitchenSmell = false; // The kitchen doesn't smell (yet)
-3
-​
-4
-if (hasCleanPlates === false || doesKitchenSmell === true) {
-5
-  console.log('We should clean our dishes');
-6
-} else {
-7
-  console.log('Nah, we will wait till next time');
-8
-}
-
-Fullscreen
-
-Reset Code
-Run Code 
+```js
+1 let hasCleanPlates = false; // We don't have clean dishes
+2 let doesKitchenSmell = false; // The kitchen doesn't smell (yet)
+3 
+4 if (hasCleanPlates === false || doesKitchenSmell === true) {
+5   console.log('We should clean our dishes');
+6 } else {
+7   console.log('Nah, we will wait till next time');
+8 }
+```
+ 
 In this example, we will print out "We should clean our dishes" whenever the kitchen smells OR we have no clean plates.
 
-The NOT Operator  
+## The `NOT` Operator  
 
-Syntax: !
+Syntax: `!`
 
-The ! operator is used to invert the desired expression evaluation to the opposite returned boolean. This means that when we use the ! operator placed in front of an expression, we are asking the expression to return true if a specific expression already equates to false.
+The `!` operator is used to invert the desired expression evaluation to the opposite returned boolean. This means that when we use the `!` operator placed in front of an expression, we are asking the expression to return true if a specific expression already equates to false.
 
 Let's refactor our example to accept this new operator.
 
+```js
 let hasCleanPlates = false;
 let doesKitchenSmell = false;
 
 if (!hasCleanPlates || doesKitchenSmell) {
     cleanDishes();
 }
-Did you notice we didn't use the == operator? This is because hasCleanPlates and doesKitchenSmell already returns a boolean, so our if statement will still work as intended. So doesKitchenSmell is equal to doesKitchenSmell === true.
+```
 
-As for hasCleanPlates, we placed the ! right before to declare we are inverting the boolean. This means if hasCleanPlates is equal to FALSE, return true.
+Did you notice we didn't use the `==` operator? This is because `hasCleanPlates` and `doesKitchenSmell` already returns a boolean, so our `if` statement will still work as intended. So `doesKitchenSmell` is equal to `doesKitchenSmell === true`.
+
+As for `hasCleanPlates`, we placed the `!` right before to declare we are inverting the boolean. This means if `hasCleanPlates` is equal to **FALSE**, return `true`.
 
 If this concept is difficult for you to grasp, try thinking of it in English.
 
-You will do the dishes IF you do NOT have clean plates OR your kitchen smells.
+> *You will do the dishes `IF` you do `NOT` have clean plates `OR` your kitchen smells.*
 
-The JavaScript syntax ! represents the English word NOT in this example.
+The JavaScript syntax `!` represents the English word `NOT` in this example.
 
-Order of Operations  
+## Order of Operations  
 
 You might remember in math class that arithmetic operators have an order of operations. The same is true for our JavaScript logical operators.
 
-() - parenthesis
-! - not
-&& - and
-|| - or
+1. `()` - parenthesis
+
+2. `!` - not
+
+3. `&&` - and
+
+4. `||` - or
+
 Let's take a look at a complex logical expression and use the order of operations to break it down:
 
-
-1
-// milks
-2
-let milk = true;
-3
-let cream = false;
-4
-let soyMilk = false;
-5
-​
-6
-// expressos
-7
-let caffeinatedEspresso = true;
-8
-let decaffeinatedEspresso = false;
-9
-​
-10
-// chocolates
-11
-let darkChocolate = false;
-12
-let lightChocolate = false;
-13
-​
-14
-// this is a latte!
-15
-​
-16
-var isLatte =
-17
-        (milk || cream || soyMilk)
-18
-    &&
-19
-        (caffeinatedEspresso || decaffeinatedEspresso)
-20
-    &&
-21
-        !(darkChocolate || lightChocolate)
-22
-    ;
+```js
+ 1 // milks
+ 2 let milk = true;
+ 3 let cream = false;
+ 4 let soyMilk = false;
+ 5 
+ 6 // expressos
+ 7 let caffeinatedEspresso = true;
+ 8 let decaffeinatedEspresso = false;
+ 9 
+10 // chocolates
+11 let darkChocolate = false;
+12 let lightChocolate = false;
+13 
+14 // this is a latte!
+15 
+16 var isLatte =
+17         (milk || cream || soyMilk)
+18     &&
+19         (caffeinatedEspresso || decaffeinatedEspresso)
+20     &&
+21         !(darkChocolate || lightChocolate)
+22     ;
 23
-​
-24
-// print if this is a latte
-25
-console.log(isLatte);
+24 // print if this is a latte
+25 console.log(isLatte);
+```
 
-Fullscreen
+Let's walk through this using the correct order of operations. First we will need to evaluate everything that is within `()`.
 
-Reset Code
-Run Code 
-Let's walk through this using the correct order of operations. First we will need to evaluate everything that is within ().
-
+```js
         (milk || cream || soyMilk) // (true || false || false)
     &&
         (caffeinatedEspresso || decaffeinatedEspresso) // (true || false)
     &&
         !(darkChocolate || lightChocolate) // !(false || false)
     ;
-Moving left to right, JavaScript will simplify this boolean value expressions within the () into a single boolean by reading each () as a single boolean value.
+```
 
+Moving left to right, JavaScript will simplify this boolean value expressions within the `()` into a single boolean by reading each `()` as a single boolean value.
+
+```js
         (true) // Returns true since an inside boolean was true.
     &&
         (true) // Returns true since an inside boolean was true.
     &&
         !(false) // Returns false since no inside boolean was true.
     ;
-Before continuing our quest to solve this complex logical expression, we must first address ! which is next up for our order of operations. Since !(false) will invert the boolean within the (), the returning boolean value will be true.
+```
 
-Now it's time for the && operator to take its turn. We are left will a simple expression that looks like this:
+Before continuing our quest to solve this complex logical expression, we must first address `!` which is next up for our order of operations. Since `!(false)` will invert the boolean within the `()`, the returning boolean value will be `true`.
 
+Now it's time for the `&&` operator to take its turn. We are left will a simple expression that looks like this:
+
+```js
     (true && true && true) // This will return true!
-This means that when we run this code, we will console log true!
+```
 
-Conclusion  
+This means that when we run this code, we will console log `true`!
+
+## Conclusion  
 
 We use logical operators to evaluate important logical expressions that will return a boolean value. These operators are all used very frequently in the code we write, so it is important to keep their syntax, functionality, and order of operations in mind when using them.
 
-Additional Resources  
+## Additional Resources  
 
-Logical Operators - MDN
+* [Logical Operators - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_Operators)
