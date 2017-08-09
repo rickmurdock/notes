@@ -38,7 +38,10 @@ Language Specialization: ReactJS Encyclopedia
 
 The Encyclopedia is a compilation of all the lesson study notes in this course. Use it to look up the a term or concept that you have covered.
 
+---
+
 Lesson: Single Page Applications
+
 Single Page Applications  
 
 At this point, you've learned the basics of front-end development. You've also learned to create multi-page websites combining HTML content, CSS styling, and JavaScript functionality. Multi-page websites make up the majority of websites visited, but there is a growing trend that favors single-page applications over the traditional multi-page applications. This lesson will define and explore the benefits of SPAs, or single-page applications.
@@ -60,6 +63,9 @@ References
 
 Single-page application vs. multiple-page application
 Stack Overflow
+
+---
+
 Lesson: Single Page Applications
 React for SPAs  
 
@@ -78,6 +84,8 @@ Virtual DOM: React represents every DOM object with a corresponding virtual DOM 
 References  
 
 Thinking in React
+
+---
 
 Lesson: Constructors and Prototypes
 Constructors  
@@ -320,6 +328,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Constructors and Prototypes
 Prototypal Inheritance  
 
@@ -402,6 +413,9 @@ References
 Object Playground
 Crockford's JavaScript
 Stack Overflow Discussion
+
+---
+
 Lesson: Constructors and Prototypes
 Bind Functions to a Prototype  
 
@@ -477,6 +491,9 @@ function Const(par1, par2){
 Const.prototype.someMethod = function(){
   return this.par1 + " " + this.par2;
 };
+
+---
+
 Lesson: Classses
 Constructor Function  
 
@@ -668,6 +685,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Modules and Build Tools
 Build System  
 
@@ -688,6 +708,8 @@ Development vs. Production
 Development: The environment you develop your code in.
 
 Production: The environment you run your code in.
+
+---
 
 Lesson: Modules and Build Tools
 Export to Import  
@@ -752,6 +774,8 @@ It's essentially saying "I want to take everything from this file and name it as
 
 We simply need to place the utility. in front of any of the function, variables, etc that we plan to use and import from that utility.js file. For example: utility.makeFood("ham","swiss") Easy peasy lemon squeezy, right?
 
+---
+
 Lesson: ReactJS: Introduction
 Create React App  
 
@@ -784,6 +808,8 @@ Translating HTML into JSX
 
 Components are written in the language of JSX, which is XML syntax combined with JavaScript.
 
+---
+
 Lesson: ReactJS: Introduction
 Components  
 
@@ -814,6 +840,9 @@ export default class MainBody extends Component {
     );
   }
 }
+
+---
+
 Lesson: ReactJS: Introduction
 Iteration in React  
 
@@ -873,6 +902,9 @@ export default class App extends Component {
   }
 }
 science.png
+
+---
+
 Lesson: ReactJS: Working wth Props and State
 React DOM  
 
@@ -909,6 +941,9 @@ Other methods
 
 setState: primary method used to update the user interface in response to event handlers and server responses.
 forceUpdate: will cause the component to re-render
+
+---
+
 Lesson: ReactJS: Working wth Props and State
 State and Props  
 
@@ -929,6 +964,9 @@ COMPONENT TYPES
 
 Stateless Component — A stateless component has only props, no state.
 Stateful Component — A statefull component has both props and state.
+
+---
+
 Lesson: ReactJS: Working wth Props and State
 Implementing a Form on a React Component  
 
@@ -960,6 +998,9 @@ class Form extends React.Component {
     )
   }
 }
+
+---
+
 Lesson: ReactJS: Children Components
 Rendering Children Components in React  
 
@@ -1021,6 +1062,8 @@ export default class App extends Component {
 References  
 
 React Components
+
+---
 
 Lesson: ReactJS: Children Components
 Pass data via props to children React components  
@@ -1202,6 +1245,9 @@ We extract each student from that array and return an index and student as a lis
 The student.studentName give us access to the studentName property inside of our students array.
 We know that each mapped item needs a unique key, so we use the index of each item being mapped over for simplicity sake. key={index}.
 We then insert each mapping using bracket notation with{kids}. That is put into the return statement where the <ul> {kids} </ul> is placed. ### References [React Docs](https://facebook.github.io/react/docs/state-and-lifecycle.html Presentational and Container Components
+
+---
+
 Lesson: ReactJS: Children Components
 Author functions in a React component and bind them to the component  
 
@@ -1263,6 +1309,9 @@ References
 
 Todd Motto
 GitHub Gist
+
+---
+
 Lesson: ReactJS: Children Components
 Passing a Function Via Props  
 
@@ -1316,6 +1365,9 @@ Within <ColorMaker />, this.props.changeColor refers to the changeColor method i
 References  
 
 React Docs
+
+---
+
 Lesson: ReactJS: Advanced Techniques
 Fetching JSON  
 
@@ -1396,6 +1448,9 @@ MDN Body.json()
 MDN Using Fetch
 StarWars API : SWAPI
 React Component Lifecycles
+
+---
+
 Lesson: ReactJS: Advanced Techniques
 Styling Components with React  
 
@@ -1443,6 +1498,9 @@ References
 Kirupa.com
 React Docs
 React JSX
+
+---
+
 Lesson: ReactJS: Advanced Techniques
 Stateless Components  
 
@@ -1536,6 +1594,9 @@ References
 JSPlayground
 Todd Motto
 Dan Abramov
+
+---
+
 Lesson: React-Router: Part 1
 React Router and Single Page Applications  
 
@@ -1615,6 +1676,9 @@ References
 
 Switch Component
 BrowserRouter
+
+---
+
 Lesson: React-Router: Part 2
 How to Incorporate a Layout Component into Our React App  
 
@@ -1678,6 +1742,9 @@ ReactDOM.render(
   ,
   document.getElementById('root'));
 registerServiceWorker();
+
+---
+
 Lesson: React-Router: Part 2
 Use Exact Path to Render a Specific Route  
 
@@ -1708,6 +1775,9 @@ class App extends Component {
 References  
 
 Exact Path
+
+---
+
 Lesson: React-Router: Part 2
 Active Navigation Links with React Router  
 
@@ -1750,6 +1820,9 @@ export default class NavBar extends Component {
 References  
 
 React Training
+
+---
+
 Lesson: React-Router: Part 3
 Creating a Dynamic App with A Parent and Child Detail Page  
 
@@ -1809,6 +1882,9 @@ export default App;
 References  
 
 MDN
+
+---
+
 Lesson: Redux: Part 1
 Application State  
 
@@ -1828,6 +1904,9 @@ References
 Redux JS: Organizing State
 Flux
 Redux ReadME
+
+---
+
 Lesson: Redux: Part 1
 React and Redux Workflow  
 
@@ -1862,6 +1941,9 @@ References
 
 Redux Basics
 Redux diagrams GitHub
+
+---
+
 Lesson: Redux: Part 1
 Authoring Actions  
 
@@ -2007,6 +2089,9 @@ export default connect(mapStateToProps)(UserDetail);
 References  
 
 Redux
+
+---
+
 Lesson: Redux: Part 2
 Authoring a Reducer  
 
@@ -2178,6 +2263,9 @@ const reducer = function (state = initialState, action) {
 
   return state;
 }
+
+---
+
 Lesson: Redux: Part 2
 Using State to Model Events in Redux  
 
@@ -2270,6 +2358,9 @@ const name = 'sage';
 References  
 
 Redux Docs
+
+---
+
 Lesson: Redux: Part 2
 Authoring a reducer to filter data based on a user action  
 
@@ -2277,6 +2368,9 @@ We use our action creators to pass our action to our reducer via dispatch inside
 The reducer is a function that manipulates our state according to actions.
 We can use these to filter our data based off our application state.
 The workflow remains the same for all Redux/React applications and follows the cycle we have discussed.
+
+---
+
 Lesson: Redux: Part 3
 Handling Asynchronous Actions in Redux  
 
@@ -2330,6 +2424,8 @@ export const geocodeAddress = (address) => {
 }
 The returned function takes two arguments, dispatch and getState.
 
+---
+
 Lesson: Redux: Part 3
 Authentication in Redux  
 
@@ -2354,7 +2450,7 @@ When our app loads we can grab that cookie (if available) and send the auth_toke
 
 ---
 
-[Lesson: Unit Tests for React]
+[Unit Tests for React](UnitTestsForReact.md)
 
 # Testing React applications using Jest  
 
@@ -2379,11 +2475,3 @@ Snapshot testing is a type of testing specifically for UI where your UI is rende
 ## Testing Redux  
 
 Many parts of Redux are easy to test with unit tests, specifically action creators and reducers. Testing stores and asynchronous code is harder, but the Redux documentation covers how to test all parts of Redux with Jest.
-
-
-
-
-
-
-
-
