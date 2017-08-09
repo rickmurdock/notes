@@ -66,7 +66,7 @@ Stack Overflow
 
 ---
 
-Lesson: Single Page Applications
+[Single Page Applications](SinglePageApplications.md)
 ## React for SPAs  
 
 React is a JavaScript library that allows the view to change when data changes. Only the necessary number of components are updated and rendered when data changes. Components are encapsulated and only care about their own state. Multiple components can be composed into more complex UIs.
