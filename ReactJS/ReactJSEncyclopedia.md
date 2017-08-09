@@ -40,9 +40,9 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 ---
 
-Lesson: Single Page Applications
+[Single Page Applications](SinglePageApplications.md)
 
-Single Page Applications  
+## Single Page Applications  
 
 At this point, you've learned the basics of front-end development. You've also learned to create multi-page websites combining HTML content, CSS styling, and JavaScript functionality. Multi-page websites make up the majority of websites visited, but there is a growing trend that favors single-page applications over the traditional multi-page applications. This lesson will define and explore the benefits of SPAs, or single-page applications.
 
@@ -67,7 +67,7 @@ Stack Overflow
 ---
 
 Lesson: Single Page Applications
-React for SPAs  
+## React for SPAs  
 
 React is a JavaScript library that allows the view to change when data changes. Only the necessary number of components are updated and rendered when data changes. Components are encapsulated and only care about their own state. Multiple components can be composed into more complex UIs.
 
@@ -88,7 +88,7 @@ Thinking in React
 ---
 
 Lesson: Constructors and Prototypes
-Constructors  
+## Constructors  
 
 Terminology  
 
@@ -332,7 +332,7 @@ Run Code
 ---
 
 Lesson: Constructors and Prototypes
-Prototypal Inheritance  
+## Prototypal Inheritance  
 
 Prototypal inheritance, sometimes referred to as prototype-based inheritance or delegation, is a powerful tool in JavaScript. It allows JavaScript functions (in the form of functions, arrays, or most common objects) to pass properties and methods down to other functions using prototypes.
 
@@ -417,7 +417,7 @@ Stack Overflow Discussion
 ---
 
 Lesson: Constructors and Prototypes
-Bind Functions to a Prototype  
+## Bind Functions to a Prototype  
 
 How to use prototypes to pass properties and methods to different functions.
 
@@ -495,7 +495,7 @@ Const.prototype.someMethod = function(){
 ---
 
 Lesson: Classses
-Constructor Function  
+## Constructor Function  
 
 
 1
@@ -689,7 +689,7 @@ Run Code
 ---
 
 Lesson: Modules and Build Tools
-Build System  
+## Build System  
 
 A build system is a set of tools designed to make the workflow of web development easier. Build systems contain tools that can be thought of in two categories: Installers and Task Runners.
 
@@ -712,7 +712,7 @@ Production: The environment you run your code in.
 ---
 
 Lesson: Modules and Build Tools
-Export to Import  
+## Export to Import  
 
 //###### utility.js #######
 export function makeMath(x,y) {
@@ -777,7 +777,7 @@ We simply need to place the utility. in front of any of the function, variables,
 ---
 
 Lesson: ReactJS: Introduction
-Create React App  
+## Create React App  
 
 A library that helps us build React projects.
 Contains all of the tools that will take our React application and translate it into something the browser can understand.
@@ -811,7 +811,7 @@ Components are written in the language of JSX, which is XML syntax combined with
 ---
 
 Lesson: ReactJS: Introduction
-Components  
+## Components  
 
 A component is a chunk of code that is responsible for rendering a specific portion of the UI (user interface).
 
@@ -844,7 +844,7 @@ export default class MainBody extends Component {
 ---
 
 Lesson: ReactJS: Introduction
-Iteration in React  
+## Iteration in React  
 
 A huge part of React stems from the way that it handles data and re-renders the page according to that data.
 
@@ -906,7 +906,7 @@ science.png
 ---
 
 Lesson: ReactJS: Working wth Props and State
-React DOM  
+## React DOM  
 
 React creates a virtual DOM by abstracting the application DOM and maintaining it in memory.
 
@@ -945,7 +945,7 @@ forceUpdate: will cause the component to re-render
 ---
 
 Lesson: ReactJS: Working wth Props and State
-State and Props  
+## State and Props  
 
 Both props and state are plain JS objects
 Both props and state changes trigger a render update
@@ -968,7 +968,7 @@ Stateful Component — A statefull component has both props and state.
 ---
 
 Lesson: ReactJS: Working wth Props and State
-Implementing a Form on a React Component  
+## Implementing a Form on a React Component  
 
 class Form extends React.Component {
   constructor(props){
@@ -1002,7 +1002,7 @@ class Form extends React.Component {
 ---
 
 Lesson: ReactJS: Children Components
-Rendering Children Components in React  
+## Rendering Children Components in React  
 
 Examples  
 
@@ -1066,7 +1066,7 @@ React Components
 ---
 
 Lesson: ReactJS: Children Components
-Pass data via props to children React components  
+## Pass data via props to children React components  
 
 With React, each component should be responsible for a minimal number of elements and minimal functionality. Data management and distribution throughout a project should be handled by multiple components. We should have a lot of "presentational" components that inherit their properties from "container" components. Each should be compartmentalized so that the code can be accessed and reused in the project multiple times if need be.
 
@@ -1249,7 +1249,7 @@ We then insert each mapping using bracket notation with{kids}. That is put into 
 ---
 
 Lesson: ReactJS: Children Components
-Author functions in a React component and bind them to the component  
+## Author functions in a React component and bind them to the component  
 
 In Javascript this functions differently based on the scenario it's used in. In a constructor, you use the new keyword to create a new object. In this case, this always refers to the new object being constructed. We've also talked about the reasons to use strict mode, as otherwise this gets set to the global object window. When a function is defined as a property of an object, it's called a method. In those cases, you can use this to bind properties to their parent component. The confusion arises because unlike regular variables, the this keyword does not have a scope, meaning nested functions do not inherit the this value of their parent function automatically. When you invoke a method inside of another function or component, the this value for the method is set to the object it was invoked upon, not the object it was invoked inside of.
 
@@ -1313,7 +1313,7 @@ GitHub Gist
 ---
 
 Lesson: ReactJS: Children Components
-Passing a Function Via Props  
+## Passing a Function Via Props  
 
 Passing a function via props works exactly the same way the passing any other data via props would work.
 The child component can actually call and fire the function on the parent component.
@@ -1369,7 +1369,7 @@ React Docs
 ---
 
 Lesson: ReactJS: Advanced Techniques
-Fetching JSON  
+## Fetching JSON  
 
 Using fetch to pull outside JSON data into our applications from an existing API.
 
@@ -1452,7 +1452,7 @@ React Component Lifecycles
 ---
 
 Lesson: ReactJS: Advanced Techniques
-Styling Components with React  
+## Styling Components with React  
 
 React's foundation centers around modularizing (creating stand-alone pieces of code) code to keep everything self-contained. React JSX components allow us to write Javascript and HTML in a single file, and takes the same approach when it comes to styling. There are just a few new rules and concepts to abide by:
 
@@ -1502,7 +1502,7 @@ React JSX
 ---
 
 Lesson: ReactJS: Advanced Techniques
-Stateless Components  
+## Stateless Components  
 
 State isn't required in React components. In fact, you can have components that rely only on the props. If you're not changing any data in the component, then there's no need for state - simply use props to pass static data.
 
@@ -1598,7 +1598,7 @@ Dan Abramov
 ---
 
 Lesson: React-Router: Part 1
-React Router and Single Page Applications  
+## React Router and Single Page Applications  
 
 Terminology  
 
@@ -1680,7 +1680,7 @@ BrowserRouter
 ---
 
 Lesson: React-Router: Part 2
-How to Incorporate a Layout Component into Our React App  
+## How to Incorporate a Layout Component into Our React App  
 
 Terminology  
 
@@ -1746,7 +1746,7 @@ registerServiceWorker();
 ---
 
 Lesson: React-Router: Part 2
-Use Exact Path to Render a Specific Route  
+## Use Exact Path to Render a Specific Route  
 
 An index route holds the base components for the application and generally is the place first visited by the user. Frequently, the route that corresponds to the index route is a simple /, this means that in the address bar of the browser, a user will simply see the base URL. For example, if we had a website www.thisisawebsite.com/ the trailing / would indicate that we were on our index route.
 
@@ -1779,7 +1779,7 @@ Exact Path
 ---
 
 Lesson: React-Router: Part 2
-Active Navigation Links with React Router  
+## Active Navigation Links with React Router  
 
 Active links progammatically highlight when the url route of the application also matches the active link target. They are commonly used in application navigation and assist a user in wayfinding.
 
@@ -1824,7 +1824,7 @@ React Training
 ---
 
 Lesson: React-Router: Part 3
-Creating a Dynamic App with A Parent and Child Detail Page  
+## Creating a Dynamic App with A Parent and Child Detail Page  
 
 Terminology  
 
@@ -1886,7 +1886,7 @@ MDN
 ---
 
 Lesson: Redux: Part 1
-Application State  
+## Application State  
 
 Application state does not refer to the state of each component but rather the data that flows through the entire application. The real magic of Redux is how it handles data and manages what actions should be taken when events are triggered.
 
@@ -1908,7 +1908,7 @@ Redux ReadME
 ---
 
 Lesson: Redux: Part 1
-React and Redux Workflow  
+## React and Redux Workflow  
 
 Folder Structure  
 
@@ -1945,7 +1945,7 @@ Redux diagrams GitHub
 ---
 
 Lesson: Redux: Part 1
-Authoring Actions  
+## Authoring Actions  
 
 Examples  
 
@@ -2093,7 +2093,7 @@ Redux
 ---
 
 Lesson: Redux: Part 2
-Authoring a Reducer  
+## Authoring a Reducer  
 
 A reducer works with actions to update application state.
 A reducer is a function that takes in state and an action and returns a new state according to the action.
@@ -2267,7 +2267,7 @@ const reducer = function (state = initialState, action) {
 ---
 
 Lesson: Redux: Part 2
-Using State to Model Events in Redux  
+## Using State to Model Events in Redux  
 
 Planning out your application will help you create the state needed to model your events in Redux.
 It is critical to think what information is necessary for each action.
@@ -2362,7 +2362,7 @@ Redux Docs
 ---
 
 Lesson: Redux: Part 2
-Authoring a reducer to filter data based on a user action  
+## Authoring a reducer to filter data based on a user action  
 
 We use our action creators to pass our action to our reducer via dispatch inside of the store.
 The reducer is a function that manipulates our state according to actions.
@@ -2371,8 +2371,8 @@ The workflow remains the same for all Redux/React applications and follows the c
 
 ---
 
-Lesson: Redux: Part 3
-Handling Asynchronous Actions in Redux  
+[Lesson: Redux: Part 3]
+## Handling Asynchronous Actions in Redux  
 
 In order to make asynchronous actions in Redux, we'll be using Redux-Thunk.
 
@@ -2426,8 +2426,9 @@ The returned function takes two arguments, dispatch and getState.
 
 ---
 
-Lesson: Redux: Part 3
-Authentication in Redux  
+[Lesson: Redux: Part 3]()
+
+## Authentication in Redux  
 
 To demonstrate authentication with Redux, we are going to use an API built for this lesson.
 
