@@ -1,6 +1,4 @@
-Dashboard My Paths My Projects My Homework Rick RM
- ASK AN INSTRUCTOR
-  ⇠ Go BackENCYLOPEDIA
+
 Language Specialization: ReactJS
 1. Single Page Applications  
 2. React for SPAs  
@@ -2354,12 +2352,15 @@ We will need to set the cookie in our login action.
 
 When our app loads we can grab that cookie (if available) and send the auth_token along with a header titled X-AUTH-TOKEN to our server. Then if we access the /dashboard endpoint, it will return the message information related to the user who is logged in.
 
-Lesson: Unit Tests for React
-Testing React applications using Jest  
+---
+
+[Lesson: Unit Tests for React]
+
+# Testing React applications using Jest  
 
 To test React applications, we will use Jest, as it was created by Facebook, the creators of React, to test all JavaScript code, including JSX.
 
-An overview of Jest  
+## An overview of Jest  
 
 Jest uses three functions, describe, test, and expect, to define tests.
 
@@ -2367,15 +2368,15 @@ describe is used to set a context for tests. It can be nested, with multiple des
 
 expect sets up matchers, which allow you test values. Read an introduction to matchers, and then see a list of all matchers.
 
-Unit testing  
+## Unit testing  
 
 Testing JavaScript code that does not touch the DOM or is not a React component is as easy as you'd expect. You can import modules you need and write tests for them.
 
-Snapshot testing  
+## Snapshot testing  
 
 Snapshot testing is a type of testing specifically for UI where your UI is rendered and compared to a reference to make sure it did not change. Jest gives us the ability to write snapshot tests for React components.
 
-Testing Redux  
+## Testing Redux  
 
 Many parts of Redux are easy to test with unit tests, specifically action creators and reducers. Testing stores and asynchronous code is harder, but the Redux documentation covers how to test all parts of Redux with Jest.
 
