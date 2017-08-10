@@ -42,297 +42,212 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 [Single Page Applications](SinglePageApplications.md)
 
-## Single Page Applications  
+# Single Page Applications  
 
 At this point, you've learned the basics of front-end development. You've also learned to create multi-page websites combining HTML content, CSS styling, and JavaScript functionality. Multi-page websites make up the majority of websites visited, but there is a growing trend that favors single-page applications over the traditional multi-page applications. This lesson will define and explore the benefits of SPAs, or single-page applications.
 
-Terminology  
+## Terminology  
 
-Single-page application: Web application that loads a single HTML page and dynamically updates the page as the user interacts with the app.
-Multi-page application: A more traditional web applciation where each request made renders a new page in the browser.
-Examples  
+* Single-page application: Web application that loads a single HTML page and dynamically updates the page as the user interacts with the app.
+
+* Multi-page application: A more traditional web applciation where each request made renders a new page in the browser.
+
+## Examples  
 
 SPAs
 
-Facebook
-Gmail
+* Facebook
+
+* Gmail
+
 MPAs
 
-Reddit
-References  
+* Reddit
 
-Single-page application vs. multiple-page application
-Stack Overflow
+## References  
+
+* [Single-page application vs. multiple-page application](https://medium.com/@NeotericEU/single-page-application-vs-multiple-page-application-2591588efe58)
+
+* [Stack Overflow](https://stackoverflow.com/questions/21862054/single-page-application-advantages-and-disadvantages)
 
 ---
 
 [Single Page Applications](SinglePageApplications.md)
-## React for SPAs  
+# React for SPAs  
 
 React is a JavaScript library that allows the view to change when data changes. Only the necessary number of components are updated and rendered when data changes. Components are encapsulated and only care about their own state. Multiple components can be composed into more complex UIs.
 
 What that does this mean? If we are authoring a messaging app, we would want a message to be rendered every time a new message hits the database. Most of the UI components don't need to be refreshed every time a message is added. React makes sure only the component with new data is refreshed, leaving the rest of the components as they are.
 
-Terminology  
+## Terminology  
 
-React React is not really a framework, but a library for creating user interfaces. Unlike frameworks that rely on the MVC pattern in order to separate the view from the code, React focuses primarily on the concerns of the view using components.
+* **React**: React is not really a framework, but a library for creating user interfaces. Unlike frameworks that rely on the MVC pattern in order to separate the view from the code, React focuses primarily on the concerns of the view using components.
 
-Component: Components let you divide the UI into smaller, reusable elements. These components are used to display data as it changes over time.
+* **Component**: Components let you divide the UI into smaller, reusable elements. These components are used to display data as it changes over time.
 
-Virtual DOM: React represents every DOM object with a corresponding virtual DOM object. A virtual DOM object is a representation of a DOM object, like a lightweight copy.
+* **Virtual DOM**: React represents every DOM object with a corresponding virtual DOM object. A virtual DOM object is a representation of a DOM object, like a lightweight copy.
 
-References  
+## References  
 
-Thinking in React
+[Thinking in React](https://facebook.github.io/react/docs/thinking-in-react.html)
 
 ---
 
 Lesson: Constructors and Prototypes
-## Constructors  
+# Constructors  
 
-Terminology  
+##Terminology  
 
 Constructor: method used to create and initialize an object created with a class. It accepts any number of arguments.
 
-Capitalized to distinguish from regular functions.
+* Capitalized to distinguish from regular functions.
+
 new operator: keyword used to create an instance of a built-in object type or a custom user-defined object.
 
 Object.prototype.constructor: returns reference to the constructor function by sharing a property with all objects created by the function.
 
 Prototype chain: inheritance chain that starts from the instantiated object and moves all the way up to the Object.prototype.
 
-Creating And Instantiating  
+## Creating And Instantiating  
 
-Creating and object  
+### Creating and object  
 
-Example
+#### Example
 
+```js
 function Vehicle (engine,doors,tires) {
   this.engine = engine;
   this.doors = doors;
   this.tires = tires;
 }
-Creating an instance  
+```
 
-Example
+### Creating an instance  
 
+#### Example
+
+```js
 var mustang = new Vehicle ("v-8", 2, 4);
+```
 
-1
-function Vehicle (engine, doors, tires) {
-2
-  this.engine = engine;
-3
-  this.doors = doors;
-4
-  this.tires = tires;
-5
-}
+```js
+1 function Vehicle (engine, doors, tires) {
+2   this.engine = engine;
+3   this.doors = doors;
+4   this.tires = tires;
+5 }
 6
-​
-7
-var mustang = new Vehicle ("v-8", 2, 4);
-8
-console.log(mustang);
+7 var mustang = new Vehicle ("v-8", 2, 4);
+8 console.log(mustang);
 9
-​
-10
-// Practice makes perfect. Create a car of your choice by creating an instance of 'Vehicle' and passing the proper arguments.
-
-Fullscreen
-
-Reset Code
-Run Code 
-Forgetting to use new will change the scope from the object to the window. Therefore this will not operate as intended!
+10 // Practice makes perfect. Create a car of your choice by creating an instance of 'Vehicle' and passing the proper arguments.
+```
+ 
+> Forgetting to use new will change the scope from the object to the window. Therefore this will not operate as intended!
 Adding Methods And Using Prototypes  
 
-Adding Methods  
+### Adding Methods  
 
-Example
+#### Example
 
 Ensure that all objects have access to a method by attaching it to a prototype. In this example we create a method what will sound the car's engine.
 
-
-1
-function Vehicle (make, model, engine, doors, tires, sound) {
-2
-  this.make = make;
-3
-  this.model = model;
-4
-  this.engine = engine;
-5
-  this.sound = "vroom!";
-6
-  this.doors = doors;
-7
-  this.tires = tires;
-8
-}
-9
-  // Add a method
-10
-function engineSound(){
-11
-    return "The" + " " + this.make + " " + this.model + "'s " + this.engine + " " + "goes" + " " +  this.sound;
-12
-}
-13
-// Attach the method to the constructor
-14
-Vehicle.prototype.engineSound = engineSound;
+```js
+1 function Vehicle (make, model, engine, doors, tires, sound) {
+2   this.make = make;
+3   this.model = model;
+4   this.engine = engine;
+5   this.sound = "vroom!";
+6   this.doors = doors;
+7   this.tires = tires;
+8 }
+9   // Add a method
+10 function engineSound(){
+11     return "The" + " " + this.make + " " + this.model + "'s " + this.engine + " " + "goes" + " " +  this.sound;
+12 }
+13 // Attach the method to the constructor
+14 Vehicle.prototype.engineSound = engineSound;
 15
-​
-16
-// Create an instance
-17
-var mustang = new Vehicle ("Ford", "Mustang","v-8", 2, 4);
-18
-// Call the 'sound' method
-19
-console.log(mustang.engineSound());
+16 // Create an instance
+17 var mustang = new Vehicle ("Ford", "Mustang","v-8", 2, 4);
+18 // Call the 'sound' method
+19 console.log(mustang.engineSound());
+```
 
-Fullscreen
+### Using Prototypes  
 
-Reset Code
-Run Code 
-Using Prototypes  
-
-Example
+#### Example
 
 In this example we use prototype to change the sound the car makes by overriding the constructor sound property.
 
-
-1
-function Vehicle (make, model, engine, doors, tires, sound) {
-2
-  this.make = make;
-3
-  this.model = model;
-4
-  this.engine = engine;
-5
-  this.sound = "vroom!";
-6
-  this.doors = doors;
-7
-  this.tires = tires;
-8
-}
-9
-  // Add a method
-10
-function engineSound(){
-11
-    return "The" + " " + this.make + " " + this.model + "'s " + this.engine + " " + "goes" + " " +  this.sound;
-12
-}
-13
-// Attach the method to the constructor
-14
-Vehicle.prototype.engineSound = engineSound;
+```js
+1 function Vehicle (make, model, engine, doors, tires, sound) {
+2   this.make = make;
+3   this.model = model;
+4   this.engine = engine;
+5   this.sound = "vroom!";
+6   this.doors = doors;
+7   this.tires = tires;
+8 }
+9   // Add a method
+10 function engineSound(){
+11     return "The" + " " + this.make + " " + this.model + "'s " + this.engine + " " + "goes" + " " +  this.sound;
+12 }
+13 // Attach the method to the constructor
+14 Vehicle.prototype.engineSound = engineSound;
 15
-​
-16
-// Change the sound the car makes.
-17
-Vehicle.prototype.changeSound = function(sound) {
-18
-    this.sound = sound;
-19
-}
-20
-// Create an instance
-21
-mustang = new Vehicle ("Ford", "Mustang","v-8", 2, 4);
+16 // Change the sound the car makes.
+17 Vehicle.prototype.changeSound = function(sound) {
+18     this.sound = sound;
+19 }
+20 // Create an instance
+21 mustang = new Vehicle ("Ford", "Mustang","v-8", 2, 4);
 22
-​
-23
-// Change the sound to "vroom vroom!"
-24
-mustang.changeSound("vroom vrooom!");
-25
-console.log(mustang.engineSound());
+23 // Change the sound to "vroom vroom!"
+24 mustang.changeSound("vroom vrooom!");
+25 console.log(mustang.engineSound());
+```
 
-Fullscreen
+### Creating new objects and prototype inheritance  
 
-Reset Code
-Run Code 
-Creating new objects and prototype inheritance  
-
-
-1
-function Person(name){
-2
-    this.name = name
-3
-}
-4
-​
-5
-Person.prototype = {
-6
-    walk: function(){
-7
-      return this.name+' is walking like its hot'
-8
-    }
-9
-}
+```js
+ 1 function Person(name){
+ 2     this.name = name
+ 3 }
+ 4
+ 5 Person.prototype = {
+ 6     walk: function(){
+ 7       return this.name+' is walking like its hot'
+ 8     }
+ 9 }
 10
-​
-11
-function Student(name, test){
-12
-    Person.call(this, name);
-13
-    this.test = test
-14
-}
-15
-// make Student's prototype a Person instance
-16
-Student.prototype = new Person()
+11 function Student(name, test){
+12     Person.call(this, name);
+13     this.test = test
+14 }
+15 // make Student's prototype a Person instance
+16 Student.prototype = new Person()
 17
-​
-18
-// then add on methods specifically to that Person instance
-19
-Student.prototype.takeTest = function(){ return this.name+' just aced: '+this.test }
+18 // then add on methods specifically to that Person instance
+19 Student.prototype.takeTest = function(){ return this.name+' just aced: '+this.test }
 20
-​
-21
-// "Joe" is a student which inherits all properties from "Person" and "Student".
-22
-var joe = new Student("Joe", "Testing inheritance");
+21 // "Joe" is a student which inherits all properties from "Person" and "Student".
+22 var joe = new Student("Joe", "Testing inheritance");
 23
-​
-24
-// Joe has his own method.
-25
-console.log("Joe", joe);
+24 // Joe has his own method.
+25 console.log("Joe", joe);
 26
-​
-27
-// Joe has access to Person's method
-28
-console.log("Joe walks:", joe.walk());
-29
-// Jane only inherits from "Person"
+27 // Joe has access to Person's method
+28 console.log("Joe walks:", joe.walk());
+29 // Jane only inherits from "Person"
 30
-​
-31
-var jane = new Person("Jane");
-
-Fullscreen
-
-Reset Code
-Run Code 
+31 var jane = new Person("Jane");
+```
 
 ---
 
 Lesson: Constructors and Prototypes
-## Prototypal Inheritance  
+# Prototypal Inheritance  
 
 Prototypal inheritance, sometimes referred to as prototype-based inheritance or delegation, is a powerful tool in JavaScript. It allows JavaScript functions (in the form of functions, arrays, or most common objects) to pass properties and methods down to other functions using prototypes.
 
