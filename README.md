@@ -129,4 +129,4 @@ Lecture notes from The Iron Yard
 
 * [Unit Tests for React](https://github.com/rickmurdock/notes/blob/master/ReactJS/UnitTestsForReact.md)
 
-* Language Specialization: ReactJS Encyclopedia
+* [Language Specialization: ReactJS Encyclopedia](./ReactJS/ReactJSEncyclopedia.md)
