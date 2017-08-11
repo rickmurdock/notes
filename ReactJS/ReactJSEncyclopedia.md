@@ -96,7 +96,7 @@ What that does this mean? If we are authoring a messaging app, we would want a m
 Lesson: Constructors and Prototypes
 # Constructors  
 
-##Terminology  
+## Terminology  
 
 Constructor: method used to create and initialize an object created with a class. It accepts any number of arguments.
 
@@ -131,15 +131,15 @@ var mustang = new Vehicle ("v-8", 2, 4);
 ```
 
 ```js
-1 function Vehicle (engine, doors, tires) {
-2   this.engine = engine;
-3   this.doors = doors;
-4   this.tires = tires;
-5 }
-6
-7 var mustang = new Vehicle ("v-8", 2, 4);
-8 console.log(mustang);
-9
+ 1 function Vehicle (engine, doors, tires) {
+ 2   this.engine = engine;
+ 3   this.doors = doors;
+ 4   this.tires = tires;
+ 5 }
+ 6
+ 7 var mustang = new Vehicle ("v-8", 2, 4);
+ 8 console.log(mustang);
+ 9
 10 // Practice makes perfect. Create a car of your choice by creating an instance of 'Vehicle' and passing the proper arguments.
 ```
  
@@ -153,15 +153,15 @@ Adding Methods And Using Prototypes
 Ensure that all objects have access to a method by attaching it to a prototype. In this example we create a method what will sound the car's engine.
 
 ```js
-1 function Vehicle (make, model, engine, doors, tires, sound) {
-2   this.make = make;
-3   this.model = model;
-4   this.engine = engine;
-5   this.sound = "vroom!";
-6   this.doors = doors;
-7   this.tires = tires;
-8 }
-9   // Add a method
+ 1 function Vehicle (make, model, engine, doors, tires, sound) {
+ 2   this.make = make;
+ 3   this.model = model;
+ 4   this.engine = engine;
+ 5   this.sound = "vroom!";
+ 6   this.doors = doors;
+ 7   this.tires = tires;
+ 8 }
+ 9   // Add a method
 10 function engineSound(){
 11     return "The" + " " + this.make + " " + this.model + "'s " + this.engine + " " + "goes" + " " +  this.sound;
 12 }
@@ -181,15 +181,15 @@ Ensure that all objects have access to a method by attaching it to a prototype. 
 In this example we use prototype to change the sound the car makes by overriding the constructor sound property.
 
 ```js
-1 function Vehicle (make, model, engine, doors, tires, sound) {
-2   this.make = make;
-3   this.model = model;
-4   this.engine = engine;
-5   this.sound = "vroom!";
-6   this.doors = doors;
-7   this.tires = tires;
-8 }
-9   // Add a method
+ 1 function Vehicle (make, model, engine, doors, tires, sound) {
+ 2   this.make = make;
+ 3   this.model = model;
+ 4   this.engine = engine;
+ 5   this.sound = "vroom!";
+ 6   this.doors = doors;
+ 7   this.tires = tires;
+ 8 }
+ 9   // Add a method
 10 function engineSound(){
 11     return "The" + " " + this.make + " " + this.model + "'s " + this.engine + " " + "goes" + " " +  this.sound;
 12 }
@@ -251,105 +251,80 @@ Lesson: Constructors and Prototypes
 
 Prototypal inheritance, sometimes referred to as prototype-based inheritance or delegation, is a powerful tool in JavaScript. It allows JavaScript functions (in the form of functions, arrays, or most common objects) to pass properties and methods down to other functions using prototypes.
 
-Examples  
+## Examples  
 
 Inheritance in Action
 
-
-1
-function Fruit() {
-2
-  this.sweet = true;
-3
-  this.hasSeeds = true;
-4
-}
-5
-​
-6
-function Apple() {
-7
-  this.texture = 'crunchy';
-8
-}
-9
-​
-10
-function Pear() {
-11
-  this.texture = 'weirdly crunchy and soft simultaneously';
-12
-}
+```js
+ 1 function Fruit() {
+ 2   this.sweet = true;
+ 3   this.hasSeeds = true;
+ 4 }
+ 5
+ 6 function Apple() {
+ 7   this.texture = 'crunchy';
+ 8 }
+ 9
+10 function Pear() {
+11   this.texture = 'weirdly crunchy and soft simultaneously';
+12 }
 13
-​
-14
-function Grape() {
-15
-  this.hasSeeds = false;
-16
-}
+14 function Grape() {
+15   this.hasSeeds = false;
+16 }
 17
-​
-18
-Apple.prototype = new Fruit();
+18 Apple.prototype = new Fruit();
 19
-​
-20
-console.log('Apple.prototype:', Apple.prototype);
+20 console.log('Apple.prototype:', Apple.prototype);
 21
-​
-22
-console.log(Apple.prototype.valueOf());
+22 console.log(Apple.prototype.valueOf());
 23
-​
-24
-const apple = new Apple();
-25
-const pear = new Pear();
-26
-const grape = new Grape();
+24 const apple = new Apple();
+25 const pear = new Pear();
+26 const grape = new Grape();
 27
-​
-28
-console.log('apple.texture:', apple.texture);
-29
-console.log('pear.texture:', pear.texture);
-30
-console.log('grape.hasSeeds:', grape.hasSeeds);
-31
-console.log('apple.sweet', apple.sweet);
+28 console.log('apple.texture:', apple.texture);
+29 console.log('pear.texture:', pear.texture);
+30 console.log('grape.hasSeeds:', grape.hasSeeds);
+31 console.log('apple.sweet', apple.sweet);
+```
 
-Fullscreen
+## References  
 
-Reset Code
-Run Code 
-References  
+* [Object Playground](http://www.objectplayground.com/)
 
-Object Playground
-Crockford's JavaScript
-Stack Overflow Discussion
+* [Crockford's JavaScript](http://javascript.crockford.com/prototypal.html)
+
+* [Stack Overflow Discussion](https://stackoverflow.com/questions/4166616/understanding-the-difference-between-object-create-and-new-somefunction)
 
 ---
 
 Lesson: Constructors and Prototypes
-## Bind Functions to a Prototype  
+# Bind Functions to a Prototype  
 
 How to use prototypes to pass properties and methods to different functions.
 
-Examples  
+## Examples  
 
 Define a function
 
+```js
 function addTwo(number){
   return number + 2;
 }
+```
+
 A function declaration without a name is called a function expression.
 
+```js
 function(param) {
   return param;
 }
-A function on an object is referred to as a method.
+```
 
+A function on an object is referred to as a *method*.
+
+```js
   let thing = {
     one: function(){
       return makeMischief;
@@ -358,8 +333,11 @@ A function on an object is referred to as a method.
       return makeMoreMischief;
     }
   }
+```
+
 Properties on objects can be passed using prototypal inheritance:
 
+```js
 function Fruit() {
   this.sweet = true;
   this.hasSeeds = true;
@@ -373,8 +351,11 @@ Apple.prototype = new Fruit();
 
 console.log('Apple.prototype:', Apple.prototype);
 // output => 'Apple.prototype: Fruit {sweet: true}'
+```
+
 Here's an example of passing a function as a method on the prototype of an object:
 
+```js
 Fruit.prototype.biteMe = function(){
     console.log("once bitten, twice shy")
 }
@@ -382,11 +363,13 @@ Fruit.prototype.biteMe = function(){
 let pear = new Fruit();
 
 console.log(pear.biteMe()); //logs "once bitten, twice shy"
+```
 
-How this works in binding Methods  
+### How `this` works in binding Methods  
 
-Add a method to a constructor with this:
+Add a method to a constructor with `this`:
 
+```js
 function Const(par1, par2){
   this.par1 = par1;
   this.par2 = par2;
@@ -394,10 +377,13 @@ function Const(par1, par2){
     return this.par1 + " " + this.par2;
   };
 }
-Prototypes  
+```
+
+### Prototypes  
 
 If you apply the method to the object's prototype, it is only stored in the memory once, and all instances of that object will have access to that method.
 
+```js
 function Const(par1, par2){
   this.par1 = par1;
   this.par2 = par2;
@@ -406,219 +392,129 @@ function Const(par1, par2){
 Const.prototype.someMethod = function(){
   return this.par1 + " " + this.par2;
 };
+```
 
 ---
 
 Lesson: Classses
 ## Constructor Function  
 
-
-1
-function Fruit() {
-2
-  this.sweet = true;
-3
-  this.hasSeeds = true;
-4
-}
-5
-​
-6
-function Apple() {
-7
-​
-8
-}
-9
-​
-10
-Apple.prototype = new Fruit();
+```js
+ 1 function Fruit() {
+ 2   this.sweet = true;
+ 3   this.hasSeeds = true;
+ 4 }
+ 5
+ 6 function Apple() {
+ 7
+ 8 }
+ 9
+10 Apple.prototype = new Fruit();
 11
-​
-12
-let apple = new Apple();
+12 let apple = new Apple();
 13
-​
-14
-console.log(apple.sweet);
+14 console.log(apple.sweet);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-ES2015 Classes  
+## ES2015 Classes  
 
 Classes are syntactic sugar for JavaScript constructors. They provide a means to create objects and deal with inheritance. Classes are special functions that can be expressions or declarations as with any function.
 
+```js
+ 1 class Fruit {
+ 2   constructor(sweet, texture) {
+ 3     this.sweet = sweet;
+ 4     this.texture = texture;
+ 5   }
+ 6 }
+ 7
+ 8 let apple = new Fruit(true, 'crunchy');
+ 9 console.log(apple.sweet);
+10console.log(apple.texture);
+```
 
-1
-class Fruit {
-2
-  constructor(sweet, texture) {
-3
-    this.sweet = sweet;
-4
-    this.texture = texture;
-5
-  }
-6
-}
-7
-​
-8
-let apple = new Fruit(true, 'crunchy');
-9
-console.log(apple.sweet);
-10
-console.log(apple.texture);
+## Sub-Classes  
 
-Fullscreen
-
-Reset Code
-Run Code 
-Sub-Classes  
-
-
-1
-//Let's create a class called Primate
-2
-class Primate {
-3
-  constructor() {
-4
-    this.isMammal = true;
-5
-    this.isSmart = true;
-6
-    this.opposableThumbs = true;
-7
-  }
-8
-}
-9
-​
-10
-//Now let's create a SUB-CLASS called Monkey using the extends and super keywords
-11
-class Monkey extends Primate {
-12
-  constructor(name, color, isMammal, isSmart, opposableThumbs) {
-13
-    super({isMammal, isSmart, opposableThumbs});
-14
-    this.name = name;
-15
-    this.color = color;
-16
-  }
-17
-}
+```js
+ 1 //Let's create a class called Primate
+ 2 class Primate {
+ 3   constructor() {
+ 4     this.isMammal = true;
+ 5     this.isSmart = true;
+ 6     this.opposableThumbs = true;
+ 7   }
+ 8 }
+ 9
+10 //Now let's create a SUB-CLASS called Monkey using the extends and super keywords
+11 class Monkey extends Primate {
+12   constructor(name, color, isMammal, isSmart, opposableThumbs) {
+13     super({isMammal, isSmart, opposableThumbs});
+14     this.name = name;
+15     this.color = color;
+16   }
+17 }
 18
-​
-19
-//Now let's create an instance of Monkey
-20
-let spiderMonkey = new Monkey("Spider Monkey", "black and brown");
+19 //Now let's create an instance of Monkey
+20 let spiderMonkey = new Monkey("Spider Monkey", "black and brown");
 21
-​
-22
-//We've given the Monkey constructor some key value pair information
-23
-//Let's see if spiderMonkey inherited from the Primate constructor by using "super"
+22 //We've given the Monkey constructor some key value pair information
+23 //Let's see if spiderMonkey inherited from the Primate constructor by using "super"
 24
-​
-25
-console.log(spiderMonkey.isMammal);
+25 console.log(spiderMonkey.isMammal);
+```
+ 
+### Static Methods  
 
-Fullscreen
-
-Reset Code
-Run Code 
-Static Methods  
-
-
-1
-class Chameleon {
-2
- static colorChange(newColor) {
-3
-   this.newColor = newColor;
-4
- } //Let's set a default of green to the constructor
-5
- constructor({ newColor = 'green'} = {}) {
-6
-   this.newColor = newColor;
-7
- }
-8
-}
-9
-​
-10
-let pantherChameleon = new Chameleon({newColor: "purple"});
+```js
+ 1 class Chameleon {
+ 2  static colorChange(newColor) {
+ 3    this.newColor = newColor;
+ 4  } //Let's set a default of green to the constructor
+ 5  constructor({ newColor = 'green'} = {}) {
+ 6    this.newColor = newColor;
+ 7  }
+ 8 }
+ 9
+10 let pantherChameleon = new Chameleon({newColor: "purple"});
 11
-​
+12 console.log(pantherChameleon.newColor);
+```
+
+```js
+ 1 class Chameleon {
+ 2  static colorChange(newColor) {
+ 3    this.newColor = newColor;
+ 4 } //Let's set a default of green to the constructor
+ 5  constructor({ newColor = 'green'} = {}) {
+ 6    this.newColor = newColor;
+ 7  }
+ 8 }
+ 9
+10 let pantherChameleon = new Chameleon({newColor: "purple"});
+11 //Try calling the function colorChange from pantherChameleon.
 12
-console.log(pantherChameleon.newColor);
-
-Fullscreen
-
-Reset Code
-Run Code 
-
-1
-class Chameleon {
-2
- static colorChange(newColor) {
-3
-   this.newColor = newColor;
-4
- } //Let's set a default of green to the constructor
-5
- constructor({ newColor = 'green'} = {}) {
-6
-   this.newColor = newColor;
-7
- }
-8
-}
-9
-​
-10
-let pantherChameleon = new Chameleon({newColor: "purple"});
-11
-//Try calling the function colorChange from pantherChameleon.
-12
-​
-13
-pantherChameleon.colorChange("orange");
-14
-console.log(pantherChameleon.newColor);
-
-Fullscreen
-
-Reset Code
-Run Code 
+13 pantherChameleon.colorChange("orange");
+14 console.log(pantherChameleon.newColor);
+``` 
 
 ---
 
 Lesson: Modules and Build Tools
-## Build System  
+# Build System  
 
 A build system is a set of tools designed to make the workflow of web development easier. Build systems contain tools that can be thought of in two categories: Installers and Task Runners.
 
-Installers  
+### Installers  
 
 Installers do what you might expect and install things. You've been using installers for some time now. npm (Node Package Manager) is a tool we employ in our bash terminal commands to install front-end libraries and dependencies - such as React.js, React Router, or Sass. npm can also help us install servers to run our development environment on (npm start) so we can see our project as we work on them. npm can even help us install other installation tools.
 
 Other installers include Bower, Yeoman, and Brew.
 
-Task Runners  
+### Task Runners  
 
 These additions perform tasks for us and use their own special packages and plugins to complete the task. Tools such as Babel, webpack, Require.js, Browserify, Gulp, etc. are all considered task runners.
 
-Development vs. Production  
+## Development vs. Production  
 
 Development: The environment you develop your code in.
 
@@ -629,6 +525,7 @@ Production: The environment you run your code in.
 Lesson: Modules and Build Tools
 ## Export to Import  
 
+```js
 //###### utility.js #######
 export function makeMath(x,y) {
   return ( x * y );
@@ -641,8 +538,11 @@ import makeMath from './utility.js';
 
 console.log(makeMath(2,3));
 //output => 6
-Import One or More  
+```
 
+## Import One or More  
+
+```js
 //###### utility.js #######
 export function makeMath(x,y) {
   return ( x * y );
@@ -662,8 +562,11 @@ console.log(makeMath(2,3));
 
 console.log(makeFood("salami", "gruyere"));
 //output = > "You've got a salami sandwich with gruyere cheese"
-Import All  
+```
 
+## Import All  
+
+```js
 //###### utility.js #######
 export function makeMath(x,y) {
   return ( x * y );
@@ -683,6 +586,8 @@ console.log(utility.makeMath(2,3));
 
 console.log(utility.makeFood("roast beef", "cheddar"));
 //output = > "You've got a roast beef sandwich with cheddar cheese"
+```
+
 Above, you can see that we used the * operator and coupled it with a new keyword as to allow us access to all files being exported from our './utility.js' file.
 
 It's essentially saying "I want to take everything from this file and name it as utility to access later on".
