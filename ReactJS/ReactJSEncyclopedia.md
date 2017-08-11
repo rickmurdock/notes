@@ -1246,15 +1246,19 @@ handleTopping = (e) => {
 ---
 
 Lesson: ReactJS: Children Components
-## Passing a Function Via Props  
+# Passing a Function Via Props  
 
-Passing a function via props works exactly the same way the passing any other data via props would work.
-The child component can actually call and fire the function on the parent component.
-Using this method allows state to reside in the parent component and not be spread into more components than necessary.
-Examples  
+* Passing a function via props works exactly the same way the passing any other data via props would work.
+
+* The child component can actually call and fire the function on the parent component.
+
+* Using this method allows state to reside in the parent component and not be spread into more components than necessary.
+
+## Examples  
 
 Parent component ("container" component)
 
+```jsx
 //An array of colors for us to randomly sort through and apply to the background color
 let colors = ["blue", "green", "red", "yellow", "orange", "purple", "pink", "tomato"];
 
@@ -1279,8 +1283,11 @@ export default class App extends Component {
     );
   }
 }
+```
+
 Child component ("presentational" component)
 
+```jsx
 class ColorMaker extends Component {
   constructor(props) {
     super(props);
@@ -1293,29 +1300,37 @@ class ColorMaker extends Component {
     )
   }
 }
-Within <ColorMaker />, this.props.changeColor refers to the changeColor method in the <App /> component.
+Within `<ColorMaker />`, `this.props.changeColor` refers to the `changeColor` method in the `<App />` component.
+```
 
-References  
+## References  
 
-React Docs
+* [React Docs](https://facebook.github.io/react/docs/state-and-lifecycle.html)
 
 ---
 
 Lesson: ReactJS: Advanced Techniques
-## Fetching JSON  
+# Fetching JSON  
 
-Using fetch to pull outside JSON data into our applications from an existing API.
+Using `fetch` to pull outside JSON data into our applications from an existing API.
 
-We can use the fetch method in React in order to make a network request.
-We use then to manage our promises and make sure our network request is completed.
-We can use catch to listen for error messages from the network.
-We can store our data in state, using setState inside of our promises.
-componentDidMount is the ideal method in which to make network requests.
-state can be passed down as props to children components.
-Examples  
+* We can use the fetch method in React in order to make a network request.
 
-The App component ("container" component) performs the fetch and passes data down to CharacterList ("presentation" component) via state. CharacterList has access to the data via this.props.people.
+* We use then to manage our promises and make sure our network request is completed.
 
+* We can use catch to listen for error messages from the network.
+
+* We can store our data in state, using setState inside of our promises.
+
+* componentDidMount is the ideal method in which to make network requests.
+
+* state can be passed down as props to children components.
+
+## Examples  
+
+The `App` component ("container" component) performs the `fetch` and passes data down to `CharacterList` ("presentation" component) via `state`. `CharacterList` has access to the data via `this.props.people`.
+
+```jsx
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -1344,6 +1359,9 @@ export default class App extends Component {
     );
   }
 }
+```
+
+```jsx
 class CharacterList extends Component {
   constructor(props) {
     super(props);
@@ -1374,29 +1392,40 @@ class CharacterList extends Component {
     )
   }
 }
-References  
+```
 
-MDN Then Promises
-MDN Body.json()
-MDN Using Fetch
-StarWars API : SWAPI
-React Component Lifecycles
+## References  
+
+* [MDN Then Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+
+* [MDN Body.json()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/then)
+
+* [MDN Using Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+
+* [StarWars API : SWAPI](https://swapi.co/)
+
+* [React Component Lifecycles](https://facebook.github.io/react/docs/react-component.html#componentwillreceiveprops)
 
 ---
 
 Lesson: ReactJS: Advanced Techniques
-## Styling Components with React  
+# Styling Components with React  
 
 React's foundation centers around modularizing (creating stand-alone pieces of code) code to keep everything self-contained. React JSX components allow us to write Javascript and HTML in a single file, and takes the same approach when it comes to styling. There are just a few new rules and concepts to abide by:
 
-It's common practice in React to create self-contained components.
-Styling can take place by using the className attribute and creating a stylesheet to transform our component.
-We can also style directly inline with React using a few approaches.
-Multiword style properties should obey the camelCase (backgroundColor) naming convention. Exceptions are the data- and aria- properties, which remain separated by a dash.
-Examples  
+* It's common practice in React to create self-contained components.
 
-In HTML, as in JSX, we have the ability to designate a class (HTML) or classNames (JSX). Inside of the render method before the return statement we can assign styling to a variable and pass that variable to elements inside of the component. Adding a style attribute to the element allows us to pass a variable in as the value using {} brackets: style={yourVariableHere}. This method is a great choice when dealing with a lot of styles or a larger component.
+* Styling can take place by using the `className` attribute and creating a stylesheet to transform our component.
 
+* We can also style directly inline with React using a few approaches.
+
+* Multiword style properties should obey the camelCase (`backgroundColor`) naming convention. Exceptions are the `data-` and `aria-` properties, which remain separated by a dash.
+
+## Examples  
+
+In HTML, as in JSX, we have the ability to designate a class (HTML) or classNames (JSX). Inside of the `render` method before the `return` statement we can assign styling to a variable and pass that variable to elements inside of the component. Adding a `style` attribute to the element allows us to pass a variable in as the value using `{}` brackets: `style={yourVariableHere}`. This method is a great choice when dealing with a lot of styles or a larger component.
+
+```jsx
 class App extends Component {
   constructor(){
     super();
@@ -1426,28 +1455,36 @@ class App extends Component {
     )
   }
 }
+```
+
 References  
 
-Kirupa.com
-React Docs
-React JSX
+* [Kirupa.com](https://www.kirupa.com/react/styling_in_react.htm)
+
+* [React Docs](https://facebook.github.io/react/docs/dom-elements.html)
+
+* [React JSX](https://facebook.github.io/react/docs/jsx-in-depth.html)
 
 ---
 
 Lesson: ReactJS: Advanced Techniques
-## Stateless Components  
+# Stateless Components  
 
 State isn't required in React components. In fact, you can have components that rely only on the props. If you're not changing any data in the component, then there's no need for state - simply use props to pass static data.
 
-Terminology  
+## Terminology  
 
-Stateless Component — Only props, no state. There's not much going on besides the render() function whose logic revolves around the props they receive. This makes them very easy to follow and test.We sometimes call these presentational components.
-Stateless Functional Component - If your component only has a render method, you can write it as a stateless functional component, and your function will be passed props as its first argument
-Stateful Component — Both props and state. We also call these state managers. They are in charge of client-server communication, processing data, and responding to user events. We sometimes call these container components.
-Examples  
+* **Stateless Component** — Only props, no state. There's not much going on besides the render() function whose logic revolves around the props they receive. This makes them very easy to follow and test.We sometimes call these **presentational components**.
 
-Stateless Component  
+* **Stateless Functional Component** - If your component only has a render method, you can write it as a stateless functional component, and your function will be passed `props` as its first argument
 
+* **Stateful Component** — Both props and state. We also call these state managers. They are in charge of client-server communication, processing data, and responding to user events. We sometimes call these **container** components.
+
+## Examples  
+
+### Stateless Component  
+
+```jsx
 class List extends Component {
   render() {
   return (
@@ -1466,8 +1503,11 @@ class List extends Component {
     );
   }
 }
-Stateless Functional Component  
+```
 
+### Stateless Functional Component  
+
+```jsx
 const List = ({movies}) => {
   return (
     <div>
@@ -1485,8 +1525,11 @@ const List = ({movies}) => {
     );
   }
 }
-Stateful Component  
+```
 
+### Stateful Component  
+
+```jsx
 export default class List extends Component {
   constructor(props){
     super(props);
@@ -1522,11 +1565,15 @@ export default class List extends Component {
     );
   }
 }
-References  
+```
 
-JSPlayground
-Todd Motto
-Dan Abramov
+## References  
+
+* [JSPlayground](https://javascriptplayground.com/blog/2017/03/functional-stateless-components-react/)
+
+* [Todd Motto](https://toddmotto.com/stateful-stateless-components)
+
+* [Dan Abramov](https://medium.com/@dan_abramov/react-components-elements-and-instances-90800811f8ca)
 
 ---
 
