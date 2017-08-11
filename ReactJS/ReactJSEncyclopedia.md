@@ -430,7 +430,7 @@ Classes are syntactic sugar for JavaScript constructors. They provide a means to
  7
  8 let apple = new Fruit(true, 'crunchy');
  9 console.log(apple.sweet);
-10console.log(apple.texture);
+10 console.log(apple.texture);
 ```
 
 ## Sub-Classes  
@@ -599,32 +599,49 @@ We simply need to place the utility. in front of any of the function, variables,
 Lesson: ReactJS: Introduction
 ## Create React App  
 
-A library that helps us build React projects.
-Contains all of the tools that will take our React application and translate it into something the browser can understand.
-Provides us with a development server (A local server that hosts a web application in development on a set port and watches for changes made to the code base, refreshing in the browser.).
-Libraries included  
+* A library that helps us build React projects.
 
-Create React App includes Webpack for module bundling. Webpack takes modules with dependencies and emits static assets representing those modules.
-Babel is the library that Create React App includes to compile ES2015 and later JavaScript into a browser-ready version of JavaScript.
-Autoprefixer is included to parse CSS and add vendor prefixes to rules.
-ESLint is included as a JavaScript linting utility.
-Jest is included as a JavaScript testing solution.
-Installing  
+* Contains all of the tools that will take our React application and translate it into something the browser can understand.
 
+* Provides us with a development server (A local server that hosts a web application in development on a set port and watches for changes made to the code base, refreshing in the browser.).
+
+### Libraries included  
+
+* **Create React App** includes Webpack for module bundling. Webpack takes modules with dependencies and emits static assets representing those modules.
+
+* Babel is the library that **Create React App** includes to compile ES2015 and later JavaScript into a browser-ready version of JavaScript.
+
+* Autoprefixer is included to parse CSS and add vendor prefixes to rules.
+
+* ESLint is included as a JavaScript linting utility.
+
+* Jest is included as a JavaScript testing solution.
+
+### Installing  
+
+```sh
 npm install -g create-react-app
-Generating  
+```
 
+### Generating  
+
+```sh
 create-react-app the-name-of-my-application-here
-Development Server  
+```
 
+### Development Server  
+
+```sh
 npm start
-Virtual DOM  
+```
+
+### Virtual DOM  
 
 The Virtual DOM is a lightweight version of the DOM detached from the browser-specific implementation details. React works by constantly comparing the Virtual DOM to the actual DOM of our application.
 
 When React sees a change it automatically re-renders the application for us. Data being received, data being given by a user, interface animations, all of these change the DOM. React listens and renders the application accordingly.
 
-Translating HTML into JSX  
+## Translating HTML into JSX  
 
 Components are written in the language of JSX, which is XML syntax combined with JavaScript.
 
@@ -637,12 +654,13 @@ A component is a chunk of code that is responsible for rendering a specific port
 
 They function a lot like, well, JavaScript functions. They can accept inputs (called "props") and return elements describing what should appear on the screen.
 
-Nesting Components  
+# Nesting Components  
 
 Components can be nested to increase the organization of our application.
 
 They can even be imported from other files:
 
+```jsx
 //############### mainbody.js ###############
 import React, { Component } from 'react';
 
@@ -660,7 +678,7 @@ export default class MainBody extends Component {
     );
   }
 }
-
+```
 ---
 
 Lesson: ReactJS: Introduction
@@ -670,8 +688,9 @@ A huge part of React stems from the way that it handles data and re-renders the 
 
 React components can have components that render data and elements after iterating over that data.
 
-Let's look at that simple application again. This application takes in an array of objects, and renders each object into it's own <div> on our website.
+Let's look at that simple application again. This application takes in an array of objects, and renders each object into it's own `<div>` on our website.
 
+```jsx
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -721,6 +740,8 @@ export default class App extends Component {
     );
   }
 }
+```
+
 science.png
 
 ---
@@ -728,68 +749,85 @@ science.png
 Lesson: ReactJS: Working wth Props and State
 ## React DOM  
 
-React creates a virtual DOM by abstracting the application DOM and maintaining it in memory.
+React creates a **virtual DOM** by abstracting the **application DOM** and maintaining it in memory.
 
 The Virtual DOM is used to handle in-page interactions and updates from the server.
 
-This is accomplished by comparing the new state with the previous state.
+This is accomplished by comparing the *new state* with the *previous state*.
 
-Component Lifecycle Methods  
+## Component Lifecycle Methods  
 
-Mounting  
+### Mounting  
 
 When the component is created (initialized) and then inserted into the DOM.
 
-constructor: called before the component is mounted
-componentWillMount: invoked immediately before mounting occurs (before render).
-render: required and must contain a single element
-componentDidMount: invoked immediately after a component is mounted.
-Updating  
+* `constructor`: called before the component is mounted
+
+* `componentWillMount`: invoked immediately before mounting occurs (before render).
+
+* `render`: required and must contain a single element
+
+* `componentDidMount`: invoked immediately after a component is mounted.
+
+### Updating  
 
 A component is re-rendered because a props or state change occurs.
 
-componentWillReceiveProps: invoked before a mounted component receives new props.
-shouldComponentUpdate: invoked before rendering, when new props or state are being received.
-componentWillUpdate: invoked immediately before rendering when new props or state are being received
-componentDidUpdate: invoked immediately after updating occurs
-Unmounting  
+* `componentWillReceiveProps`: invoked before a mounted component receives new props.
+
+* `shouldComponentUpdate`: invoked before rendering, when new props or state are being received.
+
+* `componentWillUpdate`: invoked immediately before rendering when new props or state are being received
+
+* `componentDidUpdate`: invoked immediately after updating occurs
+
+### Unmounting  
 
 Component is removed from the DOM.
 
-componentWillUnmount: invoked immediately before a component is unmounted and destroyed
-Other methods  
+* `componentWillUnmount`: invoked immediately before a component is unmounted and destroyed
 
-setState: primary method used to update the user interface in response to event handlers and server responses.
-forceUpdate: will cause the component to re-render
+### Other methods  
+
+* `setState`: primary method used to update the user interface in response to event handlers and server responses.
+
+* `forceUpdate`: will cause the component to re-render
 
 ---
 
 Lesson: ReactJS: Working wth Props and State
-## State and Props  
+# State and Props  
 
-Both props and state are plain JS objects
-Both props and state changes trigger a render update
-Props  
+* Both props and state are plain JS objects
 
-In React, props (short for properties) are a component's configuration.
+* Both props and state changes trigger a render update
 
-received from above
-immutable
-considered the "options" of the component
-State  
+## Props  
 
-In React, the state is a serializable representation of one point in time.
+In React, *props* (short for properties) are a component's configuration.
+
+* received from above
+
+* immutable
+
+* considered the "options" of the component
+
+## State  
+
+In React, the *state* is a serializable representation of one point in time.
 
 COMPONENT TYPES
 
-Stateless Component — A stateless component has only props, no state.
-Stateful Component — A statefull component has both props and state.
+* **Stateless Component** — A stateless component has only props, no state.
+
+* **Stateful Component** — A statefull component has both props and state.
 
 ---
 
 Lesson: ReactJS: Working wth Props and State
 ## Implementing a Form on a React Component  
 
+```jsx
 class Form extends React.Component {
   constructor(props){
     super(props);
@@ -818,18 +856,20 @@ class Form extends React.Component {
     )
   }
 }
+```
 
 ---
 
 Lesson: ReactJS: Children Components
 ## Rendering Children Components in React  
 
-Examples  
+## Examples  
 
-{this.props.children} is used to pass components or elements into a parent component component. A parent component doesn't have any inherent awareness of nested components.
+`{this.props.children}` is used to pass components or elements into a parent component component. A parent component doesn't have any inherent awareness of nested components.
 
-{this.props.children} allows for a component to render things passed into it, and doesn't require that the component even reside inside of the same script sheet.
+`{this.props.children}` allows for a component to render things passed into it, and doesn't require that the component even reside inside of the same script sheet.
 
+```jsx
 // baselayout.js
 
 import React, {Component} from 'react';
@@ -854,8 +894,11 @@ export default class BaseLayout extends Component {
     );
   }
 }
-Now, we'll use the <BaseLayout></BaseLayout> component inside our App component. <BaseLayout></BaseLayout> will contain its own nested elements.
+```
 
+Now, we'll use the `<BaseLayout></BaseLayout>` component inside our `App` component. `<BaseLayout></BaseLayout>` will contain its own nested elements.
+
+```jsx
 // App.js
 
 import React, { Component } from 'react';
@@ -879,21 +922,24 @@ export default class App extends Component {
     )
   }
 }
-References  
+```
 
-React Components
+## References  
+
+[React Components](https://facebook.github.io/react/docs/composition-vs-inheritance.html)
 
 ---
 
 Lesson: ReactJS: Children Components
-## Pass data via props to children React components  
+# Pass data via props to children React components  
 
 With React, each component should be responsible for a minimal number of elements and minimal functionality. Data management and distribution throughout a project should be handled by multiple components. We should have a lot of "presentational" components that inherit their properties from "container" components. Each should be compartmentalized so that the code can be accessed and reused in the project multiple times if need be.
 
-Examples  
+## Examples  
 
-<App /> is a "container" component which renders a "presentational" component within. It saves user input to its state and passes the data to <StudentList /> via a students property.
+`<App />` is a "container" component which renders a "presentational" component within. It saves user input to its `state` and passes the data to `<StudentList />` via a `students` property.
 
+```jsx
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -931,12 +977,15 @@ export default class App extends Component {
     );
   }
 }
-Setting State and Sharing Props  
+```
 
-Setting Initial State  
+## Setting State and Sharing Props  
+
+### Setting Initial State  
 
 Here we assign the initial values of the app's state.
 
+```jsx
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -953,9 +1002,13 @@ export default class App extends Component {
   }
   // Handler and render methods...
 }
-That simply lets the component know what changes it needs to keep track of. In this case, we want it to track an empty array called "students" and a variable called "name" that is initially set to an empty string.
-Changing State  
+```
 
+* That simply lets the component know what changes it needs to keep track of. In this case, we want it to track an empty array called "students" and a variable called "name" that is initially set to an empty string.
+
+### Changing State  
+
+```jsx
 // render() method in <App /> component.
 render() {
   return (
@@ -970,13 +1023,21 @@ render() {
   );
  }
 }
-When one of these values changes in a component, the state has to be updated by using the this.setState() method.
-We have a <form>that contains a text <input /> and a <input type="submit" /> that functions as our submit button.
-On our form we have a onSubmit property and have given it a value of {this.handleSubmit}. We'll go more into this later. For now, just take note that this is happening.
-On our <input type="text" /> we have an onChange= property that has a value of {this.handleName} and we've given the input itself a value of value={this.state.name}.
-We need that value from the input because that is how we will grab the name that the teacher types into the input.
-Methods  
+```
 
+* When one of these values changes in a component, the state has to be updated by using the this.setState() method.
+
+* We have a <form>that contains a text <input /> and a <input type="submit" /> that functions as our submit button.
+
+* On our form we have a onSubmit property and have given it a value of {this.handleSubmit}. We'll go more into this later. For now, just take note that this is happening.
+
+* On our <input type="text" /> we have an onChange= property that has a value of {this.handleName} and we've given the input itself a value of value={this.state.name}.
+
+* We need that value from the input because that is how we will grab the name that the teacher types into the input.
+
+### Methods  
+
+```jsx
 export default class App extends Component {
   constructor(props){
     super(props);
@@ -1001,24 +1062,43 @@ export default class App extends Component {
   }
   // Render method...
 }
-We have a constructor(props) with super(props) called inside of it. This should be familiar as all components are created as a class should have a base constructor that receives props.
-We'll examine the two unfamiliar expressions this.handleName = this.handleName.bind(this); and this.handleSubmit = this.handleSubmit.bind(this); in the next lesson. For now, just understand that we are giving the two methods access to this.
-Inside of handleName we pass an argument e that is our event object. The onChange property listens for changes to the value of the 
- and fires each time a key stroke is registered.
-We then take the e.target.value which gives us the value correlated to our input and store it in the state of "name" : like so, this.setState({name: e.target.value});.
-This simply updates our state which can be retrieved throughout our component at any time.
-handleSubmit, and see that we again pass it an event object using the shorthand e.
-This allows us to call the e.preventDefault() method which prevents the form from trying to POST to the server.
-Next, we grab the current (state) value of our name and push that value into our student's array:
+```
+
+* We have a constructor(props) with super(props) called inside of it. This should be familiar as all components are created as a class should have a base constructor that receives props.
+
+* We'll examine the two unfamiliar expressions this.handleName = this.handleName.bind(this); and this.handleSubmit = this.handleSubmit.bind(this); in the next lesson. For now, just understand that we are giving the two methods access to this.
+
+* Inside of handleName we pass an argument e that is our event object. The onChange property listens for changes to the value of the ________ and fires each time a key stroke is registered.
+ 
+* We then take the e.target.value which gives us the value correlated to our input and store it in the state of "name" : like so, this.setState({name: e.target.value});.
+
+* This simply updates our state which can be retrieved throughout our component at any time.
+
+* handleSubmit, and see that we again pass it an event object using the shorthand e.
+
+* This allows us to call the e.preventDefault() method which prevents the form from trying to POST to the server.
+
+* Next, we grab the current (state) value of our name and push that value into our student's array:
+
+```jsx
 this.state.students.push({studentName: this.state.name});
-We pass the array an object with the property studentName and the value this.state.name. This ensures that each time we hit submit, a new name will be added to our array.
+```
+
+* We pass the array an object with the property studentName and the value this.state.name. This ensures that each time we hit submit, a new name will be added to our array.
+
+```jsx
 this.setState({students: this.state.students, name: ""});
-We update the state using setState to make sure we have saved our changes.
-Update the value of our name state back to an empty string (this clears our input box, since it's value is the value of this.state.name).
-Passing Props to Child Components  
+```
 
-Parent Component  
+* We update the state using setState to make sure we have saved our changes.
 
+* Update the value of our name state back to an empty string (this clears our input box, since it's value is the value of this.state.name).
+
+## Passing Props to Child Components  
+
+### Parent Component  
+
+```jsx
 return (
   <div className="class-maker">
     <h3>Create Your Class List Here: </h3>
@@ -1029,10 +1109,15 @@ return (
     <StudentList students={this.state.students}/>
   </div>
 );
-The <StudentList/> is given a property students and passed the value of this.state.students.
-This gives access to the state properties to <StudentList /> component in the form of props.
-Child Component  
+```
 
+* The <StudentList/> is given a property students and passed the value of this.state.students.
+
+  * This gives access to the state properties to <StudentList /> component in the form of props.
+  
+### Child Component  
+
+```jsx
 class StudentList extends Component {
   constructor(props){
     super(props);
@@ -1054,27 +1139,43 @@ class StudentList extends Component {
     );
   }
 }
-Make sure to pass the constructor() and super() with props to the component.
+```
+
+* Make sure to pass the constructor() and super() with props to the component.
+
+```jsx
 this.props.students.map((student, index) => {
   return (
     <li key={index}>{student.studentName}</li>
   )
 })
-Inside of that method we map over this.props.students (which was passed down from the <App /> components in the form of this.state.students).
-We extract each student from that array and return an index and student as a list item : <li key={index}>{student.studentName}</li>.
-The student.studentName give us access to the studentName property inside of our students array.
-We know that each mapped item needs a unique key, so we use the index of each item being mapped over for simplicity sake. key={index}.
-We then insert each mapping using bracket notation with{kids}. That is put into the return statement where the <ul> {kids} </ul> is placed. ### References [React Docs](https://facebook.github.io/react/docs/state-and-lifecycle.html Presentational and Container Components
+```
+
+* Inside of that method we map over this.props.students (which was passed down from the <App /> components in the form of this.state.students).
+
+* We extract each student from that array and return an index and student as a list item : <li key={index}>{student.studentName}</li>.
+
+* The student.studentName give us access to the studentName property inside of our students array.
+
+* We know that each mapped item needs a unique key, so we use the index of each item being mapped over for simplicity sake. key={index}.
+
+* We then insert each mapping using bracket notation with{kids}. That is put into the return statement where the <ul> {kids} </ul> is placed. 
+
+### References 
+
+[React Docs](https://facebook.github.io/react/docs/state-and-lifecycle.html) 
+[Presentational and Container Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
 ---
 
 Lesson: ReactJS: Children Components
-## Author functions in a React component and bind them to the component  
+# Author functions in a React component and bind them to the component  
 
 In Javascript this functions differently based on the scenario it's used in. In a constructor, you use the new keyword to create a new object. In this case, this always refers to the new object being constructed. We've also talked about the reasons to use strict mode, as otherwise this gets set to the global object window. When a function is defined as a property of an object, it's called a method. In those cases, you can use this to bind properties to their parent component. The confusion arises because unlike regular variables, the this keyword does not have a scope, meaning nested functions do not inherit the this value of their parent function automatically. When you invoke a method inside of another function or component, the this value for the method is set to the object it was invoked upon, not the object it was invoked inside of.
 
-Examples  
+## Examples  
 
+```jsx
 export default class List extends Component {
   constructor(props){
     super(props);
@@ -1110,25 +1211,37 @@ export default class List extends Component {
     );
   }
 }
+```
+
 In the above example, we're allowing the user to input their favorite toppings for pizza. We created an event handler to handle the user input of toppings called handleTopping. We invoked that handler on this inside the render method using the onChange function. We want the this context to come from the top level component. This is important because we want that handler (method) to have access to the properties, state and methods of the component. To ensure this is bound to the correct context, we explicitly write a line of code in the constructor method to bind our event handler to the this of the component: this.handleTopping = this.handleTopping.bind(this);.
 
-Other Options  
+### Other Options  
 
 Within an event listener
 
+```jsx
 <input type="text" onChange={this.handleTopping.bind(this)} value={this.state.topping}/>
+```
+
 Arrow function:
 
+```jsx
 onChange={e => this.handleTopping(e)}
+```
+
 Expression Arrow Function
 
+```jsx
 handleTopping = (e) => {
   this.setState({topping: e.target.value})
 }
-References  
+```
 
-Todd Motto
-GitHub Gist
+### References  
+
+* [Todd Motto](https://toddmotto.com/understanding-the-this-keyword-in-javascript/)
+
+* [GitHub Gist](https://gist.github.com/amitai10/adb66d6faa714e8c3cdb94946bb98356)
 
 ---
 
