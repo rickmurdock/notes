@@ -1578,50 +1578,69 @@ export default class List extends Component {
 ---
 
 Lesson: React-Router: Part 1
-## React Router and Single Page Applications  
+# React Router and Single Page Applications  
 
-Terminology  
+## Terminology  
 
-Single-page application: Web application that loads a single HTML page and dynamically updates the page as the user interacts with the app.
-Examples  
+* Single-page application: Web application that loads a single HTML page and dynamically updates the page as the user interacts with the app.
 
-Installing React Router  
+## Examples  
 
+### Installing React Router  
+
+```sh
 npm install --save react-router-dom
-Example Routes  
+```
 
+### Example Routes  
+
+```jsx
 <Route path="/" component={App}/>
 <Route path="/page_one" component={PageOne} />
 <Route path="/page_two" component={PageTwo} />
-References  
+```
 
-React Router
+## References  
+
+* [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
+
+---
+
 Lesson: React-Router: Part 1
-Hash Based Routing vs Resource Routing  
+# Hash Based Routing vs Resource Routing  
 
-Terminology  
+## Terminology  
 
-Hash Based Routing: Routing method that uses the hash symbol to designate the path that the router should direct the browser to.
-Examples  
+* **Hash Based Routing**: Routing method that uses the hash symbol to designate the path that the router should direct the browser to.
 
-Given the URL http://myrecipes.com/#/hashbrowncasserole let's look at Hash based routing. The base URL myrecipes.com will be sent to the server, the fragment identifier /hashbrowncasserole will be stored in local storage. JavaScript code is returned to the browser after the initial page is pulled, prompting the browser to then send back the fragment as a query to the server.
+## Examples  
 
-References  
+Given the URL `http://myrecipes.com/#/hashbrowncasserole` let's look at Hash based routing. The base URL `myrecipes.com` will be sent to the server, the fragment identifier `/hashbrowncasserole` will be stored in local storage. JavaScript code is returned to the browser after the initial page is pulled, prompting the browser to then send back the fragment as a query to the server.
 
-Basic resource routing
-Client Server
-Simple summary front-end vs back-end routing
+## References  
+
+* [Basic resource routing](https://expressjs.com/en/starter/basic-routing.html)
+
+* [Client Server](https://en.wikipedia.org/wiki/Client%E2%80%93server_model)
+
+* [Simple summary front-end vs back-end routing](https://medium.com/@kennedyjt88/frontend-routing-vs-backend-routing-874b2bc41e5a)
+
+---
+
 Lesson: React-Router: Part 1
-BrowserRouter  
+# BrowserRouter  
 
-<BrowserRouter> is a React component that contains the history API.
+`<BrowserRouter>` is a React component that contains the history API.
 
-Terminology  
+## Terminology  
 
-Exclusive rendering: rendering a route based on strict matching of a path.
-Inclusive rendering: rendering of routes based on meeting a partial match of the path allowing for multiple routes to be displayed.
-Examples  
+* **Exclusive rendering**: rendering a route based on strict matching of a path.
 
+* **Inclusive rendering**: rendering of routes based on meeting a partial match of the path allowing for multiple routes to be displayed.
+
+## Examples  
+
+```jsx
 Using BrowserRouter:
 //######### index.js #############
 
@@ -1652,23 +1671,28 @@ ReactDOM.render(
  </BrowserRouter>
 
 , document.getElementById('root'));
-References  
+```
 
-Switch Component
-BrowserRouter
+## References  
+
+* [Switch Component](https://reacttraining.com/react-router/web/api/Switch)
+
+* [BrowserRouter](https://reacttraining.com/react-router/web/api/BrowserRouter)
 
 ---
 
 Lesson: React-Router: Part 2
-## How to Incorporate a Layout Component into Our React App  
+# How to Incorporate a Layout Component into Our React App  
 
-Terminology  
+## Terminology  
 
-Layout component: A component that can render child components inside of itself.
-Examples  
+* **Layout component**: A component that can render child components inside of itself.
 
-Layout Component  
+## Examples  
 
+### Layout Component  
+
+```jsx
 //############ base-layout.js ##############
 import React, { Component } from 'react';
 
@@ -1687,9 +1711,11 @@ export default class BaseLayout extends Component {
     )
   }
 }
+```
 
-Index File  
+### Index File  
 
+```jsx
 import registerServiceWorker from './registerServiceWorker';
 
 //import React
@@ -1722,18 +1748,22 @@ ReactDOM.render(
   ,
   document.getElementById('root'));
 registerServiceWorker();
+```
 
 ---
 
 Lesson: React-Router: Part 2
-## Use Exact Path to Render a Specific Route  
+# Use Exact Path to Render a Specific Route  
 
-An index route holds the base components for the application and generally is the place first visited by the user. Frequently, the route that corresponds to the index route is a simple /, this means that in the address bar of the browser, a user will simply see the base URL. For example, if we had a website www.thisisawebsite.com/ the trailing / would indicate that we were on our index route.
+An *index route* holds the base components for the application and generally is the place first visited by the user. Frequently, the route that corresponds to the index route is a simple `/`, this means that in the address bar of the browser, a user will simply see the base URL. For example, if we had a website `www.thisisawebsite.com/` the trailing `/` would indicate that we were on our index route.
 
-Using exact path guarantees that a certain route will render when the endpoint matches exactly.
-exact path is a means for rendering our index route of an application.
-We can't use exact path for dynamic routes.
-Examples  
+* Using exact path guarantees that a certain route will render when the endpoint matches exactly.
+
+* exact path is a means for rendering our index route of an application.
+
+* We can't use exact path for dynamic routes.
+
+## Examples  
 
 When we declare an index route, we can use the exact path= attribute to ensure that our path will be met only under strict and exact standards.
 
