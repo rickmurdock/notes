@@ -1767,6 +1767,7 @@ An *index route* holds the base components for the application and generally is 
 
 When we declare an index route, we can use the exact path= attribute to ensure that our path will be met only under strict and exact standards.
 
+```jsx
 class App extends Component {
   render() {
     return (
@@ -1782,30 +1783,40 @@ class App extends Component {
     );
   }
 }
-References  
+```
 
-Exact Path
+## References  
+
+* [Exact Path](https://reacttraining.com/react-router/web/api/Route/exact-bool)
 
 ---
 
 Lesson: React-Router: Part 2
-## Active Navigation Links with React Router  
+# Active Navigation Links with React Router  
 
 Active links progammatically highlight when the url route of the application also matches the active link target. They are commonly used in application navigation and assist a user in wayfinding.
 
-Terminology  
+# Terminology  
 
-<NavLink> comes with some key attributes, the most commonly used are the isActive and activeClassName.
-activeClassName is the class that gets appended to the component classes when the link matches the pathname for the URL.
-activeStyle takes an object {} filled with style key value pairs.
-isActive takes an anonymous function that is used to perform additional verification of whether the link is "active".
-Examples  
+* `<NavLink>` comes with some key attributes, the most commonly used are the `isActive` and `activeClassName`.
 
+* `activeClassName` is the class that gets appended to the component classes when the link matches the pathname for the URL.
+
+* `activeStyle` takes an object `{}` filled with style key value pairs.
+
+* `isActive` takes an anonymous function that is used to perform additional verification of whether the link is "active".
+
+# Examples  
+
+```jsx
 <NavLink
   activeStyle={{
     color: "blue",
     backgroundColor: "white"
   }}>Main Page</NavLink>
+```
+  
+```jsx
 //############## nav.js ################
 import React, { Component } from 'react';
 
@@ -1826,10 +1837,11 @@ export default class NavBar extends Component {
     )
   }
 }
+```
 
-References  
+## References  
 
-React Training
+* [React Training](https://reacttraining.com/react-router/web/api/NavLink/isActive-func)
 
 ---
 
