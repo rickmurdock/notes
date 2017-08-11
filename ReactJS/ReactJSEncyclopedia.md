@@ -2200,15 +2200,19 @@ const reducer = function (state = initialState, action) {
 ---
 
 Lesson: Redux: Part 2
-## Using State to Model Events in Redux  
+# Using State to Model Events in Redux  
 
-Planning out your application will help you create the state needed to model your events in Redux.
-It is critical to think what information is necessary for each action.
-Your reducer should be pure and not alter the state but create a new copy that returns the updated state.
-Examples  
+* Planning out your application will help you create the state needed to model your events in Redux.
 
-Action creators  
+* It is critical to think what information is necessary for each action.
 
+* Your reducer should be pure and not alter the state but create a new copy that returns the updated state.
+
+## Examples  
+
+### Action creators  
+
+```jsx
 export const addPlayer = function (name) {
   return {
     type: ADD_PLAYER,
@@ -2232,8 +2236,11 @@ export const updateScore = function (index, amount) {
     }
   }
 }
-Reducer  
+```
 
+### Reducer  
+
+```jsx
 // Import your action types
 import {
   ADD_PLAYER,
@@ -2271,6 +2278,9 @@ const reducer = function (state=initialState, action) {
 }
 
 export default reducer;
+```
+
+```jsx
 case UPDATE_SCORE:
   return update(state, {
     players: {[action.payload.index]: {
@@ -2279,8 +2289,11 @@ case UPDATE_SCORE:
       }}
     }}
   })
-Evaluating a variable  
+```
+  
+### Evaluating a variable  
 
+```jsx
 const name = 'sage';
 
 {name: 1}
@@ -2288,31 +2301,37 @@ const name = 'sage';
 
 {[name]: 1}
 // => { sage: 1 }
-References  
+```
 
-Redux Docs
+## References  
+
+* [Redux Docs](http://redux.js.org/docs/basics/)
 
 ---
 
 Lesson: Redux: Part 2
-## Authoring a reducer to filter data based on a user action  
+# Authoring a reducer to filter data based on a user action  
 
-We use our action creators to pass our action to our reducer via dispatch inside of the store.
-The reducer is a function that manipulates our state according to actions.
-We can use these to filter our data based off our application state.
-The workflow remains the same for all Redux/React applications and follows the cycle we have discussed.
+* We use our action creators to pass our action to our reducer via dispatch inside of the store.
+
+* The reducer is a function that manipulates our state according to actions.
+
+* We can use these to filter our data based off our application state.
+
+* The workflow remains the same for all Redux/React applications and follows the cycle we have discussed.
 
 ---
 
 [Lesson: Redux: Part 3]
-## Handling Asynchronous Actions in Redux  
+# Handling Asynchronous Actions in Redux  
 
 In order to make asynchronous actions in Redux, we'll be using Redux-Thunk.
 
-redux-thunk is based on a simple concept: instead of just dispatching actions -- simple JavaScript objects with a type and payload -- you can dispatch functions that take dispatch as an argument.
+redux-thunk is based on a simple concept: instead of just dispatching actions -- simple JavaScript objects with a type and payload -- you can dispatch functions that take `dispatch` as an argument.
 
-Setting up redux-thunk  
+## Setting up redux-thunk  
 
+```jsx
 // index.js
 import {createStore, applyMiddleware} from 'redux';
 import reduxThunk from 'redux-thunk';
@@ -2322,8 +2341,11 @@ const store = createStore(
     reducer,
     applyMiddleware(reduxThunk)
 );
-Creating an asynchronous action  
+```
 
+## Creating an asynchronous action  
+
+```jsx
 // actions.js
 export const SET_LAT_LON = 'SET_LAT_LON';
 
@@ -2333,10 +2355,13 @@ const setLatLon = (payload) => {
     payload: payload
   }
 }
+```
+
 We will call this action creator after the Ajax request returns.
 
 To make the Ajax request, we create another action creator that returns a function:
 
+```jsx
 // actions.js
 const encode = encodeURIComponent;
 
@@ -2355,32 +2380,39 @@ export const geocodeAddress = (address) => {
       })
   }
 }
-The returned function takes two arguments, dispatch and getState.
+```
+
+The returned function takes two arguments, `dispatch` and `getState`.
 
 ---
 
 [Lesson: Redux: Part 3]()
 
-## Authentication in Redux  
+# Authentication in Redux  
 
 To demonstrate authentication with Redux, we are going to use an API built for this lesson.
 
-API Documentation
-Demo Application
-Storing a token  
+* [API Documentation](https://github.com/twhitacre/simple-rails-auth/blob/master/README.md)
 
-Once a user is registered, you can make a post request to the /login endpoint which returns an auth_token. You'll then need to store that in a cookie.
+* [Demo Application](https://github.com/tiycnd/redux-auth-demo)
 
-Persisting a login  
+## Storing a token  
+
+Once a user is registered, you can make a post request to the `/login` endpoint which returns an `auth_token`. You'll then need to store that in a cookie.
+
+## Persisting a login  
 
 The problem with the above code is that it requires the user to log in on every page load. That is suboptimal! If we save our auth token in a cookie, we can load it when we load the page and maintain our logged in status.
 
 To make working with cookies easier, we will install a small library:
 
+```sh
 npm install --save js-cookie
-We will need to set the cookie in our login action.
+```
 
-When our app loads we can grab that cookie (if available) and send the auth_token along with a header titled X-AUTH-TOKEN to our server. Then if we access the /dashboard endpoint, it will return the message information related to the user who is logged in.
+We will need to set the cookie in our `login` action.
+
+When our app loads we can grab that cookie (if available) and send the `auth_token` along with a header titled `X-AUTH-TOKEN` to our server. Then if we access the `/dashboard` endpoint, it will return the message information related to the user who is logged in.
 
 ---
 
@@ -2392,11 +2424,11 @@ To test React applications, we will use Jest, as it was created by Facebook, the
 
 ## An overview of Jest  
 
-Jest uses three functions, describe, test, and expect, to define tests.
+Jest uses three functions, `describe`, `test`, and `expect`, to define tests.
 
-describe is used to set a context for tests. It can be nested, with multiple describe calls inside a parent. test is used to write individual test cases. You can use test outside of a describe block with no problem.
+`describe` is used to set a context for tests. It can be nested, with multiple `describe` calls inside a parent. `test` is used to write individual test cases. You can use `test` outside of a describe block with no problem.
 
-expect sets up matchers, which allow you test values. Read an introduction to matchers, and then see a list of all matchers.
+`expect` sets up matchers, which allow you test values. Read an [introduction to matchers](https://facebook.github.io/jest/docs/en/using-matchers.html#content), and then see a list of all matchers](https://facebook.github.io/jest/docs/en/expect.html#content).
 
 ## Unit testing  
 
@@ -2404,8 +2436,8 @@ Testing JavaScript code that does not touch the DOM or is not a React component 
 
 ## Snapshot testing  
 
-Snapshot testing is a type of testing specifically for UI where your UI is rendered and compared to a reference to make sure it did not change. Jest gives us the ability to write snapshot tests for React components.
+[Snapshot testing](https://facebook.github.io/jest/docs/snapshot-testing.html#content) is a type of testing specifically for UI where your UI is rendered and compared to a reference to make sure it did not change. Jest gives us the ability to write snapshot tests for React components.
 
 ## Testing Redux  
 
-Many parts of Redux are easy to test with unit tests, specifically action creators and reducers. Testing stores and asynchronous code is harder, but the Redux documentation covers how to test all parts of Redux with Jest.
+Many parts of Redux are easy to test with unit tests, specifically action creators and reducers. Testing stores and asynchronous code is harder, but [the Redux documentation covers how to test all parts of Redux with Jest](http://redux.js.org/docs/recipes/WritingTests.html).
