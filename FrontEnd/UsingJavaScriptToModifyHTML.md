@@ -1,13 +1,14 @@
-Selecting DOM Nodes  
+# Selecting DOM Nodes  
 
 As a front-end developer, you will interact with the DOM all the time. You will add elements to the page or remove them. You will add classes and attribute data to elements. You will animate the state of elements. You will do all of these things and more. However, for you to manipulate an element, you must first select it from the page.
 
 In this article, we will discuss several ways to select DOM nodes so that they can be manipulated.
 
-Get Element By Id  
+## Get Element By Id  
 
-The document.getElementById() API is common for selecting a single element in the DOM. That element must have and id attribute. This function returns a single node.
+The `document.getElementById()` API is common for selecting a **single element** in the DOM. That element must have and `id` attribute. This function returns a single node.
 
+```js
 // Returns a single element with an id of "main_title"
 // and stores it in a variable "main"
 let main = document.getElementById( "main_title" );
@@ -19,10 +20,13 @@ let side = document.getElementById( "sidebar" );
 // Returns a single element with an id of "category"
 // and stores it in a variable "cat"
 let cat = document.getElementById( "category" );
-Get Element By Tag  
+```
 
-The document.getElementsByTagName() API is used to select all page elements of a certain tag type. For instance, it can be used to select all h1 tags or all p tags. This function will return an array of nodes.
+## Get Element By Tag  
 
+The `document.getElementsByTagName()` API is used to select **all page elements of a certain tag type**. For instance, it can be used to select all `h1` tags or all `p` tags. This function will return an array of nodes.
+
+```js
 // Returns an array of "h1: tags
 // and stores it in a variable "titles"
 let titles = document.getElementsByTagName( "h1" );
@@ -34,10 +38,13 @@ let paragraphs = document.getElementsByTagName( "p" );
 // Returns an array of "li" tags
 // and stores it in a variable "listitems"
 let listitems = document.getElementsByTagName( "li" );
-Selecting Elements By Class Name  
+```
 
-The document.getElementsByClassName() API is used to select all page elements with a certain class attribute. This function returns an array of nodes.
+## Selecting Elements By Class Name  
 
+The `document.getElementsByClassName()` API is used to select **all page elements with a certain class attribute**. This function returns an array of nodes.
+
+```js
 // Returns an array of elements with a class of "group"
 // and stores it in a variable "groups"
 let groups = document.getElementsByClassName( "group" );
@@ -49,14 +56,17 @@ let categories = document.getElementsByClassName( "category" );
 // Returns an array of elements with a class of "element"
 // and stores it in a variable "elements"
 let elements = document.getElementsByClassName( "element" );
-Using CSS Selectors  
+```
+
+# Using CSS Selectors  
 
 The following APIs allow us to use the same selectors as we use in our CSS documents. These functions take any valid CSS selector as a string and return nodes that match that CSS selector.
 
-Selecting a Single Node  
+# Selecting a Single Node  
 
-document.querySelector() allows us to select any single element in the DOM. This function takes any valid CSS selector and returns the first element that matches. If more than one element matches, it returns only the first. If no element matches the query, it returns null.
+`document.querySelector()` allows us to select *any single element* in the DOM. This function takes any valid CSS selector and returns the first element that matches. If more than one element matches, it returns only the first. If no element matches the query, it returns `null`.
 
+```js
 // Returns the first "h1" node and stores it
 // in the variable "el"
 let el = document.querySelector( "h1" );
@@ -68,8 +78,11 @@ let rec = document.querySelector( ".record" );
 // Returns the first "h3" node that is a child of a "div" and stores it
 // in the variable "sub"
 let sub = document.querySelector( "div > h3" );
-element.querySelector() allows us to select the first descendant of the base element on which it is invoked. If we select an element, we can then select its descendants with querySelector.
+```
 
+`element.querySelector()` allows us to select the *first descendant* of the base element on which it is invoked. If we select an element, we can *then select its descendants with `querySelector`*.
+
+```js
 // Returns the first "section" node and stores it
 // in the variable "sec"
 let sec = document.querySelector( "section" );
@@ -87,10 +100,13 @@ let rec = sec.querySelector( ".record" );
 // that is a descendant of "sec" and stores it
 // in the variable "sub"
 let sub = sec.querySelector( "div > h3" );
-Selecting Multiple Nodes  
+```
 
-document.querySelectorAll() allows us to select a group of elements in the DOM. This function returns an array of nodes, even if the query finds only one element.
+## Selecting Multiple Nodes  
 
+`document.querySelectorAll()` allows us to select *a group of elements* in the DOM. This function *returns an array* of nodes, even if the query finds only one element.
+
+```js
 // Returns an array of "h1" nodes and stores it
 // in the variable "els"
 let els = document.querySelectorAll( "h1" );
@@ -103,8 +119,11 @@ let recs = document.querySelectorAll( ".record" );
 // is a child of a "div" and stores it
 // in the variable "subs"
 let subs = document.querySelectorAll( "div > h3" );
-element.querySelectorAll() allows us to select a a group of elements that are descendants of the element on which it is invoked. This function returns an array of nodes. It does not return the base element.
+```
 
+`element.querySelectorAll()` allows us to select *a group of elements* that are descendants of the element on which it is invoked. This function returns an array of nodes. It does not return the base element.
+
+```js
 // Returns the first "section" node and stores it
 // in the variable "sec"
 let sec = document.querySelector( "section" );
@@ -122,195 +141,113 @@ let recs = sec.querySelectorAll( ".record" );
 // that are descendants of "sec" and stores them
 // in the variable "sub"
 let subs = sec.querySelectorAll( "div > h3" );
-Using Query Selectors  
+```
 
-Below is an example of how to use both document and element query selectors.
+## Using Query Selectors  
+
+Below is an example of how to use both `document` and `element` query selectors.
 
 You are about to see a lot of code samples demonstrating how JavaScript interacts with the DOM. You will need to thoroughly review the HTML and JS files to understand what is happening. Don't skim through these samples. Read through the code found in both files. Run the Preview. Inspect the running code through the browser's console. Dig around each sample until you understand what is occurring.
 
-Open your inspector and go to the console panel. You should see the output from the query selectors defined in script.js. With index.html open in the browser view, you can hover over the outputs in the console and see those elements highlighted in the browser view.
+Open your inspector and go to the console panel. You should see the output from the query selectors defined in `script.js`. With `index.html` open in the browser view, you can hover over the outputs in the console and see those elements highlighted in the browser view.
 
-Each time you run a code sample, clear the console. Keeping your console clear will keep the logging statements visible, uncluttered with older information that might cause confusion. In the upper left-hand corner (it looks like this ⍉ ) of your console panel is a small button that will clear the data from your console. While in the editor view of your code samples, and before you press the "Preview" button, clear the console.
-Each selector is used multiple times in the JavaScript files included in each code sample. The JavaScript code is heavily commented to explain what is occurring. To find notes about the JavaScript code, inspect the script.js files and read through the comments.
+> Each time you run a code sample, clear the console. Keeping your console clear will keep the logging statements visible, uncluttered with older information that might cause confusion. In the upper left-hand corner (it looks like this ⍉ ) of your console panel is a small button that will clear the data from your console. While in the editor view of your code samples, and before you press the "Preview" button, clear the console.
 
-document.querySelector()  
+Each selector is used multiple times in the JavaScript files included in each code sample. The JavaScript code is heavily commented to explain what is occurring. To find notes about the JavaScript code, inspect the `script.js` files and read through the comments.
 
-document.querySelector will return the first node that matches the selector.
+### document.querySelector()  
 
-Editor
-Browser View
-index.html
-script.js
+`document.querySelector` will return *the first node* that matches the selector.
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <title>Introduction to the DOM</title>
-5
-    </head>
-6
-    <body>
-7
-        <p id="first-paragraph">This is a paragraph.</p>
-8
-        <p>This is a second paragraph.</p>
-9
-        <ul class="favorite-foods">
-10
-            <li class="beef">Steak</li>
-11
-            <li class="seafood">Shrimp</li>
-12
-            <li class="poultry">Wings</li>
-13
-        </ul>
-14
-        <ul class="favorite-sodas">
-15
-            <li>Dr Pepper</li>
-16
-            <li>Coke</li>
-17
-            <li>IBC Root Beer</li>
-18
-        </ul>
-19
-        <script src="script.js"></script>
-20
-    </body>
-21
-</html>
- 
+```js
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3     <head>
+ 4         <title>Introduction to the DOM</title>
+ 5     </head>
+ 6     <body>
+ 7         <p id="first-paragraph">This is a paragraph.</p>
+ 8         <p>This is a second paragraph.</p>
+ 9         <ul class="favorite-foods">
+10             <li class="beef">Steak</li>
+11             <li class="seafood">Shrimp</li>
+12             <li class="poultry">Wings</li>
+13        </ul>
+14         <ul class="favorite-sodas">
+15             <li>Dr Pepper</li>
+16             <li>Coke</li>
+17             <li>IBC Root Beer</li>
+18         </ul>
+19         <script src="script.js"></script>
+20     </body>
+21 </html>
+``` 
 
-Fullscreen
+### document.querySelectorAll()  
 
-Reset Code
-Preview 
-document.querySelectorAll()  
+`document.querySelectorAll` will return an array of all nodes that match the selector.
 
-document.querySelectorAll will return an array of all nodes that match the selector.
+```js
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3   <head>
+ 4     <title>Introduction to the DOM</title>
+ 5   </head>
+ 6   <body>
+ 7     <p id="first-paragraph">This is a paragraph.</p>
+ 8     <p>This is a second paragraph.</p>
+ 9     <ul class="favorite-foods">
+10       <li class="beef">Steak</li>
+11       <li class="seafood">Shrimp</li>
+12       <li class="poultry">Wings</li>
+13     </ul>
+14     <ul class="favorite-sodas">
+15       <li>Dr Pepper</li>
+16       <li>Coke</li>
+17       <li>IBC Root Beer</li>
+18     </ul>
+19     <script src="script.js"></script>
+20   </body>
+21 </html>
+``` 
 
-Editor
-Browser View
-index.html
-script.js
-
-1
-<!DOCTYPE html>
-2
-<html>
-3
-  <head>
-4
-    <title>Introduction to the DOM</title>
-5
-  </head>
-6
-  <body>
-7
-    <p id="first-paragraph">This is a paragraph.</p>
-8
-    <p>This is a second paragraph.</p>
-9
-    <ul class="favorite-foods">
-10
-      <li class="beef">Steak</li>
-11
-      <li class="seafood">Shrimp</li>
-12
-      <li class="poultry">Wings</li>
-13
-    </ul>
-14
-    <ul class="favorite-sodas">
-15
-      <li>Dr Pepper</li>
-16
-      <li>Coke</li>
-17
-      <li>IBC Root Beer</li>
-18
-    </ul>
-19
-    <script src="script.js"></script>
-20
-  </body>
-21
-</html>
- 
-
-Fullscreen
-
-Reset Code
-Preview 
 Element Query Selectors  
 
-Alternatively, we can call querySelector and querySelectorAll on element and the query will only look at nodes that are descendants of element. The following example contains several examples of how these element selectors are used to select and store references to nodes.
+Alternatively, we can call `querySelector` and `querySelectorAll` on **element** and the query will only look at nodes that are descendants of **element**. The following example contains several examples of how these element selectors are used to select and store references to nodes.
 
-Editor
-Browser View
-index.html
-script.js
+```js
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3   <head>
+ 4     <title>Introduction to the DOM</title>
+ 5   </head>
+ 6   <body>
+ 7     <p id="first-paragraph">This is a paragraph.</p>
+ 8     <p>This is a second paragraph.</p>
+ 9     <ul class="favorite-foods">
+10       <li class="beef">Steak</li>
+11       <li class="seafood">Shrimp</li>
+12       <li class="poultry">Wings</li>
+13     </ul>
+14     <ul class="favorite-sodas">
+15       <li>Dr Pepper</li>
+16       <li>Coke</li>
+17       <li>IBC Root Beer</li>
+18     </ul>
+19     <script src="script.js"></script>
+20   </body>
+21 </html>
+``` 
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-  <head>
-4
-    <title>Introduction to the DOM</title>
-5
-  </head>
-6
-  <body>
-7
-    <p id="first-paragraph">This is a paragraph.</p>
-8
-    <p>This is a second paragraph.</p>
-9
-    <ul class="favorite-foods">
-10
-      <li class="beef">Steak</li>
-11
-      <li class="seafood">Shrimp</li>
-12
-      <li class="poultry">Wings</li>
-13
-    </ul>
-14
-    <ul class="favorite-sodas">
-15
-      <li>Dr Pepper</li>
-16
-      <li>Coke</li>
-17
-      <li>IBC Root Beer</li>
-18
-    </ul>
-19
-    <script src="script.js"></script>
-20
-  </body>
-21
-</html>
- 
+## Conclusion  
 
-Fullscreen
-
-Reset Code
-Preview 
-Conclusion  
-
-Selecting DOM elements is the first step needed in order to gain JavaScript access to their properties. The DOM has many functions for selecting nodes. In this article, we briefly showed getElementByTagName, getElementById, and getElementsByClassName. These 3 functions are extremely useful, but querySelector( ) and querySelectorAll ( ) are more common and are more convenient because they use the same selectors as our CSS files.
+Selecting DOM elements is the first step needed in order to gain JavaScript access to their properties. The DOM has many functions for selecting nodes. In this article, we briefly showed `getElementByTagName`, `getElementById`, and `getElementsByClassName`. These 3 functions are extremely useful, but `querySelector( )` and `querySelectorAll( )` are more common and are more convenient because they use the same selectors as our CSS files.
 
 This article focused on how to select and store references to DOM nodes, an essential skill for gaining access to all of the properties of DOM nodes that we will change later when building dynamic web pages.
 
-Creating, Updating, and Removing DOM Nodes  
+---
+
+# Creating, Updating, and Removing DOM Nodes  
 
 Most modern websites and web apps involve some DOM manipulation. Some web apps depend heavily on dynamically altering content. You will need to develop a firm understanding of how to create, update, and remove DOM elements.
 
