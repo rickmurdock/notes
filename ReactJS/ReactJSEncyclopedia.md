@@ -1846,15 +1846,17 @@ export default class NavBar extends Component {
 ---
 
 Lesson: React-Router: Part 3
-## Creating a Dynamic App with A Parent and Child Detail Page  
+# Creating a Dynamic App with A Parent and Child Detail Page  
 
-Terminology  
+## Terminology  
 
-Template literal - String literals allowing embedded expressions. You can use multiline strings and string interpolation features with them.
-Examples  
+* **Template literal** - String literals allowing embedded expressions. You can use multiline strings and string interpolation features with them.
 
-Rendering component with ReactDOM  
+## Examples  
 
+### Rendering component with ReactDOM  
+
+```jsx
 //########### index.js ##############
 //import React
 import React from 'react';
@@ -1869,8 +1871,11 @@ import App from './scripts/components/App';
 ReactDOM.render(
   <App />,
   document.getElementById('root'));
-Router Set Up  
+```
 
+### Router Set Up  
+
+```jsx
 //######## App.js #########
 import React, { Component } from 'react';
 import '../App.css';
@@ -1901,78 +1906,104 @@ class App extends Component {
 }
 
 export default App;
-References  
+```
 
-MDN
+## References  
+
+* [MDN](https://reacttraining.com/react-router/web/example/basic)
 
 ---
 
 Lesson: Redux: Part 1
-## Application State  
+# Application State  
 
-Application state does not refer to the state of each component but rather the data that flows through the entire application. The real magic of Redux is how it handles data and manages what actions should be taken when events are triggered.
+*Application state* does not refer to the state of each component but rather the data that flows through the entire application. The real magic of Redux is how it handles data and manages what actions should be taken when events are triggered.
 
-Is A State Management Library Right For My Project?  
+## Is A State Management Library Right For My Project?  
 
 Here a few questions we can ask to determine whether an application state library would benefit your project:
 
-Do other parts of the application care about the data in question?
-Do we need to create more data based on the data in question?
-Is the data in question being used to create multiple components?
-Is there value in having a record of the changes to the state in your application? (i.e. Would it help you debug your application if you could track events as you test?).
-Do you want to cache (hold on to) your data instead of using multiple requests from another API?
-References  
+1. Do other parts of the application care about the data in question?
 
-Redux JS: Organizing State
-Flux
-Redux ReadME
+2. Do we need to create more data based on the data in question?
+
+3. Is the data in question being used to create multiple components?
+
+4. Is there value in having a record of the changes to the state in your application? (i.e. Would it help you debug your application if you could track events as you test?).
+
+5. Do you want to cache (hold on to) your data instead of using multiple requests from another API?
+
+## References  
+
+* [Redux JS: Organizing State](http://redux.js.org/docs/faq/OrganizingState.html)
+
+* [Flux](https://facebook.github.io/flux/)
+
+* [Redux ReadME](http://redux.js.org/)
 
 ---
 
 Lesson: Redux: Part 1
-## React and Redux Workflow  
+# React and Redux Workflow  
 
-Folder Structure  
+## Folder Structure  
 
 Our file tree should look something like this:
 
 filetree.png
-Installing Dependencies  
 
+## Installing Dependencies  
+
+```sh
 npm install --save redux
 npm install --save react-redux
+```
+
 The first command will install Redux. The second command installs React-Redux — a package that allows React and Redux to work together.
 
-React and Redux Workflow  
+## React and Redux Workflow  
 
 A lot is going on within a React application, from application state to components and component state. Imagine a simple app where a user clicks an option which displays data on another screen. This is the flow of events that take place when Action Creator is triggered:
 
 react-redux-workflow1.jpg
+
 Overview  
 
-The React and Redux workflow cycle is fairly complicated but centers around updating application state.
-A data change or event triggers an Action creator.
-The Action Creator creates an Action.
-An Action is the payload of information and data regarding what happened.
-A dispatcher handles the Action and directs it to the proper Reducer function inside of our Store.
-The reducer function is a pure function that pairs an action with an appropriate piece of application state and updates it accordingly.
-Application state is never mutated, but rather copied and returned as a new object.
-The new application state is sent back to React and utilized by our Container components.
-Container components are the bridge between React and Redux and determine what should be done inside of React with the newly created application state.
-References  
+* The React and Redux workflow cycle is fairly complicated but centers around updating application state.
 
-Redux Basics
-Redux diagrams GitHub
+* A data change or event triggers an Action creator.
+
+* The Action Creator creates an Action.
+
+* An Action is the payload of information and data regarding what happened.
+
+* A dispatcher handles the Action and directs it to the proper Reducer function inside of our Store.
+
+* The reducer function is a pure function that pairs an action with an appropriate piece of application state and updates it accordingly.
+
+* Application state is never mutated, but rather copied and returned as a new object.
+
+* The new application state is sent back to React and utilized by our Container components.
+
+* Container components are the bridge between React and Redux and determine what should be done inside of React with the newly created application state.
+
+
+## References  
+
+* [Redux Basics](http://redux.js.org/docs/basics/)
+
+* [Redux diagrams GitHub](https://github.com/reactjs/redux/issues/653)
 
 ---
 
 Lesson: Redux: Part 1
-## Authoring Actions  
+# Authoring Actions  
 
-Examples  
+## Examples  
 
-Example actions.js  
+### Example `actions.js`
 
+```jsx
 const USER_SELECTED = 'USER_SELECTED';
 
 export function selectUser(user) {
@@ -1981,8 +2012,11 @@ export function selectUser(user) {
     payload: user
   };
 };
-Example Application  
+```
 
+### Example Application  
+
+```jsx
 export const ADD_USER = 'ADD_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
@@ -2003,8 +2037,11 @@ export const UPDATE_SCORE = score => {
   type: ActionTypes.UPDATE_SCORE,
   payload: score
 };
-user_list.js  
+```
 
+`user_list.js`  
+
+```jsx
 //################ containers/user_list.js ################
 
 //normal react imports
@@ -2056,8 +2093,11 @@ function mapDispatchToProps(dispatch) {
 // Promotes UserList from component to container.
 // This connects our functions to our container component.
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
-mapDispatchToProps Function  
+```
 
+### `mapDispatchToProps` Function  
+
+```jsx
 function mapDispatchToProps(dispatch) {
   // whenever selectUser is called, the result should be passed to
   // the reducer.
@@ -2067,13 +2107,19 @@ function mapDispatchToProps(dispatch) {
       }
     }
 }
-Connecting mapStateToProps and mapDispatchToProps to our Component  
+```
 
+### Connecting `mapStateToProps` and `mapDispatchToProps` to our Component  
+
+```jsx
 // Promotes UserList from component to container.
 // This connects our functions to our container component.
 export default connect(mapStateToProps, mapDispatchToProps)(UserList);
-user_detail.js  
+```
 
+`user_detail.js`
+
+```jsx
 //################# containers/user_detail.js ################
 
 //React imports
@@ -2108,24 +2154,30 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(UserDetail);
-References  
+```
 
-Redux
+## References  
+
+* [Redux](http://redux.js.org/)
 
 ---
 
 Lesson: Redux: Part 2
-## Authoring a Reducer  
+# Authoring a Reducer  
 
-A reducer works with actions to update application state.
-A reducer is a function that takes in state and an action and returns a new state according to the action.
-Terminology  
+* A reducer works with actions to update application state.
 
-Reducer: a function that takes the current state and an action and returns a new state.
-Examples  
+* A reducer is a function that takes in state and an action and returns a new state according to the action.
 
-Action creators and components for reference:  
+## Terminology  
 
+* *Reducer*: a function that takes the current state and an action and returns a new state.
+
+## Examples  
+
+### Action creators and components for reference:  
+
+```jsx
 // ### actions.js ###
 const USER_SELECTED = 'USER_SELECTED';
 
@@ -2202,16 +2254,22 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(UserDetail);
-Reducer (reducer.js):  
+```
 
+### Reducer `(reducer.js)`:  
+
+```jsx
 // ### reducer.js ###
 const reducer = function (state, action) {
   return state;
 }
 
 export default reducer;
-Setting initial state  
+```
 
+### Setting initial state  
+
+```jsx
 const initialState = {
   activeUser: null,
   users: [
@@ -2235,8 +2293,11 @@ const reducer = function (state = initialState, action) {
 }
 
 export default reducer;
-Example reducer  
+```
 
+### Example reducer  
+
+```jsx
 const reducer = function (state = initialState, action) {
   if (action.type === USER_SELECTED) {
     // ... return a new state
@@ -2244,8 +2305,11 @@ const reducer = function (state = initialState, action) {
     return state;
   }
 }
-Object.assign in action  
+```
 
+### `Object.assign` in action  
+
+```jsx
 const reducer = function (state = initialState, action) {
   if (action.type === USER_SELECTED) {
     return Object.assign({}, state, {activeUser: action.payload})
@@ -2253,8 +2317,11 @@ const reducer = function (state = initialState, action) {
 
   return state;
 }
-Adding ADD_USER  
+```
 
+### Adding `ADD_USER ` 
+
+```jsx
 // ### actions.js ###
 const USER_SELECTED = 'USER_SELECTED';
 const ADD_USER  = 'ADD_USER';
@@ -2272,8 +2339,11 @@ export function addUser(user) {
     payload: user
   };
 };
-Adding the above to our reducer  
+```
 
+### Adding the above to our reducer  
+
+```jsx
 const reducer = function (state = initialState, action) {
   if (action.type === USER_SELECTED) {
     return Object.assign({}, state, {activeUser: action.payload})
@@ -2285,6 +2355,7 @@ const reducer = function (state = initialState, action) {
 
   return state;
 }
+```
 
 ---
 
