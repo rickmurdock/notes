@@ -211,7 +211,7 @@ Each selector is used multiple times in the JavaScript files included in each co
 21 </html>
 ``` 
 
-Element Query Selectors  
+## Element Query Selectors  
 
 Alternatively, we can call `querySelector` and `querySelectorAll` on **element** and the query will only look at nodes that are descendants of **element**. The following example contains several examples of how these element selectors are used to select and store references to nodes.
 
@@ -253,14 +253,19 @@ Most modern websites and web apps involve some DOM manipulation. Some web apps d
 
 In this article, we will discuss DOM manipulation, including:
 
-Creating New DOM Nodes - To update a page with new content, you must create a node to contain that content.
-Inserting New DOM Nodes into the Page - When new nodes are created, they aren't automatically attached to the page. You have to include them by manually appending them to a parent node.
-Deleting DOM Nodes - Sometimes, you may need to remove a node from the page entirely.
-Altering Properties of Nodes - Creating and inserting nodes won't always accomplish all of your aims. You may also need to update the text of a node, or add attribute values.
-Creating New DOM Nodes  
+* **Creating New DOM Nodes** - To update a page with new content, you must create a node to contain that content.
 
-document.createElement() is use to create and return new DOM nodes. This function takes a string specifying which node to create.
+* **Inserting New DOM Nodes into the Page** - When new nodes are created, they aren't automatically attached to the page. You have to include them by manually appending them to a parent node.
 
+* **Deleting DOM Nodes** - Sometimes, you may need to remove a node from the page entirely.
+
+* **Altering Properties of Nodes** - Creating and inserting nodes won't always accomplish all of your aims. You may also need to update the text of a node, or add attribute values.
+
+## Creating New DOM Nodes  
+
+`document.createElement()` is use to create and return new DOM nodes. This function takes a string specifying which node to create.
+
+```js
 // returns a new "h1" node and stores it
 // in the el1 variable
 let el1 = document.createElement( "h1" );
@@ -272,12 +277,15 @@ let el2 = document.createElement( "p" );
 // returns a new "div" node and stores it
 // in the el3 variable
 let el3 = document.createElement( "div" );
+```
+
 When nodes get created, they are not initially visible on the page. To attach them to the DOM node tree, append them to a parent node.
 
-Inserting New DOM Nodes into the Page  
+## Inserting New DOM Nodes into the Page  
 
-Several methods exist for adding nodes to the page, but this article will focus on element.appendChild(). The appendChild function takes a node as its argument and appends it as the last child of the calling node.
+Several methods exist for adding nodes to the page, but this article will focus on `element.appendChild()`. The `appendChild` function takes a node as its argument and appends it as the last child of the calling node.
 
+```js
 // Select the parent element from the page
 let element = document.getElementById( "ul" );
 
@@ -286,103 +294,58 @@ let newElement = document.createElement( "li" );
 
 // Append the new element to the parent element
 element.appendChild( newElement );
-In the following example, I'll create three new li nodes and append them to the unordered list. I will also create text nodes for the list items and attach those as well. When you run "Preview," you will see no delay before the list items appear. The JavaScript will run as fast as possible, so it will look as if the li nodes were always there.
+```
 
-Look at index.html to see the initial state, before the li nodes are added.
+In the following example, I'll create three new `li` nodes and append them to the unordered list. I will also create text nodes for the list items and attach those as well. When you run "Preview," you will see no delay before the list items appear. The JavaScript will run *as fast as possible*, so it will look as if the `li` nodes were always there.
 
-Editor
-Browser View
-index.html
-style.css
-script.js
+Look at `index.html` to see the initial state, before the `li` nodes are added.
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <meta charset="UTF-8">
-5
-        <title>Dom Manipulation</title>
-6
-        <link rel="stylesheet" href="style.css">
-7
-    </head>
-8
-    <body>
-9
-        <ul id="list"></ul>
-10
-        <script src="script.js"></script>
-11
-    </body>
-12
-</html>
- 
+```js
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3     <head>
+ 4         <meta charset="UTF-8">
+ 5         <title>Dom Manipulation</title>
+ 6         <link rel="stylesheet" href="style.css">
+ 7     </head>
+ 8     <body>
+ 9         <ul id="list"></ul>
+10         <script src="script.js"></script>
+11     </body>
+12 </html>
+ ```
 
-Fullscreen
+# Deleting DOM Nodes  
 
-Reset Code
-Preview 
-Deleting DOM Nodes  
+Frequently, you will also need to remove DOM nodes. To delete a DOM node, select the node and use `element.remove()`.
 
-Frequently, you will also need to remove DOM nodes. To delete a DOM node, select the node and use element.remove().
+In the following code sample, the HTML is written with 4 list items in the unordered list. In `script.js`, we select all four list items using document.getElementsByTagName() and then use element.remove() to delete the even list items. Because document.getElementsByTagName() returns an array, we use bracket notation to access the items and remove them from the array.
 
-In the following code sample, the HTML is written with 4 list items in the unordered list. In script.js, we select all four list items using document.getElementsByTagName() and then use element.remove() to delete the even list items. Because document.getElementsByTagName() returns an array, we use bracket notation to access the items and remove them from the array.
+```
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3     <head>
+ 4         <meta charset="UTF-8">
+ 5         <title>Dom Manipulation</title>
+ 6         <link rel="stylesheet" href="style.css">
+ 7     </head>
+ 8     <body>
+ 9         <ul id="list">
+10             <li>This is the first list item text.</li>
+11             <li>Text for the second item.</li>
+12             <li>Third item text.</li>
+13             <li>Item number four.</li>
+14         </ul>
+15         <script src="script.js"></script>
+16     </body>
+17 </html>
+``` 
 
-Editor
-Browser View
-index.html
-style.css
-script.js
+# Manipulating HTML content  
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <meta charset="UTF-8">
-5
-        <title>Dom Manipulation</title>
-6
-        <link rel="stylesheet" href="style.css">
-7
-    </head>
-8
-    <body>
-9
-        <ul id="list">
-10
-            <li>This is the first list item text.</li>
-11
-            <li>Text for the second item.</li>
-12
-            <li>Third item text.</li>
-13
-            <li>Item number four.</li>
-14
-        </ul>
-15
-        <script src="script.js"></script>
-16
-    </body>
-17
-</html>
- 
+## element.innerHTML  
 
-Fullscreen
-
-Reset Code
-Preview 
-Manipulating HTML content  
-
-element.innerHTML  
-
-element.innerHTML - This property provides a reference to the child HTML of an element. You should treat this as a "read only" property. If if you need to change the HTML contents of a node, you should delete the content and then replace it with a new node of content.
+`element.innerHTML` - This property provides a reference to the child HTML of an element. You should treat this as a "read only" property. If if you need to change the HTML contents of a node, you should delete the content and then replace it with a new node of content.
 
 Editor
 Browser View
