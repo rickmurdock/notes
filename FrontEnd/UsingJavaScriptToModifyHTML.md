@@ -462,202 +462,123 @@ Once you have references to the DOM elements you want to work with, there are so
 
 The `id` property can be used to access or change an element's ID. This example prints the id for each span tag in the document to the console.
 
-Editor
-Browser View
-index.html
-script.js
-
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <title>Hello World</title>
-5
-    </head>
-6
-    <body>
-7
-        <h1>This is a headline</h1>
-8
-        <p><a href="#" onclick="printSpans()">Print Span Tags to Console</a></p>
-9
-        <p>Here is <span id="foo">a paragraph  of</span> text.</p>
-10
-        <p>This is a different paragraph <span id="bar">with some inline content</span>.</p>
-11
-        <div>
-12
-            This is some <span id="baz">inline</span> content not contained in a paragraph.
-13
-        </div>
-14
-        <script src="script.js"></script>
-15
-    </body>
-16
-</html>
+```html
+ // index.html
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3    <head>
+ 4         <title>Hello World</title>
+ 5     </head>
+ 6     <body>
+ 7         <h1>This is a headline</h1>
+ 8         <p><a href="#" onclick="printSpans()">Print Span Tags to Console</a></p>
+ 9         <p>Here is <span id="foo">a paragraph  of</span> text.</p>
+10         <p>This is a different paragraph <span id="bar">with some inline content</span>.</p>
+11         <div>
+12             This is some <span id="baz">inline</span> content not contained in a paragraph.
+13         </div>
+14         <script src="script.js"></script>
+15     </body>
+16 </html>
+``` 
  
+## Title Property  
 
-Fullscreen
+HTML elements have a `title` attribute that controls the tooltip displayed when you hover over the element. This example uses the `querySelectorAll()` method to select all of the different tags in the HTML body and sets the title tag to be the name of the tag.
 
-Reset Code
-Preview 
-Title Property  
+**Try hovering over any element to see what tag it is.))
 
-HTML elements have a title attribute that controls the tooltip displayed when you hover over the element. This example uses the querySelectorAll() method to select all of the different tags in the HTML body and sets the title tag to be the name of the tag.
+```html
+// index.html
+ 1 <html>
+ 2     <head>
+ 3         <title>Hello World</title>
+ 4     </head>
+ 5     <body>
+ 6         <h1>This is a headline</h1>
+ 7         <p><a href="#">Toggle Span Tags</a></p>
+ 8         <p>Here is <span>a paragraph  of</span> text.</p>
+ 9         <p>This is a different paragraph <span>with some inline content</span>.</p>
+10         <div>
+11             This is some <span>inline</span> content not contained in a paragraph.
+12         </div>
+13         <script src="scripts.js"></script>
+14     </body>
+15 </html>
+ ```
 
-Try hovering over any element to see what tag it is.
+## tagName
 
-Editor
-Browser View
-index.html
-scripts.js
+The `tagName` property returns the name of the tag. For example, if the tag is a `<div>`, then the element's `tagName` is "DIV". Note that the value from `tagName` is always uppercase. You can see this in action in the `title` example above.
 
-1
-<html>
-2
-    <head>
-3
-        <title>Hello World</title>
-4
-    </head>
-5
-    <body>
-6
-        <h1>This is a headline</h1>
-7
-        <p><a href="#">Toggle Span Tags</a></p>
-8
-        <p>Here is <span>a paragraph  of</span> text.</p>
-9
-        <p>This is a different paragraph <span>with some inline content</span>.</p>
-10
-        <div>
-11
-            This is some <span>inline</span> content not contained in a paragraph.
-12
-        </div>
-13
-        <script src="scripts.js"></script>
-14
-    </body>
-15
-</html>
- 
-
-Fullscreen
-
-Reset Code
-Preview 
-tagName
-The tagName property returns the name of the tag. For example, if the tag is a <div>, then the element's tagName is "DIV". Note that the value from tagName is always uppercase. You can see this in action in the title example above.
-
+```js
 let divs = getElementsByTagName( "div" );
 
 // This will log "div"
 console.log( divs[ 0 ].tagName );
-children
+```
+
+## children
+
 The children property returns an array of the children of an element. This property is read-only. If you want to add children to an element, the best way is to use its append() or prepend() methods. This example lists the children of the document's body tag.
 
-Editor
-Browser View
-index.html
-scripts.js
+```
+// index.html
+ 1 <!DOCTYPE html>
+ 2  <html>
+ 3     <head>
+ 4         <title>Hello World</title>
+ 5     </head>
+ 6     <body>
+ 7         <h1>This is a headline</h1>
+ 8         <p>Here is <span>a paragraph  of</span> text.</p>
+ 9         <p>This is a different paragraph <span>with some inline content</span>.</p>
+10         <div>
+11             This is some <span>inline</span> content not contained in a paragraph.
+12         </div>
+13         <p>One more paragraph for good measure.</p>
+14         <script src="scripts.js"></script>
+15     </body>
+16 </html>
+``` 
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <title>Hello World</title>
-5
-    </head>
-6
-    <body>
-7
-        <h1>This is a headline</h1>
-8
-        <p>Here is <span>a paragraph  of</span> text.</p>
-9
-        <p>This is a different paragraph <span>with some inline content</span>.</p>
-10
-        <div>
-11
-            This is some <span>inline</span> content not contained in a paragraph.
-12
-        </div>
-13
-        <p>One more paragraph for good measure.</p>
-14
-        <script src="scripts.js"></script>
-15
-    </body>
-16
-</html>
- 
+## parentNode  
 
-Fullscreen
+An HTML document is a hierarchy of nested tags. When working with the DOM, we can see the parent node of an element using its read-only `parentNode` property.
 
-Reset Code
-Preview 
-parentNode  
+This example finds the node with an id of "child" in the document and prints out its `parentNode`.
 
-An HTML document is a hierarchy of nested tags. When working with the DOM, we can see the parent node of an element using its read-only parentNode property.
+```html
+// index.html
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3     <head>
+ 4         <title>Hello World</title>
+ 5     </head>
+ 6     <body>
+ 7         <div id="parent">
+ 8             <p id="child">This is the child</p>
+ 9         </div>
+10         <script src="scripts.js"></script>
+11     </body>
+12 </html>
+``` 
 
-This example finds the node with an id of "child" in the document and prints out its parentNode.
-
-Editor
-Browser View
-index.html
-scripts.js
-
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <title>Hello World</title>
-5
-    </head>
-6
-    <body>
-7
-        <div id="parent">
-8
-            <p id="child">This is the child</p>
-9
-        </div>
-10
-        <script src="scripts.js"></script>
-11
-    </body>
-12
-</html>
- 
-
-Fullscreen
-
-Reset Code
-Preview 
-Conclusion  
+## Conclusion  
 
 JavaScript makes it possible to create, update, and remove DOM Nodes, enabling us to create dynamic, flexible, and powerful web content.
 
-Creating Event Listeners  
+---
 
-An event listener allows a developer to respond interactively to events that occur on the DOM. In this lesson, you will learn how to respond to a couple of events using "event listeners" and how to respond to those events with callback functions.
+# Creating Event Listeners  
 
-Selecting a DOM Element  
+An `event listener` allows a developer to respond interactively to events that occur on the DOM. In this lesson, you will learn how to respond to a couple of events using "event listeners" and how to respond to those events with callback functions.
 
-One of the methods available to us on the DOM object is getElementById(). We use this method to return a reference to an HTML element whose id we pass to it.
+## Selecting a DOM Element  
 
+One of the methods available to us on the DOM object is `getElementById()`. We use this method to return a reference to an HTML element whose `id` we pass to it.
+
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -672,98 +593,69 @@ One of the methods available to us on the DOM object is getElementById(). We use
     </script>
 </body>
 </html>
-Since our variable header is a reference to a DOM element, it adopts the methods available to other DOM elements. One of the methods available to use is the addEventListener() method.
+```
 
-Event Listeners  
+Since our variable `header` is a reference to a DOM element, it adopts the methods available to other DOM elements. One of the methods available to use is the `addEventListener()` method.
 
-The addEventListener() method allows us to add a DOM event to our elements. These events will notify our code base that certain interactions have taken place.
+## Event Listeners  
+
+The `addEventListener()` method allows us to add a DOM event to our elements. These events will notify our code base that certain interactions have taken place.
 
 Let's check out how to place an event listener onto a DOM element:
 
-Editor
-Browser View
-index.html
-index.js
+```
+// index.html
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3     <head>
+ 4         <title>Selecting a DOM Element</title>
+ 5     </head>
+ 6     <body>
+ 7         <h2 id="header">Click Me and I'll change!</h2>
+ 8         <script src="index.js"></script>
+ 9     </body>
+10 </html>
+```
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <title>Selecting a DOM Element</title>
-5
-    </head>
-6
-    <body>
-7
-        <h2 id="header">Click Me and I'll change!</h2>
-8
-        <script src="index.js"></script>
-9
-    </body>
-10
-</html>
-11
-​
- 
+> Be sure to read the comments in the index.js file!
 
-Fullscreen
+When adding an event listener, we need to pass in an `event type` and a `call back` function. In our example above, we are declaring the event type to be a `click` event. We are then passing in a `callback` function called ourCallBack(). This will execute when we trigger the event.
 
-Reset Code
-Preview 
-Be sure to read the comments in the index.js file!
-When adding an event listener, we need to pass in an event type and a call back function. In our example above, we are declaring the event type to be a click event. We are then passing in a callback function called ourCallBack(). This will execute when we trigger the event.
+The `click` event type is one of many available to us.1 As an example, here is the same code but instead of "clicking" the text, we can "hover" it using the "mouseover" event.
 
-The click event type is one of many available to us.1 As an example, here is the same code but instead of "clicking" the text, we can "hover" it using the "mouseover" event.
+```html
+// index.html
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3     <head>
+ 4         <title>Selecting a DOM Element</title>
+ 5     </head>
+ 6     <body>
+ 7         <h2 id="header">Hover me and I'll change!</h2>
+ 8         <script src="index.js"></script>
+ 9     </body>
+10 </html>
+``` 
 
-Editor
-Browser View
-index.html
-index.js
+Some other common events are "mouseenter", "mouseleave", "mouseup", "mousedown", "blur", "focus", "load", "scroll", "keyup", "keydown", and "keypress". These events are only a few of *dozens* available through the browser. You won't want for events. However, you might need functionality that isn't available from the standard event types.
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <title>Selecting a DOM Element</title>
-5
-    </head>
-6
-    <body>
-7
-        <h2 id="header">Hover me and I'll change!</h2>
-8
-        <script src="index.js"></script>
-9
-    </body>
-10
-</html>
- 
+That's when we would want to create a `custom event` type.
 
-Fullscreen
-
-Reset Code
-Preview 
-Some other common events are "mouseenter", "mouseleave", "mouseup", "mousedown", "blur", "focus", "load", "scroll", "keyup", "keydown", and "keypress". These events are only a few of dozens available through the browser. You won't want for events. However, you might need functionality that isn't available from the standard event types.
-
-That's when we would want to create a custom event type.
-
-Custom Events  
+## Custom Events  
 
 This custom event discussion is somewhat advanced. It's certainly worth knowing. Evented programming environments like the browser are much easier to handle, if you embrace events and build your logic around them. However, they can be a little difficult to grasp. This foray into custom events is cursory and exploratory. Don't sweat it if you don't get everything the first time through.
 
-When creating custom events, you will create a custom event name and have access to trigger this custom event. Once created, the syntax for linking your event to a node element is the same as before.
+When creating custom events, you will create a custom `event name` and have access to trigger this custom event. Once created, the syntax for linking your event to a node element is the same as before.
 
-To create a custom event, we will need to use JavaScript's CustomEvent API. Let's first create the event:
+To create a custom event, we will need to use `JavaScript's CustomEvent API`. Let's first create the event:
 
+```js
 var customEvent = new CustomEvent("awesomeEvent");
-The CustomEvent Constructor allows us to create a new custom event with relative ease. When creating a custom event, our first parameter takes in our custom event name. The second parameter is an object with customization options, which can be used to specify options the browser will use (like bubbles and cancelable below) or data that the browser will ignore that we can use (like awesomeLevel below).
+```
 
+The `CustomEvent Constructor` allows us to create a new custom event with relative ease. When creating a custom event, our first parameter takes in our custom event name. The second parameter is an object with customization options, which can be used to specify options the browser will use (like `bubbles` and `cancelable` below) or data that the browser will ignore that we can use (like `awesomeLevel` below).
+
+```js
 var customEvent = new CustomEvent("awesomeEvent", {
     detail: {
         awesomeLevel: "over 9000!"
@@ -771,8 +663,11 @@ var customEvent = new CustomEvent("awesomeEvent", {
     bubbles: true,
     cancelable: false
 });
+```
+
 Now that we've further customized our event, let's see how we can trigger our custom events.
 
+```js
 // Grab the reference of a node element
 var headerElement = document.getElementById("header");
 
@@ -787,17 +682,23 @@ var customEvent = new CustomEvent("awesomeEvent", {
 
 // Trigger the event with the dispatchEvent() method.
 headerElement.dispatchEvent(customEvent);
+```
+
 We can trigger our custom events and pass our custom data using the dispatchEvent() method.
 
-Additional Resources  
+## Additional Resources  
 
-Lesson Footnotes
-1: Event References - MDN
-Running Code at Intervals or After a Delay  
+#### Lesson Footnotes
 
-JavaScript gives us some useful methods to delay and execute a set of code in intervals. We use these methods to delay a function from being executed or cause another to execute until stopped by a user's input. In this lesson, we will learn how to use the setTimeout() and setInterval() methods. We will also learn about their canceling counterparts: clearTimeout() and clearInterval().
+* 1: [Event References - MDN](https://developer.mozilla.org/en-US/docs/Web/Events)
 
-Setting a Timeout  
+---
+
+# Running Code at Intervals or After a Delay  
+
+JavaScript gives us some useful methods to delay and execute a set of code in intervals. We use these methods to delay a function from being executed or cause another to execute until stopped by a user's input. In this lesson, we will learn how to use the `setTimeout()` and `setInterval()` methods. We will also learn about their canceling counterparts: `clearTimeout()` and `clearInterval()`.
+
+## Setting a Timeout  
 
 The setTimeout() method allows you to set a time to wait until running a specific function. When we call setTimeout(), it generates a TimeoutId. A TimeoutId is used to cancel a setTimeout() by passing it to the clearTimeout() method.
 
