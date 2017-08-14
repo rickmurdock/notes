@@ -347,56 +347,36 @@ In the following code sample, the HTML is written with 4 list items in the unord
 
 `element.innerHTML` - This property provides a reference to the child HTML of an element. You should treat this as a "read only" property. If if you need to change the HTML contents of a node, you should delete the content and then replace it with a new node of content.
 
-Editor
-Browser View
-index.html
-style.css
-script.js
+```html
+ 1 <!DOCTYPE html>
+ 2 <html>
+ 3     <head>
+ 4         <meta charset="UTF-8">
+ 5         <title>Dom Manipulation</title>
+ 6         <link rel="stylesheet" href="style.css">
+ 7     </head>
+ 8     <body>
+ 9         <ul id="list">
+10             <li>This is the first list item text.</li>
+11             <li>Text for the second item.</li>
+12         </ul>
+13         <script src="script.js"></script>
+14     </body>
+15 </html>
+``` 
 
-1
-<!DOCTYPE html>
-2
-<html>
-3
-    <head>
-4
-        <meta charset="UTF-8">
-5
-        <title>Dom Manipulation</title>
-6
-        <link rel="stylesheet" href="style.css">
-7
-    </head>
-8
-    <body>
-9
-        <ul id="list">
-10
-            <li>This is the first list item text.</li>
-11
-            <li>Text for the second item.</li>
-12
-        </ul>
-13
-        <script src="script.js"></script>
-14
-    </body>
-15
-</html>
- 
+### element.textContent
 
-Fullscreen
+`element.textContent` - This property references the textual content of an HTML tag as text, removing any HTML tags. You can also change the text of an element. For example, if you want to change the text of an element with the id 'selector', we can do this:
 
-Reset Code
-Preview 
-element.textContent  
-
-element.textContent - This property references the textual content of an HTML tag as text, removing any HTML tags. You can also change the text of an element. For example, if you want to change the text of an element with the id 'selector', we can do this:
-
+```js
 let element = document.querySelector('selector');
 element.textContent = "I have changed the text!";
+```
+
 This property is used to retrieve or alter content on an element. In contrast to innerHTML, textContent will not allow HTML content.
 
+```js
 let element = document.querySelector('selector');
 
 //create the element
@@ -405,10 +385,13 @@ let listItem = document.createElement('li');
 // Add text content to the newly created 'li' item.
 // Compared to innerHTML, notice how no style was added.
 listItem.textContent = 'SevenUp';
-Manipulating Classes and Attributes  
+```
 
-element.classList Object  
+# Manipulating Classes and Attributes  
 
+### element.classList Object  
+
+```js
 element.classList - A powerful object for manipulating classes. It offers robust options, from adding multiple classes, to toggling classes.
 
 let element = document.querySelector('selector');
@@ -427,11 +410,15 @@ element.classList.toggle('highlighted');
 
 //removes it since it was just added.
 element.classList.toggle('highlighted');
-classList.contains(): verifies if an element’s list of classes contains a specific class.
-className Property  
+```
 
-If supporting older browsers, we can use the className property on each element. Whatever string we assign to the property will be the new CSS class for the element. This method is not as robust as the classList method, but it does allow us to append classes. In the example below we add a class, and in the second, we append to it.
+> `classList.contains()`: verifies if an element’s list of classes contains a specific class.
 
+## className Property  
+
+If supporting older browsers, we can use the `className` property on each element. Whatever string we assign to the property will be the new CSS class for the element. This method is not as robust as the `classList` method, but it does allow us to append classes. In the example below we add a class, and in the second, we append to it.
+
+```js
 // Lets assume that "element" already has a class of "first"
 let element = document.querySelector('selector');
 
@@ -440,32 +427,40 @@ element.className += " highlighted";
 
 // A whitespace character `" "` is used between the opening quote and the class name.
 // The updated class is now "first highlighted"
+```
+
 A problem with this property is that you may accidentally overwrite any existing class names if you aren't careful.
 
+```js
 let element = document.querySelector('selector');
 element.className = 'highlighted';
 
 // This property holds a string, and you can overwrite it by setting it
 // to a new string. Whatever the className use to be, it
 // has been updated to "highlighted"
+```
+
 You can get around this type of problem in a couple of ways. We can save the current className in a variable, append our new classes to it, and then reset the className property to the new augmented string (which includes the original classes). You can also use external libraries like jQuery to give you a better API that does work in older browsers.
 
-Setting and Changing Attributes  
+## Setting and Changing Attributes  
 
-Use element.setAttribute() to either change an existing attribute or add one. This method accepts two parameters, a name and a value. There will be times when you will either want to set or change an attribute. For example, we might want to update where the 'next' button of a form takes us by changing the href of its anchor tag based on the value of a 'select option'. In the example below, we update the existing href value from our HTML example to take us to The Iron Yard's website.
+Use `element.setAttribute()` to either change an existing attribute or add one. This method accepts two parameters, a `name` and a `value`. There will be times when you will either want to set or change an attribute. For example, we might want to update where the 'next' button of a form takes us by changing the `href` of its anchor tag based on the value of a 'select option'. In the example below, we update the existing `href` value from our HTML example to take us to The Iron Yard's website.
 
+```js
 // select an element with a class of "link"
 let link = document.querySelector('.link');
 
 // give link an "href" attribute value of "http://www.theironyard.com"
 link.setAttribute("href", "http://www.theironyard.com");
-Manipulating Other Common Properties of Elements  
+```
 
-Once you have references to the DOM elements you want to work with, there are some useful properties available. The exact set of properties varies depending on what interfaces the element implements. For example, all of the HTML elements implement HTMLElement, Element, ParentNode, and Node. However, you may have non-HTML elements that do not implement ParentNode and therefore don't have the children property. Beyond that different elements will have additional properties specific to that element. For example, HTMLImageElement has a src property.
+## Manipulating Other Common Properties of Elements  
 
-ID Property  
+Once you have references to the DOM elements you want to work with, there are some useful properties available. The exact set of properties varies depending on what interfaces the element implements. For example, all of the HTML elements implement `HTMLElement`, `Element`, `ParentNode`, and `Node`. However, you may have non-HTML elements that do not implement `ParentNode` and therefore don't have the `children` property. Beyond that different elements will have additional properties specific to that element. For example, `HTMLImageElement` has a `src` property.
 
-The id property can be used to access or change an element's ID. This example prints the id for each span tag in the document to the console.
+## ID Property  
+
+The `id` property can be used to access or change an element's ID. This example prints the id for each span tag in the document to the console.
 
 Editor
 Browser View
