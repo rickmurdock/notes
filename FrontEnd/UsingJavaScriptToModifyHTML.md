@@ -700,118 +700,95 @@ JavaScript gives us some useful methods to delay and execute a set of code in in
 
 ## Setting a Timeout  
 
-The setTimeout() method allows you to set a time to wait until running a specific function. When we call setTimeout(), it generates a TimeoutId. A TimeoutId is used to cancel a setTimeout() by passing it to the clearTimeout() method.
+The `setTimeout()` method allows you to set a time to wait until running a specific function. When we call `setTimeout()`, it generates a `TimeoutId`. A TimeoutId is used to cancel a `setTimeout()` by passing it to the `clearTimeout()` method.
 
-Usage  
+### Usage  
 
-The setTimeout() method will take a function as the first parameter. It then requires the amount to delay as a number (calculated in milliseconds) as the second parameter.
+The `setTimeout()` method will take a function as the first parameter. It then requires the amount to delay as a number (calculated in milliseconds) as the second parameter.
 
 The basic syntax for setTimeout is as follows.
 
+```js
 setTimeout( [function], [time in milliseconds] );
+```
+
 The function takes two parameters. The first is the function that will be called when the timer runs out. This could be an anonymous function (a function with no name). The second parameter is the number of milliseconds (1000 milliseconds is one second) to wait before calling the function passed in the first parameter.
 
-Let's look at an example setTimeout() method:
+Let's look at an example `setTimeout()` method:
 
-
-1
-setTimeout(function() {
-2
-    console.log("This was delayed by one second!");
-3
-}, 1000);
-
-Fullscreen
-
-Reset Code
-Run Code 
+```js
+1 setTimeout(function() {
+2     console.log("This was delayed by one second!");
+3 }, 1000);
+```
+ 
 You can read the above code as "Wait one second and then log 'This was delayed by one second'".
 
 Now that we've simplified the syntax, we can pass in a function for our first parameter and set our delay to be one second (1000 milliseconds).
 
-clearTimeout()  
+### clearTimeout()  
 
-Whenever we call setTimeout, it returns a TimeoutId. We can store this id in a variable. This id is useful because it can be used to stop the timer and prevent the function from running. To cancel the execution of setTimeout(), we will call the clearTimeout() method and pass in our TimeoutId:
+Whenever we call `setTimeout`, it returns a TimeoutId. We can store this id in a variable. This id is useful because it can be used to stop the timer and prevent the function from running. To cancel the execution of `setTimeout()`, we will call the `clearTimeout()` method and pass in our TimeoutId:
 
-
-1
-let timeoutId = setTimeout( function() {
-2
-    console.log( "This was delayed by one second!" );
-3
-}, 1000 );
+```js
+1 let timeoutId = setTimeout( function() {
+2     console.log( "This was delayed by one second!" );
+3 }, 1000 );
 4
-​
-5
-clearTimeout( timeoutId );
-6
-​
-7
-// Nothing will be logged because the timeout is canceled immediately.
+5 clearTimeout( timeoutId );
+6 
+7 // Nothing will be logged because the timeout is canceled immediately.
+```
 
-Fullscreen
+## Setting an Interval  
 
-Reset Code
-Run Code 
-Setting an Interval  
+The `setInterval()` method works in a different manner then the `setTimeout()` method. Instead of delaying the execution of a function, the `setInterval()` method will run a function at a given interval until canceled. The `setInterval()` generates an `IntervalId` like setTimeout() generates a `TimeoutId`.
 
-The setInterval() method works in a different manner then the setTimeout() method. Instead of delaying the execution of a function, the setInterval() method will run a function at a given interval until canceled. The setInterval() generates an IntervalId like setTimeout() generates a TimeoutId.
+### Usage  
 
-Usage  
-
-We write the setInterval() method like our setTimeout() method by passing in a function as its first parameter. For the second parameter, we pass in a number (in milliseconds) that represents how often we'd like the function to execute.
+We write the `setInterval()` method like our `setTimeout()` method by passing in a function as its first parameter. For the second parameter, we pass in a number (in milliseconds) that represents how often we'd like the function to execute.
 
 Let's see what it looks like:
 
+```js
 setInterval(function() {
     console.log("This is executed every one second!");
 }, 1000);
-clearInterval()  
+```
 
-To cancel a setInterval() we will want to use the clearInterval() method. Assuming we have a variable named id that has a IntervalId assigned to it, this is how we would cancel a setInterval():
+### clearInterval()  
 
+
+To cancel a `setInterval()` we will want to use the `clearInterval()` method. Assuming we have a variable named `id` that has a IntervalId assigned to it, this is how we would cancel a `setInterval()`:
+
+```js
 clearInterval(id);
-Example of Executing Code Periodically  
+```
 
-Editor
-Browser View
-index.html
-index.js
+### Example of Executing Code Periodically  
 
-1
-<html>
-2
-    <head>
-3
-        <title>Set Intervals</title>
-4
-    </head>
-5
-    <body>
-6
-        <p id="container">Hello, World!</p>
-7
-        <input type="button" onclick="beginChange()" value="Start Changing"/>
-8
-        <input type="button" onclick="cancelChange()" value="Cancel Changing"/>
-9
-        <script src="index.js"></script>
-10
-    </body>
-11
-</html>
- 
+```js
+// index.html
+ 1 <html>
+ 2     <head>
+ 3         <title>Set Intervals</title>
+ 4     </head>
+ 5     <body>
+ 6         <p id="container">Hello, World!</p>
+ 7         <input type="button" onclick="beginChange()" value="Start Changing"/>
+ 8         <input type="button" onclick="cancelChange()" value="Cancel Changing"/>
+ 9         <script src="index.js"></script>
+10     </body>
+11 </html>
+```
 
-Fullscreen
+> Take your time with this runnable program. There are comments in the index.js file to give a better explanation of the process, and a "Browser View" to see the code running.
 
-Reset Code
-Preview 
-Take your time with this runnable program. There are comments in the index.js file to give a better explanation of the process, and a "Browser View" to see the code running.
-Conclusion  
+## Conclusion  
 
-Both setTimeout() and setInterval() have many practical uses when working on the web. As a developer, you might need to use them to delay or repeat the execution of functions. You should now be able to place these new methods in your "web developer's tool box".
+Both `setTimeout()` and `setInterval()` have many practical uses when working on the web. As a developer, you might need to use them to delay or repeat the execution of functions. You should now be able to place these new methods in your "web developer's tool box".
 
-Additional Resources  
+## Additional Resources  
 
-setTimeout - MDN
-setInterval - MDN
+* [setTimeout - MDN](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout)
+* [setInterval - MDN](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval)
