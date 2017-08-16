@@ -126,7 +126,7 @@ All of these devices have web browsers that can access websites. This presents a
 
 In the illustration below, you can see how sites might appear if they aren't developed with responsive principles. The site looks great on on a desktop, with a logical layout and clear element. On a tablet, the content is scaled down and the horizontal layout is ill formed for the vertical device. On a mobile device, the effect is even worse. Text is too small to see and the whole site looks zoomed out.
 
-RWD_no_breakpoints.png
+![RWD_no_breakpoints.png](./images/RWD_no_breakpoints.png)
 
 > Without Responsive Design, sites can render strangely across devices. What works well on the desktop, may be very hard to deal with on a phone.
 
@@ -144,7 +144,7 @@ The following image illustrates some typical responsive strategies for managing 
 
 * Why is the following illustration of layouts more user friendly?
 
-RWD_breakpoints.jpg
+![RWD_breakpoints.jpg](./images/RWD_breakpoints.jpg)
 
 This image shows a very typical responsive strategy for managing page layout. You'll notice that the desktop layout is exactly the same as our previous image, but that the tablet and mobile layouts have been adjusted.
 
@@ -322,7 +322,7 @@ Even with media queries, the experience of using sites can be a little clunky if
 
 Lets look at an example. Every time the background color changes, a breakpoint has been reached. You should see the site snap between widths and snap between colors.
 
-rwd-example4.gif
+![rwd-example4.gif](./images/rwd-example4.gif)
 
 As you can see, the layout feels like its jumping all over the place. The space around the white card is constantly changing. The site feels like it **snaps**! from one break point to another. We can fix a lot of this with a fluid layout.
 
@@ -332,7 +332,7 @@ Fluid layouts are simple to understand. All we have to do to convert values that
 
 Lets now look at a fluid version of the previous example.
 
-rwd-example6-min.gif
+![rwd-example6-min.gif](./images/rwd-example6-min.gif)
 
 Notice that the layout feels much more stable as the screen is resized. The margins feels better and the width of the main card doesn't seem to jump from one value to another. The content inside the card still jumps from a single column to two columns, but its not as jarring because the card is stable and natural.
 
