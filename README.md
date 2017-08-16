@@ -29,7 +29,7 @@ Lecture notes from The Iron Yard
 
 * Creating Arrays and Loops 
 
-* Using JavaScript to Modify HTML
+* [Using JavaScript to Modify HTML](./FrontEnd/UsingJavaScriptToModifyHTML.md)
 
 * Building Objects and Maintaining Proper Scope
 
