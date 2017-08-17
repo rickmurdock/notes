@@ -263,7 +263,7 @@ console.log(16129849702 / -1234);
 
 Remember long division from elementary school?
 
-Long division - the bane of 4th graders everywhere.
+![Long division - the bane of 4th graders everywhere.](./images/dec-long-division.gif)
 
 The remainder operator, often called the *modulo operator* or *mod*, returns the remainder left over when dividing the value to the left of the `%` symbol by the value to the right.
 
