@@ -31,7 +31,7 @@ Lecture notes from The Iron Yard
 
 * [Using JavaScript to Modify HTML](./FrontEnd/UsingJavaScriptToModifyHTML.md)
 
-* Building Objects and Maintaining Proper Scope
+* [Building Objects and Maintaining Proper Scope](./FrontEnd/BuildingObjectsAndMaintainingProperScope.md)
 
 * Algorithms and Data Modeling
 
