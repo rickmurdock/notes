@@ -652,12 +652,13 @@ As you can see, the variable declaration was pushed to the top of the scope. In 
 
 **Also realize that the assignment portion of the variable declaration was not hoisted.** In our example above, only the name `var x;` was hoisted, `x = 1;` was not hoisted.
 
-Function Declaration Hoisting  
+## Function Declaration Hoisting  
 
 Though variable names are hoisted to the top, it is important to note that functions behave different. If you define a function within another function's scope, entire function body will be hoisted.
 
 Let's check out an example of hoisting with a function declaration:
 
+```js
 function foo(){
     // This code will run even though the function declaration
     // happens later in the code. Why?
@@ -666,8 +667,11 @@ function foo(){
     function bar(){}
 }
 foo();
-Again, the interpreter sees the function declaration following the function call and decides to rewrite things before executing the code. It hoist the entire bar() declaration to the top of the scope.
+```
 
+Again, the interpreter sees the function declaration following the function call and decides to rewrite things before executing the code. It hoist the entire `bar()` declaration to the top of the scope.
+
+```js
 function foo(){
 
     // this function declaration has been 
@@ -678,12 +682,15 @@ function foo(){
 }
 
 foo();
+```
+
 Okay, declarations get completely hoisted, but what about function expressions? If you assign a function to a variable, the variable name will behave similarly to a normal variable.
 
-Function Expression Hoisting  
+## Function Expression Hoisting  
 
-First, notice that the bar function is actually an anonymous function assigned to a variable bar. This is called a function expression. We can still call the function in the same way i.e. bar(), but this alternate way of creating named functions changes how hoisting is managed. Lets look at the first block of code. If this code were run, it would throw a reference error. Hoisting is still happening, but function expression act like variable hoisting. The declaration is hoisted, but not the assignment.
+First, notice that the bar function is actually an anonymous function assigned to a variable `bar`. This is called a function expression. We can still call the function in the same way i.e. `bar()`, but this alternate way of creating named functions changes how hoisting is managed. Lets look at the first block of code. If this code were run, it would throw a reference error. Hoisting is still happening, but function expression act like variable hoisting. The declaration is hoisted, but not the assignment.
 
+```js
 function foo(){
     // This code will throw an error. Why?
     // I thought functions got hoisted?
@@ -693,8 +700,11 @@ function foo(){
 }
 
 foo();
-The following snippet demonstrates what the interpreter will hoist in this case. It has hoisted var bar; but not bar = function(){}; This means that when bar() is called, it has yet to be assigned a value.
+```   
+ 
+The following snippet demonstrates what the interpreter will hoist in this case. It has hoisted `var bar;` but not `bar = function(){};` This means that when bar() is called, it has yet to be assigned a value.
 
+```js
 function foo(){
 
     // this function declaration has been 
@@ -707,17 +717,21 @@ function foo(){
 }
 
 foo();
-Whether you choose to use function declarations or expressions its clear that this behavior (hoisting) can be a clear source of confusion. The lesson to take away: Always define your functions before using them.
-Conclusion  
+```
 
-This lesson has given you the knowledge to master the incredible mechanism that is hoisting in JavaScript. If you use common practice and declare your variables at the top of a given scope, you will find that your hoisting errors will be at a minimum.
+> Whether you choose to use function declarations or expressions its clear that this behavior (hoisting) can be a clear source of confusion. **The lesson to take away: Always define your functions before using them.**
 
-Additional Resources  
+## Conclusion  
 
-Hoisting - MDN
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Using Bracket and Dot Notation to Access Object Literals  
+This lesson has given you the knowledge to master the incredible mechanism that is `hoisting` in JavaScript. If you use common practice and declare your variables at the top of a given `scope`, you will find that your hoisting errors will be at a minimum.
+
+## Additional Resources  
+
+* [Hoisting - MDN](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+
+---
+
+# Using Bracket and Dot Notation to Access Object Literals  
 
 Everything in JavaScript is an object. Functions are objects. Arrays are objects. Numbers, strings, etc. are all objects. When you do anything in JavaScript, you are manipulating objects.
 
@@ -725,478 +739,331 @@ The idea of objects can be confusing to most folks, so lets take a second to bre
 
 Imagine that you are trying to represent your cell phone. Lets say, an iPhone. You want to describe it to people. Lets just imagine some of the things that we might say about the phone, and lets also try to be organized about how we describe the phone. We are going to describe two categories of information about your phone.
 
-We'll describe what your phone "is". Meaning, what it looks like, what descriptors we can apply to it e.g. color, durability, size, weight.
-We'll describe what it "does". What behaviors does it have? What commands can we give it? What does it do on its own? e.g. Make call, click home button, increase/decrease volume.
+1. **We'll describe what your phone "is".** Meaning, what it looks like, what descriptors we can apply to it e.g. color, durability, size, weight.
+
+2. **We'll describe what it "does".** What behaviors does it have? What commands can we give it? What does it do on its own? e.g. Make call, click home button, increase/decrease volume.
+
 We could go into great detail about the phone, but lets just stick to a few key details:
 
 The phone "is":
 
-black
-5oz
-rectangular
-minimalist
-etc.
+* black
+
+* 5oz
+
+* rectangular
+
+* minimalist
+
+* etc.
+
 The phone "does":
 
-make calls
-increase volume
-decrease volume
-go back to home screen
-turn on
-turn off
-etc.
-This is great. We have a good list of descriptors and behaviors about the phone. Now, how can we represent this phone as code? The answer: an object. There are several ways to create objects in JavaScript, but we'll model our phone as an Object Literal, since thats what we'll discuss in this lesson. Below, you'll see the data rewritten as a JavaScript object. In this lesson, we'll talk a lot about how to access data from objects, but it pays for you to see what they are for.
+* make calls
 
+* increase volume
 
-1
+* decrease volume
+
+* go back to home screen
+
+* turn on
+
+* turn off
+
+* etc.
+
+This is great. We have a good list of descriptors and behaviors about the phone. Now, how can we represent this phone as code? **The answer: an object.** There are several ways to create objects in JavaScript, but we'll model our phone as an Object Literal, since thats what we'll discuss in this lesson. Below, you'll see the data rewritten as a JavaScript object. In this lesson, we'll talk a lot about how to access data from objects, but it pays for you to see what they are for.
+
+```js
 var iPhone = {
-2
   color : "black",
-3
   weight : 5,
-4
   shape : "rectangular",
-5
   style : "minimalist",
-6
-​
-7
+
   makeCalls : function(){},
-8
   changeValume : function( amount ){},
-9
   goToHomeScreen : function(){},
-10
   on : function(){},
-11
   off : function(){}
-12
 };
-13
-​
-14
+
 console.log( iPhone );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-In a lot of ways, this object literal is the same thing as our list above. The formatting and syntax is a little different, but in essence its the same. The items that our phone "is" became data. The items that our phone "does" became functions (sometimes called 'methods' when part of an object). The object (everything in between the curly braces) is the object. The object is the encapsulation of all of this data and behavior into one thing, accessible via the variable iPhone.
+In a lot of ways, this object literal is the same thing as our list above. The formatting and syntax is a little different, but in essence its the same. The items that our phone "is" became data. The items that our phone "does" became functions (sometimes called 'methods' when part of an object). The object (everything in between the curly braces) is the object. The object is the encapsulation of all of this data and behavior into one thing, accessible via the variable `iPhone`.
 
 Now that we've talked in general about object literals, lets dig in a little deeper.
 
-Object Literals  
+## Object Literals  
 
 "Object literal" really just refers to the way that a specific object is written. It requires a specific syntax that differentiates it from other objects like arrays and strings. Code blocks containing object literal syntax help cut down on the number of global variables declared, which means cleaner code and less chance for error.
 
 Lets start as simply as possible. We'll define an Object with no members and talk about a couple ways to create new members, and access and edit those member. The following code sample declares a variable demo that holds an empty object. Objects are declared using the curly braces. All members of the object are listed as comma separated, key/value pairs. In this case we have no members, so theres nothing between the curly braces.
 
+```js
 var demo = {};
+```
+
 So, how do we alter this object to add members? We have two options "dot notation" and "bracket notation". They do exactly the same thing, but lets look at examples of both. We'll start again with our empty object
 
-
-1
+```js
 var demo = {};
-2
 console.log( demo );
-3
-​
-4
+
 // Adding a member with dot notation
-5
 demo.firstName = "Markus";
-6
 console.log( demo );
-7
-​
-8
+
 // Adding a member with bracket notation
-9
 demo[ "lastName" ] = "Jackson";
-10
 console.log( demo );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Run the code and take a look at the output. console.log( demo ) is called three times over the course of this code snippet and each time it returns a different result.
+Run the code and take a look at the output. `console.log( demo )` is called three times over the course of this code snippet and each time it returns a different result.
 
 The first time it is called it returns the empty brackets. Those empty brackets simply mean that the object has no members.
 
-The second time console.log is called, the object has a new member firstName and it has been set with a string value "Marcus". This logging follows the dot notation statement. demo.firstName = "Markus"; means "access the firstName member of the demo object and assign it a value of 'Markus'". If that member (firstName) doesn't exist, then it is created.
+The second time console.log is called, the object has a new member `firstName` and it has been set with a string value "Marcus". This logging follows the dot notation statement. `demo.firstName = "Markus";` means "access the firstName member of the demo object and assign it a value of 'Markus'". If that member (`firstName`) doesn't exist, then it is created.
 
-The third time that console.log is called, the object has yet another member lastName with a value of 'Jackson'. This new development follows the bracket notation statement. demo[ "lastName" ] = "Jackson"; can be read as "access the lastName member of the demo object and assign in a value of 'Jackson'. The syntax is a little different, but the result is the same. A new member was created (because it didn't already exist) and was assigned a string "Jackson". One notable difference between dot notation and bracket notation is that bracket notation requires that member being accessed is in string form, e.g. demo[ "lastName" ]
+The third time that `console.log` is called, the object has yet another member `lastName` with a value of 'Jackson'. This new development follows the bracket notation statement. `demo[ "lastName" ] = "Jackson";` can be read as "access the lastName member of the demo object and assign in a value of 'Jackson'. The syntax is a little different, but the result is the same. A new member was created (because it didn't already exist) and was assigned a string "Jackson". One notable difference between dot notation and bracket notation is that bracket notation requires that member being accessed is in string form, e.g. `demo[ "lastName" ]`
 
-Notice that the two members (firstName and lastName) are separated from their values by a colon and that the member/value pairs are separated from one another by a comma.
+Notice that the two members (`firstName` and `lastName`) are separated from their values by a colon and that the member/value pairs are separated from one another by a comma.
 
 if we wanted to create this object without having to add elements to it manually we could do so like this. I'll throw in a couple other code samples for you to puzzle out before moving on to a much more detailed discussion of bracket notation and dot notation.
 
-
-1
+```js
 var demo = {
-2
   firstName : 'Marcus',
-3
   lastName : 'Jackson'
-4
 };
-5
-​
-6
-​
-7
+
+
 // Accessing the firstName property of demo via dot notation
-8
 console.log( 1, demo.firstName );
-9
 // Accessing the firstName property of demo via bracket notation
-10
 console.log( 2, demo[ "firstName" ] );
-11
-​
-12
+
 // Accessing the lastName property of demo via bracket notation
-13
 console.log( 3, demo.lastName );
-14
 // Accessing the lastName property of demo via bracket notation
-15
 console.log( 4, demo[ "lastName" ] );
-16
-​
-17
+
 // Altering the lastName property via dot notation
-18
 demo.lastName += " III";
-19
 // Altering the firstName property via dot notation
-20
 demo[ "firstName" ] = "Darius";
-21
-​
-22
+
 // Logging the concatenation of the first and last names
-23
 console.log( 5, demo[ "firstName" ] + " " + demo[ "lastName" ] );
-24
-​
-25
+
 // Creating two new members of the demo object, `age` and `hobbies`
-26
 demo.age = 35;
-27
 // object properties can hold any data, including arrays, other objects, and functions
-28
 demo.hobbies = [ "golf", "swimming", "reading" ];
-29
-​
-30
+
 // Logging the whole demo object to show how it has been changed
-31
 console.log( 6, demo );
 
-Fullscreen
+// Logging the last item in the hobbies property
+console.log( 7, demo.hobbies[ 2 ] );
+```
 
-Reset Code
-Run Code 
-One last example to demonstrate that objects can hold any data. The 'this' keyword is simply the way that an object refers to itself. In this case this is the way that demo can refer to itself within its own object body.:
+One last example to demonstrate that objects can hold any data. The 'this' keyword is simply the way that an object refers to itself. In this case `this` is the way that `demo` can refer to itself within its own object body.:
 
-
-1
+```js
 var demo = {
-2
   firstName : 'Marcus',
-3
   lastName : 'Jackson',
-4
   age : 35,
-5
   appearance : {
-6
     hairColor : "black",
-7
     height : "74in",
-8
     weight : "195lb"
-9
   },
-10
   hobbies : [
-11
     "golf",
-12
     "swim",
-13
     "read"
-14
   ],
-15
   sayHello : function(){
-16
     console.log( "Hello, my name is " + this.firstName + " " + this.lastName + "." );
-17
   },
-18
   describeMyself : function(){
-19
     console.log( "I am " + this.appearance.height + " tall and " + this.age + " years old. I like to " + this.hobbies[ 1 ] + " and to " + this.hobbies[2] + "." );
-20
   }
-21
 };
-22
-​
-23
+
 demo.sayHello();
-24
 demo.describeMyself();
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Explore these two larger examples before moving on. Its okay if you don't understand everything, but try to wrap your mind around as much as possible before moving on. Make note of the things you find confusing.
 
 The next couple sections will take a detailed look at accessing and altering data in object literals.
 
-A Deep Dive into Bracket Notation  
+## A Deep Dive into Bracket Notation  
 
-You can access properties of objects using bracket notation in a manner similar to how brackets are used with arrays. In bracket notation the object's property is accessed by first referencing the object's name, followed by a [ character (a square bracket, non-curly, non-mustache, call it what you will, just be consistent), the name of the property as a string, and finally a ] character. For example:
+You can access properties of objects using bracket notation in a manner similar to how brackets are used with arrays. In bracket notation the object's property is accessed by first referencing the object's name, followed by a `[` character (a square bracket, non-curly, non-mustache, call it what you will, just be consistent), the name of the property as a string, and finally a `]` character. For example:
 
+```js
 vehicle["mpg"]
-The above example refers to the mpg property on the vehicle object.
+```
 
-Brackets and Reading Object Literal Data  
+The above example refers to the `mpg` property on the `vehicle` object.
+
+### Brackets and Reading Object Literal Data  
 
 We can use bracket notation to read the value of a property.
 
-
-1
+```js
 var company = {
-2
   name: "ThyssenKrupp",
-3
   country: "Germany",
-4
   business: "elevator manufacturing",
-5
   established: 1999
-6
 };
-7
-​
-8
+
 console.log("The company " + company["name"] + " was founded in " + company["established"] + " in " + company["country"] + " and is in the business of " + company["business"] + "." );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 This program shows how we can read properties from an object using bracket notation.
 
-It's important to note that, just like we'll see next in dot notation, if you try to read a property that doesn't exist you will receive an undefined result.
-Brackets and Editing Object Literal Data  
+> It's important to note that, just like we'll see next in dot notation, if you try to read a property that doesn't exist you will receive an `undefined` result.
+
+
+### Brackets and Editing Object Literal Data  
 
 You can also use bracket notation to edit or create properties on objects.
 
 This example shows how you can create and modify properties using bracket notation.
 
-
-1
+```js
 var country = {}
-2
 country["name"] = "Zimbabwe";
-3
 country["motto"] = "Unity, Freedom, Work";
-4
 country["capitol city"] = "Harare";
-5
 country["estimated population"] = 13061239;
-6
-​
-7
+
 // log our country to the console
-8
 console.log(country);
-9
-​
-10
+
 // Our population just grew by 2!
-11
 country["estimated population"] += 2;
-12
-​
-13
+
 // log our updated country to the console
-14
 console.log(country);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-A Deep Dive into Dot Notation  
+## A Deep Dive into Dot Notation  
 
 One of the greatest feelings while learning to code is when you start to identify patterns and similarities in different aspects of the discipline. You'll find that this can be said of bracket vs. dot notation. Take a look below to spot the similarities and differences.
 
 In dot notation the object's property is accessed by first referencing the object's name, followed by a . character, and then the name of the property. For example:
 
+```js
 vehicle.mpg
-The above example refers to the mpg property on the vehicle object.
+```
 
-The . character can be thought of as being similar to the possessive "apostrophe s" in english. As in the . indicates that the property belongs to the object, like the car's mpg property.
-Dots and Reading Object Literal Data  
+The above example refers to the `mpg` property on the `vehicle` object.
+
+> The `.` character can be thought of as being similar to the possessive "apostrophe s" in english. As in the `.` indicates that the property belongs to the object, like the car's mpg property.
+
+### Dots and Reading Object Literal Data  
 
 We can use dot notation to read the value of a property.
 
-
-1
+```
 var animal = {
-2
   name: "African bush elephant",
-3
   scientificName: "Loxodonta africana",
-4
   weightInLbs: 13000,
-5
   heightInFt: 11
-6
 };
-7
-​
-8
+
 // describe our animal
-9
 console.log("The " + animal.name + " (" + animal.scientificName + ") weighs in at " + animal.weightInLbs + "lbs and is " + animal.heightInFt + " feet tall.");
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 The above example demonstrates how we can read properties from an object using dot notation.
 
-As was the case with bracket notation, if you try to read a property that doesn't exist you will receive a result of undefined.
+> As was the case with bracket notation, if you try to read a property that doesn't exist you will receive a result of `undefined`.
+
 Run the code below. What result do you anticipate, and why does it log that?
 
-
-1
+```js
 var hat = {
-2
   style: "bowler hat",
-3
   price: 39.00,
-4
   material: "whool",
-5
   productNumber: 83729
-6
 };
-7
-​
-8
+
 console.log(hat.inventory);
+```
 
-Fullscreen
+### Dots and Editing Object Literal Data  
 
-Reset Code
-Run Code 
-Dots and Editing Object Literal Data  
-
-Juuuust like with brackets, you can also use dot notation to update or create properties on objects.
+Just like with brackets, you can also use dot notation to update or create properties on objects.
 
 This example shows how you can create properties using dot notation.
 
-
-1
+```js
 // create an empty object to hold planet information
-2
 var planet = {};
-3
-​
-4
+
 // create some properties
-5
 planet.name = "Earth";
-6
 planet.orbitalPeriod = 365.256363004;
-7
 planet.orbitalSpeedKms = 29.78;
-8
 planet.meanRadiusKm = 6371;
-9
 planet.satellites = 1;
-10
 planet.axialTilt = 23.4392811;
-11
-​
-12
+
 // output the planet to the console
-13
 console.log(planet);
+```
 
-Fullscreen
+Note that we begin with `var planet = {};`, an empty object to fill with properties. In essence all we're doing here is defining "planet". Without creating that object, none of the rest of the dot-notated-properties make sense. If we wanted to we could have said `var umbrella = {};` and then each of our subsequent properties would have to be `umbrella.name`, `umbrella.orbitalPeriod`, etc.
 
-Reset Code
-Run Code 
-Note that we begin with var planet = {};, an empty object to fill with properties. In essence all we're doing here is defining "planet". Without creating that object, none of the rest of the dot-notated-properties make sense. If we wanted to we could have said var umbrella = {}; and then each of our subsequent properties would have to be umbrella.name, umbrella.orbitalPeriod, etc.
+Here is an example where properties are *edited* using dot notation:
 
-Here is an example where properties are edited using dot notation:
-
-
-1
+```js
 // create a person object
-2
 var person = {
-3
   name: "Orion Monserrat",
-4
   age: 47,
-5
   weight: 195
-6
 }
-7
-​
-8
+
 // output out person
-9
 console.log(person);
-10
-​
-11
+
 // the person gets older
-12
 person.age++;
-13
-​
-14
+
 // the person eats way too many dough-nuts
-15
 person.weight = person.weight + 10;
-16
-​
-17
+
 // output out our changed person
-18
 console.log(person);
+```
 
-Fullscreen
+By now you're probably aware but just in case- the `++` on line 12 after `person.age` is a way of incrementing a property by one. It's kind of like saying (person.age)+1.
 
-Reset Code
-Run Code 
-By now you're probably aware but just in case- the ++ on line 12 after person.age is a way of incrementing a property by one. It's kind of like saying (person.age)+1.
+**If you write to a property that doesn't exist on an object the property will automatically be created for you.**
 
-If you write to a property that doesn't exist on an object the property will automatically be created for you.
-
-Conclusion  
+## Conclusion  
 
 One of the main benefits of object literals is that they encase data within a set of curly brackets, a move that helps the coder from writing a ton of global variables. Often, the more global variables you use the greater the risk of errors when combining code blocks into one document.
 
 As for whether bracket notation is better than dot notation or vice versa, it's really coder's choice. The dot method is perhaps, at first glance, a cleaner form of writing code. That being said, cleanliness is important when programming but at the end of the day the most important thing is writing code that behaves the way you want it to behave, and that includes obtaining the ability to create and edit data.
 
-References  
+### References  
 
-Grammar and types - MDN (scroll to middle of article for Object Literals)
-Property accessors - MDN
-JavaScript Object Literals Simplified
+* [Grammar and types - MDN (scroll to middle of article for Object Literals)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types)
+
+* [Property accessors - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors)
+
+* [JavaScript Object Literals Simplified](http://www.standardista.com/javascript/javascript-object-literals-simplified/)
