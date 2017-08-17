@@ -1,97 +1,110 @@
-Using Forms to Collect Data  
+# Using Forms to Collect Data  
 
 All applications work with data. On the web, this data is often collected from users. Every time you sign up for another social media account or enter your credit card information for an online purchase the web app is collecting data from you so that it can perform some action on that data.
 
 We enter data into online services all the time for a myriad of reasons. Transacting data is an integral part of interacting with web-based services.
 
-All this to say: Knowing how to collect data on the web is very important if you intend to make a living building web apps.
+All this to say: **Knowing how to collect data on the web is *very* important if you intend to make a living building web apps.**
 
 In this article, we will talk about the humble form element and all of the accompanying elements that allow us to collect data from users. This article doesn't explain how to handle the data that we collect, that topic goes well beyond HTML. This article is concerned only with the HTML elements themselves, the properties that accompany most form elements, and the appropriate use of each element to collect data.
 
-What is a Form?  
+## What is a Form?  
 
-The form element is a container to house "input controls". Input controls are elements that users can enter data into. The form element determines where that data goes when the form is submitted.
+The `form` element is a container to house "input controls". Input controls are elements that users can enter data into. The form element determines where that data goes when the form is submitted.
 
 Form elements have two main properties that should be set for the form to function properly:
 
-action - The action property specifies where the form data should be sent when the form is submitted. This is generally a script on the server specifically tailored to handle the data and process it. In the following example, the data is being sent to a PHP script called process_form_data.php
+* `action` - The `action` property specifies where the form data should be sent when the form is submitted. This is generally a script on the server specifically tailored to handle the data and process it. In the following example, the data is being sent to a PHP script called `process_form_data.php`
 
-method - The method property specifies the way that the data will be sent. The two principal values for method are "post" and "get". Generally speaking, any form should send its data via "post".
+* `method` - The `method` property specifies the way that the data will be sent. The two principal values for `method` are "post" and "get". Generally speaking, any form should send its data via "post".
 
-Form methods are a little outside the scope of this article. When you start exploring JavaScript you will learn all about sending data back and forth to the server.
+> Form methods are a little outside the scope of this article. When you start exploring JavaScript you will learn all about sending data back and forth to the server.
+
+```html
 <form action="./process_form_data.php" method="post">
     <!-- "Input controls go here" -->
 </form>
-How Do Forms Work?  
+```
+
+---
+
+# How Do Forms Work?  
 
 Forms contain a set of input controls that users can enter data into. Examples of input controls might be:
 
-A field where a user enters some text, like their name.
-Drop-downs that allow users to select from a set of predetermined values, e.g. "Select your state..."
-Checkboxes to select or de-select options, e.g. "Do you agree to our terms of service..."
-etc.
+* A field where a user enters some text, like their name.
+
+* Drop-downs that allow users to select from a set of predetermined values, e.g. "Select your state..."
+
+* Checkboxes to select or de-select options, e.g. "Do you agree to our terms of service..."
+
+* etc.
+
 Whatever the data, eventually a user will enter all of their data and press a button to complete the form. Lots of times, the button says something like "Submit".
 
-The following example shows an example of a form that collects one data item: a first name. When the user clicked the "Submit" button, the form sends the data to ./process_form_data.php via a POST method.
+The following example shows an example of a form that collects one data item: a first name. When the user clicked the "Submit" button, the form sends the data to `./process_form_data.php` via a POST method.
 
-Note: Nothing will happen when you submit this form. It's a dummy form intended to show you the basic structure of forms: Labels, inputs, and buttons.
-Editor
-Browser View
-index.html
-style.css
+> Note: Nothing will happen when you submit this form. It's a dummy form intended to show you the basic structure of forms: Labels, inputs, and buttons.
 
-1
+```html
+// index.html
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Name Form</title>
-6
     <link rel="stylesheet" href="style.css" />
-7
 </head>
-8
 <body>
-9
     <form action="./process_form_data.php" method="post">
-10
         <label for="first_name">First Name:</label>
-11
         <input type="text" name="first_name" id="first_name">
-12
         <button type="submit" id="submit">Submit</button>
-13
     </form>
-14
 </body>
-15
 </html>
- 
+``` 
 
-Fullscreen
+```css
+// styles.css
+label, input{
+    display: block;
+}
+#submit{
+    padding: 10px 15px;
+    background: orange;
+    border: none;
+    outline: none;
+    margin: none;
+    text-align: center;
+    color: white
+}
+#submit:hover{
+    color: red;
+}
+```
 
-Reset Code
-Preview 
-Form Elements  
+---
+
+# Form Elements  
 
 Forms can utilize several input controls, all of which are intended to gather a different type of information. Over the next several sections, we'll discuss each input control in detail, discussing the tag, attributes, and use case of each element.
 
-Input  
+## Input  
 
-The input element is the workhorse of any form. Most of the input controls will be input elements. input allows us to collect all sorts of data by specifying a "type" of data. The "type" attribute of an input will determine a couple things:
+The `input` element is the workhorse of any form. Most of the input controls will be `input` elements. `input` allows us to collect all sorts of data by specifying a "type" of data. The "type" attribute of an input will determine a couple things:
 
-How the input is presented to the user
-What data the input is intended to collect
-Use input if you need to collect a short string of characters or numbers. Use the proper type for the data being collected.
+1. How the `input` is presented to the user
 
-We will discuss several input types, but not all. Some input types are poorly supported by browsers and should be avoided for accessibility and usability reasons. Generally speaking, the "text" type is, by far, the most stable. You can always set an input element's type to "text" to collect data, but other input types are more semantic for their intended use.
+2. What data the `input` is intended to collect
+
+**Use `input` if you need to collect a short string of characters or numbers. Use the proper type for the data being collected.**
+
+We will discuss several `input` types, but not all. Some input types are poorly supported by browsers and should be avoided for accessibility and usability reasons. Generally speaking, the "text" type is, by far, the most stable. You can always set an `input` element's type to "text" to collect data, but other input types are more semantic for their intended use.
 
 The following code snippet shows seven input types and gives a brief explanation for when they should be used:
 
+```html
 <!--
 The default type for
 collecting generic text content
@@ -139,70 +152,96 @@ An HTML 5 input type for entering a URL.
 This input validates a valid absolute URL.
 -->
 <input type="url">
-Editor
-Browser View
-index.html
+```
 
-1
+``` html
     <!doctype html>
-2
     <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>Form Inputs</title>
-6
     </head>
-7
     <body>
-8
         <form action="" method="">
-9
             <!--
-10
             The default type for
-11
             collecting generic text content
-12
             -->
-13
             <div>
-14
                 <h3>Text Input</h3>
-15
                 <input type="text">
-16
             </div>
-17
             <!--
-18
             An HTML 5 input type for
-19
             collecting and validating email addresses
-20
             -->
-21
             <div>
-22
                 <h3>Email Input</h3>
-23
                 <input type="email">
+            </div>
+            <!--
+            An HTML 5 input type for
+            collecting numbers, usually presents with
+            small incrementing and decrementing controls
+            The value attribute designates the
+            default number for the field
+            -->
+            <div>
+                <h3>Number Input</h3>
+                <input type="number" value="5">
+            </div>
+            <!--
+            An HTML 5 input type for
+            the selection of a number between a certain range
+            The `min` attribute sets the minimum value and the
+            `max` attribute sets the maximum value for the input.
+            -->
+            <div>
+                <h3>Range Input</h3>
+                <input type="range" min="0" max="10">
+            </div>
+            <!--
+            An HTML 5 input type for entering search strings.
+            This removes line breaks from the entry.
+            -->
+            <div>
+                <h3>Search Input</h3>
+                <input type="search">
+            </div>
+            <!--
+            An HTML 5 input type for entering telephone numbers.
+            This removes line breaks from the entry.
+            -->
+            <div>
+                <h3>Telephone Input</h3>
+                <input type="tel">
+            </div>
+            <!--
+            An HTML 5 input type for entering a URL.
+            This input validates a valid absolute
+            URL before submitting.
+            -->
+            <div>
+                <h3>URL Input</h3>
+                <input type="url">
+            </div>
+        </form>
+    </body>
+    </html>
+```
  
-
-Fullscreen
-
-Reset Code
-Preview 
 In addition to the type attribute, a couple other attributes can be (and should be) set, to control the input element's behavior. For instance, every input should have a unique name and id.
 
 Pretty much every input needs the following three attributes, at a minimum.
 
+```html
 <!-- You should set "type", "id", and "name" at least -->
 <input type="text" id="first_name" name="first_name">
-The id isn't strictly necessary but is a common pattern and highly recommended for usability reasons.
-Label  
+```
+
+> The `id` isn't strictly necessary but is a common pattern and highly recommended for usability reasons.
+
+## Label  
 
 Labels allow us to provide semantic text names for inputs to users. Often, inputs will be accompanied by some text to tell you what the input is for. That accompanying text is a label element.
 
@@ -210,9 +249,12 @@ Labels have the for attribute that should be set to connect them to the appropri
 
 The following code sample shows how to mark up a label and a related input. Notice that the for attribute of the label matches the id attribute of the text input.
 
+```html
 <!-- The label `for` attribute connects it to the following input -->
 <label for="first_name">First Name:</label>
 <input type="text" id="first_name">
+```
+
 Click on the label text ("First Name:") and the cursor will focus on the input area, creating a much larger clickable area.
 
 Editor
