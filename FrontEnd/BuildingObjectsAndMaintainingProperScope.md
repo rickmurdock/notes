@@ -123,6 +123,7 @@ Math.floor(25.46); //  25
 Math.floor(25.99); //  25
 Math.floor(-25.46); //  26
 Math.floor(-25.99); //  26
+```
 
 ### Math.sqrt()  
 
@@ -175,175 +176,132 @@ The plus operator can be use for addition and concatenation. Concatenation means
 
 As we can see from this table, using the `+` operator with two different types of values can return very different results.
 
-Examples: The Plus Operator
-Now, let's look at a practical example to better understand the power of concatenation. This should also reinforce the importance of using the + operator, accurately.
+### Examples: The Plus Operator
 
+Now, let's look at a practical example to better understand the power of concatenation. This should also reinforce the importance of using the `+` operator, accurately.
 
-1
+```js
 // Our variables:
-2
 var one = 1;
-3
 var two = 2;
-4
 var three = "3";
-5
 var four = "four";
-6
 var five = "five";
-7
-​
-8
+
 // Inside the console.log(), insert two variables of your choice and use the `+` operator to either return a sum or concatenate.
-9
-​
-10
+
 // This will log a Number of 3:
-11
 console.log( one + two );
-12
-​
-13
+
 // This will log a string "fourfive":
-14
 console.log( four + five );
-15
-​
-16
-​
-17
+
+
 // This will log a string "3five":
-18
 console.log( three + five );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 The main thing to keep top of mind is that if the "+" operator is used with numbers it performs addition. If it is used with strings it performs concatenation.
 
-The Minus Operator  
+### The Minus Operator  
 
-Operator: -
+**Operator**: `-`
 
-Syntax: <firstValue> - <secondValue>
+**Syntax**: `<firstValue> - <secondValue>`
 
-Returns: The difference of the two values.
+**Returns**: The difference of the two values.
 
-
-1
+```js
 console.log(9 - 5);
-2
 console.log(0 - 1873902369);
-3
 console.log(3292379.368 - 5.000001);
+```
 
-Fullscreen
+### The Multiplication Operator  
 
-Reset Code
-Run Code 
-The Multiplication Operator  
+**Operator**: `*`
 
-Operator: *
+**Syntax**: `<firstValue> * <secondValue>`
 
-Syntax: <firstValue> * <secondValue>
+**Returns**: The product of the two values.
 
-Returns: The product of the two values.
+The multiplication operator multiplies the value to the left of the `*` symbol by the value on the right and returns the result.
 
-The multiplication operator multiplies the value to the left of the * symbol by the value on the right and returns the result.
-
-
-1
+```js
 console.log(9 * 5);
-2
 console.log(0.2571 * 1896725);
-3
 console.log(0.0000000001 * 7);
+```
 
-Fullscreen
+> The `*` operator will return a number if used with a number and a "number as a string" e.g. `3 + "3`". Even though JavaScript will allow this sort of thing, avoid it if you are able. You should only be doing math with numbers.
 
-Reset Code
-Run Code 
-The * operator will return a number if used with a number and a "number as a string" e.g. 3 + "3". Even though JavaScript will allow this sort of thing, avoid it if you are able. You should only be doing math with numbers.
-The Division Operator  
+### The Division Operator  
 
-Operator: /
+**Operator**: `/`
 
-Syntax: <firstValue> / <secondValue>
+**Syntax**: `<firstValue> / <secondValue>`
 
-Returns: The quotient of the two values.
+**Returns**: The quotient of the two values.
 
-The division operator divides the value to the left of the / symbol by the value on the right and returns the result.
+The division operator divides the value to the left of the `/` symbol by the value on the right and returns the result.
 
-
-1
+```js
 console.log(9 / 3);
-2
 console.log(0.96342801 / 123);
-3
 console.log(16129849702 / -1234);
+```
 
-Fullscreen
+> The `/` operator will return a number if used with a number and a "number as a string" e.g. `3 - "2"`. Again, good to know, but don't do it. This type of operation can be the source of bugs that are extremely difficult to chase down.
 
-Reset Code
-Run Code 
-The / operator will return a number if used with a number and a "number as a string" e.g. 3 - "2". Again, good to know, but don't do it. This type of operation can be the source of bugs that are extremely difficult to chase down.
-Remainder operator  
+### Remainder operator  
 
-Operator: %
+**Operator**: `%`
 
-Syntax: <a value> % <another value>
+**Syntax**: `<a value> % <another value>`
 
-Returns: The remainder left when dividing the two values.
+**Returns**: The remainder left when dividing the two values.
 
 Remember long division from elementary school?
 
 Long division - the bane of 4th graders everywhere.
-The remainder operator, often called the modulo operator or mod, returns the remainder left over when dividing the value to the left of the % symbol by the value to the right.
+
+The remainder operator, often called the *modulo operator* or *mod*, returns the remainder left over when dividing the value to the left of the `%` symbol by the value to the right.
 
 Imagine you run a breakfast restaurant that makes three-egg omelets and have 116 eggs. You want to know how many eggs will be left over if you sell all the omelets you can make.
 
-
-1
+```js
 console.log( 116 % 3 );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 This tells us there will be two eggs left over once we've made all of our three-egg omelets.
 
 Here are a few more examples to explore:
 
-
-1
+```js
 console.log(9 % 3);
-2
 console.log(14 % 5);
-3
 console.log(16129849702 % -1234);
-4
-​
-5
+
 console.log( 0.14 % 0.03 );
+```
 
-Fullscreen
+## Order of Operations  
 
-Reset Code
-Run Code 
-Order of Operations  
+Do you remember [PEMDAS](https://www.mathsisfun.com/operation-order-pemdas.html) from math class? PEMDAS is an acronym used to remember the order that operations must be performed in a mathematical expression. JavaScript follows the same rules for arithmetic. This would be:
 
-Do you remember PEMDAS from math class? PEMDAS is an acronym used to remember the order that operations must be performed in a mathematical expression. JavaScript follows the same rules for arithmetic. This would be:
+* Parenthesis
 
-Parenthesis
-Exponents
-Multiplication (and Modulo) and Division (left to right)
-Addition and Subtraction (left to right)
-Using this, we know that 42 - 8 * 34 = -230 because the * multiplication operator has higher precedence than the - subtraction operator. 8 * 34 = 272 and 42 - 272 = -230. If we didn't follow the correct order of operations, we might have incorrectly found the answer to be 1156.
+* Exponents
 
-You may remember a mnemonic from school: Please Excuse My Dear Aunt Sally.
+* Multiplication (and Modulo) and Division (left to right)
 
-Parenthesis  
+* Addition and Subtraction (left to right)
+
+Using this, we know that `42 - 8 * 34 = -230` because the `*` multiplication operator has higher precedence than the - subtraction operator. `8 * 34 = 272` and `42 - 272 = -230`. If we didn't follow the correct order of operations, we might have incorrectly found the answer to be `1156`.
+
+You may remember a mnemonic from school: **P**lease **E**xcuse **M**y **D**ear **A**unt **S**ally.
+
+### Parenthesis  
 
 Just like in math, you can use parenthesis in JavaScript to explicitly indicate order of operations. JavaScript treats each set of parenthesis as a separate expression. JavaScript evaluates parenthesis starting from the innermost pair, and works outward. Each set of parenthesis is replaced with its evaluated value before the outer set of parenthesis are evaluated.
 
