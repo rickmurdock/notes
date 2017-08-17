@@ -1,179 +1,179 @@
-Date and Math Global Objects  
+# Date and Math Global Objects  
 
-The Math and Date global objects are great tools for you to use as you progress as a developer. In this lesson, we are going to take a nose-dive into each so you can master their uses.
+The `Math` and `Date` global objects are great tools for you to use as you progress as a developer. In this lesson, we are going to take a nose-dive into each so you can master their uses.
 
-Date  
+## Date  
 
-The Date can be used to generate an object that represents a particular date or time, or a length of time since some previous date. Each instance created using the Date object is calculated based upon the number of milliseconds that have occurred since 1 January, 1970 UTC.
+The `Date` can be used to generate an object that represents a particular date or time, or a length of time since some previous date. Each instance created using the `Date` object is calculated based upon the number of milliseconds that have occurred since 1 January, 1970 UTC.
 
-We won't go into detail here. If you're interested in learning why this date is important, check out Unix Time.
-The Date Constructor  
+> We won't go into detail here. If you're interested in learning why this date is important, check out Unix Time.
 
-The Date object is a constructor, so you can call it by initializing the new keyword and calling on the date object. You can instantiate a Date object in four different ways.
+### The Date Constructor  
 
+The `Date` object is a constructor, so you can call it by initializing the `new` keyword and calling on the date object. You can instantiate a `Date` object in four different ways.
+
+```js
 new Date();
 new Date(value);
 new Date(dateString);
 new Date(year, month[, date[, hours[, minutes[, seconds[, milliseconds]]]]]);
-value: This integer represents the number of milliseconds since 1 January 1970 00:00:00 UTC.
-dateString; This string represents a date. See Date.parse for valid formats for this string.
-[year, month, date, hours, minutes, seconds, milliseconds]: These integers correspond to the namespace they represent.
-Remember, every parameter we pass into the Date object is an integer except dateString (Ex: "November 6, 1987").
-Creating Date Objects  
+```
 
-We've seen how to initialize the Date object, now let's create some dates!
+* **value**: This `integer` represents the number of milliseconds since 1 January 1970 00:00:00 UTC.
 
-The first example is a simple usage of the Date constructor:
+* **dateString**; This `string` represents a date. See `Date.parse` for valid formats for this string.
 
+* [**year, month, date, hours, minutes, seconds, milliseconds**]: These `integers` correspond to the namespace they represent.
 
-1
+> Remember, every parameter we pass into the `Date` object is an integer except `dateString` (Ex: "November 6, 1987").
+
+### Creating Date Objects  
+
+We've seen how to initialize the `Date` object, now let's create some dates!
+
+The first example is a simple usage of the `Date` constructor:
+
+```js
 // Example #1
-2
 var date = new Date();
-3
-​
-4
+
 console.log("New Date: ", date); // current date and time in Unix time
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Now let's pass in an integer that will represent the number of milliseconds since 1 January 1970 00:00:00 UTC:
 
-
-1
+```js
 // Example #2
-2
 var date = new Date(563200000000);
-3
-​
-4
+
 console.log("New Date: ", date); // 1987-11-06T12:26:40.000Z
+```
 
-Fullscreen
+As you can see, the logged date is `1987-11-06T12:26:40.000Z`. Let's try initializing the `Date` with a string:
 
-Reset Code
-Run Code 
-As you can see, the logged date is 1987-11-06T12:26:40.000Z. Let's try initializing the Date with a string:
-
-
-1
+```js
 // Example #3
-2
 var date = new Date("November 6, 1987");
-3
-​
-4
+
 console.log("New Date: ", date); // Fri Nov 06 1987 00:00:00 GMT-0500 (EST)
+```
 
-Fullscreen
+Finally, let's pass in integers for the year, month, and day into our `Date` object:
 
-Reset Code
-Run Code 
-Finally, let's pass in integers for the year, month, and day into our Date object:
-
-
-1
+```js
 // Example #4
-2
 var date = new Date(1987, 11, 6);
-3
-​
-4
+
 console.log("New Date: ", date); // 1987-12-06T00:00:00.000Z
+```
 
-Fullscreen
+Did you notice the logged date?: `1987-12-06T00:00:00.000Z`
 
-Reset Code
-Run Code 
-Did you notice the logged date?: 1987-12-06T00:00:00.000Z
+The month integer takes a value for month from `0 - 11`, with `0` being equal to January. When we passed in the month as `11`, we were actually passing in the month for December. Take note of this or you might find yourself a month early or behind!
 
-The month integer takes a value for month from 0 - 11, with 0 being equal to January. When we passed in the month as 11, we were actually passing in the month for December. Take note of this or you might find yourself a month early or behind!
+### Adopting Methods from the Date Object  
 
-Adopting Methods from the Date Object  
+All instances of `Date` inherit the methods from `Date.prototype`. These methods are useful for returning information about your created dates. You'll be able to edit and view the created date object using these methods, so make sure you head over to the **Additional Resources** section below to view all the methods available to you.
 
-All instances of Date inherit the methods from Date.prototype. These methods are useful for returning information about your created dates. You'll be able to edit and view the created date object using these methods, so make sure you head over to the Additional Resources section below to view all the methods available to you.
+## Math  
 
-Math  
+The `Math` object functions differently than our `Date` object. Unlike the `Date` object, the `Math` object isn't initialized through a constructor, but by accessing the properties and methods located on the object itself. The methods located on the `Math` object, as you might expect, relate to common mathematical functions and equations.
 
-The Math object functions differently than our Date object. Unlike the Date object, the Math object isn't initialized through a constructor, but by accessing the properties and methods located on the object itself. The methods located on the Math object, as you might expect, relate to common mathematical functions and equations.
-
-Examples  
+### Examples  
 
 Let's jump straight into some common methods you will use:
 
-Math.pow()  
+### Math.pow()  
 
+```js
 // Returns base to the exponent power, that is, base^exponent.
 Math.pow(6, 2); // 36
 Math.pow(3, 3); // 27
 Math.pow(-7, 2); // 49 (squares are positive)
 Math.pow(-7, 3); // -343
-Math.round()  
+```
 
+### Math.round()  
+
+```js
 // Returns the value of a number rounded to the nearest integer.
 Math.round(25.49); // 25
 Math.round(20.5);  // 21
 Math.round(19);  // 19
 Math.round(-25.5);  // -25
 Math.round(-25.51); // -26
-Math.ceil()  
+```
 
+### Math.ceil()  
+
+```js
 // Returns the smallest integer greater than or equal to a number.
 Math.ceil(.89); // 1
 Math.ceil(5); // 5
 Math.ceil(20.001); // 21
 Math.ceil(-.98); // 0
 Math.ceil(-10.678); // 10
-Math.floor()  
+```
 
+### Math.floor()  
+
+```js
 // Returns the largest integer less than or equal to a number.
 Math.floor(25.46); //  25
 Math.floor(25.99); //  25
 Math.floor(-25.46); //  26
 Math.floor(-25.99); //  26
-Math.sqrt()  
 
+### Math.sqrt()  
+
+```js
 // Returns the positive square root of a number.
 Math.sqrt(9); // 3
 Math.sqrt(1); // 1
 Math.sqrt(0); // 0
-Make sure to visit the Math - MDN link to view all methods available on the Math object.
-Conclusion  
+```
 
-Your Math and Date global object usage will be a common occurrence throughout your coding career. If you take the time to look through their methods and properties, you will be equipped to tackle issues and provide better solutions when dealing with date, time, and mathematics.
+> Make sure to visit the Math - MDN link to view all methods available on the `Math` object.
 
-Additional Resources  
+## Conclusion  
 
-The Date Object- MDN
-The Math Object- MDN
-Math and Concatenation Operators  
+Your `Math` and `Date` global object usage will be a common occurrence throughout your coding career. If you take the time to look through their methods and properties, you will be equipped to tackle issues and provide better solutions when dealing with date, time, and mathematics.
 
-The math and concatenation operators in JavaScript are some interesting and surprisingly entertaining tools. They are used to implement simple arithmetic like 2 + 2 or used to join together two strings into one, like "Hello, " + "World!". This lesson will have you using both operators to do some pretty useful (and not useful) things.
+## Additional Resources  
+
+* [The Date Object- MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+* [The Math Object- MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+---
+
+# Math and Concatenation Operators  
+
+The math and concatenation operators in JavaScript are some interesting and surprisingly entertaining tools. They are used to implement simple arithmetic like `2 + 2` or used to join together two strings into one, like `"Hello, " + "World!"`. This lesson will have you using both operators to do some pretty useful (and not useful) things.
 
 Computers excel at arithmetic. After all, that's what they're designed to do! JavaScript comes with a standard compliment of mathematical operators.
 
 Operators are special bits of syntax that take action on operands. For example, we use arithmetic operators to perform mathematical operations such as addition, multiplication, subtraction, and division.
 
-The Plus Operator  
+### The Plus Operator  
 
-Operator: +
+**Operator**: `+`
 
-Syntax: <firstValue> + <secondValue>
+**Syntax**: `<firstValue> + <secondValue>`
 
-Returns: The sum of the two values.
+**Returns**: The sum of the two values.
 
-The plus operator can be use for addition and concatenation. Concatenation means to take two values and return a string by adding them together using the + operator. Let's view a chart to see what type of interaction takes place when "adding" two different types:
+The plus operator can be use for addition and concatenation. Concatenation means to take two values and return a string by adding them together using the `+` operator. Let's view a chart to see what type of interaction takes place when "adding" two different types:
 
-Type One		Type Two	Addition	Concatenation	Return Value
-Number	+	Number	x		Number
-Boolean	+	Number	x		Number
-Boolean	+	Boolean	x		Number
-Number	+	String		x	String
-String	+	String		x	String
-Boolean	+	String		x	String
-As we can see from this table, using the + operator with two different types of values can return very different results.
+| Type One | | Type Two |	Addition |	Concatenation	| Return Value |
+| :---: | --- | :---: | :---: | :---: | :---: |
+| Number	| `+` |	Number |	x	|	| Number |
+| Boolean |	+	| Number| 	x	| |	Number |
+| Boolean |	`+`	| Boolean	| x	|	| Number |
+| Number |	+	| String	|	| x |	String |
+| String |	`+`	| String	|	| x |	String |
+| Boolean |	+ | String	|	| x |	String |
+
+As we can see from this table, using the `+` operator with two different types of values can return very different results.
 
 Examples: The Plus Operator
 Now, let's look at a practical example to better understand the power of concatenation. This should also reinforce the importance of using the + operator, accurately.
