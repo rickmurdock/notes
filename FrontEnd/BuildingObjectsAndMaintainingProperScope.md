@@ -307,193 +307,198 @@ Just like in math, you can use parenthesis in JavaScript to explicitly indicate 
 
 Imagine we have this expression in JavaScript:
 
+```js
 (42 - (8 + 24)) * ((7 + (4 + 3)) / 2)
+```
+
 JavaScript would step through this like so:
 
-(42 - (8 + 24)) * ((7 + (4 + 3)) / 2)
-(42 - 32) * ((7 + 7) / 2)
-10 * (14 / 2)
-10 * 7
-70
-Arithmetic Operator Precedence  
+1. `(42 - (8 + 24)) * ((7 + (4 + 3)) / 2)`
+
+2. `(42 - 32) * ((7 + 7) / 2)`
+
+3. `10 * (14 / 2)`
+
+4. `10 * 7`
+
+5. `70`
+
+### Arithmetic Operator Precedence  
 
 Let's take a look at an example expression and determine how JavaScript would evaluate it. This is the same expression as before, just without parenthesis:
 
+```js
 42 - 8 + 24 * 7 + 4 + 3 / 2
-JavaScript starts by looking for multiplication, division and remainder operators. Since JavaScript reads left to right, the first operator found is a * multiplication operator. The value immediately to the left of the * operator is 24 and to the right is 7. JavaScript will evaluate that first, like so:
+```
 
+JavaScript starts by looking for multiplication, division and remainder operators. Since JavaScript reads left to right, the first operator found is a `*` multiplication operator. The value immediately to the left of the `*` operator is 24 and to the right is 7. JavaScript will evaluate that first, like so:
+
+```js
 42 - 8 + (24 * 7) + 4 + 3 / 2
+```
+
 ... and evaluates to:
 
+```js
 42 - 8 + 168 + 4 + 3 / 2
-Continuing to the right, JavaScript next finds the / division operator. The value to the left of the / operator is 3 and to the right is 2. JavaScript will perform that expression next, like so:
+```
 
+Continuing to the right, JavaScript next finds the `/` division operator. The value to the left of the `/` operator is 3 and to the right is 2. JavaScript will perform that expression next, like so:
+
+```js
 42 - 8 + 168 + 4 + (3 / 2)
+```
+
 ... and evaluates to:
 
+```js
 42 - 8 + 168 + 4 + 1.5
-Having completed evaluating multiplication, division and remainder operators, JavaScript starts looking for addition and subtraction. Again, this is done left to right. JavaScript will first find the - operator followed by an + operator followed by two more.
+```
 
+Having completed evaluating multiplication, division and remainder operators, JavaScript starts looking for addition and subtraction. Again, this is done left to right. JavaScript will first find the `-` operator followed by an `+` operator followed by two more.
+
+```js
 (42 - 8) + 168 + 4 + 1.5
+```
+
 ... and evaluates to:
 
+```js
 34 + 168 + 4 + 1.5
+```
+
 The pattern continues.
 
+```js
 34 + 168 + 4 + 1.5
+```
+
 ... becomes ...
 
+```js
 (34 + 168) + 4 + 1.5
+```
+
 ... becomes ...
 
+```js
 202 + 4 + 1.5
+```
 ... etc...
 
+```js
 (202 + 4) + 1.5
+```
+
 ... etc...
 
+```js
 206 + 1.5
+```
+
 At last we reach the final expression and evaluate that to 207.5! Therefore, the original expression...
 
-
-1
+```js
 console.log( 42 - 8 + 24 * 7 + 4 + 3 / 2 );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... is logically the same as this expression with parenthesis:
 
-
-1
+```js
 console.log( ( ( ( 42 - 8 ) + ( 24 * 7 ) ) + 4 ) + ( 3 / 2 ) );
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 My advice to you is to always make judicious use of parenthesis. Be explicit in your expressions. This not only helps reduce difficult to debug errors, it also makes your code easier for humans to understand.
 
-Conclusion  
+## Conclusion  
 
-JavaScript has some pretty unique functionality with its arithmetic operators. It's vitally important to understand what they "return" when used with different type of values. Now that you have a better appreciation of JavaScript arithmetic operators, watch this educational and down-right hilarious video!
+JavaScript has some pretty unique functionality with its arithmetic operators. It's vitally important to understand what they "return" when used with different type of values. Now that you have a better appreciation of JavaScript arithmetic operators, watch this [educational and down-right hilarious video](https://www.destroyallsoftware.com/talks/wat)!
 
-Additional Resources  
+## Additional Resources  
 
-Arthimic Operators - MDN
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-The Global Scope and Compartmentalized Code  
+* [Arthimic Operators - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators)
+
+---
+
+# The Global Scope and Compartmentalized Code  
 
 In JavaScript it is important that you write effective code that serves its purpose but does not override global variables upon execution. We'll examine how to write specific compartmentalized code that that doesn't make changes to the entire project or pollute the global scope.
 
-Proper isolation of variables is key, especially as your code becomes longer and more complex. Let's dial the microscope back two notches and first examine the window object, as well as the term "scope". We'll then take a look at some ways to construct function expressions that are self-contained, and therefore do not affect the global scope.
+Proper isolation of variables is key, especially as your code becomes longer and more complex. Let's dial the microscope back two notches and first examine the `window` object, as well as the term "scope". We'll then take a look at some ways to construct function expressions that are self-contained, and therefore do not affect the global scope.
 
-The Window Object  
+## The Window Object  
 
-The window object represents a browser's window. It is the petri dish that all global items grow inside of, including:
+The `window` object represents a browser's window. It is the petri dish that all global items grow inside of, including:
 
-Global JavaScript objects
-Global functions
-Global variables
-Global variables are properties of the window object whereas global functions are methods of the window. The window.document property points to the DOM document loaded in that window.
-Scope  
+* Global JavaScript objects
 
-Scope refers to the accessibility of functions and variables within a part of code during runtime, essentially determining the visibility of variables in code. There are two types of scope: global scope and local scope.
+* Global functions
 
-A variable that's been defined outside of a function is considered to be in the global scope, while a variable defined inside of a function is in the local scope. In other words, all variables in a JavaScript project are in the global scope unless they're defined inside a function.
+* Global variables
 
+> Global variables are properties of the window object whereas global functions are methods of the window. The `window.document` property points to the DOM document loaded in that window.
+
+## Scope  
+
+Scope refers to the accessibility of functions and variables within a part of code during runtime, essentially determining the visibility of variables in code. There are two types of scope: `global scope` and `local scope`.
+
+A variable that's been defined *outside* of a function is considered to be in the `global scope`, while a variable defined *inside* of a function is in the `local scope`. In other words, **all** variables in a JavaScript project are in the `global scope` unless they're defined inside a function.
+
+```js
 var pet = 'dog';
+```
+
 The variable "pet" is in the global scope, and may be used within any other function. For example:
 
-
-1
+```js
 var pet = 'dog';
-2
-​
-3
+
 function printPet() {
-4
-​
-5
+
   var otherPet = "cat"; 
-6
-​
-7
+
   console.log(pet);
-8
 }
-9
-​
-10
+
 printPet();
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ...logs "dog" because it was defined in the global scope.
 
-The variable otherPet is defined inside the function, which means that its within the function scope of printPet and cannot be accessed except by the function or other items inside the function. Lets modify our previous code sample to see how access to otherPet is handled.
+The variable `otherPet` is defined **inside** the function, which means that its within the function scope of `printPet` and cannot be accessed except by the function or other items inside the function. Lets modify our previous code sample to see how access to `otherPet` is handled.
 
-
-1
+```js
 function printPet() {
-2
-​
-3
+
   var otherPet = "cat";
-4
 }
-5
-​
-6
+
 // This line of code can't reach `otherPet` because
-7
 // `otherPet` is scoped to the function
-8
 // This log function is globally scoped and can't see into the function
-9
 console.log( otherPet );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 You should see a reference error because the log statement and the variable are in different scopes and the log statement can't see into the function. So, how can we access that inner scoped data? Lets adjust our code one more time to see what we can do.
 
-
-1
+```js
 function printPet() {
-2
-​
-3
+
   var otherPet = "cat";
-4
   return otherPet;
-5
 }
-6
-​
-7
+
 // This line of code still can't reach the inner variable
-8
 // but since the function call returns the value, then we can 
-9
 // indirectly access internally scoped data via the function call
-10
 console.log( printPet() );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-This last example illustrates a really important concept: Protecting data from outside influences. The variable otherPet is protected. Nothing can get to it to change it. We can call the function, but all that does is return the value stored in the variable, we don't have to worry about some other programmer accidentally creating a variable called otherPet that overwrites ours.
+This last example illustrates a really important concept: Protecting data from outside influences. The variable `otherPet` is protected. Nothing can get to it to change it. We can call the function, but all that does is return the value stored in the variable, we don't have to worry about some other programmer accidentally creating a variable called otherPet that overwrites ours.
 
 So, lets extend that concept a bit farther. What if we put our whole program inside a function? Then everything we need will be protected in a single function, which we can call to get the program started. Lets see what that might look like:
 
+```js
 //We define a function to hold all of our code
 function runApp(){
 
@@ -512,14 +517,19 @@ function runApp(){
 
 /* Call the function to get it running */
 runApp();
-So, lets consider what we've done. All of our code is protected inside of a function. Cool. We can modify the contents of runApp till our hearts are content without worrying that someone might overwrite importantData or formatString(). Now, lets talk about the down sides.
+```
 
-runApp() is a named function that can accidentally be accessed by other applications or programmers.
-The runApp() function is in the Global scope. Now, instead of individual pieces being in danger, our entire app is in danger.
-We have to explicitly call runApp() to get the ball rolling.
+So, lets consider what we've done. All of our code is protected inside of a function. Cool. We can modify the contents of runApp till our hearts are content without worrying that someone might overwrite `importantData` or `formatString()`. Now, lets talk about the down sides.
+
+1. `runApp()` is a named function that can accidentally be accessed by other applications or programmers.
+
+2. The `runApp()` function is in the Global scope. Now, instead of individual pieces being in danger, our entire app is in danger.
+
+3. We have to explicitly call `runApp()` to get the ball rolling.
+
 How can we have our cake and eat it too? How can we protect our data, prevent pollution of the global scope, and guarantee that other programs and programmers can't accidentally upset our code?
 
-Immediately-Invoked Function Expressions  
+## Immediately-Invoked Function Expressions  
 
 An Immediately-invoked-function-expression, or an IIFE (pronounced like "iffy") is essentially exactly what it sounds like: a function used in JavaScript that runs right after being defined. They allow you to isolate a script environment and they don't pollute the global scope by overriding global variables.
 
@@ -527,136 +537,120 @@ The syntax may look a little strange, but its not so bad when you break it down.
 
 The basic template for an IIFE is as such:
 
+```js
 (function () {
     // main content
 })();
+```
+
 Any variable declared inside that IIFE is safe from being unintentionally accessed elsewhere in your code.
 
-
-1
+```js
 (function () {
-2
-​
-3
+
   var ice = 'cream';
-4
   console.log(ice);
-5
-​
-6
+
 })(); //logs "cream"
-7
-​
-8
+
 console.log(ice); //logs ReferenceError: ice is not defined
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 You can see from the above example, the variable "ice" is contained within the IIFE so the second attempt to log "cream" returns an error because it is outside of the expression.
 
 We can even test how we've limited the scope by using the same variable name and console logging inside and outside of the IIFE. Its not a good practice to duplicate variables in this way, but its useful here to demonstrate the behavior of IIFEs.
 
-
-1
+```js
 var ice = 'cream';
-2
-​
-3
+
 (function() {
-4
   var ice = 'skate'
-5
-​
-6
+
   console.log(ice); // -> This logs skate
-7
 })();
-8
-​
-9
+
 console.log(ice); // -> This logs cream
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Passing Arguments into an IIFE  
+### Passing Arguments into an IIFE  
 
 Another benefit of immediately invoked expressions is that arguments can be passed through them as follows:
 
-
-1
+```js
 var ice = 'ice';
-2
-​
-3
+
 (function (innerIce) {
-4
     console.log(innerIce);
-5
 })(ice);
+```
 
-Fullscreen
+This logs ice, as it's been passed through the IIFE. Notice that the `ice` variable has been passed into the last set of parenthesis. That value is then passed through to the anonymous function. The anonymous function receives it as a variable called `innerIce` and logs it.
 
-Reset Code
-Run Code 
-This logs ice, as it's been passed through the IIFE. Notice that the ice variable has been passed into the last set of parenthesis. That value is then passed through to the anonymous function. The anonymous function receives it as a variable called innerIce and logs it.
-
-What to do with this knowledge?  
+## What to do with this knowledge?  
 
 Now that you know how to write IIFEs, you should try to write all of your JavaScript code in IIFEs.
 
+```js
 // No code out here
 
 (function (){
     // All my code goes in this
     // anonymous function
 })();
-Conclusion  
+```
+
+## Conclusion  
 
 When asked what the greatest challenge of writing code is, a coder will often tell you that it's coming up with names; names for variables, functions, DIV's, and much more. As a piece of code grows, more names are required and that creates a higher risk of a single piece of code throwing off the entire project. If you're not careful, a name may be accidentally used in more than one space within the global scope. The compartmentalization of code that Immediately-invoked function expressions facilitates is a great way to prevent this error.
 
-References  
+### References  
 
-Window - MDN
-Scope - MDN
-Properly Isolate your Variables in JavaScript
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Hoisting Behavior In JavaScript  
+* [Window - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window)
 
-Variable and function hoisting is an interesting (sometimes odd) behavior that takes place in JavaScript. It is very important to understand this mechanism when declaring new variables and functions to help elevate TypeErrors.
+* [Scope - MDN](https://developer.mozilla.org/en-US/docs/Glossary/Scope)
+
+* [Properly Isolate your Variables in JavaScript](http://www.nicoespeon.com/en/2013/05/properly-isolate-variables-in-JavaScript/)
+
+---
+
+# Hoisting Behavior In JavaScript  
+
+Variable and function hoisting is an interesting (sometimes odd) behavior that takes place in JavaScript. It is very important to understand this mechanism when declaring new variables and functions to help elevate `TypeErrors`.
 
 In this lesson, we will go over what happens when our JavaScript functions and variables are parsed and how hoisting can create confusion.
 
-Scoping In JavaScript  
+## Scoping In JavaScript  
 
-Scope is an important concept in the JavaScript language and has a direct relationship with hoisting. A scope is like a bubble that has blocked code from anything outside of it. When you create a new function in JavaScript, you create a new scope.
+`Scope` is an important concept in the JavaScript language and has a direct relationship with hoisting. A scope is like a bubble that has `blocked` code from anything outside of it. When you create a new function in JavaScript, you create a new `scope`.
 
 Why is this important?
 
-Variable Hoisting  
+## Variable Hoisting  
 
 When the JavaScript interpreter executes your code, it will hoist all functions and variables to the top of their containing scope.
 
 Lets pretend that you've written this little snippet of code. It makes sense to you and when you call the function, it does what you want. Unfortunately, what you write is not exactly what the JavaScript interpreter sees, when it runs this code:
 
+```js
 function foo() {
     bar();
     var x = 1;
 }
-The interpreter sees your code and notices that you declared a variable after you called bar(). The interpreter doesn't like that as a best practice and it rewrites your code to be as follows, before it runs the code:
+```
 
+The interpreter sees your code and notices that you declared a variable after you called `bar()`. The interpreter doesn't like that as a best practice and it rewrites your code to be as follows, before it runs the code:
+
+```js
 function foo() {
     var x;
     bar();
     x = 1;
 }
-As you can see, the variable declaration was pushed to the top of the scope. In this example, the function foo() is the scope. This is called hoisting. Most of the time, it won't get in the way of your code. However, it does imply a very good practice with data: You should just go ahead and declare your variables at the top of their scope. JavaScript is going to do it anyway, so you should at least make it obvious what is occurring.
+```
 
-Also realize that the assignment portion of the variable declaration was not hoisted. In our example above, only the name var x; was hoisted, x = 1; was not hoisted.
+As you can see, the variable declaration was pushed to the top of the scope. In this example, the function `foo()` is the scope. This is called hoisting. Most of the time, it won't get in the way of your code. However, it does imply a very good practice with data: You should just go ahead and declare your variables at the top of their scope. JavaScript is going to do it anyway, so you should at least make it obvious what is occurring.
+
+**Also realize that the assignment portion of the variable declaration was not hoisted.** In our example above, only the name `var x;` was hoisted, `x = 1;` was not hoisted.
 
 Function Declaration Hoisting  
 
