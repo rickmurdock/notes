@@ -243,11 +243,11 @@ Pretty much every input needs the following three attributes, at a minimum.
 
 ## Label  
 
-Labels allow us to provide semantic text names for inputs to users. Often, inputs will be accompanied by some text to tell you what the input is for. That accompanying text is a label element.
+Labels allow us to provide semantic text names for inputs to users. Often, inputs will be accompanied by some text to tell you what the input is for. That accompanying text is a `label` element.
 
-Labels have the for attribute that should be set to connect them to the appropriate input. The for attribute can be set to the id of an input element (other elements as well) to increase usability. Once the for attribute has been set to the same value as the id of an input control, it will shift focus to that element when it is clicked.
+Labels have the `for` attribute that should be set to connect them to the appropriate `input`. The `for` attribute can be set to the `id` of an input element (other elements as well) to increase usability. Once the `for` attribute has been set to the same value as the `id` of an input control, it will shift focus to that element when it is clicked.
 
-The following code sample shows how to mark up a label and a related input. Notice that the for attribute of the label matches the id attribute of the text input.
+The following code sample shows how to mark up a label and a related `input`. Notice that the `for` attribute of the `label` matches the `id` attribute of the text `input`.
 
 ```html
 <!-- The label `for` attribute connects it to the following input -->
@@ -257,53 +257,51 @@ The following code sample shows how to mark up a label and a related input. Noti
 
 Click on the label text ("First Name:") and the cursor will focus on the input area, creating a much larger clickable area.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Form Inputs</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <form action="" method="">
-10
         <!-- The label `for` attribute connects it to the following input -->
-11
         <label for="first_name">First Name:</label>
-12
         <input type="text" id="first_name">
-13
     </form>
-14
 </body>
-15
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body{
+    margin: 0;
+    padding-top: 30px;
+    background: #004444;
+}
+form{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px rgba( 0, 0, 0, 0.4 );
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+}
 
-Reset Code
-Preview 
-Select  
+``` 
 
-Select boxes allow us to create a finite list of options from which the user must select. The markup for this tag is somewhat more complex because it involves the select tag and the option tag.
+## Select  
 
-Use select if you want the user to choose one option from a list of predetermined values.
+Select boxes allow us to create a finite list of options from which the user must select. The markup for this tag is somewhat more complex because it involves the `select` tag *and the `option` tag*.
 
+**Use `select` if you want the user to choose one option from a list of predetermined values.**
+
+```html
 <label for="car">Car:</label>
 <select name="car" id="car">
     <option value="volvo">Volvo</option>
@@ -311,125 +309,126 @@ Use select if you want the user to choose one option from a list of predetermine
     <option value="mercedes">Mercedes</option>
     <option value="audi">Audi</option>
 </select>
-The select tag should have two attributes set: name and id. Generally, they will be the same value. option tags are nested in the select element and serve as the drop-down options when the user clicks on the select tag. The option tag should have at least the value tag set. The value tag is the data that will be sent to the server when the form is submitted.
+```
 
-For instance, if we select the first option in the following form ("Volvo") from the dropdown, then the data that will be sent to the server is something like car:volvo. If we select the second option, then the data sent to the server will be car:saab.
+The `select` tag should have two attributes set: `name` and `id`. Generally, they will be the same value. `option` tags are nested in the `select` element and serve as the drop-down options when the user clicks on the `select` tag. The `option` tag should have at least the `value` tag set. The `value` tag is the data that will be sent to the server when the form is submitted.
 
-You'll learn all about data being sent to the server. The above examples are intended to give you a sense for what is sent, not the exact syntax of the object that is sent from the form page to the server.
-Editor
-Browser View
-input.html
-style.css
+For instance, if we select the first option in the following form ("Volvo") from the dropdown, then the data that will be sent to the server is something like `car:volvo`. If we select the second option, then the data sent to the server will be `car:saab`.
 
-1
+> You'll learn all about data being sent to the server. The above examples are intended to give you a sense for what is sent, not the exact syntax of the object that is sent from the form page to the server.
+
+```html
+<!-- input.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Form Select and Option</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <form action="" method="">
-10
         <label for="car">Car:</label>
-11
         <select name="car" id="car">
-12
             <option value="volvo">Volvo</option>
-13
             <option value="saab">Saab</option>
-14
             <option value="mercedes">Mercedes</option>
-15
             <option value="audi">Audi</option>
-16
         </select>
-17
     </form>
-18
 </body>
-19
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body{
+    margin: 0;
+    padding-top: 30px;
+    background: #004444;
+}
+form{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px rgba( 0, 0, 0, 0.4 );
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+}
+```
 
-Reset Code
-Preview 
-Text Area  
+## Text Area  
 
-The textarea element allows us to enter large blocks of content. Though inputs can be used to collect long blocks of content, they aren't as user-friendly because they don't expand downward like textarea and will only accommodate a single line of text. Use textarea if you need the user to enter a multi-line paragraph of content.
+The `textarea` element allows us to enter large blocks of content. Though `inputs` can be used to collect long blocks of content, they aren't as user-friendly because they don't expand downward like `textarea` and will only accommodate a single line of text. Use `textarea` if you need the user to enter a multi-line paragraph of content.
 
-Use textarea to collect long, multi-line blocks of content.
+**Use `textarea` to collect long, multi-line blocks of content.**
 
+```html
 <label for="bio">Write Your Biography:</label>
 <textarea name="bio" id="bio" cols="30" rows="10"></textarea>
-The textarea tag should be set with four attributes. We've already discussed name and id. I won't belabor those. textarea also has two attributes that determine its default size.
+```
 
-cols - specifies the width of the textarea by defining the number of characters that will fit in a row.
-rows - specifies the height of the textarea by defining the number of rows that will visibly fit within the textarea.
+The `textarea` tag should be set with four attributes. We've already discussed `name` and `id`. I won't belabor those. `textarea` also has two attributes that determine its default size.
+
+* `cols` - specifies the width of the `textarea` by defining the number of characters that will fit in a row.
+
+* `rows` - specifies the height of the `textarea` by defining the number of rows that will visibly fit within the `textarea`.
+
 In the following code sample, the text area is 45 columns wide and 10 rows tall.
 
-Editor
-Browser View
-input.html
-style.css
-
-1
+```html
+<!-- input.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Form Textarea</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <form action="" method="">
-10
         <label for="bio">Write Your Biography:</label>
-11
         <textarea name="bio" id="bio" cols="45" rows="10"></textarea>
-12
     </form>
-13
 </body>
-14
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css*/
+body{
+    margin: 0;
+    padding-top: 30px;
+    background: #004444;
+}
+form{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px rgba( 0, 0, 0, 0.4 );
+    text-align: center;
+    width: 300px;
+    margin: 0 auto;
+}
+textarea{
+    text-align: left;
+}
+```
 
-Reset Code
-Preview 
-Radio Buttons  
+## Radio Buttons  
 
-Radio buttons are another input type but deserve some special attention. I've pulled discussion of radio buttons out of the large list of input types found near the beginning of this article because the behavior is somewhat different and radio buttons are an important type.
+Radio buttons are another `input` type but deserve some special attention. I've pulled discussion of radio buttons out of the large list of `input` types found near the beginning of this article because the behavior is somewhat different and radio buttons are an important type.
 
-Similar to select, use radio buttons to select a single value from a short list of options.
+**Similar to `select`, use radio buttons to select a single value from a short list of options.**
 
-A unique feature of radio buttons is that they should be presented as groups. Each radio button becomes an option in the radio button group. To create a radio button group, each radio button should have the same value for the name attribute. In the following example, all four radio buttons are part of the same group because they share the name value of "income".
+A unique feature of radio buttons is that they should be presented as groups. Each radio button becomes an option in the radio button group. To create a radio button group, each radio button should have the same value for the `name` attribute. In the following example, all four radio buttons are part of the same group because they share the `name` value of "income".
 
-Each radio button should have a different value for the value attribute. When selecting from a radio button group, what is being selected and then sent to the server is whatever is in the value attribute of the selected radio button. In the following example, the available values for this radio button group are: "50000", "100000", "500000", and "1000000".
+Each radio button should have a different `value` for the value attribute. When selecting from a radio button group, what is being selected and then sent to the server is whatever is in the `value` attribute of the selected radio button. In the following example, the available values for this radio button group are: "50000", "100000", "500000", and "1000000".
 
 Labels can be attached to each button so that the radio buttons are easier to select and so the user knows what values are being selected.
 
+```html
 <p>Select your desired Salary:</p>
 
 <label for="income_1">$50,000</label>
@@ -443,62 +442,56 @@ Labels can be attached to each button so that the radio buttons are easier to se
 
 <label for="income_4">$1,000,000</label>
 <input type="radio" name="income" id="income_4" value="1000000">
-In the following example, the labels and inputs have been rearranged to form a simpler, easier to understand layout. Click on the input or the labels to select elements.
+```
 
-Editor
-Browser View
-input.html
-style.css
+In the following example, the `labels` and `inputs` have been rearranged to form a simpler, easier to understand layout. Click on the `input` or the labels to select elements.
 
-1
+```html
+<!-- input.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Form Textarea</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <form action="">
-10
         <p>Select your desired Salary:</p>
-11
         <input type="radio" name="income" id="income_1" value="50000">
-12
         <label for="income_1">$50,000</label><br>
-13
         <input type="radio" name="income" id="income_2" value="100000">
-14
         <label for="income_2">$100,000</label><br>
-15
         <input type="radio" name="income" id="income_3" value="500000">
-16
         <label for="income_3">$500,000</label><br>
-17
         <input type="radio" name="income" id="income_4" value="1000000">
-18
         <label for="income_4">$1,000,000</label><br>
-19
     </form>
-20
 </body>
-21
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body{
+    margin: 0;
+    padding-top: 30px;
+    background: #004444;
+}
+form{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px rgba( 0, 0, 0, 0.4 );
+    width: 300px;
+    margin: 0 auto;
+}
+p{
+    margin-top:0;
+}
+```
 
-Reset Code
-Preview 
-Checkboxes  
+## Checkboxes  
 
 Checkboxes are another special type of input. Like radio buttons, checkboxes should be presented in groups. Also like radio buttons, checkbox groups are created by giving each checkbox the same name attribute value.
 
