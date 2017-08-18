@@ -47,7 +47,7 @@ The following example shows an example of a form that collects one data item: a 
 > Note: Nothing will happen when you submit this form. It's a dummy form intended to show you the basic structure of forms: Labels, inputs, and buttons.
 
 ```html
-// index.html
+<!-- index.html -->
 <!doctype html>
 <html>
 <head>
@@ -66,7 +66,7 @@ The following example shows an example of a form that collects one data item: a 
 ``` 
 
 ```css
-// styles.css
+/* styles.css */
 label, input{
     display: block;
 }
@@ -493,12 +493,13 @@ p{
 
 ## Checkboxes  
 
-Checkboxes are another special type of input. Like radio buttons, checkboxes should be presented in groups. Also like radio buttons, checkbox groups are created by giving each checkbox the same name attribute value.
+Checkboxes are another special type of `input`. Like radio buttons, checkboxes should be presented in groups. Also like radio buttons, checkbox groups are created by giving each checkbox the same `name` attribute value.
 
-Checkboxes allow users to select multiple options from the group, while radio buttons only allow one option to be selected. In the following code sample, all four checkboxes share the name value "qualities".
+Checkboxes allow users to *select multiple options from the group*, while radio buttons only allow one option to be selected. In the following code sample, all four checkboxes share the `name` value "qualities".
 
-Use checkboxes when the user should select one or more options from a preselected list of values.
+**Use checkboxes when the user should select one *or more* options from a preselected list of values.**
 
+```html
 <p>Select all that apply:</p>
 
 <label for="carefree">I am carefree</label>
@@ -512,166 +513,198 @@ Use checkboxes when the user should select one or more options from a preselecte
 
 <label for="clowns">I'm afraid of clowns</label>
 <input type="checkbox" name="qualities" id="clowns" value="clowns">
-In the following example, the labels and inputs have been rearranged to form a simpler, easier to understand layout. Click on the input or the labels to select elements.
+```
 
-Editor
-Browser View
-input.html
-style.css
+In the following example, the `labels` and `inputs` have been rearranged to form a simpler, easier to understand layout. Click on the `input` or the labels to select elements.
 
-1
+```html
+<!-- input.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Form Textarea</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <form action="">
-10
         <p>Select all that apply:</p>
-11
         <input type="checkbox" name="qualities" id="carefree" value="carefree">
-12
         <label for="carefree">I am carefree</label><br>
-13
         <input type="checkbox" name="qualities" id="travel" value="travel">
-14
         <label for="travel">I love to travel</label><br>
-15
         <input type="checkbox" name="qualities" id="hobbies" value="hobbies">
-16
         <label for="hobbies">I have lots of hobbies</label><br>
-17
         <input type="checkbox" name="qualities" id="clowns" value="clowns">
-18
         <label for="clowns">I'm afraid of clowns</label><br>
-19
     </form>
-20
 </body>
-21
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body{
+    margin: 0;
+    padding-top: 30px;
+    background: #004444;
+}
+form{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px rgba( 0, 0, 0, 0.4 );
+    width: 300px;
+    margin: 0 auto;
+}
+p{
+    margin-top:0;
+}
+```
 
-Reset Code
-Preview 
-Button  
+## Button  
 
-The button element is used to submit the form and send the form data to the path located in the form element's action attribute. This element should have a type attribute of "button" and a name value.
+The button element is used to submit the form and send the form data to the path located in the `form` element's `action` attribute. This element should have a `type` attribute of "button" and a `name` value.
 
+```html
 <button type="button" name="submit">Submit</button>
-Fieldset  
+```
 
-The fieldset element isn't an input control. Rather it is a parent element for a group of related input controls and their labels. Some forms are fairly long and can cover several areas of information. The fieldset element can be used to break up that form into logical groupings so that it is easier to style and easier to parse by users.
+## Fieldset  
 
-The legend element provides a title for the fieldset.
+The `fieldset` element isn't an input control. Rather it is a parent element for a group of related input controls and their labels. Some forms are fairly long and can cover several areas of information. The `fieldset` element can be used to break up that form into logical groupings so that it is easier to style and easier to parse by users.
 
-Use fieldset elements if the form is long and should be logically divided into related fields of data.
+The `legend` element provides a title for the `fieldset`.
 
-In the following example, fieldset elements are used to divide the form element into two logical groups: personal information, and professional information. The border and inset legend are the default styles for a fieldset. The div elements aren't necessary but are included to help provide some additional structure to the doc.
+**Use `fieldset` elements if the form is long and should be logically divided into related fields of data.**
 
-Editor
-Browser View
-index.html
-style.css
+In the following example, `fieldset` elements are used to divide the `form` element into two logical groups: personal information, and professional information. The `border` and inset `legend` are the default styles for a `fieldset`. The `div` elements aren't necessary but are included to help provide some additional structure to the doc.
 
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Form Textarea</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <form>
-10
         <h3>ALL ABOUT ME!</h3>
-11
         <fieldset>
-12
             <legend>Personal Info</legend>
-13
             <div>
-14
                 <label for="first_name">First Name:</label>
-15
                 <input type="text" name="first_name" id="first_name">
-16
             </div>
-17
             <div>
-18
                 <label for="last_name">Last Name:</label>
-19
                 <input type="text" name="last_name" id="last_name">
-20
             </div>
-21
             <div>
-22
                 <label for="birthday">Birthday:</label>
-23
                 <input type="date" name="birthday" id="birthday">
- 
+            </div>
+            <div>
+                <p>Gender</p>
+                <input type="radio" name="gender" id="male" value="male">
+                <label for="male">Male</label><br>
+                <input type="radio" name="gender" id="female" value="female">
+                <label for="female">Female</label><br>
+                <input type="radio" name="gender" id="dont_answer" value="dont_answer">
+                <label for="dont_answer">Refuse to Answer</label><br>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Professional Info</legend>
+            <div>
+                <label for="job">Job Title:</label>
+                <input type="text" name="job" id="job">
+            </div>
+            <div>
+                <p>Salary</p>
+                <input type="radio" name="salary" id="less_20" value="less_20">
+                <label for="less_20">Less than $20k</label><br>
+                <input type="radio" name="salary" id="less_50" value="less_50">
+                <label for="less_50">Less than $50k</label><br>
+                <input type="radio" name="salary" id="greater_50" value="greater_50">
+                <label for="greater_50">Greater than $50k</label><br>
+            </div>
+        </fieldset>
+        <div>
+            <button type="button" name="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
+```
 
-Fullscreen
+```
+/* style.css */
+body{
+    margin: 0;
+    padding-top: 30px;
+    background: #004444;
+}
+form{
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 5px 8px rgba( 0, 0, 0, 0.4 );
+    width: 500px;
+    margin: 0 auto;
+}
+p{
+    margin-bottom: 0;
+}
+```
 
-Reset Code
-Preview 
-Conclusion  
+## Conclusion  
 
-HTML forms are a complex subject and will take more than a couple lessons to master. You will need to put in time becoming familiar with the most common input controls (as seen in this article) and the attributes that are used to control their behavior. However, don't try to memorize every detail. Details are important, but you can look them up. Spend your time trying to understand the way the form elements relate, (e.g. labels and inputs) and soon you'll be marking up forms for all sorts of purposes.
+HTML `forms` are a complex subject and will take more than a couple lessons to master. You will need to put in time becoming familiar with the most common input controls (as seen in this article) and the attributes that are used to control their behavior. However, don't try to memorize every detail. Details are important, but *you can look them up*. Spend your time trying to understand the way the form elements relate, (e.g. labels and inputs) and soon you'll be marking up forms for all sorts of purposes.
 
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Form "Method" and "Action" Attributes  
+---
 
-A form is a powerful data collection tool and an integral part of the web. Form and HTML syntax are similar in that they both contain special instructions in their "heads" for processing. The head of an HTML document contains metadata required for rendering the document. A form contains method and action attributes in its opening tag in order to process and submit form-data. Without these, a form is useless.
+# Form "Method" and "Action" Attributes  
 
-"Action" Attribute  
+A form is a powerful data collection tool and an integral part of the web. Form and HTML syntax are similar in that they both contain special instructions in their "heads" for processing. The `head` of an HTML document contains metadata required for rendering the document. A form contains `method` and `action` attributes in its opening tag in order to process and submit form-data. Without these, a form is useless.
 
-Have you ever wondered where form-data is sent? Is it processed by the page serving the form or by a remote server? The answer to this lies within the action attribute. This attribute determines where the form-data is sent. In most cases, form-data is sent to a remote server and processed by a script. A script is a piece of software programmed to do things such as inserting a record into a database or sending a confirmation email upon submission. Let's take a look at the syntax of the action attribute.
+## "Action" Attribute  
 
+Have you ever wondered where form-data is sent? Is it processed by the page serving the form or by a remote server? The answer to this lies within the `action` attribute. This attribute determines where the form-data is sent. In most cases, form-data is sent to a remote server and processed by a script. A script is a piece of software programmed to do things such as inserting a record into a database or sending a confirmation email upon submission. Let's take a look at the syntax of the `action` attribute.
+
+```html
 <form action="get-user-login.php" method="POST">
 <!--form content-->
 </form>
+```
+
 This example form element will send its data to the "get-user-login.php"
 
-"Method" Attribute  
+## "Method" Attribute  
 
-Now that we know where to send form-data, we must specify how the form-data will be sent. method refers to the HTTP method used to transmit the form data. You'll set this attribute to either "GET" or "POST".
+Now that we know where to send form-data, we must specify how the form-data will be sent. `method` refers to the HTTP method used to transmit the form data. You'll set this attribute to either "GET" or "POST".
 
-GET: Method which requests information from the web server.
-The length of the URL is limited to about three thousand characters.
-Better used to send non-secure data.
-Allows the user to bookmark the page once the form has been submitted.
-POST: Method which submits new or changed information to the web server.
-It appends form-data inside the body of the HTTP request.
-Compared to GET, it does not have size limitations.
-Does not allow the user to bookmark the page.
-Example
+* **GET**: Method which requests information from the web server.
 
+  * The length of the URL is limited to about three thousand characters.
+  
+  * Better used to send non-secure data.
+  
+  * Allows the user to bookmark the page once the form has been submitted.
+  
+* **POST**: Method which submits new or changed information to the web server.
+
+  * It appends form-data inside the body of the HTTP request.
+
+  * Compared to GET, it does not have size limitations.
+
+  * Does not allow the user to bookmark the page.
+
+### Example
+
+```html
 <form action="http://foo.com" method="GET">
   <div>
     <label for="fullname">What your full name?</label>
@@ -685,41 +718,46 @@ Example
     <button>Take my identity!</button>
   </div>
 </form>
+```
+
 The URL for this form would be:
 
-www.foo.com/?fullname=John&social=123-45-6789
+`www.foo.com/?fullname=John&social=123-45-6789`
 
-This is also a perfect example of what not to do in a GET request. NEVER use a GET request to send sensitive data. Using a POST request is the way to go in such situations since form-data is appended to the body of the HTTP request. The above form element should look like this:
+This is also a perfect example of what not to do in a `GET` request. **NEVER** use a `GET` request to send sensitive data. Using a `POST` request is the way to go in such situations since form-data is appended to the body of the HTTP request. The above form element should look like this:
 
+```html
 <form action="http://foo.com" method="POST">
 <!--sensitive content-->
 </form>
-Main Difference Between GET and POST  
+```
 
-The main difference between both types of requests is that GET is mean to be idempotent. This means that a request can be re-run multiple times without side-effects. It is important to note that browser can cache some of the response pages for this kind of request. In comparison, a POST request recontacts the server each time the page is rendered. This kind of request is better suited for response pages that change over time, such as a shopping cart page.
+### Main Difference Between GET and POST  
 
-Default Behavior  
+The main difference between both types of requests is that `GET` is mean to be `idempotent`. This means that a request can be re-run multiple times without side-effects. It is important to note that browser can cache some of the response pages for this kind of request. In comparison, a `POST` request recontacts the server each time the page is rendered. This kind of request is better suited for response pages that change over time, such as a shopping cart page.
 
-Forms are commonly manipulated by Javascript to perform extra tasks (like formatting phone numbers or checking password requirements) but sometimes you just want a simple form without the added overhead. What happens when a form is submitted on an HTML web page with no method and/or action and other scripts involved?
+## Default Behavior  
 
-The form first groups all the data in each field into a group of key-value pairs called the "form data set"1. In each case, the "key" will be the name attribute of the field (which is mandatory for ALL field elements) and the "value" will be the data from that field. That data is then sent, via the form's method attribute, to the location of the form's action attribute. If no method is specified, the default method is GET.
+Forms are commonly manipulated by Javascript to perform extra tasks (like formatting phone numbers or checking password requirements) but sometimes you just want a simple form without the added overhead. What happens when a form is submitted on an HTML web page with no `method` and/or `action` and other scripts involved?
 
-The action destination will usually contain code that gathers that data, stores or manipulates it in some way, and returns a response confirming that data was received. If the action is set to an empty string, i.e, action="", then form-data will be linked to the page containing the form. If there are special response details needed (for example: a tracking number when you submit payment for a postage label) those details will be included in the "response" from the action. The form's action may also redirect your browser to another web page. This is usually where you'll see confirmation numbers or error reports (if there was an error). A redirect is common but not mandatory - it's perfectly acceptable to send your form data to the web page you're currently on, as long as it's set up to handle that data.
+The form first groups all the data in each field into a group of key-value pairs called the "form data set"1. In each case, the "key" will be the name attribute of the field (which is mandatory for ALL field elements) and the "value" will be the data from that field. That data is then sent, via the form's method attribute, to the location of the form's action attribute. If no `method` is specified, the default method is `GET`.
 
-Conclusion  
+The action destination will usually contain code that gathers that data, stores or manipulates it in some way, and returns a response confirming that data was received. If the `action` is set to an empty string, i.e, `action=""`, then form-data will be linked to the page containing the form. If there are special response details needed (for example: a tracking number when you submit payment for a postage label) those details will be included in the "response" from the action. The form's action may also redirect your browser to another web page. This is usually where you'll see confirmation numbers or error reports (if there was an error). A redirect is common but not mandatory - it's perfectly acceptable to send your form data to the web page you're currently on, as long as it's set up to handle that data.
 
-In conclusion, think of a GET request as a request for information, like using the Google search bar, and think of a POST as a request to add or change information. Remember not to use GET when submitting sensitive information, since it appends form-data to the URL. In such cases use POST, since it appends form-data to the body of the HTTP.
+### Conclusion  
 
-Additional Resources  
+In conclusion, think of a `GET` request as a request for information, like using the Google search bar, and think of a `POST` as a request to add or change information. Remember not to use `GET` when submitting sensitive information, since it appends form-data to the URL. In such cases use `POST`, since it appends form-data to the body of the HTTP.
 
-ProgrammerInterview.com - Difference Between GET and POST
+### Additional Resources  
+
+[ProgrammerInterview.com - Difference Between GET and POST](http://www.programmerinterview.com/index.php/general-miscellaneous/html-get-vs-post/)
 
 Lesson Footnotes
-1: W3 - Form Submission
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Creating A Form  
+* 1: [W3 - Form Submission](https://www.w3.org/TR/html401/interact/forms.html#h-17.13)
+
+---
+
+# Creating A Form  
 
 The vast majority of our interaction with the web and applications is through forms. Well made forms create a seamless and effective user experience because good forms ask the right questions and use the appropriate input controls to collect data.
 
