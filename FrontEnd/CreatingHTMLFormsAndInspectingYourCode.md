@@ -1124,7 +1124,7 @@ Accessing `DevTools` is easy. There are three ways to do so:
 
 ### DOM Live-view  
 
-devtools-live-dom-view.jpg
+![devtools-live-dom-view.jpg](./images/devtools-live-dom-view.jpg)
 
 This view shows a live view of the DOM tree. From here we can inspect every node by simply clicking on it.
 
@@ -1132,7 +1132,7 @@ This view shows a live view of the DOM tree. From here we can inspect every node
 
 ### Editing a node  
 
-devtools-edit-dom.png
+![devtools-edit-dom.png](./images/devtools-edit-dom.png)
 
 Right-clicking on an element gives us access to element-specific tools, such as:
 
@@ -1152,7 +1152,7 @@ Sometimes it is necessary to rearrange elements. Doing so from the `element` pan
 
 ### Editing Styles  
 
-devtools-styles.jpeg
+![devtools-styles.jpeg](./images/devtools-styles.jpeg)
 
 From this window, we can edit the styles of a selected node, except the ones that are grayed out.
 
@@ -1172,8 +1172,7 @@ From this window, we can edit the styles of a selected node, except the ones tha
 
 ### Inspecting and editing the box model  
 
-devtools-computed-pane.jpeg
-
+![devtools-computed-pane.jpeg](./images/devtools-computed-pane.jpeg)
 
 Getting a hang of `margin` and `padding` can be a little tricky at first. Getting a visual of these makes fine-tuning these properties much easier. We can view the `box model` of a selected node by navigating to the `Computed pane`. From there we can view and edit all values of the `box model`.
 
