@@ -17,7 +17,7 @@ Lecture notes from The Iron Yard
 
 * [Responsive Web Design](./FrontEnd/ResponsiveWebDesign.md)
 
-* Creating HTML Forms and Inspecting Your Code
+* [Creating HTML Forms and Inspecting Your Code](./FrontEnd/CreatingHTMLFormsAndInspectingYourCode.md)
 
 * [Version Control with Git](./FrontEnd/VersionControlWithGit.md)
 
