@@ -640,7 +640,7 @@ In the following example, `fieldset` elements are used to divide the `form` elem
 </html>
 ```
 
-```
+```css
 /* style.css */
 body{
     margin: 0;
@@ -759,16 +759,17 @@ Lesson Footnotes
 
 # Creating A Form  
 
-The vast majority of our interaction with the web and applications is through forms. Well made forms create a seamless and effective user experience because good forms ask the right questions and use the appropriate input controls to collect data.
+The vast majority of our interaction with the web and applications is through forms. Well made forms create a seamless and effective user experience because good forms ask the right questions and *use the appropriate input controls to collect data*.
 
 In this article, we will discuss the thought process behind choosing an appropriate form element for the data that your form needs to collect. We will walk through the process of creating a profile page form for a social media site.
 
 As we go through this process, we'll look at a few more useful attributes that can help us validate the content being entered into our input controls.
 
-Gathering Information  
+## Gathering Information  
 
 The first step in authoring a great form is to evaluate what information needs to be collected. Our social profile needs to collect the following items of data:
 
+```
 - First name
 - Last name
 - Username
@@ -779,43 +780,59 @@ The first step in authoring a great form is to evaluate what information needs t
 - Interests
 - Profile visibility
 - Password
-Choosing an Appropriate Input Control  
+```
+
+## Choosing an Appropriate Input Control  
 
 Now that you have an understanding of what is being collected, you have to ask the right questions. The way we ask and collect this information can either make or break the user experience. Thankfully we have an array of elements that offer the right input for each particular type of question. Let's decide which elements to use for each piece of information.
 
-First name  
+### First name  
 
-(required) This should be a "text" input since we don't have a more semantic tag to use. We'll also use the required attribute to make this field required. This will prompt the user to fill this field before the data can be submitted.
+(required) This should be a "text" input since we don't have a more semantic tag to use. We'll also use the `required` attribute to make this field required. This will prompt the user to fill this field before the data can be submitted.
 
-The required attribute is a single word because HTML 5 allows something called "attribute minimization". In older versions of HTML required had to be written as required="required". HTML 5 allows us to compress attributes where the key and value are the same things.
+> The `required` attribute is a single word because HTML 5 allows something called "attribute minimization". In older versions of HTML `required` had to be written as `required="required"`. HTML 5 allows us to compress attributes where the key and value are the same things.
+
+```html
 <label for="first-name">First Name</label>
 <input type="text" id="first-name" name="first-name" required>
-Last name  
+```
 
-(required) This should also be a "text" input. Just like the previous file, this one will also use the required attribute.
+### Last name  
 
+(required) This should also be a "text" input. Just like the previous file, this one will also use the `required` attribute.
+
+```html
 <label for="last-name">Last Name</label>
 <input type="text" id="last-name" name="last-name" required>
-Username  
+```
+
+### Username  
 
 (required) Again, this should be a "text" input, as a username could use lots letters, numbers, or special characters. This one is also required.
 
+```html
 <label for="username">Username</label>
 <input type="text" id="username" name="username" required>
-Phone number  
+```
+
+### Phone number  
 
 (required) HTML 5 provides an input type specifically for phone numbers. The "tel" input type is much more semantic than "text", in this case. This field is also required, so we'll add the required keyword. We'll also add a couple attributes that are extremely useful for validating numbers.
 
-The pattern attribute allows us to supply a "regular expression" against which the browser will compare the user's phone number entry. Regular expressions are a super powerful pattern matching tool but are also a deep and complex topic. For the purposes of this example, you'll have to trust that the following string of characters "^\d{3}-\d{3}-\d{4}$" matches any phone number that follows the pattern: "000-000-0000".
+The `pattern` attribute allows us to supply a "regular expression" against which the browser will compare the user's phone number entry. Regular expressions are a super powerful pattern matching tool but are also a deep and complex topic. For the purposes of this example, you'll have to trust that the following string of characters "^\d{3}-\d{3}-\d{4}$" matches any phone number that follows the pattern: "000-000-0000".
 
-The last attribute we'll add is placeholder which allows us to supply the text that will fill the field by default.
+The last attribute we'll add is `placeholder` which allows us to supply the text that will fill the field by default.
 
+```html
 <label for="phone">Phone #</label>
 <input type="tel" name="phone" id="phone" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="format: xxx-xxx-xxxx" required>
-Location  
+```
 
-In this case, we'll define this value as the user's state of residence and we'll restrict that list to three states in the southeast of the United States. A good way of collecting this is by using the select input.
+### Location  
 
+In this case, we'll define this value as the user's state of residence and we'll restrict that list to three states in the southeast of the United States. A good way of collecting this is by using the `select` input.
+
+```html
 <label for="location">Choose a State</label>
 <select type="select" id="location">
     <option name="sc" value="sc">South Carolina</option>
@@ -824,30 +841,39 @@ In this case, we'll define this value as the user's state of residence and we'll
     <option name="fl" value="fl">Florida</option>
     <option name="al" value="al">Alabama</option>
 </select>
-Age  
+```
 
-Age can be selected in several ways. We could use "number" or "text" types, or even a select element. We want to give the users a small selection of ranges to choose from. For demonstration purposes, we will use radio inputs.
+### Age  
 
-Notice that each input has the same name so that they will create a radio button group. Each input needs a unique id and value.
+Age can be selected in several ways. We could use "number" or "text" types, or even a `select` element. We want to give the users a small selection of ranges to choose from. For demonstration purposes, we will use radio `inputs`.
 
+Notice that each input has the same `name` so that they will create a radio button group. Each input needs a unique `id` and `value`.
+
+```html
 <label for="minor">Younger than 18</label>
 <input type="radio" name="age" id="minor" value="<18">
 <label for="adult">18-60</label>
 <input type="radio" name="age" id="adult" value="18-60">
 <label for="senior">Older than 60</label>
 <input type="radio" name="age" id="senior" value=">60">
-Biography  
+```
 
-(required) We ask the user to create a short biography. Because this will likely involve multiple lines of text, the best way of collecting this data is with the textarea input.
+### Biography  
 
+(required) We ask the user to create a short biography. Because this will likely involve multiple lines of text, the best way of collecting this data is with the `textarea` input.
+
+```html
 <label for="bio">Bio</label>
 <textarea id="bio" name="bio" required></textarea>
-Interests  
+```
 
-(optional) The user chooses from a selection of interests. The best way to collect this is with the checkbox inputs since the user can select zero or more options. In this example, we'll provide the user with five options.
+### Interests  
 
-Notice that each input has the same name so that they will create a checkbox group. Each input needs a unique id and value.
+(optional) The user chooses from a selection of interests. The best way to collect this is with the `checkbox` inputs since the user can select zero or more options. In this example, we'll provide the user with five options.
 
+Notice that each input has the same `name` so that they will create a checkbox group. Each input needs a unique `id` and `value`.
+
+```html
 <label for="coding">Coding</label>
 <input type="checkbox" id="coding" name="interests" value="coding">
 <label for="running">Running</label>
@@ -858,34 +884,49 @@ Notice that each input has the same name so that they will create a checkbox gro
 <input type="checkbox" id="reading" name="interests" value="reading">
 <label for="painting">Painting</label>
 <input type="checkbox" id="painting" name="interests" value="painting">
-Profile Visibility  
+```
 
-We are giving the user a binary option to make their profile public. The radio input is a good option for this data because the user can only choose one of two options. For this item, we want to set a default value of "true". In this case, that means giving one of the radio buttons the minimized attribute "checked".
+### Profile Visibility  
 
-Each input has the same name so that they will create a radio button group. Each input needs a unique id and value.
+We are giving the user a binary option to make their profile public. The `radio` input is a good option for this data because the user can only choose one of two options. For this item, we want to set a default value of "true". In this case, that means giving one of the radio buttons the minimized attribute "checked".
 
+Each input has the same `name` so that they will create a radio button group. Each input needs a unique `id` and `value`.
+
+```html
 <label for="true">Yes</label>
 <input type="radio" name="privacy" id="true" value="true" checked>
 <label for="false">False</label>
 <input type="radio" name="privacy" id="false" value="false">
-Password  
+```
 
-(required) The user provides a password. For privacy reasons, the password type is the best choice, since it masks the characters.
+### Password  
 
+(required) The user provides a password. For privacy reasons, the `password` type is the best choice, since it masks the characters.
+
+```html
 <label for="password">Create a password:</label>
 <input type="password" name="password" id="password" minlength="6" maxlength="12" size="12" required>
-Putting It All Together  
+```
+
+## Putting It All Together  
 
 Now that we've identified how to mark up each input control, we need to put it all together within a form. The following code example shows a reasonable way of putting together this form.
 
 You should take note of several things:
 
-The inputs have been reordered and grouped to flow naturally from one body of data to another.
-br, fieldset, h3, and div tags have been used within the form. While these tags aren't all form elements, they are useful for giving our form a little bit of structure.
-Labels have been used in conjunction with virtually every field on the form. This is really important for accessibility and usability purposes.
-We've used a semantically appropriate tag for every form field. This is also important for accessibility and usability, in addition to being semantic.
-Each form field has appropriate attributes needed for that particular input.
-I haven't bothered to shuffle the label and input tags to tidy up the form. You can do so for practice if you like.
+1. The inputs have been reordered and grouped to flow naturally from one body of data to another.
+
+2. `br`, `fieldset`, `h3`, and `div` tags have been used within the form. While these tags aren't all form elements, they are useful for giving our form a little bit of structure.
+
+3. Labels have been used in conjunction with virtually every field on the form. This is really important for accessibility and usability purposes.
+
+4. We've used a semantically appropriate tag for every form field. This is also important for accessibility and usability, in addition to being semantic.
+
+5. Each form field has appropriate attributes needed for that particular input.
+
+6. I haven't bothered to shuffle the `label` and `input` tags to tidy up the form. You can do so for practice if you like.
+
+```html
 <form>
     <h2>myFacebook</h2>
     <fieldset>
@@ -958,6 +999,8 @@ I haven't bothered to shuffle the label and input tags to tidy up the form. You 
         <button type="submit">Create Profile!</button>
     </div>
 </form>
+```
+
 Editor
 Browser View
 index.html
