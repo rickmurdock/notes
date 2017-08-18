@@ -396,7 +396,7 @@ In the following code sample, the text area is 45 columns wide and 10 rows tall.
 ```
 
 ```css
-/* style.css*/
+/* style.css */
 body{
     margin: 0;
     padding-top: 30px;
@@ -1001,151 +1001,208 @@ You should take note of several things:
 </form>
 ```
 
-Editor
-Browser View
-index.html
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Profile Form</title>
-6
 </head>
-7
 <body>
-8
     <form>
-9
         <h2>myFacebook</h2>
-10
         <fieldset>
-11
             <legend>User Profile</legend>
-12
             <h3>About Me</h3>
-13
             <label for="first-name">First Name</label>
-14
             <input type="text" id="first-name" name="first-name" required>
-15
             <br>
-16
             <label for="last-name">Last Name</label>
-17
             <input type="text" id="last-name" name="last-name" required>
-18
             <br>
-19
             <label for="username">Username</label>
-20
             <input type="text" id="username" name="username" required>
-21
         </fieldset>
-22
         <fieldset>
-23
             <legend>Tell us about you!</legend>
- 
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" required></textarea>
+            <h3>Interests</h3>
+            <label for="coding">Coding</label>
+            <input type="checkbox" id="coding" name="interests" value="coding">
+            <br>
+            <label for="running">Running</label>
+            <input type="checkbox" id="running" name="interests" value="running">
+            <br>
+            <label for="cooking">Cooking</label>
+            <input type="checkbox" id="cooking" name="interests" value="cooking">
+            <br>
+            <label for="reading">Reading</label>
+            <input type="checkbox" id="reading" name="interests" value="reading">
+            <br>
+            <label for="painting">Painting</label>
+            <input type="checkbox" id="painting" name="interests" value="painting">
+            <h3>Age Range</h3>
+            <label for="minor">Younger than 18</label>
+            <input type="radio" name="age" id="minor" value="<18">
+            <br>
+            <label for="adult">18-60</label>
+            <input type="radio" name="age" id="adult" value="18-60">
+            <br>
+            <label for="senior">Older than 60</label>
+            <input type="radio" name="age" id="senior" value=">60">
+            <h3>Location</h3>
+            <label for="location">Choose a State</label>
+            <select type="select" id="location">
+                <option name="sc" value="sc">South Carolina</option>
+                <option name="nc" value="nc">North Carolina</option>
+                <option name="ga" value="ga">Georgia</option>
+                <option name="fl" value="fl">Florida</option>
+                <option name="al" value="al">Alabama</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>Privacy and Password</legend>
+            <h4>Make profile private?</h4>
+            <label for="true">Yes</label>
+            <input type="radio" name="privacy" id="true" value="true" checked>
+            <br>
+            <label for="false">False</label>
+            <input type="radio" name="privacy" id="false" value="false">
+            <h4>Password</h4>
+            <label for="password">Create a password:</label>
+            <input type="password" name="password" id="password" minlength="6" maxlength="12" size="12" required>
+            <h4>Phone Number</h4>
+            <p>For account verification and password reset</p>
+            <label for="phone">Phone #</label>
+            <input type="tel" name="phone" id="phone" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="format: xxx-xxx-xxxx" required>
+        </fieldset>
+        <div>
+            <button type="submit">Create Profile!</button>
+        </div>
+    </form>
+</body>
+</html>
+```
 
-Fullscreen
-
-Reset Code
-Preview 
-Stepping through Forms  
+## Stepping through Forms  
 
 Watch the following video to see how you can use Chrome Dev Tools to step through a form and inspect all of the fields. This video provides real-world examples of existing forms and the input controls used on live sites.
 
 
-2:48
-
-
-
-
 Wistia video thumbnail - input-only-forms-1080p
-Conclusion  
+
+
+## Conclusion  
 
 A good form is a powerful data collection tool, but to get the most out of your forms, you need to understand the nature of the data being collected. A form not only asks the right questions, but it collects data in a way that is intuitive and seamless for the user. A semantic approach to choosing which input controls to use will go a long way toward the creation of usable and functional web forms.
 
-Additional Resources  
+## Additional Resources  
 
-[^1]:MDN - Form Data Validation
+[^1]:[MDN - Form Data Validation](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation)
 
-MDN - How To Structure An HTML Form
+[MDN - How To Structure An HTML Form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/How_to_structure_an_HTML_form)
 
-Inspecting & Editing The DOM with DevTools  
+---
 
-As we author an HTML document we may follow a simple wireframe, a detailed mockup, or just a mental image. Seeing a rendered version is invaluable. No matter what editor we use, there is a plethora of "live-view" plugins available to help us view development progress. Sometimes, though, we need more than just a "live-view". In these times, we will need to debug JavaScript, change the layout, fine-tune elements, etc., without wanting to change the actual code. Many browsers come with powerful developer tools that help us do just that. These tools offer features ranging from "network monitoring", a "JavaScript console", "DOM view" and more. In this lesson, we will focus on the developer tools offered by Google Chrome. Specifically, we will cover how to inspect HTML DOM elements and adjust content, classes, and styles.
+# Inspecting & Editing The DOM with DevTools  
 
-Accessing Developer Tools In Chrome  
+As we author an HTML document we may follow a simple wireframe, a detailed mockup, or just a mental image. Seeing a rendered version is invaluable. No matter what editor we use, there is a plethora of "live-view" plugins available to help us view development progress. Sometimes, though, we need more than just a "live-view". In these times, we will need to debug JavaScript, change the layout, fine-tune elements, etc., without wanting to change the actual code. Many browsers come with powerful `developer tools` that help us do just that. These tools offer features ranging from "network monitoring", a "JavaScript console", "DOM view" and more. In this lesson, we will focus on the developer tools offered by Google Chrome. Specifically, we will cover how to inspect HTML DOM elements and adjust content, classes, and styles.
 
-Accessing DevTools is easy. There are three ways to do so:
+## Accessing Developer Tools In Chrome  
 
-Right click on an element and select Inspect Element. This will not only open the tool, but it will take you exactly to the selected DOM node.
-Using the keyboard: On a Mac select cmd + opt + i. In Windows select ctrl + shift + i.
-Chrome browser: menu > More Tools > Developer Tools.
-Editing The DOM  
+Accessing `DevTools` is easy. There are three ways to do so:
 
-DOM Live-view  
+* Right click on an element and select `Inspect Element`. This will not only open the tool, but it will take you exactly to the selected DOM node.
+
+* Using the keyboard: On a Mac select `cmd + opt + i`. In Windows select `ctrl + shift + i`.
+
+* Chrome browser: `menu` > `More Tools` > `Developer Tools`.
+
+## Editing The DOM  
+
+### DOM Live-view  
 
 devtools-live-dom-view.jpg
+
 This view shows a live view of the DOM tree. From here we can inspect every node by simply clicking on it.
 
-If using JavaScript to modify the DOM, the browser will try to correct invalid markup. This might produce a different DOM tree from the origin.
-Editing a node  
+> If using JavaScript to modify the DOM, the browser will try to correct invalid markup. This might produce a different DOM tree from the origin.
+
+### Editing a node  
 
 devtools-edit-dom.png
+
 Right-clicking on an element gives us access to element-specific tools, such as:
 
-Add Attribute: add attributes, such class, src, or width.
-Edit Attribute: edit current attribute(s).
-Edit as HTML: opens an HTML edit window. From here you can edit the entire content of the node as if you were using an editor. You can even add elements.
-Copy: lets you perform several different copy operations. The most useful being copy outerHTML. This copies the entire content of the node (tags and content).
-Element Placement
-devtool-drag.mov
+* `Add Attribute`: add attributes, such `class`, `src`, or `width`.
 
-Sometimes it is necessary to rearrange elements. Doing so from the element pane is relatively easy. Just click and drag the element to the desired DOM tree location.
+* `Edit Attribute`: edit current attribute(s).
 
-Editing Styles  
+* `Edit as HTML`: opens an HTML edit window. From here you can edit the *entire content* of the node as if you were using an editor. You can even add elements.
+
+* `Copy`: lets you perform several different `copy` operations. The most useful being `copy outerHTML`. This copies the entire content of the node (tags and content).
+
+### Element Placement
+
+[devtool-drag.mov]()
+
+Sometimes it is necessary to rearrange elements. Doing so from the `element` pane is relatively easy. Just click and drag the element to the desired DOM tree location.
+
+### Editing Styles  
 
 devtools-styles.jpeg
+
 From this window, we can edit the styles of a selected node, except the ones that are grayed out.
 
-Editing a style: Clicking on an element lets us edit the name and value of a style. To save (temporarily), press Enter or Tab.
-Adding a style: Click outside the style name or value. This adds a new style line to which you must provide a CSS style.
-If you like the modifications, you do not need to manually enter them in your editor. Copy all styles from the styles pane and paste them in your CSS file.
-Saving and undoing style changes
-Style modifications are not saved by default. Reloading the page resets all styling to its original state. In order to save styling changes, you must set up persistent authoring.
-Persistent authoring undo: Cmd+Z (Mac) or Ctrl+Z (Windows).
-Undoing all changes: Open sources panel and select revert.
-Inspecting and editing the box model  
+* Editing a style: Clicking on an element lets us edit the name and value of a style. To save (temporarily), press `Enter` or `Tab`.
+
+* Adding a style: Click outside the `style` `name` or `value`. This adds a new `style` line to which you must provide a `CSS style`.
+
+> If you like the modifications, you do not need to manually enter them in your editor. Copy all styles from the styles pane and paste them in your CSS file.
+
+### Saving and undoing style changes
+
+* Style modifications are not saved by default. Reloading the page resets all styling to its original state. In order to save styling changes, you must set up `persistent authoring`.
+
+* `Persistent authoring undo`: `Cmd+Z` (Mac) or `Ctrl+Z` (Windows).
+
+* Undoing all changes: Open `sources` panel and select `revert`.
+
+### Inspecting and editing the box model  
 
 devtools-computed-pane.jpeg
-Getting a hang of margin and padding can be a little tricky at first. Getting a visual of these makes fine-tuning these properties much easier. We can view the box model of a selected node by navigating to the Computed pane. From there we can view and edit all values of the box model.
 
-The box model shows the padding, border, and margin values (top, bottom, left and right) of the selected element. Double click on these to edit them.
 
-An additional rectangle is shown for non-statically positioned elements. These values are also editable.
+Getting a hang of `margin` and `padding` can be a little tricky at first. Getting a visual of these makes fine-tuning these properties much easier. We can view the `box model` of a selected node by navigating to the `Computed pane`. From there we can view and edit all values of the `box model`.
 
-offsetWidth x offsetHeight is shown for position: absolute and position: fixed elements.
-Other Powerful DevTool Options  
+* The `box model` shows the padding, border, and margin values (top, bottom, left and right) of the selected element. Double click on these to edit them.
 
-The Chrome Developer Tools offer other great tools to help us debug, monitor performance, etc.
+* An additional rectangle is shown for non-statically positioned elements. These values are also editable.
 
-Console: this will become your best friend. From here you can view and debug your JavaScript code.1
-Network: view network performance, what file is being loaded (including file type and size). Useful for troubleshooting network issues bad requests.
-Timeline: view loading time for each resource.
-Sources: view what scripts are being loaded and their source.
-Resources: view all loaded resources, such as application cache, cookies, etc.
-Audits: analyze a page's performance, such as "Network Utilization" and "Web Page Performance".
-Conclusion  
+> `offsetWidth x offsetHeight` is shown for `position: absolute` and `position: fixed` elements.
 
-A browser's developer tools makes it possible to edit the current state of a web page's DOM. With tools ranging from "network monitoring", "JavaScript console" and "DOM view", Chrome devTools makes it easy to edit, debug, and monitor a web page from one central location.
+## Other Powerful DevTool Options  
 
-Lesson Footnotes
-1: Chrome - DevTools: Console
+The `Chrome Developer Tools` offer other great tools to help us debug, monitor performance, etc.
+
+* `Console`: this will become your best friend. From here you can view and debug your JavaScript code.1
+
+* `Network`: view network performance, what file is being loaded (including file type and size). Useful for troubleshooting network issues bad requests.
+
+* `Timeline`: view loading time for each resource.
+
+* `Sources`: view what scripts are being loaded and their source.
+
+* `Resources`: view all loaded resources, such as application cache, cookies, etc.
+
+* `Audits`: analyze a page's performance, such as "Network Utilization" and "Web Page Performance".
+
+## Conclusion  
+
+A browser's `developer tools` makes it possible to edit the current state of a web page's DOM. With tools ranging from "network monitoring", "JavaScript console" and "DOM view", `Chrome devTools` makes it easy to edit, debug, and monitor a web page from one central location.
+
+#### Lesson Footnotes
+
+* 1: [Chrome - DevTools: Console](https://developers.google.com/web/tools/chrome-devtools/console/?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3)
