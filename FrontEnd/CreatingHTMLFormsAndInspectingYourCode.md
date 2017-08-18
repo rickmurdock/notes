@@ -1146,7 +1146,7 @@ Right-clicking on an element gives us access to element-specific tools, such as:
 
 ### Element Placement
 
-[devtool-drag.mov]()
+![devtool-drag.mov](./images/devtool-drag.mov)
 
 Sometimes it is necessary to rearrange elements. Doing so from the `element` pane is relatively easy. Just click and drag the element to the desired DOM tree location.
 
