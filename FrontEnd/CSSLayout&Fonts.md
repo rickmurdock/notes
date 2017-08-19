@@ -1,101 +1,102 @@
-Padding, Margin, and Border  
+# Padding, Margin, and Border  
 
-This lesson we look at the behavior of three properties: padding, margin, and border. To better understand how these properties affect elements, visualize each element as a rectangle.
+This lesson we look at the behavior of three properties: `padding`, `margin`, and `border`. To better understand how these properties affect elements, visualize each element as a rectangle.
 
 Display of padding, margin, and border1
 
-The idea that elements in HTML are rectangles is known as the box model. Padding, margin, and border are properties that can be adjusted to control the appearance of a box. Each affects the box differently and can be used together to create vastly different element styles. It is important to understand what each does to understand the box model.
+The idea that elements in HTML are rectangles is known as [the box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model). `Padding`, `margin`, and `border` are properties that can be adjusted to control the appearance of a box. Each affects the box differently and can be used together to create vastly different element styles. It is important to understand what each does to understand the box model.
 
-Border  
+## Border  
 
-Every element has a border property, but it is invisible unless it has a color and width. Even if you can't see the border around an element, it is there. The border is used to separate the edge of one box from another.
+Every element has a `border` property, but it is invisible unless it has a color and width. Even if you can't see the border around an element, it is there. The border is used to separate the edge of one box from another.
 
 Several properties affect border styling.
 
-border-width control the width of the border.
-The size of the border is controlled by properties such as border-top-width, border-right-width, border-bottom-width, and border-left-width.
-border-style controls the visual style of the border and allows for several values: solid, dotted, doubles, and others.
-border-color is used to set the color of the lines that represent the border.
+* `border-width` control the width of the border.
+
+* The size of the border is controlled by properties such as `border-top-width`, `border-right-width`, `border-bottom-width`, and `border-left-width`.
+
+* `border-style` controls the visual style of the border and allows for several values: solid, dotted, doubles, and others.
+
+* `border-color` is used to set the color of the lines that represent the border.
+
 The border shorthand allows for styling width, style and color all within one property.
 
-In the following example, the border around the h1 has border-width of 10px, a border-style of solid, and a border-color of black.
+In the following example, the border around the `h1` has` border-width` of `10px`, a `border-style` of `solid`, and a `border-color` of `black`.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
      <h1>I have a box around me</h1>
-8
   </body>
-9
 </html>
-10
-​
+```
+
+```css
+/* style.css */
+h1 {
+  border-width: 10px;
+  border-style: solid;
+  border-color: black;
+}
+
+/*
+Can also be written as shorthand
+h1{
+  border: 10px solid black;
+}
+*/
+```
  
+## Margin  
 
-Fullscreen
+The margin sits outside the edge of the border. Setting the width of the margin sets the space between the box of one element and the box of another. By setting the `margin`, you are making a gap between two adjacent elements.
 
-Reset Code
-Preview 
-Margin  
+All the boxes have the same styles except for `margin`. The first box has a `margin` of `0px`, the second a `margin` of `20px`, and the third a `margin` of `40px`.
 
-The margin sits outside the edge of the border. Setting the width of the margin sets the space between the box of one element and the box of another. By setting the margin, you are making a gap between two adjacent elements.
-
-All the boxes have the same styles except for margin. The first box has a margin of 0px, the second a margin of 20px, and the third a margin of 40px.
-
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
      <div class="first-box">I am the first box</div>
-8
      <div class="second-box">I am the second box</div>
-9
      <div class="third-box">I am the third box</div>
-10
   </body>
-11
 </html>
-12
-​
+```
+
+```css
+/* style.css */
+.first-box {
+  border: 10px solid red;
+  margin: 0px;
+}
+
+.second-box {
+  border: 10px solid red;
+  margin: 20px;
+}
+
+.third-box {
+  border: 10px solid red;
+  margin: 40px;
+}
+```
  
+Since the margin property controls the gap between boxes, it is possible to set it from all sides. This is accomplished by setting `margin-top`, `margin-right`, `margin-bottom`, or `margin-left`. Similar to `border`, `margin` allows a shorthand for setting all of these properties. The values are listed clockwise starting with `margin-top`.
 
-Fullscreen
+The following CSS styles the `h1` element with a `margin-top` of `1px`, a `margin-right` of `10px`, a `margin-bottom` of `20px`, and a `margin-left` of `5px`.
 
-Reset Code
-Preview 
-Since the margin property controls the gap between boxes, it is possible to set it from all sides. This is accomplished by setting margin-top, margin-right, margin-bottom, or margin-left. Similar to border, margin allows a shorthand for setting all of these properties. The values are listed clockwise starting with margin-top.
-
-The following CSS styles the h1 element with a margin-top of 1px, a margin-right of 10px, a margin-bottom of 20px, and a margin-left of 5px.
-
+```css
 h1 {
   margin-top: 1px;
   margin-right: 10px;
@@ -107,47 +108,53 @@ h1 {
 h1 {
   margin: 1px 10px 20px 5px;
 }
-Padding  
+```
 
-The padding property defines the space between the border of an element and the content inside.
+## Padding  
 
-All the boxes are styled the same, except for padding. The first box has a padding of 0px, the second a padding of 20px, and the third a padding of 30px.
+The `padding` property defines the space between the border of an element and the content inside.
 
-Editor
-Browser View
-index.html
-style.css
+All the boxes are styled the same, except for padding. The first box has a `padding` of `0px`, the second a `padding` of `20px`, and the third a `padding` of `30px`.
 
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
      <div class="first-box">I am the first box</div>
-8
      <div class="second-box">I am the second box</div>
-9
      <div class="third-box">I am the third box</div>
-10
   </body>
-11
 </html>
+```
+
+```css
+/* style.css */
+.first-box {
+  font-size: 16px;
+  border: 2px dotted red;
+  padding: 10px;
+}
+
+.second-box {
+  font-size: 16px;
+  border: 2px dotted red;
+  padding: 20px;
+}
+
+.third-box {
+  font-size: 16px;
+  border: 2px dotted red;
+  padding: 30px;
+}
+```
  
+Padding can be set from all sides using the properties `padding-top`, `padding-right`, `padding-bottom`, and `padding-left`. Like margin, padding shorthand values are set in clockwise order.
 
-Fullscreen
-
-Reset Code
-Preview 
-Padding can be set from all sides using the properties padding-top, padding-right, padding-bottom, and padding-left. Like margin, padding shorthand values are set in clockwise order.
-
+```css
 .first-box {
   padding-top: 1px;
   padding-right: 2px;
@@ -159,17 +166,22 @@ Padding can be set from all sides using the properties padding-top, padding-righ
 .first-box {
   padding: 1px 2px 3px 4px;
 }
-Closing  
+```
 
-This lesson looked at three properties: border, margin, and padding. These properties are used to affect the appearance of the boxes around the elements. The border property separates one box from another. The margin property controls the gap between boxes. The padding property controls the space between the content inside of a box and its border.
+## Closing  
 
-Additional Resources  
+This lesson looked at three properties: `border`, `margin`, and `padding`. These properties are used to affect the appearance of the boxes around the elements. The `border` property separates one box from another. The `margin` property controls the gap between boxes. The `padding` property controls the space between the content inside of a box and its border.
 
-The Box Model
+## Additional Resources  
 
-Lesson Footnotes
-1: W3.org
-A Comparison of Display Values  
+[The Box Model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model)
+
+### Lesson Footnotes
+* 1: [W3.org](https://www.w3.org/wiki/File:Layout_fig1.png)
+
+---
+
+# A Comparison of Display Values  
 
 Every HTML element is rendered as a rectangular box by the browser. The display property determines the box's behavior. There are three commonly used display values which are used to describe this behavior. Let's take a look at how they stack up (or not) with each other.
 
