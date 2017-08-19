@@ -2,7 +2,7 @@
 
 This lesson we look at the behavior of three properties: `padding`, `margin`, and `border`. To better understand how these properties affect elements, visualize each element as a rectangle.
 
-Display of padding, margin, and border1
+![Layout_fig1.png](./images/Layout_fig1.png)
 
 The idea that elements in HTML are rectangles is known as [the box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model). `Padding`, `margin`, and `border` are properties that can be adjusted to control the appearance of a box. Each affects the box differently and can be used together to create vastly different element styles. It is important to understand what each does to understand the box model.
 
@@ -191,7 +191,7 @@ The `display` CSS property specifies the type of rendering box used for an eleme
 
 The default value for all elements is `inline`. Most user agent stylesheets (the default styles the browser applies to all sites) reset many elements to `block`. This is why plain HTML documents tend to stack elements vertically.
 
-block-vs-inline.png
+![block-vs-inline.png](./images/block-vs-inline.png)
 
 ### Display Inline  
 
