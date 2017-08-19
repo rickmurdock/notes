@@ -318,23 +318,23 @@ div:nth-of-type(7) {
 | display: inline-block; | yes | yes | yes | yes | yes |
 | display: block; |	no | yes | yes |	yes |	yes |
 
-###References  
+### References  
 
-MDN - CSS Display
+[MDN - CSS Display](https://developer.mozilla.org/en-US/docs/Web/CSS/display)
 
- Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Background Properties  
+---
 
-In this lesson, we will apply CSS background properties. In CSS, background is a shorthand for setting individual background properties. Background properties apply color or images to the background of any element.
+# Background Properties  
 
-background-color  
+In this lesson, we will apply CSS background properties. In CSS, `background` is a shorthand for setting individual background properties. Background properties apply color or images to the background of any element.
+
+## background-color  
 
 This sets the color of an element. It can take any value for color, as well as the transparent keyword.
 
-All the examples below are ways to express background-color.
+**All the examples below are ways to express** `background-color`.
 
+```css
 h1 {
   background-color: white;
 }
@@ -350,41 +350,56 @@ h3 {
 body {
   background-color: transparent;
 }
-background-image  
+```
 
-The background-image property applies an image, graphic or gradient to the background of an element. This property uses the URL() to set the location for an image to display. The background-image property can also have a value of none. This will remove any inherited background from that element.
+## background-image  
+
+The `background-image` property applies an image, graphic or gradient to the background of an element. This property uses the `URL()` to set the location for an image to display. The `background-image` property can also have a value of `none`. This will remove any inherited background from that element.
 
 To add an image to the background, you need to map to the path using the URL.
 
+```css
 body {
   background: url(sweettexture.jpg);
 }
+```
+
 To set a gradient as the background, you can use linear
 
+```css
 body {
   background: linear-gradient(black, white);
 }
+```
+
 or radial gradients.
 
+```css
 body {
   background: radial-gradient(circle, black, white);
 }
-Each type references the appearance of the gradient, as seen here: linear gradient
+```
 
-radial gradient
+Each type references the appearance of the gradient, as seen here: [linear gradient](http://openframeworks.cc/documentation/graphics/bkgGradient_linear.png)
 
-These examples show valid ways to set the background-image.
+[radial gradient](http://www.siwallpaperhd.com/wp-content/uploads/2015/06/radial_gradient_wallpaper_hd_13_color.jpg)
 
+**These examples show valid ways to set the background-image.**
+
+```css
 .content {
   background-image: url('ire.png');
   background-image: none;
 }
-background-position  
+```
 
-The background-position property sets the starting position for each background image for the element. It does this by defining the x and y position for the image. If you want this image to be repeated, you can use the background-repeat property.
+## background-position  
 
-These examples of setting the background-image property is:
+The `background-position` property sets the starting position for each background image for the element. It does this by defining the x and y position for the image. If you want this image to be repeated, you can use the background-repeat property.
 
+**These examples of setting the background-image property is:**
+
+```css
 .content {
   background-position: 100px 200px;
 }
@@ -443,28 +458,34 @@ These examples of setting the background-image property is:
 .content {
   background-size: unset;
 }
-background-size  
+```
 
-The background-size sets the size of the background images. There are many variations and uses for this property. One of the most popular ways to set the size is through keywords.
+## background-size  
 
-The background-size property is set the same way as background-image, with a few exceptions. The default setting of background size is auto, but it can be set to be either cover or contain, like these examples:
+The `background-size` sets the size of the background images. There are many variations and uses for this property. One of the most popular ways to set the size is through keywords.
 
+The `background-size` property is set the same way as background-image, with a few exceptions. The default setting of background size is `auto`, but it can be set to be either `cover` or `contain`, **like these examples:**
+
+```css
 .content {
   background-size: cover;
 }
 .content {
   background-size: contain;
 }
-auto tells the browser to automatically calculate the size based on the actual size of the image.
+```
 
-cover tells the browser to ensure that the image always covers the entire screen. This could mean stretching the images or cutting off parts of the edges.
+`auto` tells the browser to automatically calculate the size based on the actual size of the image.
 
-contain tells the browser to always show the whole image, even if it leaves whitespace.
+`cover` tells the browser to ensure that the image always covers the entire screen. This could mean stretching the images or cutting off parts of the edges.
 
-background-repeat  
+`contain` tells the browser to always show the whole image, even if it leaves whitespace.
 
-The background-repeat property defines how background-images are repeated. Images can be repeated horizontally, vertically or not at all. You can use this property with both single and multiple images, as shown in the examples below
+## background-repeat  
 
+The `background-repeat` property defines how background-images are repeated. Images can be repeated horizontally, vertically or not at all. You can use this property with both single and multiple images, **as shown in the examples below**
+
+```css
 /* Single Image */
 .content {
   background-image: url("image.png");
@@ -476,54 +497,62 @@ The background-repeat property defines how background-images are repeated. Image
   background-image: url("image1.png"), url("image2.png");
   background-repeat: repeat-x, repeat-y;
 }
-background-origin  
+```
 
-The background-origin property specifies where to paint the background in relation to the element's positioning model. This can apply across the element, inside the padding or inside the border.
+## background-origin  
 
-It differs from background-clip because it resizes the background rather than clipping it.
+The `background-origin` property specifies where to paint the background in relation to the element's positioning model. This can apply across the element, inside the padding or inside the border.
 
-An example of how to set background-origin is:
+It differs from `background-clip` because it resizes the background rather than clipping it.
 
+**An example of how to set background-origin is:**
+
+```css
 .content {
   background-origin: content-box;
 }
-background-clip  
+```
 
-The background-clip property lets you control how far a background-image or background-color extends. The default value is border-box, allowing for either the image or the color to extend to the border.
+## background-clip  
 
-Other values include: padding-box clips the background at the edge of the element's padding. This means that the image or color won't extend into the border.
+The `background-clip` property lets you control how far a `background-image` or b`ackground-color` extends. The default value is `border-box`, allowing for either the image or the color to extend to the border.
 
-content-box clips the background at the edge of its content box.
+Other values include: `padding-box` clips the background at the edge of the element's padding. This means that the image or color won't extend into the border.
 
-inherit applies background-clip to the parent of a selected element.
+`content-box` clips the background at the edge of its content box.
 
-An example of how to set background-clip is
+`inherit` applies background-clip to the parent of a selected element.
 
+**An example of how to set background-clip is**
+
+```css
 .frame {
   background-clip: padding-box;
 }
-background-attachment  
+```
 
-The background-attachment property sets whether a background image is fixed or will scroll with the content as the page is navigated. There are three values that can be used to set this property.
+## background-attachment  
 
-fixed which sets the background image fixed to the viewport. Even when the user scrolls, the image won't move.
+The `background-attachment` property sets whether a background image is fixed or will scroll with the content as the page is navigated. There are three values that can be used to set this property.
 
-local means that the background will be fixed to its position within an element. If the element scrolls, that means that as the user scrolls the image will scroll out of view.
+`fixed` which sets the background image fixed to the viewport. Even when the user scrolls, the image won't move.
 
-scroll means that the background image will not scroll with the contents of the element.
+`local` means that the background will be fixed to its position within an element. If the element scrolls, that means that as the user scrolls the image will scroll out of view.
 
-Closing  
+`scroll` means that the background image will not scroll with the contents of the element.
 
-In this lesson, we looked at background properties. The background and background-* properties have several values that apply to the property including, image, attachment, color, position, and repeat.
+## Closing  
 
-Additional Resources  
+In this lesson, we looked at background properties. The `background` and `background-*` properties have several values that apply to the property including, image, attachment, color, position, and repeat.
 
-CSS Tricks Microsoft
+###Additional Resources  
 
- Exercise View Exercise
- Exercise View Exercise
- Short Answer Exercise View Exercise
-The Browser, Font, and Font-family  
+* [CSS Tricks](https://css-tricks.com/almanac/properties/b/background-image/) 
+* [Microsoft](https://msdn.microsoft.com/en-us/library/ms530722(v=vs.85).aspx)
+
+---
+
+# The Browser, Font, and Font-family  
 
 In this lesson, we will discuss how the browser uses font and font-family. We will touch on web safe fonts as well as custom fonts. When a web page loads, the browser is told to write text to the screen using a specified font. This font is usually stored on the computer that the browser is running on.
 
