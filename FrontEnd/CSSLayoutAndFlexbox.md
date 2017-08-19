@@ -1,4 +1,4 @@
-* Adjacent values  
+# Adjacent values  
 
 Some properties CSS can be set to multiple adjacent values. These "shorthand" properties set a series of related properties in one declaration.
 
@@ -63,17 +63,17 @@ div {
 
 Sometimes, elements overlap. Its a natural consequence of positioning and layout. If you move things around the page, they might overlap with other elements. Often, we want to control how things overlap and determine which elements come to the front and which fall to the back. The order in which elements render on top of one another is called "stacking order". CSS provide the `z-index` property to control stacking order.
 
-In this article, we will discuss the z-index property, how to apply it to elements, and when it is effective.
+In this article, we will discuss the `z-index` property, how to apply it to elements, and when it is effective.
 
 ## Visualizing `z-index`  
 
 Before we start digging into code, let's try to conceptually understand `z-index` by exploring the analogy of a stack of papers.
 
-paper-stack-vertical.jpg
+![paper-stack-vertical.jpg](./images/paper-stack-vertical.jpg)
 
 Imagine a stack of four sheets of papers on a desk. You are looking downward on the pages and can see that they overlap one another. One sheet of paper is on the bottom, and one is on top. The other two pages are somewhere in between. This illustrations of concept of stacking order. You can clearly see that the papers have an order from top to bottom.
 
-paper-stack.jpg
+![paper-stack.jpg](./images/paper-stack.jpg)
 
 Now, imagine that we assign each sheet an integer indicating where it appears in the stack. To keep the ordering simple, we'll give the bottom sheet of paper the lowest number 0. As we move up the stack, we'll give each paper larger numbers until we reach the top sheet of paper. The top sheet of paper will be assigned the largest number. Finally, we'll call these integers "z-index".
 
@@ -85,18 +85,19 @@ Our analogy with pages illustrates how `z-index` works. To determine how element
 
 `z-index` has a few rules that determine how it affects stacking order, we should go over those ground rules of z-index to give us a firm ground for evaluating the following code samples.
 
-1. The values set to z-index should always be an integer (... -2, -1, 0, 1, 2, ...).
+1. The values set to `z-index` should always be an integer (... -2, -1, 0, 1, 2, ...).
 
-2. z-index values (other than 0) can only be set on elements that have been positioned relative, absolute, or fixed
+2. `z-index` values (other than 0) can only be set on elements that have been positioned `relative`, `absolute`, or `fixed`
 
-3. The default z-index value for all elements is 0
+3. The default `z-index` value for all elements is 0
 
-4. The higher the z-index, the higher an element will appear in the stacking order. i.e. if an element has a z-index value of 10 and another element has a z-index value of 5, then the first element will appear above the second element.
+4. The higher the `z-index`, the higher an element will appear in the stacking order. i.e. if an element has a `z-index` value of 10 and another element has a `z-index` value of 5, then the first element will appear above the second element.
 
 ## The `z-index` Property  
 
-Setting z-index is as simple as assigning an element's z-index property an integer value. In the following code snippet, every p tag has had it's z-index set to 4 and the h1 tags have a z-index of 3. p has the greater z-index value, so if p and h1 tags overlap, the p tag will appear on top.
+Setting `z-index` is as simple as assigning an element's `z-index` property an integer value. In the following code snippet, every `p` tag has had it's `z-index` set to 4 and the `h1` tags have a `z-index` of 3. `p` has the greater `z-index` value, so if `p` and `h1` tags overlap, the `p` tag will appear on top.
 
+```css
 p {
   position: relative;
   z-index: 4;
@@ -105,156 +106,217 @@ h1 {
   position: relative;
   z-index: 3;
 }
+```
+
 Now lets look at a few live code examples.
 
-z-index Default Stacking Order  
+## `z-index` Default Stacking Order  
 
-To begin we'll look at the behavior or stacked elements before we change any z-index values. The default z-index value of elements is 0. This means that all elements have the same value. When the browser interprets how to render overlapping elements with the same z-index value, it looks at where the elements appear in the text document. The elements that appear first (nearer to the top of the document) will appear below the element that appear later (nearer the bottom of the document).
+To begin we'll look at the behavior or stacked elements *before we change any z-index values*. The default `z-index` value of elements is 0. This means that all elements have the same value. When the browser interprets how to render overlapping elements with the same `z-index` value, it looks at where the elements appear in the text document. The elements that appear first (nearer to the top of the document) will appear below the element that appear later (nearer the bottom of the document).
 
 Basically, the browser starts at the top and works it's way down the page rendering each element in turn. This has the effect of placing later elements on top of earlier elements.
 
-In the following example, the three colored squares have all been relatively positioned so that they overlap. The order of overlap is determined by the z-index value of the elements. Because, we haven't set an explicit z-index value, all the squares default to a z-index of 0. If overlapping elements have the same z-index value, then the browser will look at the order in which they appear in the HTML document.
+In the following example, the three colored squares have all been relatively positioned so that they overlap. The order of overlap is determined by the `z-index` value of the elements. Because, we haven't set an explicit `z-index` value, all the squares default to a `z-index` of 0. If overlapping elements have the same `z-index` value, then the browser will look at the order in which they appear in the HTML document.
 
-In the following example, #blue appears first in the document, then #yellow, and finally #green. This order puts #blue on the bottom and #green on top.
+In the following example, `#blue` appears first in the document, then `#yellow`, and finally `#green`. This order puts `#blue` on the bottom and `#green` on top.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
   <meta charset="UTF-8">
-5
   <title>z-index Default</title>
-6
   <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <section>
-10
         <div id="blue"></div>
-11
         <div id="yellow"></div>
-12
         <div id="green"></div>
-13
     </section>
-14
 </body>
-15
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body {
+  background: #333;
+  margin: 0;
+}
+section {
+  width: 800px;
+  margin: 0 auto;
+  padding: 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+div {
+  padding-top: 30%;
+  flex-basis: 30%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+#blue {
+  left: 100px;
+  top: -20px;
+  background: #4499ff;
+}
+#yellow {
+  background: #ffdd66;
+}
+#green {
+  left: -100px;
+  top: 20px;
+  background: #44ff66;
+}
+```
 
-Reset Code
-Preview 
-Changing the Stacking Order of Elements  
+## Changing the Stacking Order of Elements  
 
-Without changing the HTML, I want to reshuffle our colored blocks so that #blue appears on top and #green appears on the bottom. To do this I'll have to give #blue the highest z-index value and #green the lowest.
+Without changing the HTML, I want to reshuffle our colored blocks so that `#blue` appears on top and `#green` appears on the bottom. To do this I'll have to give `#blue` the highest z-index value and `#green` the lowest.
 
 Remember: z-index only works if the element has been positioned. In this case, all three blocks have been relatively positioned.
 Review the following code sample to see what styles have been added.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
   <meta charset="UTF-8">
-5
   <title>z-index Default</title>
-6
   <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <section>
-10
         <div id="blue"></div>
-11
         <div id="yellow"></div>
-12
         <div id="green"></div>
-13
     </section>
-14
 </body>
-15
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body {
+  background: #333;
+  margin: 0;
+}
+section {
+  width: 800px;
+  margin: 0 auto;
+  padding: 50px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+div {
+  padding-top: 30%;
+  flex-basis: 30%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  position: relative;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+}
+#blue {
+  left: 100px;
+  top: -20px;
+  background: #4499ff;
 
-Reset Code
-Preview 
-Conclusion  
+  /*
+    THE LARGEST VALUE
+    */
+  z-index: 100;
+}
+#yellow {
+  background: #ffdd66;
 
-In this lesson, we learned about the z-index property. z-index allows us to control the stacking order of page elements that overlap and exert a finer control over how the browser renders page elements. z-index can be used to great effect when laying out pages, but it can also get complicated as you start trying to shuffle around multiple elements. Use it sparingly and you should be fine.
+  /*
+    THE MIDDLE VALUE
+    */
+  z-index: 50;
+}
+#green {
+  left: -100px;
+  top: 20px;
+  background: #44ff66;
 
-Additional Resources  
+  /*
+    THE SMALLEST VALUE
+    */
+  z-index: 0;
+}
+```
 
-z-Index Smashing Magazine
-z-Index - MDN
-Building a Multi Column Layout with Flexbox  
+## Conclusion  
 
-You may have seen this design in the Layout with Floats lesson. We are walking you through the same mockup again, this time with flexbox, so that you can see how the two layout strategies (floats and flexbox) differ.
+In this lesson, we learned about the `z-index` property. `z-index` allows us to control the stacking order of page elements that overlap and exert a finer control over how the browser renders page elements. `z-index` can be used to great effect when laying out pages, but it can also get complicated as you start trying to shuffle around multiple elements. Use it sparingly and you should be fine.
+
+## Additional Resources  
+
+* [z-Index Smashing Magazine](https://www.smashingmagazine.com/2009/09/the-z-index-css-property-a-comprehensive-look/)
+
+* [z-Index - MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/z-index?v=example)
+
+---
+
+# Building a Multi Column Layout with Flexbox  
+
+> You may have seen this design in the Layout with Floats lesson. We are walking you through the same mockup again, this time with flexbox, so that you can see how the two layout strategies (floats and flexbox) differ.
+
 In this lesson, we will walk through the creation of a layout, using flexbox as the principle strategy for laying out the page. The purpose of this article is to demonstrate the thought process of constructing a layout and to demonstrate the authoring of CSS in a structured way.
 
 First, we will review the mockup and the HTML. This will allow us to evaluate all of the content and look for clues about how best to style our page.
 
 Once we have a firm understanding of the markup, we'll start adding the styles to lay out the page.
 
-Reviewing the Mockup  
+## Reviewing the Mockup  
 
-layout-1.jpg
+![layout-1.jpg](./images/layout-1.jpg)
+
 This is our design. Its a simple 3 column design with 6 content elements. Lets evaluate the major components of this layout to help us decide which items should be styled and flex containers and which items should be styled as flex items.
 
-Creating the Content Container  
+## Creating the Content Container  
 
-layout-1-container.jpg
+![layout-1-container.jpg](./images/layout-1-container.jpg)
+
 Never forget that everything in HTML is wrapped in a box. Sometimes, the box is obvious and sometimes the box is invisible. In this case, I see a fairly clear box around our entire content area. I look for places where multiple content elements line up. That's usually a good indicator of a common parent. Plus, if we add a common parent to all of the content, then we can move them all around together. I'll need an element to act as this ".wrapper".
 
-Identifying Content Sections  
+## Identifying Content Sections  
 
-layout-1-sections.jpg
+![layout-1-sections.jpg](./images/layout-1-sections.jpg)
+
 Now that I have a common parent, I look for logical breaks in the areas of content. In this case, we have three sections.
 
-SECTION 1 - The top row of content contains two pieces of content, one wide and one narrow. Its at the top of the doc, so will appear first in our HTML. We'll pretend that this section is the "main" content for the page. This section contains two elements that are side-by-side, so it'll be a flex-container.
-SECTION 2 - The middle row of content contains one paragraph of text. It has some special styling, so we'll need a way of selecting it independent of the other content areas. Let's pretend that this is a sage quote. This element only contains one child, so it doesn't need to be a flex container. We'll leave it display:block;
-SECTION 3 - The last row of content contains three pieces of content, all of which are styled in the same manner. We'll identify this as a list of cool things. This section contains three elements that are side-by-side, so it'll be a flex-container.
-Identifying Columns  
+1. **SECTION 1** - The top row of content contains two pieces of content, one wide and one narrow. Its at the top of the doc, so will appear first in our HTML. We'll pretend that this section is the "main" content for the page. This section contains two elements that are side-by-side, so it'll be a flex-container.
 
-layout-1-columns.jpg
-When I look at this mockup, I can see three distinct columns. These columns give us a hint about how to style our content. For instance, the div containing "Page Title!" spans two columns. #quote spans 3 columns. The other four elements all span 1 column.
+2. **SECTION 2** - The middle row of content contains one paragraph of text. It has some special styling, so we'll need a way of selecting it independent of the other content areas. Let's pretend that this is a sage quote. This element only contains one child, so it doesn't need to be a flex container. We'll leave it `display:block;`
+
+3. **SECTION 3** - The last row of content contains three pieces of content, all of which are styled in the same manner. We'll identify this as a list of cool things. This section contains three elements that are side-by-side, so it'll be a flex-container.
+
+## Identifying Columns  
+
+![layout-1-columns.jpg](./images/layout-1-columns.jpg)
+
+When I look at this mockup, I can see three distinct columns. These columns give us a hint about how to style our content. For instance, the div containing "Page Title!" spans two columns. `#quote` spans 3 columns. The other four elements all span 1 column.
 
 The width "220px" (or some multiple of it) will be something that we will need when are styling content.
 
-Identifying Content Elements  
+## Identifying Content Elements  
 
-layout-1-content.jpg
+![layout-1-content.jpg](./images/layout-1-content.jpg)
+
 The mockup contains six content elements which are marked up in various ways. These six elements will be our flex items.
 
-Reviewing the HTML  
+## Reviewing the HTML  
 
+```html
 <!doctype html>
 <html>
     <head>
@@ -295,433 +357,686 @@ Reviewing the HTML
         </div>
     </body>
 </html>
-Review the code and you'll see that we've marked up each of the major sections of our mockup as a section. We've also given each section an id for easy selection via CSS. The two flex items in Section 1 (#main) have been marked up as divs. Section 2 (#quote) is good to go. It shouldn't need any flex styling, just some plain old visual styling. All of the flex items in Section 3 (#list) has been marked up as list items. We'll have to override some default styles provided by the browser, but at least it's semantic.
+```
+
+Review the code and you'll see that we've marked up each of the major sections of our mockup as a `section`. We've also given each `section` an id for easy selection via CSS. The two flex items in Section 1 (`#main`) have been marked up as divs. Section 2 (`#quote`) is good to go. It shouldn't need any flex styling, just some plain old visual styling. All of the flex items in Section 3 (`#list`) has been marked up as list items. We'll have to override some default styles provided by the browser, but at least it's semantic.
 
 Here is the HTML in its raw state, before we start styling.
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>CSS Layout with Floats</title>
-6
     </head>
-7
     <body>
-8
         <div class="wrapper">
-9
             <section id="main">
-10
                 <div>
-11
                     <h1>Page Title!</h1>
-12
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas, nulla odio culpa suscipit harum eos ad maxime autem, magnam provident, numquam dolorum sapiente?</p>
-13
                 </div>
-14
                 <div>
-15
                     <h2>Second Title</h2>
-16
                     <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias pariatur sequi suscipit quae velit, delectus ab possimus.</p>
-17
                 </div>
-18
             </section>
-19
             <section id="quote">
-20
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas</p>
-21
             </section>
- 
+            <section id="list">
+                <ul>
+                    <li>
+                        <h3>Third Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum.</p>
+                    </li>
+                    <li>
+                        <h3>Forth Title</h3>
+                        <p>Dolor sit amet, consectetur distinctio explicabo adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                    <li>
+                        <h3>Fifth Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+```
 
-Fullscreen
-
-Reset Code
-Preview 
-Styling the Content Container  
+## Styling the Content Container  
 
 First things first, lets set some basic styles for our typography and background colors. We'll also go ahead and style the content container so that it is 700px wide and centered in the screen.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>CSS Layout with Floats</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
         <div class="wrapper">
-10
             <section id="main">
-11
                 <div>
-12
                     <h1>Page Title!</h1>
-13
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas, nulla odio culpa suscipit harum eos ad maxime autem, magnam provident, numquam dolorum sapiente?</p>
-14
                 </div>
-15
                 <div>
-16
                     <h2>Second Title</h2>
-17
                     <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias pariatur sequi suscipit quae velit, delectus ab possimus.</p>
-18
                 </div>
-19
             </section>
-20
             <section id="quote">
-21
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas</p>
-22
             </section>
- 
+            <section id="list">
+                <ul>
+                    <li>
+                        <h3>Third Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum.</p>
+                    </li>
+                    <li>
+                        <h3>Forth Title</h3>
+                        <p>Dolor sit amet, consectetur distinctio explicabo adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                    <li>
+                        <h3>Fifth Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+```
 
-Fullscreen
+```
+/* style.css */
+body {
+  background: #fefff5;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #35363a;
+  line-height: 1.4em;
+}
+.wrapper {
+  width: 700px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
+```
 
-Reset Code
-Preview 
-You can't see .wrapper in the render, but it is the element that has been given a width. All of the child elements it contains will conform to its width. We've centered .wrapper by giving it a margin value of 0 auto. The "0" means that .wrapper has no margin on the top or the bottom. The "auto" means that .wrapper will evenly distribute the margins equally on either side, centering it on the screen.
+You can't see `.wrapper` in the render, but it is the element that has been given a width. All of the child elements it contains will conform to its width. We've centered `.wrapper` by giving it a margin value of `0 auto`. The "0" means that `.wrapper` has no margin on the top or the bottom. The "auto" means that `.wrapper` will evenly distribute the margins equally on either side, centering it on the screen.
 
 Now that we've gotten some of the default styles out of the way, let's review the mockup and look for more clues about how best to style our content.
 
-Creating the First Row of Content  
+## Creating the First Row of Content  
 
-Content 1 and Content 2 need to be floated within #main. Content 1 is clearly wider than Content 2 so we'll have to calculate the width we need for that content element. Also, once both elements are floated, #main will need a clearfix applied. Lets do all of those things.
+`Content 1` and `Content 2` need to be floated within `#main`. `Content 1` is clearly wider than `Content 2` so we'll have to calculate the width we need for that content element. Also, once both elements are floated, `#main` will need a clearfix applied. Lets do all of those things.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>CSS Layout with Floats</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
         <div class="wrapper">
-10
             <section id="main">
-11
                 <div>
-12
                     <h1>Page Title!</h1>
-13
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas, nulla odio culpa suscipit harum eos ad maxime autem, magnam provident, numquam dolorum sapiente?</p>
-14
                 </div>
-15
                 <div>
-16
                     <h2>Second Title</h2>
-17
                     <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias pariatur sequi suscipit quae velit, delectus ab possimus.</p>
-18
                 </div>
-19
             </section>
-20
             <section id="quote">
-21
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas</p>
-22
             </section>
- 
+            <section id="list">
+                <ul>
+                    <li>
+                        <h3>Third Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum.</p>
+                    </li>
+                    <li>
+                        <h3>Forth Title</h3>
+                        <p>Dolor sit amet, consectetur distinctio explicabo adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                    <li>
+                        <h3>Fifth Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+```
 
-Fullscreen
+```
+/* style.css */
+body {
+  background: #fefff5;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #35363a;
+  line-height: 1.4em;
+}
+.wrapper {
+  width: 700px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
 
-Reset Code
-Preview 
-#main has been made a flex container by assigning its display property the value of "flex". justify-content:space-between ensures that any gaps in the top row will appear between the flex items and not around them. Each flex item is given an explicit width via flex-basis. The default value of flex-grow is 0, so we don't have to worry about the flex items expanding into the gutter between the columns.
+/*
+FLEX STYLES FOR THE TOP ROW OF CONTENT
+*/
+#main {
+  display: flex;
+  justify-content: space-between;
+}
+#main div {
+  flex-basis: 460px;
+}
+#main div:last-child {
+  flex-basis: 220px;
+}
+```
 
-Creating the Second Row of Content  
+`#main` has been made a flex container by assigning its `display` property the value of "flex". `justify-content:space-between` ensures that any gaps in the top row will appear *between the flex items* and not around them. Each flex item is given an explicit width via `flex-basis`. The default value of `flex-grow` is 0, so we don't have to worry about the flex items expanding into the gutter between the columns.
 
-The second row of content is pretty simple. Nothing in this row needs to be floated. We simply need to add borders to the top and bottom of the #quote and style the text.
+## Creating the Second Row of Content  
 
-Editor
-Browser View
-index.html
-style.css
+The second row of content is pretty simple. Nothing in this row needs to be floated. We simply need to add borders to the top and bottom of the `#quote` and style the text.
 
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>CSS Layout with Floats</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
         <div class="wrapper">
-10
             <section id="main">
-11
                 <div>
-12
                     <h1>Page Title!</h1>
-13
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas, nulla odio culpa suscipit harum eos ad maxime autem, magnam provident, numquam dolorum sapiente?</p>
-14
                 </div>
-15
                 <div>
-16
                     <h2>Second Title</h2>
-17
                     <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias pariatur sequi suscipit quae velit, delectus ab possimus.</p>
-18
                 </div>
-19
             </section>
-20
             <section id="quote">
-21
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas</p>
-22
             </section>
- 
+            <section id="list">
+                <ul>
+                    <li>
+                        <h3>Third Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum.</p>
+                    </li>
+                    <li>
+                        <h3>Forth Title</h3>
+                        <p>Dolor sit amet, consectetur distinctio explicabo adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                    <li>
+                        <h3>Fifth Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+```
 
-Fullscreen
+```css
+/* style.css */
+body {
+  background: #fefff5;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #35363a;
+  line-height: 1.4em;
+}
+.wrapper {
+  width: 700px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
+#main {
+  display: flex;
+  justify-content: space-between;
+}
+#main div {
+  flex-basis: 460px;
+}
+#main div:last-child {
+  flex-basis: 220px;
+}
 
-Reset Code
-Preview 
-Styling #quote doesn't require very much. We add a couple borders to the element and adjust the padding and margin to closely match the spacing of the mockup. Also, we style the p tag inside of #quote so that it is visually similar to the mockup.
+/*
+The following styles are used to achieve
+layout in out mockup for the SECTION 2
+*/
+#quote {
+  border-top: 6px solid #e9e5d5;
+  border-bottom: 6px solid #e9e5d5;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+#quote p {
+  margin: 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+}
+```
 
-Creating the Third Row of Content  
+Styling `#quote` doesn't require very much. We add a couple borders to the element and adjust the padding and margin to closely match the spacing of the mockup. Also, we style the p tag inside of #quote so that it is visually similar to the mockup.
+
+## Creating the Third Row of Content  
 
 The third row of content is certainly the most complex. We'll have to do several things to achieve the desired layout and look.
 
-First, we'll have to undo a lot of the browser default styles applied to ul and li tags.
+First, we'll have to undo a lot of the browser default styles applied to `ul` and `li` tags.
 
-Editor
-Browser View
+```html
 index.html
-style.css
-
-1
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>CSS Layout with Floats</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
         <div class="wrapper">
-10
             <section id="main">
-11
                 <div>
-12
                     <h1>Page Title!</h1>
-13
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas, nulla odio culpa suscipit harum eos ad maxime autem, magnam provident, numquam dolorum sapiente?</p>
-14
                 </div>
-15
                 <div>
-16
                     <h2>Second Title</h2>
-17
                     <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias pariatur sequi suscipit quae velit, delectus ab possimus.</p>
-18
                 </div>
-19
             </section>
-20
             <section id="quote">
-21
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas</p>
-22
             </section>
- 
+            <section id="list">
+                <ul>
+                    <li>
+                        <h3>Third Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum.</p>
+                    </li>
+                    <li>
+                        <h3>Forth Title</h3>
+                        <p>Dolor sit amet, consectetur distinctio explicabo adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                    <li>
+                        <h3>Fifth Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+```
 
-Fullscreen
+```css
+style.css
+body {
+  background: #fefff5;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #35363a;
+  line-height: 1.4em;
+}
+.wrapper {
+  width: 700px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
+#main {
+  display: flex;
+  justify-content: space-between;
+}
+#main div {
+  flex-basis: 460px;
+}
+#main div:last-child {
+  flex-basis: 220px;
+}
+#quote {
+  border-top: 6px solid #e9e5d5;
+  border-bottom: 6px solid #e9e5d5;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+#quote p {
+  margin: 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+}
+/*
+This removes the browser default
+styles for unordered lists
+*/
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+```
 
-Reset Code
-Preview 
 Then, we will apply the general styles to our list items so that they match the design.
 
-This means making the text white and the total width of the li elements 220px. The li will have some padding around it, so we'll have to do a bit of math to make the widths work out. If we have 20px of padding all the way around the li, then we need to set its width to 180px.
+This means making the text white and the total width of the `li` elements 220px. The `li` will have some padding around it, so we'll have to do a bit of math to make the widths work out. If we have 20px of padding all the way around the `li`, then we need to set its width to 180px.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>CSS Layout with Floats</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
         <div class="wrapper">
-10
             <section id="main">
-11
                 <div>
-12
                     <h1>Page Title!</h1>
-13
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas, nulla odio culpa suscipit harum eos ad maxime autem, magnam provident, numquam dolorum sapiente?</p>
-14
                 </div>
-15
                 <div>
-16
                     <h2>Second Title</h2>
-17
                     <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias pariatur sequi suscipit quae velit, delectus ab possimus.</p>
-18
                 </div>
-19
             </section>
-20
             <section id="quote">
-21
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas</p>
-22
             </section>
+            <section id="list">
+                <ul>
+                    <li>
+                        <h3>Third Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum.</p>
+                    </li>
+                    <li>
+                        <h3>Forth Title</h3>
+                        <p>Dolor sit amet, consectetur distinctio explicabo adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                    <li>
+                        <h3>Fifth Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+```
+
+```css
+/* style.css */
+body {
+  background: #fefff5;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #35363a;
+  line-height: 1.4em;
+}
+.wrapper {
+  width: 700px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
+#main {
+  display: flex;
+  justify-content: space-between;
+}
+#main div {
+  flex-basis: 460px;
+}
+#main div:last-child {
+  flex-basis: 220px;
+}
+#quote {
+  border-top: 6px solid #e9e5d5;
+  border-bottom: 6px solid #e9e5d5;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+#quote p {
+  margin: 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ADDITIONAL VISUAL STYLES */
+li {
+  background: #35363a;
+  flex-basis: 180px;
+  padding: 20px;
+}
+li p,
+li h3 {
+  color: white;
+}
+li h3 {
+  margin-top: 0;
+}
+li p {
+  margin-bottom: 0;
+}
+```
  
+Finally, we need to make the `ul` inside `#list` a flex container and align all of the list-items.
 
-Fullscreen
-
-Reset Code
-Preview 
-Finally, we need to make the ul inside #list a flex container and align all of the list-items.
-
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>CSS Layout with Floats</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
         <div class="wrapper">
-10
             <section id="main">
-11
                 <div>
-12
                     <h1>Page Title!</h1>
-13
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas, nulla odio culpa suscipit harum eos ad maxime autem, magnam provident, numquam dolorum sapiente?</p>
-14
                 </div>
-15
                 <div>
-16
                     <h2>Second Title</h2>
-17
                     <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias pariatur sequi suscipit quae velit, delectus ab possimus.</p>
-18
                 </div>
-19
             </section>
-20
             <section id="quote">
-21
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil repellendus quasi ipsa quibusdam pariatur laborum voluptas</p>
-22
             </section>
- 
+            <!--
+            Added the clearfix hack to `#list`
+            so that it will overflow its floated children
+            -->
+            <section id="list" class="clearfix">
+                <ul>
+                    <li>
+                        <h3>Third Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum.</p>
+                    </li>
+                    <li>
+                        <h3>Forth Title</h3>
+                        <p>Dolor sit amet, consectetur distinctio explicabo adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                    <li>
+                        <h3>Fifth Title</h3>
+                        <p>Dolor sit amet, consectetur adipisicing elit. Odio harum et iste, molestias.</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </body>
+</html>
+```
 
-Fullscreen
+```css
+style.css
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+body {
+  background: #fefff5;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #35363a;
+  line-height: 1.4em;
+}
+.wrapper {
+  width: 700px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin: 0 auto;
+}
+h2 {
+  font-size: 1.2em;
+}
+h3 {
+  font-size: 1em;
+}
+#main {
+  display: flex;
+  justify-content: space-between;
+}
+#main div {
+  flex-basis: 460px;
+}
+#main div:last-child {
+  flex-basis: 220px;
+}
+#quote {
+  border-top: 6px solid #e9e5d5;
+  border-bottom: 6px solid #e9e5d5;
+  padding: 20px 0;
+  margin: 20px 0;
+}
+#quote p {
+  margin: 0;
+  font-size: 1.2em;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-Reset Code
-Preview 
-And with that, we've pretty closely matched our original mockup. We could tweak the styles from now until doomsday without it matching exactly, but I certainly encourage you to adjust the spacing and font styles. For the purposes of this tutorial, we've achieve a good, three column layout with three sections.
+  /*
+    THIS MAKES THE FLEXBOX CONTAINER
+    */
+  display: flex;
+  justify-content: space-between;
+}
 
-Conclusion  
+/*
+These styles create the
+visual look of our mockup
+*/
+li {
+  background: #35363a;
+  flex-basis: 180px;
+  padding: 20px;
+}
+li p,
+li h3 {
+  color: white;
+}
+li h3 {
+  margin-top: 0;
+}
+li p {
+  margin-bottom: 0;
+}
+```
 
-Now that we've walked through the process of evaluating and coding a flexbox layout, I encourage you to recreate this webpage on your own. You can follow along with this tutorial and copy the code into your own index.html and style.css pages.
+And with that, we've pretty closely matched our original mockup. We could tweak the styles from now until doomsday without it matching *exactly*, but I certainly encourage you to adjust the spacing and font styles. For the purposes of this tutorial, we've achieve a good, three column layout with three sections.
+
+## Conclusion  
+
+Now that we've walked through the process of evaluating and coding a flexbox layout, I encourage you to recreate this webpage on your own. You can follow along with this tutorial and copy the code into your own `index.html` and `style.css` pages.
 
 Over time, you will become very familiar with this process. Many front-end programmers do little more than we've done today. This article just scratches the surface of layout and you should take every opportunity to practice building web pages.
 
-Making Use of Chrome Dev Tools  
+---
+
+# Making Use of Chrome Dev Tools  
 
 Using Google Chrome browser's built-in developer tools we can easily see how our code is output in the browser. We can also temporarily update code and content through the developer tools to preview changes before we make them in our development files. These tools will help us precisely recreate a defined layout based on specifications provided.
 
