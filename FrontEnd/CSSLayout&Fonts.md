@@ -753,33 +753,42 @@ In this lesson, we looked at several font-related properties and the way that th
 
 The @font-face rule adds custom fonts to a webpage. The rule will allow you to input your custom font to appear on a site, even when it is not installed on the user's computer. The most significant aspect of this rule is that it allows you to use fonts that are not web safe. This provides more choices for web design typography.
 
-Syntax  
+## Syntax  
 
 To use @font-face, you will need to provide the font name and where it can be found, such as: [^1]
 
 for an inside source,
 
+```css
 @font-face {
   font-family: DeliciousRoman;
   src: url('…/Delicious-Roman.otf');
 }
+```
+
 for an outside source,
 
+```css
 @font-face {
   font-family: DeliciousRoman;
   src: url('http://www.font-face.com/fonts/delicious/Delicious-Roman.otf');
 }
+```
+
 Then you will need to reference the font in your HTML doc.
 
+```css
 p {
   font-family: DeliciousRoman, Helvetica, Arial, sans-serif;
 }
-When using @font-face, it is advisable to add fallback fonts in case there is any issue loading the custom font. In addition, you could use generators like font-squirrel's generator, to find other fonts that can be used as a fallback. Other sites with custom fonts include typekit and font2web.com.
+```
 
-Closing  
+When using @font-face, it is advisable to add fallback fonts in case there is any issue loading the custom font. In addition, you could use generators like [font-squirrel's generator](https://www.fontsquirrel.com/tools/webfont-generator), to find other fonts that can be used as a fallback. Other sites with custom fonts include [typekit](https://typekit.com/) and [font2web.com](http://www.font2web.com/).
+
+## Closing  
 
 In this lesson we looked at @font-face and went over the syntax required to utilize this property.
 
-Additional Resources  
+## Additional Resources  
 
-Designmodo
+[Designmodo](https://designmodo.com/font-face/)
