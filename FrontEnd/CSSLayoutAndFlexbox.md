@@ -1040,53 +1040,56 @@ Over time, you will become very familiar with this process. Many front-end progr
 
 Using Google Chrome browser's built-in developer tools we can easily see how our code is output in the browser. We can also temporarily update code and content through the developer tools to preview changes before we make them in our development files. These tools will help us precisely recreate a defined layout based on specifications provided.
 
-Accessing the Developer Tools  
+## Accessing the Developer Tools  
 
 To access the developer tools, first open a web page in Google Chrome.
 
 Next you can do one of the following:
 
-Select the Chrome Menu at the top-right of your browser window, then select More Tools > Developer Tools.
-Right-click on any page element and select Inspect Element.
-Cmd+Opt+I on Mac.
+* Select the Chrome Menu at the top-right of your browser window, then select More Tools > Developer Tools.
+
+* Right-click on any page element and select Inspect Element.
+
+* Cmd+Opt+I on Mac.
+
 The developer tools window will open at the bottom of your Chrome browser.
 
-Elements  
+## Elements  
 
 Although all of the available tabs in the developer tools window are helpful, right now we'll focus on the "Elements" tab. This tab should be open by default. The "Elements" tab will show the the DOM representation of the HTML written to produce this web page.
 
-Inspecting Elements  
+### Inspecting Elements  
 
 If you right-clicked on a page element and selected "Inspect Element" to open the developer tools, you will notice that the element you right clicked is highlighted in the developer tools window. Hover over various HTML elements in the developer tools and you will notice that the element's output on the page will be highlighted at that time. If an element has an arrow next to it in the developer tools that means it has children and you can click on on the arrow to toggle the element open and view nested elements.
 
 This process allows you to review the architecture of your HTML easily and will help you troubleshoot nesting issues or missing tags.
 
-Styles  
+## Styles  
 
-When the "Elements" tab is open you will also see the "Styles" tab open on the right. As you click throught the elements in the developer tools you will see the last selected element's styles present in the "Styles" tab. Selectors are listed top-to-bottom in order of highest to lowest precedence. element.style{...} represents any inline styles directly applied to the element. All proceeding selectors are listed in order of descending precedence.
+When the "Elements" tab is open you will also see the "Styles" tab open on the right. As you click throught the elements in the developer tools you will see the last selected element's styles present in the "Styles" tab. Selectors are listed top-to-bottom in order of highest to lowest precedence. `element.style{...}` represents any inline styles directly applied to the element. All proceeding selectors are listed in order of descending precedence.
 
-In Use vs Not In Use  
+### In Use vs Not In Use  
 
 If a style declaration has been overwritten by a declaration of higher precedence the overwritten style is crossed through. A style declaration can also be toggled off through the developer tools by checking the checkbox next to a declaration. Use this functionality to test whether a style is effecting other styles adversely.
 
-Reviewing and Testing  
+### Reviewing and Testing  
 
-We can use the styles tab to navigate our applied styles. We can see the output of each element and any issues with precedence or specificity. We can also play with styles here in the developer tools to quickly see how they might interact with the element and change the layout of the page before committing to making the changes in our file. Any changes made in the developer tools will not be saved. Styles will return to the last saved state of the .html and .css file(s) upon browser refresh.
+We can use the styles tab to navigate our applied styles. We can see the output of each element and any issues with precedence or specificity. We can also play with styles here in the developer tools to quickly see how they might interact with the element and change the layout of the page before committing to making the changes in our file. Any changes made in the developer tools will not be saved. Styles will return to the last saved state of the `.html` and `.css` file(s) upon browser refresh.
 
-Box Model Representation  
+### Box Model Representation  
 
 In the "Styles" tab (as well as in the "Computed" tab) there is a representation of the selected element's box model. Here you can review margin, border, padding, and content size.
 
-Computed  
+### Computed  
 
 Open the "Computed" tab to see a readout of only the style declarations that have actually been applied to the element.
 
-Conclusion  
+## Conclusion  
 
 With this knowledge and some practice we can really speed up the trial and error involved in our development process. We can quickly navigate our page, inspect elements and styles, and and try out changes on the fly with no commitment. When we've nailed down a particular style or solved a problem we can make the change locally in our file. If we have specifications we're working against we can now determine how accurately the specifications have been met.
 
-References  
+### References  
 
-Chrome DevTools Overview
+* [Chrome DevTools Overview](https://developer.chrome.com/devtools)
 
-Inspect and Edit Pages and Styles
+* [Inspect and Edit Pages and Styles](https://developers.google.com/web/tools/chrome-devtools/inspect-styles/?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3)
