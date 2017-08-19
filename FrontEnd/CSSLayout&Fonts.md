@@ -183,141 +183,142 @@ This lesson looked at three properties: `border`, `margin`, and `padding`. These
 
 # A Comparison of Display Values  
 
-Every HTML element is rendered as a rectangular box by the browser. The display property determines the box's behavior. There are three commonly used display values which are used to describe this behavior. Let's take a look at how they stack up (or not) with each other.
+Every HTML element is rendered as a rectangular box by the browser. The `display` property determines the box's behavior. There are three commonly used `display` values which are used to describe this behavior. Let's take a look at how they stack up (or not) with each other.
 
-Display Property  
+## Display Property  
 
-The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from the HTML specifications or from the browser's user agent stylesheet.
+The `display` CSS property specifies the type of rendering box used for an element. In HTML, default `display` property values are taken from the HTML specifications or from the browser's user agent stylesheet.
 
-The default value for all elements is inline. Most user agent stylesheets (the default styles the browser applies to all sites) reset many elements to block. This is why plain HTML documents tend to stack elements vertically.
+The default value for all elements is `inline`. Most user agent stylesheets (the default styles the browser applies to all sites) reset many elements to `block`. This is why plain HTML documents tend to stack elements vertically.
 
 block-vs-inline.png
-Display Inline  
 
-When an element has it's display value set to inline the element generates one or more inline rendering boxes. This means that display: inline; elements can be placed adjacent to one another horizontally if there is enough space.
+### Display Inline  
 
-Some elements remain display: inline; by default and are not overwritten to block by the user agent style sheets.
+When an element has it's `display` value set to `inline` the element generates one or more inline rendering boxes. This means that `display: inline;` elements can be placed adjacent to one another horizontally if there is enough space.
 
-<span>
-<em>
-<b>
+Some elements remain `display: inline;` by default and are not overwritten to `block` by the user agent style sheets.
+
+* `<span>`
+
+* `<em>`
+
+* `<b>`
+
 Wrapping text in these elements within a string of text doesn't break the flow of the text.
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <p>Lorem ipsum dolor sit amet, <span style="color: #6320EE;">consectetur</span> adipiscing el1it.</p>
- 
+```
 
-Fullscreen
+Note: The `<span>` element is *inline* with the rest of the text.
 
-Reset Code
-Preview 
-Note: The <span> element is inline with the rest of the text.
-
-Display Block  
+### Display Block  
 
 The element generates a block element box.
 
-Some elements are set to display: block; by the browser user agent stylesheet. They are usually container elements, like <div>, <section>, and <ul>. Also, text blocks like <p> and <h1> are set to display: block;. Block level elements do not sit inline but break past them, stacking vertically. By default (without setting a width) they take up as much horizontal space as they can.
+Some elements are set to `display: block;` by the browser user agent stylesheet. They are usually container elements, like `<div>`, `<section>`, and `<ul>`. Also, text blocks like `<p>` and `<h1>` are set to `display: block;`. Block level elements do not sit inline but break past them, stacking vertically. By default (without setting a width) they take up as much horizontal space as they can.
 
-Editor
-Browser View
-index.html
-styles.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE html>
-2
 <html>
-3
   <head>
-4
     <meta charset="utf-8">
-5
     <title>Display Compare</title>
-6
     <link rel="stylesheet" href="styles.css">
-7
   </head>
-8
   <body>
-9
     <div></div>
-10
     <div></div>
-11
     <div></div>
-12
   </body>
-13
 </html>
+```
+
+```css
+/* styles.css */ 
+div {
+  height: 30px;
+  border: 2px solid #6320ee;
+}
+```
  
-
-Fullscreen
-
-Reset Code
-Preview 
-Display Inline-Block  
+### Display Inline-Block  
 
 The element generates a block element box that will be followed by surrounding content as if it were a single inline box.
 
 An element set to inline-block is very similar to inline in that it will set inline with the natural flow of text on the baseline. Inline block elements will be placed adjacent to one another horizontally if there is space for them to fit. Where not enough space is available the inline block elements will break a new line. They are much like inline elements except they can have their width and height set by CSS.
 
-Editor
-Browser View
-index.html
-styles.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE html>
-2
 <html>
-3
   <head>
-4
     <meta charset="utf-8">
-5
     <title>Display Compare</title>
-6
     <link rel="stylesheet" href="styles.css">
-7
   </head>
-8
   <body>
-9
     <div></div>
-10
     <div></div>
-11
     <div></div>
-12
     <div></div>
-13
     <div></div>
-14
     <div></div>
-15
     <div></div>
-16
   </body>
-17
 </html>
- 
+```
 
-Fullscreen
+```css
+/* styles.css */
+div {
+  display: inline-block;
+  width: 30%;
+  height: 30px;
+  border: 2px solid #6320ee;
+}
 
-Reset Code
-Preview 
-Conclusion  
+div:nth-of-type(2) {
+  width: 20%;
+  height: 10px;
+}
 
-Display	More than one per line	Can have height	Can have width	Can have margin	Can have padding
-display: inline;	yes	no	no	left and right only	padding will be applied but the element will overlap other like elements vertically
-display: inline-block;	yes	yes	yes	yes	yes
-display: block;	no	yes	yes	yes	yes
-References  
+div:nth-of-type(3) {
+  width: 10%;
+  height: 40px;
+}
+
+div:nth-of-type(4) {
+  width: 70%;
+}
+
+div:nth-of-type(5) {
+  width: 20%;
+  height: 20px;
+}
+
+div:nth-of-type(6) {
+  width: 40%;
+  height: 20px;
+}
+
+div:nth-of-type(7) {
+  width: 55%;
+  height: 15px;
+}
+```
+
+## Conclusion  
+
+| Display |	More than one per line | Can have height |	Can have width | Can have margin | Can have padding |
+| --- | --- | --- | --- | --- | --- |
+|display: inline; |	yes |	no | no | left and right only |	padding will be applied but the element will overlap other like  elements vertically |
+| display: inline-block; | yes | yes | yes | yes | yes |
+| display: block; |	no | yes | yes |	yes |	yes |
+
+###References  
 
 MDN - CSS Display
 
