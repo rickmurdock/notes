@@ -545,7 +545,7 @@ The `background-attachment` property sets whether a background image is fixed or
 
 In this lesson, we looked at background properties. The `background` and `background-*` properties have several values that apply to the property including, image, attachment, color, position, and repeat.
 
-###Additional Resources  
+### Additional Resources  
 
 * [CSS Tricks](https://css-tricks.com/almanac/properties/b/background-image/) 
 * [Microsoft](https://msdn.microsoft.com/en-us/library/ms530722(v=vs.85).aspx)
@@ -560,54 +560,63 @@ In most cases, browsers are pulling fonts from the user's machine. When a font i
 
 It is possible to load custom fonts so that the browser can use them. But first, let's look at web safe fonts.
 
-Web Safe Fonts  
+## Web Safe Fonts  
 
 In the past, web designers had a small number of fonts that they could use for websites. These fonts were reliable because they could be found on most computers. This fact meant that these fonts were considered web safe.
 
 Fonts that are web safe are fonts that the browser will be able to locate regardless of the machine you are using. Browsers are supposed to support at least one typeface from 5 groups of fonts. These groups include:
 
-Serif (fonts with extra details on the end of the main strokes of each glyph)
-Sans-Serif (fonts without those extra strokes; used for a clean look)
-Monospace (each glyph in these fonts are the same width)
-Cursive (fonts with joining strokes or cursive characteristics)
-Fantasy (Decorative fonts that are often used for titles)
+* Serif (fonts with extra details on the end of the main strokes of each glyph)
+
+* Sans-Serif (fonts without those extra strokes; used for a clean look)
+
+* Monospace (each glyph in these fonts are the same width)
+
+* Cursive (fonts with joining strokes or cursive characteristics)
+
+* Fantasy (Decorative fonts that are often used for titles)
+
 If the font you want to use is not available, you should stack fonts so that a fallback can be used instead.
 
-Font Stacking  
+## Font Stacking  
 
 Font stacking refers to listing several fonts for the browser. In the event that a font is not available for the browser, it will go to the next in the stack and try to load that one.
 
 An example of a Font Stack:
 
+```css
 font-family: Georgia, Times, Times New Roman;
+```
+
 In the example above you want the browser to load the font-family named Georgia. But, if that font is not available then it will load Times instead. If not Times, then Times New Roman.
 
 It can be a good idea to stack fonts to ensure that styles on the page are shown the way that you intended. Even when you use web safe fonts, there may be differences between operating systems. Having fallback fonts available allow for the styling to remain similar.
 
 When you are stacking fonts make sure to follow a few rules.
 
-Consistency
+*Consistency*
 
 Make sure that the fonts in your stack look similar to each other. You don't want different users to have radically different fonts displayed. To remain consistent, try to stay within the same type of typeface. Stack serif fonts with other serif fonts, monospace with other monospace fonts, etc.
 
-Amount
+*Amount*
 
 You don't want to use too many fonts in your stack. You can list as many fonts as you want. But, you should usually have to list no more than 4 to 5 fonts to ensure consistency across browsers.
 
-Generic
+*Generic*
 
-Always include a generic font in your stack. It is a good rule of thumb to use serif, sans-serif, and monospace as a generic font.
+Always include a generic font in your stack. It is a good rule of thumb to use `serif`, `sans-serif`, and `monospace` as a generic font.
 
 ex: Arial and Helvetica 1 The classic example is Arial and Helvetica. Most, if not all Windows machines have the Arial font installed. Likewise, most, if not all Mac machines have the Helvetica font installed. For the purpose of web safe fonts, Arial and Helvetica are interchangeable by the browser. In most cases, if a web page is requesting Arial and the browser can’t find it on the user’s machine, the browser will automatically substitute Helvetica. This is the same for pages requesting Helvetica when a user only has Arial.
 
-@font-face  
+## @font-face  
 
-Using @font-face allows for fonts to be added that are not on the user's computer. This rule instructs the browser to download the font you set from where it is hosted on the web. It will then display as specified in the CSS.
+Using `@font-face` allows for fonts to be added that are not on the user's computer. This rule instructs the browser to download the font you set from where it is hosted on the web. It will then display as specified in the CSS.
 
 This is a great way to add unique font to your page that aren't web safe.
 
 In order to add a custom font to your site, follow the example below:
 
+```css
 @font-face {
   font-family: 'MyCustomFont';
   src: url('webfont.woff') format('woff');
@@ -616,55 +625,73 @@ In order to add a custom font to your site, follow the example below:
 body {
   font-family: 'MyCustomFont', Fallback, sans-serif;
 }
-References  
+```
 
-Lesson Footnotes
-1: How Browsers Manage Fonts
-Rendering of font characters using the font properties  
+## References  
+
+#### Lesson Footnotes
+
+* 1: [How Browsers Manage Fonts](http://www.practicalecommerce.com/How-Browsers-Manage-Fonts)
+
+---
+
+# Rendering of font characters using the font properties  
 
 The font property in CSS sets the font and associated text styling. It is a shorthand property that can set things such as style, family, weight, and size.
 
-Font family  
+## Font family  
 
 Font-family indicates the font used for an element. Font-family refers to what most people mean when they say they are using a font. Common font families are times, sans-serif, helvetica, and monospace.
 
-Font size  
+## Font size  
 
 The font-size specifies the size of the font for an element. There are several ways to set the size.
 
-PIXELS
+### PIXELS
 
+```css
 h1 {
   font-size: 40px;
 }
+```
+
 1 px is equal to one dot, a single pixel, on the computer screen. The problem with pixels is that they don't scale up or down for different screen sizes. However, the reader can use the browser zoom tool to zoom in and out.
 
-EM
+### EM
 
+```css
 h1 {
   font-size: 2.5em; /* 40px/16=2.5em */
 }
+```
+
 Using em makes it possible to adjust the text size in all browsers. It is a scalable unit that is equal to the current font size. If the size on the screen is 12pt, then 1 em is equal to 12pt. That means that 2em would make the font size 24pt. This unit is very friendly to responsive mobile development.
 
-POINTS Points originated in print media. They are similar to pixels because they cannot scale. These units are fixed in size.
+### POINTS 
 
-PERCENTAGE
+Points originated in print media. They are similar to pixels because they cannot scale. These units are fixed in size.
 
+### PERCENTAGE
+
+```css
 body {
   font-size: 100%;
 }
+```
+
 This unit is similar to the em unit. 100 percent is equal to the size of the font on the screen. For example 12pt is equal to 100%. This allows for text to be scaled both up and down to fit different screen sizes.
 
 It is possible to use a combination of pixels, em and percentage for different elements in your CSS file.
 
-VIEWPORT UNITS
+### VIEWPORT UNITS
 
 Viewport units set the font-size of an element relative to the dimensions of the viewport. These units are vw for viewport width and vh for viewport height. 1vw = 1% of the viewport width. 1vh = 1% of viewport height.
 
-Font style  
+## Font style  
 
 Font style allows you to set styles between normal, italic and oblique.
 
+```css
 .normal {
   font-style: normal;
 }
@@ -676,39 +703,53 @@ Font style allows you to set styles between normal, italic and oblique.
 .oblique {
   font-style: oblique;
 }
-please see more of this example at JSFiddle.
+```
 
-Font Weight  
+please see more of [this example](https://jsfiddle.net/api/mdn/) at JSFiddle.
+
+## Font Weight  
 
 The font weight specifies the boldness of the font.
 
-Common weight name mapping1
+**Common weight name mapping1**
 
 The 100 to 900 values roughly correspond to the following common weight names:
 
-100 Thin (Hairline)
-200 Extra Light (Ultra Light)
-300 Light
-400 Normal
-500 Medium
-600 Semi Bold (Demi Bold)
-700 Bold
-800 Extra Bold (Ultra Bold)
-900 Black (Heavy)
-Closing  
+* 100 Thin (Hairline)
+
+* 200 Extra Light (Ultra Light)
+
+* 300 Light
+
+* 400 Normal
+
+* 500 Medium
+
+* 600 Semi Bold (Demi Bold)
+
+* 700 Bold
+
+* 800 Extra Bold (Ultra Bold)
+
+* 900 Black (Heavy)
+
+## Closing  
 
 In this lesson, we looked at several font-related properties and the way that they affect HTML elements. These included font-family, font-size, font-style and font-weight.
 
-Additional Resources  
+## Additional Resources  
 
-CSS Basics JS Fiddle example CSS font-size
+* [CSS Basics](http://www.cssbasics.com/css-font-properties/)
+* [JS Fiddle example](https://jsfiddle.net/api/mdn/)
+* [CSS font-size](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size?v=control)
 
-Lesson Footnotes
-1: Mozilla CDN
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Import fonts using @fontface  
+#### Lesson Footnotes
+
+1: [Mozilla CDN](https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight)
+
+---
+
+# Import fonts using @fontface  
 
 The @font-face rule adds custom fonts to a webpage. The rule will allow you to input your custom font to appear on a site, even when it is not installed on the user's computer. The most significant aspect of this rule is that it allows you to use fonts that are not web safe. This provides more choices for web design typography.
 
