@@ -13,7 +13,7 @@ Lecture notes from The Iron Yard
 
 * [CSS Layout & Fonts](./FrontEnd/CSSLayout&Fonts.md)
 
-* [CSS Layout and Flexbox(./FrontEnd/CSSLayoutAndFlexbox.md)
+* [CSS Layout and Flexbox](./FrontEnd/CSSLayoutAndFlexbox.md)
 
 * [Responsive Web Design](./FrontEnd/ResponsiveWebDesign.md)
 
