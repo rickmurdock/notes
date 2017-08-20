@@ -105,7 +105,7 @@ There are many types of selectors, the lesson today focused on basic selectors, 
 
 After you've selected an element you'll want to apply styles to it, and likely more than one. Let's take a look at how you apply a specific style to an element as well as what it looks like to apply multiple styles.
 
-![css-rules.jpeg](./images/css-rules.jpeg)
+![css-rules.jpg](./images/css-rules.jpg)
 
 ## Declaration Blocks  
 
