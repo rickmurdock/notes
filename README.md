@@ -9,7 +9,7 @@ Lecture notes from The Iron Yard
 
 * HTML Structure and Layout
 
-* Applying Style with CSS
+* [Applying Style with CSS](./FrontEnd/ApplyingStyleWithCSS.md)
 
 * [CSS Layout & Fonts](./FrontEnd/CSSLayout&Fonts.md)
 
