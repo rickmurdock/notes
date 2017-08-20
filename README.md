@@ -3,7 +3,7 @@ Lecture notes from The Iron Yard
 
 ## Front-End Fundamentals
 
-* Basic Computer and Terminal Skills
+* [Basic Computer and Terminal Skills](./FrontEnd/BasicComputerAndTerminalSkills.md)
 
 * HTML Overview and Basic Elements
 
