@@ -1,108 +1,143 @@
-Basic CSS Selectors  
+# Basic CSS Selectors  
 
 In this lesson, we will focus on three essential selectors: type, ID, and class. In CSS, selectors allow for the targeted styling of CSS elements.
 
-Type Selector  
+## Type Selector  
 
-Type selectors allow us to select all of the instances of a particular tag. If for instance, I want to select every h1 tag in the document, I'd use the h1 selector. Any styles applied to that type selector would affect every h1 on the page. Type selectors are intended to make sweeping changes to elements. We can use them to set default styles for tags. Type selectors correspond directly to HTML tags. To select all <p> tags, the type selector is p, to select all <div> tags, the type selector is div, etc.
+Type selectors allow us to select all of the instances of a particular tag. If for instance, I want to select every h1 tag in the document, I'd use the `h1` selector. Any styles applied to that type selector would affect *every `h1` on the page*. Type selectors are intended to make sweeping changes to elements. We can use them to set default styles for tags. Type selectors correspond directly to HTML tags. To select all `<p>` tags, the type selector is `p`, to select all `<div>` tags, the type selector is `div`, etc.
 
-For example, the h1 type selector selects all h1 tags on the page and makes them the color blue.
+For example, the `h1` type selector selects all `h1` tags on the page and makes them the color blue.
 
+```css
 h1 {
   color: blue;
 }
-This type selector (p) removes all the padding from paragraphs.
+```
 
+This type selector (`p`) removes all the padding from paragraphs.
+
+```css
 p {
   padding: 0;
 }
+```
+
 This final example selects unordered lists and makes them block level elements. It also gives them some margin top.
 
+```css
 ul {
   display: block;
   margin-top: 1em;
 }
-Any HTML tag can be used as a selector in CSS.
+```
 
-Class Selector  
+Any [HTML tag](https://www.quackit.com/html/tags/) can be used as a selector in CSS.
 
-Class selectors target elements based on the value of their class attribute. In HTML, tags that have a class, such as <div class="home">, can be targeted in CSS with statements such as:
+## Class Selector  
 
+Class selectors target elements based on the value of their `class` attribute. In HTML, tags that have a class, such as `<div class="home">`, can be targeted in CSS with statements such as:
+
+```css
 .home {
   color: red;
 }
+```
+
 Sometimes it's not enough to target an element using type selection alone. Take the following set of elements as an example:
 
+```html
 <p>Regular text...</p>
 <p>Regular text...</p>
 <p>Regular text...</p>
 <p>Special text...</p>
 <p>Regular text...</p>
+```
+
 Let's say we have some standard styles we want to apply to the p tag here, but we want to add a special style to the Special text... paragraph. This is where CSS Class selection comes in super handy. Let's add a class to our HTML and see how we can style it.
 
+```html
 <p>Regular text...</p>
 <p>Regular text...</p>
 <p>Regular text...</p>
 <p class="special">Special text...</p>
 <p>Regular text...</p>
-Now we can select just the specific p by using the CSS Class selection. To do that you'll use the . character followed by the name you provided as the value for the class attribute.
+```
 
+Now we can select just the specific `p` by using the CSS Class selection. To do that you'll use the `.` character followed by the name you provided as the value for the class attribute.
+
+```css
 .special {
   font-style: italic;
 }
-ID Selector  
+```
 
-ID selectors allow you to target a unique element. Each element can only have one ID. Each page can only have one element with the ID. For example, in HTML, <div> tags which have IDs are unique to the page.
+## ID Selector  
 
-In CSS, these elements are denoted with a #, such as:
+ID selectors allow you to target a unique element. Each element can only have one ID. Each page can only have one element with the ID. For example, in HTML, `<div>` tags which have IDs are unique to the page.
 
+In CSS, these elements are denoted with a `#`, such as:
+
+```css
 #header {
   background-color: yellow;
 }
+```
+
 In the HTML, the ID selector would appear as:
 
+```html
 <header id="header">
+```
+
 Remember that there is nothing that you can do with an ID that you can't do with a class. The main difference is that IDs are unique and there can only be one on the page. With this in mind, you'll likely want to use classes more often than IDs.
 
-Closing  
+## Closing  
 
 There are many types of selectors, the lesson today focused on basic selectors, type, ID, and Class. In CSS, selectors target HTML elements for styling. They are a part of a CSS rule that allows for specified application of styles to an HTML document.
 
-Additional Resources  
+## Additional Resources  
 
-MDN
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-CSS Syntax & Declarations  
+* [MDN](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Selectors)
+
+---
+
+# CSS Syntax & Declarations  
 
 After you've selected an element you'll want to apply styles to it, and likely more than one. Let's take a look at how you apply a specific style to an element as well as what it looks like to apply multiple styles.
 
+![css-rules.jpeg](./images/css-rules.jpeg)
 
-Declaration Blocks  
+## Declaration Blocks  
 
 When you apply styles to CSS, these are called CSS declarations and can be grouped into CSS declaration blocks.
 
 Here is what a CSS declaration block might look like:
 
+```css
 h1 {
   font-style: italic;
   font-size: 15px;
   color: #ebedef;
 }
-As you can see, we first use type selection to select our h1 then create a declaration block with three separate CSS declarations in it.
+```
 
-Syntax  
+As you can see, we first use type selection to select our `h1` then create a declaration block with three separate CSS declarations in it.
+
+### Syntax  
 
 CSS declarations are composed of a property/value pair.
 
+```css
 /* Selector */
 h1 {
   /* Property : Value */
   color: red;
 }
-The declaration block is always surround by curly braces ({}) and can contain one or more declarations separated by semicolons (;).
+```
 
+The declaration block is always surround by curly braces (`{}`) and can contain one or more declarations separated by semicolons (`;`).
+
+```css
 .selector {
   /* declaration block start */
   display: inline-block;
@@ -110,18 +145,21 @@ The declaration block is always surround by curly braces ({}) and can contain on
   height: 50px;
   background-color: #ffffff;
 } /* declaration block end */
+```
+
 Declaration blocks are always surrounded by curly braces.
 
-Closing  
+## Closing  
 
 In this lesson we looked at CSS selectors and declaration blocks. We covered how to make a selection and wrap the declarations inside of curly brackets, creating a declaration block.
 
-Additional Resources  
+## Additional Resources  
 
-CSS Syntax
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-How Precedence Affects CSS Declarations  
+* [CSS Syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Syntax)
+
+---
+
+# How Precedence Affects CSS Declarations  
 
 In this lesson we look at how CSS precedence effects declarations. Precedence refers to how CSS determines styling when two or more rules target the same element.
 
@@ -129,105 +167,93 @@ Since CSS stands for cascading style sheets, this means that it reads from top t
 
 It also includes issues of ancestry in styling. If there is a parent element that has a cascading style, all the child elements will inherit that style. If the child element is targeted with different styling, then the more specific styling will appear.
 
-Including CSS  
+## Including CSS  
 
 There are four ways to apply CSS to an HTML element:
 
-inline styles
-embedded styles
-external style sheets
-imported styles
-Inline styles  
+* inline styles
+
+* embedded styles
+
+* external style sheets
+
+* imported styles
+
+### Inline styles  
 
 CSS can be added to any HTML element by including the style attribute after the tag.
 
+```html
 <div class="home page" style="background-color: white;">
 </div>
+```
+
 The above is an example of inline styling. Here we are styling the div element to have a background color of white.
 
-Embedded styles  
+### Embedded styles  
 
 Embedded styling refers to using the style tag at the head of the HTML doc.
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <!DOCTYPE html>
-2
 <html>
-3
 <head>
-4
   <style>
-5
     body {
-6
       font-family: arial;
-7
       background-color: green;
-8
     }
-9
     div {
-10
       background-color: white;
-11
     }
-12
   </style>
-13
 </head>
-14
 <body>
-15
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-16
   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-17
   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-18
   consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-19
   cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-20
   proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-21
 </body>
-22
 </html>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview 
 In this case, the div still has a background color of white as specified within the style tags.
 
-External style sheets  
+### External style sheets  
 
 External sheets reference a .css file where all styles are declared. The external file is the most common way to add CSS styling to your doc.
 
 These files are stored on the server and linked to from the HTML file.
 
+```html
 <link rel="stylesheet" type="text/css" href="style.css" media="screen"/>
-Imported styles  
+```
+
+### Imported styles  
 
 The import rule allows you to attach new CSS from within the external CSS file. This is common when using libraries to contribute to the styling. It is also useful when you want to have many CSS files and want to have a main file that links to the HTML doc.
 
+```html
 @import newstyles.css;
-CSS Rules for Precedence  
+```
+
+## CSS Rules for Precedence  
 
 Some basic rules govern how styles override one another. Often, when styling a page, you'll apply styles to elements via several tags. For instance, what if two different style blocks apply different colors to the same element? Does the first or the second style win? What if an external CSS file styles an element and then an inline style shows something different? Which one takes precedence?
 
 The following list of rules govern the order of precedence for CSS styles:
 
-CSS rules that appear later in the code will override rules that appear earlier
-Style tags embedded in the HTML doc will override styles from an external file
-Inline styles will override embedded CSS
-A more specific selector takes precedence over a less specific one
-Closing  
+* CSS rules that appear later in the code will override rules that appear earlier
+
+* Style tags embedded in the HTML doc will override styles from an external file
+
+* Inline styles will override embedded CSS
+
+* A more specific selector takes precedence over a less specific one
+
+## Closing  
 
 In this lesson we looked at the precedence of CSS. There are four ways to apply styles to HTML elements: inline, embedded, external file, and import.
 
@@ -235,16 +261,15 @@ When using these methods of styling it is important to remember precedence. Alth
 
 Always a more specific selector will override a less specific one.
 
-To further help you understand, read this article by Chris Coyier to see some graphics on how precedence works.
+To further help you understand, read [this article](https://css-tricks.com/specifics-on-css-specificity/) by Chris Coyier to see some graphics on how precedence works.
 
-Additional Resources  
+## Additional Resources  
 
-Four methods of adding CSS to HTML
+* [Four methods of adding CSS to HTML](http://matthewjamestaylor.com/blog/adding-css-to-html-with-link-embed-inline-and-import)
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-CSS Style Inheritance  
+---
+
+# CSS Style Inheritance  
 
 Understanding style inheritance is important when styling with CSS. CSS stands for Cascading Style Sheets, where the intention is to allow styles to flow down from parent to child element. This points to a cascading effect, where its possible to style several elements at once. The main way this happens is through inheritance.
 
