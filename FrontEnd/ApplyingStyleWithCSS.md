@@ -275,208 +275,181 @@ Understanding style inheritance is important when styling with CSS. CSS stands f
 
 Inheritance in CSS allows you to force values to child elements from their parent. By understanding how this occurs, you can write simple and effective style sheets. Below we will go over some general rules for styling.
 
-Inheritance from a parent element  
+## Inheritance from a parent element  
 
-The child element is the HTML element that sits inside of another, which would be its parent. An example of this is the <p> tag and <body> . Since the paragraph will sit inside of the body, the paragraph can inherit styling from body.
+The child element is the HTML element that sits inside of another, which would be its parent. An example of this is the `<p>` tag and `<body>`. Since the paragraph will sit inside of the body, the paragraph can inherit styling from body.
 
 For example, setting the body to a font-family of sans-serif will force paragraphs to display in sans-serif. This removes the need to set the font-family on each paragraph. Instead, each paragraph will inherit from body.
 
-Of course, not all properties are inherited by child elements. Things such as background-color and border properties are not passed on to child elements. The rules regarding inheritance work mostly through common sense. If in doubt, CSS Reference contains links to many CSS properties. Each property page will state whether or not that property is inherited.
+Of course, not all properties are inherited by child elements. Things such as `background-color` and border properties are not passed on to child elements. The rules regarding inheritance work mostly through common sense. If in doubt, [CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference) contains links to many CSS properties. Each property page will state whether or not that property is inherited.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link rel="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
     <p>I am the child! 'body' is my parent!</p>
-8
   </body>
-9
 </html>
-10
-​
- 
+```
 
-Fullscreen
+```
+/* style.css */
+body {
+  color: blue;
+  font-size: 24px;
+}
+```
 
-Reset Code
-Preview 
-CSS sources  
+## CSS sources  
 
-There are several ways to add styling to your HTML doc. You can use internal styling, such as adding css to a <style> tag or inline styling on the element. You can also pull CSS in from external style sheets.
+There are several ways to add styling to your HTML doc. You can use internal styling, such as adding css to a `<style>` tag or inline styling on the element. You can also pull CSS in from external style sheets.
 
-The source of CSS effects its influence in styling. Inline styling takes precedence over others. Therefore, styling applied inline with the element will override other styles. Styles in the style tag take precedence after inline styles. Then styles from external style sheets are applied.
+The source of CSS effects its influence in styling. Inline styling takes precedence over others. Therefore, styling applied inline with the element will override other styles. Styles in the `style` tag take precedence after inline styles. Then styles from external style sheets are applied.
 
 An HTML page can use more than on style sheet, which can provide a way to organize your CSS. Styling from an external style sheet also allows for consistency among several pages. But, keep in mind that styles applied internally will take precedence over external styles.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
     <style></style>
-6
   </head>
-7
   <body>
-8
     <h1 style="color: red;">I am a h1 element</h1>
-9
     <p>This paragraph and it is styled by the body because of inheritance</p>
-10
     <h2>This h2 element is styled from the css</h2>
-11
   </body>
-12
-​
-13
-​
-14
+
+
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body {
+  font-family: helvetica;
+  color: black;
+}
+h2 {
+  color: blue;
+}
+```
 
-Reset Code
-Preview 
-Last Rule  
+## Last Rule  
 
 CSS is interpreted from top to bottom. The further down the page a style is applied, the higher its priority. This means that if there are two selectors that are identical, the one that appears last will take precedence. Styles at the bottom of your CSS doc will override those that appeared before it.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
     <h1>The last Rule</h1>
-8
     <h2>What are the rules?</h2>
-9
     <p>The paragraphs has been styled to be red</p><br>
-10
     <p>but these are blue</p><br>
-11
     <p>because the last paragraph styling was blue.</p>
-12
   </body>
-13
 </html>
+```
+
+```css
+/* style.css */
+body {
+  color: black;
+}
+h1 {
+  font-family: helvetica;
+  font-size: 24px;
+}
+p {
+  color: red;
+  font-family: sans-serif;
+}
+h2 {
+  color: red;
+}
+p {
+  color: blue;
+}
+``` 
  
+# Specificity  
 
-Fullscreen
+Specificity refers to how specific a selector is. If one selector is more specific than the others, the more specific rule takes precedence. Element selectors, like `<p>` and `<div>` have low specificity. This means that these selectors may not point to a specific part of the HTML doc since they can be repeated.
 
-Reset Code
-Preview 
-Specificity  
-
-Specificity refers to how specific a selector is. If one selector is more specific than the others, the more specific rule takes precedence. Element selectors, like <p> and <div> have low specificity. This means that these selectors may not point to a specific part of the HTML doc since they can be repeated.
-
-Next up are class selectors, which are more specific than element selectors. There can be several <div> elements, for instance, that belong to the same class.
+Next up are class selectors, which are more specific than element selectors. There can be several `<div>` elements, for instance, that belong to the same class.
 
 Even more specific are ID selectors. ID are unique to the page, so an element with an ID cannot be repeated on that page.
 
-The most specific of all is anything labeled !important.
+The most specific of all is anything labeled `!important`.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
     <h1>Specificity</h1>
-8
     <p>The default setting on this page has black letters and a white background.<br>
-9
     The different colors show styling by specificity.</p>
-10
     <div class="container">
-11
       <p>The words written here are inside of a div with class container</p>
-12
     </div>
-13
     <p> These words are not </p>
-14
     <div id="high">
-15
       <p> These words are inside a div with id of "high" </p>
-16
     </div>
-17
   </body>
-18
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body {
+  color: black;
+  font-family: sans-serif;
+}
+.container {
+  background-color: black;
+  color: white;
+}
+#high {
+  background-color: grey;
+  color: pink;
+}
+```
 
-Reset Code
-Preview 
-!Important  
+## !Important  
 
-This value is highly effective and therefore very dangerous. Always use caution before using !important. Adding !important after any CSS property value will ensure that this styling rule will rise to the top. Any styling with this label is considered higher than any other styling rules. Because !important is so powerful, it is advised to only be used when necessary.
+This value is highly effective and therefore very dangerous. Always use caution before using `!important`. Adding `!important` after any CSS property value will ensure that this styling rule will rise to the top. Any styling with this label is considered higher than any other styling rules. Because `!important` is so powerful, it is advised to only be used when necessary.
 
-Closing  
+## Closing  
 
-In this lesson, we looked at CSS style inheritance. Inheritance is affected by several factors including its parent element's styling, specificity, the last rule, CSS sources and !important.
+In this lesson, we looked at CSS style inheritance. Inheritance is affected by several factors including its parent element's styling, specificity, the last rule, CSS sources and `!important`.
 
 CSS allows for styling rules to cascade to child elements. Understanding these rules allows for effective and simplistic styling. Remember that these styling rules apply mainly to properties. Some properties will override other properties because of CSS styling rules. This does not apply to the rules themselves. When several rules match the same element, they are all applied to that element.
 
-References  
+## References  
 
-MDN Cascade and Inheritance
-CSS Reference
+* [MDN Cascade and Inheritance](https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Cascade_and_inheritance)
 
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-How selector specificity affects styling of HTML elements  
+* [CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+
+---
+
+# How selector specificity affects styling of HTML elements  
 
 There are many different types of CSS selectors. These selectors allow targeting of HTML elements for styling. If two selectors apply to the same element, the one with higher specificity wins. When selectors have an equal specificity value, the latest rule is the one that counts.
 
@@ -484,56 +457,79 @@ Every selector has a place in the specificity hierarchy. Specificity is the way 
 
 Selectors will have different weights that affect how CSS rules apply. The embedded style sheet has a greater specificity than other rules. ID selectors have a higher specificity than attribute selectors. A class selector beats any number of element selectors. Understanding how these rules apply is crucial to rendering the CSS correctly.
 
-CSS selectors  
+## CSS selectors  
 
 Some of the common selectors are 1 :
 
-Universal Selector
+1. Universal Selector
 
-Applies to all elements in the document
-*, { } Target all elements on the same page
-Type Selector
+  * Applies to all elements in the document
+  
+  * `*`, `{ }` Target all elements on the same page
+  
+2. Type Selector
 
-Matches element names
-h1, h2 Targets the <h1> and <h2> elements
-Class Selector
+  * Matches element names
+  
+  * `h1`, `h2` Targets the `<h1>` and `<h2>` elements
+  
+3. Class Selector
 
-Matches an element whose class attribute has a value that matches the one specified after the ..
-.home { } Targets any element whose class attribute has a value of home.
-ID Selector
+  * Matches an element whose class attribute has a value that matches the one specified after the `.`.
 
-Matches an element whose ID attribute has a value that matches the one specified after the #.
-#jumbo { } Targets the elements whose ID attribute has a value of jumbo.
-Child Selector
+  * `.home { }` Targets any element whose class attribute has a value of home.
+  
+4. ID Selector
 
-Matches an element that is a direct child of another
-li > a { } Targets any <a> elements that are children of an <li> element (but not any other <a> elements on the page).
-Descendant Selector
+  * Matches an element whose ID attribute has a value that matches the one specified after the `#`.
 
-Matches an element that is a descendant of another specified element (not only a direct child).
-p a { } Targets any <a> elements that sit inside a <p> element, even if there are other elements nested between them.
-Adjacent Sibling Selector
+  * `#jumbo { }` Targets the elements whose ID attribute has a value of jumbo.
 
-Matches an element that is the next sibling of another
-h1 + p { } Targets the first <p> element after any <h1> element ( but not any other <p> elements).
-General Sibling Selector
+5. Child Selector
 
-Matches an element that is a sibling of another. Although the element does not have to be the directly preceding element.
-h1~p { } If you had two <p> elements that are siblings of an <h1> element, this rule would apply to both.
-Specificity Order  
+  * Matches an element that is a direct child of another
 
-Inherited styles
-Element selector
-Class selector
-ID selector
-Inline styles
-!important
+  * `li > a { }` Targets any `<a>` elements that are children of an `<li>` element (but not any other `<a>` elements on the page).
+
+6. Descendant Selector
+
+  * Matches an element that is a descendant of another specified element (not only a direct child).
+
+  * `p a { }` Targets any `<a>` elements that sit inside a `<p>` element, even if there are other elements nested between them.
+
+7. Adjacent Sibling Selector
+
+  * Matches an element that is the next sibling of another
+
+  * `h1 + p { }` Targets the first `<p>` element after any `<h1>` element ( but not any other `<p>` elements).
+
+8. General Sibling Selector
+
+  * Matches an element that is a sibling of another. Although the element does not have to be the directly preceding element.
+
+  * `h1~p { }` If you had two `<p>` elements that are siblings of an `<h1>` element, this rule would apply to both.
+
+## Specificity Order  
+
+* Inherited styles
+
+* Element selector
+
+* Class selector
+
+* ID selector
+
+* Inline styles
+
+* `!important`
+
 There is an order associated with selectors. The order below runs from least relevant to most relevant.
 
-Inherited styles  
+### Inherited styles  
 
 CSS properties inherit styles from their parent elements. This means that the styling of a parent element will be passed on to its child elements. Not every property is inherited, but it can be forced by using the inherit value.
 
+```css
 p {
   color: pink;
 }
@@ -541,84 +537,98 @@ p a:link {
   color: inherit;
 }
 /* usually links would default to blue but the inherit declaration will force the links to be pink, and inherit the color from the parent element */
-Element selectors  
+```
+
+### Element selectors  
 
 The element selector is styling all elements that have the element name. Targeting the element will take precedence over inherited styles.
 
+```css
 p {
   font-family: sans-serif;
 }
-Class selectors  
+```
+
+### Class selectors  
 
 Class selectors target elements that are associated with the named class attribute. This selector will pass styles to all the elements within that class attribute.
 
+```html
 <!-- HTML -->
 <span class="home">This is filler text for a span.</span>
+```
+
+```css
 /* CSS */
 span.home {
   background-color: purple;
 }
-ID selector  
+```
+
+### ID selector  
 
 ID selectors are unique to the HTML doc. Unlike class selectors, there will only be one ID selector with that name. As a result, ID selectors will take precedence over class selectors.
 
+```html
 <!-- HTML -->
 <div id="blog">Stuff for a blog goes here.</div>
+```
+
+```css
 /* CSS */
 
 #blog {
   margin: 0;
   background-image: picture.jpg;
 }
-Inline Styles  
+```
+
+### Inline Styles  
 
 Inline styling applies directly to the HTML doc. Written inline with the HTML elements, these styles will take precedence over those from an external file.
 
+```html
  <h3 style="color:red;margin-left:10px;">This is a sidebar</h3>
-!Important  
+```
+
+### !Important  
 
 using the !important attribute will force this style to take precedence over all.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!-- HTML -->
-2
 <!DOCTYPE html>
-3
 <html>
-4
 <head>
-5
   <title>CSS Important</title>
-6
   <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
   <p class="green">Things that will end up RED</p>
-10
 </body>
-11
 </html>
- 
+```
 
-Fullscreen
+```
+/* style.css */
+/* CSS */
+p {
+  color: red !important;
+}
+.green {
+  color: green;
+}
+```
 
-Reset Code
-Preview 
-Closing  
+## Closing  
 
 In this lesson we covered CSS selectors. CSS selectors refer to HTML elements for styling. There are several types of selectors and there is a precedence for how styling is applied.
 
-Additional Resources  
+## Additional Resources  
 
-CSS Specificity and Inheritance
+[CSS Specificity and Inheritance](https://www.smashingmagazine.com/2010/04/css-specificity-and-inheritance/)
 
 Lesson Footnotes
-1: [HTML and CSS Design and Build Websites, Jon Duckett, John Wiley & Sons, 2011, 978-1-118-00818-8,p.238]
+
+* 1: [HTML and CSS Design and Build Websites, Jon Duckett, John Wiley & Sons, 2011, 978-1-118-00818-8,p.238]
