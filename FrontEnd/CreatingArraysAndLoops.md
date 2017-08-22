@@ -583,7 +583,7 @@ Let's break down an example of a `for` loop:
 for(let i = 0 ; i < 15 ; i++){
     console.log(i);
 }
-``
+```
 
 The `for` keyword tells JavaScript that what follows is a `for` loop. Inside the parentheses, we have three distinct expressions separated by semicolons.
 
