@@ -27,7 +27,7 @@ Lecture notes from The Iron Yard
 
 * [Functions and Complex Expressions](./FrontEnd/FunctionsAndComplexExpressions.md)
 
-* Creating Arrays and Loops 
+* [Creating Arrays and Loops](./FrontEnd/CreatingArraysAndLoops.md) 
 
 * [Using JavaScript to Modify HTML](./FrontEnd/UsingJavaScriptToModifyHTML.md)
 
