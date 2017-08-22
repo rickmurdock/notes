@@ -301,430 +301,375 @@ Arrays are an essential element to all programming. You will write and manipulat
 
 # Accessing and Modifying Specific Array Elements  
 
-As we've discussed, an array is a list of elements, separated by commas, between brackets, and usually defined by a variable. Each item in this list is given an index value and, because arrays are zero indexed, the first item is given the value 0. In the example below, "empathy" is 1.
+As we've discussed, an `array` is a list of elements, separated by commas, between brackets, and usually defined by a variable. Each item in this list is given an index value and, because arrays are `zero indexed`, the first item is given the value 0. In the example below, "empathy" is 1.
 
-const coolThings = ['tigers', 'empathy', 'pizza bagels'];  
+```js
+const coolThings = ['tigers', 'empathy', 'pizza bagels'];
+```
+
 Note the brackets in particular here, as they will be our best friend when it comes to accessing specific array elements, as well as making changes to arrays. They also make a great friend because brackets look like they're giving a hug: [you]. See? Those brackets just hugged you. You're welcome.
 
-Bracket Notation  
+## Bracket Notation  
 
 Arrays in JavaScript provide a special syntax called bracket notation. Bracket notation allows you to reference a specific element in an array to either read or set its value.
 
-In bracket notation you follow a variable name immediately with a set of square brackets that contain the index of the element you want to access. In the example from the introduction, the variable is rightly named coolThings, so you can access the third item in the array using coolThings[2]. (Remember, arrays are zero indexed).
+In bracket notation you follow a variable name immediately with a set of square brackets that contain the index of the element you want to access. In the example from the introduction, the variable is rightly named `coolThings`, so you can access the third item in the array using `coolThings[2]`. (Remember, arrays are zero indexed).
 
 In general, you can think of bracket notation as being a variable that points to a particular place in an array.
 
-Reading From Arrays Using Bracket Notation  
+### Reading From Arrays Using Bracket Notation  
 
-
-1
+```js
 const avengers = ["Iron Man", "Thor", "Captain America", "Hulk", "Black Widow"];
-2
-​
-3
+
 // output the character at index 0
-4
 console.log(avengers[0]);
-5
-​
-6
+
 // output the character at index 3
-7
 console.log(avengers[3]);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 This example shows how we can read elements from an array at the specified index using bracket notation.
 
-Take note, if you try to read an element in an array that doesn't exist you will receive an undefined value.
+Take note, if you try to read an element in an array that doesn't exist you will receive an `undefined` value.
 
-
-1
+```js
 const avengers = ["Iron Man", "Thor", "Captain America", "Hulk", "Black Widow"];
-2
-​
-3
+
 // this logs "undefined"
-4
 console.log(avengers[99]);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Writing To Arrays Using Bracket Notation  
+### Writing To Arrays Using Bracket Notation  
 
 Another cool use for bracket notation is the ability to add and update items to our array.
 
-
-1
+```js
 // create an array
-2
 const avengers = [];
-3
 avengers[0] = "Iron Man";
-4
 avengers[1] = "War Machine";
-5
 avengers[2] = "Thor";
-6
 avengers[3] = "Captain America";
-7
 avengers[4] = "Hulk";
-8
 avengers[5] = "Black Widow";
-9
-​
-10
+
 // output the array to the console.
-11
 console.log(avengers);
-12
-​
-13
+
 // update an item in the array
-14
 avengers[1] = "Hawkeye";
-15
-​
-16
+
 // output the array to the console again.
-17
 console.log(avengers);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 This example shows how we can add items to an array using bracket notation. It also shows how we can change the value at an index.
 
-Take note, any time you add an element to an array, any missing elements before that item become undefined. For example:
+Take note, any time you add an element to an array, any missing elements before that item become `undefined`. For example:
 
-
-1
+```js
 // create an array
-2
 const avengers = [];
-3
-​
-4
+
 // add at index 0
-5
 avengers[0] = "Iron Man";
-6
-​
-7
+
 // add at index 5
-8
 avengers[5] = "Black Widow";
-9
-​
-10
+
 // output the array to the console.
-11
 // note that indexes 1 to 4 are "undefined"
-12
 console.log(avengers);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Conclusion  
+## Conclusion  
 
 Using bracket notation, we are able to read information from an array, add information to an array, and change or update elements. This may not seem like a big deal with an array that contains six elements, but don't forget that arrays can contain massive amounts of information; they can have 100's of elements. Rather than sifting through them ourselves to find the 157th element so we can read it or change it, bracket notation comes to the rescue like Iron Man, Black Widow, or Undefined.
 
-References  
+### References  
 
-Property Accessors - MDN
- Short Answer Exercise View Exercise
-Control Flow  
+* [Property Accessors - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors)
+
+--- 
+
+# Control Flow  
 
 When you write a program, you are giving the computer a series of instructions to follow. Those instructions are often complex and can depend on many factors including user input, current data, or instructions written by other programmers. Most programming languages include a series of "control flow" features to manage this complexity.
 
-"Control flow" - The execution order in instructions.**
+* **"Control flow"** - The execution order in instructions.**
 
-Control flow statements - The programming tools we use to define the order of execution, usually loops and conditional statements.
+* **Control flow statements** - The programming tools we use to define the order of execution, usually loops and conditional statements.
 
 This lesson is not intended to give you a detailed breakdown of the syntax necessary to author control flow in your programs. Rather, this article outlines the general concept of control flow and why it is important.
 
-Managing Logic with Control Flow  
+## Managing Logic with Control Flow  
 
-As a programmer, you will spend your time implementing some logic in your programs. Logic is a big topic, with lots of interesting branches into philosophy, math, and cognition. In this course, we will focus only on the concepts necessary to produce logically structured code. In essence, when we talk about flow control, we are talking about ways to tell our programs when to run some code and how many times to run it.
+As a programmer, you will spend your time implementing some logic in your programs. Logic is a big topic, with lots of interesting branches into philosophy, math, and cognition. In this course, we will focus only on the concepts necessary to produce logically structured code. In essence, when we talk about flow control, we are talking about ways to tell our programs *when to run some code and how many times to run it*.
 
 Now, let's look at a scenario to demonstrate how flow control is used to determine when specific blocks of code can run. The following scenario is common: When the user clicks a button, we want to perform an action.
 
 In this case, the action is to change the color of a square. In the real world, the button might be opening and closing a dropdown to show content or a thousand other things.
 
-Here is where control flow is significant: the new color of the square depends on its current color. If the square is red, we change it to blue and vice-versa. Review the following three lines of logic.
+Here is where control flow is significant: *the new color of the square depends on its current color*. If the square is red, we change it to blue and vice-versa. Review the following three lines of logic.
 
+```
 - If the user clicks the button, change the color of the rectangle.
 - If the rectangle is blue, change it to red.
 - If the rectangle is red, change it to blue.
+```
+
 Now, let's look at a program that follows this logic.
 
-The following program uses JavaScript that you haven't seen yet. Don't get bogged down in the code; the point of this little program is to show the logic in action, not to explain the details of the JavaScript syntax.
-Editor
-Browser View
-index.html
-style.css
-script.js
+> The following program uses JavaScript that you haven't seen yet. Don't get bogged down in the code; the point of this little program is to *show the logic in action*, not to explain the details of the JavaScript syntax.
 
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>Colored Square</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
         <div class="wrapper">
-10
             <div id="square" class="red"></div>
-11
             <a href="#" id="button">Change Color</a>
-12
         </div>
-13
         <script src="script.js"></script>
-14
     </body>
-15
 </html>
- 
+````
 
-Fullscreen
+```css
+/* style.css */
+body{
+    margin: 10px 0 0 0;
+    background: #666;
+    font-family: Helvetica, Arial, sans-serif;
+}
+.wrapper{
+    width: 600px;
+    background: white;
+    margin: 0 auto;
+    padding: 10px;
+}
+#square{
+    height: 200px;
+    margin-bottom: 10px;
+}
+#button{
+    display: block;
+    padding: 10px 15px;
+    background: #ccccff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 10px;
+    width: 50%;
+    margin: 0 auto;
+}
+#button:hover{
+    background: #aaaaff;
+}
+.red{
+    background: red;
+}
+.blue{
+    background: blue;
+}
+```
 
-Reset Code
-Preview 
-To see the above logic written as JavaScript, open the script.js file. Again, you won't understand all that you see in that file. However, read through the comments to follow the logic. The "colored rectangle" example uses a control structure called an if/else statement to determine the color of the rectangle. if/else statements are an example of control flow statements, of which JavaScript has several.
+```js
+//script.js
+const square = document.getElementById( "square" );
+const button = document.getElementById( "button" );
+
+// When the button is clicked
+button.addEventListener( "click", function(){
+    
+    let color = square.className;
+    
+    // Change the color of the square
+
+    // if the color is red
+    if( color === "red" ){
+        // change it to blue
+        square.className = "blue";
+    }
+    // if the color is blue
+    else{
+        // change it to red
+        square.className = "red";
+    }
+} );
+``` 
+
+To see the above logic written as JavaScript, open the `script.js` file. Again, you won't understand all that you see in that file. However, read through the comments to follow the logic. The "colored rectangle" example uses a control structure called an `if/else` statement to determine the color of the rectangle. `if/else` statements are an example of control flow statements, of which JavaScript has several.
 
 This example is intended only to give you a sense of how control flow works; we'll go over the details in following lessons.
 
-Types of Control Flow  
+## Types of Control Flow  
 
-Control flow statements fall into two broad categories: Loops and Conditional Statements.
+Control flow statements fall into two broad categories: **Loops and Conditional Statements.**
 
-Conditionals Statements define the criteria that must be met to allow a block of code to execute. The idea of conditional statements is that some code need only run some of the time. For instance, if you see phrases like: "If 'x' is true, run 'y' code," then you should be using conditional statements. If 'x' is false, then 'y' won't run. 'y' only runs some of the time.
+* **Conditionals Statements define the criteria that must be met to allow a block of code to execute.** The idea of conditional statements is that some code need only run some of the time. For instance, if you see phrases like: "If 'x' is true, run 'y' code," then you should be using conditional statements. If 'x' is false, then 'y' won't run. 'y' only runs some of the time.
 
-Loops specify how many times a block of code should run. Use Loops to repeat an action more than once. You'll know that you need loops you see phrases like: "Run this code 'x' number of times," or "Run this code until a condition is met." Whenever you need to do the same thing multiple times, use loops.
+* **Loops specify how many times a block of code should run.** Use Loops to repeat an action more than once. You'll know that you need loops you see phrases like: "Run this code 'x' number of times," or "Run this code until a condition is met." Whenever you need to do the same thing multiple times, use loops.
 
-Conclusion  
+## Conclusion  
 
 Control flow allows us to manage program logic. Using Loops and conditional statements will enable us to create (almost) any logic your program requires. We can determine when a section of code should run or how many times it should execute. Control flow structures are the backbone and foundation for all programming logic and define every decision made by our programs.
 
-References  
+### References  
 
-Control Flow and Error Handling - MDN
-Control Flow - Wikipedia
- Short Answer Exercise View Exercise
- Short Answer Exercise View Exercise
-For Loops  
+* [Control Flow and Error Handling - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
 
-A for expression is a method to execute a block of code over and over again. It gives us the ability to massively simplify certain tasks, particularly when we want to run the same code multiple times (perhaps ad infinitum) while changing the value each time.
+* [Control Flow - Wikipedia](https://en.wikipedia.org/wiki/Control_flow)
 
-Here is a quick example. Take a few seconds to think about what is happening in this code. Don't worry so much about syntax (we're talking about that next). Instead, just think about what is happening to the variable val and how many times it's being printed to the console:
+---
 
+# For Loops  
 
-1
+A `for` expression is a method to execute a block of code over and over again. It gives us the ability to massively simplify certain tasks, particularly when we want to run the same code multiple times (perhaps ad infinitum) while changing the value each time.
+
+Here is a quick example. Take a few seconds to think about what is happening in this code. Don't worry so much about syntax (we're talking about that next). Instead, just think about what is happening to the variable `val` and how many times it's being printed to the console:
+
+```js
 let val = "a";
-2
-​
-3
+
 for( let i = 0 ; i < 10 ; i++ ){
-4
     console.log(val);
-5
     val += "a";
-6
 }
+```
 
-Fullscreen
+## Syntax of the `For` Loop  
 
-Reset Code
-Run Code 
-Syntax of the For Loop  
+The `for` loop is composed of several parts. The first part is the `for` keyword. The second part is the parenthesis, which contains three expressions: initialization, condition, and afterthought. The third part of the `for` loop is the block that runs each time the condition is `true`. Remember, the point of `for` loops is to run code multiple times based on the success or failure of a condition.
 
-The for loop is composed of several parts. The first part is the for keyword. The second part is the parenthesis, which contains three expressions: initialization, condition, and afterthought. The third part of the for loop is the block that runs each time the condition is true. Remember, the point of for loops is to run code multiple times based on the success or failure of a condition.
-
+```js
 // the `for` keyword
 for( /*conditions*/ ){
     // The body block
 }
+```
 
 The three items that go in the parenthesis can be hard to understand when first using the for loop, so let's break it down, item by item and talk about what each expression is doing.
 
+```js
 for ([1. initialization]; [2. condition]; [3. afterthought]){}
-Initialization expression  
+```
 
-An initialization expression is the first item in a for loop's parentheses. It sets up a control variable for use in the loop's body and is run once before the first time to loop is run. This expression runs only once, just before the loop starts.
+1. **Initialization expression**
 
-Conditional expression  
+An initialization expression is the first item in a `for` loop's parentheses. **It sets up a control variable for use in the loop's body and is run once before the first time to loop is run.** This expression runs only once, just before the loop starts.
 
-The conditional expression is the second item in a for loop's parentheses. The conditional expression is evaluated before each execution of the loop. The loop's body executes if the conditional expression evaluates to true. If it's not true, JavaScript ends the loop and moves to the next line of code.
+2. **Conditional expression** 
 
-Afterthought expression  
+The conditional expression is the second item in a `for` loop's parentheses. **The conditional expression is evaluated before each execution of the loop.** The loop's body executes if the conditional expression evaluates to true. If it's not true, JavaScript ends the loop and moves to the next line of code.
 
-The afterthought expression is the third item in a for loop's parentheses. It is evaluated after each execution of the loop's body.
+3. **Afterthought expression**  
+
+The afterthought expression is the third item in a `for` loop's parentheses. **It is evaluated after each execution of the loop's body.**
 
 The afterthought expression usually increments the variable defined in the initialization expression.
 
-An Example - Counting Loops  
+### An Example - Counting Loops  
 
-Let's break down an example of a for loop:
+Let's break down an example of a `for` loop:
 
-
-1
+```js
 for(let i = 0 ; i < 15 ; i++){
-2
     console.log(i);
-3
 }
+``
 
-Fullscreen
+The `for` keyword tells JavaScript that what follows is a `for` loop. Inside the parentheses, we have three distinct expressions separated by semicolons.
 
-Reset Code
-Run Code 
-The for keyword tells JavaScript that what follows is a for loop. Inside the parentheses, we have three distinct expressions separated by semicolons.
+In our example above, the initializing expression is `let i = 0`. We are telling JavaScript that when we start the loop to create a variable named `i` and set its initial value to 0. This variable `i` will act as a counter, incrementing each time we complete the loop.
 
-In our example above, the initializing expression is let i = 0. We are telling JavaScript that when we start the loop to create a variable named i and set its initial value to 0. This variable i will act as a counter, incrementing each time we complete the loop.
+The conditional expression is `i < 15`. JavaScript will repeatedly execute the body of our loop so long as `i`, the variable we defined in the initialization expression, is less than 15.
 
-The conditional expression is i < 15. JavaScript will repeatedly execute the body of our loop so long as i, the variable we defined in the initialization expression, is less than 15.
+The afterthought expression runs after each run of the body. In this case, the afterthought expression is `i++`, which is another way of saying `i = i + 1`. This line of code increments `i` by 1 after each iteration. Remember that `i` is the variable we defined in the initializing expression and what we're checking after each iteration through the body of the `for` loop.
 
-The afterthought expression runs after each run of the body. In this case, the afterthought expression is i++, which is another way of saying i = i + 1. This line of code increments i by 1 after each iteration. Remember that i is the variable we defined in the initializing expression and what we're checking after each iteration through the body of the for loop.
+The entire goal of this `for` loop is to add 1 to `i` over and over again until `i` is equal to 15. The body only prints the value of `i` each time that `i` is checked to see that its less than 15.
 
-The entire goal of this for loop is to add 1 to i over and over again until i is equal to 15. The body only prints the value of i each time that i is checked to see that its less than 15.
+### Another Example - Building a String  
 
-Another Example - Building a String  
+Let's revisit the first example we saw. In this example, we are slowing building a string. The initialization, conditional, and afterthought expressions are very similar to the Counting Loops Example. This example initializes a counter `i` with a value of zero. Before each run of the body, the condition `i < 10` is checked. After each run of the body, `i++` is run, which increments `i`.
 
-Let's revisit the first example we saw. In this example, we are slowing building a string. The initialization, conditional, and afterthought expressions are very similar to the Counting Loops Example. This example initializes a counter i with a value of zero. Before each run of the body, the condition i < 10 is checked. After each run of the body, i++ is run, which increments i.
+In this example, we aren't printing `i`. Instead, we are printing the string in `val` and then concatenating another "a" to that string. The result is that after each loop `val` gets longer and longer. First its value is "a", then "aa", then "aaa", etc.
 
-In this example, we aren't printing i. Instead, we are printing the string in val and then concatenating another "a" to that string. The result is that after each loop val gets longer and longer. First its value is "a", then "aa", then "aaa", etc.
-
-
-1
+```js
 let val = "a";
-2
-​
-3
+
 for( let i = 0; i < 10; i++ ){
-4
     console.log(val);
-5
     val += "a";
-6
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 The point of loops is that they give us a compact way to run code over and over again. In this example, the following two lines run ten times:
 
+```js
 console.log(val);
 val += "a";
+```
+
 I could do the same thing without a loop, but it requires a lot of repetitive code.
 
-
-1
+```js
 let val = "a";
-2
-​
-3
-console.log(val);
-4
-val += "a";
-5
-console.log(val);
-6
-val += "a";
-7
-console.log(val);
-8
-val += "a";
-9
-console.log(val);
-10
-val += "a";
-11
-console.log(val);
-12
-val += "a";
-13
-console.log(val);
-14
-val += "a";
-15
-console.log(val);
-16
-val += "a";
-17
-console.log(val);
-18
-val += "a";
-19
-console.log(val);
-20
-val += "a";
-21
-console.log(val);
-22
-val += "a";
 
-Fullscreen
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+console.log(val);
+val += "a";
+```
 
-Reset Code
-Run Code 
-Iterating over Arrays  
+## Iterating over Arrays  
 
-An extremely common use of loops is to "iterate" over arrays. Iteration means that we step through the array and do something with each of the elements. I can demonstrate this without a for loop by accessing each element by index. In this example, I'll step through the array and multiply each element by 2.
+An extremely common use of loops is to "iterate" over arrays. Iteration means that we step through the array and do something with each of the elements. I can demonstrate this without a `for` loop by accessing each element by index. In this example, I'll step through the array and multiply each element by 2.
 
-nums[ 0 ] *= 2; is a more compact way of writing nums[ 0 ] = nums[ 0 ] * 2;
+> nums[ 0 ] *= 2; is a more compact way of writing nums[ 0 ] = nums[ 0 ] * 2;
 
-1
+```
 let nums = [ 25, 11, 56, 73, 92, 453, 23, 23 ];
-2
-​
-3
+
 nums[ 0 ] *= 2;
-4
 nums[ 1 ] *= 2;
-5
 nums[ 2 ] *= 2;
-6
 nums[ 3 ] *= 2;
-7
 nums[ 4 ] *= 2;
-8
 nums[ 5 ] *= 2;
-9
 nums[ 6 ] *= 2;
-10
 nums[ 7 ] *= 2;
-11
-​
-12
+
 console.log( nums );
-
-Fullscreen
-
-Reset Code
-Run Code 
-Writing code like this works but creates a lot of duplication. What if our array contained 100000 numbers and we needed to double all of them? A for loop can simplify this task immensely. Also, take note of the index values we are using to access each element in the array. The index increments from 0 to 7. It looks a lot like the i variable in our loop examples.
+```
+ 
+Writing code like this works but creates a lot of duplication. What if our array contained 100000 numbers and we needed to double all of them? A `for` loop can simplify this task immensely. Also, take note of the index values we are using to access each element in the array. The index increments from 0 to 7. It looks a lot like the `i` variable in our loop examples.
 
 The goal of iterating over arrays with loops is to replace this:
 
+```js
 nums[ 0 ] *= 2;
 nums[ 1 ] *= 2;
 nums[ 2 ] *= 2;
@@ -733,125 +678,101 @@ nums[ 4 ] *= 2;
 nums[ 5 ] *= 2;
 nums[ 6 ] *= 2;
 nums[ 7 ] *= 2;
+```
+
 with this:
 
+```js
 // The index is now `i`
 nums[ i ] *= 2;
-This next example shows a for loop that iterates over the nums array and doubles every value. The loop is simply executing the same block multiple times and changing the value of the i variable to access different members of the nums array:
+```
 
+This next example shows a `for` loop that iterates over the `nums` array and doubles every value. The loop is simply executing the same block multiple times and changing the value of the `i` variable to access different members of the `nums` array:
 
-1
+```js
 let nums = [ 25, 11, 56, 73, 92, 453, 23, 23 ];
-2
-​
-3
+
 for( let i = 0; i < 5; i++ ){
-4
     nums[ i ] *= 2;
-5
 }
-6
-​
-7
+
 console.log( nums );
+```
 
-Fullscreen
+### Iterating Over Multiple Arrays  
 
-Reset Code
-Run Code 
-Iterating Over Multiple Arrays  
+In this next example, we will use `i` to iterate over two arrays and print the full names of each person.
 
-In this next example, we will use i to iterate over two arrays and print the full names of each person.
-
-
-1
+```js
 let first_names = [ "Tim", "Bill", "Sally", "Joan" ];
-2
 let last_names = [ "Carpenter", "Stapleton", "Duncan", "Smith" ];
-3
-​
-4
+
 for( let i = 0; i < 4; i++ ){
-5
-​
-6
+
     console.log( first_names[ i ], last_names[ i ] );
-7
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Don't get me wrong, iterating over four names isn't anything difficult. However, imagine if we were a huge company with 50,000 employees and we wanted to run complex operations on lots of our employee data.
 
-Maybe we want to find average salaries in different regions of the country; we could iterate over our list and add up all the salaries in a certain area and then divide that total by the number of people in the area. The for loop gives us lots of freedom to solve problems like that.
+Maybe we want to find average salaries in different regions of the country; we could iterate over our list and add up all the salaries in a certain area and then divide that total by the number of people in the area. The `for` loop gives us lots of freedom to solve problems like that.
 
-
-1
+```js
 let salaries = [ 120000, 80000, 92000, 65000, 37000, 52000, 43000, 69000, 100000, 56000 ];
-2
-​
-3
+
 //get the number of items in the salaries array
-4
 let length = salaries.length;
-5
-​
-6
+
 // we need to add up all the salaries
-7
 // so we need a variable to hold the total
-8
 let sum = 0;
-9
-​
-10
+
 // add up all of the salaries
-11
 for( let i = 0; i < length; i++ ){
-12
     sum += salaries[ i ];
-13
 }
-14
-​
-15
+
 // divide by the number of salaries
-16
 // to get an average
-17
 // print the average to console
-18
 console.log( sum / length );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 It wouldn't matter if we had a million salaries. The code above would work and print an accurate average salary. Loops are essential logic structures and when combined with arrays can produce some powerful code to iterate over and modify data.
 
-Nested Loops  
+### Nested Loops  
 
-Nested loops are somewhat difficult to understand. You will become accustomed to the idea of nesting logic in time, but for now, you should simply take away from this discussion the fact that loops can be nested within one other. That is to say, we can create a loop of loops.
+Nested loops are somewhat difficult to understand. You will become accustomed to the idea of nesting logic in time, but for now, you should simply take away from this discussion the fact that loops can be *nested* within one other. That is to say, we can create a *loop of loops*.
 
-Let's say I wanted to print numbers from 1 to 10 the number of times of their value. For example:
+Let's say I wanted to print numbers from 1 to 10 the *number of times of their value*. For example:
 
-1
-2
-2
-3
-3
-3
-4
-4
-4
-4
-etc ...
+* 1
+
+* 2
+
+* 2
+
+* 3
+
+* 3
+
+* 3
+
+* 4
+
+* 4
+
+* 4
+
+* 4
+
+* etc ...
+
 Study those numbers to understand the behavior we are looking for. e.g. 1 prints once, 2 prints twice, 3 prints three times, 4 prints four times, etc.
 
 This behavior can be accomplished several ways, but I'll implement nested loops. here is the logic that we need to implement:
 
+```
 initialize the OUTER LOOP counter (n) with 1
 run the OUTER LOOP 10 times
 each run of OUTER LOOP
@@ -861,62 +782,47 @@ each run of OUTER LOOP
         console.log( t )
         increment t
     increment n
+```
+
 OUTER LOOP will iterate from 1 to 10 and will have a control variable n (for "number"). This will make it run ten times. Each time we step through OUTER LOOP, n will increase by 1.
 
-
-1
+```js
 // OUTER LOOP, run from 1 to 10
-2
 for(let n = 1 ; n <= 10 ; n++){
-3
     // print n, n times
-4
     console.log( n );
-5
 }
+```
 
-Fullscreen
+I'm printing `n` so you can see that the body of OUTER LOOP is executed once for each iteration through the loop.
 
-Reset Code
-Run Code 
-I'm printing n so you can see that the body of OUTER LOOP is executed once for each iteration through the loop.
+Now, we place an INNER LOOP inside OUTER LOOP. I must give INNER LOOP a new control variable so that it knows what step it's on. I'll call this `t` for "times," as in the number of times `n` has been printed. I'll default this to 0. Because `t` only exists within INNER LOOP, it will be reinitialized to 0 on each iteration through the OUTER LOOP. Since I want to print `n` a variable number of times, I'll write the conditional expression of INNER LOOP to be limited by `n`.
 
-Now, we place an INNER LOOP inside OUTER LOOP. I must give INNER LOOP a new control variable so that it knows what step it's on. I'll call this t for "times," as in the number of times n has been printed. I'll default this to 0. Because t only exists within INNER LOOP, it will be reinitialized to 0 on each iteration through the OUTER LOOP. Since I want to print n a variable number of times, I'll write the conditional expression of INNER LOOP to be limited by n.
+Finally, We increment `t` each time we complete an iteration of INNER LOOP.
 
-Finally, We increment t each time we complete an iteration of INNER LOOP.
-
-
-1
+```js
 // loop from 1 to 10
-2
 for(let n = 1 ; n <= 10 ; n++){
-3
     // print n, t times
-4
     for(let t = 0 ; t < n ; t++){
-5
         // print n
-6
         console.log(n);
-7
     }
-8
 }
+```
 
-Fullscreen
+This is *not* simple content. The idea of nested loops is complex and sometimes difficult to track. At this point, we have two reasons for studying nested loops:
 
-Reset Code
-Run Code 
-This is not simple content. The idea of nested loops is complex and sometimes difficult to track. At this point, we have two reasons for studying nested loops:
+* You will see them and need to be aware of what is occurring
 
-You will see them and need to be aware of what is occurring
-You should learn to try to avoid nested loops like this when possible. Its not always possible, but preferable to find some other means for implementing your algorithms
-Conclusion  
+* You should learn to try to avoid nested loops like this when possible. Its not always possible, but preferable to find some other means for implementing your algorithms
 
-The for expression is vital to the way a computer thinks, reads, and interprets data.
+## Conclusion  
 
-Coders have been accused of being lazy; this is not accurate at all. A more astute observation is that coders have built, through trial after trial, a system of shortcuts and executable functions that make difficult and arduous work more easily accomplished. The for loop is a perfect example of this. It demonstrates why computers are vital; they aid in tasks that are either endlessly repetitive or too difficult to calculate. A for expression can compute in ways the human mind could only dream of.
+The `for` expression is vital to the way a computer thinks, reads, and interprets data.
 
-References  
+Coders have been accused of being lazy; this is not accurate at all. A more astute observation is that coders have built, through trial after trial, a system of shortcuts and executable functions that make difficult and arduous work more easily accomplished. The `for` loop is a perfect example of this. It demonstrates why computers are vital; they aid in tasks that are either endlessly repetitive or too difficult to calculate. A `for` expression can compute in ways the human mind could only dream of.
 
-For - MDN
+### References  
+
+* [For - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for)
