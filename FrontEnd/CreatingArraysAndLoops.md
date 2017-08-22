@@ -1,23 +1,24 @@
-Arrays  
+# Arrays  
 
 Storing, manipulating, and creating lists of items is a big part of programming. Very often, you will work with lots of data in your applications. If you are working on an eCommerce site, you may manipulate lists of products or lists of users. If you are building a Google Map clone, you may have to store long lists of coordinates, street labels, and markers.
 
 Most programming languages offer some "indexed list" to make storing and parsing data easier. We'll define and explain these concepts in just a few minutes. In this article, we will talk about the "list" object available in JavaScript. We will discuss three things:
 
-The purpose of the Array object - Understanding its purpose and use-case can help us to develop an intuition about how best to use an array.
+* **The purpose of the Array object** - Understanding its purpose and use-case can help us to develop an intuition about how best to use an array.
 
-Provide an overview of array syntax - This will include the general syntax for accessing and manipulating array index values.
+* **Provide an overview of array syntax** - This will include the general syntax for accessing and manipulating array index values.
 
-Discuss Array object properties - Arrays are objects, have properties that we can access to inspect the details of our array data, including values that tell us how many members the array includes and some useful functions for manipulating the data included in an array.
+* **Discuss Array object properties** - Arrays are objects, have properties that we can access to inspect the details of our array data, including values that tell us how many members the array includes and some useful functions for manipulating the data included in an array.
 
-What are Arrays?  
+## What are Arrays?  
 
-An array is a zero-indexed JavaScript object that stores a list of values.
+** An array is a zero-indexed JavaScript object that stores a list of values.**
 
-We have a few relevant terms about which we should develop a strong intuition before we talk about syntax. One term is "zero indexed," another is "list." To develop this intuition, let's talk about the idea of an array before we discuss the syntax of an array.
+We have a few relevant terms about which we should develop a strong intuition before we talk about syntax. One term is "zero indexed," another is "list." To develop this intuition, let's talk about the idea of an array before we discuss the *syntax* of an array.
 
 Imagine that you are building an app that stores data about all of the Pixar films. Typically, the movie data would be stored as objects, but for simplicity, we'll treat them as strings. What follows is the full list of films:
 
+```
 Toy Story
 A Bug's Life
 Toy Story 2
@@ -34,16 +35,22 @@ Monsters University
 Inside Out
 The Good Dinosaur
 Cars 3
+```
+
 Working with this data could be difficult. If we store each movie as a string in a variable, we have to decide what to call the variables. I could use a couple of patterns for my variables. For instance, the variable name could be derived from the string:
 
+```js
 let toyStory = "Toy Story";
 let bugsLife = "A Bug's Life";
 let toyStory2 = "Toy Story 2";
 ... etc.
+```
+
 The problem with this pattern is that I have to know all of the variable names to access the movie titles and the variable names are the same as the film titles. Storing data this way is confusing and clunky. Imagine if we were storing all the movies made by every studio for the last ten years. That's thousands of movies!
 
 We need a simpler convention for storing the movies. What if we develop a simple naming convention for the movies: All variables will start with "movie" and will end with a number. That way, I can access movies if I know the naming convention.
 
+```js
 let movie00 = "Toy Story";
 let movie01 = "A Bug's Life";
 let movie02 = "Toy Story 2";
@@ -60,352 +67,239 @@ let movie12 = "Monsters University";
 let movie13 = "Inside Out";
 let movie14 = "The Good Dinosaur";
 let movie15 = "Cars 3";
+```
+
 Thats better, but still pretty clunky. We are repeating ourselves over and over again. Look at all those variables that start with "movie". Again, imagine if we were working with ten thousand movie titles.
 
 Arrays try to solve this problem by providing a way to store all the movies in one variable. The idea is that arrays provide a syntax so that all the items can be stored in one object and then accessed by their location in the list.
 
 The following code snippet shows you an array containing all of the Pixar films. We'll talk about the syntax in a moment. For now, notice that all of the movie titles are stored in one variable. I'll print a couple of elements from the array as well so you can see that they are accessed by their location in the list.
 
-
-1
+```js
 let pixarMovies = [ "Toy Story", "A Bug's Life", "Toy Story 2", "Monsters, Inc.", "Finding Nemo", "The Incredibles", "Ratatouille", "WALL-E", "Up", "Toy Story 3", "Cars 2", "Brave", "Monsters University", "Inside Out", "The Good Dinosaur", "Cars 3" ];
-2
-​
-3
+
 // prints the first movie title
-4
 console.log( pixarMovies[ 0 ] );
-5
-​
-6
+
 // prints the third movie title
-7
 console.log( pixarMovies[ 2 ] );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 The big win here is that we only have one variable storing all of the information. Again, this list could be thousands (millions even) of movie titles, and we'd still only have one variable. Notice also that we now have an easy way to access data from the list.
 
 In the next section, we'll discuss array syntax and the basics for accessing and manipulating array data.
 
-Array Syntax  
+---
 
-Defining an empty array  
+# Array Syntax  
+
+## Defining an empty array  
 
 Use square brackets, [ and ], to define an array. The following code sample creates an empty array. This array contains no data, but still has all of the array object properties.
 
+```js
 let empty = [];
-Initializing an Array with Data  
+```
+
+## Initializing an Array with Data  
 
 When creating an array with data, write the data between the brackets. Separate each element from its neighbor with a comma ,. The following array contains three strings: "Toy Story," "A Bug's Life," and "Toy Story 2".
 
+```js
 let movies = [ "Toy Story", "A Bug's Life", "Toy Story 2" ];
+```
+
 Arrays can contain any data, which you can mix and match at your leisure. It's usually a good idea to fill your arrays with one type of data because you will often be running through the data, item by item. The following array contains some random information.
 
+```js
 let things = [ "Toy Story", 9, { name : "Woody" } ];
-An Array's Index Numbers  
+```
 
-Each element in an array is assigned a number, known as an index. You may have noticed in our Pixar movie example that we accessed each movie with a number. That number was the index. One common point of confusion is to decide which number to use.
+## An Array's Index Numbers  
+
+Each element in an array is assigned a number, known as an `index`. You may have noticed in our Pixar movie example that we accessed each movie with a number. That number was the index. One common point of confusion is to decide *which number to use*.
 
 JavaScript arrays are "zero indexed," meaning that the first element in the array is index 0, the second element in the array is index 1, the third element in the array is index 2, etc.
 
 When counting the position of an element in an array, count starting with the number 0. For example:
 
-
-1
+```js
 let pixarMovies = [ "Toy Story", "A Bug's Life", "Toy Story 2" ];
-2
-​
-3
+
 // prints the first movie title
-4
 // the first element in the array is index 0
-5
 console.log( pixarMovies[ 0 ] );
-6
-​
-7
+
 // prints the first movie title
-8
 // the first element in the array is index 1
-9
 console.log( pixarMovies[ 1 ] );
-10
-​
-11
+
 // prints the third movie title
-12
 // the third element in the array is index 2
-13
 console.log( pixarMovies[ 2 ] );
-14
-​
-15
+
 // this prints undefined because
-16
 // there is no fourth movie title at index 3
-17
 console.log( pixarMovies[ 3 ] );
+```
 
-Fullscreen
+> Remember: Indexing starts with the number 0. The items in an array are numbered 0, 1, 2, ... and not 1, 2, 3, ...
 
-Reset Code
-Run Code 
-Remember: Indexing starts with the number 0. The items in an array are numbered 0, 1, 2, ... and not 1, 2, 3, ...
-Accessing Array Data  
+## Accessing Array Data  
 
 You've already seen this a few times in this article, but let's go over the ways that array data can be access and altered using bracket notation. Arrays use bracket notation to access object data, but instead of passing a key string into the brackets, we pass the index number of the element that we want to access.
 
 In the following example, I want to access "flower." It is in position 3, so its index value is 2. I use bracket notation and pass into the brackets the number 2, returning the string "flower."
 
-
-1
+```js
 let plants = [ "tree", "bush", "flower", "grass" ];
-2
-​
-3
+
 console.log( plants[ 2 ] );
+```
+ 
+> Change the 2 to different numbers to see what values returns. Try to return the string "grass." Remember, arrays are "zero indexed."
 
-Fullscreen
-
-Reset Code
-Run Code 
-Change the 2 to different numbers to see what values returns. Try to return the string "grass." Remember, arrays are "zero indexed."
-Assigning New Values to an Array  
+## Assigning New Values to an Array  
 
 To assign a new value to an array, combine bracket notation with the assignment operator. You can change the value of an existing index or add a new value to a new index.
 
-
-1
+```js
 let plants = [ "tree", "bush", "flower" ];
-2
-​
-3
+
 // nothing has changed yet
-4
 console.log( plants );
-5
-​
-6
+
 // change the value of index 1 to the string "grass"
-7
 plants[ 1 ] = "grass";
-8
-​
-9
+
 // The array values are different
-10
 console.log( plants );
-11
-​
-12
+
 // adding a new array value at index 3
-13
 plants[ 3 ] = "algae";
-14
-​
-15
+
 //now the array has an additional element
-16
 console.log( plants );
+```
 
-Fullscreen
+We can even start with an empty array and build it from scratch using bracket notation. In the following example, we create an empty array `avengers` and add all of the characters via bracket notations. We then overwrite the string at index 1 with the string "Hawkeye" and print the final array.
 
-Reset Code
-Run Code 
-We can even start with an empty array and build it from scratch using bracket notation. In the following example, we create an empty array avengers and add all of the characters via bracket notations. We then overwrite the string at index 1 with the string "Hawkeye" and print the final array.
-
-
-1
+```js
 // create an array
-2
 let avengers = [];
-3
-​
-4
+
 // add elements to specific index locations
-5
 avengers[0] = "Iron Man";
-6
 avengers[1] = "War Machine";
-7
 avengers[2] = "Thor";
-8
 avengers[3] = "Captain America";
-9
 avengers[4] = "Hulk";
-10
 avengers[5] = "Black Widow";
-11
-​
-12
+
 // update an item in the array
-13
 avengers[1] = "Hawkeye";
-14
-​
-15
+
 // output the array to the console again.
-16
 console.log( avengers );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 There is a tremendous amount that can be done to (and with) an array using just these couple techniques, but most manipulations are more easily accomplished via array object functions and properties. In the next section, we'll discuss some of the most common array object properties.
 
-Array Object Properties and Functions  
+# Array Object Properties and Functions  
 
 For each example below, I will first create an array and then demonstrate different methods of manipulating it using array functions and properties. Run the code samples to see the outcome of each array property and function.
 
-Array.length  
+## Array.length  
 
-The length property tells you how many elements are stored in the array, which is amazingly useful. All the code examples in this article are short, but real world data may have thousands, even millions, of elements. Knowing how much data you are working with is extremely helpful.
+The length property tells you how many elements are stored in the array, which is *amazingly* useful. All the code examples in this article are short, but real world data may have thousands, even millions, of elements. Knowing how much data you are working with is extremely helpful.
 
-
-1
+```js
 let pixarMovies = [ "Toy Story", "A Bug's Life", "Toy Story 2", "Monsters, Inc.", "Finding Nemo", "The Incredibles", "Ratatouille", "WALL-E", "Up", "Toy Story 3", "Cars 2", "Brave", "Monsters University", "Inside Out", "The Good Dinosaur", "Cars 3" ];
-2
-​
-3
+
 // prints the number of elements in the array
-4
 console.log( pixarMovies.length );
+```
 
-Fullscreen
+## Array.push  
 
-Reset Code
-Run Code 
-Array.push  
+The `push` function will add a new element to the end of the array. This feature is useful if you don't know how long the array is, and you want to add an element to it without accidentally overwriting an existing index value.
 
-The push function will add a new element to the end of the array. This feature is useful if you don't know how long the array is, and you want to add an element to it without accidentally overwriting an existing index value.
-
-
-1
+```
 let zooCreatures = [ 'monkey', 'lion', 'penguin' ];
-2
-​
-3
+
 zooCreatures.push( 'otter' );
-4
-​
-5
+
 console.log( zooCreatures );
+```
 
-Fullscreen
+## Array.pop  
 
-Reset Code
-Run Code 
-Array.pop  
+The `pop` function removes the last element from the end of the array and returns it.
 
-The pop function removes the last element from the end of the array and returns it.
-
-
-1
+```js
 let holidays = [ 'Thanksgiving', 'Birthday', 'Festivus', 'Pi Day' ];
-2
-​
-3
+
 // remove the last item and store it in a variable
-4
 let removed = holidays.pop();
-5
-​
-6
+
 // log the altered list
-7
 console.log( holidays );
-8
-​
-9
+
 // log the item that was removed
-10
 console.log( removed );
+```
 
-Fullscreen
+## Array.unshift  
 
-Reset Code
-Run Code 
-Array.unshift  
+The `unshift` function adds a new element to the beginning of the array, putting the new element at index 0 and move existing elements up by one index.
 
-The unshift function adds a new element to the beginning of the array, putting the new element at index 0 and move existing elements up by one index.
-
-
-1
+```js
 let exclamations = [ 'woah', 'awesome', 'oh joy', 'ummm' ];
-2
-​
-3
+
 exclamations.unshift( 'hooray' );
-4
-​
-5
+
 console.log( exclamations );
+```
 
-Fullscreen
+## Array.splice  
 
-Reset Code
-Run Code 
-Array.splice  
+The `splice` function removes elements from an array using two number: the index from where elements should be removed and the number of elements to remove. This section will show a few examples.
 
-The splice function removes elements from an array using two number: the index from where elements should be removed and the number of elements to remove. This section will show a few examples.
+In the following example, `splice` will remove 3 elements starting with index 2.
 
-In the following example, splice will remove 3 elements starting with index 2.
-
-
-1
+```js
 let footwear = ['sneakers', 'tap shoes', 'clogs', 'slippers', 'heels', 'boots', "moccasins", "galoshes" ];
-2
 footwear.splice( 2, 3 );
-3
 console.log( footwear );
+```
 
-Fullscreen
+In this example, `splice` will remove 2 elements starting with index 3.
 
-Reset Code
-Run Code 
-In this example, splice will remove 2 elements starting with index 3.
-
-
-1
+```js
 let footwear = ['sneakers', 'tap shoes', 'clogs', 'slippers', 'heels', 'boots', "moccasins", "galoshes" ];
-2
 footwear.splice( 3, 2 );
-3
 console.log( footwear );
+```
 
-Fullscreen
+In this example, `splice` will remove 1 element starting with index 5.
 
-Reset Code
-Run Code 
-In this example, splice will remove 1 element starting with index 5.
-
-
-1
+```js
 let footwear = ['sneakers', 'tap shoes', 'clogs', 'slippers', 'heels', 'boots', "moccasins", "galoshes" ];
-2
 footwear.splice( 5, 1 );
-3
 console.log( footwear );
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Conclusion  
+## Conclusion  
 
 Arrays are an essential element to all programming. You will write and manipulate them throughout your entire programming career. You should familiarize yourself with not only the concept of an array but the basic syntax and object methods that make manipulating arrays easier and more natural.
 
-References  
+### References  
 
-[^1] Array - MDN
- Short Answer Exercise View Exercise
- Short Answer Exercise View Exercise
- Short Answer Exercise View Exercise
-Accessing and Modifying Specific Array Elements  
+* [^1] [Array - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+---
+
+# Accessing and Modifying Specific Array Elements  
 
 As we've discussed, an array is a list of elements, separated by commas, between brackets, and usually defined by a variable. Each item in this list is given an index value and, because arrays are zero indexed, the first item is given the value 0. In the example below, "empathy" is 1.
 
