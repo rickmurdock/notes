@@ -75,9 +75,8 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 ---
 
-[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md)
-
-# File System Traversal  
+<div style="text-align: right">[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md)</div>
+# File System Traversal 
 
 ## Terminology  
 
@@ -448,21 +447,29 @@ Notice the sentence 'Lisa Bonet ate no basil' was not printed and the script sto
 
 ---
 
-Lesson: HTML Overview and Basic Elements
+[HTML Overview and Basic Elements](HTMLOverviewAndBasicElements.md)
+
 # HTML Syntax Rules  
 
-Terminology  
+## Terminology  
 
-Valid syntax: Content was written acceptably according to a specification.
-Invalid syntax: Content was not acceptable as defined by the standard specification. Unanticipated results may occur.
-W3C: World Wide Web Consortium. A standards body which decides what HTML rules apply.
-Syntax: Rules for written text.
-Void Tags: Tags which do not have an ending tag, but end on their own and have no content.
-Examples  
+* **Valid syntax**: Content was written acceptably according to a specification.
 
-Run the following code using the 'validate by direct input' (copy and paste the entire code) and fix the errors.
+* **Invalid syntax**: Content was not acceptable as defined by the standard specification. Unanticipated results may occur.
 
-Syntax validator: https://validator.w3.org/
+* **W3C**: World Wide Web Consortium. A standards body which decides what HTML rules apply.
+
+* **Syntax**: Rules for written text.
+
+* **Void Tags**: Tags which do not have an ending tag, but end on their own and have no content.
+
+## Examples  
+
+* Run the following code using the 'validate by direct input' (copy and paste the entire code) and fix the errors.
+
+  * Syntax validator: https://validator.w3.org/
+  
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -481,12 +488,19 @@ Syntax validator: https://validator.w3.org/
 
   </body>
 </html>
-Run the following code using the 'validate by direct input' (copy and paste the entire code) and fix the errors.
-[p]Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/p]
-[p]Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/p]
-[p]Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/p]
-For future reference. When using the 'validate by direct input', make sure to include the following:
+```
 
+  * Run the following code using the 'validate by direct input' (copy and paste the entire code) and fix the errors.
+
+```html
+[p]Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/p]
+[p]Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/p]
+[p]Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.[/p]
+```
+
+> *For future reference. When using the 'validate by direct input', make sure to include the following:*
+
+```html
 <!DOCTYPE html>
     <html>
     <head>
@@ -498,13 +512,16 @@ For future reference. When using the 'validate by direct input', make sure to in
         <!--Your content for validation goes here-->
         </body>
     </html>
-References  
+```
 
-Syntax validator
+### References  
+
+[Syntax validator](https://validator.w3.org/)
 
 ---
 
-Lesson: HTML Overview and Basic Elements
+[HTML Overview and Basic Elements](HTMLOverviewAndBasicElements.md)
+
 # Tag Pairs  
 
 Terminology  
@@ -548,9 +565,11 @@ References
 
 MDN - Empty Elements
 MDN - HTML Elements Reference
+
 ---
 
-Lesson: HTML Overview and Basic Elements
+[HTML Overview and Basic Elements](HTMLOverviewAndBasicElements.md)
+
 # Attributes  
 
 Terminology  
@@ -609,7 +628,8 @@ In an anchor tag, an <href> may contain either a URL or a URL fragment. A URL fr
 
 ---
 
-Lesson: HTML Overview and Basic Elements
+[HTML Overview and Basic Elements](HTMLOverviewAndBasicElements.md)
+
 # Classifying Related Elements  
 
 Terminology  
