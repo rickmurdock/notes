@@ -7,7 +7,7 @@ Lecture notes from The Iron Yard
 
 * HTML Overview and Basic Elements
 
-* HTML Structure and Layout
+* [HTML Structure and Layout](./FrontEnd/HTMLStructureAndLayout.md)
 
 * [Applying Style with CSS](./FrontEnd/ApplyingStyleWithCSS.md)
 
