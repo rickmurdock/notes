@@ -73,49 +73,75 @@ Front-End Fundamentals - Encyclopedia
 
 The Encyclopedia is a compilation of all the lesson study notes in this course. Use it to look up the a term or concept that you have covered.
 
+---
+
 Lesson: Basic Computer and Terminal Skills
-File System Traversal  
+# File System Traversal  
 
-Terminology  
+## Terminology  
 
-Command Line Interface: A user interface to a computer's operating system in which a user types a command and receives a response back from the system. Also known by its acronym, "CLI".
-Traversal: To pass or move over, along, or through.
-Directory: A folder.
-Path: The general form of the name of a file or directory, specifies a unique location in a file system.
-Absolute Path: A path that starts at the root is an absolute path. Path starts with /.
-Relative Path: If you don't use a leading /, the directory is a relative path: You start from your current working directory.
-Separators: The slashes (/) are called separators - they break apart a path into the hierarchy of directories to get to the file or directory.
-Working Directory: The current directory you are in while traversing.
-Home Directory: The default working directory when you open a new terminal window is your home directory ($ ~).
-Root: The root of the filesystem. No directories or files exist before the root, they all extend from root.
-Examples  
+* **Command Line Interface**: A user interface to a computer's operating system in which a user types a command and receives a response back from the system. Also known by its acronym, "CLI".
+
+* **Traversal**: To pass or move over, along, or through.
+
+* **Directory**: A folder.
+
+* **Path**: The general form of the name of a file or directory, specifies a unique location in a file system.
+
+* **Absolute Path**: A path that starts at the root is an absolute path. Path starts with `/`.
+
+* **Relative Path**: If you don't use a leading `/`, the directory is a relative path: You start from your current working directory.
+
+* **Separators**: The slashes (`/`) are called separators - they break apart a path into the hierarchy of directories to get to the file or directory.
+
+* **Working Directory**: The current directory you are in while traversing.
+
+* **Home Directory**: The default working directory when you open a new terminal window is your home directory (`$ ~`).
+
+* **Root**: The root of the filesystem. No directories or files exist before the root, they all extend from root.
+
+## Examples  
 
 Print Working Directory:
 
+```sh
 $ pwd
 /Users/<your username>
+```
+
 List Directory:
 
+```sh
 $ ls
 Applications    Documents   Library     Music       Public
 Desktop     Downloads   Movies      Pictures    projects
+```
+
 Change Directory:
 
+```sh
 $ cd Downloads
 $ ls
 someFile.txt   anotherFile.jpg
+```
+
 Absolute v Relative:
 
+```sh
 $ cd Downloads                // Relative
 $ cd /Users/jessie/Downloads  // Absolute
-References  
+```
 
-IBM - UNIX tips and tricks for a new user
+## References  
 
-Wikipedia - Path (Computing)
+[IBM - UNIX tips and tricks for a new user](https://www.ibm.com/developerworks/aix/tutorials/au-unixtips1/)
+
+[Wikipedia - Path (Computing)](https://en.wikipedia.org/wiki/Path_(computing))
+
+---
 
 Lesson: Basic Computer and Terminal Skills
-File manipulation  
+# File manipulation  
 
 Terminology  
 
@@ -210,8 +236,10 @@ References
 
 IBM - UNIX tips and tricks for a new user
 
+---
+
 Lesson: Basic Computer and Terminal Skills
-Student can explain how to start, pause, and cancel script execution  
+# Student can explain how to start, pause, and cancel script execution  
 
 Terminology  
 
@@ -315,8 +343,10 @@ In the terminal:
 sh script.sh
 Notice the sentence 'Lisa Bonet ate no basil' was not printed and the script stopped running.
 
+---
+
 Lesson: Basic Computer and Terminal Skills
-Finder File Management  
+# Finder File Management  
 
 Terminology  
 
@@ -327,8 +357,11 @@ References
 
 Directory (computing) - Wikipedia
 Get to know the Finder on your Mac
+
+---
+
 Lesson: HTML Overview and Basic Elements
-HTML Syntax Rules  
+# HTML Syntax Rules  
 
 Terminology  
 
@@ -381,8 +414,10 @@ References
 
 Syntax validator
 
+---
+
 Lesson: HTML Overview and Basic Elements
-Tag Pairs  
+# Tag Pairs  
 
 Terminology  
 
@@ -425,8 +460,10 @@ References
 
 MDN - Empty Elements
 MDN - HTML Elements Reference
+---
+
 Lesson: HTML Overview and Basic Elements
-Attributes  
+# Attributes  
 
 Terminology  
 
@@ -481,8 +518,11 @@ Examples
   </fieldset>
 </form>
 In an anchor tag, an <href> may contain either a URL or a URL fragment. A URL fragment is preceded by a hash mark (#), specifying an internal target location, using an id within the current document.
+
+---
+
 Lesson: HTML Overview and Basic Elements
-Classifying Related Elements  
+# Classifying Related Elements  
 
 Terminology  
 
@@ -508,8 +548,11 @@ Let's say you want to be able to easily make a thumbnail out of an image (give i
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
+
+---
+
 Lesson: HTML Structure and Layout
-Common HTML Tags  
+# Common HTML Tags  
 
 Terminology  
 
@@ -739,8 +782,10 @@ Quackit - HTML tags
 
 MDN - HTML element reference
 
+---
+
 Lesson: HTML Structure and Layout
-Element Relationships  
+# Element Relationships  
 
 Terminology  
 
@@ -780,8 +825,11 @@ Below, from the main-image perspective, the other elements are either a sibling,
 
   </body>
 </html>
+
+---
+
 Lesson: HTML Structure and Layout
-Creating Semantic HTML  
+# Creating Semantic HTML  
 
 Terminology  
 
@@ -892,9 +940,12 @@ style.css
 Fullscreen
 
 Reset Code
-Preview 
+Preview
+
+---
+
 Lesson: Applying Style with CSS
-Basic Selectors  
+# Basic Selectors  
 
 Terminology  
 
@@ -953,8 +1004,10 @@ Id Selectors
     display: none;
 }
 
+---
+
 Lesson: Applying Style with CSS
-Applying CSS Styling  
+# Applying CSS Styling  
 
 Terminology  
 
@@ -1020,8 +1073,10 @@ SitePoint Declaration Blocks
 
 HTML Dog - CSS Properties
 
+---
+
 Lesson: Applying Style with CSS
-Declaration Precedence  
+# Declaration Precedence  
 
 Terminology  
 
@@ -1053,8 +1108,10 @@ CSS Cascade
 
 CSS Tricks - Precedence
 
+---
+
 Lesson: Applying Style with CSS
-Style Inheritance  
+# Style Inheritance  
 
 Terminology  
 
@@ -1108,8 +1165,10 @@ W3 Inheritance and Cascade
 
 W3 Property Table (Reference whether a property is inherited or not)
 
+---
+
 Lesson: Applying Style with CSS
-Selector Specificity  
+# Selector Specificity  
 
 Terminology  
 
@@ -1122,8 +1181,10 @@ References
 
 MDN Specificity
 
+---
+
 Lesson: CSS Layout & Fonts
-Padding, Margin and Border  
+# Padding, Margin and Border  
 
 Terminology  
 
@@ -1241,9 +1302,12 @@ style.css
 Fullscreen
 
 Reset Code
-Preview 
+Preview
+
+---
+
 Lesson: CSS Layout & Fonts
-Compare Display Values  
+# Compare Display Values  
 
 The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from the HTML specifications or from the browser's user agent stylesheet.
 
@@ -1331,10 +1395,12 @@ References
 
 MDN - Display
 
-Lesson: CSS Layout & Fonts
-CSS Background Images  
+---
 
-Terminology  
+Lesson: CSS Layout & Fonts
+# CSS Background Images  
+
+## Terminology  
 
 background: shorthand for setting the individual background values in a single place in the style sheet.
 
@@ -1342,8 +1408,10 @@ background-image: sets one or several background images for an element. backgrou
 
 Examples  
 
+---
+
 Lesson: CSS Layout & Fonts
-CSS Font-families and the Browser  
+# CSS Font-families and the Browser  
 
 Terminology  
 
@@ -1377,8 +1445,11 @@ Fantasy
 body {
   font-family: Impact, Haettenschweiler;
 }
+
+---
+
 Lesson: CSS Layout & Fonts
-Font Character Rendering  
+# Font Character Rendering  
 
 Examples  
 
@@ -1408,8 +1479,11 @@ p {
   /*Selects the bold version of the current font of the current font family. Can be combined with font-style to select a bold and italic font. */
   font-weight: bold; /*normal, bold, bolder, lighter, number, initial, inherit*/
 }
+
+---
+
 Lesson: CSS Layout & Fonts
-Importing Font Files  
+# Importing Font Files  
 
 Terminology  
 
@@ -1441,8 +1515,11 @@ To use a font that is cross-browser compatible, you must define multiple source 
     url('WeUnsafeFont.svg#open_sansregular') format('svg');
   font-weight: normal;
 }
+
+---
+
 Lesson: CSS Layout and Flexbox
-Adjacent Values  
+# Adjacent Values  
 
 Terminology  
 
@@ -1492,8 +1569,10 @@ HTML Dog - CSS Properties
 
 CSS Values
 
+---
+
 Lesson: CSS Layout and Flexbox
-Determining Stacking Order with z-index  
+# Determining Stacking Order with z-index  
 
 Elements in CSS can be positioned in three dimensions. There is top to bottom, left to right and front to back. Z-index is the property that allows for positioning of an element from the front to the back. This is essentially the visual appearance of stacking elements. If x-index and y-index are the horizontal and vertical lines, then z-index is the depth of the page, essentially the 3rd dimension.
 
@@ -1558,8 +1637,10 @@ Reset Code
 Preview 
 Notice how the h1 elements moves in front of the p when its z-index is higher than p.
 
+---
+
 Lesson: CSS Layout and Flexbox
-Flexbox Multi-Column Layout  
+# Flexbox Multi-Column Layout  
 
 Getting started with flexbox is easy. Start with a container element and several nested elements.
 
@@ -1632,8 +1713,10 @@ References
 
 MDN - Using Flexible Boxes
 
+---
+
 Lesson: CSS Layout and Flexbox
-Chrome Developer Tools  
+# Chrome Developer Tools  
 
 Terminology  
 
@@ -1651,8 +1734,10 @@ References
 
 Inspect and Edit Pages and Styles - Chrome Developer Tools
 
+---
+
 Lesson: Responsive Web Design
-Responsive Media Queries  
+# Responsive Media Queries  
 
 Terminology  
 
@@ -1674,8 +1759,10 @@ MDN - Logical Operators
 
 CSS-Tricks - All Stylesheet Media Types
 
+---
+
 Lesson: Responsive Web Design
-Responsive Breakpoints  
+# Responsive Breakpoints  
 
 Terminology  
 
@@ -1692,8 +1779,10 @@ References
 
 MDN - Using Media Queries
 
+---
+
 Lesson: Creating HTML Forms and Inspecting Your Code
-Form Input Types  
+# Form Input Types  
 
 Terminology  
 
@@ -1770,8 +1859,10 @@ Reset Code
 Preview 
 References  
 
+---
+
 Lesson: Creating HTML Forms and Inspecting Your Code
-Action and Method Attributes  
+# Action and Method Attributes  
 
 Terminology  
 
@@ -1819,8 +1910,11 @@ If we only wanted to search for a name on the guest list, our form would look li
   <label for="name">Your Name</label>
   <input type="text" name="name">
 </form>
+
+---
+
 Lesson: Creating HTML Forms and Inspecting Your Code
-Creating Web Forms  
+# Creating Web Forms  
 
 Terminology  
 
@@ -1895,8 +1989,10 @@ MDN - Form Data Validation
 
 MDN - How To Structure An HTML Form
 
+---
+
 Lesson: Creating HTML Forms and Inspecting Your Code
-Inspecting & Editing The DOM with DevTools  
+# Inspecting & Editing The DOM with DevTools  
 
 Terminology  
 
@@ -1929,8 +2025,11 @@ Style modification is not saved by default. Reloading the page reverts all styli
 Computed pane
 
 Access to box model. All properties are editable.
+
+---
+
 Lesson: Version Control with Git
-Local Version Control Using Git  
+# Local Version Control Using Git  
 
 Terminology  
 
@@ -1988,8 +2087,10 @@ Git Practice
 
 Practice makes perfect! Go to try.github.io and complete the challenges 1-9.
 
+---
+
 Lesson: Version Control with Git
-Managing Remote Repositories  
+# Managing Remote Repositories  
 
 Terminology  
 
@@ -2108,8 +2209,10 @@ Git Practice
 
 Practice makes perfect! Go to try.github.io and complete challenges 10-12.
 
+---
+
 Lesson: Version Control with Git
-Git Fetch And Pull  
+# Git Fetch And Pull  
 
 Terminology  
 
@@ -2157,8 +2260,10 @@ Git Practice
 
 Go to learngitbranching.js.org and complete exercises 3 and 4 under the 'remote' tab.
 
+---
+
 Lesson: Version Control with Git
-Stashing  
+# Stashing  
 
 Terminology  
 
@@ -2231,8 +2336,11 @@ Example
 
 $ git stash drop stash@{1}
 Dropped stash@{1} (0b1478540189f30fef9804684673907c65865d8f)
+
+---
+
 Lesson: Using Git Remotely with a Team
-Cloning A Remote Repository  
+# Cloning A Remote Repository  
 
 Terminology  
 
@@ -2300,8 +2408,10 @@ Git Practice
 
 Got to learngitbranching.js.org and complete exercise 1 under the 'remote' tab.
 
+---
+
 Lesson: Using Git Remotely with a Team
-Merging Branches  
+# Merging Branches  
 
 Terminology  
 
@@ -2370,8 +2480,10 @@ Git Practice
 
 Got to learngitbranching.js.org and complete exercise 2 under 'To Origin And Beyond' found in the 'remote' tab.
 
+---
+
 Lesson: Using Git Remotely with a Team
-Git Team Best Practices  
+# Git Team Best Practices  
 
 Terminology  
 
@@ -2478,8 +2590,11 @@ We highly encourage you to put all these new skills into practice by doing the f
 Got to gitimmersion.com.
 Complete Labs 1-12, 24, and 25.
 Create a repository on GitHub named git-immersion and push your local repository to GitHub.
+
+---
+
 Lesson: Getting Started with JavaScript
-JavaScript Dependencies  
+# JavaScript Dependencies  
 
 Terminology  
 
@@ -2540,8 +2655,11 @@ Example
   <link type="text/css" rel="stylesheet" href="styles/main.css"></link>
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
+
+---
+
 Lesson: Getting Started with JavaScript
-JavaScript Data Types  
+# JavaScript Data Types  
 
 Terminology  
 
@@ -2599,8 +2717,11 @@ lines"
 // Using `\` makes it possible to include an apostrophe since the string was wrapped in single quotes.
 
 'I\m always right. I can\'t be wrong.'`
+
+---
+
 Lesson: Getting Started with JavaScript
-Using Variable  
+# Using Variable  
 
 Terminology  
 
@@ -2868,8 +2989,11 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Getting Started with JavaScript
-Truthy vs Falsey  
+# Truthy vs Falsey  
 
 Terminology  
 
@@ -3093,8 +3217,11 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Getting Started with JavaScript
-Debugging Programs  
+# Debugging Programs  
 
 Terminology  
 
@@ -3124,8 +3251,11 @@ Lastly, you can also specify a message as a string first and use string substitu
 var name = "Jack";
 
 console.log("%s and Jill went up a hill", name); // Jack and Jill went up a hill
+
+---
+
 Lesson: Getting Started with JavaScript
-Conditional Statements  
+# Conditional Statements  
 
 Conditional statements are code that executes specific blocks of code under particular circumstances. You can think of conditional statements like a series of dams on a river. The dams can control and redirect the flow of the river as needed.
 
@@ -3329,8 +3459,10 @@ Reset Code
 Run Code 
 JavaScript will evaluate the first if statement. If that's false, it will check the next else if statement. If that's false, it will continue checking else if statements until one evaluates to true. If none of them evaluate to true the else block will be executed if provided. Only one block of code in the entire statement can be executed.
 
+---
+
 Lesson: Functions and Complex Expressions
-Function Parameters  
+# Function Parameters  
 
 Parameters and Arguments  
 
@@ -3405,8 +3537,10 @@ Functions are a huge part of JavaScript. They let you encapsulate a process so y
 
 JavaScript functions are also syntactically complex. Make sure you're comfortable with writing simple functions, including those with multiple parameters, before moving on to our last lesson in this unit. We'll be looking at the "global scope" in JavaScript.
 
+---
+
 Lesson: Functions and Complex Expressions
-The this keyword  
+# The `this` keyword  
 
 Terminology  
 
@@ -3576,7 +3710,7 @@ var selfExample = {
 selfExample.methodExample();
 Above: In order to obtain the invocation context of the outer function using this, the value needs to be stored into a variable in the scope of the inner function.
 
-Study Notes  
+# Study Notes  
 
 Terminology  
 
@@ -3746,8 +3880,10 @@ var selfExample = {
 selfExample.methodExample();
 Above: In order to obtain the invocation context of the outer function using this, the value needs to be stored into a variable in the scope of the inner function.
 
+---
+
 Lesson: Functions and Complex Expressions
-Logical Operators  
+# Logical Operators  
 
 Logical operators are used to create complex logical expressions. Logical expressions in english are made up of the words and, or, and not. For example, consider this statement that describes the circumstances under which you will go out to eat:
 
@@ -3904,8 +4040,10 @@ true && true
 true
 As such, our program will determine that we have a latte.
 
+---
+
 Lesson: Creating Arrays and Loops
-Arrays  
+# Arrays  
 
 Terminology  
 
@@ -3957,8 +4095,10 @@ Learn about arrays
 Profit!
 Because the array is zero indexed we can see that item #1 (the second in the list) in our list still needs additional thought.
 
+---
+
 Lesson: Creating Arrays and Loops
-Accessing Elements of an Array  
+# Accessing Elements of an Array  
 
 Terminology  
 
@@ -4026,8 +4166,11 @@ characters[5] = "Black Widow";
 // output the array to the console.
 // note that indexes 1 to 4 are "undefined"
 console.log(characters);
+
+---
+
 Lesson: Creating Arrays and Loops
-Control Flow  
+# Control Flow  
 
 Programs don't usually execute top to bottom in a straight line. Instead, a program may execute a section of code many times over or only run some code under certain circumstances.
 
@@ -4049,8 +4192,10 @@ Examples
 
 ???
 
+---
+
 Lesson: Creating Arrays and Loops
-For Loops  
+# For Loops  
 
 Initialization expression  
 
@@ -4202,8 +4347,10 @@ Reset Code
 Run Code 
 Running this gives us the desired output!
 
+---
+
 Lesson: Using JavaScript to Modify HTML
-Query Selectors  
+# Query Selectors  
 
 Terminology  
 
@@ -4304,8 +4451,11 @@ for (var i = 0; i < children.length; i++) {
   console.log(children[i].textContent);
 }
 // Returns the content of all 'li' items from 'favorite-foods'
+
+---
+
 Lesson: Using JavaScript to Modify HTML
-Creating, Updating, and Removing DOM Nodes  
+# Creating, Updating, and Removing DOM Nodes  
 
 Terminology  
 
@@ -4424,8 +4574,11 @@ var element = document.querySelector('.favorite-sodas');
 element.innerHTML = '<li>Pepsi</li><li><b>Sprite</b></li>';
 
 console.log(element.children.length); //was 3 before the change, now 2. Adds bold style to 'Sprite.'
+
+---
+
 Lesson: Using JavaScript to Modify HTML
-Select Event Add Listener  
+# Select Event Add Listener  
 
 Terminology  
 
@@ -4464,8 +4617,10 @@ MDN - JavaScript Event
 
 MDN - JavaScript Event Reference - list of events that can be sent
 
+---
+
 Lesson: Using JavaScript to Modify HTML
-Run Code After a Delay or Periodically  
+# Run Code After a Delay or Periodically  
 
 Examples  
 
@@ -4491,8 +4646,10 @@ This example changes the color of a box every half second. You can pause on a co
 
 {==see resources/color_clock==}
 
+---
+
 Lesson: Building Objects and Maintaining Proper Scope
-Math and Date  
+# Math and Date  
 
 Terminology  
 
@@ -4586,6 +4743,9 @@ References
 
 The Date Object- MDN
 The Math Object- MDN
+
+---
+
 Lesson: Building Objects and Maintaining Proper Scope
 Arithmetic Operators in JavaScript  
 
@@ -4931,8 +5091,10 @@ References
 
 MDN - Expressions and operators
 
+---
+
 Lesson: Building Objects and Maintaining Proper Scope
-Terminology  
+## Terminology  
 
 Window Object: The window object represents a window containing a DOM document; the window.document property points to the DOM document loaded in that window. global scope: Available throughout the entire application. IIFE: Immediately Invoked Function expression.
 
@@ -4954,10 +5116,12 @@ Wikipedia - IIFE
 
 Isolate Variables in JS
 
-Lesson: Building Objects and Maintaining Proper Scope
-Hoisting  
+---
 
-Terminology  
+Lesson: Building Objects and Maintaining Proper Scope
+# Hoisting  
+
+## Terminology  
 
 Hoisting: A JavaScript declaration is lifted to the top of its scope.
 
@@ -5076,8 +5240,11 @@ function hoistedFunction(){
 hoistedFunction()
 // Logs: I take precedence over functions.
 // Logs: error.
+
+---
+
 Lesson: Building Objects and Maintaining Proper Scope
-Study Notes  
+# Study Notes  
 
 Terminology  
 
@@ -5149,8 +5316,10 @@ Using square bracket notation, looks like:
 var hotel['name'] = 'Marriott'
 You can only update a method using the dot notation.
 
+---
+
 Lesson: Algorithms and Data Modeling
-Algorithms  
+# Algorithms  
 
 Terminology  
 
@@ -5308,8 +5477,11 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Algorithms and Data Modeling
-Objects Containing Other Types  
+# Objects Containing Other Types  
 
 Terminology  
 
@@ -5360,8 +5532,11 @@ Combination
 Combine dot notation and bracket notation to access a property.
 
 console.log( personObject.appearance.hair['color'] ); // brown
+
+---
+
 Lesson: Working with Remote Data
-Define Event Loop  
+# Define Event Loop  
 
 Terminology  
 
@@ -5401,8 +5576,10 @@ References
 
 MDN - JavaScript Event Loop
 
+---
+
 Lesson: Working with Remote Data
-Promises and Callbacks  
+# Promises and Callbacks  
 
 Terminology  
 
@@ -5510,8 +5687,11 @@ Asynchrony - Wikipedia
 Synchronization - Wikipedia
 Futures and Promises - Wikipedia
 First Class Citizen - Wikipedia
+
+---
+
 Lesson: Working with Remote Data
-FETCH: GET & POST  
+# FETCH: GET & POST  
 
 Terminology  
 
@@ -5583,8 +5763,11 @@ fetch(url, {
   .catch(function (error) {  
     console.log('Request failed', error);  
   });
+  
+---
+
 Lesson: Working with Remote Data (Part 2)
-Cookies & Tokens  
+# Cookies & Tokens  
 
 Terminology  
 
@@ -5634,8 +5817,11 @@ Client-side code needed for implementation, such as JSON Web Token.1
 Must be stored locally (Not stored in the server, stateless) using either localStorage or sessionStorage.
 Lesson Footnotes
 1: JSON Web Token
+
+---
+
 Lesson: Working with Remote Data (Part 2)
-Understanding CORS  
+# Understanding CORS  
 
 Terminology  
 
