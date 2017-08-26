@@ -1,87 +1,72 @@
-Introduction
+# Introduction
+
 HTML is a simple language to understand and a difficult language to master. HTML is powerful because it is simple and because it allows us to tag content and data with semantic meaning. Over time, you'll become acquainted with many HTML tags of all types and your master of semantics will grow accordingly.
 
 This lesson covers the basic concepts and many of the most common tags you'll encounter on a daily basis.
 
-Learning Some Common HTML Tags  
+---
+
+# Learning Some Common HTML Tags  
 
 HTML includes a great number of tags. Each with specific applications including word processing, tables, and media. As you read about each type of tag, think about where you come across them on a daily basis and how you would use them when authoring HTML.
 
-This lesson contains a lot of information. No one is expecting you to memorize all of these tags overnight. However, you should study them diligently and commit to memory as many as possible.
+This lesson contains **a lot** of information. No one is expecting you to memorize all of these tags overnight. However, you should study them diligently and commit to memory as many as possible.
 
-Word Processing Tags  
+## Word Processing Tags  
 
-Word processing tags are used to display and format text. Think of the format bars for a word processing program (Word, Google Docs, etc).
+`Word processing tags` are used to display and format text. Think of the format bars for a word processing program (Word, Google Docs, etc).
 
-Element	Description
-h1- h6	Header tags: use these tags when authoring headers, with h1 being the largest and h6 the smallest.
-p	Paragraph: use this tag when authoring a paragraph.
-br	Break: Use this tag to create a line break within a paragraph.
-strong (and b)	Use this tag to give importance to text (bold).
-em (and i)	Emphasize: use this tag to render text as emphasized (italics).
-hr	Horizontal rule: use this tag to create a horizontal line to divide content.
+| Element	| Description |
+| --- | --- |
+| h1- h6 |	Header tags: use these tags when authoring headers, with h1 being the largest and h6 the smallest. |
+| p |	Paragraph: use this tag when authoring a paragraph. |
+| br |	Break: Use this tag to create a line break within a paragraph. |
+| strong (and b) |	Use this tag to give importance to text (bold). |
+| em (and i) |	Emphasize: use this tag to render text as emphasized (italics). |
+| hr |	Horizontal rule: use this tag to create a horizontal line to divide content. |
+
 Take a look at the example below, paying close attention to how the browser renders each tag.
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <h1>H1 heading</h1>
-2
 <h2>H2 heading</h2>
-3
 <h3>H3 heading</h3>
-4
 <h4>H4 heading</h4>
-5
 <h5>H5 heading</h5>
-6
 <h6>H6 heading</h6>
-7
 <br>
-8
 <hr>
-9
 <p>I'm some text rendered using the 'p' tag.</p>
-10
 <p>Each example is separated by a 'br'</p>
-11
 <br>
-12
 <b>I'm some bolded text using the 'b' tag.</b>
-13
 <br>
-14
 <i>I'm some italicized text using the 'i' tag.</i>
-15
-​
- 
+```
 
-Fullscreen
+## HTML5 Semantic Tags  
 
-Reset Code
-Preview 
-HTML5 Semantic Tags  
+The most recent version of HTML (v.5) has introduced a number of `semantic tags`, which help better define parts of the web page by improving the structure of the document, as well as providing contextually rich information to page readers, robots, and search engines.
 
-The most recent version of HTML (v.5) has introduced a number of semantic tags, which help better define parts of the web page by improving the structure of the document, as well as providing contextually rich information to page readers, robots, and search engines.
+| Element |	Description |
+| --- | --- |
+| article |	Self-contained content, e.g. blog posts, news articles, post comments. |
+| aside |	Content that is related, but secondary to page content. |
+| details |	Additional details that the user can view or hide, e.g. summaries, copyrights, bylines |
+| summary |	A visible heading for a details element. |
+| figure |	Self-contained visual content, e.g. illustrations, diagrams, photos, code listings, etc. |
+| figcaption |	The caption for a figure element. |
+| footer |	Footer for either document or section. Can have multiple per page. |
+| header |	Header for either document or section. Can have multiple per page. |
+| main |	Main content of a document. |
+| mark |	Marked/highlighted text. |
+| nav |	Navigation links. |
+| section |	Section of a document, e.g. chapters, headers, footers |
+| time |	Defines a date/time that is human-readable. |
 
-Element	Description
-article	Self-contained content, e.g. blog posts, news articles, post comments.
-aside	Content that is related, but secondary to page content.
-details	Additional details that the user can view or hide, e.g. summaries, copyrights, bylines
-summary	A visible heading for a details element.
-figure	Self-contained visual content, e.g. illustrations, diagrams, photos, code listings, etc.
-figcaption	The caption for a figure element.
-footer	Footer for either document or section. Can have multiple per page.
-header	Header for either document or section. Can have multiple per page.
-main	Main content of a document.
-mark	Marked/highlighted text.
-nav	Navigation links.
-section	Section of a document, e.g. chapters, headers, footers
-time	Defines a date/time that is human-readable.
 All modern browsers will recognize HTML5 Semantic Tags. The following code sample demonstrates the use of some of these tags.
 
+```html
 <!doctype html>
 <html>
 <head>
@@ -143,12 +128,15 @@ All modern browsers will recognize HTML5 Semantic Tags. The following code sampl
     </footer>
 </body>
 </html>
-List Tags  
+```
 
-HTML includes two types of lists. The ul (unordered list) is used to create bulleted lists. The ol (ordered list) tag is used to create numbered lists. Both are used as parents for li tags.
+## List Tags  
 
-Example
+HTML includes two types of lists. The `ul` (unordered list) is used to create bulleted lists. The `ol` (ordered list) tag is used to create numbered lists. Both are used as parents for `li` tags.
 
+### Example
+
+```html
 <ul>
   <li>HTML</li>
   <li>CSS</li>
@@ -160,256 +148,220 @@ Example
   <li>CSS</li>
   <li>JavaScript</li>
 </ol>
-These two examples would render as follows. Notice that the ul tag produces bullets and the ol tag produces a numbered list:
+```
 
-Editor
-Browser View
-index.html
-index.html
+These two examples would render as follows. Notice that the `ul` tag produces bullets and the `ol` tag produces a numbered list:
 
-1
+```html
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link rel="stylesheet" type="text/css" href="styles.css">
-5
   </head>
-6
   <body>
-7
     <ul>
-8
       <li>HTML</li>
-9
       <li>CSS</li>
-10
       <li>JavaScript</li>
-11
     </ul>
-12
-​
-13
+
     <ol>
-14
       <li>HTML</li>
-15
       <li>CSS</li>
-16
       <li>JavaScript</li>
-17
     </ol>
-18
   </body>
-19
 </html>
- 
+```
 
-Fullscreen
+## Blockquotes  
 
-Reset Code
-Preview 
-Blockquotes  
+We use a `blockquote` tag when we need to quote content from another source.
 
-We use a blockquote tag when we need to quote content from another source.
+### Example
 
-Example
-
+```html
 <blockquote>
   Nature shows us only the tail of the lion. But there is no doubt in my mind that the lion belongs to it even if he cannot reveal himself to the eye all at once because of his huge dimension.
 </blockquote>
+```
+
 The following example uses a small amount of CSS to make the block quote more apparent. Typically, block quotes have very little or no default styling provided by the browser. In this case, we've given the block quote a gray background so that it is easier to see.
 
-Editor
-Browser View
-index.html
-styles.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link rel="stylesheet" type="text/css" href="styles.css">
-5
   </head>
-6
   <body>
-7
     <p>Albert Einstein said the following about scope:</p>
-8
     <blockquote>
-9
       Nature shows us only the tail of the lion. But there is no doubt in my mind that the lion belongs with it even if he cannot reveal himself to the eye all at once because of his huge dimension.
-10
     </blockquote>
-11
     <p>That's a great quote!</p>
-12
   </body>
-13
 </html>
- 
+```
 
-Fullscreen
+```css
+/* styles.css */
+blockquote{
+  padding: 10px;
+  background: #eee;
+}
+```
 
-Reset Code
-Preview 
-Form Tags  
+## Form Tags  
 
 We come across forms every day when we log into our email accounts, check our bank accounts, or create a user profile. Forms consist of several types of labels, inputs and containing elements. Forms make extensive use of attributes that dictate how these elements behave and what data they can receive.
 
-Form: An element that contains inputs controls to submit data to a server.
+**Form**: An element that contains `inputs controls` to submit data to a server.
 
-Fieldset: An element used to group controls and elements within a form.
+**Fieldset**: An element used to group controls and elements within a form.
 
-Legend: Adds a caption to a parent fieldset element.
+**Legend**: Adds a caption to a parent `fieldset` element.
 
-Label: An element that provides a caption for an input field. Labels provide improved user experience by toggling input when a user clicks on the label.
+**Label**: An element that provides a caption for an input field. Labels provide improved user experience by toggling input when a user clicks on the label.
 
-Input (controls): An element that declares an input control responsible for data collection. Input types are declared as attributes with the keyword, type. In the following example, div tags are used to group some of the elements together. This can help with styling and is generally a good practice for managing form inputs.
+**Input (controls)**: An element that declares an `input control` responsible for data collection. Input types are declared as attributes with the keyword, `type`. In the following example, `div` tags are used to group some of the elements together. This can help with styling and is generally a good practice for managing form inputs.
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <form action="index.php" method="post">
-2
   <fieldset>
-3
     <legend>Profile Information:</legend>
-4
     <div>
-5
         <label for="first_name">First Name:</label>
-6
         <input type="text" id="first_name" name="first_name">
-7
     </div>
-8
     <br>
-9
     <div>
-10
         <label for="last_name">Last Name:</label>
-11
         <input type="text" id="last_name" name="last_name">
-12
     </div>
-13
     <br>
-14
     <div>
-15
         <label for="email">Email Address:</label>
-16
         <input type="email" id="email" name="email">
-17
     </div>
-18
     <br>
-19
     <input type="submit" value="Submit">
-20
   </fieldset>
-21
 </form>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview 
 This next example demonstrates how form data can be captured with JavaScript and redirected for other purposes. It's not necessary to understand everything that is occurring in this example, but it's fun to see an example of what can be done with forms. For now, just focus on getting used to the form elements themselves. We will cover forms extensively in a later lesson.
 
 Enter your name in the field and press "Print My Name".
 
-Editor
-Browser View
-index.html
-style.css
-script.js
-
-1
+ ```html
+<!-- index.html -->
 <!DOCTYPE html>
-2
 <html>
-3
     <head>
-4
         <meta charset="utf-8">
-5
         <title>Printing your name</title>
-6
         <link rel="stylesheet" href="style.css">
-7
     </head>
-8
     <body>
-9
     <form id="form">
-10
         <div>
-11
             <label for="name">Enter Your Name:</label>
-12
             <input type="text" name="name" id="name">
-13
         </div>
-14
         <div>
-15
             <input type="submit" id="submit_button" value="Print My Name">
-16
         </div>
-17
     </form>
-18
     <script src="script.js"></script>  
-19
 </body>
-20
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body{
+    background: #cdd;
+    margin-top: 20px;
+}
+form{
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 5px 8px rgba( 0, 0, 0, 0.3 );
+}
+label, input{
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+}
+input{
+    padding: 10px;
+}
+#submit_button{
+    margin-top: 10px;
+    background-color: orange;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+}
+#submit_button:hover{
+    background: red;
+}
+```
 
-Reset Code
-Preview 
-Media Tags  
+```js
+// script.js
+var btn = document.getElementById( "submit_button" );
+
+btn.addEventListener( "click", function( e ){
+    e.preventDefault();
+    alert("Hi there " + document.getElementById( "name" ).value );
+});
+```
+
+## Media Tags  
 
 You also come across media tags on almost every page you visit. These tags are used to display audio and visual content embedded in the HTML.
 
-Image Elements  
+### Image Elements  
 
 Image elements are used to represent images in a document. Images come in several formats including .jpeg, .png, .gif, and .svg.
 
+```html
 <img src="https://unsplash.it/200" alt="the ocean"/>
+```
+
 The image tag requires two attributes:
 
-src specifies the relative or absolute path to the source image file
-alt specifies the text that will display should the image not load
-The Figure Element  
+* `src` specifies the relative or absolute path to the source image file
+
+* `alt` specifies the text that will display should the image not load
+
+### The Figure Element  
 
 Figure elements define self-contained content visuals: such as photos, illustrations, code listing, etc. You should use this element if your media (image, audio, video, etc.) has a caption.
 
+```html
 <figure>
     <img src="https://unsplash.it/200" alt="the ocean">
     <figcaption>I'm a caption</figcaption>
 </figure>
-The Canvas Element  
+```
+
+### The Canvas Element  
 
 The canvas element is a powerful tag accompanied by an equally powerful JavaScript drawing API. This gives us the ability to generate images on the fly with code. The canvas element is a deep topic that we probably won't cover in detail in this class.
 
-SVG Elements  
+### SVG Elements  
 
 SVGs are an interesting image format. They can be referenced as the source for image elements, but can also be embedded directly into the HTML document. SVGs use a syntax and structure similar to HTML because they are both based on XML. The following example code can be dropped into any modern browser and it will draw a pink ellipse with a one-pixel orange stroke.
 
+```html
 <svg height="140" width="500">
     <style>
         ellipse{
@@ -420,113 +372,109 @@ SVGs are an interesting image format. They can be referenced as the source for i
     </style>
     <ellipse cx="200" cy="80" rx="100" ry="50" />  
 </svg>
+```
+
 SVG is a deep subject with lots of intricate details. Many SVG attributes are used to specify the details of what is being drawn. Digging into those details is beyond the scope of this article. This section is included to build your awareness of this powerful image format.
 
-The Audio Element  
+### The Audio Element  
 
-Audio elements are used to define audio streams or other audio content. This element is one of only a few that allow for single word attributes. In the opening audio tag, you will see the word "controls". This is really shorthand for the attribute controls="controls". Some media tags allow for this shorthand because they offer several val=val attributes and the shorthand syntax keeps things neat.
+Audio elements are used to define audio streams or other audio content. This element is one of only a few that allow for single word attributes. In the opening audio tag, you will see the word "controls". This is really shorthand for the attribute `controls="controls"`. Some media tags allow for this shorthand because they offer several `val=val` attributes and the shorthand syntax keeps things neat.
 
+```html
 <audio controls src="http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg">
     Your browser does not support the <code>audio</code> element.
 </audio>
+```
+
 Audio elements require one attribute:
 
-src specifies the relative or absolute path to the source audio file
-The Video Element  
+* `src` specifies the relative or absolute path to the source audio file
+
+### The Video Element  
 
 Video elements specify a video stream or video clip. In a lot of ways, it's similar to the audio tag.
 
+```html
 <video controls poster="https://archive.org/download/WebmVp8Vorbis/webmvp8.gif" >
     <source src="https://archive.org/download/WebmVp8Vorbis/webmvp8.webm" type="video/webm">
     Your browser doesn't support HTML5 `video` tag.
 </video>
-Video elements require two attributes:
+```
 
-src specifies the relative or absolute path to the source video file
-poster specifies an image file that should display while the video is buffering (this isn't really required, but is highly recommended)
+### Video elements require two attributes:
+
+* `src` specifies the relative or absolute path to the source video file
+
+* `poster` specifies an image file that should display while the video is buffering (this isn't really required, but is highly recommended)
+
 Video elements also have access to numerous other attributes for video control, including:
 
-autoplay
-buffer
-height
-etc. 1
-Table Tags  
+* autoplay
 
-Table tags are used to display tabular data (like a spreadsheet). The table element also has access to certain attributes for rendering, such as color, align, border, etc. 2
+* buffer
 
-Table tags and their use:
+* height
 
-table: table element.
-th: table head.
-tfoot: table footer.
-tbody: table body.
-tr: table row.
-td: table cell.
-Example
+* etc. 1
 
-Editor
-Browser View
-index.html
+## Table Tags  
 
-1
+Table tags are used to display tabular data (like a spreadsheet). The `table` element also has access to certain attributes for rendering, such as color, align, border, etc. 2
+
+**Table tags and their use:**
+
+* `table`: table element.
+
+* `th`: table head.
+
+* `tfoot`: table footer.
+
+* `tbody`: table body.
+
+* `tr`: table row.
+
+* `td`: table cell.
+
+### Example
+
+```html
 <table border="1">
-2
   <thead>
-3
     <tr>
-4
       <th>Header content 1</th>
-5
       <th>Header content 2</th>
-6
     </tr>
-7
   </thead>
-8
   <tfoot>
-9
     <tr>
-10
       <td>Footer content 1</td>
-11
       <td>Footer content 2</td>
-12
     </tr>
-13
   </tfoot>
-14
   <tbody>
-15
     <tr>
-16
       <td>Body content 1</td>
-17
       <td>Body content 2</td>
-18
     </tr>
-19
   </tbody>
-20
 </table>
- 
+```
 
-Fullscreen
+## Conclusion  
 
-Reset Code
-Preview 
-Conclusion  
+Tags represent one of the basic building blocks of HTML syntax. Most tags come in pairs, in the form of `tag pairs`. When coupled with content, the end result is an `element`. Without tags, it would be impossible to author valid HTML content. The browser would not be able to distinguish and render different types of content.
 
-Tags represent one of the basic building blocks of HTML syntax. Most tags come in pairs, in the form of tag pairs. When coupled with content, the end result is an element. Without tags, it would be impossible to author valid HTML content. The browser would not be able to distinguish and render different types of content.
+### References  
 
-References  
+#### Lesson Footnotes
 
-Lesson Footnotes
-1: MDN - video tag
-2: MDN - table tag
- Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Understanding Element Relationships  
+* 1: [MDN - video tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video)
+
+* 2: [MDN - table tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table)
+
+---
+
+# Understanding Element Relationships  
 
 An HTML document is a complex arrangement of elements. These elements are organized in a hierarchy determined by element containment. This is better known as nesting and it is a "tree-like" structure consisting of ancestor/parent/child/sibling relationships.
 
