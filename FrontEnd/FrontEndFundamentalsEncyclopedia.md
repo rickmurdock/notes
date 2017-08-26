@@ -525,7 +525,7 @@ Notice the sentence 'Lisa Bonet ate no basil' was not printed and the script sto
 
 # Tag Pairs  
 
-Terminology  
+## Terminology  
 
 Tag: Elements have a starting tag and an ending tags.
 
@@ -535,7 +535,7 @@ Content: Items between the tags; in a paragraph element, the text itself (and an
 
 Void Element: Elements which do not have content, and therefor should not have an ending tag.
 
-Examples  
+## Examples  
 
 An element can optionally contain content. Below, the "hello world" is the content:
 
@@ -562,7 +562,8 @@ Void Tag Examples:
   <br>
   <hr>
   <img src="https://media.giphy.com/media/10OrWqspeNH7vG/giphy.gif">
-References  
+
+## References  
 
 MDN - Empty Elements
 MDN - HTML Elements Reference
@@ -573,17 +574,19 @@ MDN - HTML Elements Reference
 
 # Attributes  
 
-Terminology  
+## Terminology  
 
 attribute: an HTML element modifier that changes default functionality or adds functionality to an element. It consists of a key and a value, called key-value pairs.
 
 Key-value pairs: a set of two linked data objects.
 Key: the name of the attribute, such as src in an img element.
 Value: the value of the attribute, such as "/images/icon.png" in the src of an img.
-Syntax  
+
+## Syntax  
 
 <tag-name key="value"></tag-name>
-Attribute Rules  
+
+## Attribute Rules  
 
 Every attribute has one key (attribute name).
 Every attribute has one value (attribute value).
@@ -591,7 +594,8 @@ class attributes may contain more than one value.
 Keys are not wrapped in quotes.
 Values are wrapped in quotes.
 You should not duplicate a key inside an element.
-Attribute Types  
+
+## Attribute Types  
 
 There are three types of attributes: element specific, global and event handler content attributes.
 
@@ -602,7 +606,8 @@ Global attributes: Attributes that are common to all HTML elements, but they may
 Event Handler Content Attributes: Script invoking attributes triggered by a certain 'event'. For a complete list, visit Quackit.
 
 flag attributes: an attribute with a key, but no value. For example: required, checked or hidden. You can use this when requiring or preselecting a value in a form.
-Examples  
+
+## Examples  
 
 <!--Paragraph element containing a nested anchor tag.-->
 <p>Click <a href="www.theironyard.com">here</a> to visit The Iron Yard's homepage.</p>
@@ -633,20 +638,22 @@ In an anchor tag, an <href> may contain either a URL or a URL fragment. A URL fr
 
 # Classifying Related Elements  
 
-Terminology  
+## Terminology  
 
 Id - a unique identifier attribute for an HTML element.
 Class - a re-usable classification for an HTML element.
-Examples  
 
-IDs  
+## Examples  
+
+### IDs  
 
 Often, you may have multiple elements but want to add significance to a particular element. For example, if you have 4 images, but want to have the main image appear larger than the others, you could add an id attribute giving that image an identifier. Each id should be unique on a page.
 
 <img id="main-image" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img src="https://media3.giphy.com/media/MDJ9IbxxvDUQM/200.gif#">
 <img src="https://media4.giphy.com/media/o0vwzuFwCGAFO/200w.gif">
-Classes  
+
+### Classes  
 
 Classes take the idea of an id, where you want to be able to do "something" with an element, but allow you to reuse it multiple times.
 
@@ -663,7 +670,7 @@ Let's say you want to be able to easily make a thumbnail out of an image (give i
 Lesson: HTML Structure and Layout
 # Common HTML Tags  
 
-Terminology  
+## Terminology  
 
 Tags: They indicate a unit of content, such as <title>MovieName</title>. Tags wrap content. In the prior example, the content for the title tag is "MovieName".
 
@@ -682,9 +689,10 @@ Tags: form, fieldset, label, input, select, button
 Media Tags: Tags used to display audio and visual content embedded in the HTML.
 
 Tags: img, canvas, figure, audio, video.
-Examples  
 
-Example Word Processing Tags  
+## Examples  
+
+### Example Word Processing Tags  
 
 Editor
 Browser View
@@ -712,7 +720,8 @@ Fullscreen
 
 Reset Code
 Preview 
-Example HTML Table  
+
+### Example HTML Table  
 
 Editor
 Browser View
@@ -778,7 +787,8 @@ Fullscreen
 
 Reset Code
 Preview 
-Example HTML Form  
+
+### Example HTML Form  
 
 Editor
 Browser View
@@ -835,7 +845,8 @@ Fullscreen
 
 Reset Code
 Preview 
-Example Media Tags  
+
+### Example Media Tags  
 
 Editor
 Browser View
@@ -885,7 +896,8 @@ Fullscreen
 
 Reset Code
 Preview 
-References  
+
+## References  
 
 Quackit - HTML tags
 
@@ -896,13 +908,14 @@ MDN - HTML element reference
 Lesson: HTML Structure and Layout
 # Element Relationships  
 
-Terminology  
+## Terminology  
 
 Ancestor: An ancestor is an element in the lineage starting from the element's parent, and continuing to move up that parent's parent, and so forth until the html is reached
 Parent: An element containing child elements.
 Child: If an element is directly nested inside the content of an element, the element is a child.
 Sibling: If two elements have the same parent, they are siblings.
-Examples  
+
+## Examples  
 
 The HTML tag has two children, the head and body tag.
 
@@ -940,14 +953,15 @@ Below, from the main-image perspective, the other elements are either a sibling,
 Lesson: HTML Structure and Layout
 # Creating Semantic HTML  
 
-Terminology  
+## Terminology  
 
 Inside-out: Developing the html structure starting at the most important and moving higher in the hierarchy from there.
 Outside-in: Developing the html structure from the body and developing the semantic html as children.
 Wireframe: Developing a visual guide that depicts the general layout and structure of a website.
-Examples  
 
-Example 1  
+## Examples  
+
+### Example 1  
 
 Here is a simple markup for an h2, p and a sidebar div
 
@@ -965,7 +979,8 @@ Below we take the previous markup and we create something more semantic. Notice 
     Sidebar!
   </aside>
 </section>
-Example 2  
+
+### Example 2  
 
 Editor
 Browser View
@@ -1056,7 +1071,7 @@ Preview
 Lesson: Applying Style with CSS
 # Basic Selectors  
 
-Terminology  
+## Terminology  
 
 CSS - A simple declarative language used to define the visual styling of HTML.
 
@@ -1070,7 +1085,7 @@ Property - The visual attribute being styled by a declaration.
 
 Value - The specific quantity or quality assigned to a property.
 
-Examples  
+## Examples  
 
 
 <!-- code sample -->
@@ -1079,7 +1094,7 @@ Examples
 <p class="colored slanted">Second paragraph with class</p>
 <p>Paragraph with no class</p>
 
-Tag Selector  
+### Tag Selector  
 
 
 /* styles all paragraphs */
@@ -1088,7 +1103,7 @@ p{
     padding: 20px;
 }
 
-Class Selectors  
+### Class Selectors  
 
 
 /* will style the second and third paragraphs */
@@ -1100,7 +1115,7 @@ Class Selectors
     font-style: italic;
 }
 
-Id Selectors  
+### Id Selectors  
 
 
 /* will style the first paragraph */
@@ -1118,7 +1133,7 @@ Id Selectors
 Lesson: Applying Style with CSS
 # Applying CSS Styling  
 
-Terminology  
+## Terminology  
 
 Selector - A keyword which references an HTML element.
 
@@ -1130,7 +1145,7 @@ Property - The first part of a declaration - a key which accepts a value or mult
 
 Value - The second part of a declaration - a single value or set of adjacent values can be applied to a property and thus describe the visual state of a specific aspect of an element.
 
-Examples  
+## Examples  
 
 Editor
 Browser View
@@ -1172,7 +1187,8 @@ Fullscreen
 
 Reset Code
 Preview 
-References  
+
+## References  
 
 W3 Brief History of CSS
 
@@ -1187,13 +1203,13 @@ HTML Dog - CSS Properties
 Lesson: Applying Style with CSS
 # Declaration Precedence  
 
-Terminology  
+## Terminology  
 
 Cascading - CSS is interpreted from top to bottom.
 
 Precedence - Due to CSS's cascading nature, styles at the bottom overwrite styles which are applied using selectors with the same levels of specificity above them.
 
-Examples  
+## Examples  
 
 ```html hostable group:cssauthoringstudy_notes name:index.html
 
@@ -1211,7 +1227,7 @@ background-color: red; }
 
 ```
 
-References  
+## References  
 
 CSS Cascade
 
@@ -1222,10 +1238,11 @@ CSS Tricks - Precedence
 Lesson: Applying Style with CSS
 # Style Inheritance  
 
-Terminology  
+## Terminology  
 
 Inheritance: Inheritance in CSS is the mechanism through which certain properties are passed on from a parent element down to its children.
-Examples  
+
+## Examples  
 
 Editor
 Browser View
@@ -1268,7 +1285,8 @@ Fullscreen
 
 Reset Code
 Preview 
-References  
+
+## References  
 
 W3 Inheritance and Cascade
 
@@ -1276,26 +1294,24 @@ W3 Property Table (Reference whether a property is inherited or not)
 
 ---
 
-Lesson: Applying Style with CSS
+[Applying Style with CSS](ApplyingStyleWithCSS.md)
+
 # Selector Specificity  
 
-Terminology  
+## Terminology  
 
-Specificity: The means by which browsers decide which CSS property values are the most relevant to an element and, therefore, will be applied. Specificity is based on the matching rules which are composed of different sorts of CSS selectors.
-Examples  
+* **Specificity**: The means by which browsers decide which CSS property values are the most relevant to an element and, therefore, will be applied. Specificity is based on the matching rules which are composed of different sorts of CSS selectors.
 
-Attached
+## References  
 
-References  
-
-MDN Specificity
+[MDN Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity)
 
 ---
 
 Lesson: CSS Layout & Fonts
 # Padding, Margin and Border  
 
-Terminology  
+## Terminology  
 
 Padding: allows you to specify how much space should be between the content of an element and it's border
 
@@ -1303,9 +1319,9 @@ Margin: this property sets the gap between elements
 
 Border: allows you to specify the width, style, and color of a border for an element.
 
-Examples  
+## Examples  
 
-Padding  
+### Padding  
 
 In the example below, the red box has no padding, but the blue box as a padding of 20px. Notice the difference:
 
@@ -1340,7 +1356,8 @@ Fullscreen
 
 Reset Code
 Preview 
-Margin  
+
+### Margin  
 
 Here we have to take the same example from above and set the padding for both boxes equal to 0. In this case, the red box now has a margin set for 40px. Whereas the blue box has a margin of 0px. Notice the difference:
 
@@ -1375,7 +1392,8 @@ Fullscreen
 
 Reset Code
 Preview 
-Border  
+
+### Border  
 
 In this example, you can see the different ways that you can create borders around your elements. Take a look at the CSS to see how it differs from box to box.
 
@@ -1531,21 +1549,19 @@ Lesson: CSS Layout & Fonts
 background: shorthand for setting the individual background values in a single place in the style sheet.
 
 background-image: sets one or several background images for an element. background-position: sets the initial position for each defined background image, relative to the background position layer defined by background-origin. background-size: specifies the size of the background images. background-repeat: defines how background images are repeated; either across a y-axis, across an x-axis, across both, or not repeated at all. background-origin: determines the position of the origin of an image. background-clip: specifies whether an element's background extends underneath its border. background-attachment: determines whether the background image's position is fixed within the viewport or scrolls along with its containing block. background-color: sets the background color of an element, either through a color value or the keyword transparent.
-
-Examples  
-
+  
 ---
 
 Lesson: CSS Layout & Fonts
 # CSS Font-families and the Browser  
 
-Terminology  
+## Terminology  
 
 web safe - Web safe fonts are fonts that are already installed on most computers. These fonts don't need to be downloaded by the user to appear in the browser.
 
 font stacking - Refers to listing several fonts to be displayed in the event that the first font is not available.
 
-Examples  
+## Examples  
 
 These examples include typefaces that are installed on most computers. They are group by type.
 
@@ -1577,8 +1593,7 @@ body {
 Lesson: CSS Layout & Fonts
 # Font Character Rendering  
 
-Examples  
-
+## Examples  
 
 <div>
     <h1>Page Title</h1>
@@ -1611,11 +1626,11 @@ p {
 Lesson: CSS Layout & Fonts
 # Importing Font Files  
 
-Terminology  
+## Terminology  
 
 @font-face - A CSS directive that will import font information from a source file for use on a website.
 
-Examples  
+## Examples  
 
 The fontface rule requires three things: A declaration of the font-family name, the location of the source font file (local or remote), and the weight of the font.
 
@@ -1647,13 +1662,13 @@ To use a font that is cross-browser compatible, you must define multiple source 
 Lesson: CSS Layout and Flexbox
 # Adjacent Values  
 
-Terminology  
+## Terminology  
 
 Value - The second part of a declaration - a single value or set of adjacent values can be applied to a property and thus describe the visual state of a specific aspect of an element.
 
 Adjacent Values - Shorthand properties allow for multiple values or "adjacent values".
 
-Examples  
+## Examples  
 
 
 1
@@ -1687,7 +1702,8 @@ Fullscreen
 
 Reset Code
 Run Code 
-References  
+
+## References  
 
 MDN CSS Shorthand Properties
 
@@ -1702,12 +1718,12 @@ Lesson: CSS Layout and Flexbox
 
 Elements in CSS can be positioned in three dimensions. There is top to bottom, left to right and front to back. Z-index is the property that allows for positioning of an element from the front to the back. This is essentially the visual appearance of stacking elements. If x-index and y-index are the horizontal and vertical lines, then z-index is the depth of the page, essentially the 3rd dimension.
 
-Terminology  
+## Terminology  
 
 z-index: determines the order of positioned elements that stack on top of each other from front to back
 Remember! z-index only works on positioned elements (position:absolute, position:relative, or position:fixed).
 
-Syntax  
+## Syntax  
 
 auto: sets the stack level for z the same as the parent element
 
@@ -1718,7 +1734,8 @@ z-index: 0;
 z-index: 5;
 z-index: 99;
 z-index: -1;
-Examples  
+
+## Examples  
 
 The example below shows two elements, an h1 and p element. They both currently have a z-index of 0. Go to the style.css doc and change the z-index to 10 for the h1. Hit the preview button to see your change update the browser view.
 
@@ -1776,7 +1793,7 @@ Apply flex-wrap: wrap; to the flex container. The CSS flex-wrap property specifi
 
 If we add content to our flex items (nested <div> elements) we can see that even if the content is varied in length, the flex items all have the same height. This is the default behavior with flexbox.
 
-Terminology  
+## Terminology  
 
 Display flex
 Flex wrap
@@ -1786,7 +1803,8 @@ Justify content
 Flex direction
 Align self
 Flex
-Examples  
+
+## Examples  
 
 Editor
 Browser View
@@ -1835,7 +1853,8 @@ Fullscreen
 
 Reset Code
 Preview 
-References  
+
+## References  
 
 MDN - Using Flexible Boxes
 
@@ -1844,19 +1863,19 @@ MDN - Using Flexible Boxes
 Lesson: CSS Layout and Flexbox
 # Chrome Developer Tools  
 
-Terminology  
+## Terminology  
 
-Developer Tools:
+### Developer Tools:
 
 The Chrome Developer Tools (DevTools for short), are a set of web authoring and debugging tools built into Google Chrome. The DevTools provide web developers deep access into the internals of the browser and their web application. Use the DevTools to efficiently track down layout issues, set JavaScript breakpoints, and get insights for code optimization.
 
 source
 
-Examples  
+## Examples  
 
 Attached: resources/completed.html
 
-References  
+## References  
 
 Inspect and Edit Pages and Styles - Chrome Developer Tools
 
@@ -1865,17 +1884,18 @@ Inspect and Edit Pages and Styles - Chrome Developer Tools
 Lesson: Responsive Web Design
 # Responsive Media Queries  
 
-Terminology  
+## Terminology  
 
 Media Query: A CSS module that uses expressions to define tailored styling for specified ranges of output devices, dimensions and settings.
-Examples  
+
+## Examples  
 
 
 @media screen and (min-width: 640px) and (max-width: 1024px) {
     /* styles */
 }
 
-References  
+## References  
 
 MDN - Using Media Queries
 
@@ -1890,18 +1910,19 @@ CSS-Tricks - All Stylesheet Media Types
 Lesson: Responsive Web Design
 # Responsive Breakpoints  
 
-Terminology  
+## Terminology  
 
 Responsive: A web application responds to various device outputs by rendering a tailored experience for all.
 Media Query: A CSS module that uses expressions to define tailored styling for specified ranges of output devices, dimensions and settings.
 breakpoint range: a defined range of window width in which certain styles are applied.
 min-width: A minimum width at which to start implementing a described set of declarations within a media query.
 max-width: A maximum width at which to stop implementing a described set of declarations within a media query.
-Examples  
+
+## Examples  
 
 attached
 
-References  
+## References  
 
 MDN - Using Media Queries
 
@@ -1910,7 +1931,7 @@ MDN - Using Media Queries
 Lesson: Creating HTML Forms and Inspecting Your Code
 # Form Input Types  
 
-Terminology  
+## Terminology  
 
 Controls: used by users to interact with the form.
 
@@ -1925,7 +1946,8 @@ textarea - multiple line entry
 checkboxes - can select multiple values for the same name
 radio buttons - can select one value for the same name
 name - the name of the control, submitted with the form data and used by the server to identify fields when submitting. Note: only elements with a name attribute will have their values passed when the form is submitted!.
-Examples  
+
+## Examples  
 
 Editor
 Browser View
@@ -1983,14 +2005,15 @@ Fullscreen
 
 Reset Code
 Preview 
-References  
+
+
 
 ---
 
 Lesson: Creating HTML Forms and Inspecting Your Code
 # Action and Method Attributes  
 
-Terminology  
+## Terminology  
 
 Action: An attribute which determines where the form-data is sent. The value must be a valid URL.
 
@@ -2011,7 +2034,7 @@ Idempotent: A request which can be re-run multiple times without side-effects. E
 
 Script: A server side program which processes the form and acts accordingly. An example could be inserting a record in a database, or sending a confirmation email.
 
-Examples  
+## Examples  
 
 Say we wanted to create a guest list of visitors to our website. The guest list would be displayed at "guestlist.html" -- so we'd link to it with something like:
 
@@ -2042,7 +2065,7 @@ If we only wanted to search for a name on the guest list, our form would look li
 Lesson: Creating HTML Forms and Inspecting Your Code
 # Creating Web Forms  
 
-Terminology  
+## Terminology  
 
 Web form: A section of a document made up of content, markup, controls, and labels. Users complete the form by modifying the controls.
 
@@ -2050,7 +2073,8 @@ Controls: Utilized by users to interact with the form. Some of these controls ar
 
 The initial value 'may' be specified with the element's value attribute and it does not change after a form reset.
 The current value 'may' be modified through user interaction or scripts and it changes back to the initial value after a form reset.
-Examples  
+
+## Examples  
 
 Sample Good Practices Form:
 
@@ -2109,7 +2133,8 @@ Fullscreen
 
 Reset Code
 Preview 
-References  
+
+## References  
 
 MDN - Form Data Validation
 
@@ -2120,20 +2145,21 @@ MDN - How To Structure An HTML Form
 Lesson: Creating HTML Forms and Inspecting Your Code
 # Inspecting & Editing The DOM with DevTools  
 
-Terminology  
+## Terminology  
 
 Developer Tools: (DevTools) Web-authoring and debugging tools.
 
-Using The Tools  
+## Using The Tools  
 
 Google Chrome specific. Other browsers offer similar tools and features.
 
-Accessing DevTools  
+### Accessing DevTools  
 
 Right click on an element and select Inspect Element. This will not only open the tool, but it will take you exactly to the selected DOM node.
 Using the keyboard: On a Mac select cmd + opt + i. In Windows select ctrl + shift + i.
 Chrome browser: menu > More Tools > Developer Tools.
-Editing a node  
+
+### Editing a node  
 
 Right click on an element to:
 
@@ -2157,13 +2183,13 @@ Access to box model. All properties are editable.
 Lesson: Version Control with Git
 # Local Version Control Using Git  
 
-Terminology  
+## Terminology  
 
 git: A Distributed Version Control System used to track changes to and coordinate work on code. With git, a developer's working copy of code serves as a repository with a full history of changes.
 
-Installing And Setting Up Git  
+## Installing And Setting Up Git  
 
-Install Git  
+### Install Git  
 
 Add SSH key to GitHub https://help.github.com/articles/generating-ssh-keys/
 
@@ -2172,24 +2198,28 @@ Download and install Git.
 Also, install hub with brew:
 
 brew install hub
-Configure Git  
+
+### Configure Git  
 
 git config --global user.email "<Your email>"
 git config --global user.name "<Your name>"
-Creating A Local Repository  
+
+## Creating A Local Repository  
 
 Important: replace <project>, and <"description">
 $ mkdir <project>Creates a folder in local machine with the name <project>.
 $ cd <project>
 $ git init. Creates a git repository in the current directory.
-Staging  
+
+## Staging  
 
 Add a file(s) to staging.
 $ git add <file-name>. Add single file.
 $ git add . To track all files in the current directory. You can do this by adding the current directory.
 $ git status. See the current status of your directory and repository.
 $ git commit -m <description>. Saves a snapshot of the staging area.
-Example
+
+### Example
 
 A commit output might look something like this.
 
@@ -2199,27 +2229,29 @@ $ git commit
 use $ git reset <file-name> to remove file from staging.
 It is good practice to check the status of the repository after adding a file(s).
 Think of a commit as saving a game. You want to save and save often.
-Using Vim To Edit A Commit  
+
+## Using Vim To Edit A Commit  
 
 $ git commit
 Type i to enter insert mode.
 Type your message.
 Hit the esc key to enter command mode.
 Type :wq to save the message
-Example
+
+### Example
 
 ![vim-git-commit.png](./images/vim-git-commit.png)
 
-Git Practice  
+## Git Practice  
 
-Practice makes perfect! Go to try.github.io and complete the challenges 1-9.
+> *Practice makes perfect! Go to try.github.io and complete the challenges 1-9.*
 
 ---
 
 Lesson: Version Control with Git
 # Managing Remote Repositories  
 
-Terminology  
+## Terminology  
 
 git remote add: Add a new remote repository of to project.
 
@@ -2235,9 +2267,9 @@ git remote set-url: Change an existing remote URL
 
 git push: Push changes to remote repository.
 
-Adding, Listing And Removing Remote Repositories  
+## Adding, Listing And Removing Remote Repositories  
 
-Adding Remote Repository  
+### Adding Remote Repository  
 
 Syntax
 
@@ -2250,7 +2282,8 @@ $ git remote add github git@github.com:supercoder/code.git
 $ git remote -v
 github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
-Listing Remote Repository  
+
+### Listing Remote Repository  
 
 Syntax
 
@@ -2265,7 +2298,8 @@ $ git remote -v
 $ git remote -v
 origin  git@github.com:github/code.git (fetch)
 origin  git@github.com:github/code.git (push)
-Removing Remote Repository  
+
+### Removing Remote Repository  
 
 Syntax
 
@@ -2286,7 +2320,8 @@ $ git remote rm origin
 $ git remote -v
 github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
-Renaming Remote Repository  
+
+### Renaming Remote Repository  
 
 Syntax
 
@@ -2302,7 +2337,8 @@ $ git remote rename github origin
 $ git remote -v
 origin  git@github.com:supercoder/code.git (fetch)
 origin  git@github.com:supercoder/code.git (push)
-Changing An Existing Remote URL  
+
+### Changing An Existing Remote URL  
 
 Syntax
 
@@ -2321,7 +2357,8 @@ github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
 origin  git://github.com/github/git-reference.git (fetch)
 origin  git://github.com/github/git-reference.git (push)
-Pushing Changes to Remote Repository  
+
+### Pushing Changes to Remote Repository  
 
 Syntax
 
@@ -2332,28 +2369,29 @@ Example
 $ git push origin my-dev-branch
 We can push to any branch we have 'write' access to.
 If the branch is not in the server, one will be created.
-Git Practice  
 
-Practice makes perfect! Go to try.github.io and complete challenges 10-12.
+## Git Practice  
+
+> *Practice makes perfect! Go to try.github.io and complete challenges 10-12.*
 
 ---
 
 Lesson: Version Control with Git
 # Git Fetch And Pull  
 
-Terminology  
+## Terminology  
 
 $ git fetch: It pulls down any data not found locally and it does not merge the data.
 
 $ git pull: Runs a git fetch immediately followed by a git merge.
 
-When To Use Fetch And Pull  
+## When To Use Fetch And Pull  
 
 Fetch: This is a good one to use when working in a collaborative environment. Performing a fetch will pull down the data and let you see what has changed.
 
 pull: It is recommended to use pull when starting with a clean working copy. There should be no uncommitted local changes before performing a pull. Keep in mind that git pull might cause a merge conflict when merging remote changes with local ones.
 
-How To Use Fetch  
+### How To Use Fetch  
 
 Syntax
 
@@ -2373,7 +2411,8 @@ From github.com:supercoder/code
    6684f82..ae06d2b  ruby       -> example-branch/ruby
  * [new branch]      css        -> example-branch/css
  * [new branch]      html       -> example-branch/html
-How To Use Pull  
+
+### How To Use Pull  
 
 Syntax
 
@@ -2383,16 +2422,17 @@ $ git pull origin test-branch
 From github.com:myproject/content
  * branch              test-branch -> FETCH_HEAD
 Already up-to-date.
-Git Practice  
 
-Go to learngitbranching.js.org and complete exercises 3 and 4 under the 'remote' tab.
+## Git Practice  
+
+> *Go to learngitbranching.js.org and complete exercises 3 and 4 under the 'remote' tab.*
 
 ---
 
 Lesson: Version Control with Git
 # Stashing  
 
-Terminology  
+## Terminology  
 
 git stash: Adds current changes to the stack for later use. Gives back a clean working directory based on the last commit.
 
@@ -2404,7 +2444,7 @@ git stash apply: Applies an item from the stash list to current working director
 
 git stash drop: Removes an item from the stash list.
 
-Git Stash  
+## Git Stash  
 
 Syntax
 
@@ -2421,7 +2461,8 @@ $ git status
 # On branch master
 nothing to commit (working directory clean)
 git status -s shows the output in the short-format.
-Git Stash List  
+
+## Git Stash List  
 
 Syntax
 
@@ -2436,7 +2477,8 @@ Incremental stashes will be noted inside the { }. stash@{0} represents the last 
 $ git stash list
 stash@{0}: WIP on master: ee2d2c6 we added one stash
 stash@{1}: WIP on master: 5857ac1 we added two stashes
-Git Stash Apply  
+
+## Git Stash Apply  
 
 Syntax
 
@@ -2453,7 +2495,8 @@ $ git stash apply
 # modified:   hello-world.html
 #
 no changes added to commit (use "git add" and/or "git commit -a")
-Git Stash Drop  
+
+## Git Stash Drop  
 
 Syntax
 
@@ -2469,7 +2512,7 @@ Dropped stash@{1} (0b1478540189f30fef9804684673907c65865d8f)
 Lesson: Using Git Remotely with a Team
 # Cloning A Remote Repository  
 
-Terminology  
+## Terminology  
 
 clone: Copy a git repository in order to collaborate.
 
@@ -2477,10 +2520,11 @@ checkout: Switch to a new branch.
 
 checkout -b: Create and immediately switch to a branch.
 
-How To Clone A Remote Repository  
+## How To Clone A Remote Repository  
 
 Important: replace [project], and [branch-name]
-Cloning a remote repository  
+
+### Cloning a remote repository  
 
 $ mkdir <project>Creates a folder in local machine with the name [project].
 $ cd [project]
@@ -2499,8 +2543,10 @@ remote: Compressing objects: 100% (86/86), done.
 remote: Total 100 (delta 35), reused 0 (delta 0)
 Receiving objects: 100% (100/100), 9.51 KiB, done.
 Resolving deltas: 100% (35/35), done.
-It is highly unlikely that you will be making changes to the code in the master branch. Think of this branch as the finished product. You will also be working in a collaborative environment where you will be assigned responsibility over a portion of the project. In order to keep the master branch intact, you will create your own working branch. Once your work is done, the changes from your branch will be merged into the master branch.
-Creating a branch and switching into it  
+
+> It is highly unlikely that you will be making changes to the code in the master branch. Think of this branch as the finished product. You will also be working in a collaborative environment where you will be assigned responsibility over a portion of the project. In order to keep the master branch intact, you will create your own working branch. Once your work is done, the changes from your branch will be merged into the master branch.
+
+## Creating a branch and switching into it  
 
 Syntax
 
@@ -2510,7 +2556,9 @@ Example
 
 $ git checkout -b branching-out
 Switched to a new branch 'branching-out'
-Another way of creating a branch and switching into it is to: $ git branch [branch-name] and then $ git checkout [branch-name]
+
+> Another way of creating a branch and switching into it is to: `$ git branch [branch-name]` and then `$ git checkout [branch-name]`
+
 Going back to the master branch
 
 Syntax
@@ -2531,16 +2579,17 @@ Example
 
 $ git branch -d delete-this-branch
 Deleted branch delete-this-branch (was 78b2670).
-Git Practice  
 
-Got to learngitbranching.js.org and complete exercise 1 under the 'remote' tab.
+## Git Practice  
+
+> *Got to learngitbranching.js.org and complete exercise 1 under the 'remote' tab.*
 
 ---
 
 Lesson: Using Git Remotely with a Team
 # Merging Branches  
 
-Terminology  
+## Terminology  
 
 git merge: Merges a branch context into a current branch.
 
@@ -2548,9 +2597,9 @@ merge conflict: When the same block of code is edited in different branches and 
 
 git merge --abort: Returns to state prior to merge.
 
-`git reset --hard": Rolls back to the commit before the merge.
+`git reset --hard`: Rolls back to the commit before the merge.
 
-Merging Two Files  
+## Merging Two Files  
 
 Syntax
 
@@ -2573,8 +2622,10 @@ Fast-forward
  delete mode 100644 products.html
 $ ls
 README   index.html
-The Git ls command lists all branches.
-Merging Conflict  
+
+> The Git `ls` command lists all branches.
+
+## Merging Conflict  
 
 When a merge conflict is detected, you will get a merge conflict message in the console.
 
@@ -2603,35 +2654,37 @@ The -a switch simplifies things by automatically adding all known files as well 
 
 At this point you can either push or continue working and push at a later time (remember, $ git add <filename>, $ git commit -m 'message' and $ git push.) The merge conflict has been resolved!
 
-Git Practice  
+## Git Practice  
 
-Got to learngitbranching.js.org and complete exercise 2 under 'To Origin And Beyond' found in the 'remote' tab.
+> *Got to learngitbranching.js.org and complete exercise 2 under 'To Origin And Beyond' found in the 'remote' tab.*
 
 ---
 
 Lesson: Using Git Remotely with a Team
 # Git Team Best Practices  
 
-Terminology  
+## Terminology  
 
 Github-flow: A lightweight, branch-based workflow revolving around regular deployments.
 
 Vincent Driessen's branching model: Branch model well suited for collaboration and scaling. It revolves around a master and develop branch, with other supporting branches, such as hotfix, feature, and release.
 
-Github-flow  
+## Github-flow  
 
 Create a single feature branch with a descriptive name.
 Commit changes keeping messages short, descriptive and in the present tense.
 Push changes.
 Pull Request and code review.
 Merge/deployment.
-Vincent Driessen's Branching Model`  
+
+## Vincent Driessen's Branching Model  
 
 Installing git-flow will make using Driessen's high-level repository operations a breeze.
 Review Driessen's branch model
-Tips  
 
-DO's  
+## Tips  
+
+### DO's  
 
 Pull the master branch daily. Other people's branches most likely will be merged while you are working on your code. This might affect your current/future code. Therefore, pull in the master branch. Make sure to commit and push your branch changes and checkout into the master branch before pulling. Once you are ready to start new work, go back to the beginning of the Github-flow cycle by creating a branch, etc.
 
@@ -2645,7 +2698,7 @@ Be careful when using git reset --hard. This will throw away all your uncommitte
 
 Keep your repository synced by performing a git pull daily and/or starting a new branch when needed.
 
-DON'Ts  
+### DON'Ts  
 
 Do not develop on the master branch.
 
@@ -2659,8 +2712,9 @@ Do not use git pull --rebase in a public environment. Performing a git pull -reb
 
 Do not use git push --force in a public environment. When your local repository is out of sync with the authoritative repository git push will fail. Do not be tempted to do a git push --force. This will override the structure and sequence of commits of the authoritative repository, deleting other people's commits.
 
-Other branching workflow worth exploring; long-running branches and topic branches.
-Git Lifecycle Review  
+> Other branching workflow worth exploring; `long-running branches` and `topic branches`.
+
+## Git Lifecycle Review  
 
 1- Create a repo by cloning or initting (only done once per project)
 
@@ -2710,7 +2764,7 @@ git push origin --all
 
 If someone has to type out the gh-pages link to visit it, they won't (including employers). Always put your gh-pages link in the Website field at the top of your repo page.
 
-Git immersion  
+## Git immersion  
 
 We highly encourage you to put all these new skills into practice by doing the following:
 
@@ -2723,15 +2777,15 @@ Create a repository on GitHub named git-immersion and push your local repository
 Lesson: Getting Started with JavaScript
 # JavaScript Dependencies  
 
-Terminology  
+## Terminology  
 
 <script>: the <script> tag is used for declaring a script from within the HTML document.
 
 CDN: a system of distributed servers that deliver web content based on the geographic locations of the user, of the content delivery server, and of the origin of the web page.
 
-Including JavaScript  
+## Including JavaScript  
 
-Including JavaScript Code From Body  
+### Including JavaScript Code From Body  
 
 Example
 
@@ -2742,7 +2796,8 @@ Example
     console.log("I'm running from within the HTML body!")
  </script>
 </body>
-Linking To An External JavaScript File  
+
+### Linking To An External JavaScript File  
 
 Example
 
@@ -2751,7 +2806,8 @@ Example
  <!--Document content-->
  <script type="text/javascript" src="scripts/main.js"></script>
 </body>
-Including Other Dependencies  
+
+### Including Other Dependencies  
 
 Include jQuery from the body of the HTML document.
 
@@ -2788,7 +2844,7 @@ Example
 Lesson: Getting Started with JavaScript
 # JavaScript Data Types  
 
-Terminology  
+## Terminology  
 
 Data Type: a particular kind of data item. It is defined by the values it can take, the programming language used, or the operations that can be performed on it.
 Boolean: a binary variable, having two possible values called “true” and “false".
@@ -2797,7 +2853,8 @@ Undefined: a variable that has not been assigned a value.
 Number: a wrapper object allowing you to work with numerical values.
 String: a sequence of characters surrounded by quotation marks.
 Escape sequence: Combining \ with another character enables that character to be represented in a string. This is called an escape sequence. It allows you to 'escape' from the normal string interpretation.
-Examples  
+
+## Examples  
 
 
 var boolean = true;
@@ -2807,7 +2864,8 @@ var number = 123;
 var string = "string";
 
 console.log(typeof boolean, typeof foo, typeof bar, typeof number, typeof string);
-Null And Undefined  
+
+### Null And Undefined  
 
 The equality operator, ==, considers them equal. To distinguish them, use the strict equality operator, ===.
 
@@ -2822,14 +2880,16 @@ null == null //true
 !null // true
 isNaN(1 + null) //false
 isNaN(1 + undefined) //true
-Strings  
+
+## Strings  
 
 Example
 
 //String concatenation below.
 
 var concat = "My name is" + " " + "Joe" // evaluates to My name is Joe
-Escape sequence  
+
+## Escape sequence  
 
 Example
 
@@ -2843,14 +2903,14 @@ lines"
 
 // Using `\` makes it possible to include an apostrophe since the string was wrapped in single quotes.
 
-'I\m always right. I can\'t be wrong.'`
+'I\m always right. I can\'t be wrong.'
 
 ---
 
 Lesson: Getting Started with JavaScript
 # Using Variable  
 
-Terminology  
+## Terminology  
 
 var: (variable) keyword used to create a variable.
 
@@ -2864,15 +2924,15 @@ bucket: Variables are named "buckets" that hold data and make that data availabl
 
 ;: the semicolon at the end of the line tells JavaScript that the statement is complete. A JavaScript statement is a single, complete instruction to be executed.
 
-buckets  
+## buckets  
 
 ![buckets.jpg](./images/buckets.jpg)
 
-Declaring Variables  
+## Declaring Variables  
 
 ![variables.jpg](./images/variables.jpg)
 
-Assigning Variables  
+### Assigning Variables  
 
 Let's look at the difference between variable declaration and variable assignment. Notice what happens when we assign a new value to basket:
 
@@ -2928,7 +2988,8 @@ Fullscreen
 
 Reset Code
 Run Code 
-var usage  
+
+### var usage  
 
 Single variable declaration:
 
@@ -3016,7 +3077,8 @@ Fullscreen
 
 Reset Code
 Run Code 
-Const  
+
+## Const  
 
 Run some examples of const to see what happens:
 
@@ -3056,7 +3118,7 @@ Reset Code
 Run Code 
 This should also throw an error. Once a variable name has been taken, you can't alter it like you could when you used var.
 
-Let  
+## Let  
 
 let can be used:
 
@@ -3124,13 +3186,13 @@ Run Code
 Lesson: Getting Started with JavaScript
 # Truthy vs Falsey  
 
-Terminology  
+## Terminology  
 
 Falsey: A falsey expression in JavaScript is considered to be false in logical statements.
 
 Truthy: A truthy expression in JavaScript is considered to be true in logical expressions. In a nutshell, anything that isn't a falsey value is true.
 
-Falsey  
+### Falsey  
 
 False
 
@@ -3251,8 +3313,10 @@ if(x){
 Fullscreen
 
 Reset Code
+
 Run Code 
-Truthy  
+
+### Truthy  
 
 A truthy expression in JavaScript is one considered to be true in logical expressions. In a nutshell, anything that isn't a falsey value is true.
 
@@ -3352,7 +3416,7 @@ Run Code
 Lesson: Getting Started with JavaScript
 # Debugging Programs  
 
-Terminology  
+## Terminology  
 
 Developer tools: These tools allow developers to interact with the front-end of their website.
 
@@ -3360,7 +3424,7 @@ console: The console object is available through a web API. It provides access t
 
 console.log: The log method is used to output a message to the web console. The log method can take unlimited arguments.
 
-Console Log Method  
+### Console Log Method  
 
 Example
 
@@ -3392,9 +3456,9 @@ Conditional Expressions
 
 Conditional expressions are the code that goes in the parenthesis of a conditional statement. The conditional expression must evaluate to truefor the associated block of code to run.
 
-Examples  
+## Examples  
 
-if  
+### if  
 
 An if statement is the simplest type of conditional statement in JavaScript. It executes a block of code if the conditional expression in parenthesis evaluates to true.
 
@@ -3464,7 +3528,8 @@ Fullscreen
 
 Reset Code
 Run Code 
-if/else  
+
+### if/else  
 
 If/else statements are conditional expressions similar to the basic if statement. If/else statements allow you to specify another block of code to run if the conditional expression evaluates to false.
 
@@ -3514,7 +3579,7 @@ Because the conditional expression is not true this code outputs:
 
 I don't know what this is, but it's not a mocha!
 
-if/else if/else  
+### if/else if/else  
 
 Often you will want to make decisions based on more than only one conditional statement. In this case, you can use else if statements. else if statements are similar to else statements in that they are appended to the original if statement. For example:
 
@@ -3593,7 +3658,7 @@ JavaScript will evaluate the first if statement. If that's false, it will check 
 Lesson: Functions and Complex Expressions
 # Function Parameters  
 
-Parameters and Arguments  
+### Parameters and Arguments  
 
 Parameters are variables that are only accessible inside the function and are used to represent any values that are passed in as arguments when the function is called. As we've already seen, parameters first appear inside the parentheses in a function declaration. That same parameter can then be used like a variable inside the function body as a placeholder for the actual value you that will used in the function call.
 
@@ -3601,9 +3666,9 @@ Parameters are variables that are only accessible inside the function and are us
 
 Notice that when we call the function, we specify a value that the parameter will be set to. Each time you call a function you have an opportunity to provide a new value to use in the parameters.
 
-Examples  
+## Examples  
 
-Multiple Parameters  
+### Multiple Parameters  
 
 JavaScript functions can accept more than one parameter (or none at all). The order of the arguments will relate directly to the order of the parameters. Additional parameters and arguments (sometimes shortened to params and args) should be separated by commas.
 
@@ -3661,7 +3726,7 @@ Reset Code
 Run Code 
 It may surprise you that the first function call doesn't throw an error, but instead considers params b and c to have undefined as their value. This is actually quite useful, in that we can write functions that have "optional" parameters. Many functions in JavaScript accept extra arguments, but don't strictly require them. In the second example, we can see that there's also no error for providing too many arguments.
 
-Recap  
+## Recap  
 
 Functions are a huge part of JavaScript. They let you encapsulate a process so you can repeat it with little effort. This is one thing computers are great at - performing repetitive tasks quickly!
 
@@ -3672,26 +3737,35 @@ JavaScript functions are also syntactically complex. Make sure you're comfortabl
 Lesson: Functions and Complex Expressions
 # The `this` keyword  
 
-Terminology  
+## Terminology  
 
-this: Refers to the value of the object that invokes the function, the "antecedent object" (parent object).
+`this`: Refers to the value of the object that invokes the function, the "antecedent object" (parent object).
 
-this, in a function invocation, is the invocation context.
-this is the window in 'non-strict mode'. It refers to the outer most global object.
-this is undefined in a function invocation in strict mode.
-this is the value of the object that owns the method in a method invocation.
-this is the value of the newly created object in a constructor invocation.
-this is the value of the first argument of .call() or .apply() in an indirect invocation.
-this is the value of the first argument of .bind() when invoking a bound function.
-this is the value of the enclosing context where the arrow function is defined.
-self: When a nested function is invoked as a function, then this is either the global object (non-strict mode) or undefined (strict-mode). In order to obtain the invocation context of the outer function using this, the value needs to be stored into a variable in the scope of the inner function, for example, self. In comparison, when a nested function is invoked as a method, this is the value of the object it was invoked on.
+* `this`, in a `function invocation`, is the invocation context.
 
-Examples  
+  * `this` is the `window` in 'non-strict mode'. It refers to the outer most global object.
 
-Function Invocation  
+  * `this` is undefined in a function invocation in `strict mode`.
 
-Example 1.a
+* `this` is the value of the object that owns the method in a `method invocation`.
 
+* `this` is the value of the newly created object in a `constructor invocation`.
+
+* `this` is the value of the first argument of .call() or .apply() in an `indirect invocation`.
+
+* `this` is the value of the first argument of .bind() when invoking a `bound function`.
+
+* `this` is the value of the enclosing context where the `arrow function` is defined.
+
+`self`: When a nested function is invoked as a function, then `this` is either the global object (non-strict mode) or undefined (strict-mode). In order to obtain the invocation context of the *outer function* using `this`, the value needs to be stored into a variable in the scope of the inner function, for example, `self`. In comparison, when a nested function is invoked as a method, `this` is the value of the object it was invoked on.
+
+## Examples  
+
+### Function Invocation  
+
+**Example 1.a**
+
+```js
 function address(streetNumber, streetName){
     console.log(this === window); // Logs: true
     this.myAddress = "My address is";
@@ -3704,17 +3778,23 @@ console.log(address("100", "North Main St.")); //Logs: My address is 100 North M
 
 window.myAddress;
 console.log(window.myAddress); // Logs: My address is
-Above: when address() is called, this is set to the window (global object), therefore the windows gets assigned "My address is".
+```
 
-Example 1.b
+Above: when address() is called, `this` is set to the window (global object), therefore the windows gets assigned "My address is".
 
+**Example 1.b**
+
+```js
 console.log(this === true); //Logs: true
 this.contextExample = "This is set to the global object";
 console.log(window.contextExample); //Logs: This is set to the global object
-Function Invocation, Strict Mode  
+```
 
-Example
+### Function Invocation, Strict Mode  
 
+**Example**
+
+```js
 function address(streetNumber, streetName){
     'use strict'; // Enable strict mode
     console.log(this === window); // Logs: false
@@ -3725,12 +3805,15 @@ function address(streetNumber, streetName){
 address();
 
 console.log(address("100", "North Main St.")); //Logs: 100 North Main St.
-Above: when address is called, this is set to undefined.
+```
 
-Method Invocation  
+Above: when address is called, `this` is set to undefined.
 
-Example
+### Method Invocation  
 
+**Example**
+
+```js
 var greeting = {
     say: "Hello",
     name: function(firstName, lastName){
@@ -3741,12 +3824,15 @@ var greeting = {
 };
 greeting.name();
 console.log(greeting.name("John", "Smith"));
-Above: when the method is invoked, this is "greeting", so this.say target the value of "hello".
+```
 
-Constructor Invocation  
+Above: when the method is invoked, `this` is "greeting", so this.say target the value of "hello".
 
-Example 1.a
+### Constructor Invocation  
 
+**Example 1.a**
+
+```js
 function constructorExample () {  
   console.log(this instanceof constructorExample); // => true
   this.property = "'this' is assigned with a value, in this case a string";
@@ -3754,10 +3840,13 @@ function constructorExample () {
 // Constructor invocation
 var constructorInstance = new constructorExample();  
 console.log(constructorInstance.property); //Logs: 'this' is assigned with a value, in this case a string.
-Above: this is the newly created object, "constructorInstance", in the "new constructorExampe()" invocation.
+```
 
-Example 1.b
+Above: `this` is the newly created object, "constructorInstance", in the "new constructorExampe()" invocation.
 
+**Example 1.b**
+
+```js
 class constructorExample {  
     constructor() {
         console.log(this instanceof constructorExample); // => true
@@ -3767,12 +3856,15 @@ class constructorExample {
 // Constructor invocation
 var constructorInstance = new constructorExample();  
 console.log(constructorInstance.property); //Logs: 'this' is assigned with a value, in this case a string.
-Above: example 1.a rewritten using the ES2015 class syntax.
+```
 
-Indirect Invocation, .call() or .apply()  
+Above: example 1.a rewritten using the ES2015 `class` syntax.
 
-Example
+### Indirect Invocation, .call() or .apply()  
 
+**Example**
+
+```js
 var car = { model: "Camry" };
 function printName(string) {
     console.log(this === car); Logs: true
@@ -3784,10 +3876,13 @@ console.log(printName.call(car, "Toyota" + " ")) // Logs: Toyota Camry
 
 printName.apply(car, ["Toyota", " "]);
 console.log(printName.apply(car, ["Toyota" + " "])) // Logs: Toyota Camry
-Indirect Invocation, .bind()  
+```
 
-Example
+### Indirect Invocation, .bind()  
 
+**Example**
+
+```js
 var words = {
     array: ["I", "code", "JavaScript"],
     getWords: function() {
@@ -3797,12 +3892,15 @@ var words = {
 
 var bindGetWords = words.getWords.bind(words);
 console.log(bindGetWords()); // Logs: ["I", "code", "JavaScript"]
-Above: this is the first argument of .bind() when invoking a bound function.
+```
 
-Arrow Function  
+Above: `this` is the first argument of .bind() when invoking a bound function.
 
-Example
+### Arrow Function  
 
+**Example**
+
+```js
 class Address {  
   constructor(streetNumber, streetName) {
     this.streetNumber = streetNumber;
@@ -3818,12 +3916,15 @@ class Address {
 }
 var myAddress = new Address("100", "Main St");  
 myAddress.log();
+```
+
 Above: setTimeout calls the arrow function with the same context, myAddress object, as the log() method. The arrow function inherits the context from the parent function.
 
-Self  
+## Self  
 
-Example
+**Example**
 
+```js
 var selfExample = {
     methodExample: function() {
         var self = this;
@@ -3838,30 +3939,41 @@ var selfExample = {
     }
 };
 selfExample.methodExample();
+```
+
 Above: In order to obtain the invocation context of the outer function using this, the value needs to be stored into a variable in the scope of the inner function.
 
 # Study Notes  
 
-Terminology  
+## Terminology  
 
-this: Refers to the value of the object that invokes the function, the "antecedent object" (parent object).
+`this`: Refers to the value of the object that invokes the function, the "antecedent object" (parent object).
 
-this,in a function invocation, is the invocation context.
-this is the window in 'non-strict mode'. It refers to the outer most global object.
-this is undefined in a function invocation in strict mode.
-this is the value of the object that owns the method in a method invocation.
-this is the value of the newly created object in a constructor invocation.
-this is the value of the first argument of .call() or .apply() in an indirect invocation.
-this is the value of the first argument of .bind() when invoking a bound function.
-this is the value of the enclosing context where the arrow function is defined.
-self: When a nested function is invoked as a function, then this is either the global object (non-strict mode) or undefined (strict-mode). In order to obtain the invocation context of the outer function using this, the value needs to be stored into a variable in the scope of the inner function. In comparison, when a nested function is invoked as a method, this is the value of the object it was invoked on.
+* `this`, in a `function invocation`, is the invocation context.
 
-Examples  
+  *`this` is the `window` in 'non-strict mode'. It refers to the outer most global object.
+  
+  *`this` is undefined in a function invocation in `strict mode`.
 
-Function Invocation  
+* `this` is the value of the object that owns the method in a `method invocation`.
 
-Example 1.a
+* `this` is the value of the newly created object in a `constructor invocation`.
 
+* `this` is the value of the first argument of .call() or .apply() in an `indirect invocation`.
+
+* `this` is the value of the first argument of .bind() when invoking a `bound function`.
+
+* `this` is the value of the enclosing context where the `arrow function` is defined.
+
+`self`: When a nested function is invoked as a function, then `this` is either the global object (non-strict mode) or undefined (strict-mode). In order to obtain the invocation context of the outer function using `this`, the value needs to be stored into a variable in the scope of the inner function. In comparison, when a nested function is invoked as a method, `this` is the value of the object it was invoked on.
+
+## Examples  
+
+### Function Invocation  
+
+**Example 1.a**
+
+```js
 function address(streetNumber, streetName){
     console.log(this === window); // Logs: true
     this.myAddress = "My address is";
@@ -3874,17 +3986,23 @@ console.log(address("100", "North Main St.")); //Logs: My address is 100 North M
 
 window.myAddress;
 console.log(window.myAddress); // Logs: My address is
-Above: when address() is called, this is set to the window (global object), therefore the windows gets assigned "My address is".
+```
 
-Example 1.b
+Above: when address() is called, `this` is set to the window (global object), therefore the windows gets assigned "My address is".
 
+**Example 1.b**
+
+```js
 console.log(this === true); //Logs: true
 this.contextExample = "This is set to the global object";
 console.log(window.contextExample); //Logs: This is set to the global object
-Function Invocation, Strict Mode  
+```
 
-Example
+### Function Invocation, Strict Mode  
 
+**Example**
+
+```js
 function address(streetNumber, streetName){
     'use strict'; // Enable strict mode
     console.log(this === window); // Logs: false
@@ -3895,12 +4013,15 @@ function address(streetNumber, streetName){
 address();
 
 console.log(address("100", "North Main St.")); //Logs: 100 North Main St.
-Above: when address is called, this is set to undefined.
+```
 
-Method Invocation  
+Above: when address is called, `this` is set to undefined.
 
-Example
+### Method Invocation  
 
+**Example**
+
+```js
 var greeting = {
     say: "Hello",
     name: function(firstName, lastName){
@@ -3911,12 +4032,15 @@ var greeting = {
 };
 greeting.name();
 console.log(greeting.name("John", "Smith"));
-Above: when the method is invoked, this is "greeting", so this.say target the value of "hello".
+```
 
-Constructor Invocation  
+Above: when the method is invoked, `this` is "greeting", so this.say target the value of "hello".
 
-Example 1.a
+### Constructor Invocation  
 
+**Example 1.a**
+
+```js
 function constructorExample () {  
   console.log(this instanceof constructorExample); // => true
   this.property = "'this' is assigned with a value, in this case a string";
@@ -3924,10 +4048,13 @@ function constructorExample () {
 // Constructor invocation
 var constructorInstance = new constructorExample();  
 console.log(constructorInstance.property); //Logs: 'this' is assigned with a value, in this case a string.
-Above: this is the newly created object, "constructorInstance", in the "new constructorExampe()" invocation.
+```
 
-Example 1.b
+Above: `this` is the newly created object, "constructorInstance", in the "new constructorExampe()" invocation.
 
+**Example 1.b**
+
+```js
 class constructorExample {  
     constructor() {
         console.log(this instanceof constructorExample); // => true
@@ -3937,12 +4064,15 @@ class constructorExample {
 // Constructor invocation
 var constructorInstance = new constructorExample();  
 console.log(constructorInstance.property); //Logs: 'this' is assigned with a value, in this case a string.
-Above: example 1.a rewritten using the ES2015 class syntax.
+```
 
-Indirect Invocation, .call() or .apply()  
+Above: example 1.a rewritten using the ES2015 `class` syntax.
 
-Example
+### Indirect Invocation, .call() or .apply()  
 
+**Example**
+
+```js
 var car = { model: "Camry" };
 function printName(string) {
     console.log(this === car); Logs: true
@@ -3954,10 +4084,13 @@ console.log(printName.call(car, "Toyota" + " ")) // Logs: Toyota Camry
 
 printName.apply(car, ["Toyota", " "]);
 console.log(printName.apply(car, ["Toyota" + " "])) // Logs: Toyota Camry
-Indirect Invocation, .bind()  
+```
 
-Example
+### Indirect Invocation, .bind()  
 
+** Example **
+
+```js
 var words = {
     array: ["I", "code", "JavaScript"],
     getWords: function() {
@@ -3967,12 +4100,15 @@ var words = {
 
 var bindGetWords = words.getWords.bind(words);
 console.log(bindGetWords()); // Logs: ["I", "code", "JavaScript"]
-Above: this is the first argument of .bind() when invoking a bound function.
+```
 
-Arrow Function  
+Above: `this` is the first argument of .bind() when invoking a bound function.
 
-Example
+### Arrow Function  
 
+**Example** 
+
+```js
 class Address {  
   constructor(streetNumber, streetName) {
     this.streetNumber = streetNumber;
@@ -3988,12 +4124,15 @@ class Address {
 }
 var myAddress = new Address("100", "Main St");  
 myAddress.log();
+```
+
 Above: setTimeout calls the arrow function with the same context, myAddress object, as the log() method. The arrow function inherits the context from the parent function.
 
-Self  
+### Self  
 
-Example
+** Example **
 
+```js
 var selfExample = {
     methodExample: function() {
         var self = this;
@@ -4008,7 +4147,9 @@ var selfExample = {
     }
 };
 selfExample.methodExample();
-Above: In order to obtain the invocation context of the outer function using this, the value needs to be stored into a variable in the scope of the inner function.
+```
+
+Above: In order to obtain the invocation context of the outer function using `this`, the value needs to be stored into a variable in the scope of the inner function.
 
 ---
 
@@ -5967,16 +6108,29 @@ Lesson: Working with Remote Data (Part 2)
 ### Details  
 
 * `CORS` bypasses the `Same-origin policy` in order to make it possible to share resources between different domains.
+
 * Compatible with both `XMLHttpRequest` and `Fetch APIs`.
+
 * When working with `CORS-enabled` cross-origin requests:
+
   * The request must contain appropriate headers in the HTTP request.
+  
   * The request can be either a `simple request` or a `preflight`.
+  
   * When a request for resources is received by a domain, it validates the first domain in order to determine whether or not to share the resource.
+  
     * The second domain's server configuration must be set to allow `CORS` by setting this in the `Access-Control-Allow-Origin header`.
+    
     * No special coding is needed on the `request`.
+    
     * The browser must support `CORS`.
+    
   * `CORS` does not support passing user name/password through the `XMLHttpRequest open ()`.
+  
   * If `cookies` are received as part of the `response`, they are discarded.
+  
   * If these are a requirement, use the `withCredentials` (set to `true`) property on the request before the `send()` method.
+  
   * More complicated request, as security sensitive request, use something called `preflighting`. This methods validates a `request` before it is executed.
+  
   * This kind of request include custom HTTP headers.
