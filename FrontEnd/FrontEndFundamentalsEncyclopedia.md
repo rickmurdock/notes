@@ -5966,18 +5966,17 @@ Lesson: Working with Remote Data (Part 2)
 
 ### Details  
 
-* CORS bypasses the Same-origin policy in order to make it possible to share resources between different domains.
-
-* Compatible with both XMLHttpRequest and Fetch APIs.
-* When working with CORS-enabled cross-origin requests:
+* `CORS` bypasses the `Same-origin policy` in order to make it possible to share resources between different domains.
+* Compatible with both `XMLHttpRequest` and `Fetch APIs`.
+* When working with `CORS-enabled` cross-origin requests:
   * The request must contain appropriate headers in the HTTP request.
-  * The request can be either a simple request or a preflight.
+  * The request can be either a `simple request` or a `preflight`.
   * When a request for resources is received by a domain, it validates the first domain in order to determine whether or not to share the resource.
-The second domain's server configuration must be set to allow CORS by setting this in the Access-Control-Allow-Origin header.
-No special coding is needed on the request.
-The browser must support CORS.
-CORS does not support passing user name/password through the XMLHttpRequest open ().
-If cookies are received as part of the response, they are discarded.
-If these are a requirement, use the withCredentials (set to true) property on the request before the send() method.
-More complicated request, as security sensitive request, use something called ​preflighting. This methods validates a request before it is executed.
-This kind of request ​include custom HTTP headers.
+    * The second domain's server configuration must be set to allow `CORS` by setting this in the `Access-Control-Allow-Origin header`.
+    * No special coding is needed on the `request`.
+    * The browser must support `CORS`.
+  * `CORS` does not support passing user name/password through the `XMLHttpRequest open ()`.
+  * If `cookies` are received as part of the `response`, they are discarded.
+  * If these are a requirement, use the `withCredentials` (set to `true`) property on the request before the `send()` method.
+  * More complicated request, as security sensitive request, use something called `preflighting`. This methods validates a `request` before it is executed.
+  * This kind of request include custom HTTP headers.
