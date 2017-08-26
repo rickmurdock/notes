@@ -75,7 +75,7 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 ---
 
-<div style="text-align: right">[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md)</div>
+[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md) 
 
 # File System Traversal 
 
