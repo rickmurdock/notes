@@ -1415,24 +1415,27 @@ Preview
 
 ---
 
-Lesson: CSS Layout & Fonts
+[CSS Layout & Fonts](CSSLayout&Fonts.md)
+
 # Compare Display Values  
 
-The display CSS property specifies the type of rendering box used for an element. In HTML, default display property values are taken from the HTML specifications or from the browser's user agent stylesheet.
+The `display` CSS property specifies the type of rendering box used for an element. In HTML, default `display` property values are taken from the HTML specifications or from the browser's user agent stylesheet.
 
-The default value for all elements is inline. Most user agent stylesheets (the default styles the browser applies to all sites) reset many elements to block. This is why plain HTML documents tend to stack elements vertically.
+The default value for all elements is `inline`. Most user agent stylesheets (the default styles the browser applies to all sites) reset many elements to `block`. This is why plain HTML documents tend to stack elements vertically.
 
-Inline  
+### Inline  
 
 Inline elements can be placed adjacent to one another horizontally if there is enough space.
 
-display: inline;
-Block  
+* `display: inline;`
+
+### Block  
 
 Block level elements do not sit inline but break past them, stacking vertically. By default (without setting a width) they take up as much horizontal space as they can.
 
-display: block;
-Inline Block  
+* `display: block;`
+
+### Inline Block  
 
 Inline block elements will be placed adjacent to one another horizontally if there is space for them to fit. They are much like inline elements except they can have a width and height.
 
@@ -1441,71 +1444,82 @@ Inline block elements will be placed adjacent to one another horizontally if the
 ## Comparison  
 
 | Display |	More than one per line |	Can have height |	Can have width |	Can have margin |	Can have padding |
-| !--- | !--- | !--- | !--- | !--- | !--- |
+| :--- | :--- | :--- | :--- | :--- | :--- |
 | `display: inline;` |	yes |	no |	no |	left and right only |	padding will be applied but the element will overlap other | like elements vertically |
 | `display: inline-block;` |	yes |	yes |	yes |	yes |	yes |
 | `display: block;` |	no |	yes |	yes |	yes |	yes |
 
 ## Examples  
 
-Editor
-Browser View
-index.html
-styles.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE html>
-2
 <html>
-3
   <head>
-4
     <meta charset="utf-8">
-5
     <title>Display Compare</title>
-6
     <link rel="stylesheet" href="styles.css">
-7
   </head>
-8
   <body>
-9
     <div class="i">
-10
       <p><em>Inline:</em> Lorem ipsum dolor sit amet, <span style="color: #6320EE;">consectetur</span> adipiscing el1it.</p>
-11
     </div>
-12
     <div class="b"><em>Block</em></div>
-13
     <div class="b"><em>Block</em></div>
-14
     <div class="b"><em>Block</em></div>
-15
     <div class="ib"><em>Inline Block</em></div>
-16
     <div class="ib"><em>Inline Block</em></div>
-17
     <div class="ib"><em>Inline Block</em></div>
-18
     <div class="ib"><em>Inline Block</em></div>
-19
     <div class="ib"><em>Inline Block</em></div>
-20
     <div class="ib"><em>Inline Block</em></div>
-21
     <div class="ib"><em>Inline Block</em></div>
-22
   </body>
- 
+</html>
+```
 
-Fullscreen
+```css
+/* styles.css */
+div.b {
+  height: 30px;
+  border: 2px solid #6320ee;
+}
 
-Reset Code
-Preview 
-References  
+div.ib {
+  display: inline-block;
+  width: 30%;
+  height: 30px;
+  border: 2px solid #6320ee;
+}
 
-MDN - Display
+div.ib:nth-of-type(2) {
+  width: 20%;
+}
+
+div.ib:nth-of-type(3) {
+  width: 10%;
+}
+
+div.ib:nth-of-type(4) {
+  width: 70%;
+}
+
+div.ib:nth-of-type(5) {
+  width: 20%;
+}
+
+div.ib:nth-of-type(6) {
+  width: 40%;
+}
+
+div.ib:nth-of-type(7) {
+  width: 55%;
+}
+```
+
+## References  
+
+[MDN - Display](https://developer.mozilla.org/en-US/docs/Web/CSS/display?v=control)
 
 ---
 
@@ -5943,19 +5957,22 @@ Lesson Footnotes
 ---
 
 Lesson: Working with Remote Data (Part 2)
+
 # Understanding CORS  
 
-Terminology  
+## Terminology  
 
-Same-origin policy: allows resources to be shared and interact only within the same domain. CORS: Stands for Cross-origin resource sharing. Allows web resources, such as scripts, to be accessed on different domains, therefore improving integration between web services.
-Details  
+* `Same-origin policy`: allows resources to be shared and interact *only within the same domain*. `CORS`: Stands for `Cross-origin resource sharing`. Allows web resources, such as scripts, to be accessed on different domains, therefore improving integration between web services.
 
-CORS bypasses the Same-origin policy in order to make it possible to share resources between different domains.
-Compatible with both XMLHttpRequest and Fetch APIs.
-When working with CORS-enabled cross-origin requests:
-The request must contain appropriate headers in the HTTP request.
-The request can be either a simple request or a preflight.
-When a request for resources is received by a domain, it validates the first domain in order to determine whether or not to share the resource.
+### Details  
+
+* CORS bypasses the Same-origin policy in order to make it possible to share resources between different domains.
+
+* Compatible with both XMLHttpRequest and Fetch APIs.
+*When working with CORS-enabled cross-origin requests:
+  * The request must contain appropriate headers in the HTTP request.
+  * The request can be either a simple request or a preflight.
+  * When a request for resources is received by a domain, it validates the first domain in order to determine whether or not to share the resource.
 The second domain's server configuration must be set to allow CORS by setting this in the Access-Control-Allow-Origin header.
 No special coding is needed on the request.
 The browser must support CORS.
