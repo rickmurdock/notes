@@ -1,84 +1,110 @@
-Introduction
+# Introduction
+
 If you've been to websites, then you've interacted with HTML, it's unavoidable. Browsers read HTML to interpret all of the content on the page. Writing clean and semantic HTML is a useful skill for any developer and an essential skill for any web developer. HTML has a few core rules that you should master first to set you on the right path to writing great HTML.
 
 In the following lesson you'll learn a few things:
 
-How to write and interpret the syntax for HTML markup
-How to use attributes to give your HTML
-How to use ids and class attributes to group and identify your HTML elements
-HTML Syntax  
+* How to write and interpret the syntax for HTML markup
+* How to use attributes to give your HTML
+* How to use ids and class attributes to group and identify your HTML elements
 
-Welcome to the world of syntax. Right now you are reading content that follows certain grammatical rules. Syntax determines the structure of sentences and their arrangement into coherent phrases. The goal of syntax is to create a common method of writing and understanding language. As with any language, HTML syntax enables us to create coherent and valid digital content. Reading, understanding and authoring HTML is fundamental to front-end development.
+---
 
-HTML Defined  
+# HTML Syntax  
 
-HTML stands for "HyperText Markup Language". It acts as the skeleton of a web page, providing the underlying structure. HTML does not define either decorative or functional qualities of your page (like colors or animations). Instead, it uses elements to build up a scaffold that you can style and interact with using other languages. Think of elements as content holders.
+Welcome to the world of syntax. Right now you are reading content that follows certain grammatical rules. Syntax determines the structure of sentences and their arrangement into coherent phrases. The goal of syntax is to create a common method of writing and understanding language. As with any language, HTML syntax enables us to create `coherent` and `valid` digital content. Reading, understanding and authoring HTML is fundamental to front-end development.
 
-Intro to "Tags" and "Elements"  
+## HTML Defined  
 
-tagpairs and self closing.jpg
-In HTML, tags are special words surrounded by triangle brackets. Tags let the browser know what type of content they contain and how they should be rendered.
+HTML stands for "HyperText Markup Language". It acts as the skeleton of a web page, providing the underlying structure. HTML does not define either decorative or functional qualities of your page (like colors or animations). Instead, it uses `elements` to build up a scaffold that you can style and interact with using other languages. Think of elements as content holders.
 
-Wrapping content with a starting tag and a closing tag creates an element. There are different types of tags, each with their own syntax and purpose.
+## Intro to "Tags" and "Elements"  
 
-The difference between tag and element can be confusing. A tag is the idea of a paragraph, but an element is the specific paragraph in HTML. So each paragraph in an article are elements, and they are all the p tag.
+![tagpairs-and-self-closing.jpg](./images/tagpairs-and-self-closing.jpg)
 
-NOTE: A browser does not render tags - they simply tell the browser what type of content they hold and how to they need to be rendered.
-HTML Document Structure  
+In HTML, `tags` are special words surrounded by triangle brackets. Tags let the browser know what type of content they contain and how they should be rendered.
 
-d5329fa1-html-doctype.jpg
-The example above demonstrates the basic HTML document structure syntax. This represents the minimal amount of code a browser needs to render an HTML document. An HTML document has two distinct parts, a head and a body. These two sections are wrapped by HTML tag pairs.
+Wrapping content with a starting tag and a closing tag creates an `element`. There are different types of tags, each with their own syntax and purpose.
 
-Example
+The difference between `tag` and `element` can be confusing. A `tag` is the idea of a paragraph, but an `element` is the specific paragraph in HTML. So each paragraph in an article are elements, and they are all the `p` tag.
 
+> NOTE: A browser does not render `tags` - they simply tell the browser what type of content they hold and how to they need to be rendered.
+
+## HTML Document Structure  
+
+![d5329fa1-html-doctype.jpg](./images/d5329fa1-html-doctype.jpg)
+
+The example above demonstrates the basic HTML document structure syntax. This represents the minimal amount of code a browser needs to render an HTML document. An HTML document has two distinct parts, a `head` and a `body`. These two sections are wrapped by HTML tag pairs.
+
+### Example
+
+```html
 <html>
   <head></head>
   <body></body>
 </html>
-DOCTYPE  
+```
 
-The first important piece of HTML syntax is declaring the document type. The doctype (sometimes capitalized as "DOCTYPE") is a required part of HTML syntax. It let's the browser know what type of document it is about to process . It must be declared exactly as follows:
+## DOCTYPE  
 
-Normal Doctype
+The first important piece of HTML syntax is declaring the document type. The `doctype` (sometimes capitalized as "DOCTYPE") is a required part of HTML syntax. It let's the browser know what type of document it is about to process . It must be declared exactly as follows:
+
+### Normal Doctype
+
 (In adherance to HTML5)
 
-<!DOCTYPE
+1. <!DOCTYPE
 
-Space character.
+2. Space character.
 
-html - case sensitive.
+3. html - case sensitive.
 
-> character
+4. > character
 
-Example
+### Example
 
+```html
 <!DOCTYPE html>
 <!--HTML doc below the doctype declaration-->
-Many modern browsers will be forgiving if you don't use a <!doctype> or forget to close the <html> tag, but some older browsers will fail if these are incorrect. Always make sure you take a few moments to add these to each page you work on!
+```
+
+> Many modern browsers will be forgiving if you don't use a <!doctype> or forget to close the <html> tag, but some older browsers will fail if these are incorrect. Always make sure you take a few moments to add these to each page you work on!
 In the early days of HTML, doctype elements were long and confusing. They also created subtle changes in browser behavior when they were malformed or not present. It was common to see doctype declarations (technically, doctype isn't a "tag") like this:
 
+```html
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-Now that the browser knows that it is about to process an HTML document, we must create such document and establish both parts of the document, the head and the body.
+```
 
-What does the "head" do?  
+Now that the browser knows that it is about to process an HTML document, we must create such document and establish both parts of the document, the `head` and the `body`.
 
+## What does the "head" do?  
+
+```html
 <!DOCTYPE html>
 <html>
    <head>
       <title>The Iron Yard</title>
    </head>
 </html>
-The first part of the document is the head. It contains the metadata needed by the browser in order to render the page. The head also contains data needed by search engines to find, index and deliver the content of the HTML document.
+```
 
-Every HTML document must have a title element to identify the content of the document. This title element must be content-rich in order to provide contextual background. For example, 'Introduction' does not provide as much background as 'Introduction to HTML syntax'.
+The first part of the document is the `head`. It contains the metadata needed by the browser in order to render the page. The `head` also contains data needed by search engines to find, index and deliver the content of the HTML document.
+
+> Every HTML document must have a `title` element to identify the content of the document. This `title` element must be content-rich in order to provide contextual background. For example, 'Introduction' does not provide as much background as 'Introduction to HTML syntax'.
+
 This is a list of some important meta data attributes:
 
-charset: Specifies the character encoding for the HTML document
-viewport: User's visible area of a web page
-author: A document's author.
-description: A brief description of the page. Should be no longer than 155 characters (including spaces).
-Example
+* `charset`: Specifies the character encoding for the HTML document
 
+* `viewport`: User's visible area of a web page
+
+* `author`: A document's author.
+
+* `description`: A brief description of the page. Should be no longer than 155 characters (including spaces).
+
+### Example
+
+```html
 <!doctype html>
 <html>
   <head>
@@ -90,14 +116,17 @@ Example
     <link rel="stylesheet" href="css/app.css">
   </head>
 </html>
-The link element is used to instruct the browser where to find files needed for rendering, such as CSS file, fonts, styling libraries, etc.
+```
 
-Content Lives In The "Body"  
+The `link` element is used to instruct the browser where to find files needed for rendering, such as CSS file, fonts, styling libraries, etc.
 
-The document's content resides in the body of the page. This includes all content that must be rendered, such as nav, header, article, p, footer, etc. It may also include script elements depending on the nature of the document. Script elements embed or reference executable scripts such as JavaScript.
+## Content Lives In The "Body"  
 
-Example
+The document's content resides in the body of the page. This includes all content that must be rendered, such as `nav`, `header`, `article`, `p`, `footer`, etc. It may also include `script` elements depending on the nature of the document. Script elements embed or reference executable scripts such as JavaScript.
 
+### Example
+
+```html
 <!doctype html>
 <html>
   <head>
@@ -127,83 +156,127 @@ Example
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   </body>
 </html>
-General Syntax Rules And Tips  
+```
 
-Use soft-tabs with two spaces.
-Use double quotes on attributes.
-Use lowercase tag names.
-Use lowercase attribute names.
-Use quotes around values. HTML5 makes this optional, but it is recommended since it makes values easier to read. If a value has spaces, quotes are required.
-Use lowercase file names.
-Include a space between attributes.
-Example
+## General Syntax Rules And Tips  
 
+* Use soft-tabs with two spaces.
+
+* Use double quotes on attributes.
+
+* Use lowercase tag names.
+
+* Use lowercase attribute names.
+
+* Use quotes around values. HTML5 makes this optional, but it is recommended since it makes values easier to read. If a value has spaces, quotes are required.
+
+* Use lowercase file names.
+
+* Include a space between attributes.
+
+### Example
+
+```html
 <!--Wrong-->
 <link rel="stylesheet"href="css/app.css">
 <!--Correct-->
 <link rel="stylesheet" href="css/app.css">
-Do not include a trailing slash in self-closing elements.
-Indent nested elements once (two spaces).
-Add an alt attribute to images. This provides an alternate image description if the image does not load.
-Example
+```
 
+* Do not include a trailing slash in self-closing elements.
+
+* Indent nested elements once (two spaces).
+
+* Add an alt attribute to images. This provides an alternate image description if the image does not load.
+
+### Example
+
+```html
 <img src="/iron-yard-logo.png" alt="Iron Yard Logo">
-Close all elements.
-Example
+```
 
+* Close all elements.
+
+### Example
+
+```html
 <article>
 <!--Not ideal-->
   <p>The Iron Yard is Awesome.
 <!--Recommended-->
   <p>The Iron Yard is Awesome.</p>
 </article>
-It's optional to close empty elements.
-Example
+```
 
+* It's optional to close empty elements.
+
+### Example
+
+```html
 <!--allowed-->
 <meta charset="utf-8" >
 <!--allowed-->
 <meta charset="utf-8" />
-Avoid spaces between attributes and values. HTML5 allows it, but this makes it harder to read and group entities.
-Example
+```
 
+* Avoid spaces between attributes and values. HTML5 allows it, but this makes it harder to read and group entities.
+
+### Example
+
+```html
 <!--Allowed-->
 <img src= "/image.png" alt = "logo">
 <!--Recommended-->
 <img src="/image.png" alt="logo">
-Even though HTML5 allows for the <html> and <body> to be omitted,1 they are highly recommended. Not doing so can crash DOM and XML software.
-The lang attributes goes in the <html> opening tag!
-Example
+```
 
+* Even though HTML5 allows for the `<html>` and `<body>` to be omitted,1 they are highly recommended. Not doing so can crash DOM and XML software.
+
+  * The `lang` attributes goes in the `<html>` opening tag!
+
+### Example
+
+```html
 <html lang="en-US">
-The character encoding should be defined at the top of the head. This ensures proper interpretation, and correct search engine indexing.
-Example
+```
 
+The character encoding should be defined at the top of the head. This ensures proper interpretation, and correct search engine indexing.
+
+### Example
+
+```html
   <!DOCTYPE html>
   <html lang="en-US">
   <head>
     <meta charset="UTF-8">
     <title>The Iron Yard</title>
   </head>
-Use comments as a communication tool or as reference.
-Example
+```
 
+* Use comments as a communication tool or as reference.
+
+### Example
+
+```html
  <!--The code below is optional. It may be deleted without breaking current features.-->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-Finding Errors In HTML Syntax  
+```
+
+## Finding Errors In HTML Syntax  
 
 HTML can be notoriously hard to debug, especially when you're getting started. To make things even more tricky, many browsers, including Chrome, will attempt to "fix" broken HTML when a page is loaded. If you forget to close a tag, Chrome may try to find a common-sense place to close the tag (this will only happen in-browser; Chrome won't make actual changes to your HTML file). While this is helpful most of the time, it can be a bit misleading.
 
 Because HTML itself has no mechanism for reporting syntax errors, programmers have built tools and generally learned to keep an eye out for a few easy-to-make mistakes.
 
-The W3C Markup Validation Service
+**The W3C Markup Validation Service**
 
 The W3C is an organization that provides many important services to the community, from working on and organizing the HTML specifications to various tools to help programmers write better code.
 
-One of the most useful tools they offer, at no cost, is the W3C Markup Validation Service. As you might have guessed, this site "validates" HTML submitted to it via URL, upload, or directly pasting HTML into it. If the submitted HTML isn't valid, it will print a list of problems you'll need to address.
+One of the most useful tools they offer, at no cost, is the [W3C Markup Validation Service](https://validator.w3.org/). As you might have guessed, this site "validates" HTML submitted to it via URL, upload, or directly pasting HTML into it. If the submitted HTML isn't valid, it will print a list of problems you'll need to address.
 
 For example, here's some HTML that looks correct at first glance, but actually contains a pretty big mistake. See if you can spot it.
 
+```html
   <!DOCTYPE html>
   <html>
     <head>
@@ -215,45 +288,53 @@ For example, here's some HTML that looks correct at first glance, but actually c
       </body>
     </a>
   </html>
+```
+  
 The body tag is accidentally being closed too early, and the a tag is being closed after the end of the body. This isn't correct, and although some browser may make a guess at what you meant, the source of the problem can and should be fixed. If you submit this code to the W3C Markup Validator, it reports three problems:
 
-Error: End tag for body seen, but there were unclosed elements.
-Error: Unclosed element a.
-Error: Saw an end tag after body had been closed.
-Troubleshooting Tips  
+* Error: End tag for body seen, but there were unclosed elements.
 
-When using an HTML tag you aren't familiar with, make sure to check out documentation from a trusted website. Mozilla Developer Network's HTML Element Reference2 has a list of every HTML element.
+* Error: Unclosed element a.
 
-Double-check your HTML for typos. Forgetting a closing tag and not correctly using triangle brackets and forward-slashes are just a few of the subtle typos you'll make from time to time.
+* Error: Saw an end tag after body had been closed.
 
-Nested HTML elements can end up closing and opening in odd places, causing a parent element to close itself inside of a child element, and vice-versa. Keep an eye out for zig-zagged nesting.
+###  Troubleshooting Tips  
 
-Remember to use the W3C validator tool.
+* When using an HTML tag you aren't familiar with, make sure to check out documentation from a trusted website. Mozilla Developer Network's HTML Element Reference2 has a list of every HTML element.
 
-Conclusion  
+* Double-check your HTML for typos. Forgetting a closing tag and not correctly using triangle brackets and forward-slashes are just a few of the subtle typos you'll make from time to time.
+
+* Nested HTML elements can end up closing and opening in odd places, causing a parent element to close itself inside of a child element, and vice-versa. Keep an eye out for zig-zagged nesting.
+
+* Remember to use the [W3C validator tool](https://validator.w3.org/).
+
+## Conclusion  
 
 HTML syntax can look deceivingly simple, but there are a surprising number of places where things can go wrong. Understanding and implementing proper syntax is the main building block of front-end development.
 
 Without proper HTML document structure, tag composition, and element composition, your HTML may not look or act as you expect.
 
-Additional Resources  
+## Additional Resources  
 
-MDN - Introduction to HTML
+[MDN - Introduction to HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
-W3C - Detailed HTML syntax
+[W3C - Detailed HTML syntax](https://w3c.github.io/html/single-page.html#syntax)
 
-Lesson Footnotes
-1: Optional tags. W3C. HTML 5.2. (8.1.2.4. Optional tags)
-2: MDN Elements
- Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Authoring Tag Pairs And Void Elements  
+#### Lesson Footnotes
+
+1: [Optional tags. W3C. HTML 5.2. (8.1.2.4. Optional tags)](https://www.w3.org/TR/html52/syntax.html#optional-tags)
+
+2: [MDN Elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+
+---
+
+# Authoring Tag Pairs And Void Elements  
 
 HTML is a simple language with few rules. It's intended to be universally accessible and yet powerful enough to represent any content that an author wishes to publish. This article is concerned with the basic syntax of HTML tags. In the next few sections, you will learn the meaning of the terms tags pairs and void tags. You will also learn how to construct tag pairs and void tags.
 
-HTML Tags  
+## HTML Tags  
 
-Tags are a combination of keywords and symbols that the browser can identify and use to make sense of the content. To see the impact that they can have on a web page, let's look at an example of content without HTML tags. Look at the "Editor" view. You'll see that I wrote the content in a sensible way. I've got a title (Hello Everyone!), followed by a short paragraph and a list of 3 items:
+Tags are a combination of keywords and symbols that the browser can identify and use to make sense of the content. To see the impact that they can have on a web page, let's look at an example of content **without HTML tags**. Look at the "Editor" view. You'll see that I wrote the content in a sensible way. I've got a title (Hello Everyone!), followed by a short paragraph and a list of 3 items:
 
 Editor
 Browser View
