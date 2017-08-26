@@ -825,4 +825,4 @@ Some great resources for learning about tags and their use are:
 
 * [W3Schools HTML Page](https://www.w3schools.com/html/) is pretty comprehensive and will give you a strong footing on the intended use of tags and their semantic meaning
 
-* [Hosting Facts HTML Cheatsheet](https://hostingfacts.com/html-cheat-sheet/) is a great quick reference for a large number of tags. It's a downloadable PDF, so you can take it with you as well. Doesn't give you a lot of detail, but has code samples.
+* [Hosting Facts HTML Cheatsheet](https://hostingfacts.com/html-cheat-sheet/) is a great quick reference for a *large* number of tags. It's a downloadable PDF, so you can take it with you as well. Doesn't give you a lot of detail, but has code samples.
