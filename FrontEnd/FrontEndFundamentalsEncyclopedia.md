@@ -5969,7 +5969,7 @@ Lesson: Working with Remote Data (Part 2)
 * CORS bypasses the Same-origin policy in order to make it possible to share resources between different domains.
 
 * Compatible with both XMLHttpRequest and Fetch APIs.
-*When working with CORS-enabled cross-origin requests:
+* When working with CORS-enabled cross-origin requests:
   * The request must contain appropriate headers in the HTTP request.
   * The request can be either a simple request or a preflight.
   * When a request for resources is received by a domain, it validates the first domain in order to determine whether or not to share the resource.
