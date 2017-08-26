@@ -527,46 +527,61 @@ Notice the sentence 'Lisa Bonet ate no basil' was not printed and the script sto
 
 ## Terminology  
 
-Tag: Elements have a starting tag and an ending tags.
+**Tag**: Elements have a starting tag and an ending tags.
 
-Element: Elements contain the starting tag, the optional content, and the ending tag. Elements are the entire thing, whereas the "tag" is just a part of the element.
+**Element**: Elements contain the starting tag, the optional content, and the ending tag. Elements are the entire thing, whereas the "tag" is just a part of the element.
 
-Content: Items between the tags; in a paragraph element, the text itself (and any other elements such as images) is the content.
+**Content**: Items between the tags; in a paragraph element, the text itself (and any other elements such as images) is the content.
 
-Void Element: Elements which do not have content, and therefor should not have an ending tag.
+**Void Element**: Elements which do not have content, and therefor should not have an ending tag.
 
 ## Examples  
 
 An element can optionally contain content. Below, the "hello world" is the content:
 
+```html
 <p>hello world</p>
+```
+
 If we were to remove the content, the tags can be written in either of the two ways:
 
+```html
 <p></p>
 <!--or-->
 <p />
+```
+
 (note the space before the / which is required for compatibility with older browsers)
 
-A void element, however, never has content. The primary example is an image -- there is no content inside the image. The src (source) attributes point to where the image is located.
+A void element, however, never has content. The primary example is an image -- there is no content inside the image. The `src` (source) attributes point to where the image is located.
 
+```html
   <img src="https://media.giphy.com/media/10OrWqspeNH7vG/giphy.gif">
-The most common void elements are hr, img, input, link, meta. Since the void element has no content, it also has no closing tag. An HR (horizontal rule) is written as:
+```
 
+The most common void elements are `hr`, `img`, `input`, `link`, `meta`. Since the void element has no content, it also has no closing tag. An HR (horizontal rule) is written as:
+
+```html
 <p>Text below the horizontal rule</p>
 <hr>
 <p>Text after the horizontal rule</p>
-Note that browsers will render <hr/> without problem, but it is more correct syntax to write it as <hr>
+```
+
+Note that browsers will render `<hr/>` without problem, but it is more correct syntax to write it as `<hr>`
 
 Void Tag Examples:
 
+```html
   <br>
   <hr>
   <img src="https://media.giphy.com/media/10OrWqspeNH7vG/giphy.gif">
+```html
 
 ## References  
 
-MDN - Empty Elements
-MDN - HTML Elements Reference
+* [MDN - Empty Elements](https://developer.mozilla.org/en-US/docs/Glossary/Empty_element)
+
+* [MDN - HTML Elements Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
 ---
 
@@ -576,39 +591,49 @@ MDN - HTML Elements Reference
 
 ## Terminology  
 
-attribute: an HTML element modifier that changes default functionality or adds functionality to an element. It consists of a key and a value, called key-value pairs.
+`attribute`: an HTML element modifier that changes default functionality or adds functionality to an element. It consists of a `key` and a `value`, called `key-value pairs`.
 
-Key-value pairs: a set of two linked data objects.
-Key: the name of the attribute, such as src in an img element.
-Value: the value of the attribute, such as "/images/icon.png" in the src of an img.
+* **Key-value pairs**: a set of two linked data objects.
+
+* **Key**: the name of the attribute, such as `src` in an `img` element.
+
+* **Value**: the value of the attribute, such as "/images/icon.png" in the `src` of an `img`.
 
 ## Syntax  
 
+```html
 <tag-name key="value"></tag-name>
+```
 
 ## Attribute Rules  
 
-Every attribute has one key (attribute name).
-Every attribute has one value (attribute value).
-class attributes may contain more than one value.
-Keys are not wrapped in quotes.
-Values are wrapped in quotes.
-You should not duplicate a key inside an element.
+* **Every attribute has one key (attribute name).**
+
+* **Every attribute has one value (attribute value).**
+
+  * class attributes may contain more than one value.
+
+* **Keys are not wrapped in quotes.**
+
+* **Values are wrapped in quotes.**
+
+* **You should not duplicate a key inside an element.**
 
 ## Attribute Types  
 
-There are three types of attributes: element specific, global and event handler content attributes.
+There are three types of attributes: `element specific`, `global` and `event handler content attributes`.
 
-Element specific attributes: Attributes needed by a particular element in order to function or for rendering. For a complete list, visit MDN.
+**Element specific attributes**: Attributes needed by a particular element in order to function or for rendering. For a complete list, visit [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes).
 
-Global attributes: Attributes that are common to all HTML elements, but they may have no effect on some elements. For a complete list, visit MDN.
+**Global attributes**: Attributes that are common to all HTML elements, but they may have no effect on some elements. For a complete list, visit [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes).
 
-Event Handler Content Attributes: Script invoking attributes triggered by a certain 'event'. For a complete list, visit Quackit.
+**Event Handler Content Attributes**: Script invoking attributes triggered by a certain 'event'. For a complete list, visit [Quackit](https://www.quackit.com/html_5/tags/html_5_event_handler_content_attributes.cfm).
 
-flag attributes: an attribute with a key, but no value. For example: required, checked or hidden. You can use this when requiring or preselecting a value in a form.
+> `flag attributes`: an attribute with a `key`, but no `value`. For example: `required`, `checked` or `hidden`. You can use this when requiring or preselecting a value in a form.
 
 ## Examples  
 
+```
 <!--Paragraph element containing a nested anchor tag.-->
 <p>Click <a href="www.theironyard.com">here</a> to visit The Iron Yard's homepage.</p>
 
@@ -630,7 +655,9 @@ flag attributes: an attribute with a key, but no value. For example: required, c
       <input type="text" id="name" name="name" placeholder="Your Name" required>
   </fieldset>
 </form>
-In an anchor tag, an <href> may contain either a URL or a URL fragment. A URL fragment is preceded by a hash mark (#), specifying an internal target location, using an id within the current document.
+```
+
+> In an anchor tag, an `<href>` may contain either a URL or a URL fragment. A URL fragment is preceded by a hash mark (#), specifying an internal target location, using an `id` within the current document.
 
 ---
 
@@ -640,291 +667,210 @@ In an anchor tag, an <href> may contain either a URL or a URL fragment. A URL fr
 
 ## Terminology  
 
-Id - a unique identifier attribute for an HTML element.
-Class - a re-usable classification for an HTML element.
+* **Id** - a unique identifier attribute for an HTML element.
+
+* **Class** - a re-usable classification for an HTML element.
 
 ## Examples  
 
 ### IDs  
 
-Often, you may have multiple elements but want to add significance to a particular element. For example, if you have 4 images, but want to have the main image appear larger than the others, you could add an id attribute giving that image an identifier. Each id should be unique on a page.
+Often, you may have multiple elements but want to add significance to a particular element. For example, if you have 4 images, but want to have the main image appear larger than the others, you could add an id attribute giving that image an identifier. **Each id should be unique on a page.**
 
+```html
 <img id="main-image" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img src="https://media3.giphy.com/media/MDJ9IbxxvDUQM/200.gif#">
 <img src="https://media4.giphy.com/media/o0vwzuFwCGAFO/200w.gif">
+```
 
 ### Classes  
 
-Classes take the idea of an id, where you want to be able to do "something" with an element, but allow you to reuse it multiple times.
+`Classes` take the idea of an id, where you want to be able to do "something" with an element, but allow you to reuse it multiple times.
 
-Let's say you want to be able to easily make a thumbnail out of an image (give it a border and set a certain width). You would use a class to do this. class is the key, and the value is wrapped in quotes.
+Let's say you want to be able to easily make a thumbnail out of an image (give it a border and set a certain width). You would use a class to do this. `class` is the key, and the value is wrapped in quotes.
 
+```html
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img class="thumbnail" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
+```
 
 ---
 
-Lesson: HTML Structure and Layout
+[HTML Structure and Layout](HTMLStructureAndLayout.md)
+
 # Common HTML Tags  
 
 ## Terminology  
 
-Tags: They indicate a unit of content, such as <title>MovieName</title>. Tags wrap content. In the prior example, the content for the title tag is "MovieName".
+**Tags**: They indicate a unit of content, such as `<title>MovieName</title>`. Tags wrap content. In the prior example, the content for the title tag is "MovieName".
 
-Word Processing Tags: Tags used to display and format text. Think of the format bars for a word processing program (Word, Google Docs, etc)
+**Word Processing Tags**: Tags used to display and format text. Think of the format bars for a word processing program (Word, Google Docs, etc)
 
-Tags: h1, h2, h3, h4, h5, h6, p, strong (and b), em (and i), br, hr
-Semantic Tags: Tags used to give context clues about the relative importance of their content.
+* Tags: h1, h2, h3, h4, h5, h6, p, strong (and b), em (and i), br, hr
 
-Tags: article, section, header, footer, aside
-Tables Tags: Used to display tabular data (like a spreadsheet)
+**Semantic Tags**: Tags used to give context clues about the relative importance of their content.
 
-Tags: table, thead, tbody, tr, th, td
-Forms Tags: Labels, information, and fields used to gather information from the user and submit it for processing.
+* Tags: article, section, header, footer, aside
 
-Tags: form, fieldset, label, input, select, button
-Media Tags: Tags used to display audio and visual content embedded in the HTML.
+**Tables Tags**: Used to display tabular data (like a spreadsheet)
 
-Tags: img, canvas, figure, audio, video.
+* Tags: table, thead, tbody, tr, th, td
+
+**Forms Tags**: Labels, information, and fields used to gather information from the user and submit it for processing.
+
+* Tags: form, fieldset, label, input, select, button
+
+**Media Tags**: Tags used to display audio and visual content embedded in the HTML.
+
+* Tags: img, canvas, figure, audio, video.
 
 ## Examples  
 
 ### Example Word Processing Tags  
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <article class="">
-2
   <header>
-3
     <h2>Title</h2>
-4
   </header>
-5
   <p>Lorem ipsum dolor sit amet, <strong>consectetur adipisicing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-6
   <p>Duis aute irure dolor in <em>reprehenderit in voluptate velit</em> esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-7
 </article>
-8
-​
- 
-
-Fullscreen
-
-Reset Code
-Preview 
+```
 
 ### Example HTML Table  
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <table>
-2
   <thead>
-3
     <tr>
-4
       <th>Year</th>
-5
       <th>Movie Name</th>
-6
     </tr>
-7
   </thead>
-8
   <tbody>
-9
     <tr>
-10
       <td>2015</td>
-11
       <td>Spotlight</td>
-12
     </tr>
-13
     <tr>
-14
       <td>2014</td>
-15
       <td>Birdman</td>
-16
     </tr>
-17
     <tr>
-18
       <td>2013</td>
-19
       <td>12 Years a Slave</td>
-20
     </tr>
-21
     <tr>
-22
       <td>2012</td>
-23
       <td>Argo</td>
-24
     </tr>
-25
   </tbody>
-26
 </table>
-27
-​
- 
-
-Fullscreen
-
-Reset Code
-Preview 
+```
 
 ### Example HTML Form  
 
-Editor
-Browser View
-index.html
-app.js
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE html>
-2
 <html>
-3
   <head>
-4
     <meta charset="utf-8">
-5
     <title></title>
-6
     <script src="app.js"></script>  
-7
   </head>
-8
   <body>
-9
   <form id="form">
-10
     <fieldset>
-11
       <div class="">
-12
         <label for="your-name">Your Name</label><br>
-13
         <input  type="text" name="your-name" id="your-name" value="">
-14
       </div>
-15
-​
-16
+
       <div class="">
-17
         <input type="submit" value="Submit Form">
-18
       </div>
-19
     </fieldset>
-20
   </form>
-21
 </body>
-22
 </html>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview 
+```js
+// app.js
+var form = document.getElementById("form");
+var nameEl = document.querySelector("#your-name");
+form.addEventListener("submit", function(event){
+    event.preventDefault();
+    console.log("Hi there " + nameEl.value);
+});
+```
 
 ### Example Media Tags  
 
-Editor
-Browser View
-index.html
-
-1
+```html
 Image Sample:<br>
-2
 <img src="http://www.placecage.com/gif/400/300" alt="Gif'd Cage">
-3
-​
-4
+
 <hr>
-5
-​
-6
+
 Audio Sample:<br>
-7
-​
-8
+
 <audio src="https://archive.org/download/WilhelmScreamSample/WilhelmScream.mp3" preload="auto" controls></audio>
-9
 <cite>http://archive.org</cite>
-10
-​
-11
+
 <hr>
-12
-​
-13
+
 Video Sample:<br>
-14
-​
-15
+
 <video src="http://html5demos.com/assets/dizzy.webm" controls>
-16
   Your browser does not support the <code>video</code> element.
-17
 </video>
-18
-​
-19
+
 <cite>http://html5demos.com</cite>
- 
-
-Fullscreen
-
-Reset Code
-Preview 
+```
 
 ## References  
 
-Quackit - HTML tags
+[Quackit - HTML tags](https://www.quackit.com/html/tags/)
 
-MDN - HTML element reference
+[MDN - HTML element reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
 ---
 
-Lesson: HTML Structure and Layout
+[HTML Structure and Layout](HTMLStructureAndLayout.md)
+
 # Element Relationships  
 
 ## Terminology  
 
-Ancestor: An ancestor is an element in the lineage starting from the element's parent, and continuing to move up that parent's parent, and so forth until the html is reached
-Parent: An element containing child elements.
-Child: If an element is directly nested inside the content of an element, the element is a child.
-Sibling: If two elements have the same parent, they are siblings.
+* **Ancestor**: An ancestor is an element in the lineage starting from the element's parent, and continuing to move up that 
+parent's parent, and so forth until the `html` is reached
+
+* **Parent**: An element containing `child` elements.
+
+* **Child**: If an element is directly nested inside the content of an element, the element is a child.
+
+* **Sibling**: If two elements have the same parent, they are siblings.
 
 ## Examples  
 
-The HTML tag has two children, the head and body tag.
+The HTML tag has two children, the `head` and `body` tag.
 
+```html
 <html>
   <head></head>
   <body></body>
 </html>
+```
+
 Below, from the main-image perspective, the other elements are either a sibling, parent, or ancestor. The images themselves are child of the element with a class of parent.
 
+```html
 <!DOCTYPE html>
 <html>
   <head>
@@ -947,29 +893,37 @@ Below, from the main-image perspective, the other elements are either a sibling,
 
   </body>
 </html>
+```
 
 ---
 
-Lesson: HTML Structure and Layout
+[HTML Structure and Layout](HTMLStructureAndLayout.md)
+
 # Creating Semantic HTML  
 
 ## Terminology  
 
-Inside-out: Developing the html structure starting at the most important and moving higher in the hierarchy from there.
-Outside-in: Developing the html structure from the body and developing the semantic html as children.
-Wireframe: Developing a visual guide that depicts the general layout and structure of a website.
+* **Inside-out**: Developing the html structure starting at the most important and moving higher in the hierarchy from there.
+
+* **Outside-in**: Developing the html structure from the body and developing the semantic html as children.
+
+* **Wireframe**: Developing a visual guide that depicts the general layout and structure of a website.
 
 ## Examples  
 
 ### Example 1  
 
-Here is a simple markup for an h2, p and a sidebar div
+Here is a simple markup for an `h2`, `p` and a sidebar `div`
 
+```html
 <h2>title</h2>
 <p>text</p>
 <div>Sidebar!</div>
+```
+
 Below we take the previous markup and we create something more semantic. Notice the improved structure.
 
+```html
 <section>
   <article>
     <h2>title</h2>
@@ -979,133 +933,115 @@ Below we take the previous markup and we create something more semantic. Notice 
     Sidebar!
   </aside>
 </section>
+```
 
 ### Example 2  
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <html>
-2
   <head>
-3
     <link rel="stylesheet" href="style.css">
-4
   </head>
-5
   <body>
-6
     <header>
-7
       <h1>Site Titles</h1>
-8
       <nav>
-9
         <a href="">Home</a>
-10
         <a href="">About</a>
-11
         <a href="">Contact</a>
-12
       </nav>
-13
     </header>
-14
     <section>
-15
       <article>
-16
         <h2>Article Title</h2>
-17
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-18
-​
-19
+
         <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150"/>
-20
-​
-21
+
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-22
       </article>
-23
       <aside>
-24
         <h6>Sidebar!</h6>
-25
         <ul>
-26
           <li><a href="">Link!</a></li>
-27
           <li><a href="">Link!</a></li>
-28
           <li><a href="">Link!</a></li>
-29
         </ul>
-30
       </aside>
-31
     </section>
-32
     <footer>
-33
       <copy>Copyright 2016</copy>
-34
     </footer>
-35
   </body>
-36
 </html>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview
-
+```css
+/* style.css */
+header {
+  border: 2px solid grey;
+}
+footer {
+  border: 2px solid grey;
+  text-align: center;
+}
+article, aside {
+  display: inline-block;
+  vertical-align: top;
+}
+article {
+  width: 66%;
+}
+aside {
+  width: 33%;
+  border: 2px solid grey;
+}
+```
+      
 ---
 
-Lesson: Applying Style with CSS
+[Applying Style with CSS](ApplyingStyleWithCSS.md)
+
 # Basic Selectors  
 
 ## Terminology  
 
-CSS - A simple declarative language used to define the visual styling of HTML.
+** CSS** - A simple declarative language used to define the visual styling of HTML.
 
-Cascade - The concept that CSS styles cascade one after another. style declarations are read from top to bottom by the browser. This means that styles declared later in the document will override styles written earlier in the document.
+** Cascade** - The concept that CSS styles cascade one after another. style declarations are read from top to bottom by the browser. This means that styles declared later in the document will override styles written earlier in the document.
 
-Selector - A text string that specifies which HTML element will be styled.
+** Selector** - A text string that specifies which HTML element will be styled.
 
-Declaration - The combination of a property and the value applied to it within a style block.
+** Declaration** - The combination of a property and the value applied to it within a style block.
 
-Property - The visual attribute being styled by a declaration.
+** Property** - The visual attribute being styled by a declaration.
 
-Value - The specific quantity or quality assigned to a property.
+** Value** - The specific quantity or quality assigned to a property.
 
 ## Examples  
 
-
+```html
 <!-- code sample -->
 <p id="first">Paragraph with no class</p>
 <p class="colored second">Paragraph with class attribute value</p>
 <p class="colored slanted">Second paragraph with class</p>
 <p>Paragraph with no class</p>
+```
 
 ### Tag Selector  
 
-
+```css
 /* styles all paragraphs */
 p{
     background: #ddd;
     padding: 20px;
 }
+```
 
 ### Class Selectors  
 
-
+```css
 /* will style the second and third paragraphs */
 .colored{
     color: green;
@@ -1114,10 +1050,11 @@ p{
 .slanted{
     font-style: italic;
 }
+```
 
 ### Id Selectors  
 
-
+```css
 /* will style the first paragraph */
 #first{
     font-weight: bold;
@@ -1127,87 +1064,66 @@ p{
 #second{
     display: none;
 }
+```
 
 ---
 
-Lesson: Applying Style with CSS
+[Applying Style with CSS](ApplyingStyleWithCSS.md)
+
 # Applying CSS Styling  
 
 ## Terminology  
 
-Selector - A keyword which references an HTML element.
+**Selector** - A keyword which references an HTML element.
 
-Declaration - A styling rule applied to an element using a property / value pair.
+**Declaration** - A styling rule applied to an element using a property / value pair.
 
-Declaration block - A group of declarations surrounded by curly braces and preceded by a selector. Each declaration is separated by semicolons. Although the last semicolon within a declaration block is optional, it’s good practice to include it, as it’ll help you avoid syntax errors in the future. As you start to add declarations to a block, it’s all too easy to forget the semicolon.
+**Declaration block** - A group of declarations surrounded by curly braces and preceded by a selector. Each declaration is separated by semicolons. Although the last semicolon within a declaration block is optional, it’s good practice to include it, as it’ll help you avoid syntax errors in the future. As you start to add declarations to a block, it’s all too easy to forget the semicolon.
 
-Property - The first part of a declaration - a key which accepts a value or multiple values and describes the visual state of a specific aspect of an element.
+**Property** - The first part of a declaration - a key which accepts a value or multiple values and describes the visual state of a specific aspect of an element.
 
-Value - The second part of a declaration - a single value or set of adjacent values can be applied to a property and thus describe the visual state of a specific aspect of an element.
+**Value** - The second part of a declaration - a single value or set of adjacent values can be applied to a property and thus describe the visual state of a specific aspect of an element.
 
 ## Examples  
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <head>
-2
   <style>
-3
     .selector { /* declaration block start */
-4
       display: inline-block;
-5
       width: 50%;
-6
       height: 50px;
-7
       background-color: #BADA55;
-8
     }
-9
   </style>
-10
 </head>
-11
-​
-12
+
 <body>
-13
   <div class="selector"></div>
-14
 </body>
-15
-​
- 
-
-Fullscreen
-
-Reset Code
-Preview 
+```
 
 ## References  
 
-W3 Brief History of CSS
+[W3 Brief History of CSS](https://www.w3.org/Style/CSS20/history.html)
 
-MDN CSS Reference
+[MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
 
-SitePoint Declaration Blocks
+[SitePoint Declaration Blocks](https://www.sitepoint.com/html-css/css/)
 
-HTML Dog - CSS Properties
+[HTML Dog - CSS Properties](http://www.htmldog.com/references/css/properties/)
 
 ---
 
-Lesson: Applying Style with CSS
+[Applying Style with CSS](ApplyingStyleWithCSS.md)
+
 # Declaration Precedence  
 
 ## Terminology  
 
-Cascading - CSS is interpreted from top to bottom.
+**Cascading** - CSS is interpreted from top to bottom.
 
-Precedence - Due to CSS's cascading nature, styles at the bottom overwrite styles which are applied using selectors with the same levels of specificity above them.
+**Precedence** - Due to CSS's cascading nature, styles at the bottom overwrite styles which are applied using selectors with the same levels of specificity above them.
 
 ## Examples  
 
@@ -1229,68 +1145,59 @@ background-color: red; }
 
 ## References  
 
-CSS Cascade
+[CSS Cascade](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade)
 
-CSS Tricks - Precedence
+[CSS Tricks - Precedence](https://css-tricks.com/precedence-css-order-css-matters/)
 
 ---
 
-Lesson: Applying Style with CSS
+[Applying Style with CSS](ApplyingStyleWithCSS.md)
+
 # Style Inheritance  
 
 ## Terminology  
 
-Inheritance: Inheritance in CSS is the mechanism through which certain properties are passed on from a parent element down to its children.
+* **Inheritance**: Inheritance in CSS is the mechanism through which certain properties are passed on from a parent element down to its children.
 
 ## Examples  
 
-Editor
-Browser View
-index.html
-styles.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE html>
-2
 <html>
-3
   <head>
-4
     <meta charset="utf-8">
-5
     <title></title>
-6
     <link rel="stylesheet" href="styles.css">
-7
   </head>
-8
   <body>
-9
     <p>Startup pitch holy grail metrics twitter scrum <span>project</span>.</p>
-10
     <div class="no-show">
-11
       <p>Traction niche market stealth customer long tail deployment validation backing hackathon freemium partner network business-to-consumer.</p>
-12
     </div>
-13
   </body>
-14
 </html>
-15
-​
+
+```
+
+```css
+/* styles.css */
+.no-show {
+  visibility: hidden;
+}
+
+p {
+  font-size: 24px;
+  line-height: 36px;
+  color: red;
+}
+```
  
-
-Fullscreen
-
-Reset Code
-Preview 
-
 ## References  
 
-W3 Inheritance and Cascade
+[W3 Inheritance and Cascade](https://www.w3.org/wiki/Inheritance_and_cascade)
 
-W3 Property Table (Reference whether a property is inherited or not)
+[W3 Property Table](https://www.w3.org/TR/CSS21/propidx.html) (Reference whether a property is inherited or not)
 
 ---
 
@@ -1308,16 +1215,17 @@ W3 Property Table (Reference whether a property is inherited or not)
 
 ---
 
-Lesson: CSS Layout & Fonts
+[CSS Layout & Fonts](CSSLayout&Fonts.md)
+
 # Padding, Margin and Border  
 
 ## Terminology  
 
-Padding: allows you to specify how much space should be between the content of an element and it's border
+**Padding**: allows you to specify how much space should be *between the content of an element and it's border*
 
-Margin: this property sets the gap between elements
+**Margin**: this property sets *the gap between elements*
 
-Border: allows you to specify the width, style, and color of a border for an element.
+**Border**: allows you to specify the width, style, and color of a border for an element.
 
 ## Examples  
 
@@ -1325,111 +1233,115 @@ Border: allows you to specify the width, style, and color of a border for an ele
 
 In the example below, the red box has no padding, but the blue box as a padding of 20px. Notice the difference:
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
      <p class="first">It was the best of times, it was the worst of times...</p>
-8
      <p class="second">it was the age of wisdom, it was the age of foolishness, it was the epoch of belief...</p>
-9
   </body>
-10
 </html>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview 
+```css
+/* style.css */
+p.first {
+  font-size: 20px;
+  width: 275px;
+  border: 2px dotted red;
+  padding: 0px;
+}
+p.second {
+  font-size: 20px;
+  width: 275px;
+  border: 2px dotted blue;
+  padding: 20px;
+}
+```
 
 ### Margin  
 
 Here we have to take the same example from above and set the padding for both boxes equal to 0. In this case, the red box now has a margin set for 40px. Whereas the blue box has a margin of 0px. Notice the difference:
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
      <p class="first">It was the best of times, it was the worst of times...</p>
-8
      <p class="second">it was the age of wisdom, it was the age of foolishness, it was the epoch of belief...</p>
-9
   </body>
-10
 </html>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview 
+```css
+/* style.css */
+p.first {
+  font-size: 20px;
+  width: 275px;
+  border: 2px dotted red;
+  padding: 0px;
+  margin: 40px;
+}
+p.second {
+  font-size: 20px;
+  width: 275px;
+  border: 2px dotted blue;
+  padding: 0px;
+  margin: 0px;
+}
+```
 
 ### Border  
 
 In this example, you can see the different ways that you can create borders around your elements. Take a look at the CSS to see how it differs from box to box.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
   <body>
-7
      <p class="first">It was the best of times, it was the worst of times...</p>
-8
      <p class="second">it was the age of wisdom, it was the age of foolishness, it was the epoch of belief...</p>
-9
      <p class="third">it was the season of Light, it was the season of Darkness...</p>
-10
   </body>
-11
 </html>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview
+```css
+/* style.css */
+p.first {
+  margin: 30px;
+  font-size: 20px;
+  border-width: 15px;
+  border-style: groove;
+  border-color: #dadada;
+}
+p.second {
+  margin: 30px;
+  font-size: 20px;
+  border-width: 5px;
+  border-style: dotted;
+  border-color: purple;
+}
+p.third {
+  margin: 30px;
+  font-size: 20px;
+  border-width: 5px 10px 15px 5px;
+  border-style: solid;
+  border-color: #bbbbaa #ffffff #ee3380 red;
+}
+```
 
 ---
 
@@ -1541,18 +1453,34 @@ div.ib:nth-of-type(7) {
 
 ---
 
-Lesson: CSS Layout & Fonts
+[CSS Layout & Fonts](CSSLayout&Fonts.md)
+
 # CSS Background Images  
 
 ## Terminology  
 
-background: shorthand for setting the individual background values in a single place in the style sheet.
+**background**: shorthand for setting the individual background values in a single place in the style sheet.
 
-background-image: sets one or several background images for an element. background-position: sets the initial position for each defined background image, relative to the background position layer defined by background-origin. background-size: specifies the size of the background images. background-repeat: defines how background images are repeated; either across a y-axis, across an x-axis, across both, or not repeated at all. background-origin: determines the position of the origin of an image. background-clip: specifies whether an element's background extends underneath its border. background-attachment: determines whether the background image's position is fixed within the viewport or scrolls along with its containing block. background-color: sets the background color of an element, either through a color value or the keyword transparent.
+**background-image**: sets one or several background images for an element. 
+
+**background-position**: sets the initial position for each defined background image, relative to the background position layer defined by background-origin. 
+
+**background-size**: specifies the size of the background images. 
+
+**background-repeat**: defines how background images are repeated; either across a y-axis, across an x-axis, across both, or not repeated at all. 
+
+**background-origin**: determines the position of the origin of an image. 
+
+**background-clip**: specifies whether an element's background extends underneath its border. 
+
+**background-attachment**: determines whether the background image's position is fixed within the viewport or scrolls along with its containing block. 
+
+**background-color**: sets the background color of an element, either through a color value or the keyword transparent.
   
 ---
 
-Lesson: CSS Layout & Fonts
+[CSS Layout & Fonts](CSSLayout&Fonts.md)
+
 # CSS Font-families and the Browser  
 
 ## Terminology  
@@ -1565,36 +1493,55 @@ font stacking - Refers to listing several fonts to be displayed in the event tha
 
 These examples include typefaces that are installed on most computers. They are group by type.
 
-Serif:
+* Serif:
 
+```css
 body {
 font-family: Georgia, Times, Times New Roman;
 }
-Sans-Serif:
+```
 
+* Sans-Serif:
+
+```css
 body {
   font-family: Arial, Veranda, Helvetica;
 }
-Monospace
+```
+
+* Monospace
+
+```css
 body {
   font-family: Courier, Courier New;
 }
-Cursive
+```
+
+* Cursive
+
+```css
 body {
   font-family: Comic Sans MS, Monotype Corsiva;
 }
-Fantasy
+```
+
+* Fantasy
+
+```css
 body {
   font-family: Impact, Haettenschweiler;
 }
+```
 
 ---
 
-Lesson: CSS Layout & Fonts
+[CSS Layout & Fonts](CSSLayout&Fonts.md)
+
 # Font Character Rendering  
 
 ## Examples  
 
+```html
 <div>
     <h1>Page Title</h1>
 
@@ -1602,7 +1549,9 @@ Lesson: CSS Layout & Fonts
 
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, excepturi, blanditiis quae cumque qui repellendus placeat iusto totam repellat repudiandae quam neque laudantium ex nemo distinctio beatae. Eius, alias, earum!</p>
 </div>
+```
 
+```css
 p {
   /*Expects a list of fonts to try from left to right*/
   /*Will attempt to load Helvetica from the user's computer. If that fails, the browser will attempt to load Arial. If that fails, the browser will find any sans-serif font on the user's computer and use that.*/
@@ -1620,6 +1569,7 @@ p {
   /*Selects the bold version of the current font of the current font family. Can be combined with font-style to select a bold and italic font. */
   font-weight: bold; /*normal, bold, bolder, lighter, number, initial, inherit*/
 }
+```
 
 ---
 
@@ -1628,12 +1578,13 @@ Lesson: CSS Layout & Fonts
 
 ## Terminology  
 
-@font-face - A CSS directive that will import font information from a source file for use on a website.
+**@font-face** - A CSS directive that will import font information from a source file for use on a website.
 
 ## Examples  
 
 The fontface rule requires three things: A declaration of the font-family name, the location of the source font file (local or remote), and the weight of the font.
 
+```css
 @font-face {
   font-family: WebUnsafeFont;
   src: url("font/location/WebUnsafeFont.otf");
@@ -1644,8 +1595,11 @@ The fontface rule requires three things: A declaration of the font-family name, 
 p {
   font-family: WebUnsafeFont, Helvetica, Arial, sans-serif;
 }
+```
+
 To use a font that is cross-browser compatible, you must define multiple source files in different font formats. Don't try to generate all of the font formats yourself. If you have a web font that is licensed for distribution and can be safely converted into derivative formats, the use FontSquirrel to convert it online.
 
+```css
 /*  FontSquirrel will produce code that looks like this. It generates all the fonts and declares them as a list in the css*/
 @font-face {
   font-family: 'WebUnsafeFont';
@@ -1656,6 +1610,7 @@ To use a font that is cross-browser compatible, you must define multiple source 
     url('WeUnsafeFont.svg#open_sansregular') format('svg');
   font-weight: normal;
 }
+```
 
 ---
 
