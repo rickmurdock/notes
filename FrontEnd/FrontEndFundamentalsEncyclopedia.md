@@ -1485,9 +1485,9 @@ div.ib:nth-of-type(7) {
 
 ## Terminology  
 
-web safe - Web safe fonts are fonts that are already installed on most computers. These fonts don't need to be downloaded by the user to appear in the browser.
+**web safe** - Web safe fonts are fonts that are already installed on most computers. These fonts don't need to be downloaded by the user to appear in the browser.
 
-font stacking - Refers to listing several fonts to be displayed in the event that the first font is not available.
+**font stacking** - Refers to listing several fonts to be displayed in the event that the first font is not available.
 
 ## Examples  
 
