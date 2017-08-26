@@ -75,7 +75,8 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 ---
 
-Lesson: Basic Computer and Terminal Skills
+[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md)
+
 # File System Traversal  
 
 ## Terminology  
@@ -140,26 +141,32 @@ $ cd /Users/jessie/Downloads  // Absolute
 
 ---
 
-Lesson: Basic Computer and Terminal Skills
+[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md)
+
 # File manipulation  
 
-Terminology  
+## Terminology  
 
-Tape Archiver: The tape archiver method, tar, can quickly group files together into a single archive (file).
-Examples  
+* **Tape Archiver**: The tape archiver method, `tar`, can quickly group files together into a single archive (file).
+
+## Examples  
 
 Make Directory
 
-$ represents the placement of the cursor before input through the command line
+*`$` represents the placement of the cursor before input through the command line*
 
+```sh
 $ mkdir tiy
 $ cd tiy
 $ pwd
 /Users/jessie/tiy
 $ ls
 $ # Nothing here yet because this directory was just created
+```
+
 Remove Directory
 
+```sh
 $ pwd
 /Users/jessie
 $ ls
@@ -169,194 +176,275 @@ $ rmdir repos
 $ ls
 Applications Documents    Library      Music        Public
 Desktop      Downloads    Movies       Pictures
+```
+
 Make File
 
+```sh
 $ touch newfile.txt
 $ ls
 newfile.txt
+```
+
 Remove File
 
+```sh
 $ ls
 newfile.txt
 $ rm newfile.txt
 $ ls
 $ # Nothing here
+```
+
 Write to file
 
+```sh
 $ echo "Hello world" > newfile.txt
 $ ls -la
 -rw-r--r--     1 jessie  staff     22 May 11 11:13 newfile.txt
+```
+
 Open a file
 
+```sh
 $ open newfile.txt
+```
+
 Print File Contents
 
+```sh
 $ cat newfile.txt
 Hello world
+```
+
 Print File Contents (Shortened)
 
+```sh
 $ less newfile.txt
+```
+
 Copy Files or Directories
 
+```sh
 $ cp <filename> <directory-it-should-be-copied-to>
 $ cp -R <directory> <directory-it-should-be-copied-to>
+```
+
 Moving Files
 
+```sh
 $ mv newcopy.txt ../
 $ cd ..
 $ cat newcopy.txt
 Hello world
+```
+
 Renaming
 
+```sh
 $ mv newcopy.txt specialfile.txt
 $ cat specialfile.txt
 Hello world
+```
+
 Tape Archiver
 
+```sh
 $ cd ~
 $ tar cvf tmp/repos.tar repos
 $ cd tmp
 $ ls
 repos.tar
+```
+
 Extract TAR
 
+```sh
 $ cd ~/tmp
 $ ls
 $ tar xvf repos.tar
 $ ls
+```
+
 Compressing
 
+```sh
 $ cd ~/tmp
 $ gzip repos.tar
 $ ls
+```
+
 Uncompress
 
+```sh
 $ gzip -d repos.tar.gz
-References  
+```
 
-IBM - UNIX tips and tricks for a new user
+## References  
+
+[IBM - UNIX tips and tricks for a new user](https://www.ibm.com/developerworks/aix/tutorials/au-unixtips1/)
 
 ---
 
-Lesson: Basic Computer and Terminal Skills
+[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md)
+
 # Student can explain how to start, pause, and cancel script execution  
 
-Terminology  
+## Terminology  
 
-Shell: A shell is a user interface which accesses an operating system's services. In general, operating system shells use either a command-line interface (CLI) or graphical user interface (GUI).
+* **Shell**: A shell is a user interface which accesses an operating system's services. In general, operating system shells use either a command-line interface (CLI) or graphical user interface (GUI).
 
-Bash: The Bash shell is a command language interpreter that executes commands read from the standard input or from a file.
+* **Bash**: The Bash shell is a command language interpreter that executes commands read from the standard input or from a file.
 
-Shell Script: A shell script is simply a program, typically text in a file, written in a language designed to be interpreted by a shell such as Bash.
+* **Shell Script**: A shell script is simply a program, typically text in a file, written in a language designed to be interpreted by a shell such as Bash.
 
-Examples  
+## Examples  
 
-Writing a shell script  
+### Writing a shell script  
 
-The syntax for writing shell scripts is identical to entering commands right into the command-line. For example, I might have a shell script in a file called script.sh that looks like this:
+The syntax for writing shell scripts is identical to entering commands right into the command-line. For example, I might have a shell script in a file called `script.sh` that looks like this:
 
+```sh
 #!/bin/bash
 echo 'A man a plan a canal panama'
-The #! symbol is known as a hashbang and tells the command-line interpreter (in this case, sh) what shell to use.
+```
 
-Executing  
+The `#!` symbol is known as a hashbang and tells the command-line interpreter (in this case, `sh`) what shell to use.
 
-Note: If you have trouble executing a script, check permissions.
+## Executing  
 
-$ represents the placement of the cursor before input through the command line
+*Note: If you have trouble executing a script, check permissions.*
 
+*`$` represents the placement of the cursor before input through the command line*
+
+```sh
 $ ls -l
 -rw-r--r--   1 jessie  admin    35 Apr 10 15:14 script.sh
 $ chmod u+x script.sh
 $ ls -l
 -rwxr--r--   1 jessie  admin    35 Apr 10 15:14 script.sh
-Start a Script  
+```
+
+### Start a Script  
 
 Now you can run this file via the sh command like so:
 
+```sh
 $ sh script.sh
 A man a plan a canal panama
-You can do a lot with shell scripts. Here's a simple example of storing fruit in a .txt file and printing only the fruits with 'apple' in the name.
+```
 
-In fruits.sh:
+You can do a lot with shell scripts. Here's a simple example of storing fruit in a `.txt` file and printing only the fruits with `'apple'` in the name.
 
+In `fruits.sh`:
+
+```sh
 #!/bin/bash
 echo 'apple' >> fruits.txt
 echo 'banana' >> fruits.txt
 echo 'pineapple' >> fruits.txt
 cat fruits.txt | grep apple
+```
+
 From your terminal:
 
+```sh
 $ sh fruits.sh
 apple
 pineapple
-Note: If there was no fruits.txt file before, one will be created by executing fruits.sh.
+```
 
-Pause a Script  
+*Note: If there was no `fruits.txt` file before, one will be created by executing `fruits.sh`.*
 
-A script can be told to pause for a specified time with the sleep command. sleep is followed by a number and an optional suffix.
+### Pause a Script  
+
+A script can be told to pause for a specified time with the `sleep` command. `sleep` is followed by a number and an optional suffix.
 
 Suffix options:
 
-s for seconds (the default)
-m for minutes.
-h for hours.
-d for days.
+* `s` for seconds (the default)
+
+* `m` for minutes.
+
+* `h` for hours.
+
+* `d` for days.
+
+```sh
 sleep 2   # Sleep for 2 seconds
 sleep 3s  # Sleep for 3 seconds
 sleep 5m  # Sleep for 5 minutes
 sleep 2d  # Sleep for 2 days
-In script.sh:
+```
 
+In `script.sh`:
+
+```sh
 #!/bin/bash
 echo 'A man a plan a canal panama'
 sleep 2s
 echo 'Never odd or even'
-Pause and Await User input  
+```
+
+### Pause and Await User input  
 
 A script can be written to pause at a given point and await user input. Consider the following
 
-In fruits.sh:
+In `fruits.sh`:
 
+```sh
 #!/bin/bash
 echo 'apple' > fruits.txt
 echo 'banana' >> fruits.txt
 echo 'pineapple' >> fruits.txt
 read -p "Press [Enter] key to start show results..."
 cat fruits.txt | grep apple
-The read command followed by the -p option pauses the script. A message is displayed prompting the user to press [Enter] key to continue. When the user presses [Enter] the results are printed.
+```
 
-Cancel a Script  
+The `read` command followed by the `-p` option pauses the script. A message is displayed prompting the user to press [Enter] key to continue. When the user presses [Enter] the results are printed.
 
-The exit command exits the shell.
+### Cancel a Script  
 
-In script.sh:
+The `exit` command exits the shell.
 
+In `script.sh`:
+
+```sh
 #!/bin/bash
 echo 'A man a plan a canal panama'
 sleep 2s
 echo 'Never odd or even'
 exit 0
 echo 'Lisa Bonet ate no basil'
+```
+
 In the terminal:
 
+```sh
 sh script.sh
+```
+
 Notice the sentence 'Lisa Bonet ate no basil' was not printed and the script stopped running.
 
 ---
 
-Lesson: Basic Computer and Terminal Skills
+[Basic Computer and Terminal Skills](BasicComputerAndTerminalSkills.md)
+
 # Finder File Management  
 
-Terminology  
+## Terminology  
 
-Graphical User Interface: A way of interacting with a computer using items such as windows, icons, and menus, used by most modern operating systems. Also known by its acronym, "GUI". Sometimes pronounced "gooey" /ˈɡo͞oē/.
-Traversal: To pass or move over, along, or through.
-Directory: A directory is a file system cataloging structure which contains references to other computer files, and possibly other directories. On many computers, directories are known as folders or drawers.
-References  
+* **Graphical User Interface**: A way of interacting with a computer using items such as windows, icons, and menus, used by most modern operating systems. Also known by its acronym, "GUI". Sometimes pronounced "gooey" /ˈɡo͞oē/.
 
-Directory (computing) - Wikipedia
-Get to know the Finder on your Mac
+* **Traversal**: To pass or move over, along, or through.
+
+* **Directory**: A directory is a file system cataloging structure which contains references to other computer files, and possibly other directories. On many computers, directories are known as folders or drawers.
+
+## References  
+
+* [Directory (computing) - Wikipedia](https://en.wikipedia.org/wiki/Directory_(computing))
+
+* [Get to know the Finder on your Mac](https://support.apple.com/en-us/HT201732)
 
 ---
 
