@@ -52,7 +52,9 @@ In this example, we use a  `session cookie`.
 
 * Tricky to implement with `CORS` (More on this later)
 
-## Tokens  
+## Tokens
+
+![session-vs-token-based-diagram.png](./images/session-vs-token-based-diagram.png)
 
 Unlike cookies, `token` based authentication is `stateless`. Authorization records are not stored in the server. Instead, whenever an authorization request is made, it is sent with a `token`. The `token` is then verified for authenticity and are subsequently signed by the server. There are a couple of ways of sending a token, in the body of a `POST` or via `headers` through a `Bearer {JWT}`.1
 
