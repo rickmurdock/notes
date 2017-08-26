@@ -2082,7 +2082,8 @@ Hit the esc key to enter command mode.
 Type :wq to save the message
 Example
 
-vim-git-commit.png
+![vim-git-commit.png](./images/vim-git-commit.png)
+
 Git Practice  
 
 Practice makes perfect! Go to try.github.io and complete the challenges 1-9.
@@ -2739,10 +2740,12 @@ bucket: Variables are named "buckets" that hold data and make that data availabl
 
 buckets  
 
-buckets.jpg
+![buckets.jpg](./images/buckets.jpg)
+
 Declaring Variables  
 
-variables.jpg
+![variables.jpg](./images/variables.jpg)
+
 Assigning Variables  
 
 Let's look at the difference between variable declaration and variable assignment. Notice what happens when we assign a new value to basket:
@@ -3468,7 +3471,8 @@ Parameters and Arguments
 
 Parameters are variables that are only accessible inside the function and are used to represent any values that are passed in as arguments when the function is called. As we've already seen, parameters first appear inside the parentheses in a function declaration. That same parameter can then be used like a variable inside the function body as a placeholder for the actual value you that will used in the function call.
 
-Argument vs Parameter Diagram
+![js-mini-functiondec.png](./images/js-mini-functiondec.png)
+
 Notice that when we call the function, we specify a value that the parameter will be set to. Each time you call a function you have an opportunity to provide a new value to use in the parameters.
 
 Examples  
