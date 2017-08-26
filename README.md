@@ -5,7 +5,7 @@ Lecture notes from The Iron Yard
 
 * [Basic Computer and Terminal Skills](./FrontEnd/BasicComputerAndTerminalSkills.md)
 
-* HTML Overview and Basic Elements
+* [HTML Overview and Basic Elements](./FrontEnd/HTMLOverviewAndBasicElements.md)
 
 * [HTML Structure and Layout](./FrontEnd/HTMLStructureAndLayout.md)
 
