@@ -476,42 +476,49 @@ Tags represent one of the basic building blocks of HTML syntax. Most tags come i
 
 # Understanding Element Relationships  
 
-An HTML document is a complex arrangement of elements. These elements are organized in a hierarchy determined by element containment. This is better known as nesting and it is a "tree-like" structure consisting of ancestor/parent/child/sibling relationships.
+An HTML document is a complex arrangement of elements. These elements are organized in a hierarchy determined by element containment. This is better known as `nesting` and it is a "tree-like" structure consisting of ancestor/parent/child/sibling relationships.
 
-Parent Element  
+## Parent Element  
 
-A parent element is an element that contains other elements.
+A `parent` element is an element that contains other elements.
 
-Child Element  
+## Child Element  
 
 This is an element that is directly contained by another element.
 
-Parents and Children  
+## Parents and Children  
 
-In the following example article is the parent and h1 is the child.
+In the following example `article` is the parent and `h1` is the child.
 
-Example
+### Example
 
+```html
 <article><!--parent-->
     <h1>Breaking News</h1><!--child-->
 </article>
-Sibling Elements  
+```
+
+## Sibling Elements  
 
 These are elements that share the same parent.
 
-Example
+### Example
 
+```html
 <!--h1 and p are siblings-->
 <article><!--parent-->
     <h1>Breaking News</h1><!--child-->
     <p>Coding is awesome!</p><!--child-->
 </article>
-Ancestor Element  
+```
+
+## Ancestor Element  
 
 An element that contains other elements is an 'ancestor' of the elements that it contains.
 
-Example
+### Example
 
+```html
 <!--"section" is the ancestor of h1, p, h3, ul, and li -->
 <body>
     <section>
@@ -530,40 +537,47 @@ Example
         </aside>
     </section>
 </body>
-Notice how aside is parent to h3 and ul, but also notice how ul is parent to all the li.
-Notice how aside is the ancestor to the li within the ul.
+```
+
+> Notice how `aside` is parent to `h3` and `ul`, but also notice how `ul` is parent to all the `li`.
+> Notice how `aside` is the ancestor to the `li` within the `ul`.
+
 The example above also exemplifies the structure of nesting at multiple levels. It also depicts the "tree-like" structure mentioned in the introduction, with each element representing a branch.
 
-Conclusion  
+## Conclusion  
 
 The concept of ancestor/parent/child/sibling relationships is important, because it helps us understand the structure of the HTML document as well as how these elements relate to each other. Having a good understanding of nesting and the relationships this creates will be key when working with CSS and JavaScript. Ancestor/parent/child/sibling relationships will be of the upmost importance when learning about event-bubbling in JavaScript. It will also help with authoring concise and precise CSS.
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Authoring Semantic HTML From Resources  
+---
+
+# Authoring Semantic HTML From Resources  
 
 As a developer, you will likely be asked to create HTML documents using a wide variety of resources. The resources provided to you could differ greatly from one project to the next. Sometimes, you'll be given text files with written instructions. Sometimes, you'll be given visual mockups. Sometimes, you get lots of resources to help guide your decisions and sometimes you get next to nothing. Being a programmer is just like any other job that requires critical thinking skills.
 
 Regardless of what resources you are given, you will need the ability to interpret those resources. Your ability to make appropriate interpretations will inform your decisions about how to implement interface features and content.
 
-This article will discuss approaches for doing two things:
+**This article will discuss approaches for doing two things:**
 
-Interpreting written content and convert that content into semantic HTML
-Evaluating a visual mockup and converting the content elements in the mockup into semantic HTML
-Converting Content into HTML  
+1. Interpreting written content and convert that content into semantic HTML
+
+2. Evaluating a visual mockup and converting the content elements in the mockup into semantic HTML
+
+# Converting Content into HTML  
 
 The process for converting content into HTML is fairly straightforward because HTML is tailor-made for just this purpose. It can be reduced to 3 steps:
 
-Read all of the content so that you understand its meaning. You won't be able to write any HTML until you know what you are marking up. Semantics are extremely important when authoring HTML, so you'll have to know what all the content is before you can mark it up.
-Decide which pieces of content belong together, so that you can structure your document appropriately. After you've read the content, you'll have to break it down into its constituent parts. This is an important step because the way that you segment the content will determine the structure of any container elements, e.g. article, section, div, etc.
-Write up (or look up) the syntax for each of the elements you are marking up. You'll have to look things up sometimes; it's normal. No one is expecting you to have memorized all of HTML in a couple days. If you can't remember how to mark up a table, look up some samples. If you come across a piece of content and don't know what tags to use, look it up. You'll find lots of reference in Newline and lots more by searching online.
+1. **Read all of the content so that you understand its meaning.** You won't be able to write any HTML until you know what you are marking up. Semantics are extremely important when authoring HTML, so you'll have to know what all the content is before you can mark it up.
+
+2. **Decide which pieces of content belong together, so that you can structure your document appropriately.** After you've read the content, you'll have to break it down into its constituent parts. This is an important step because the way that you segment the content will determine the structure of any container elements, e.g. article, section, div, etc.
+
+3. **Write up (or look up) the syntax for each of the elements you are marking up.** You'll have to look things up sometimes; it's normal. No one is expecting you to have memorized all of HTML in a couple days. If you can't remember how to mark up a table, look up some samples. If you come across a piece of content and don't know what tags to use, look it up. You'll find lots of reference in Newline and lots more by searching online.
 These 3 steps will act as our general game plan when marking up content. With that said, let's walk through a content to HTML conversion.
 
-Content to HTML Case Study  
+## Content to HTML Case Study  
 
 The following content sample is trivial and intended only to give us something to interpret. In your career, and in this class, the content you work with very often be much more complex, but the principles are the same. Read through the content and think about what tags you'd use to mark up this content.
 
+```
 Notes from Maria
 1965
 
@@ -583,10 +597,13 @@ Thing to do
 2. Fall in love with the Captain
 3. Flee from a world at war
 4. Live happily ever after
+```
+
 Some things should jump out at you straight away. We have some sort of title and date at the beginning of the document, then a long paragraph, and finally a couple lists.
 
 In the next sample, I've added comments to the content sample to demonstrate how I might interpret this content.
 
+```html
 <!-- This seems like the page title -->
 Notes from Maria
 
@@ -637,10 +654,13 @@ about which list tags to use
 Since this is the end of the doc,
 it must be the end of the main content.
 -->
+```
+
 After we've determined what each piece of content is, we need to determine the specific tags and code to use to convert it to HTML.
 
 To start, we should sketch out the minimal HTML for a valid web page. I'll go ahead and duplicate the page title in the title element.
 
+```html
 <!doctype html>
 <html>
     <head>
@@ -650,10 +670,13 @@ To start, we should sketch out the minimal HTML for a valid web page. I'll go ah
     <body>
     </body>
 </html>
-Now, step though the content, line by line, and convert everything to HTML:
+```
 
-The first element is the page title. Titles are h tags and the top level h tag is h1
+**Now, step though the content, line by line, and convert everything to HTML:**
 
+The first element is the page title. Titles are `h` tags and the top level `h` tag is `h1`
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -664,8 +687,11 @@ The first element is the page title. Titles are h tags and the top level h tag i
         <h1>Notes from Maria</h1>
     </body>
 </html>
-The next line of content is a date and should be marked up using the time tag.
+```
 
+The next line of content is a date and should be marked up using the `time` tag.
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -677,8 +703,11 @@ The next line of content is a date and should be marked up using the time tag.
         <time>1965</time>
     </body>
 </html>
-The next element is a paragraph, so we use a p tag.
+```
 
+The next element is a paragraph, so we use a `p` tag.
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -691,8 +720,11 @@ The next element is a paragraph, so we use a p tag.
         <p>I really like raindrops on roses and kitten whiskers. I have a bright copper kettle thats pretty cool and warm woolen mittens that my dad gave me. I like the old school paper packages tied up with strings. Those are a few of my favorites.</p>
     </body>
 </html>
-Continuing on, we come to a second level title. Our main page title was an h1, so the next level h tag is the h2.
+```
 
+Continuing on, we come to a second level title. Our main page title was an `h1`, so the next level `h` tag is the `h2`.
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -706,10 +738,13 @@ Continuing on, we come to a second level title. Our main page title was an h1, s
         <h2>Cool Things</h2>
     </body>
 </html>
-The next element is a little more complex. It's clearly a list. As we stated in the HTML comments, our hint about how best to mark up this list is that it doesn't have numbers. Lists that aren't numbered are called "unordered lists" and require the ul tag.
+```
 
-Also, each item in the list needs to be marked up with li (list item) tags and nested within the ul.
+The next element is a little more complex. It's clearly a list. As we stated in the HTML comments, our hint about how best to mark up this list is that it doesn't have numbers. Lists that aren't numbered are called "unordered lists" and require the `ul` tag.
 
+Also, each item in the list needs to be marked up with `li` (list item) tags and nested within the `ul`.
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -730,10 +765,13 @@ Also, each item in the list needs to be marked up with li (list item) tags and n
         </ul>
     </body>
 </html>
-Finally, we come across another header. This one seems to be of the same importance as the other list header, so we'll mark it up with another h2.
+```
 
-The list is a little different than the last one. This list has numbers and should be marked up as an "ordered list", meaning that we'll us the ol tag this time.
+Finally, we come across another header. This one seems to be of the same importance as the other list header, so we'll mark it up with another `h2`.
 
+The list is a little different than the last one. This list has numbers and should be marked up as an "ordered list", meaning that we'll us the `ol` tag this time.
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -761,12 +799,15 @@ The list is a little different than the last one. This list has numbers and shou
         </ol>
     </body>
 </html>
+```
+
 And there you have it. This is a well marked up document. Each piece of content has been wrapped in the proper semantic tag and everything is nested correctly. We can, however, improve the document more by adding some container elements to help group related content items. We can easily add two elements to segment our content.
 
-The main page title h1 and the date time can be wrapped in a header tag. Semantically, this says that those two items are "introductory content" for the whole page, which makes sense. The main titles encapsulate all of the content, and the date states when it was drafted
+The main page title `h1` and the date `time` can be wrapped in a header tag. Semantically, this says that those two items are "introductory content" for the whole page, which makes sense. The main titles encapsulate all of the content, and the date states when it was drafted
 
-The rest of the content can be wrapped in a main tag. This is the "main content" for the page and should generally be a top level element.
+The rest of the content can be wrapped in a `main` tag. This is the "main content" for the page and should generally be a top level element.
 
+```html
 <!doctype html>
 <html>
     <head>
@@ -798,71 +839,53 @@ The rest of the content can be wrapped in a main tag. This is the "main content"
         </main>
     </body>
 </html>
+```
+
 This is a live version of the HTML as rendered in a browser.
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <!doctype html>
-2
 <html>
-3
     <head>
-4
         <meta charset="UTF-8">
-5
         <title>Notes from Maria</title>
-6
     </head>
-7
     <body>
-8
         <header>
-9
             <h1>Notes from Maria</h1>
-10
             <time>1965</time>
-11
         </header>
-12
         <main>
-13
             <p>I really like raindrops on roses and kitten whiskers. I have a bright copper kettle thats pretty cool and warm woolen mittens that my dad gave me. I like the old school paper packages tied up with strings. Those are a few of my favorites.</p>
-14
             <h2>Cool Things</h2>
-15
             <ul>
-16
                 <li>Cream-colored ponies</li>
-17
                 <li>Apple strudels</li>
-18
                 <li>Doorbells</li>
-19
                 <li>Sleigh bells</li>
-20
                 <li>Schnitzel</li>
-21
             </ul>
-22
             <h2>Thing to do</h2>
- 
+            <ol>
+                <li>Win over the children</li>
+                <li>Fall in love with the Captain</li>
+                <li>Flee from a world at war</li>
+                <li>Live happily ever after</li>
+            </ol>
+        </main>
+    </body>
+</html>
+```
 
-Fullscreen
-
-Reset Code
-Preview 
 We could add additional attributes to many of these elements to improve the semantics of this document, but we'll leave that for another day.
 
-Whenever you are converting content to HTML, try to understand what each piece of content represents. That will help lead you to the tags that you need to use. Pay close attention to your nesting and be sure to wrap content in an opening tag and a closing tag.
+**Whenever you are converting content to HTML, try to understand what each piece of content represents. That will help lead you to the tags that you need to use. Pay close attention to your nesting and be sure to wrap content in an opening tag and a closing tag.**
 
 In the next section, we'll discuss how to interpret a visual mockup and determine the basic structure of your HTML document based on the design layout.
 
-Mockups  
+# Mockups  
 
-In order to interpret a mockup, you'll first need to know what a mockup is and what it attempts to communicate.
+**In order to interpret a mockup, you'll first need to know what a mockup is and what it attempts to communicate.**
 
 Mockups are visual representations of what the final site/application should look like. They are usually produced by designers in visual editing tools like Photoshop, Illustrator, or Sketch. Basically, the are a "picture" of the final product.
 
@@ -870,18 +893,23 @@ In many production environments, mockups must be produced before coding the inte
 
 The following is a mockup:
 
-mockup.jpg
+![mockup.jpg](./images/mockup.jpg)
+
 The mockup is just an image that looks like a complete web site. This particular example was created in Photoshop.
 
-Interpreting a Mockup  
+## Interpreting a Mockup  
 
 To determine what HTML should be written, we have to do a few things:
 
-Visually evaluate the mockup. Read all of the content and look for any page elements that might be tricky to implement. Knowing what might be a sticking point will take some time and practice. For now, use your best judgment.
-Determine which elements should be grouped together and create the containing elements. Your life will be much easier if you wrap groups of content in semantic (or sometimes even non-semantic) elements.
-Go, element by element, and mark up the content. Once you've sketched out a great site using the containing elements, fill in each element with all the details.
+1. **Visually evaluate the mockup.** Read all of the content and look for any page elements that might be tricky to implement. Knowing what might be a sticking point will take some time and practice. For now, use your best judgment.
+
+2. **Determine which elements should be grouped together and create the containing elements.** Your life will be much easier if you wrap groups of content in semantic (or sometimes even non-semantic) elements.
+
+3. **Go, element by element, and mark up the content.** Once you've sketched out a great site using the containing elements, fill in each element with all the details.
+
 Even before we start evaluating the code, we need to sketch out a valid HTML doc with the minimum elements. That will give us a strong foundation for whatever we choose to do.
 
+```html
 <!doctype html>
 <html>
     <head>
@@ -891,18 +919,25 @@ Even before we start evaluating the code, we need to sketch out a valid HTML doc
     <body>
     </body>
 </html>
+```
+
 Next, look over the mockup and try to determine what elements can be grouped under a common parent. This should help you see the larger sections of your document.
 
-When I look at this design, I see three main areas:
+**When I look at this design, I see three main areas:**
 
-I see the header, with the logo and the main site navigation.
-I also see the main content, which contains the dark section with the button and the splash image, and the light section with the five smaller pieces of content.
-I see the site footer, which contains a duplication of the main navigation and a copyright notice.
-containers.jpg
-All three of these large elements are extremely typical of websites, so you should be looking for them whenever you evaluate a mockup. Each of those large containers will also have children, but recognizing the big containers is essential to giving your doc some structure.
+* I see the header, with the logo and the main site navigation.
+
+* I also see the main content, which contains the dark section with the button and the splash image, and the light section with the five smaller pieces of content.
+
+* I see the site footer, which contains a duplication of the main navigation and a copyright notice.
+
+![containers.jpg](./images/containers.jpg)
+
+All three of these large elements are *extremely* typical of websites, so you should be looking for them whenever you evaluate a mockup. Each of those large containers will also have children, but recognizing the big containers is essential to giving your doc some structure.
 
 Lets mark up the header, main, and footer.
 
+```html
 <!doctype html>
 <html>
     <head>
@@ -915,11 +950,15 @@ Lets mark up the header, main, and footer.
         <footer></footer>
     </body>
 </html>
-Now that we have some basic structure, we can start looking for the child elements in each of the big container elements. The header has a logo and navigation. The main has 2 sections, the first containing come copy and a call to action. The footer duplicates the navigation found in the header.
+```
 
-elements.jpg
+Now that we have some basic structure, we can start looking for the child elements in each of the big container elements. The header has a logo and navigation. The `main` has 2 sections, the first containing come copy and a call to action. The footer duplicates the navigation found in the header.
+
+![elements.jpg](./images/elements.jpg)
+
 Let's add the code for the header. Remember, we found a logo and a navigation list. The logo is simple. We add a link and give it an ID of "logo". The ID isn't strictly necessary, but will give us a hook later when we want to style this link independently of other links on the page.
 
+```html
 <!doctype html>
 <html>
     <head>
@@ -934,8 +973,11 @@ Let's add the code for the header. Remember, we found a logo and a navigation li
         <footer></footer>
     </body>
 </html>
-The navigation link requires a nav element and a set of links. We'll keep the markup simple and just use anchor tags for the navigation links.
+```
 
+The navigation link requires a `nav` element and a set of links. We'll keep the markup simple and just use anchor tags for the navigation links.
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -956,10 +998,13 @@ The navigation link requires a nav element and a set of links. We'll keep the ma
         <footer></footer>
     </body>
 </html>
-That's it for the header element. Let's move on to the main element, which contains two smaller sections. I'll also go ahead and interpret the Call to Action section (the first section). It contains a header, a paragraph, and a button.
+```
 
-I'm not going to include an image tag here (for the splash image), because I will probably make that the background image of the section element.
+That's it for the header element. Let's move on to the `main` element, which contains two smaller `sections`. I'll also go ahead and interpret the Call to Action section (the first section). It contains a header, a paragraph, and a button.
 
+I'm not going to include an image tag here (for the splash image), because I will probably make that the background image of the `section` element.
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -987,9 +1032,13 @@ I'm not going to include an image tag here (for the splash image), because I wil
         <footer></footer>
     </body>
 </html>
-The next section in the site contains 5 smaller elements. Semantically, I'm not sure what each of these elements mean. They could represent important topics, or links to other pages, etc. Because I don't know what they mean semantically, I will mark them up with div tags. div is a generic tag that can be used as a non-semantic "division of content".
+```
 
-Using divs is fine, if used appropriately. divs are great for giving you an additional parent element to use in CSS and JavaScript. Occasionally, using a non-semantic tag is the right thing to do. As you gain more experience, decisions about what tag to use and when will get easier. Practice, practice, practice...
+The next section in the site contains 5 smaller elements. Semantically, I'm not sure what each of these elements mean. They could represent important topics, or links to other pages, etc. Because I don't know what they mean *semantically*, I will mark them up with `div` tags. `div` is a generic tag that can be used as a non-semantic "division of content".
+
+> Using `divs` is fine, if used appropriately. `divs` are great for giving you an additional parent element to use in CSS and JavaScript. Occasionally, using a non-semantic tag is the right thing to do. As you gain more experience, decisions about what tag to use and when will get easier. Practice, practice, practice...
+
+```html
 <!doctype html>
 <html>
     <head>
@@ -1038,14 +1087,17 @@ Using divs is fine, if used appropriately. divs are great for giving you an addi
         <footer></footer>
     </body>
 </html>
+```
+
 You should notice that I've added a few id's to some of the elements. I've done this for a couple reasons:
 
-Giving the section tags a unique identifier provides additional information about those page sections and the content that they contain. The first is call_to_action which references the main point of that section. Buttons and links are extremely important on websites and the "call to action" on this page is the big orange button.
+1. Giving the section tags a unique identifier provides additional information about those page sections and the content that they contain. The first is `call_to_action` which references the main point of that section. Buttons and links are extremely important on websites and the "call to action" on this page is the big orange button.
 
-Providing unique identifiers to certain elements makes selecting them with CSS and JS much easier.
+2. Providing unique identifiers to certain elements makes selecting them with CSS and JS much easier.
 
 Finally, we have to mark up the content for the footer, which is dead simple. We'll duplicate the HTML from the header navigation into the footer, and then tack on a copyright statement.
 
+```html
 <!doctype html>
 <html>
     <head>
@@ -1102,21 +1154,23 @@ Finally, we have to mark up the content for the footer, which is dead simple. We
         </footer>
     </body>
 </html>
+```
+
 And there you have it. Interpreting a Mockup isn't that difficult. Converting it to HTML takes some reasoning skills and a lot a familiarity with tags. Over time, you will become accustomed to the process and you'll be banging out static web pages in no time.
 
-Conclusion  
+## Conclusion  
 
 Authoring a semantic HTML document from a mockup is a methodical process. The use of semantic elements helps us better define parts of the web page by improving the readability and structure of the document. Additionally, the proper use of tags provides contextually rich information to page readers, robots, and search engines.
 
 By following these simple guidelines, authoring a great looking and semantic webpage will become much easier and more intuitive. Practice makes perfect, so never stop marking up!
 
-References  
+### References  
 
-[^1]:MDN - Semantics
+[^1]:[MDN - Semantics](https://developer.mozilla.org/en-US/docs/Glossary/Semantics)
 
-[^2]:Smashing Magazine - The Problem With Div
+[^2]:[Smashing Magazine - The Problem With Div](https://www.smashingmagazine.com/2013/01/the-importance-of-sections/#the-problem-with-div)
 
-Summary
+# Summary
 
 It'll take some time to memorize all of the tags that you've seen today. Don't get frustrated if you cannot remember them all. The more you write HTML, the more you'll remember.
 
