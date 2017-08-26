@@ -1436,14 +1436,17 @@ Inline Block
 
 Inline block elements will be placed adjacent to one another horizontally if there is space for them to fit. They are much like inline elements except they can have a width and height.
 
-display: inline-block;
-Comparison  
+* `display: inline-block;`
 
-Display	More than one per line	Can have height	Can have width	Can have margin	Can have padding
-display: inline;	yes	no	no	left and right only	padding will be applied but the element will overlap other like elements vertically
-display: inline-block;	yes	yes	yes	yes	yes
-display: block;	no	yes	yes	yes	yes
-Examples  
+## Comparison  
+
+| Display |	More than one per line |	Can have height |	Can have width |	Can have margin |	Can have padding |
+| !--- | !--- | !--- | !--- | !--- | !--- |
+| `display: inline;` |	yes |	no |	no |	left and right only |	padding will be applied but the element will overlap other | like elements vertically |
+| `display: inline-block;` |	yes |	yes |	yes |	yes |	yes |
+| `display: block;` |	no |	yes |	yes |	yes |	yes |
+
+## Examples  
 
 Editor
 Browser View
