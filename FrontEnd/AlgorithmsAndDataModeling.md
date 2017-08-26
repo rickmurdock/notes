@@ -178,7 +178,7 @@ Given all of that, what steps should `isEven` follow? One set of steps are:
 
 3. If the result is equal to 0, return `true`
 
-4.If the result other than 0, return `false`
+4. If the result other than 0, return `false`
 
 Let's see this algorithm as code.
 
