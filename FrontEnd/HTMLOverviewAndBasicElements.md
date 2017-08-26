@@ -32,7 +32,7 @@ The difference between `tag` and `element` can be confusing. A `tag` is the idea
 
 ## HTML Document Structure  
 
-![d5329fa1-html-doctype.jpg](./images/d5329fa1-html-doctype.jpg)
+![html-doctype.jpg](./images/html-doctype.jpg)
 
 The example above demonstrates the basic HTML document structure syntax. This represents the minimal amount of code a browser needs to render an HTML document. An HTML document has two distinct parts, a `head` and a `body`. These two sections are wrapped by HTML tag pairs.
 
@@ -330,190 +330,194 @@ Without proper HTML document structure, tag composition, and element composition
 
 # Authoring Tag Pairs And Void Elements  
 
-HTML is a simple language with few rules. It's intended to be universally accessible and yet powerful enough to represent any content that an author wishes to publish. This article is concerned with the basic syntax of HTML tags. In the next few sections, you will learn the meaning of the terms tags pairs and void tags. You will also learn how to construct tag pairs and void tags.
+HTML is a simple language with few rules. It's intended to be universally accessible and yet powerful enough to represent any content that an author wishes to publish. This article is concerned with the basic syntax of HTML tags. In the next few sections, you will learn the meaning of the terms tags pairs and void tags. You will also learn how to construct `tag pairs` and `void tags`.
 
 ## HTML Tags  
 
 Tags are a combination of keywords and symbols that the browser can identify and use to make sense of the content. To see the impact that they can have on a web page, let's look at an example of content **without HTML tags**. Look at the "Editor" view. You'll see that I wrote the content in a sensible way. I've got a title (Hello Everyone!), followed by a short paragraph and a list of 3 items:
 
-Editor
-Browser View
-index.html
-
-1
+```html
 Hello Everyone!
-2
-​
-3
+
 I've been in love with nature since I was a little girl and that's why I became a vet. I love all animals, but let me list my favorite 3:
-4
-​
-5
+
 Cats
-6
 Sugar Gliders
-7
 Geckos
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview 
 However, when this is rendered, the browser smashes it all together and runs it onto one line. The question is, "Why does the browser do this?"
 
 The answer is simple: For all their processing power and sophistication, computers are pretty stupid. They require instructions for everything or they can't make heads or tails of it. Our code sample is an example of the browser's limitations. It doesn't know that I want the last few items to be a list. It doesn't know that the first line is supposed to be a title. It doesn't know that the second line should be a paragraph. We have to tell it everything and we do so using HTML tags.
 
 Let's try again. This time we'll rewrite the content using HTML.
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <h1>Hello Everyone!</h1>
-2
 <p>I've been in love with nature since I was a little girl and that's why I became a vet. I love all animals, but let me list my favorite 3:</p>
-3
 <ul>
-4
     <li>Cats</li>
-5
     <li>Sugar Gliders</li>
-6
     <li>Geckos</li>
-7
 </ul>
- 
+```
 
-Fullscreen
-
-Reset Code
-Preview 
 Now the document has some structure. The browser is able to recognize that certain pieces of content are surrounded by HTML tags. Those tags give the browser enough information to know how to separate the content elements and how to give them a few default styles.
 
 Now that we've seen what tagging content can do, let's break down the tags themselves and dissect the syntax of the HTML language.
 
-Tag Pairs  
+## Tag Pairs  
 
-HTML tags are special keywords surrounded by angle brackets. You remember these symbols from math class as the < and > symbols. In HTML syntax, they have no mathematical meaning. Instead, they are special characters meant to mark the beginning and ending of a tag. Most importantly, they tell the browser what type of content they hold and how to they need to be rendered.
+HTML tags are special keywords surrounded by angle brackets. You remember these symbols from math class as the `<` and `>` symbols. In HTML syntax, they have no mathematical meaning. Instead, they are special characters meant to mark the beginning and ending of a tag. Most importantly, they tell the browser what type of content they hold and how to they need to be rendered.
 
-tagpairs and self closing.jpg
+![tagpairs-and-self-closing.jpg](./images/tagpairs-and-self-closing.jpg)
+
 Let's dissect the title from our previous example:
 
+```html
 <h1>Hello Everyone!</h1>
-Our content is the words "Hello Everyone!" between the "opening tag" and "closing tag". The opening tag comes before the content and has a particular construction. Opening tags require 3 things: an opening angle bracket <, the keyword that determines which tag is being constructed (in this case "h1"), and a closing angle bracket >.
+```
 
+Our content is the words "Hello Everyone!" between the "opening tag" and "closing tag". The opening tag comes before the content and has a particular construction. Opening tags require 3 things: an opening angle bracket `<`, the keyword that determines which tag is being constructed (in this case "h1"), and a closing angle bracket `>`.
+
+```html
 <h1>
-The closing tag is the same as the opening tag, but also includes a forward slash / before the keyword.
+```
 
+The closing tag is the same as the opening tag, but also includes a forward slash `/` before the keyword.
+
+```html
 </h1>
+```
+
 Most HTML tags require an opening and closing tag. We "wrap" content with the two tags. The opening tag indicates the beginning of a piece of content. The closing tag indicates the end of a piece of content. Consider the following example, which contains a page title, a paragraph, and a quote:
 
+```html
 <h1>This is a main page title</h1>
 <p>This is a paragraph</p>
 <blockquote>This is a quote</blockquote>
-It's important to note that the term "element" refers to a set of tag pairs and the content they wrap.2 To help reinforce this distinction, it's good practice to avoid using the word "tag" by itself - refer to "opening tags", "closing tags" and "void tags" instead. This is a great way to reduce ambiguity when describing a problem to another developer.
-Void Element Syntax  
+```
 
-Most HTML elements require an opening and closing tag, but not all. Some content is pulled from an external source or isn't presented in the same way as text content. The content of this type is sometimes marked up with a single tag. The use of this type of tag creates a void element (empty element). A void element is self-closing, meaning that it only has an opening tag. Void elements are less common, but still important to recognize.
+> It's important to note that the term "element" refers to a set of tag pairs and the content they wrap.2 To help reinforce this distinction, it's good practice to avoid using the word "tag" by itself - refer to "opening tags", "closing tags" and "void tags" instead. This is a great way to reduce ambiguity when describing a problem to another developer.
 
-Syntax
+## Void Element Syntax  
 
-The void elements you'll use most often are br, hr, img, input, link, and meta. Void tags often require additional information from their attributes (more on that later).
+Most HTML elements require an opening and closing tag, but not all. Some content is pulled from an external source or isn't presented in the same way as text content. The content of this type is sometimes marked up with a single tag. The use of this type of tag creates a `void element` (empty element). A void element is self-closing, meaning that it only has an opening tag. Void elements are less common, but still important to recognize.
 
+### Syntax
+
+The void elements you'll use most often are `br`, `hr`, `img`, `input`, `link`, and `meta`. Void tags often require additional information from their attributes (more on that later).
+
+```html
 <br>
 <hr>
 <img src="http://fillmurray.com/200/300" alt="Ol' Bill">
 <input type="text" id="username" name="username">
 <link rel="stylesheet" href="style.css">
 <meta>
-In the following example, the img tag has 2 attributes src and alt. src tells the image tag where to find the image. alt tells the image what to display if the image doesn't appear. Notice, no closing tag. The hr tag creates a horizontal line. It doesn't have any attributes and doesn't get used that often. The input tag is usually included only in forms and also has several attributes.
+```
 
-Editor
-Browser View
-index.html
+In the following example, the `img` tag has 2 attributes `src` and `alt`. `src` tells the image tag where to find the image. `alt` tells the image what to display if the image doesn't appear. Notice, no closing tag. The `hr` tag creates a horizontal line. It doesn't have any attributes and doesn't get used that often. The `input` tag is usually included only in forms and also has several attributes.
 
-1
+```html
 <img src="http://fillmurray.com/200/300" alt="Ol' Bill">
-2
-​
-3
+
 <hr>
-4
-​
-5
+
 <input type="text" id="username" name="username">
- 
+```
 
-Fullscreen
+## Conclusion  
 
-Reset Code
-Preview 
-Conclusion  
+Remember that most content should be tagged with an opening and closing tag, but not all. `tag pairs` and `void tags` serve different purposes and each plays an important role in HTML syntax. They are the basic building blocks of elements and without them it would be impossible to scaffold the structure of an HTML document.
 
-Remember that most content should be tagged with an opening and closing tag, but not all. tag pairs and void tags serve different purposes and each plays an important role in HTML syntax. They are the basic building blocks of elements and without them it would be impossible to scaffold the structure of an HTML document.
+### References  
 
-References  
+[MDN - Empty Elements](https://developer.mozilla.org/en-US/docs/Glossary/Empty_element) 
 
-MDN - Empty Elements [^1]:MDN - HTML Elements Reference
+[^1]:[MDN - HTML Elements Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
 
-Lesson Footnotes
-2: W3C - HTML Intro
- Exercise View Exercise
- Multiple Choice Exercise View Exercise
-HTML Attributes  
+#### Lesson Footnotes
 
-HTML syntax allows us to give elements more than just content. We may want to group elements in a certain way or define how they should respond to user behavior. To so, we must attach key/value pairs to the opening tag in the form of attributes.
+* 2: [W3C - HTML Intro](https://www.w3.org/TR/REC-html40/intro/sgmltut.html#h-3.2.1)
 
-Attribute Syntax  
+---
+
+# HTML Attributes  
+
+HTML syntax allows us to give elements more than just content. We may want to group elements in a certain way or define how they should respond to user behavior. To so, we must attach key/value pairs to the opening tag in the form of `attributes`.
+
+## Attribute Syntax  
 
 HTML attributes are straightforward. Let us look at a few HTML tags and then add attributes to them. In the example below, we add attributes to a meta tag.
 
+```html
 <meta>
+```
+
 Meta tags are void tags and therefore contain no content. To give the meta tag meaning, we apply attributes. Let us add a single attribute to this meta tag to give it meaning.
 
+```html
 <meta charset="UTF-8">
-The attribute we've added, charset (the key), has been assigned "UTF-8" (the value). This particular tag/attribute combination tells the browser to use the "UTF-8" character set when interpreting the text in the document.
+```
+
+The attribute we've added, `charset` (the key), has been assigned "UTF-8" (the value). This particular tag/attribute combination tells the browser to use the "UTF-8" character set when interpreting the text in the document.
 
 The next code sample shows two meta tags. Both of these tags are valid and widely used in the head of real web pages.
 
+```html
 <meta name="description" content="A demo for attributes">
 <meta name="keywords" content="HTML,Attributes,Instruction,Semantics">
+```
+
 These two meta tags have two attributes each. Both have a "name" and a "content" attribute, but the values are different. The first meta tag provides a description of the page. It is telling the browser that the "description" for the site is "A demo for attributes." The second meta tag lists a set of keywords related to the page content. Both are meta tags, although different attribute values mean that they serve different purposes.
 
-attribute-structure.jpg
-Using Attributes  
+![attribute-structure.jpg](./images/attribute-structure.jpg)
+
+## Using Attributes  
 
 All attributes follow the same rules:
 
-Every attribute has one key (attribute name)
-Every attribute has one value (attribute value)
-Keys aren't quoted
-An = sign separates the key and value
-Attributes are separated by a space
-Values get wrapped in quotes ""
-Don't duplicate attributes on the same element
+* Every attribute has one key (attribute name)
+
+* Every attribute has one value (attribute value)
+
+* Keys aren't quoted
+
+* An `=` sign separates the key and value
+
+* Attributes are separated by a space
+
+* Values get wrapped in quotes `""`
+
+* Don't duplicate attributes on the same element
+
 When deciding which attributes to add to an element, consider a couple of things:
 
-Does the element require extra data to fulfill its purpose? If so, then the element probably has mandatory attributes to provide that data. Be sure to add those attributes, at the least.
-Should I provide attributes to clarify the purpose of the element? Many HTML elements don't require attributes, but adding them can clarify what the element is doing.
-Element Specific Attributes  
+* **Does the element require extra data to fulfill its purpose?** If so, then the element probably has mandatory attributes to provide that data. Be sure to add those attributes, at the least.
+
+* **Should I provide attributes to clarify the purpose of the element?** Many HTML elements don't require attributes, but adding them can clarify what the element is doing.
+
+## Element Specific Attributes  
 
 Element specific attributes apply to only one or a few HTML elements. Most attributes are element specific. You haven't seen a lot of different HTML tags up to this point, but I'll show you a couple to illustrate the idea.
 
-In the following example, we have a <p> (paragraph) tag and an <a> (anchor) tag. The <p> tag's purpose is to surround paragraphs of content. The <a> tag's designates text links to other pages.
+In the following example, we have a `<p>` (paragraph) tag and an `<a>` (anchor) tag. The `<p>` tag's purpose is to surround paragraphs of content. The `<a>` tag's designates text links to other pages.
 
-<p> tags don't require attributes. It's enough to wrap content in the opening and closing <p> tags. That's enough to let the browser know which elements are paragraphs. On the other hand, <a> tags does require an <href> attribute. The <href> attribute tells the browser where to navigate to when clicked. In this case, when "Link" gets clicked, the browser navigates to Mozilla's Attribute documentation.
+`<p>` tags don't require attributes. It's enough to wrap content in the opening and closing `<p>` tags. That's enough to let the browser know which elements are paragraphs. On the other hand, `<a>` tags does require an `<href>` attribute. The `<href>` attribute tells the browser where to navigate to when clicked. In this case, when "Link" gets clicked, the browser navigates to Mozilla's Attribute documentation.
 
+```html
 <p>This is a neato paragraph. Look at all these sentences in one place! Words are cool.</p>
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes">Link</a>
-This example shows that the <href> attribute is only relevant for one of the two tags. <p> tags can't do anything with the value of an <href> attribute. <a> tags make excellent use of <href> attributes. Hence, <href> is "element specific".
+```
 
-Global Attributes  
+This example shows that the `<href>` attribute is only relevant for one of the two tags. `<p>` tags can't do anything with the value of an `<href>` attribute. `<a>` tags make excellent use of `<href>` attributes. Hence, `<href>` is "element specific".
 
-On the other hand, some attributes can be applied to any valid HTML tag. These attributes are useful for setting global data, and for creating relationships between different page elements. The two most common global attributes are class and id. We will dig into these at length later. For now, look at this sample of HTML. It makes liberal use classes and ids.
+## Global Attributes  
 
+On the other hand, some attributes can be applied to **any** valid HTML tag. These attributes are useful for setting global data, and for creating relationships between different page elements. The two most common global attributes are `class` and `id`. We will dig into these at length later. For now, look at this sample of HTML. It makes liberal use `classes` and `ids`.
+
+```html
 <!doctype html>
 <html>
 <head>
@@ -543,188 +547,184 @@ On the other hand, some attributes can be applied to any valid HTML tag. These a
     </footer>
 </body>
 </html>
-Many of the elements on the page have classes and ids. Those classes and ids provide more information about what each element is supposed to be. You will become very acquainted with classes and ids, but you likely won't work much with many other global attributes. Still, it's worth knowing that global attributes exist.
+```
 
-Event Handler Content Attributes  
+Many of the elements on the page have classes and ids. Those classes and ids provide more information about what each element is supposed to be. You will become **very** acquainted with classes and ids, but you likely won't work much with many other global attributes. Still, it's worth knowing that global attributes exist.
 
-Event handler content attributes allow direct ties to JavaScript page elements via events. Although some programmers use event handler attributes extensively, we won't use them much in this course. We will almost always use the addEventListener API to attach event handlers to elements. I know, you have no idea what that means. It's okay. We'll get to JavaScript in no time flat, and you'll be swimming in event listeners.
+## Event Handler Content Attributes  
 
-Say, for instance, you want a piece of code to run when the user clicks a button. The "onclick" attribute is an event handler content attribute. The value of this attribute should be the snippet of JavaScript that you want to run when the button gets clicked.
+**Event handler content attributes allow direct ties to JavaScript page elements via events.** Although some programmers use event handler attributes extensively, we won't use them much in this course. We will almost always use the `addEventListener` API to attach event handlers to elements. I know, you have no idea what that means. It's okay. We'll get to JavaScript in no time flat, and you'll be swimming in event listeners.
 
+Say, for instance, you want a piece of code to run when the user clicks a button. The "onclick" attribute is an event handler content attribute. The value of this attribute should be the snippet of JavaScript that you want to run **when the button gets clicked**.
+
+```html
 <button onclick="someJavaScript()">Click me!</button>
-What follows is an example of this type of attribute at work. This code sample contains JavaScript. Don't get frustrated if you don't understand all the details. This example is here to demonstrate onclick.
+```
 
-Review the HTML file in the "Editor" view. Look at the onclick attribute values and how they relate to the JavaScript functions listed in the script tag. Then, click "Preview" to see the page render. Click each of the buttons, "Red", "Blue", "Green" to see how each button responds to the "onclick" event:
+What follows is an example of this type of attribute at work. This code sample contains JavaScript. Don't get frustrated if you don't understand all the details. This example is here to demonstrate `onclick`.
 
-Editor
-Browser View
-index.html
-style.css
+Review the HTML file in the "Editor" view. Look at the `onclick` attribute values and how they relate to the JavaScript functions listed in the script tag. Then, click "Preview" to see the page render. Click each of the buttons, "Red", "Blue", "Green" to see how each button responds to the "onclick" event:
 
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Document</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <div id="vis"></div>
-10
     <button onclick="makeItRed()">Red</button>
-11
     <button onclick="makeItBlue()">Blue</button>
-12
     <button onclick="makeItGreen()">Green</button>
-13
     <script>
-14
         var vis = document.getElementById( "vis" );
-15
-​
-16
+
         function makeItRed(){
-17
             vis.style.backgroundColor = "red";
-18
         }
-19
-​
-20
+
         function makeItBlue(){
-21
             vis.style.backgroundColor = "blue";
-22
         }
-23
-​
-24
+
         function makeItGreen(){
-25
             vis.style.backgroundColor = "green";
-26
         }
-27
     </script>
-28
 </body>
-29
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+body{
+    text-align:center;
+}
+#vis{
+    width: 80%;
+    margin: 0 10%;
+    height: 120px;
+    background: gray;
+    display: inline-block;
+}
+button{
+    display: inline-block;
+    padding: 20px;
+    width: 25%;
+}
+```
 
-Reset Code
-Preview 
-The JavaScript is included in the HTML document so that you can more easily see the relationship between HTML and JavaScript. Typically, all JavaScript would be contained in a separate .js text file and linked to the HTML via a script tag.
-Each button has an onclick attribute. The values for each attribute differs based on which JavaScript runs when the button is clicked.
+> The JavaScript is included in the HTML document so that you can more easily see the relationship between HTML and JavaScript. Typically, all JavaScript would be contained in a separate `.js` text file and linked to the HTML via a `script` tag.
 
-The first button's onclick attribute value is "makeItRed()". When the "Red" button is clicked, the browser will run the "makeItRed" function. That function changes the background color of the big rectangle to "red". The "Blue" and "Green" buttons function in the same way.
+Each button has an `onclick` attribute. The values for each attribute differs based on which JavaScript runs when the button is clicked.
+
+The first button's `onclick` attribute value is "makeItRed()". When the "Red" button is clicked, the browser will run the "makeItRed" function. That function changes the background color of the big rectangle to "red". The "Blue" and "Green" buttons function in the same way.
 
 The browser supplies several event handler content attributes for a wide variety of events. They work much the same as shown here. The value for an Event Handler Content Attribute should always be a snippet of JavaScript to run in response to an event.
 
-Conclusion  
+## Conclusion  
 
-Attributes provide additional data in the form of key/value pairs to configure elements. Some attributes are element specific, and some are global. Attributes also let us adjust element behavior in a variety of ways. By keeping in mind the purpose of each element, one can decide which attributes are appropriate for that element and which are not.
+Attributes provide additional data in the form of `key/value pairs` to configure elements. Some attributes are element specific, and some are global. Attributes also let us adjust element behavior in a variety of ways. By keeping in mind the purpose of each element, one can decide which attributes are appropriate for that element and which are not.
 
 You will eventually memorize lots of HTML tags and the attributes that accompany those tags. For now, you'll need to rely heavily on documentation and practice to know what is appropriate when authoring your HTML. Don't hesitate to look up elements and attributes. Even the most seasoned HTML author has to look things up from time to time. Practice makes perfect. The more you write, the more you'll remember.
 
-[^3]:MDN - Attributes Reference
+[^3]:[MDN - Attributes Reference](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes)
 
-[^5]:QUAKIT - Individual event handler attribute explanations.
+[^5]:[QUAKIT - Individual event handler attribute explanations.](https://www.quackit.com/html_5/tags/html_5_event_handler_content_attributes.cfm)
 
-[^7]:W3C: URL Fragment
+[^7]:[W3C: URL Fragment](https://www.w3.org/Addressing/URL/4_2_Fragments.html)
 
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Ids and Classes  
+---
 
-The class and id attributes deserve some special attention because they are used widely in the creation of semantic HTML documents. They are also used to categorize and differentiate HTML elements for the purposes of styling. You will attach class and id attribute to gobs of HTML elements in every page you author.
+# Ids and Classes  
 
-In this lesson we'll discuss id and class attributes at length and provide some real world use cases for when and how to apply them.
+The `class` and `id` attributes deserve some special attention because they are used **widely** in the creation of semantic HTML documents. They are also used to categorize and differentiate HTML elements for the purposes of styling. You will attach `class` and `id` attribute to gobs of HTML elements in every page you author.
 
-To demonstrate these concepts, you'll see a fair amount of CSS. If you aren't familiar with CSS just yet, don't worry. The point of this article is to illuminate the value of id and class attributes, so focus on that. CSS is covered at length elsewhere.
-Unique Identifiers with Ids  
+In this lesson we'll discuss `id` and `class` attributes at length and provide some real world use cases for when and how to apply them.
+
+> To demonstrate these concepts, you'll see a fair amount of CSS. If you aren't familiar with CSS just yet, don't worry. The point of this article is to illuminate the value of `id` and `class` attributes, so focus on that. CSS is covered at length elsewhere.
+
+## Unique Identifiers with Ids  
 
 Sometimes, we need to identify unique page elements. To do this, we attach an id attribute to that element. Ids can have any value that you wish so long as it doesn't start with a number or a special character. Ids also cannot have spaces. The only special characters that an Id should contain (at all) are hyphens - and underscores _.
 
-Technically, Ids (and classes) can contain other special characters. However, it's widely frowned upon. Stick to letters, numbers, underscores and hyphens and you can't go wrong.
+> Technically, Ids (and classes) can contain other special characters. However, it's widely frowned upon. Stick to letters, numbers, underscores and hyphens and you can't go wrong.
+
+```html
 <p id="unique">This is just a normal paragraph, but now it has a unique identifier that other page elements cannot share.</p>
 <p id="special_thing">Another paragraph with a unique identifier.</p>
 
 <p id="3_thing">Don't do this.</p>
 <p id="#identifier">Also, this is a no-no.</p>
 <p id="my unique identifier">Finally, don't do this.</p>
-Using Id  
+```
 
-When authoring HTML, you'll often want to single out specific elements for the purposes of styling via CSS. For example, if you have 3 images, but want to have the main image appear larger than the others, you could add an id attribute to the image you want special control over. Giving that image a unique identifier, such as "main-image", will allow that image to be selected independently of other images.
+### Using Id  
 
+When authoring HTML, you'll often want to single out specific elements for the purposes of styling via CSS. For example, if you have 3 images, but want to have the main image appear larger than the others, you could add an `id` attribute to the image you want special control over. Giving that image a unique identifier, such as "main-image", will allow that image to be selected independently of other images.
+
+```html
 <img id="main-image" src="https://media1.giphy.com/media/freTElrZl4zaU/200.gif">
 <img src="https://media3.giphy.com/media/MDJ9IbxxvDUQM/200.gif#">
 <img src="https://facebook-icon.png">
-Let's look at a more involved example. This next code sample demonstrates how a unique id might help us style a single element in a grid. You may not understand what is occurring in the CSS, so I'll give a brief description. Of all the div elements on the page, one of them has an id of "center". All of the divs have some default styling applied to them to create the regular gird. The element with an id has additional styles applied (via the id) that allows us to customize the styling of that element. As you will see later in this course, creating styles like this would be extremely difficult without a way to uniquely select elements.
+```
 
-Editor
-Browser View
-index.html
-style.css
+Let's look at a more involved example. This next code sample demonstrates how a unique id might help us style a single element in a grid. You may not understand what is occurring in the CSS, so I'll give a brief description. Of all the `div` elements on the page, one of them has an `id` of "center". All of the divs have some default styling applied to them to create the regular gird. The element with an `id` has additional styles applied (via the `id`) that allows us to customize the styling of that element. As you will see later in this course, creating styles like this would be extremely difficult without a way to uniquely select elements.
 
-1
+```html 
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Id Grid</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <section>
-10
         <div></div>
-11
         <div></div>
-12
         <div></div>
-13
         <div></div>
-14
         <div id="center"></div>
-15
         <div></div>
-16
         <div></div>
-17
         <div></div>
-18
     </section>
-19
 </body>
-20
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 200px;
+    margin: 0 auto;
+}
+div{
+    flex: 0 1 30%;
+    background: gray;
+    padding-top: 30%;
+    margin-bottom: 5%;
+}
 
-Reset Code
-Preview 
-Grouping Elements with the Class Attribute  
+/*
+This code changes the styles of the one
+elements with an id value of "center"
+*/
+#center{
+    background: red;
+    flex: 0 1 65%;
+}
+```
+
+## Grouping Elements with the Class Attribute  
 
 Class attributes are intended to group multiple page elements. By giving a set of elements the same class value, they can be selected (in CSS or JS) at the same time, as a group. For instance, you may want to apply a set of visual styles through a single CSS selector. You might want to reference several page elements in your JavaScript or specify that a group of elements belong together.
 
@@ -732,6 +732,7 @@ Like Ids, you choose the class values that best suit your needs. The naming rule
 
 In the following example, the first 3 elements share a common class and can be selected and manipulated as a group via CSS or JS. Similarly, the last 4 elements share a common class and can be selected together.
 
+```html
 <div class="cool-elements">This is some great DIV content.</div>
 <div class="cool-elements">This is some great DIV content.</div>
 <div class="cool-elements">This is some great DIV content.</div>
@@ -740,77 +741,88 @@ In the following example, the first 3 elements share a common class and can be s
 <div class="hot-elements">This is some great DIV content.</div>
 <div class="hot-elements">This is some great DIV content.</div>
 <div class="hot-elements">This is some great DIV content.</div>
-Elements can be assigned multiple classes by separating the class values with a space. In the following example, the div has been assigned two classes: "hot-elements" and "second-class". Applying multiple classes to elements is pretty typical and allows us to create complex groupings as needed.
+```
 
+Elements can be assigned multiple classes by separating the class values with a space. In the following example, the `div` has been assigned two classes: "hot-elements" and "second-class". Applying multiple classes to elements is pretty typical and allows us to create complex groupings as needed.
+
+```html
 <div class="hot-elements second-class">This is some great DIV content.</div>
+```
+
 In this next example, the grid is structured much like the Id grid. However, instead of utilizing a single id attribute, this document uses two class attributes to create a variety of styles. Two elements don't have a class. Five elements have one class. Two elements use both classes.
 
-All elements with a class attribute of flashy are red. All elements with a class attribute of circle are round. Elements with both classes are red and round. Elements with no classes are gray squares.
+All elements with a class attribute of `flashy` are red. All elements with a class attribute of `circle` are round. Elements with both classes are red and round. Elements with no classes are gray squares.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!doctype html>
-2
 <html>
-3
 <head>
-4
     <meta charset="UTF-8">
-5
     <title>Class Grid</title>
-6
     <link rel="stylesheet" href="style.css">
-7
 </head>
-8
 <body>
-9
     <section>
-10
         <div class="flashy"></div>
-11
         <div class="circle"></div>
-12
         <div></div>
-13
         <div></div>
-14
         <div class="flashy circle"></div>
-15
         <div class="flashy circle"></div>
-16
         <div class="circle"></div>
-17
         <div class="flashy"></div>
-18
         <div class="circle"></div>
-19
     </section>
-20
 </body>
-21
 </html>
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+section{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 200px;
+    margin: 0 auto;
+}
+div{
+    flex: 0 1 30%;
+    background: gray;
+    padding-top: 30%;
+    margin-bottom: 5%;
+}
 
-Reset Code
-Preview 
-Conclusion  
+/*
+This code changes the background of elements with a
+class value of "flashy"
+*/
+.flashy{
+    background: red;
+}
 
-Grouping and classifying elements is an important aspect of HTML authoring. class attributes allow us to group sets of elements so that they can be manipulated en masse. id attributes enable us differentiate between elements by creating unique identifiers.
+/*
+This code changes rounds off the square corner of
+elements with a class value of "circle"
+*/
+.circle{
+    border-radius: 50%;
+}
+```
 
- Multiple Choice Exercise View Exercise
- Short Answer Exercise View Exercise
-Summary
+## Conclusion  
+
+Grouping and classifying elements is an important aspect of HTML authoring. `class` attributes allow us to group sets of elements so that they can be manipulated en masse. `id` attributes enable us differentiate between elements by creating unique identifiers.
+
+---
+
+# Summary
 
 This lesson was intended to give you a first look at HTML and the rules that govern markup. HTML has lots of tags, some of which we didn't cover in this lesson. As you progress through the next few weeks, you'll be introduced to more tags and attributes. In addition to these lessons, you should take the time to memorize as many tags as possible. It can be a bit of a slog to do, but knowing many tags will make you much faster at writing HTML and it will ensure that you know the correct tag to use in every situation.
 
 Some great resources for learning about tags and their use are:
 
-(W3Schools HTML Page)[https://www.w3schools.com/html/] is pretty comprehensive and will give you a strong footing on the intended use of tags and their semantic meaning
-(Hosting Facts HTML Cheatsheet)[https://hostingfacts.com/html-cheat-sheet/] is a great quick reference for a large number of tags. It's a downloadable PDF, so you can take it with you as well. Doesn't give you a lot of detail, but has code samples.
+* [W3Schools HTML Page](https://www.w3schools.com/html/) is pretty comprehensive and will give you a strong footing on the intended use of tags and their semantic meaning
+
+* [Hosting Facts HTML Cheatsheet](https://hostingfacts.com/html-cheat-sheet/) is a great quick reference for a large number of tags. It's a downloadable PDF, so you can take it with you as well. Doesn't give you a lot of detail, but has code samples.
