@@ -33,7 +33,7 @@ Lecture notes from The Iron Yard
 
 * [Building Objects and Maintaining Proper Scope](./FrontEnd/BuildingObjectsAndMaintainingProperScope.md)
 
-* Algorithms and Data Modeling
+* [Algorithms and Data Modeling](./FrontEnd/AlgorithmsAndDataModeling.md)
 
 * [Working with Remote Data](https://github.com/rickmurdock/notes/blob/master/FrontEnd/WorkingWithRemoteData.md)
 
