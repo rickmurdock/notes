@@ -4072,7 +4072,8 @@ more movies
 other tv shows
 Let's ruminate on grocery lists for a while. A grocery list contains a list of items to purchase.
 
-grocery list.jpg
+![grocery-list.jpg](./images/grocery-list.jpg)
+
 We can see that the first item in this list is eggs. The fourth is Bread. We can see that there are nine items in the list. When we go to the store we can start at the top of the list work our way down as we put items in our basket.
 
 In JavaScript we make lists of things using arrays. Arrays are just numbered lists. Another way of saying this is that arrays are ordered lists indexed by numbers.
@@ -4876,6 +4877,8 @@ Syntax: <a value> % <another value>
 Returns: The remainder left when dividing the two values.
 
 Remember long division from elementary school?
+
+![dec-long-division.gif](./images/dec-long-division.gif)
 
 Long division - the bane of 4th graders everywhere.
 The remainder operator, often called the modulo operator or mod, returns the remainder left over when dividing the value to the left of the % symbol by the value to the right.
@@ -5777,11 +5780,11 @@ Token: a unique identifier used alongside an authentication method used to make 
 
 XSRF: cross-site request forgery. Used to transmit unauthorized commands.
 
-Usage  
+## Usage  
 
 Cookies and tokens are used to hold state between web-apps and servers.
 
-Cookies  
+### Cookies  
 
 Cookie based authentication is stateful. Authentication record must be store client-side and server-side.
 
@@ -5795,7 +5798,10 @@ Cookies are used for:
 Tracking
 Personalization
 Session Management
-tokens  
+
+### tokens
+
+![session-vs-token-based-diagram.png](./images/session-vs-token-based-diagram.png)
 
 Tokens are used for authentication. Token based authentication is stateless. Authentication records are not stored in the server, but in the client.
 
