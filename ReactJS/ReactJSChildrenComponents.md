@@ -21,7 +21,7 @@ class BaseLayout extends Component {
 }
 ```
 
-This is a very simplistic view, but let's think about what's going on here. We've got a main `div` that holds both our `nav` and footer elements (which most certainly could be components on their own as well).
+This is a very simplistic view, but let's think about what's going on here. We've got a main `div` that holds both our `nav` and `footer` elements (which most certainly could be components on their own as well).
 
 What if, at the same time, in our main `App.js` file we had something that looked like this?
 
@@ -138,7 +138,7 @@ Our `baselayout.js` file tells the the `<BaseLayout>` component to expect childr
 
 The output you would expect to see from this simple demonstration (plus very minor styling):
 
-children.png
+![children](./images/children.png)
 
 ## Conclusion  
 
