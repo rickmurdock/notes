@@ -12,7 +12,7 @@ React creates a **virtual DOM** by abstracting the **application DOM** and maint
 
 ## Component Lifecycle Methods  
 
-In order to have more control over the stages the component is going through, React provides methods that denote when the different stages occur. These are called **component lifecycle methods** and proceed in a certain order. There are three major steps that the stages go through: mounting, updating and unmounting.
+In order to have more control over the stages the component is going through, React provides *methods* that denote when the different stages occur. These are called **component lifecycle methods** and proceed in a certain order. There are three major steps that the stages go through: mounting, updating and unmounting.
 
 ### Mounting  
 
@@ -245,7 +245,7 @@ A component manages its own state internally, but doesn't change the state of it
 
 **Should this component have state?**
 
-It's important to remember that state is optional. Since state increases complexity and reduces predictability, a component without state is preferable. Even though you clearly can't do without state in an interactive app, you should avoid having too many stateful components.
+It's important to remember that *state* is optional. Since state increases complexity and reduces predictability, a component without state is preferable. Even though you clearly can't do without state in an interactive app, you should avoid having too many stateful components.
 
 COMPONENT TYPES
 
@@ -269,7 +269,7 @@ By now you should have a grasp on some basic fundamentals of React. How do we be
 
 ## Collecting Input  
 
-To collect input from the user you'll first you need to create a Form component. Since we expect the data to change, we will use state to manage the input (rather than props). When we first create the component we can initialize the state of the component. You'll remember from previous lessons and exercises that we create a React component by extending it on a `class`. We then use the `constructor` method to initialize the state and include the `super` function to ensure that the value of `this` points to the parent constructor class.
+To collect input from the user you'll first you need to create a Form component. Since we expect the data to change, we will use *state* to manage the input (rather than *props*). When we first create the component we can initialize the state of the component. You'll remember from previous lessons and exercises that we create a React component by extending it on a `class`. We then use the `constructor` method to initialize the state and include the `super` function to ensure that the value of `this` points to the parent constructor class.
 
 ```jsx
 class Form extends React.Component {
@@ -291,7 +291,7 @@ render(){
 }
 ```
 
-However, this would mean that the value is always set to `"name"` and cannot be changed by the user. To allow the user to change the value, we can make it dynamic by allowing it to be updated from the state:
+However, this would mean that the *value* is always set to `"name"` and cannot be changed by the user. To allow the user to change the value, we can make it dynamic by allowing it to be updated from the state:
 
 ```jsx
 render(){
@@ -330,7 +330,7 @@ render(){
 }
 ```
 
-Now that we've added the `handleNameChange` function, we need to bind it to the scope of the component. If we forget to bind `this` to the handler being called on the component, it will cause an error as this will be `undefined`.
+Now that we've added the `handleNameChange` function, we need to bind it to the scope of the component. If we forget to bind `this` to the handler being called on the component, it will cause an error as `this` will be `undefined`.
 
 ```jsx
 this.handleNameChange = this.handleNameChange.bind(this);
