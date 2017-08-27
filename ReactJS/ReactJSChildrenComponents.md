@@ -160,7 +160,7 @@ The output you would expect to see from this simple demonstration (plus very min
 
 Let's examine how data is passed around between components. We've already been doing this in previous examples, but now we're going to go more in depth on *how* these processes work.
 
-Each component should be responsible for a minimal number of elements and minimal functionality. Data management and distribution throughout a project should be handled by multiple components. We should have a lot of "dumb" components that inherit their properties from "smart" components. Each should be compartmentalized so that the code can be accessed and reused in the project multiple times if need be.
+Each component should be responsible for a minimal number of elements and minimal functionality. Data management and distribution throughout a project should be handled by multiple components. We should have a lot of "presentational" (dumb) components that inherit their properties from "container" (smart) components. Each should be compartmentalized so that the code can be accessed and reused in the project multiple times if need be.
 
 ## The List App  
 
@@ -409,7 +409,7 @@ And that's it! We have successfully taken data from a parent component and share
 
 * We looked at setting the `state` (`this.setState({})`), and how we can keep track of data within a component by using `state`.
 
-* We looked briefly at binding this to the component's methods (`this.handleSubmit = this.handleSubmit.bind(this)`) which gave us access to `this` for the component.
+* We looked briefly at binding `this` to the component's methods (`this.handleSubmit = this.handleSubmit.bind(this)`) which gave us access to `this` for the component.
 
 * We examined how `e.target.value` (or `event.target.value`) can be used to get value from inputs. The input values can then be stored in the state for later use.
 
@@ -512,13 +512,13 @@ By writing the code this way, we're taking a method and turning it into an expre
 
 We've looked at passing `props` from a parent component down to it's children components, but we haven't explored all of the different things that can be passed down as `props`. Not only can we pass data along from `state` but we can also pass along functions. We can even pass along functions that are executed on the parent component but fired from the child component.
 
-## Color Me Badd  
+## A Colorful Example  
 
-React works by constantly checking the `state` against changes in the DOM. Let's create an app that changes the *color* of the background when we click a button. We will do so by passing down a function via props and firing from the child component but executing it on the parent component.
+React works by constantly checking the `state` against changes in the DOM. Let's create an app that changes the color of the background when we click a button. We will do so by passing down a function via `props` and firing from the child component but executing it on the parent component.
 
 The first step is the parent component:
 
-```javascript
+```jsx
 //An array of colors for us to randomly sort through and apply to the background color
 let colors = ["blue", "green", "red", "yellow", "orange", "purple", "pink", "tomato"];
 
@@ -537,17 +537,18 @@ export default class App extends Component {
   render(){
     return (
       <div className="main" style={{backgroundColor: this.state.color ? this.state.color : "red"}}>
-        <h1>Color Me Badd</h1>
-        <ColorMaker onClick={this.changeColor} />
+        <h1>Color The Wind</h1>
+        <ColorMaker changeColor={this.changeColor} />
       </div>
     );
   }
 }
+
 ```
 
-The first thing we did was create an array, `colors`, that we could randomly pull from and apply that color to the background color of the desired `<div>`.
+First we create an array, `colors`, that we could randomly pull from and apply that color to the background color of the desired `<div>`.
 
-Next we followed the usual suspect list and applied our base `constructor` with `super`, both receiving `props`. This should be a given now.
+Next, we applied our base `constructor` with `super`, and both received `props`.
 
 We then created a method `changeColor`:
 
@@ -558,11 +559,11 @@ changeColor() {
 }
 ```
 
-A quick, but not too deep, look at whats going on inside reveals that we are creating a variable `num` which will be a number between `0` and the length of our `colors` array. This means if we add colors or remove colors we will still be randomly picking from the entire array.
+What we're doing is creating a variable `num` which will be a number between `0` and the length of our `colors` array. This means if we add colors or remove colors we will still be randomly picking from the entire array.
 
 Inside of our `render` method we provided minimal elements to return, including the `<ColorMaker />` component.
 
-In the `<ColorMaker />` component we pass an `onClick` property with a value of `this.changeColor` (referencing our `changeColor` method in the `<App />` component).
+In the `<ColorMaker />` component we pass an `changeColor` property with a value of `this.changeColor` (referencing our `changeColor` method in the `<App />` component).
 
 ```javascript
 <ColorMaker onClick={this.changeColor} />
