@@ -1,28 +1,18 @@
 # Lifecycle of a React Component  
 
-As you have been learning, in React you use **components** to organize everything that needs to be displayed. Most JavaScript 
-view libraries and frameworks re-render the entirety of the application any time any state changes. This is similar to 
-doing a full page refresh. React only re-renders the components necessary to the new state of the application.
+As you have been learning, in React you use **components** to organize everything that needs to be displayed. Most JavaScript view libraries and frameworks re-render the entirety of the application any time any state changes. This is similar to doing a full page refresh. React only re-renders the components necessary to the new state of the application.
 
-Because components are constantly being re-rendered, there will be times when you want to do something before or after a 
-component has rendered, or may want to avoid a re-render. This is where the component *lifecycle* comes into play. The 
-**component lifecycle** describes the process of stages that every React component goes through. To understand these stages, 
-you first to need understand the way React renders with a **virtual DOM**.
+Because components are constantly being re-rendered, there will be times when you want to do something before or after a component has rendered, or may want to avoid a re-render. This is where the component *lifecycle* comes into play. The **component lifecycle** describes the process of stages that every React component goes through. To understand these stages, you first to need understand the way React renders with a **virtual DOM**.
 
 ## React DOM  
 
 ![React DOM](./images/React-DOM.png)
 
-React creates a **virtual DOM** by abstracting the **application DOM** and maintaining it in memory. React uses this Virtual 
-DOM to handle in-page interactions and updates from the server. With that input, React then compares the *new state* of 
-the Virtual DOM with the *previous state* of the Virtual DOM and updates the **physical DOM** with the changed elements. So 
-the physical DOM always reflects the up-to-date application state.
+React creates a **virtual DOM** by abstracting the **application DOM** and maintaining it in memory. React uses this Virtual DOM to handle in-page interactions and updates from the server. With that input, React then compares the *new state* of the Virtual DOM with the *previous state* of the Virtual DOM and updates the **physical DOM** with the changed elements. So the physical DOM always reflects the up-to-date application state.
 
 ## Component Lifecycle Methods  
 
-In order to have more control over the stages the component is going through, React provides methods that denote when the 
-different stages occur. These are called **component lifecycle methods** and proceed in a certain order. There are three major 
-steps that the stages go through: mounting, updating and unmounting.
+In order to have more control over the stages the component is going through, React provides methods that denote when the different stages occur. These are called **component lifecycle methods** and proceed in a certain order. There are three major steps that the stages go through: mounting, updating and unmounting.
 
 ### Mounting  
 
@@ -44,8 +34,7 @@ The following component lifecycle methods can be called in relation to component
 
 * `render`
 
-  * The `render` method is required on a component, and it must return a *single React element* (either a native DOM 
-  component `<div />` or composite component you have defined). The `render` method should not modify the state.
+  * The `render` method is required on a component, and it must return a *single React element* (either a native DOM component `<div />` or composite component you have defined). The `render` method should not modify the state.
 
 * `componentDidMount`
 
@@ -63,8 +52,7 @@ The following component lifecycle methods can be called when addressing changes.
 
 * `componentWillReceiveProps`
 
-  * Invoked before a mounted component receives new props. Use this method if you need to update the state in response to 
-  prop changes.
+  * Invoked before a mounted component receives new props. Use this method if you need to update the state in response to prop changes.
   
   * **Use case**: Triggering state transitions on prop changes.
 
@@ -72,10 +60,7 @@ The following component lifecycle methods can be called when addressing changes.
   
 * `shouldComponentUpdate`
 
-  * Invoked before rendering, when new props or state are being received. This method allows your component to exit the 
-  lifecycle and avoid unnecessary re-rendering. Useful when only a small amount of data has changed, if there is no update 
-  the component and all of its children will break from the lifecyle and the most recent virtual DOM from this component 
-  downward will persist.
+  * Invoked before rendering, when new props or state are being received. This method allows your component to exit the lifecycle and avoid unnecessary re-rendering. Useful when only a small amount of data has changed, if there is no update the component and all of its children will break from the lifecyle and the most recent virtual DOM from this component downward will persist.
   
   * **Use case**: Controlling when the component renders.
 
