@@ -13,10 +13,10 @@ code base, refreshing in the browser.). All of the libraries we need to make an 
 
 ### Libraries included  
 
-* Create React App includes Webpack for module bundling. 1Webpack takes modules with dependencies and emits static assets 
+* **Create React App** includes Webpack for module bundling. 1Webpack takes modules with dependencies and emits static assets 
 representing those modules.
 
-* 2Babel is the library that Create React App includes to compile ES2015 and later JavaScript into a browser-ready version of JavaScript.
+* 2Babel is the library that **Create React App** includes to compile ES2015 and later JavaScript into a browser-ready version of JavaScript.
 
 * 3Autoprefixer is included to parse CSS and add vendor prefixes to rules.
 
@@ -41,11 +41,11 @@ It will take a few seconds to download all the tools. Once the download is done 
 
 ### Generating  
 
-Now that we've installed Create React App let's put it to use.
+Now that we've installed **Create React App** let's put it to use.
 
-* The first step, make sure you are now in your directory where you keep all of your projects.
+* The first step, **make sure you are now in your directory where you keep all of your projects**.
 
-* There is no need to create a project folder, Create React App will do that for you, which is why we want to double 
+* There is no need to create a project folder, **Create React App** will do that for you, which is why we want to double 
 check that we are in the directory that we want to create a project folder inside of.
 
 * Once we are sure that we are in the right place, we can use the following command to initiate and create a React application.
@@ -110,11 +110,11 @@ React creates something called the "Virtual DOM". The Virtual DOM is a lightweig
 
 ## Translating HTML into JSX  
 
-Most common practice is to create an HTML page with one <div id="root"></div> inside the body of the HTML document. This <div> is the source for the entire application. That's really all of the HTML you are going to need to write. The rest of our project is going to be made up of components and JavaScript. The components are written in the language of JSX, which is XML syntax combined with JavaScript. It should be noted that you can use vanilla JavaScript to create components, but JSX makes the project much more streamlined, elegant and prevents us from directly incorporating vanilla HTML into our JavaScript files.
+Most common practice is to create an HTML page with one `<div id="root"></div>` inside the body of the HTML document. This `<div>` is the source for the entire application. That's really all of the HTML you are going to need to write. The rest of our project is going to be made up of components and JavaScript. The components are written in the language of JSX, which is XML syntax combined with JavaScript. It should be noted that you can use vanilla JavaScript to create components, but JSX makes the project much more streamlined, elegant and prevents us from directly incorporating vanilla HTML into our JavaScript files.
 
 ### Demo App  
 
-Let's create a simple app to get started exploring React. We'll focus on the translation of HTML into JavaScript and how we tackle getting started with our Create React App format. Let's first look at boilerplate HTML below. This code is the beginnings of an application that allows you to input your favorite Bill Murray movie and displays something about it depending on what the input was.
+Let's create a simple app to get started exploring React. We'll focus on the translation of HTML into JavaScript and how we tackle getting started with our **Create React App** format. Let's first look at boilerplate HTML below. This code is the beginnings of an application that allows you to input your favorite Bill Murray movie and displays something about it depending on what the input was.
 
 ```html
 <body>
@@ -176,9 +176,9 @@ That's all we need to know about this page. We won't write anything else in this
 
 ### src/index.js  
 
-This is our main JavaScript file. Inside of this file you'll see very little written already by our Create React App setup. We won't touch this file any further, but let's examine what's going on inside below.
+This is our main JavaScript file. Inside of this file you'll see very little written already by our **Create React App** setup. We won't touch this file any further, but let's examine what's going on inside below.
 
-```javascript
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
@@ -189,7 +189,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();
 ```
 
-Let's take a look at a few of the import statements at the top of this file. The first line imports React into our project. All React projects will begin with this import. The second line imports ReactDOM. ReactDOM is the glue that holds our React project and the DOM together. We use the ReactDOM to render our application and tell it where to insert itself into the DOM.
+Let's take a look at a few of the `import` statements at the top of this file. The first line imports React into our project. All React projects will begin with this import. The second line imports ReactDOM. ReactDOM is the glue that holds our React project and the DOM together. We use the ReactDOM to render our application and tell it where to insert itself into the DOM.
 
 In our ReactDOM statement above you can see that we call:
 
@@ -206,7 +206,7 @@ The 3rd line contains the importing of our app from the `src/App.js` file. This 
 
 The final piece of the puzzle is the `App.js` file. The `App.js` file has already been setup to get us started. Let's take a look at what's included below.
 
-```javascript
+```jsx
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -232,11 +232,11 @@ export default App;
 
 We're already familiar with classes and extending, as well as importing, so none of this should be too confusing. Let's break it down below so we can get started.
 
-At the top, we import React, and the Component library from React in the first statement import React, { Component } from 'react';. We also import a logo and our style sheet, which we won't be covering in this lesson. The App class extends (inherits) from the React.Component library. We'll call a render method on that component, and return our first JSX.
+At the top, we import React, and the Component library from React in the first statement `import React, { Component } from 'react';`. We also import a logo and our style sheet, which we won't be covering in this lesson. The `App` class extends (inherits) from the React.Component library. We'll call a render method on that component, and return our first JSX.
 
-In a return statement a component can only render one div or piece of JSX. Everything must be contained within that div. Let's take a look below.
+* In a return statement a component can only render one div or piece of JSX. Everything must be contained within that div. Let's take a look below.
 
-```javascript
+```jsx
 return (
   <div></div>
   <div></div>
@@ -245,7 +245,7 @@ return (
 
 **The above code is invalid** because everything needs to be in one container. For what we're after, we can go ahead and delete everything so we're left with the following:
 
-```javascript
+```jsx
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -263,9 +263,9 @@ class App extends Component {
 export default App;
 ```
 
-Since we are writing in JavaScript (JSX), reserved words such as class can not be used. If we want to give a class name to our JSX tags, they must be camelCased into className. In general, any HTML attributes will be camelCased in JSX. The HTML for attribute is also a reserved word in JavaScript, so it becomes htmlFor.
+Since we are writing in JavaScript (JSX), reserved words such as class can not be used. If we want to give a `class` name to our JSX tags, they must be camelCased into `className`. In general, any HTML attributes will be camelCased in JSX. The HTML `for` attribute is also a reserved word in JavaScript, so it becomes `htmlFor`.
 
-All single line tags such as <img > and <input > must become self-closing tags in JSX. In JSX all tags must have a closing tag or be self-closing. The two examples above would now be written as <img /> and <input />. If you think back to our index.js file, you would notice that our <App /> tag was self-closing too.
+All single line tags such as `<img >` and `<input >` must become self-closing tags in JSX. In JSX all tags must have a closing tag or be self-closing. The two examples above would now be written as `<img />` and `<input />`. If you think back to our `index.js` file, you would notice that our `<App />` tag was self-closing too.
 
 Let's see our app in JSX below.
 
@@ -314,42 +314,49 @@ class App extends Component {
 export default App;
 ```
 
-By exporting our App and then importing into our index.js, we can see the power of React in a Single Page Application. This lesson barely scratches the surface of what React has to offer, but hopefully, it demonstrates how easy it is to get started.
+By exporting our `App` and then importing into our `index.js`, we can see the power of React in a Single Page Application. This lesson barely scratches the surface of what React has to offer, but hopefully, it demonstrates how easy it is to get started.
 
 ## Conclusion  
 
-Create React App is installed with the npm install -g create-react-app command.
-To get a project started simply use the create-react-app my-app-folder-name command.
-After naming the folder, use the cd my-app-folder-name command to change into that directory.
-Use npm start to spin up your development server and watch for changes to your application.
-React most commonly uses JSX language to take the place of HTML.
-All React components will be rendered in a singular <div> on your index.html page.
-JSX requires camelCasing and special words to take place for reserved words such as "class" and "for" in JavaScript.
-References  
+* **Create React App** is installed with the `npm install -g create-react-app` command.
 
-React Docs
+* To get a project started simply use the `create-react-app my-app-folder-name` command.
+
+* After naming the folder, use the `cd my-app-folder-name` command to change into that directory.
+
+* Use `npm start` to spin up your development server and watch for changes to your application.
+
+* React most commonly uses JSX language to take the place of HTML.
+
+* All React components will be rendered in a singular `<div>` on your `index.html` page.
+
+* JSX requires camelCasing and special words to take place for reserved words such as "`class`" and "`for`" in JavaScript.
+
+### References  
+
+[React Docs](https://facebook.github.io/react/docs/hello-world.html)
+
+[Create React App Docs](https://github.com/facebookincubator/create-react-app)  
+
+#### Lesson Footnotes
+
+* 1: [Webpack](https://webpack.github.io/)
+
+* 2: [Babel](https://babeljs.io/)
+
+* 3: [Autoprefixer](https://github.com/postcss/autoprefixer)
+
+* 4: [ESLint](https://eslint.org/)
+
+* 5: [Jest](http://facebook.github.io/jest/)
 
 ---
 
-- Create React App Docs  
+# Nesting Components  
 
--  
+We grazed the tip of the iceberg in our introduction to React. We glossed over some huge chunks of information that really give React the power to do what it does. One of the big things that we barely touched on in our intro was Components in React. Let's think back to our Favorite Murray application... instead of writing HTML to display our website, we used JSX in a file called App.js. We exported something called the "App" which was a Component from React and then imported that file into our index.js and then rendered it inside of a `<div id="root">` tag on our HTML page. Well, that component concept is pretty huge in React, and the basis for the way we will organize our code and our applications when developing. Another big take-away is that components can be nested to increase the organization of our application. Let's take a deeper look...
 
--  
-
-Lesson Footnotes
-1: Webpack
-2: Babel
-3: Autoprefixer
-4: ESLint
-5: Jest
- Multiple Choice Exercise View Exercise
- Multiple Choice Exercise View Exercise
-Nesting Components  
-
-We grazed the tip of the iceberg in our introduction to React. We glossed over some huge chunks of information that really give React the power to do what it does. One of the big things that we barely touched on in our intro was Components in React. Let's think back to our Favorite Murray application... instead of writing HTML to display our website, we used JSX in a file called App.js. We exported something called the "App" which was a Component from React and then imported that file into our index.js and then rendered it inside of a <div id="root"> tag on our HTML page. Well, that component concept is pretty huge in React, and the basis for the way we will organize our code and our applications when developing. Another big take-away is that components can be nested to increase the organization of our application. Let's take a deeper look...
-
-Components  
+## Components  
 
 A component is a chunk of code that is responsible for rendering a specific portion of the UI (user interface). They function a lot like, well, JavaScript functions. They can accept inputs (called "props") and return elements describing what should appear on the screen.
 
@@ -357,18 +364,19 @@ In our App, we had just one component. In an ideal application, components are r
 
 Components can actually be defined as a function :
 
-```javascript
+```jsx
 function Welcome(props) {
   return (
     <h1>Hello, {props.name}</h1>
   );
 }
 ```
+
 The use of `{ }` allows for pure JavaScript to be inserted into the JSX, and in this case assumes that somewhere data with a name property is being passed along.
 
 We can also write Components using the new ES2015 classes, that same function above would now be written as the following :
 
-```javascript
+```jsx
 class Welcome extends Component {
   render() {
     return (
@@ -380,13 +388,13 @@ class Welcome extends Component {
 
 These two examples are the same essentially, but ES2015 classes give us a bit more functionality that we will visit later.
 
-Nesting Components - A look at Component hierarchy  
+## Nesting Components - A look at Component hierarchy  
 
 We've touched on the fact that our components should really be accountable for unique pieces of the application, but what does that mean?
 
 The first step of building React applications requires looking at the big picture, a wireframe or something along those lines. Let's take a look at the Favorite Murray website again - we are looking only at the most simplistic of ideas to make sure the complicated concept of nesting will hatch some understanding.
 
-```javascript
+```jsx
 class App extends Component {
   render() {
     return (
@@ -435,7 +443,7 @@ The way to think about Components is to divide your application into pieces - ea
 
 Let's take a look at what would be rendered on the screen from our code above, and then break it in to separate pieces using colored boxes, and a dashed outer line to represent the entire main app component.
 
-favoritemurray.jpg
+![favoritemurray.jpg](./images/favoritemurray.jpg)
 
 * In pink we have highlighted our very simple navigation bar.
 
@@ -455,7 +463,7 @@ If we want to create a component for our navigation we need to pull it out of th
 
 Just above the App class, we can create a new class for our navigation.
 
-```javascript
+```jsx
 class Navigation extends Component {
   render() {
     return (
@@ -474,7 +482,7 @@ Now back inside of our App component we can **nest** our Navigation component ba
 
 **To save space, let's look at only the portion of code where we would reinsert the Navigation component back into the App**
 
-```javascript
+```jsx
 class App extends Component {
   render() {
     return (
@@ -492,7 +500,7 @@ We now have a nested component! The `<Navigation />` component is now nested wit
 
 Let's finish what we started and take a look at the entire nesting of our application using our picture from earlier. A few slight changes to our `<App />` component will be necessary in order to return all of our components in singular containers.
 
-```javascript
+```jsx
 class Navigation extends Component {
   render() {
     return (
@@ -583,7 +591,7 @@ So how did we nest it?
 
 * We created a `<MainBody />` Component
 
-* We created `<TopPara />` and `<BottomPara />` Components, and we then nested them inside of the <MainBody /> Component!
+* We created `<TopPara />` and `<BottomPara />` Components, and we then nested them inside of the `<MainBody />` Component.
 
 * We created a `<MurrayForm />` Component
 
@@ -603,7 +611,7 @@ You can hopefully begin to see how we could pull each of these components out of
 
 * Let's look at how that would be completed for the Navigation Component.
 
-```javascript
+```jsx
 //############### navigation.js ####################
 // Our newly created src/Components/navigation.js
 // would look like this...
@@ -641,7 +649,7 @@ If we wanted to take this to maximum organization we would separate out each com
 
 Let's take a look inside of the `<MainBody />` file to see how we handled the `<TopPara />` and `<BottomPara />` components.
 
-```javascript
+```jsx
 //############### mainbody.js ###############
 import React, { Component } from 'react';
 
@@ -665,7 +673,7 @@ You can see that we imported the `<TopPara />` and `<BottomPara />` components i
 
 Now let's take a look at the overall file structure of our App from inside of our `<App />` component file : "App.js"
 
-![React App structure](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/reactAppStructure.png)
+![React App structure](./images/app.png)
 
 On the left you can see the file tree, with the Components folder containing all of our new component files. Inside of App.js you can see how we imported those components back into our App.js file.
 
@@ -699,7 +707,7 @@ Let's pretend we have a **very** simple application that we can examine this pro
 
 Alright, so we have this cool array of famous astrophysicists...
 
-```javascript
+```jsx
 let famousAstroPhysicists = [
   {
     id: 1,
@@ -729,7 +737,7 @@ let famousAstroPhysicists = [
 
 We will pass that array into our `<App />` component. Using the map function we can then render individual `<div>` tags for each of our objects in the array... So let's look at how this would look in the App.js file and then break down what happened.
 
-```javascript
+```jsx
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -789,13 +797,13 @@ export default class App extends Component {
 
 * The `key` attribute is what allows our React application to keep track of each newly created element against the real DOM. It allows for proper re-rendering from cues in the virtual DOM. The `physicist.id` simply grabs the "id" attribute from each object that is mapped over, in this case, just "1, 2, and 3".
 
-* After we create a new div, we continue using brackets anywhere we want to assign a JavaScript value. We create the last name, first name <h1> by using the `{physicist.lastName + ", " + physicist.firstName}`.
+* After we create a new div, we continue using brackets anywhere we want to assign a JavaScript value. We create the last name, first name `<h1>` by using the `{physicist.lastName + ", " + physicist.firstName}`.
 
 * We continue doing this for whatever data we would like to extract from each object and organize it however we please.
 
 * In the return statement for `<App />` component we then simply use bracket notation `{}` and put our variable name (the mapped array `famedPhysicists`) - like so:
 
-```javascript
+```jsx
 return (
   <div className="App">
     {famedPhysicists}
@@ -805,7 +813,7 @@ return (
 
 The resulting product is pretty amazing, React renders each scientist in it's own `<div>` on our page!
 
-![scientists](https://github.com/rickmurdock/notes/blob/master/ReactJS/images/science.png)
+![scientists](./images/science.png)
 
 ## Conclusion  
 
