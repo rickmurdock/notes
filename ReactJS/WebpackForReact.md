@@ -11,7 +11,7 @@ Now, when you run `webpack` or `webpack-dev-server` your React code will be tran
 
 Using the sample webpack.config.js file from http://coursework.vschool.io/intro-to-webpack/, add your react preset to your presets.
 
-```javascript
+```jsx
 module.exports = {  
     entry: './main.js',
     output: {
@@ -40,7 +40,7 @@ Babel is a fairly common transpiling tool. It is used by most companies and deve
 
 Create a **.babelrc** file (the . is important here) by running: `touch .babelrc`. This will create your *.babelrc* file. Although there is no file ending like ".js" or ".json", this will default to a JSON file. Then update it as below.
 
-```json
+```jsx
 {
   "presets" : ["react", "es2015"]
 }
@@ -50,7 +50,7 @@ The next step is to update Webpack.
 
 open webpack.config.js file and update it as below:
 
-```json
+```jsx
 loaders: [
             {
                 test: /\.js$/,
@@ -64,7 +64,7 @@ We simply deleted the *query* object. Babel knows to look for the *.babelrc* fil
 
 Now change your your entry file to include some react. Make sure you have the `react` and `react-dom` node modules installed and update your file as below.
 
-```javascript
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom'
 
@@ -101,7 +101,7 @@ One of the nice things about the webpack-dev-server is that it can automatically
 
 Enable this by opening your *package.json* file and add a new script.
 
-```json
+```jsx
 "scripts": {
     "start": "webpack-dev-server  --content-base <entry file here> --inline --hot"
   }
