@@ -1573,7 +1573,8 @@ p {
 
 ---
 
-Lesson: CSS Layout & Fonts
+[CSS Layout & Fonts](CSSLayout&Fonts.md)
+
 # Importing Font Files  
 
 ## Terminology  
@@ -1619,125 +1620,115 @@ Lesson: CSS Layout and Flexbox
 
 ## Terminology  
 
-Value - The second part of a declaration - a single value or set of adjacent values can be applied to a property and thus describe the visual state of a specific aspect of an element.
+**Value** - The second part of a declaration - a single value or set of adjacent values can be applied to a property and thus describe the visual state of a specific aspect of an element.
 
-Adjacent Values - Shorthand properties allow for multiple values or "adjacent values".
+**Adjacent Values** - Shorthand properties allow for multiple values or "adjacent values".
 
 ## Examples  
 
-
-1
+```html
 <head>
-2
   <style>
-3
     .box {
-4
       width: auto;
-5
       /* or */
-6
       width: 50px;
-7
       border-left: 1px solid #000000;
-8
     }
-9
   </style>
-10
 </head>
-11
 <body>
-12
   <div class="box">content</div>
-13
 </body>
-
-Fullscreen
-
-Reset Code
-Run Code 
+``` 
 
 ## References  
 
-MDN CSS Shorthand Properties
+[MDN CSS Shorthand Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties)
 
-HTML Dog - CSS Properties
+[HTML Dog - CSS Properties](http://www.htmldog.com/references/css/properties/)
 
-CSS Values
+[CSS Values](http://cssvalues.com/)
 
 ---
 
-Lesson: CSS Layout and Flexbox
+[CSS Layout and Flexbox](CSSLayoutAndFlexbox.md)
+
 # Determining Stacking Order with z-index  
 
 Elements in CSS can be positioned in three dimensions. There is top to bottom, left to right and front to back. Z-index is the property that allows for positioning of an element from the front to the back. This is essentially the visual appearance of stacking elements. If x-index and y-index are the horizontal and vertical lines, then z-index is the depth of the page, essentially the 3rd dimension.
 
 ## Terminology  
 
-z-index: determines the order of positioned elements that stack on top of each other from front to back
-Remember! z-index only works on positioned elements (position:absolute, position:relative, or position:fixed).
+**z-index**: determines the order of positioned elements that stack on top of each other from front to back
+*Remember!* z-index only works on positioned elements (position:absolute, position:relative, or position:fixed).
 
 ## Syntax  
 
-auto: sets the stack level for z the same as the parent element
+*auto*: sets the stack level for z the same as the parent element
 
+```css
 z-index: auto;
-integers: z-index can also be determined by integer. The element with the highest z-index is on top. Those with a negative number will be sent to the bottom of the stack. The default integer for z-index is 0.
+```
 
+*integers*: z-index can also be determined by integer. The element with the highest z-index is on top. Those with a negative number will be sent to the bottom of the stack. The default integer for z-index is 0.
+
+```css
 z-index: 0;
 z-index: 5;
 z-index: 99;
 z-index: -1;
+```
 
 ## Examples  
 
-The example below shows two elements, an h1 and p element. They both currently have a z-index of 0. Go to the style.css doc and change the z-index to 10 for the h1. Hit the preview button to see your change update the browser view.
+The example below shows two elements, an `h1` and `p` element. They both currently have a `z-index` of 0. Go to the `style.css` doc and change the `z-index` to 10 for the `h1`. Hit the `preview` button to see your change update the browser view.
 
-Editor
-Browser View
-index.html
-style.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE HTML>
-2
 <html>
-3
   <head>
-4
     <link ref="stylesheet" type="text/css" href="style.css">
-5
   </head>
-6
-​
-7
+
   <body>
-8
     <h1>This is a header for the page</h1>
-9
     <p>Tempora iste ducimus id aut numquam ut error. Occaecati ullam tempora ut. Expedita nesciunt sed quia itaque aut sit.
-10
        Harum sunt a explicabo est velit molestiae. Sit ut modi sapiente perspiciatis. Perspiciatis rerum et voluptatem. Sapiente eveniet velit omnis placeat officia aut voluptatem.</p>
-11
    </body>
-12
-​
-13
+
 </html>
-14
-​
- 
+```
 
-Fullscreen
+```css
+/* style.css */
+h1 {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: 0px;
+  padding: 30px;
+  width: 100%;
+  background-color: #efefef;
+  z-index: 0;
+}
+p {
+  position: relative;
+  top: 70px;
+  left: 70px;
+  background-color: #cfffff;
+  font-size: 20px;
+  z-index: 0;
+}
+```
 
-Reset Code
-Preview 
-Notice how the h1 elements moves in front of the p when its z-index is higher than p.
+Notice how the `h1` elements moves in front of the `p` when its `z-index` is higher than `p`.
 
 ---
 
-Lesson: CSS Layout and Flexbox
+[CSS Layout and Flexbox](CSSLayoutAndFlexbox.md)
+
 # Flexbox Multi-Column Layout  
 
 Getting started with flexbox is easy. Start with a container element and several nested elements.
@@ -1815,7 +1806,8 @@ MDN - Using Flexible Boxes
 
 ---
 
-Lesson: CSS Layout and Flexbox
+[CSS Layout and Flexbox](CSSLayoutAndFlexbox.md)
+
 # Chrome Developer Tools  
 
 ## Terminology  
@@ -1837,6 +1829,7 @@ Inspect and Edit Pages and Styles - Chrome Developer Tools
 ---
 
 Lesson: Responsive Web Design
+
 # Responsive Media Queries  
 
 ## Terminology  
