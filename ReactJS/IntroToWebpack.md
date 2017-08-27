@@ -38,7 +38,7 @@ The important part here is the reference to bundle.js, which is what Webpack wil
 
 Next, create two files in the same directory as your HTML file. Name the first **main.js**, which as you can imagine is the main **entry** point for our script. Then name the second **say-hello.js**. This is going to be a simple module that takes a person's name and DOM element, and inserts a welcome message into said element.
 
-```javscript
+```js
 // say-hello.js
 
 module.exports = function (name, element) {
@@ -48,7 +48,7 @@ module.exports = function (name, element) {
 
 Now that we have a simple module, we can require this in and call it from main.js. This is as easy as doing:
 
-```javascript
+```js
 var sayHello = require('./say-hello');
 
 sayHello('Tanner', document.querySelector('h2'));
@@ -76,7 +76,7 @@ Now open index.html in your browser to see your page saying hello!
 
 It isn't much fun specifying our input and output files each time we run Webpack. Thankfully, Webpack allows us to use a config file to save us the trouble. Create a file called **webpack.config.js** in the root of your project with the following contents:
 
-```javascript
+```js
 module.exports = {
     entry: './main.js',
     output: {
@@ -105,7 +105,7 @@ This installs Babel, the Babel Loader, the es6 preset which tells Babel what typ
 
 Now that the loader is installed, we just need to tell Babel to use it. Update webpack.config.js so it looks like this:
 
-```javascript
+```js
 module.exports = {
     entry: './main.js',
     output: {
@@ -134,7 +134,7 @@ module.exports = {
 
 Restart your web server by pressing ctrl+c to kill the server and running `webpack-dev-server` again. All we need to do now is use some ES6 code in order to test the transform. How about we change our sayHello variable to be a constant?
 
-```javascript
+```js
 // say-hello.js
 const sayHello = require('./say-hello')
 ```
