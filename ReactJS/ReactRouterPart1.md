@@ -281,7 +281,7 @@ We now have access to the browser's history API. We can let users navigate our a
 
 * **Inclusive rendering** is rendering of routes based on meeting a partial match of the path allowing for multiple routes to be displayed.
 
-* Use the `<Switch />` component to ensure that only one route will be displayed at a time. This is exclusive rendering as opposed to inclusive rendering where all routes would be displayed.
+* Use the `<Switch />` component to ensure that only one route will be displayed at a time. This is *exclusive rendering* as opposed to *inclusive rendering* where all routes would be displayed.
 
 ### References  
 
