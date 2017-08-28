@@ -103,7 +103,7 @@ Lecture notes from The Iron Yard
 
 * [Redux Todos Part 1 (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTodosPart1.md)
 
-* [ReactJS: Children Components](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactJSChildrenComponents.md)
+* [ReactJS: Children Components](./ReactJS/ReactJSChildrenComponents.md)
 
 * [ReactJS: Advanced Techniques](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReactJSAdvancedTechniques.md)
 
