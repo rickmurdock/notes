@@ -2,7 +2,7 @@
 
 Now that we have looked a very simple application using the React Router to navigate between views, let's dive deeper into common layouts within a React application.
 
-It's a best practice to store often repeated elements in separate files to avoid duplication of code. A header or a sidebar element are simple examples of elements commonly displayed on multiple pages. These elements are called *layout* components.
+It's a best practice to store often repeated elements in separate files to avoid duplication of code. A header or a sidebar element are simple examples of elements commonly displayed on multiple pages. These elements are called *layout components*.
 
 Let's take a look at how we can insert a layout component at the top of an application.
 
@@ -80,11 +80,11 @@ Let's take a look how this would appear with minor styling. We expect to see the
 
 Here is our main `<App>` component page...
 
-main.png
+![main](./images/main.png)
 
 ...and here is our `<PageOne>` component page.
 
-p1.png
+![p1](./images/p1.png)
 
 We have successfully introduced a layout component and displayed it with nested child components in our web application.
 
@@ -263,7 +263,7 @@ We can see a normal (non-active) class called `nav-link`, which has default styl
 
 Let's see what this looks like on the main page. We would expect our `NavLink` to take on the characteristics of the `selected` class and appear white, while the others remained green.
 
-main-1.png
+![main-1](./images/main-1.png)
 
 And it works! Amazingly simple solution for our navigation needs.
 
@@ -337,9 +337,9 @@ registerServiceWorker();
 
 We added the `<NavBar>` components to our lists of imports and then we use the opening and closing `<NavBar></NavBar>` tags to wrap our `<Switch>` component. `<NavBar>` knows to expect child components because we passed it `{this.props.children}` inside of its opening and closing tags in the `nav.js` file. This is a nice and tidy solution for our simple app and demonstrates the capabilities of the `<NavLink>` component and the efficient means with which we are able to style our active links.
 
-Let's See It in Action  
+## Let's See It in Action  
 
-navlink.gif
+![navlink](./images/navlink.gif)
 
 ## Conclusion  
 
