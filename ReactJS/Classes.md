@@ -1,6 +1,6 @@
 # Classes vs. Constructors  
 
-With the unveiling of ES2015 (often referred to as ES6) syntax, JavaScript made its way toward becoming a class based, object-oriented programming language, at least on the surface. Behind the scenes is a new method to create constructors using the class syntax. Let's take a look at some of the fundamental differences and similarities between class and constructor functions.
+With the unveiling of ES2015 (often referred to as ES6) syntax, JavaScript made its way toward becoming a class based, object-oriented programming language, at least on the surface. Behind the scenes is a new method to create constructors using the `class` syntax. Let's take a look at some of the fundamental differences and similarities between `class` and constructor functions.
 
 ## What is a Constructor Function?  
 
