@@ -552,7 +552,7 @@ Next, we applied our base `constructor` with `super`, and both received `props`.
 
 We then created a method `changeColor`:
 
-```javascript
+```jsx
 changeColor() {
   let num = Math.floor(Math.random()* colors.length);
   this.setState({color: colors[num]});
@@ -565,17 +565,17 @@ Inside of our `render` method we provided minimal elements to return, including 
 
 In the `<ColorMaker />` component we pass an `changeColor` property with a value of `this.changeColor` (referencing our `changeColor` method in the `<App />` component).
 
-```javascript
-<ColorMaker onClick={this.changeColor} />
+```jsx
+<ColorMaker changeColor={this.changeColor} />
 ```
 
 With those simple steps we are set up to pass the functions down to `<ColorMaker />`
 
-### Kids with Prop Functions  
+### Children with Prop Functions  
 
 As we saw above, we were able to pass a function as a property attribute to a child component. Let's now take a look at the way we handle that function inside the child component.
 
-```javascript
+```jsx
 class ColorMaker extends Component {
   constructor(props) {
     super(props);
@@ -583,7 +583,7 @@ class ColorMaker extends Component {
   render() {
     return (
       <div className="color-change-div">
-        <button onClick={this.props.onClick}>Change Color</button>
+        <button onClick={this.props.changeColor}>Change Color</button>
       </div>
     )
   }
@@ -592,7 +592,7 @@ class ColorMaker extends Component {
 
 Inside of our `<ColorMaker />` component, we see `constructor` and `super`.
 
-On our `<button>` we give it an `onClick` attribute and set it's value to `{this.props.onClick}`. The props that we are referring to is the `changeColor` method from the parent component!
+On our `<button>` we give it an `onClick` attribute and set its value to `{this.props.changeColor}`. The `props.changeColor` method that we are referring to is the `changeColor` method from the parent component.
 
 [Here it is in action.](https://screencast-o-matic.com/watch/cbhZIsXkxP)
 
