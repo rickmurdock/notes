@@ -127,6 +127,8 @@ Lecture notes from The Iron Yard
 
 * [Redux Review (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxReview.md)
 
+* [Redux Counter Review (video)](./ReactJS/ReduxCounter.md)
+
 * [Unit Tests for React](https://github.com/rickmurdock/notes/blob/master/ReactJS/UnitTestsForReact.md)
 
 * [Language Specialization: ReactJS Encyclopedia](./ReactJS/ReactJSEncyclopedia.md)
