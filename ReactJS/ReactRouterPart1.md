@@ -14,7 +14,7 @@ Now let's look at the React Router, and how to integrate it into our application
 
 Assuming we have already set up a `create-react-app` application, or used Webpack with the necessary implementations for a React application, we'll start there with an empty application.
 
-First thing we will need to do is go into our terminal and cd into our project directory. For this mock up, lets pretend we are in `/TIY/code/router-project/`.
+First thing we will need to do is go into our terminal and `cd` into our project directory. For this mock up, lets pretend we are in `/TIY/code/router-project/`.
 
 We are going to use npm to install React Router with the following code (again, in our project directory):
 
@@ -107,7 +107,7 @@ We could make one change to this by using the `exact` path keyword. In the above
 
 As you can see from our very first code snippet, we also imported the components from our other files in our list of import statements.
 
-These import statements allow us to utilize that component inside of our router (just as we could render them normally before a router). The second part of the route component is the `component={}` attribute. Passing in the name of the component (as we imported it to be) tells the router to render the component when the correct path is met as a URL. So when we have the URL `"example.com/page_one"` we expect our path to math the first `<Route>` component and display the `<PageOne>` component to the user.
+These import statements allow us to utilize that component inside of our router (just as we could render them normally before a router). The second part of the route component is the `component={}` attribute. Passing in the name of the component (as we imported it to be) tells the router to render the component when the correct path is met as a URL. So when we have the URL `"example.com/page_one"` we expect our path to match the first `<Route>` component and display the `<PageOne>` component to the user.
 
 ## Inside Components  
 
