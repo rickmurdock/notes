@@ -63,7 +63,7 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 ---
 
-[Express and NodeJS: Hello World](./ExpressNodeJS.md)
+[Express and NodeJS: Hello World](ExpressNodeJS.md)
 
 # Ports & IP Addresses  
 
@@ -129,7 +129,7 @@ In this example we run a local server on a local network, accessing port 3000.
 
 ---
 
-[Express and NodeJS: Hello World](./ExpressNodeJS.md)
+[Express and NodeJS: Hello World](ExpressNodeJS.md)
 
 # Starting A Node Application  
 
@@ -205,7 +205,7 @@ Starting Node.zip (424 KB)
 
 ---
 
-[Express and NodeJS: Hello World](./ExpressNodeJS.md)
+[Express and NodeJS: Hello World](ExpressNodeJS.md)
 
 # Configure Node to Serve Static Files in a Directory  
 
@@ -271,7 +271,7 @@ serve-static-files.zip (2 MB)
 
 ---
 
-[Express and NodeJS: Hello World](./ExpressNodeJS.md)
+[Express and NodeJS: Hello World](ExpressNodeJS.md)
 
 # Authoring A Trivial Node App  
 
@@ -416,7 +416,7 @@ trivial-app.zip (70 KB)
 
 ---
 
-Lesson: Express: Dynamic
+[Express: Dynamic](ExpressDynamic.md)
 
 # Describe common URL structures  
 
@@ -453,10 +453,13 @@ Port
 Path to a file
 Parameters
 Anchor
-protocol	domain name	domain name	domain name	port	path to file	parameters	anchor
-second level domain name	second level domain name	top level domain name				
-subdomain	host name					
-https://	www.	example	.com	:80	/path/to/somefile.html	?key1=value1&key2=value2	#somewhereInTheDocument
+
+| protocol |	domain name |	domain name |	domain name |	port |	path to file |	parameters |	anchor |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| | second level domain name |	second level domain name |	top level domain name | | | | |				
+| | subdomain |	host name	| | | | | |				
+| https:// |	www. |	example |	.com |	:80 |	/path/to/somefile.html |	?key1=value1&key2=value2 |	#somewhereInTheDocument ||
+
 Absolute v relative
 
 Used within an HTML document
@@ -478,7 +481,7 @@ Lesson Footnotes
 
 --- 
 
-Lesson: Express: Dynamic
+[Express: Dynamic](ExpressDynamic.md)
 
 # Dynamic Routes in Express  
 
@@ -503,7 +506,7 @@ Lesson Footnotes
 
 ---
 
-Lesson: Express: Dynamic
+[Express: Dynamic](ExpressDynamic.md)
 
 # HTML Templates with Mustache  
 
@@ -538,7 +541,7 @@ Using template engines with Express
 
 ---
 
-Lesson: Express Forms
+[Express Forms](ExpressForms.md)
 
 # Form Validation  
 
@@ -665,7 +668,7 @@ express-form-validation.zip (8 KB)
 
 ---
 
-Lesson: Express Forms
+[Express Forms](ExpressForms.md)
 
 # Returning Appropriate HTTP Response Codes  
 
@@ -738,11 +741,11 @@ app.get('/dashboard', function(req, res){
 
 ---
 
-Lesson: Express Forms
+[Express Forms](ExpressForms.md)
 
 # Receiving Uploaded Files Using Busboy  
 
-Terminology  
+## Terminology  
 
 busboy: module used to parse incoming HTML form data. Simplifies file upload process.
 pipe(): method used to read data from a 'file' and write to a destination writable stream.
@@ -843,7 +846,7 @@ express-file-upload-busboy.zip (7 KB)
 
 ---
 
-Lesson: Express Authentication
+[Express Authentication](ExpressAuthentication.md)
 
 # Login Based Authentication  
 
@@ -883,7 +886,7 @@ References
 
 ---
 
-Lesson: Express Authentication
+[Express Authentication](ExpressAuthentication.md)
 
 # Author a website with user authentication workflow  
 
