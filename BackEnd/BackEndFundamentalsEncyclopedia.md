@@ -63,7 +63,7 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 ---
 
-Lesson: Express and NodeJS: Hello World
+[Express and NodeJS: Hello World](./ExpressNodeJS.md)
 
 # Ports & IP Addresses  
 
@@ -129,7 +129,7 @@ In this example we run a local server on a local network, accessing port 3000.
 
 ---
 
-Lesson: Express and NodeJS: Hello World
+[Express and NodeJS: Hello World](./ExpressNodeJS.md)
 
 # Starting A Node Application  
 
@@ -205,7 +205,7 @@ Starting Node.zip (424 KB)
 
 ---
 
-Lesson: Express and NodeJS: Hello World
+[Express and NodeJS: Hello World](./ExpressNodeJS.md)
 
 # Configure Node to Serve Static Files in a Directory  
 
@@ -271,7 +271,7 @@ serve-static-files.zip (2 MB)
 
 ---
 
-Lesson: Express and NodeJS: Hello World
+[Express and NodeJS: Hello World](./ExpressNodeJS.md)
 
 # Authoring A Trivial Node App  
 
