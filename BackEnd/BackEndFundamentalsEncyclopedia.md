@@ -61,76 +61,125 @@ Back-End Fundamentals Encyclopedia
 
 The Encyclopedia is a compilation of all the lesson study notes in this course. Use it to look up the a term or concept that you have covered.
 
+---
+
 Lesson: Express and NodeJS: Hello World
-Ports & IP Addresses  
 
-Terminology  
+# Ports & IP Addresses  
 
-IP address (Internet protocol): a device's unique numeric identifier.
+## Terminology  
 
-Internet Protocol Versions:
+* `IP address` (Internet protocol): a device's unique numeric identifier.
 
-IPv4: Most widely used Internet protocol. (Covered in this lesson)
-Made up of four sets of numbers divided by periods.
-Each set containing 1-3 digits, ranging from 0 to 255.
-Static: number never changes.
-Reveals a device's continent, country, region, and city.
-Dynamic: temporary. Assigned each time a machine accesses the internet.
-IPv6: Evolutionary upgrade to IPv4. Designed to address the decreasing number of Internet addresses.
-Uses a 128-bit address scheme that uses hexadecimal and separated by colons. i.e., 2bbe:1850:3:300:h8gg:ba21:68ce
-See references for more details.
-Ports: an operating system's communication endpoint.
+* **Internet Protocol Versions**:
 
-Port number: 16-bit integer, ranging from 0 to 65535.
-0 - 1023: system/well-know ports. Widely used network services. i.e., 80 HTTP, 443 HTTPS, 22 SSH, 21 FTP, 70 gopher, etc. (see references)
-1024 - 49151: registered ports. Assigned by IANA to an entity. i.e., 1020 Quicktime, 23399 Skype, 2375 Docker REST API.
-49152 - 65536: private/dynamic ports. Cannot be registered with IANA.
-Transport layer: specify source and destination port number in the header.
-Protocol: interaction rules used by endpoints in order to communicate.
-TCP (Transmission Control Protocol): connection-based transmission of data.
-Dependent on successful connection between endpoints.
-Data is sent and received in sequential order.
-IP/Port relationship: the IP address is used to locate a particular device. The port is used to access a network service on that device.
+  * IPv4: Most widely used Internet protocol. (Covered in this lesson)
 
-All communication on the internet is from IP address to IP address.
-A router assigns both 'private' and 'public' IP addresses. 'Public' addresses can be accessed over the internet. 'Private' addresses are only accessible from within the device's network.
-Example  
+    * Made up of four sets of numbers divided by periods.
+
+    * Each set containing 1-3 digits, ranging from 0 to 255.
+
+    * Static: number never changes.
+
+      * Reveals a device's continent, country, region, and city.
+
+    * Dynamic: temporary. Assigned each time a machine accesses the internet.
+
+  * IPv6: Evolutionary upgrade to IPv4. Designed to address the decreasing number of Internet addresses.
+
+    * Uses a 128-bit address scheme that uses hexadecimal and separated by colons. i.e., 2bbe:1850:3:300:h8gg:ba21:68ce
+
+    * See references for more details.
+
+* Ports: an operating system's communication endpoint.
+
+  * Port number: 16-bit integer, ranging from 0 to 65535.
+
+    * 0 - 1023: system/well-know ports. Widely used network services. i.e., 80 HTTP, 443 HTTPS, 22 SSH, 21 FTP, 70 gopher, etc. (see references)
+
+    * 1024 - 49151: registered ports. Assigned by IANA to an entity. i.e., 1020 Quicktime, 23399 Skype, 2375 Docker REST API.
+
+    * 49152 - 65536: private/dynamic ports. Cannot be registered with IANA.
+
+  * Transport layer: specify source and destination port number in the header.
+
+  * Protocol: interaction rules used by endpoints in order to communicate.
+
+    * TCP (Transmission Control Protocol): connection-based transmission of data.
+
+      * Dependent on successful connection between endpoints.
+
+      * Data is sent and received in sequential order.
+      
+
+* IP/Port relationship: the IP address is used to locate a particular device. The port is used to access a network service on that device.
+
+> * All communication on the internet is from IP address to IP address.
+> * A router assigns both 'private' and 'public' IP addresses. 'Public' addresses can be accessed over the internet. 'Private' addresses are only accessible from within the device's network.
+
+### Example  
 
 In this example we run a local server on a local network, accessing port 3000.
 
+```
 192.168.2.1:3000
-Consider mentioning how to make a server available over the internet via port 80 and the global public ip address. This would entail opening port 80 on the router, setting up port forwarding, running the server on port 80 (proxies to port 3000), etc.
+```
+
+> Consider mentioning how to make a server available over the internet via port 80 and the global public ip address. This would entail opening port 80 on the router, setting up port forwarding, running the server on port 80 (proxies to port 3000), etc.
+
+---
+
 Lesson: Express and NodeJS: Hello World
-Starting A Node Application  
 
-Terminology  
+# Starting A Node Application  
 
-Node.js: open-source and cross-platform JavaScript runtime used to build network application.
-Provides JavaScript modules for web application development.
-It is fast and never buffers data.
-Scalable.
-Express.js: open-source Node.js framework designed to build web applications and API's.
-Pre-requisite  
+## Terminology  
 
-Install node:
+* Node.js: open-source and cross-platform JavaScript runtime used to build network application.
+
+  * Provides JavaScript modules for web application development.
+
+  * It is fast and never buffers data.
+
+  * Scalable.
+
+* Express.js: open-source Node.js framework designed to build web applications and API's.
+
+## Pre-requisite  
+
+* Install node:
+
 Check node version:
 
+```
   $ node -v
+```
+
 Install node: brew install node
 
+```
   $ brew install node
-Application Setup  
+```
 
-mkdir: express-app.
-cd into 'express-app' directory.
-npm init: accept all default options.
-npm install, then:
-Add express.js dependency to package.json
-$ npm install express --save
-Author Application  
+## Application Setup  
 
-touch: express-app.js
-Then:
+* `mkdir express-app`
+
+* `cd express-app`
+
+* `npm init`
+
+  * accept all default options.
+
+* `npm install express --save`
+
+## Author Application  
+
+* touch: express-app.js
+
+* Then:
+
+```js
 const express = require('express');
 const app = express();
 
@@ -141,6 +190,8 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
   console.log('Successfully started express application!')
 });
+```
+
 Start application:
 
 Simply call 'node' followed by the app's name in terminal.
@@ -151,8 +202,12 @@ starting-node-app.jpeg
 Try it!  
 
 Starting Node.zip (424 KB)
+
+---
+
 Lesson: Express and NodeJS: Hello World
-Configure Node to Serve Static Files in a Directory  
+
+# Configure Node to Serve Static Files in a Directory  
 
 Terminology  
 
@@ -213,8 +268,12 @@ Try it!
 This sample does not contain the 'utilities' directory as per the example above.
 
 serve-static-files.zip (2 MB)
+
+---
+
 Lesson: Express and NodeJS: Hello World
-Authoring A Trivial Node App  
+
+# Authoring A Trivial Node App  
 
 A Fill Murray Image App  
 
@@ -354,8 +413,12 @@ Open browser to: localhost:3000
 Try it!  
 
 trivial-app.zip (70 KB)
+
+---
+
 Lesson: Express: Dynamic
-Describe common URL structures  
+
+# Describe common URL structures  
 
 Terminology  
 
@@ -412,8 +475,12 @@ Lesson Footnotes
 1: Wikipedia - Uniform Resource Identifier
 2: Wikipedia - Uniform Resource Locator
 3: Wikipedia - Uniform Resource Name
+
+--- 
+
 Lesson: Express: Dynamic
-Dynamic Routes in Express  
+
+# Dynamic Routes in Express  
 
 Terminology  
 
@@ -433,8 +500,12 @@ References
 Lesson Footnotes
 1: MDN - Express Tutorial Part 4: Routes and controllers
 2: MDN - Character - Word Character
+
+---
+
 Lesson: Express: Dynamic
-HTML Templates with Mustache  
+
+# HTML Templates with Mustache  
 
 Terminology  
 
@@ -464,8 +535,12 @@ References
 mustache reference
 GitHub - mustache.js
 Using template engines with Express
+
+---
+
 Lesson: Express Forms
-Form Validation  
+
+# Form Validation  
 
 Terminology  
 
@@ -588,8 +663,11 @@ try it!
 
 express-form-validation.zip (8 KB)
 
+---
+
 Lesson: Express Forms
-Returning Appropriate HTTP Response Codes  
+
+# Returning Appropriate HTTP Response Codes  
 
 Terminology  
 
@@ -657,8 +735,12 @@ app.get('/dashboard', function(req, res){
 <li><a href="https://tiy-learn-content.s3.amazonaws.com/c5740929-express-http-codes.zip">express-http-codes.zip</a> (9 KB)</li>
 </ul>
 </div>
+
+---
+
 Lesson: Express Forms
-Receiving Uploaded Files Using Busboy  
+
+# Receiving Uploaded Files Using Busboy  
 
 Terminology  
 
@@ -758,8 +840,12 @@ Try it
 
 Try out the example! When you upload a file, it will store it in public/uploads
 express-file-upload-busboy.zip (7 KB)
+
+---
+
 Lesson: Express Authentication
-Login Based Authentication  
+
+# Login Based Authentication  
 
 Basic Authentication  
 
@@ -794,8 +880,12 @@ References
 
 [^2] HTTP cookies
 
+
+---
+
 Lesson: Express Authentication
-Author a website with user authentication workflow  
+
+# Author a website with user authentication workflow  
 
 Use the npm package express-session to set up user authentication.
 
@@ -850,8 +940,11 @@ NPM - express-session
 
 [^2] HTTP cookies
 
+---
+
 Lesson: Organizing large Express applications
-Structure of an Express app  
+
+# Structure of an Express app  
 
 Vocabulary  
 
@@ -914,8 +1007,12 @@ project_directory/
 \- public/        <---- static files, could also be called "static"
     |- app.css
     \- ...
+    
+---
+
 Lesson: Organizing large Express applications
-Express routing  
+
+# Express routing  
 
 Vocabulary  
 
@@ -979,8 +1076,12 @@ Resources
 Express.js Routing
 Express.js API Docs on express.Router
 Express Routing - Advanced Techniques
+
+---
+
 Lesson: Organizing large Express applications
-Understanding middleware  
+
+# Understanding middleware  
 
 Terminology  
 
@@ -1005,8 +1106,12 @@ const setServerName = function (name) {
 }
 
 app.use(setServerName("Dynamo 1000"));
+
+---
+
 Lesson: Organizing large Express applications
-Output logs using the morgan package  
+
+# Output logs using the morgan package  
 
 Morgan is an HTTP request logger middleware for node.js.
 
@@ -1053,8 +1158,11 @@ References
 
 GitHub - Express, Morgan
 
+---
+
 Lesson: SQL: Introduction
-Installing and setting up Postgres  
+
+# Installing and setting up Postgres  
 
 Terminology  
 
@@ -1087,8 +1195,12 @@ References
 
 brew services
 https://www.postgresql.org/
+
+---
+
 Lesson: SQL: Introduction
-Databases, tables, rows, and columns  
+
+# Databases, tables, rows, and columns  
 
 Terminology  
 
@@ -1120,8 +1232,12 @@ References
 
 CREATE TABLE documentation
 PostgreSQL data types
+
+---
+
 Lesson: SQL: Introduction
-Exporting and importing PostgreSQL databases  
+
+# Exporting and importing PostgreSQL databases  
 
 Terminology  
 
@@ -1149,8 +1265,11 @@ References
 
 pg_dump documentation
 
+---
+
 Lesson: SQL: Introduction
-SQL Statements  
+
+# SQL Statements  
 
 Terminology  
 
@@ -1211,8 +1330,12 @@ Intro to SQL on Khan Academy
 PostgreSQL SELECT documentation
 PostgreSQL UPDATE documentation
 PostgreSQL DELETE documentation
+
+---
+
 Lesson: Sequelize: Introduction
-Create models with Sequelize  
+
+# Create models with Sequelize  
 
 Terminology  
 
@@ -1245,8 +1368,12 @@ References
 Getting started with Sequelize
 "Data types" in Model definition
 Migrations
+
+---
+
 Lesson: Sequelize: Introduction
-Use Sequelize models  
+
+# Use Sequelize models  
 
 Terminology  
 
@@ -1394,8 +1521,12 @@ User.destroy({
   // Code here.
   // Do something after destroying instance.
 });
+
+---
+
 Lesson: Sequelize: Introduction
-Express/Sequelize CRUD Operations  
+
+# Express/Sequelize CRUD Operations  
 
 Terminology  
 
@@ -1524,8 +1655,11 @@ References
 
 Sequelize Tutorial - Instances
 
+---
+
 Lesson: Sequelize: Advanced
-Associations: belongsTo, hasOne, hasMany, and belongsToMany  
+
+# Associations: belongsTo, hasOne, hasMany, and belongsToMany  
 
 Terminology  
 
@@ -1630,8 +1764,12 @@ module.exports = function(sequelize, DataTypes) {
   }
   return Todo;
 };
+
+---
+
 Lesson: Sequelize: Advanced
-Author Model Class Methods, Attributes, And Instance methods  
+
+# Author Model Class Methods, Attributes, And Instance methods  
 
 Model validation  
 
@@ -1777,8 +1915,12 @@ User.create({
 }).then(function(user){
   console.log(user.fullEmail()); //Prints 'cadence <cadence@example.org>'
 });
+
+---
+
 Lesson: NoSQL: MongoDB
-Installing and setting up MongoDB  
+
+# Installing and setting up MongoDB  
 
 Terminology  
 
@@ -1801,8 +1943,12 @@ testdb
 References  
 
 MongoDB docs
+
+---
+
 Lesson: NoSQL: MongoDB
-MongoDB databases, collections, and documents  
+
+# MongoDB databases, collections, and documents  
 
 Terminology  
 
@@ -1817,8 +1963,11 @@ Can I really store anything in MongoDB?
 
 Not exactly. There is a formal list of what you can store, but for all purposes, you can store whatever you could use in a JSON object.
 
+---
+
 Lesson: NoSQL: MongoDB
-Importing and exporting data from MongoDB  
+
+# Importing and exporting data from MongoDB  
 
 Vocabulary  
 
@@ -1836,8 +1985,12 @@ $ mongoexport --db databaseName --collection collectionName --out outputFile.jso
 2017-06-28T23:35:55.004-0400    [###############.........]  newdb.restaurants  16000/25359  (63.1%)
 2017-06-28T23:35:55.452-0400    [########################]  newdb.restaurants  25359/25359  (100.0%)
 2017-06-28T23:35:55.452-0400    exported 25359 records
+
+---
+
 Lesson: NoSQL: MongoDB
-MongoDB Operations  
+
+# MongoDB Operations  
 
 Terminology  
 
@@ -2002,8 +2155,12 @@ MongoDB shell quickstart
 Node.js MongoDB quickstart
 Query operators
 Update operators
+
+---
+
 Lesson: MongoDB with Mongoose
-Schemas and Models with Mongoose  
+
+# Schemas and Models with Mongoose  
 
 Terminology  
 
@@ -2061,8 +2218,12 @@ References
 
 Mongoose.js
 MDN Express Tutorial - Part 3 - Using Mongoose
+
+---
+
 Lesson: MongoDB with Mongoose
-Create, query, update, and delete models with Mongoose  
+
+# Create, query, update, and delete models with Mongoose  
 
 Examples  
 
@@ -2118,8 +2279,12 @@ Recipe.deleteOne({prepTime: {$gt: 60}})
 References  
 
 Mongoose docs
+
+---
+
 Lesson: MongoDB with Mongoose
-Validating models with Mongoose  
+
+# Validating models with Mongoose  
 
 Mongoose Validation  
 
@@ -2193,8 +2358,11 @@ References
 
 Mongoose - Validation
 
+---
+
 Lesson: MongoDB with Mongoose
-Extending Mongoose models  
+
+# Extending Mongoose models  
 
 Terminology  
 
@@ -2297,8 +2465,12 @@ Recipe.find({cookTime: {$lte: 30}})
 References  
 
 Mongoose schema docs
+
+---
+
 Lesson: Express: JSON APIs
-Use and verify express JSON APIs using postman and curl  
+
+# Use and verify express JSON APIs using postman and curl  
 
 Terminology  
 
@@ -2348,8 +2520,11 @@ References
 
 Postman - Docs
 
+---
+
 Lesson: Express: JSON APIs
-Return objects and arrays of data using JSON  
+
+# Return objects and arrays of data using JSON  
 
 Terminology  
 
@@ -2410,8 +2585,12 @@ MDN - Content Type
 Express - res.json
 Lesson Footnotes
 1: MDN - Content Type
+
+---
+
 Lesson: Express: JSON APIs
-Use routing appropriately for RESTful URL structure and HTTP verbs  
+
+# Use routing appropriately for RESTful URL structure and HTTP verbs  
 
 Use appropriate HTTP verb for the action being performed:
 
@@ -2448,8 +2627,12 @@ Furthermore, if the id of a relation is unique among other relations it is possi
 PUT /relations/3 - Updates relation #3 for item #7
 PATCH /relations/3 - Partially updates relation #3 for item #7
 DELETE /relations/3 - Deletes relation #3 for item #7
+
+---
+
 Lesson: Express: JSON APIs
-Describe standard REST conventions in NodeJS  
+
+# Describe standard REST conventions in NodeJS  
 
 Terminology  
 
@@ -2492,8 +2675,12 @@ Make proper use of status codes in API responses
 403: Valid request but the server refuses access
 404: Not Found, no resource at the provided URI
 500: Internal server error, these should not be returned to the client. The error should be logged server-side
+
+---
+
 Lesson: Express JSON APIs: Advanced
-Filter results based on URL parameters in NodeJS  
+
+# Filter results based on URL parameters in NodeJS  
 
 Terminology  
 
@@ -2580,8 +2767,12 @@ References
 Lesson Footnotes
 1: MDN - Express Tutorial Part 4: Routes and controllers
 2: Wikipedia- Query String
+
+---
+
 Lesson: Express JSON APIs: Advanced
-Adding token based user authentication to an Express API  
+
+# Adding token based user authentication to an Express API  
 
 Terminology  
 
@@ -2858,8 +3049,12 @@ var token = jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256'});
 jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
   console.log(token);
 });
+
+---
+
 Lesson: Express JSON APIs: Advanced
-Restricting Access To Information Based On User Role  
+
+# Restricting Access To Information Based On User Role  
 
 Terminology  
 
@@ -3001,8 +3196,12 @@ app.get('/post', user.can('access admin page'), function (req, res) {
 
 app.listen(3000);
 See docs for Connect Roles method details.
+
+---
+
 Lesson: Tests and Test Driven Design
-Test Driven Development (TDD)  
+
+# Test Driven Development (TDD)  
 
 TDD Process
 
@@ -3057,8 +3256,12 @@ The corresponding function:
 function multiplier(x, y) {
   return x * y;
 }
+
+---
+
 Lesson: Tests and Test Driven Design
-Author feature tests using Jest for an Express app  
+
+# Author feature tests using Jest for an Express app  
 
 Terminology  
 
@@ -3209,8 +3412,11 @@ Now run npm test. Jest should run. This gives us an easy-to-remember standard wa
 
 Note that we included the argument --forceExit. Supertest starts a server for us to run our tests against. Jest does not know how to clean this up, so it will hang after the tests are run. --forceExit tells it to shutdown even though there is a server still running.
 
+---
+
 Lesson: Tests and Test Driven Design
-Author unit tests for Express models  
+
+# Author unit tests for Express models  
 
 Configuration  
 
@@ -3306,8 +3512,11 @@ Why worry about this?
 
 You want to make sure your tests are deterministic -- that is, that when you run them, you get the same results each time. In the above code, it's assumed that the name field on recipes is unique. In this case, the test would fail if we didn't delete all recipes before each test and had multiple tests making a recipe with the name "Pancakes." Having a fresh database for each test is imperative to ensure your tests are deterministic.
 
+---
+
 Lesson: Tests and Test Driven Design
-Naming Conventions and Class/Function Length Best Practices  
+
+# Naming Conventions and Class/Function Length Best Practices  
 
 Terminology  
 
@@ -3402,8 +3611,12 @@ for (let i = 0; i < bookList.length; i++) {
   makeSentence(bookList[i]);
 }
 The use of the variable i obviously ins't very descriptive here. In this case i is a commonly known and widely used variable to describe an iterator. Another common one character variable you may encounter is e in place of event.
+
+---
+
 Lesson: Web Security: Introduction
-Appropriate Use cases To Run next()  
+
+# Appropriate Use cases To Run next()  
 
 Terminology  
 
@@ -3565,8 +3778,12 @@ function errorHandler (err, req, res, next) {
   res.status(500)
   res.render('error', { error: err })
 }
+
+---
+
 Lesson: Web Security: Introduction
-Lecture Notes  
+
+# Lecture Notes  
 
 Terminology  
 
@@ -3767,8 +3984,11 @@ Programming Culture
 
 Bobby Tables
 
+---
+
 Lesson: Web Security: Introduction
-The Impact Of XSS On User Privacy  
+
+# The Impact Of XSS On User Privacy  
 
 Terminology  
 
@@ -3869,8 +4089,12 @@ app.post('/login', function(request, response){
   else
     res.render('login', {password: req.password, username: req.username});
 });
+
+---
+
 Lesson: Web Security: Introduction
-Protecting User Password  
+
+# Protecting User Password  
 
 Terminology  
 
@@ -4015,8 +4239,12 @@ isPasswordCorrect('myPassword'); // Would return false.
 Lesson Footnotes
 1: PBKDF2 - Wikipedia
 2: MDN - Math.ceil()
+
+---
+
 Lesson: Productivity and UNIX: Introduction
-Agile Software Development  
+
+# Agile Software Development  
 
 Agile Software Development Manifesto  
 
@@ -4065,8 +4293,12 @@ Product owner: represents the business stakeholder "voice" to the sprint team
 Stakeholder: anyone, not pertaining to the team, who has a vested interested in the outcome of the project.
 Team: a committed group of people working together to produce a product and improve performance over time.
 Standup: (scrum ceremony) a team meeting in which story progress is discussed focusing on: 1 - What has been done since yesterday. 2 - What is planned for the day. 3 - What obstacles are blocking progress.
+
+---
+
 Lesson: Productivity and UNIX: Introduction
-Using npm package.json scripts to start node and run arbitrary tasks  
+
+# Using npm package.json scripts to start node and run arbitrary tasks  
 
 Terminology  
 
@@ -4443,8 +4675,12 @@ Don't use install. Use a .gyp file for compilation, and prepublish for anything 
 Recommendation  
 
 Watch: Nordic.js 2015 • Kate Hudson - Advanced front-end automation with npm scripts
+
+---
+
 Lesson: Productivity and UNIX: Introduction
-Using ESLint to find errors and coding style irregularities  
+
+# Using ESLint to find errors and coding style irregularities  
 
 Terminology  
 
@@ -4663,8 +4899,12 @@ Example
 lint-cli-output.png
 Lesson Footnotes
 1: About-ESLint
+
+---
+
 Lesson: Cloud Computing: Introduction
-Platform-as-a-service And Virtual-private-servers  
+
+# Platform-as-a-service And Virtual-private-servers  
 
 Platform-as-a-service  
 
@@ -4712,8 +4952,12 @@ More importantly, compared to PaaS, the user manages and maintains the system.
 VPS providers  
 
 Some VPS providers: Digital Ocean, Linode.
+
+---
+
 Lesson: Cloud Computing: Introduction
-Deploying A Node application on Heroku  
+
+# Deploying A Node application on Heroku  
 
 Terminology  
 
@@ -4813,8 +5057,12 @@ app.get('/example', function(request, response) {
 });
 Lesson Footnotes
 1: Heroku
+
+---
+
 Lesson: Cloud Computing: Introduction
-Sending Emails with SendGrid  
+
+# Sending Emails with SendGrid  
 
 Terminology  
 
@@ -4924,8 +5172,11 @@ Try it!
 
 SendGrid App Example
 
+---
+
 Lesson: Cloud Computing: Introduction
-Storing and retrieving objects in S3 block storage  
+
+# Storing and retrieving objects in S3 block storage  
 
 Terminology  
 
@@ -5408,8 +5659,12 @@ Then, npm start
 Lesson Footnotes
 1: AWS - S3
 2: AWS - S3 Bucket
+
+---
+
 Lesson: Cloud Computing: Introduction
-Block Level Storage  
+
+# Block Level Storage  
 
 Block level storage is a widely used storage system technology
 
