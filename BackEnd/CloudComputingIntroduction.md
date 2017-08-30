@@ -153,26 +153,26 @@ heroku open
 
 * Click on new and then, create new app.
 
-heroku_1.jpeg
+![heroku 1](./images/heroku_1.jpeg)
 
 * Next, give your app a name or a random name will be generated.
 
 * Select the appropriate 'Deployment method'. Since we covered the `Heroku CLI` method already, select 
 **'connect to GitHub'**.
 
-heroku_method.jpeg
+![heroku method](./images/heroku_method.jpeg)
 
 * Search for and select (click on **'connect'**) your repository from **'Connect to GitHub'**.
 
-heroku_github.png
+![heroku github](./images/heroku_github.png)
 
 * Then, select **'Enable Automatic Deploys'** from **'Automatic deploys'**.
 
-heroku_autodeploy.jpeg
+![heroku autodeploy](./images/heroku_autodeploy.jpeg)
 
 * Select **'Deploy Branch'** from **'Manual deploy'**.
 
-heroku_manuldeploy.jpeg
+![heroku manuldeploy](./images/heroku_manuldeploy.jpeg)
 
 * Finally, open your app by selecting **'view'**.
 
@@ -220,7 +220,7 @@ $ heroku config
 
   * Enter the required configuration variables, such as API key, secrets, etc.
   
-heroku_env.jpeg
+![heroku_env](./images/heroku_env.jpeg)
 
 ### Accessing the variables  
 
