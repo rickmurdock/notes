@@ -485,24 +485,29 @@ Lesson Footnotes
 
 # Dynamic Routes in Express  
 
-Terminology  
+## Terminology  
 
-Route Parameters: 1Route parameters are named URL segments used to capture the values specified at their position in the URL. The named segments are prefixed with a colon and then the name (e.g. /:your_parameter_name/. The captured values are stored in the req.params object using the parameter names as keys (e.g. req.params.your_parameter_name).
+**Route Parameters**: 1Route parameters are named URL segments used to capture the values specified at their position in the URL. The named segments are prefixed with a colon and then the name (e.g. `/:your_parameter_name/`. The captured values are stored in the req.params object using the parameter names as keys (e.g. `req.params.your_parameter_name`).
 
-Word Character: 2A "word character" within ASCII typically means a letter of the alphabet A-Z (upper or lower case), the digits 0 to 9, and the underscore.
+**Word Character**: 2A "word character" within ASCII typically means a letter of the alphabet A-Z (upper or lower case), the digits 0 to 9, and the underscore.
 
-Examples  
+## Examples  
 
+```jsx
 app.get('/users', function (req, res) { /* ... */ });
 
 app.get('/:dynamic_route', function (req, res) {
   res.send(req.params.dynamic_route);
 });
-References  
+```
 
-Lesson Footnotes
-1: MDN - Express Tutorial Part 4: Routes and controllers
-2: MDN - Character - Word Character
+## References  
+
+#### Lesson Footnotes
+
+* 1: [MDN - Express Tutorial Part 4: Routes and controllers(https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes)
+
+* 2: [MDN - Character - Word Character](https://en.wikipedia.org/wiki/Character_(computing)#Word_character)
 
 ---
 
@@ -510,19 +515,23 @@ Lesson Footnotes
 
 # HTML Templates with Mustache  
 
-Terminology  
+## Terminology  
 
-template: a predefined component written in a programming language and compiled into HTML at runtime by a template engine. Because they are written with a programming language they can contain variables and functions, can perform text replacement, file inclusion (or transclusion), conditional evaluations, and loops.
+**template**: a predefined component written in a programming language and compiled into HTML at runtime by a template engine. Because they are written with a programming language they can contain variables and functions, can perform text replacement, file inclusion (or transclusion), conditional evaluations, and loops.
 
-Examples  
+## Examples  
 
-./views/index.mustache
+`./views/index.mustache`
 
+```html
 <p>
   Hello, {{ userName }}!
 </p>
-./app.js
+```
 
+`./app.js`
+
+```jsx
 // requires and environment setup ...
 
 const mustacheExpress = require('mustache-express');
@@ -533,11 +542,15 @@ app.set('view engine', 'mustache')
 app.get('/', function (req, res) {
   res.render('index', { userName: 'Sam' })
 })
-References  
+```
 
-mustache reference
-GitHub - mustache.js
-Using template engines with Express
+## References  
+
+* [mustache reference](https://mustache.github.io/mustache.5.html)
+
+* [GitHub - mustache.js](https://github.com/janl/mustache.js)
+
+* [Using template engines with Express](https://expressjs.com/en/guide/using-template-engines.html)
 
 ---
 
@@ -545,40 +558,65 @@ Using template engines with Express
 
 # Form Validation  
 
-Terminology  
+## Terminology  
 
-body-parser: middleware that parses incoming request bodies.
+* body-parser: middleware that parses incoming request bodies.
 
-Stores a form's input in a JavaScript object.
-Accessible through req.body.
-For the following middlewares, the request Content-Type header must match the type option.
-bodyParser.json(options): parses json.
-bodyParser.raw(options): parses all bodies as buffer.
-bodyParser.text(options): parses all bodies as a string.
-bodyParser.urlencoded(options): parses urlencoded bodies, only.
-See docs.
-express-validator: middleware for node-validator (string validators and sanitizers)
+  * Stores a form's input in a JavaScript object.
 
-Validates input passed by the browser.
-Configuration: expressValidator must come after bodyParser (see example).
-Validations (see docs for complete list):
-req.checkBody(): only checks req.body.
-req.checkQuery(): only checks req.query.
-req.checkParam(): only checks req.params.
-Validators:
-isEmpty(): validates if string has length of zero.
-isEmail(): validates if string is an email.
-equals(): validates string agains a string.
-See all validator for a complete list.
-See docs.
-String validator, only.
-Body-parser  
+  * Accessible through req.body.
 
-body-parser installation  
+  * For the following middlewares, the request Content-Type header must match the type option.
 
+    * bodyParser.json(options): parses json.
+    
+    * bodyParser.raw(options): parses all bodies as buffer.
+    
+    * bodyParser.text(options): parses all bodies as a string.
+    
+    * bodyParser.urlencoded(options): parses urlencoded bodies, only.
+
+  * See [docs](https://github.com/expressjs/body-parser).
+
+* express-validator: middleware for node-validator (string validators and sanitizers)
+
+  * Validates input passed by the browser.
+
+  * Configuration: expressValidator must come after bodyParser (see example).
+
+  * Validations (see docs for complete list):
+  
+    * req.checkBody(): only checks req.body.
+
+    * req.checkQuery(): only checks req.query.
+
+    * req.checkParam(): only checks req.params.
+    
+  * Validators:
+
+    * isEmpty(): validates if string has length of zero.
+
+    * isEmail(): validates if string is an email.
+
+    * equals(): validates string agains a string.
+
+    * See all validator for a complete list.
+
+  * See docs.
+  
+> String validator, only.
+
+## Body-parser  
+
+### body-parser installation  
+
+```
 $ npm install body-parser --save
-body-parser implementation  
+```
 
+### body-parser implementation  
+
+```jsx
 var express = require('express');
 var bodyParser = require('body-parser');
 
@@ -608,13 +646,19 @@ app.post('/', function(req, res){
   res.send(html);
 });
 app.listen(3000);
-Express-validator  
+```
 
-express-validator installation  
+## Express-validator  
 
+### express-validator installation  
+
+```
 $ npm install express-validator --save
-bodyparser and express-validator implementation  
+```
 
+### bodyparser and express-validator implementation  
+
+```jsx
 var express = require('express');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
@@ -662,7 +706,9 @@ app.post('/', function(req, res){
     }
   });
 app.listen(3000);
-try it!  
+```
+
+### try it!  
 
 express-form-validation.zip (8 KB)
 
@@ -672,45 +718,63 @@ express-form-validation.zip (8 KB)
 
 # Returning Appropriate HTTP Response Codes  
 
-Terminology  
+## Terminology  
 
-HTTP response codes categories:
+`HTTP` response codes categories:
 
-200s: Success
-300s: Redirection
-400s: Client error
-500s: Server error
+* 200s: Success
+
+* 300s: Redirection
+
+* 400s: Client error
+
+* 500s: Server error
+
 More information on each request:
 
-HTTP Status Cats API
-HTTP Statuses
-Most Common HTTP Status Codes  
+* HTTP Status Cats API
 
-200 - Response was OK
-201 - Created Successfully (Forms)
-301 - Redirect Temporarily
-302 - Redirect Permanently
-400 - Problem with the Request (generic)
-401 - Need to Sign In
-403 - Unauthorized
-404 - Not Found
-422 - Problem with the content. (Errors)
-500 - Server Error (Problem with Code)
-503 - Server is unavailable (Problem with Service)
-Why Use HTTP Status Codes  
+* HTTP Statuses
 
-When browsing a website, our browsers use HTTP statuses behind the scenes. For example, if you visit a page that has moved, the web app may response with a 301 response (MOVED), telling the browser the new location. Cat | Details
+## Most Common HTTP Status Codes  
+
+* [200](https://httpstatuses.com/200) - Response was OK
+
+* [201](https://httpstatuses.com/201) - Created Successfully (Forms)
+
+* [301](https://httpstatuses.com/301) - Redirect Temporarily
+
+* [302](https://httpstatuses.com/302) - Redirect Permanently
+
+* [400](https://httpstatuses.com/400) - Problem with the Request (generic)
+
+* [401](https://httpstatuses.com/401) - Need to Sign In
+
+* [403](https://httpstatuses.com/403) - Unauthorized
+
+* [404](https://httpstatuses.com/404) - Not Found
+
+* [422](https://httpstatuses.com/422) - Problem with the content. (Errors)
+
+* [500](https://httpstatuses.com/500) - Server Error (Problem with Code)
+
+* [503](https://httpstatuses.com/503) - Server is unavailable (Problem with Service)
+
+## Why Use HTTP Status Codes  
+
+When browsing a website, our browsers use HTTP statuses behind the scenes. For example, if you visit a page that has moved, the web app may response with a 301 response (MOVED), telling the browser the new location. [Cat](https://http.cat/301) | [Details](https://httpstatuses.com/301)
 
 Our browser will transparently grab the "location" from the response and move us to the new location.
 
-Alternatively, if the response is a 200, our browser knows everything went ok with the response and to parse the response and display our HTML.
+Alternatively, if the response is a [200](https://httpstatuses.com/200), our browser knows everything went ok with the response and to parse the response and display our HTML.
 
-Examples  
+## Examples  
 
-By default, express will add a status of 200 when we render, and a 302 when we redirect.
+By default, express will add a status of [200](https://httpstatuses.com/200) when we `render`, and a [302](https://httpstatuses.com/302) when we `redirect`.
 
-But what if we want to prevent a user from accessing a particular route in our application? We'll want to return a 403 ("forbidden").
+But what if we want to prevent a user from accessing a particular route in our application? We'll want to return a [403](https://httpstatuses.com/403) ("forbidden").
 
+```jsx
 const express = require('express');
 const path = require('path');
 const mustacheExpress = require('mustache-express');
@@ -738,6 +802,7 @@ app.get('/dashboard', function(req, res){
 <li><a href="https://tiy-learn-content.s3.amazonaws.com/c5740929-express-http-codes.zip">express-http-codes.zip</a> (9 KB)</li>
 </ul>
 </div>
+```
 
 ---
 
