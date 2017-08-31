@@ -64,27 +64,31 @@ The "users" table:
 
 The "todos" table:
 
-|id userId |	text |
-| 1	1	Do homework |
-| 2	| 1	Feed cat |
+|id |  userId |	text |
+| --- | --- |
+| 1	|	1 | Do homework |
+| 2	| 1	| Feed cat |
 | 3	| 3	| Plan vacation |
  
 The "authors" table:
 
 | id	|name	| userId |
+| --- | --- | --- |
 | 1	| Alexis Tseng |	1
-| 2	River Whitaker |	2
+| 2	| River Whitaker |	2
 | 3	| Dorian Ramirez |	3
 
 The "books" table:
 
-| id	| title | 
+| id	| title |
+| --- | --- |
 | 1	| Vacation Planning for Type A Personalities |
 | 2| 	An Exploration of the Netherworld |
 
 The "authors_books" table:
 
-| id ||authorId	| bookId |
+| id | authorId	| bookId |
+| --- | --- | --- |
 | 1	| 1	| 1 |
 | 2 | 2 | 1 |
 | 3 |	3 |	2 |
