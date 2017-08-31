@@ -61,13 +61,13 @@ Lecture notes from The Iron Yard
 
 * [Sequelize: Advanced](./BackEnd/SequelizeAdvanced.md)
 
-* [NoSQL: MongoDB](https://github.com/rickmurdock/notes/blob/master/BackEnd/NoSQLMongoDB.md)
+* [NoSQL: MongoDB](./BackEnd/NoSQLMongoDB.md)
 
-* [MongoDB with Mongoose](https://github.com/rickmurdock/notes/blob/master/BackEnd/MongoDBMongoose.md)
+* [MongoDB with Mongoose](./BackEnd/MongoDBMongoose.md)
 
-* [Express: JSON APIs](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressJSONAPIs.md)
+* [Express: JSON APIs](./BackEnd/ExpressJSONAPIs.md)
 
-* [Express JSON APIs: Advanced](https://github.com/rickmurdock/notes/blob/master/BackEnd/ExpressJSONAPIsAdvanced.md)
+* [Express JSON APIs: Advanced](./BackEnd/ExpressJSONAPIsAdvanced.md)
 
 * [Tests and Test Driven Design](https://github.com/rickmurdock/notes/blob/master/BackEnd/TestsandTestDrivenDesign.md)
 
