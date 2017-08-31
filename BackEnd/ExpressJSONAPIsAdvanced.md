@@ -137,6 +137,8 @@ app.get('/todos/range', function(req, res){
 
 * Subsequent requests: JWT can be sent with every `HTTP` request to the server in order to validate it and return secure resources.
 
+![session vs token based diagram](./images/session-vs-token-based-diagram.png)
+
 ### Structure  
 
 * JWT has three parts
@@ -454,6 +456,7 @@ headers[‘x-access-token’] = [jwt-token]
 
 ### Changing Default Algorithm And Signing Asynchronously  
 
+```js
 // Default algorith (HMAC SHA256)
 var jwt = require('jsonwebtoken');
 var token = jwt.sign({ foo: 'bar' }, 'secret');
@@ -468,24 +471,35 @@ var token = jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256'});
 jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
   console.log(token);
 });
-Restricting Access To Information Based On User Role  
+```
 
-Terminology  
+---
 
-User authorization: the process of granting resource access rights to specified entities based on role.
+# Restricting Access To Information Based On User Role  
 
-Workflow  
+## Terminology  
 
-Incorporate user authentication (session or token).
-Create user model which includes a role (enum) field, i.e., admin, owner, user.
-Restrict information access:
-Get user role from request.
-Restrict resources based on user role.
-Authoring A Simple Middleware  
+`User authorization`: the process of granting resource access rights to specified entities based on role.
 
-For demonstration purposes.
-Example
+### Workflow  
 
+* Incorporate user authentication (session or token).
+
+* Create user model which includes a role (enum) field, i.e., `admin`, `owner`, `user`.
+
+* Restrict information access:
+
+  * Get user role from request.
+
+  * Restrict resources based on user role.
+
+## Authoring A Simple Middleware  
+
+* For demonstration purposes.
+
+### Example
+
+```js
 // Incorporate session / token authentication
 
 function userRole (role) {
@@ -528,15 +542,25 @@ app.get("/post/:id", userRole("owner"), function(req, res){
   res.send(selectedSelected);
   */
 });
-Using An Express Add-on  
+```
 
-Production setting consideration:
-Use an add-on such as Connect Roles.
-Connect Roles  
+## Using An Express Add-on  
 
-Installation:
+* Production setting consideration:
+
+  * Use an add-on such as Connect Roles.
+
+### Connect Roles  
+
+* Installation:
+
+```
 npm install connect-roles --save
-Usage
+```
+
+* Usage
+
+```js
 var authentication = require('your-authentication-module-here'); // Session or token authentication.
 var ConnectRoles = require('connect-roles');
 var express = require('express');
@@ -609,4 +633,6 @@ app.get('/post', user.can('access admin page'), function (req, res) {
 });
 
 app.listen(3000);
-See docs for Connect Roles method details.
+```
+
+* See [docs](http://documentup.com/ForbesLindesay/connect-roles#installation) for Connect Roles method details.
