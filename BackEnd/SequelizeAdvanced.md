@@ -52,7 +52,44 @@ module.exports = {
 };
 ```
 
-ADD PICS HERE
+### Tables for examples  
+
+The "users" table:
+
+| id |	username |
+| --- | --- |
+| 1	| alexis |
+| 2	| river |
+| 3	| dorian |
+
+The "todos" table:
+
+|id userId |	text |
+| 1	1	Do homework |
+| 2	| 1	Feed cat |
+| 3	| 3	| Plan vacation |
+ 
+The "authors" table:
+
+| id	|name	| userId |
+| 1	| Alexis Tseng |	1
+| 2	River Whitaker |	2
+| 3	| Dorian Ramirez |	3
+
+The "books" table:
+
+| id	| title | 
+| 1	| Vacation Planning for Type A Personalities |
+| 2| 	An Exploration of the Netherworld |
+
+The "authors_books" table:
+
+| id ||authorId	| bookId |
+| 1	| 1	| 1 |
+| 2 | 2 | 1 |
+| 3 |	3 |	2 |
+| 4	| 1	| 2 |
+
 
 ```javascript
 const User = this.sequelize.define('User', {/* attributes */});
@@ -72,7 +109,7 @@ Book.belongsToMany(Author, {
 });
 ```
 
-**NOTE**: The above associations would be distributed into their models' source file in associate methods, like so:
+**NOTE**: The above associations would be distributed into their models' source file in`associate` methods, like so:
 
 ```javascript
 // models/todo.js
@@ -98,7 +135,7 @@ module.exports = function(sequelize, DataTypes) {
 
 ### Model validation
 
-* Sequelize automatically runs validations on `create`, `update` and ``save`.
+* Sequelize automatically runs validations on `create`, `update` and `save`.
 
 * Validations are defined in the model's attribute definitions.
 
