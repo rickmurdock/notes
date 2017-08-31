@@ -204,7 +204,7 @@ Recipe.deleteOne({prepTime: {$gt: 60}})
 
 * The validate function accepts the value of the model property as it's argument, allowing you to validate the value of the model property and return a boolean value
 
-> unique is a helper, not a validator
+> `unique` is a helper, not a validator
 
 ### Examples
 
@@ -251,7 +251,7 @@ recipe.save(function(error) {
 });
 ```
 
-> {PATH} is replaced with the invalid document path
+> `{PATH}` is replaced with the invalid document path
 
 ### References
 
