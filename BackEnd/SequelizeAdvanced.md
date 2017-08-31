@@ -167,3 +167,113 @@ User.create({username: "me", email: "woot@example.org"}).then(function (user) {
 ##### CREATE INSTANCES IN BULK
 
 Use the `bulkCreate()` method to create multiple instances at once. An example:
+
+```jsx
+User.bulkCreate([{
+    username: 'Emerson',
+    role: 'admin',
+    isActive: false
+}, {
+    username: 'Grey',
+    role: 'user',
+    isActive: true
+}, {
+    username: 'Keelan',
+    role: 'admin',
+    isActive: true
+}]).then(function() {
+    return User.findAll();
+}).then(function(users){
+    console.log(users) // Returns an array of user objects.
+});
+```
+
+### Validating bulk insertions  
+
+* Set `validate` attribute to `true` as a second option of the `createBulk()` method.
+
+* The `validate` attribute must also be set in the model.
+
+An example:
+
+```jsz
+// Define model.
+// Set validation.
+User.bulkCreate([{
+    username: 'john.smith',
+    email: 'john.smith@email.com'
+}, {
+    username: 'mary.connor',
+    email: 'mary.connor'
+}], {
+    validate: true
+}).catch(function(errors) {
+    console.log(errors);
+})
+```
+
+### Update instances in bulk  
+
+* Use the update() in conjunction with an attribute(s) to be updated and a where clause to update many instances at once.
+
+```jsx
+User.update({
+  { isActive: 'true'}, // Set attribute value for update.
+  { where: { user_role: 'admin'}}
+}).spread(function (affectedCount, affectedRows) {
+  // Returns two values in an array.
+  return User.findAll();
+}).then(function (users) {
+  // Do something with users
+})
+```
+
+### Delete instances in bulk  
+
+Use the `destroy()` in conjunction with the `where` clause to delete many instances at once.
+
+```jsx
+User.destroy({
+  where: {
+    user_role: 'user'
+  },
+  truncate: true // Ignores the where clause and truncates the table.
+}).then(function (affectedRows) {
+  return User.findAll();
+}).then(function (users) {
+  // Do something with users.
+});
+```
+
+## Defining Instance Methods  
+
+* Instance methods add functionality to models.
+
+* To add them, we assign them to the model's prototype.
+
+* In this example we include a `fullEmail` function so that it is available in all instances of the model.
+
+```jsx
+'use strict';
+module.exports = function(sequelize, DataTypes){
+  var User = sequelize.define('user', {
+    username: Sequelize.STRING,
+    email: Sequelize.STRING
+  }, {});
+  User.prototype.fullEmail = function () {
+    return `${this.username} <${this.email}>`;
+  }
+  return User;
+};
+```
+
+* Use `this` to gain access to the method.
+
+```jsx
+User.create({
+  username: 'cadence',
+  email: 'cadence@example.org'
+}).then(function(user){
+  console.log(user.fullEmail()); //Prints 'cadence <cadence@example.org>'
+});
+```
