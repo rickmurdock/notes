@@ -1615,7 +1615,8 @@ To use a font that is cross-browser compatible, you must define multiple source 
 
 ---
 
-Lesson: CSS Layout and Flexbox
+[CSS Layout and Flexbox](CSSLayoutAndFlexbox.md)
+
 # Adjacent Values  
 
 ## Terminology  
@@ -1733,76 +1734,87 @@ Notice how the `h1` elements moves in front of the `p` when its `z-index` is hig
 
 Getting started with flexbox is easy. Start with a container element and several nested elements.
 
-Next, add display: flex; to the outer container. Doing so defines the element as a flex container. Its children are defined as flex items. The flex container a block-level element.
+Next, add `display: flex;` to the outer container. Doing so defines the element as a flex container. Its children are defined as flex items. The flex container a block-level element.
 
-Apply flex-wrap: wrap; to the flex container. The CSS flex-wrap property specifies whether flex items are forced into a single line or can be wrapped onto multiple lines. If wrapping is allowed, this property also enables you to control the direction in which lines are stacked.
+Apply `flex-wrap: wrap;` to the flex container. The CSS flex-wrap property specifies whether flex items are forced into a single line or can be wrapped onto multiple lines. If wrapping is allowed, this property also enables you to control the direction in which lines are stacked.
 
-If we add content to our flex items (nested <div> elements) we can see that even if the content is varied in length, the flex items all have the same height. This is the default behavior with flexbox.
+If we add content to our flex items (nested `<div>` elements) we can see that even if the content is varied in length, the flex items all have the same height. This is the default behavior with flexbox.
 
 ## Terminology  
 
-Display flex
-Flex wrap
-Equal heights
-Further capabilities
-Justify content
-Flex direction
-Align self
-Flex
+* Display flex
+
+* Flex wrap
+
+* Equal heights
+
+* Further capabilities
+
+  * Justify content
+  
+  * Flex direction
+
+  * Align self
+
+  * Flex
 
 ## Examples  
 
-Editor
-Browser View
-index.html
-styles.css
-
-1
+```html
+<!-- index.html -->
 <!DOCTYPE html>
-2
 <html>
-3
   <head>
-4
     <meta charset="utf-8">
-5
     <title>CSS Syntax Study Notes</title>
-6
     <link rel="stylesheet" href="styles.css">
-7
   </head>
-8
   <body>
-9
     <section>
-10
       <div>Skateboard health goth austin fanny pack venmo +1 fap hashtag.</div>
-11
       <div>Four dollar toast forage la croix next level beard godard authentic lo-fi wayfarers man bun fingerstache banjo four dollar toast. Stumptown jean shorts.</div>
-12
       <div>Pickled tofu cardigan enamel pin migas fap ennui biodiesel aesthetic.</div>
-13
       <div>Gluten-free ennui cray master cleanse activated charcoal.</div>
-14
       <div>Organic banh mi kitsch, drinking vinegar fashion axe DIY four dollar toast vexillologist iceland bespoke actually kombucha bicycle rights kickstarter slow-carb.</div>
-15
       <div>Af echo park pabst franzen, la croix.</div>
-16
     </section>
-17
   </body>
-18
 </html>
- 
+```
 
-Fullscreen
+```css
+/* styles.css */
+html {
+  box-sizing: border-box;
+}
 
-Reset Code
-Preview 
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-size: 18px;
+  line-height: 32px;
+}
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div {
+  background-color: #98dfaf;
+  border: 1px solid #ffffff;
+  width: 25%;
+}
+```
 
 ## References  
 
-MDN - Using Flexible Boxes
+[MDN - Using Flexible Boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes)
 
 ---
 
