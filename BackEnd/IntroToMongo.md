@@ -6,20 +6,18 @@ Guides for setting up and using MongoDB
 
 https://youtu.be/ClxZx9Xkes0 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ClxZx9Xkes0" frameborder="0" allowfullscreen></iframe>
-
 ## MongoDb Operations
 
- 
+https://youtu.be/bfscsuQhmEo 
 
 ## Inserting Documents
 
- 
+https://youtu.be/wT_Nulu8eYI
 
 ## Updating Documents
 
- 
+https://youtu.be/3Qz3z49e_0I 
 
 ## Deleting Documents
 
- 
+https://youtu.be/LEBvoxEvTQw 
