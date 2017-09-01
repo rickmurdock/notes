@@ -61,6 +61,8 @@ Lecture notes from The Iron Yard
 
 * [Sequelize: Advanced](./BackEnd/SequelizeAdvanced.md)
 
+* [Intro To Mongo](./BackEnd/IntroToMongo.md)
+
 * [NoSQL: MongoDB](./BackEnd/NoSQLMongoDB.md)
 
 * [MongoDB with Mongoose](./BackEnd/MongoDBMongoose.md)
