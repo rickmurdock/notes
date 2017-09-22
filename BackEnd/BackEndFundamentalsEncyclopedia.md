@@ -5515,40 +5515,54 @@ Error handlers.
 etc.
 In this basic implementation setting we use specific routes to exemplify each method. This is for demonstration purposes, only.
 It would be more useful to have a separate file with all methods in order to call them whenever needed in app.js.
-Prerequisite  
 
-Create an AWS free account.
-Retrieve your key and secret.
-Under your account name, go to My Security Credentials
-Retrieve key and secret from 'Access Keys (Access Key ID and Secret Access Key)'.
-Setup  
+## Prerequisite  
 
-Install Multer, multer-s3, express-handlebars, and aws-sdk  
+* Create an `AWS` [free account](https://aws.amazon.com/?nc2=h_lg).
 
+* Retrieve your `key` and `secret`.
+
+  * Under your account name, go to [My Security Credentials](https://console.aws.amazon.com/iam/home?region=us-east-2#/security_credential)
+
+  * Retrieve `key` and `secret` from 'Access Keys (Access Key ID and Secret Access Key)'.
+
+## Setup  
+
+### Install Multer, multer-s3, express-handlebars, and aws-sdk  
+
+```
 npm install multer multer-s3 aws-sdk mustache-express --save
-Setup s3 config.json file  
+```
 
-Create a file named s3config.json.
-Save to your project folder and save your credentials.
+### Setup s3 config.json file  
+
+* Create a file named `s3config.json`.
+
+* Save to your project folder and save your credentials.
+
+```
 {
    "accessKeyId": "access key id goes here",
    "secretAccessKey": "secret access key goes here",
    "region": "us-east-1" // See 'region' note below.
 }
-Region: find your region here.
-App structure  
+```
 
-* App
+* `Region`: find your region [here](http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region).
 
-  * public
+### App structure  
+
+* `App`
+
+  * `public`
   
-    * css
+    * `css`
     
       * styles.css
       
-  * views
+  * `views`
 
-    * layouts
+    * `layouts`
     
       * header
 
@@ -5871,16 +5885,21 @@ app.listen( 3000, function() {
 } )
 ```
 
-Try it!  
+## Try it!  
 
 s3_example.zip (9 MB)
 
-First, create a AWS account, look up your region, and get your key / secret.
-Add them to s3config.json.
-Then, npm start
-Lesson Footnotes
-1: AWS - S3
-2: AWS - S3 Bucket
+* First, create a `AWS` account, look up your region, and get your key / secret.
+
+* Add them to `s3config.json`.
+
+* Then, `npm start`
+
+#### Lesson Footnotes
+
+1: [AWS - S3](https://aws.amazon.com/s3/)
+
+2: [AWS - S3 Bucket](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html)
 
 ---
 
