@@ -812,33 +812,50 @@ app.get('/dashboard', function(req, res){
 
 ## Terminology  
 
-busboy: module used to parse incoming HTML form data. Simplifies file upload process.
-pipe(): method used to read data from a 'file' and write to a destination writable stream.
-fs: module used to perform file system related operations on a machine, such as reading files, creating files, deleting files, updating files, and renaming files.
-js. createWriteStream(): method used to create a writable data stream.
-Node.js OS module: module used for obtaining operating system related information.
-The os.tmpdir(): method that returns the OS's default directory for temporary files in a string.
-Installation  
+* `busboy`: module used to parse incoming `HTML` form data. Simplifies file upload process.
 
+* `pipe()`: method used to read data from a 'file' and write to a destination writable stream.
+
+* `fs`: module used to perform file system related operations on a machine, such as reading files, creating files, deleting files, updating files, and renaming files.
+
+  * `js. createWriteStream()`: method used to create a writable data stream.
+
+* `Node.js OS module`: module used for obtaining operating system related information.
+
+  * `The os.tmpdir()`: method that returns the OS's default directory for temporary files in a string.
+
+## Installation  
+
+```
 npm install busboy --save
-Setup  
+```
 
-Include  
+## Setup  
 
+### Include  
+
+```js
   var http = require('http'), //If using HTTP server and client
   var path = require('path'),
   var os = require('os'),
   var fs = require('fs');
 
   var Busboy = require('busboy');
-Saving a file  
+```
 
-Instantiate busboy:
+### Saving a file  
 
+Instantiate `busboy`:
+
+```js
 var busboy = new Busboy({ headers: req.headers });
+```
+
 Configure busboy to save upload file:
 
-You must include five parameters in the busboy middleware function: (fieldname, file, filename, encoding, mimetype)
+* You must include five parameters in the busboy middleware function: (fieldname, file, filename, encoding, mimetype)
+
+```js
 busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
     // Set a temporary directory to save incoming file.
      var saveTo = path.join(os.tmpDir(), path.basename(fieldname));
@@ -848,8 +865,11 @@ busboy.on('file', function(fieldname, file, filename, encoding, mimetype) {
      // Save the incoming file.
      file.pipe(fs.createWriteStream(saveTo));
    });
-Finishing the upload  
+```
 
+### Finishing the upload  
+
+```js
 busboy.on('finish', function() {
   console.log('Upload complete');
   // Send back HTTP response.
@@ -857,12 +877,17 @@ busboy.on('finish', function() {
   // End response.
   res.end("File saved!");
 });
-Implementation  
+```
 
-In this example we do not use the HTTP module and we use views and routes. We also perform a couple of checks before the file is uploaded:
+### Implementation  
 
-If no file is selected and the file is not a 'pdf' we send back a 500 code and we end the response.
-We also use fs-extra, which adds file system methods that aren't included in the native fs module and adds promise support to the fs methods.
+In this example we do not use the `HTTP` module and we use `views` and `routes`. We also perform a couple of checks before the file is uploaded:
+
+* If no file is selected and the file is not a 'pdf' we send back a 500 code and we end the response.
+
+* We also use `fs-extra`, which adds file system methods that aren't included in the native `fs` module and adds promise support to the `fs` methods.
+
+```js
 var express = require('express');
 var path = require('path');
 var index = require('./routes/index');
@@ -898,15 +923,20 @@ app.post('/upload', function (req, res) {
 app.listen(3000, function () {
   console.log('Successfully started node application!')
 })
+```
 
-Remember to set the enctype in your HTML Form to "multipart/form-data"
+> Remember to set the enctype in your HTML Form to "multipart/form-data"
+
+```html
 <form action="/upload" method="POST" enctype="multipart/form-data">
   <input type="file" name="file">
   <input type="submit" value="Upload file">
 </form>
+```
+
 Try it  
 
-Try out the example! When you upload a file, it will store it in public/uploads
+> Try out the example! When you upload a file, it will store it in public/uploads
 express-file-upload-busboy.zip (7 KB)
 
 ---
@@ -915,38 +945,53 @@ express-file-upload-busboy.zip (7 KB)
 
 # Login Based Authentication  
 
-Basic Authentication  
+### Basic Authentication  
 
-Client requests secure resource
-Server requests username and password
-Client sends username and password
-Server returns requested resource
-Session Based Authentication  
+* Client requests secure resource
 
-Client authenticates by providing credentials via HTTP request.
-The server provides a session_id via HTTP response.
-session_id is an identifier associated with a user account.
-session_id can be stored in a cookie.
-session_id is stateful.
-session_id is attached to to subsequent outgoing requests.
-Sessions can be limited to certain time periods
-Security concerns
-Scalability concerns
-Excessive memory usage
-Terminology  
+* Server requests username and password
 
-Authentication [^1]After becoming a subscriber, the user receives an authenticator e.g., a token and credentials, such as a user name. He or she is then permitted to perform online transactions within an authenticated session with a relying party, where they must provide proof that he or she possesses one or more authenticators
+* Client sends username and password
 
-HTTP cookies: [^2]An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser, that may store it and send it back together with the next request to the same server.
+* Server returns requested resource
 
-Examples  
+### Session Based Authentication  
+
+* Client authenticates by providing credentials via HTTP request.
+
+* The server provides a `session_id` via HTTP response.
+
+  * `session_id` is an identifier associated with a user account.
+
+  * `session_id` can be stored in a cookie.
+
+  * `session_id` is stateful.
+  
+* `session_id` is attached to to subsequent outgoing requests.
+
+* Sessions can be limited to certain time periods
+
+* Security concerns
+
+* Scalability concerns
+
+* Excessive memory usage
+
+## Terminology  
+
+**Authentication** [^1]After becoming a subscriber, the user receives an authenticator e.g., a token and credentials, such as a user name. He or she is then permitted to perform online transactions within an authenticated session with a relying party, where they must provide proof that he or she possesses one or more authenticators
+
+**HTTP cookies**: [^2]An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser, that may store it and send it back together with the next request to the same server.
+
+## Examples  
 
 session-based-auth.png
-References  
 
-[^1] Wikipedia - Authentication
+## References  
 
-[^2] HTTP cookies
+[^1] [Wikipedia - Authentication](https://en.wikipedia.org/wiki/Authentication)
+
+[^2] [HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 
 
 ---
@@ -955,16 +1000,17 @@ References
 
 # Author a website with user authentication workflow  
 
-Use the npm package express-session to set up user authentication.
+Use the npm package [express-session](https://www.npmjs.com/package/express-session) to set up user authentication.
 
-Terminology  
+## Terminology  
 
-Authentication [^1]After becoming a subscriber, the user receives an authenticator e.g., a token and credentials, such as a user name. He or she is then permitted to perform online transactions within an authenticated session with a relying party, where they must provide proof that he or she possesses one or more authenticators
+**Authentication** [^1]After becoming a subscriber, the user receives an authenticator e.g., a token and credentials, such as a user name. He or she is then permitted to perform online transactions within an authenticated session with a relying party, where they must provide proof that he or she possesses one or more authenticators
 
-HTTP cookies: [^2]An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser, that may store it and send it back together with the next request to the same server.
+**HTTP cookies**: [^2]An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to the user's web browser, that may store it and send it back together with the next request to the same server.
 
-Examples  
+## Examples  
 
+```js
 var express = require('express')
 var parseurl = require('parseurl')
 var session = require('express-session')
@@ -1000,13 +1046,15 @@ app.get('/foo', function (req, res, next) {
 app.get('/bar', function (req, res, next) {
   res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
 })
-References  
+```
 
-NPM - express-session
+## References  
 
-[^1] Wikipedia - Authentication
+[NPM - express-session](https://www.npmjs.com/package/express-session)
 
-[^2] HTTP cookies
+[^1] [Wikipedia - Authentication](https://en.wikipedia.org/wiki/Authentication)
+
+[^2] [HTTP cookies](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies)
 
 ---
 
@@ -1014,21 +1062,31 @@ Lesson: Organizing large Express applications
 
 # Structure of an Express app  
 
-Vocabulary  
+## Vocabulary  
 
-module: a JavaScript source file that defines module.exports
-require: a Node function to require other files or libraries. Comes in two types:
-require("library_name") -- requires a core library or library installed via npm
-require("./library_name") -- requires a file you have written in this project
-MVC: stands for Model View Controller. These are the three parts of this way of building software. The MVC architecture is used widely in web development.
-The model controls access to data and ways to manipulate that data.
-The view presents an interface to the user based off data.
-The controller facilitates communication between models and views and handles user input.
-In Express, models can be anything we choose to handle our data. Views are our templates or functions that format the response to the user. Controllers are our routes -- specifically, they're the functions we connect to routes. We could put those functions in a separate file and separate our routes and controllers.
-Examples  
+* *module*: a JavaScript source file that defines `module.exports`
+
+* `require`: a Node function to require other files or libraries. Comes in two types:
+
+  * `require("library_name")` -- requires a core library or library installed via npm
+
+  * `require("./library_name")` -- requires a file you have written in this project
+
+* *MVC*: stands for Model View Controller. These are the three parts of this way of building software. The MVC architecture is used widely in web development.
+
+  * The *model* controls access to data and ways to manipulate that data.
+
+  * The *view* presents an interface to the user based off data.
+
+  * The *controller* facilitates communication between models and views and handles user input.
+
+  * In Express, *models* can be anything we choose to handle our data. *Views* are our templates or functions that format the response to the user. *Controllers* are our routes -- specifically, they're the functions we connect to routes. We could put those functions in a separate file and separate our routes and controllers.
+
+## Examples  
 
 Example model in its own file:
 
+```js
 // models/user.js
 
 const users = [
@@ -1052,10 +1110,13 @@ module.exports = {
 const User = require('./models/user');
 console.log(User.find('landry'));
 console.log(User.all);
+```
+
 Example file layout for an Express application:
 
 This example comes from a fictional blogging application.
 
+```
 project_directory/
 |- package.json
 |- app.js
@@ -1075,22 +1136,27 @@ project_directory/
 \- public/        <---- static files, could also be called "static"
     |- app.css
     \- ...
-    
+```
+
 ---
 
 Lesson: Organizing large Express applications
 
 # Express routing  
 
-Vocabulary  
+## Vocabulary  
 
-router: a self-contained collection of routes and middleware
-web request: the message sent from your browser (or another program) that tells your web server to send back data. Contains a HTTP verb (GET, POST, etc), a URL, headers, and possibly a body.
-web response: the data sent back from your web server. Contains headers, a status code, and a body.
-Examples  
+* *router*: a self-contained collection of routes and middleware
 
-Using express.Router for an admin section:
+* *web request*: the message sent from your browser (or another program) that tells your web server to send back data. Contains a HTTP verb (GET, POST, etc), a URL, headers, and possibly a body.
 
+* *web response*: the data sent back from your web server. Contains headers, a status code, and a body.
+
+## Examples  
+
+Using `express.Router` for an admin section:
+
+```js
 // routes/admin.js
 const express = require('express');
 const router = express.Router();
@@ -1112,8 +1178,11 @@ const adminRouter = require('./routes/admin');
 const app = express();
 
 app.use('/admin', adminRouter);
+```
+
 Using multiple route handlers for a Twitter clone:
 
+```js
 const getUser = function (req, res, next) {
   const userId = req.params.userId;
   const user = User.get(userId);
@@ -1139,11 +1208,15 @@ app.get('/popular', function (req, res) {
   const tweets = getPopularTweets();
   res.render("popular", {tweets: tweets});
 });
-Resources  
+```
 
-Express.js Routing
-Express.js API Docs on express.Router
-Express Routing - Advanced Techniques
+## Resources  
+
+[Express.js Routing](https://expressjs.com/en/guide/routing.html)
+
+[Express.js API Docs on express.Router](https://expressjs.com/en/4x/api.html#router)
+
+[Express Routing - Advanced Techniques](http://jilles.me/express-routing-advanced-techniques/)
 
 ---
 
@@ -1151,21 +1224,26 @@ Lesson: Organizing large Express applications
 
 # Understanding middleware  
 
-Terminology  
+## Terminology  
 
-middleware: a function used with Express that takes a request, response, and next, which is a function to call to pass control to the next middleware or route handler in the chain. The concept of middleware is used in other web frameworks and software.
-Examples  
+*middleware*: a function used with Express that takes a request, response, and `next`, which is a function to call to pass control to the next middleware or route handler in the chain. The concept of middleware is used in other web frameworks and software.
+
+## Examples  
 
 An example of logging requests with a middleware:
 
+```js
 app.use(function (req, res, next) {
     console.log("Request at", new Date());
     console.log("URL:", req.url);
     console.log("Query:", req.query, "\n");
     next();
 })
-An example of setting a header. The Server header is the name of the server.
+```
 
+An example of setting a header. The `Server` header is the name of the server.
+
+```js
 const setServerName = function (name) {
   return function (req, res, next) {
       res.header("Server", name);
@@ -1174,27 +1252,29 @@ const setServerName = function (name) {
 }
 
 app.use(setServerName("Dynamo 1000"));
+```
 
 ---
 
 Lesson: Organizing large Express applications
 
-# Output logs using the morgan package  
+# Output logs using the `morgan` package  
 
 Morgan is an HTTP request logger middleware for node.js.
 
-The morgan() function accepts 2 arguments: format and options.
+The `morgan()` function accepts 2 arguments: `format` and `options`.
 
-format can be a predefined string name, a string of a format string, or a function that will produce a log entry.
+`format` can be a predefined string name, a string of a format string, or a function that will produce a log entry.
 
-The options object accepts a number of properties.
+The `options` object accepts a number of properties.
 
-Terminology  
+## Terminology  
 
-Examples  
+## Examples  
 
-The following example demonstrates using the 'combined' format (standard for Apache servers):
+The following example demonstrates using the `'combined'` format (standard for Apache servers):
 
+```js
 var express = require('express')
 var morgan = require('morgan')
 
@@ -1205,8 +1285,11 @@ app.use(morgan('combined'))
 app.get('/', function (req, res) {
   res.send('hello, world!')
 })
-This example demonstrates using a conditional statement to check whether the app is running in the 'dev' environment or in 'production'. While in production morgan is using the 'common' format and passing an options object. The options object, in this case, is set to skip logging if the response status code is less than 400 and stream logs to an external file: (__dirname + '/../morgan.log'). While in development morgan uses the 'dev' format.
+```
 
+This example demonstrates using a conditional statement to check whether the app is running in the `'dev'` environment or in `'production'`. While in production morgan is using the `'common'` format and passing an `options` object. The `options` object, in this case, is set to skip logging if the response status code is less than `400` and stream logs to an external file: (`__dirname + '/../morgan.log'`). While in development morgan uses the `'dev'` format.
+
+```js
 var express = require('express')
 var morgan = require('morgan')
 
@@ -1222,9 +1305,11 @@ if (app.get('env') == 'production') {
 } else {
   app.use(morgan('dev'));
 }
-References  
+```
 
-GitHub - Express, Morgan
+## References  
+
+[GitHub - Express, Morgan](https://github.com/expressjs/morgan)
 
 ---
 
@@ -1232,19 +1317,25 @@ Lesson: SQL: Introduction
 
 # Installing and setting up Postgres  
 
-Terminology  
+## Terminology  
 
-PostgreSQL: a database management system. Also known sometimes as PostgreSQL.
-background process: a program that runs in the background. Can be managed with brew services.
-Examples  
+* *PostgreSQL*: a database management system. Also known sometimes as PostgreSQL.
+
+* *background process*: a program that runs in the background. Can be managed with `brew services`.
+
+## Examples  
 
 The following example demonstrates how to see which services are running.
 
+```
 $ brew services list
 Name       Status  User       Plist
 postgresql started [username] /Users/[username]/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+```
+
 This example shows how to create a database, connect to it, and delete it.
 
+```
 $ createdb testdb
 $ psql testdb
 psql (9.6.3)
@@ -1259,10 +1350,13 @@ Type:  \copyright for distribution terms
        \q to quit
 testdb=# \q
 $ dropdb testdb
-References  
+```
 
-brew services
-https://www.postgresql.org/
+## References  
+
+* [brew services](https://github.com/Homebrew/homebrew-services)
+
+* https://www.postgresql.org/
 
 ---
 
@@ -1270,17 +1364,23 @@ Lesson: SQL: Introduction
 
 # Databases, tables, rows, and columns  
 
-Terminology  
+## Terminology  
 
-database: a storage area for tables and all other data associated with those tables. "Database" is also often used to refer to a database management system like PostgreSQL.
-table: a named collection of records, all with the same structure.
-row: a record in a table.
-column: a field in a table that all records will have. Columns have a name and a type.
-primary key: a unique id that each row in a table has. This will usually be an auto-incrementing number called id, although that is not a requirement of the database.
-Examples  
+* *database*: a storage area for tables and all other data associated with those tables. "Database" is also often used to refer to a database management system like PostgreSQL.
 
-This example shows the syntax for CREATE TABLE.
+* *table*: a named collection of records, all with the same structure.
 
+* *row*: a record in a table.
+
+* *column* : a field in a table that all records will have. Columns have a name and a type.
+
+* *primary key*: a unique id that each row in a table has. This will usually be an auto-incrementing number called `id`, although that is not a requirement of the database.
+
+## Examples  
+
+This example shows the syntax for `CREATE TABLE`.
+
+```
 CREATE TABLE students (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -1289,17 +1389,23 @@ CREATE TABLE students (
   graduated BOOLEAN NOT NULL DEFAULT 'f',
   cohort INTEGER NOT NULL
 );
-This example shows the syntax for INSERT INTO.
+```
 
+This example shows the syntax for `INSERT INTO`.
+
+```
 INSERT INTO students (name, favorite_candy, graduated, cohort) VALUES ('Charlie', 'Skittles', 't', 1);
 INSERT INTO students (name, email, cohort) VALUES ('Harper', 'harper@example.org', 12);
 INSERT INTO students (name, favorite_candy, cohort) VALUES
 ('Kelly', 'Milky Way', 12),
 ('Alexis', 'Hot Tamales', 12);
-References  
+```
 
-CREATE TABLE documentation
-PostgreSQL data types
+## References  
+
+* `CREATE TABLE` [documentation](https://www.postgresql.org/docs/current/static/sql-createtable.html)
+
+* [PostgreSQL data types](https://www.postgresql.org/docs/current/static/datatype.html)
 
 ---
 
@@ -1307,31 +1413,45 @@ Lesson: SQL: Introduction
 
 # Exporting and importing PostgreSQL databases  
 
-Terminology  
+## Terminology  
 
-schema: the structure of a database's tables and other objects
-Examples  
+* *schema*: the structure of a database's tables and other objects
+
+## Examples  
 
 Dumping a database:
 
+```
 pg_dump --no-owner [dbname] > dump.sql
+```
+
 If students have not yet learned about shell redirection, this may be a good place to teach that.
 
-Dumping a database with DROP TABLE statements:
+Dumping a database with `DROP TABLE` statements:
 
+```
 pg_dump --no-owner --clean [dbname] > dump.sql
+```
+
 Dumping just the data:
 
+```
 pg_dump --data-only [dbname] > dump.sql
+```
+
 Dumping just the schema:
 
+```
 pg_dump --no-owner --schema-only [dbname] > dump.sql
+```
+
 Restoring any of these:
 
 psql [dbname] < dump.sql
-References  
 
-pg_dump documentation
+## References  
+
+[pg_dump documentation](https://www.postgresql.org/docs/9.6/static/app-pgdump.html)
 
 ---
 
@@ -1339,23 +1459,35 @@ Lesson: SQL: Introduction
 
 # SQL Statements  
 
-Terminology  
+## Terminology  
 
-SQL: Structured Query Language. A declarative programming language for defining databases and extracting and manipulating information from them.
-predicate: a Boolean (true/false) statement, often used to refer to the WHERE clause of SQL statements
-Filtering records using WHERE clauses  
+* *SQL*: Structured Query Language. A declarative programming language for defining databases and extracting and manipulating information from them.
 
-WHERE is an SQL filter
-The WHERE clause in a SELECT statement describes the rows from the source tables that are used to build the result set.
-The WHERE clause in an UPDATE or DELETE statement narrows the rows that will be affected.
-It sets a series of conditions and only the rows that meet the conditions are used to build a result set.
-Comparison operators can be used, such as =, < >, <, and >
-IS NULL and IS NOT NULL can be used to get only rows where a column is null or not null
-Boolean and parentheses operators can be used to bind multiple expressions: AND, OR
-ORDER BY can be used to arrange the order of the results
-LIMIT and OFFSET can be used to get a subset of the results
-Examples  
+* *predicate*: a Boolean (true/false) statement, often used to refer to the WHERE clause of SQL statements
 
+## Filtering records using WHERE clauses  
+
+* `WHERE` is an SQL filter
+
+  * The `WHERE` clause in a `SELECT` statement describes the rows from the source tables that are used to build the result set.
+
+  * The `WHERE` clause in an `UPDATE` or `DELETE` statement narrows the rows that will be affected.
+
+  * It sets a series of conditions and only the rows that meet the conditions are used to build a result set.
+
+  * Comparison operators can be used, such as `=`, `< >`, `<`, and `>`
+
+  * `IS NULL` and `IS NOT NULL` can be used to get only rows where a column is null or not null
+
+  * Boolean and parentheses operators can be used to bind multiple expressions: `AND`, `OR`
+
+* `ORDER BY` can be used to arrange the order of the results
+
+* `LIMIT` and `OFFSET` can be used to get a subset of the results
+
+## Examples  
+
+```
 SELECT * FROM students;
 SELECT name, favorite_color FROM students;
 
@@ -1392,12 +1524,17 @@ DELETE FROM students WHERE email IS NULL;
 
 -- Remove students over 7 feet tall
 DELETE FROM students WHERE height_cm >= 213.36;
-References  
+```
 
-Intro to SQL on Khan Academy
-PostgreSQL SELECT documentation
-PostgreSQL UPDATE documentation
-PostgreSQL DELETE documentation
+## References  
+
+* [Intro to SQL on Khan Academy](https://www.khanacademy.org/computing/computer-programming/sql)
+
+* [PostgreSQL SELECT documentation](https://www.postgresql.org/docs/9.6/static/sql-select.html)
+
+* [PostgreSQL UPDATE documentation](https://www.postgresql.org/docs/9.6/static/sql-update.html)
+
+* [PostgreSQL DELETE documentation](https://www.postgresql.org/docs/9.6/static/sql-delete.html)
 
 ---
 
