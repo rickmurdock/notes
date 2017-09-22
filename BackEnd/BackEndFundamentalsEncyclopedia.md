@@ -5538,23 +5538,39 @@ Save to your project folder and save your credentials.
 Region: find your region here.
 App structure  
 
-App
-public
-css
-styles.css
-views
-layouts
-header
-view
-upload
-message
-select_create_bucket
+* App
+
+  * public
+  
+    * css
+    
+      * styles.css
+      
+  * views
+
+    * layouts
+    
+      * header
+
+    * view
+    
+    * upload
+    
+    * message
+
+    * select_create_bucket
+
 delete_bucket
-app.js
-package.json
-s3config.json
+
+  * app.js
+  
+  * package.json
+  
+  * s3config.json
+
 app.js  
 
+``js
 var express = require( 'express' );
 var path = require( 'path' );
 var app = express();
@@ -5853,6 +5869,7 @@ app.post( '/bucket/delete', function( req, res, next ) {
 app.listen( 3000, function() {
   console.log( 'Successfully started node application!' )
 } )
+```
 
 Try it!  
 
@@ -5873,28 +5890,48 @@ Lesson: Cloud Computing: Introduction
 
 Block level storage is a widely used storage system technology
 
-sometimes called a physical record
-uses Storage Area Network (SAN) storage
-composed of raw volumes of storage or blocks
-blocks have a max width
-blocks can be controlled as an individual hard drive
-blocks controlled by server based operating systems
-blocks can be individually formatted with the required file system
-Usage  
+* sometimes called a physical record
 
-used in server side processing, with Java, Ruby, .Net, and other programming languages
-usually abstracted by a file system or database management system (DBMS)
-works well for file systems and databases
-provides consistent I/O performance and low-latency connectivity
-can be used to store files
-data transportation is efficient and reliable
-can work for virtual machines
-can be used for RAID Volumes, combining multiple disks organized through stripping or mirroring
-used in running applications like Oracle, SAP, Microsoft Exchange, and Microsoft SharePoint
-supports individual formatting of file systems like NFS, NTFS or SMB (Windows) or VMFS (VMware)
-Commonly used Providers  
+* uses Storage Area Network (SAN) storage
 
-AWS Elastic Block Storage (EBS)
-Rackspace Cloud Block Storage
-Azure Premium Storage
-Google Persistent Disks
+* composed of raw volumes of storage or **blocks**
+
+  * blocks have a max width
+
+  * blocks can be controlled as an individual hard drive
+
+  * blocks controlled by server based operating systems
+
+  * blocks can be individually formatted with the required file system
+
+### Usage  
+
+* used in server side processing, with Java, Ruby, .Net, and other programming languages
+
+* usually abstracted by a file system or database management system (DBMS)
+
+* works well for file systems and databases
+
+  * provides consistent I/O performance and low-latency connectivity
+
+  * can be used to store files
+
+  * data transportation is efficient and reliable
+
+* can work for virtual machines
+
+* can be used for RAID Volumes, combining multiple disks organized through stripping or mirroring
+
+* used in running applications like Oracle, SAP, Microsoft Exchange, and Microsoft SharePoint
+
+* supports individual formatting of file systems like NFS, NTFS or SMB (Windows) or VMFS (VMware)
+
+### Commonly used Providers  
+
+* AWS Elastic Block Storage (EBS)
+
+* Rackspace Cloud Block Storage
+
+* Azure Premium Storage
+
+* Google Persistent Disks
