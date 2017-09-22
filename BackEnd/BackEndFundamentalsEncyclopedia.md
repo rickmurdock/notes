@@ -5385,22 +5385,25 @@ Lesson: Cloud Computing: Introduction
 
 Terminology  
 
-S3: stands for simple storage service.
+`S3`: stands for simple storage service.
 
-Amazon Simple Storage Service (Amazon S3) is object storage with a simple web service interface to store and retrieve any amount of data from anywhere on the web. It is designed to deliver 99.999999999% durability, and scale past trillions of objects worldwide.1
+> *Amazon Simple Storage Service (Amazon S3) is object storage with a simple web service interface to store and retrieve any amount of data from anywhere on the web. It is designed to deliver 99.999999999% durability, and scale past trillions of objects worldwide.1*
 
-Bucket: AWS S3 storage resource for storing objects.2
+`Bucket`: `AWS S3` storage resource for storing objects.2
 
-Bucket names are globally unique.
-Buckets are region specific.
-S3 Storage Methods  
+* Bucket names are globally unique.
 
-Creating a bucket  
+* Buckets are region specific.
 
-For the latest method, see the CreateBucket docs.
+## S3 Storage Methods  
 
-Basic bucket creation.
+### Creating a bucket  
 
+* For the latest method, see the `CreateBucket` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#createBucket-property).
+
+* Basic bucket creation.
+
+```
 var params = {
  Bucket: "examplebucket" /* required */
 };
@@ -5408,7 +5411,11 @@ s3.createBucket(params, function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
 })
-Advanced bucket creation, specifying access rights and location constraints.
+```
+
+* Advanced bucket creation, specifying access rights and location constraints.
+
+```
 var params = {
   Bucket: 'STRING_VALUE', /* required */
   ACL: private | public-read | public-read-write | authenticated-read,
@@ -5425,12 +5432,14 @@ s3.createBucket(params, function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
 });
-Uploading an object  
 
-For the latest method, see the putObject docs.
+### Uploading an object  
 
-See 'Implementation' for details about using the Multer / Multer-s3 modules and AWS to upload a file.
+* For the latest method, see the `putObject` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property).
 
+* See 'Implementation' for details about using the [Multer](https://www.npmjs.com/package/multer) / [Multer-s3](https://www.npmjs.com/package/multer-s3) modules and `AWS` to upload a file.
+
+```
 var params = {
  Body: <Binary String>,
  Bucket: "examplebucket",
@@ -5446,9 +5455,13 @@ s3.putObject(params, function(err, data) {
   }
   */
 });
-Retrieving an object  
+```
 
-For the latest method, see the GetObject docs.
+### Retrieving an object  
+
+* For the latest method, see the `GetObject` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property).
+
+```
 var params = {
   Bucket: "examplebucket", /* required */
   Key: "HappyFace.jpg" /* required */
@@ -5470,17 +5483,26 @@ var params = {
    }
    */
  });
-Listing Buckets  
+```
+ 
+### Listing Buckets  
 
-For the latest method, see the ListBuckets docs.
+* For the latest method, see the `ListBuckets` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listBuckets-property).
+
+```
 s3.listBuckets(function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
 });
-Deleting a Bucket  
+```
 
-For the latest method, see the DeleteBucket docs.
-Bucket must be empty first!
+### Deleting a Bucket  
+
+* For the latest method, see the `DeleteBucket` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteBucket-property).
+
+> Bucket must be empty first!
+
+```
 var params = {
   Bucket: 'STRING_VALUE' /* required */
 };
@@ -5488,9 +5510,13 @@ s3.deleteBucket(params, function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
 });
-Deleting an object  
+```
 
-For the latest method, see the DeleteObject docs.
+### Deleting an object  
+
+* For the latest method, see the `DeleteObject` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property).
+
+```
 var params = {
  Bucket: "examplebucket", /* required */
  Key: "objectkey.jpg" /* required */
@@ -5503,18 +5529,29 @@ s3.deleteObject(params, function(err, data) {
   }
   */
 });
+```
+
 Implementation  
 
-The following implementation is a basic example of how to use these methods in an Express setting.
-Note that this example only covers the basics, so your production implementation should have more robust features such as:
-User login.
-Authentication.
-Input sanitation.
-Router.
-Error handlers.
-etc.
-In this basic implementation setting we use specific routes to exemplify each method. This is for demonstration purposes, only.
-It would be more useful to have a separate file with all methods in order to call them whenever needed in app.js.
+* The following implementation is a basic example of how to use these methods in an `Express` setting.
+
+* Note that this example only covers the basics, so your *production* implementation should have more robust features such as:
+
+  * User login.
+  
+  * Authentication.
+  
+  * Input sanitation.
+  
+  * Router.
+  
+  * Error handlers.
+  
+  * etc.
+  
+* In this basic implementation setting we use specific routes to exemplify each method. This is for demonstration purposes, only.
+
+  * It would be more useful to have a separate file with all methods in order to call them whenever needed in `app.js`.
 
 ## Prerequisite  
 
@@ -5582,7 +5619,7 @@ delete_bucket
   
   * s3config.json
 
-app.js  
+### app.js  
 
 ```js
 var express = require( 'express' );
