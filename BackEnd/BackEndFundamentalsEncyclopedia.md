@@ -277,34 +277,50 @@ serve-static-files.zip (2 MB)
 
 A Fill Murray Image App  
 
-mkdir: trivial
-cd into 'trivial' directory.
-npm init: accept all default options.
-npm install, then:
+* `mkdir`: trivial
 
-Add express web server dependency: npm install express --save
-mkdir: 'files'
+* `cd` into 'trivial' directory.
 
-Add images files.
-touch: index.html
+* `npm init`: accept all default options.
 
-Add content.
-touch: 'trivial-app.js'
+* `npm install`, then:
 
-configure express.static to use a relative path.
+  * Add `express web server` dependency: `npm install express --save`
+
+* `mkdir`: 'files'
+
+  * Add images files.
+
+* `touch`: index.html
+
+  * `Add` content.
+
+* `touch`: 'trivial-app.js'
+
+  * configure `express.static` to use a relative path.
+  
+```jsx
     app.use('/files', express.static('files'));
-configure app.get() to listen on root ('/').
-configure app.get() to serve index.html from root.
+```
+
+* configure `app.get()` to listen on root ('/').
+
+* configure `app.get()` to serve `index.html` from `root`.
+
+```jsx
 //Listening on root
 app.get('/', function (req, res) {
   //serve 'index.html'
   res.sendFile(path.join(__dirname + '/index.html'));
   //__dirname: resolves to  project folder.
 })
-Implementation  
+```
 
-trivial-app.js:
+### Implementation  
 
+#### trivial-app.js:
+
+``` jsx
 const express = require('express');
 const path = require('path');
 const app = express();
@@ -322,8 +338,11 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
   console.log('Successfully started express application!');
 })
-index.html:
+```
 
+#### index.html:
+
+```jsx
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -406,13 +425,19 @@ res.sendFile(path.join(__dirname + '/index.html'));
 
 </body>
 </html>
-Start application  
+```
 
+## Start application  
+
+```
 node trivial-app.js
-Open browser to: localhost:3000
-Try it!  
+```
 
-trivial-app.zip (70 KB)
+* Open browser to: `localhost:3000`
+
+## Try it!  
+
+> trivial-app.zip (70 KB)
 
 ---
 
