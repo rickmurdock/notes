@@ -206,7 +206,7 @@ $ node express-app.js
 localhost:3000
 ```
 
-starting-node-app.jpeg
+![starting-node-app.jpeg](./images/starting-node-app.jpeg)
 
 ## Try it!  
 
