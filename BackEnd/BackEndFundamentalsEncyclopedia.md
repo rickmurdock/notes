@@ -218,52 +218,81 @@ localhost:3000
 
 # Configure Node to Serve Static Files in a Directory  
 
-Terminology  
+## Terminology  
 
-express.static(): built-in middleware function used to configure the location of files to be served by an express.js application.
+* `express.static()`: built-in middleware function used to configure the location of files to be served by an `express.js` application.
 
-paths:
+* `paths`:
 
-Relative path:
+  * Relative path:
+  
+```
   app.use(express.static('public'))
-Adding a virtual path:
-Specify mount point.
-Virtual path prefix (non-existent in the file system). i.e., '/files'
+```
+
+* Adding a virtual path:
+
+  * Specify mount point.
+  
+  * Virtual path prefix (non-existent in the file system). i.e., '/files'
+
+```
   app.use('/static', express.static('public'))
-Absolute path:
-Safer when the app runs from a different directory.
+```
+
+* Absolute path:
+
+  * Safer when the app runs from a different directory.
+  
+```
   app.use('/files', express.static(path.join(__dirname, 'public')))
-Example 1  
+```
 
-File: ironyardlogo.png
+## Example 1  
 
-Directory: serve-static-files/public
+**File**: ironyardlogo.png
 
-Configuration:
+**Directory**: serve-static-files/public
+
+**Configuration**:
 
 Relative to the static directory.
 
+```
 app.use(express.static('public'))
-Accessing file on port 3000:
+```
 
+**Accessing file on port 3000**:
+
+```
 http://localhost:3000/ironyardlogo.png
-Example 2  
+```
 
-File: video.mp4
+## Example 2  
 
-Directory: serve-static-files/public
+**File**: video.mp4
 
-Configuration:
+**Directory**: serve-static-files/public
 
-Absolute path:
+**Configuration**:
+
+* Absolute path:
+
+```
 app.use('/files', express.static(path.join(__dirname, 'public')))
-Accessing file on port 3000:
+```
 
+**Accessing file on port 3000**:
+
+```
 http://localhost:3000/files/video.mp4
-Multiple Directories  
+```
 
-To add multiple directories, simply add them in the order you would like express.jsto search for a particular file.
+### Multiple Directories  
 
+To add multiple directories, simply add them in the order you would like `express.js` to search for a particular file.
+
+```jsx
 // Relative to the static directories
 app.use(express.static('public'))
 app.use(express.static('utilities'))
@@ -271,12 +300,15 @@ app.use(express.static('utilities'))
 // Absolute path to the directories
 app.use('/files', express.static(path.join(__dirname, 'public')))
 app.use('/utilities', express.static(path.join(__dirname, 'utilities')))
-The order of the static files determines how Express searches for a file.
-Try it!  
+```
+
+> The order of the static files determines how Express searches for a file.
+
+## Try it!  
 
 This sample does not contain the 'utilities' directory as per the example above.
 
-serve-static-files.zip (2 MB)
+> serve-static-files.zip (2 MB)
 
 ---
 
