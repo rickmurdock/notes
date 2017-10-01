@@ -1072,7 +1072,7 @@ express-file-upload-busboy.zip (7 KB)
 
 ## Examples  
 
-session-based-auth.png
+![traditional-session-based-diagram'](./images/traditional-session-based-diagram.png)
 
 ## References  
 
@@ -1145,7 +1145,7 @@ app.get('/bar', function (req, res, next) {
 
 ---
 
-Lesson: Organizing large Express applications
+[Organizing large Express applications](OrganizingExpress.md)
 
 # Structure of an Express app  
 
@@ -1227,7 +1227,7 @@ project_directory/
 
 ---
 
-Lesson: Organizing large Express applications
+[Organizing large Express applications](OrganizingExpress.md)
 
 # Express routing  
 
@@ -1307,7 +1307,7 @@ app.get('/popular', function (req, res) {
 
 ---
 
-Lesson: Organizing large Express applications
+[Organizing large Express applications](OrganizingExpress.md)
 
 # Understanding middleware  
 
@@ -1343,7 +1343,7 @@ app.use(setServerName("Dynamo 1000"));
 
 ---
 
-Lesson: Organizing large Express applications
+[Organizing large Express applications](OrganizingExpress.md)
 
 # Output logs using the `morgan` package  
 
@@ -1400,7 +1400,7 @@ if (app.get('env') == 'production') {
 
 ---
 
-Lesson: SQL: Introduction
+[SQL: Introduction](SQLIntroduction.md)
 
 # Installing and setting up Postgres  
 
@@ -1447,7 +1447,7 @@ $ dropdb testdb
 
 ---
 
-Lesson: SQL: Introduction
+[SQL: Introduction](SQLIntroduction.md)
 
 # Databases, tables, rows, and columns  
 
@@ -1496,7 +1496,7 @@ INSERT INTO students (name, favorite_candy, cohort) VALUES
 
 ---
 
-Lesson: SQL: Introduction
+[SQL: Introduction](SQLIntroduction.md)
 
 # Exporting and importing PostgreSQL databases  
 
@@ -1542,7 +1542,7 @@ psql [dbname] < dump.sql
 
 ---
 
-Lesson: SQL: Introduction
+[SQL: Introduction](SQLIntroduction.md)
 
 # SQL Statements  
 
@@ -1625,7 +1625,7 @@ DELETE FROM students WHERE height_cm >= 213.36;
 
 ---
 
-Lesson: Sequelize: Introduction
+[Sequelize: Introduction](SequelizeIntroduction.md)
 
 # Create models with Sequelize  
 
@@ -1663,7 +1663,7 @@ Migrations
 
 ---
 
-Lesson: Sequelize: Introduction
+[Sequelize: Introduction](SequelizeIntroduction.md)
 
 # Use Sequelize models  
 
@@ -1816,7 +1816,7 @@ User.destroy({
 
 ---
 
-Lesson: Sequelize: Introduction
+[Sequelize: Introduction](SequelizeIntroduction.md)
 
 # Express/Sequelize CRUD Operations  
 
@@ -1949,7 +1949,7 @@ Sequelize Tutorial - Instances
 
 ---
 
-Lesson: Sequelize: Advanced
+[Sequelize: Advanced](SequelizeAdvanced.md)
 
 # Associations: belongsTo, hasOne, hasMany, and belongsToMany  
 
@@ -2059,7 +2059,7 @@ module.exports = function(sequelize, DataTypes) {
 
 ---
 
-Lesson: Sequelize: Advanced
+[Sequelize: Advanced](SequelizeAdvanced.md)
 
 # Author Model Class Methods, Attributes, And Instance methods  
 
@@ -2210,7 +2210,7 @@ User.create({
 
 ---
 
-Lesson: NoSQL: MongoDB
+[NoSQL: MongoDB](NoSQLMongoDB.md)
 
 # Installing and setting up MongoDB  
 
@@ -2238,7 +2238,7 @@ MongoDB docs
 
 ---
 
-Lesson: NoSQL: MongoDB
+[NoSQL: MongoDB](NoSQLMongoDB.md)
 
 # MongoDB databases, collections, and documents  
 
@@ -2257,7 +2257,7 @@ Not exactly. There is a formal list of what you can store, but for all purposes,
 
 ---
 
-Lesson: NoSQL: MongoDB
+[NoSQL: MongoDB](NoSQLMongoDB.md)
 
 # Importing and exporting data from MongoDB  
 
@@ -2280,7 +2280,7 @@ $ mongoexport --db databaseName --collection collectionName --out outputFile.jso
 
 ---
 
-Lesson: NoSQL: MongoDB
+[NoSQL: MongoDB](NoSQLMongoDB.md)
 
 # MongoDB Operations  
 
@@ -2450,7 +2450,7 @@ Update operators
 
 ---
 
-Lesson: MongoDB with Mongoose
+[MongoDB with Mongoose](MongoDBMongoose.md)
 
 # Schemas and Models with Mongoose  
 
@@ -2513,7 +2513,7 @@ MDN Express Tutorial - Part 3 - Using Mongoose
 
 ---
 
-Lesson: MongoDB with Mongoose
+[MongoDB with Mongoose](MongoDBMongoose.md)
 
 # Create, query, update, and delete models with Mongoose  
 
@@ -2574,7 +2574,7 @@ Mongoose docs
 
 ---
 
-Lesson: MongoDB with Mongoose
+[MongoDB with Mongoose](MongoDBMongoose.md)
 
 # Validating models with Mongoose  
 
@@ -2652,7 +2652,7 @@ Mongoose - Validation
 
 ---
 
-Lesson: MongoDB with Mongoose
+[MongoDB with Mongoose](MongoDBMongoose.md)
 
 # Extending Mongoose models  
 
@@ -2760,7 +2760,7 @@ Mongoose schema docs
 
 ---
 
-Lesson: Express: JSON APIs
+[Express: JSON APIs](ExpressJSONAPIs.md)
 
 # Use and verify express JSON APIs using postman and curl  
 
@@ -2814,7 +2814,7 @@ Postman - Docs
 
 ---
 
-Lesson: Express: JSON APIs
+[Express: JSON APIs](ExpressJSONAPIs.md)
 
 # Return objects and arrays of data using JSON  
 
@@ -2880,7 +2880,7 @@ Lesson Footnotes
 
 ---
 
-Lesson: Express: JSON APIs
+[Express: JSON APIs](ExpressJSONAPIs.md)
 
 # Use routing appropriately for RESTful URL structure and HTTP verbs  
 
@@ -2922,7 +2922,7 @@ DELETE /relations/3 - Deletes relation #3 for item #7
 
 ---
 
-Lesson: Express: JSON APIs
+[Express: JSON APIs](ExpressJSONAPIs.md)
 
 # Describe standard REST conventions in NodeJS  
 
@@ -2970,7 +2970,7 @@ Make proper use of status codes in API responses
 
 ---
 
-Lesson: Express JSON APIs: Advanced
+[Express JSON APIs: Advanced](ExpressJSONAPIsAdvanced.md)
 
 # Filter results based on URL parameters in NodeJS  
 
@@ -3062,7 +3062,7 @@ Lesson Footnotes
 
 ---
 
-Lesson: Express JSON APIs: Advanced
+[Express JSON APIs: Advanced](ExpressJSONAPIsAdvanced.md)
 
 # Adding token based user authentication to an Express API  
 
@@ -3344,7 +3344,7 @@ jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
 
 ---
 
-Lesson: Express JSON APIs: Advanced
+[Express JSON APIs: Advanced](ExpressJSONAPIsAdvanced.md)
 
 # Restricting Access To Information Based On User Role  
 
@@ -3491,7 +3491,7 @@ See docs for Connect Roles method details.
 
 ---
 
-Lesson: Tests and Test Driven Design
+[Tests and Test Driven Design](TestsandTestDrivenDesign.md)
 
 # Test Driven Development (TDD)  
 
@@ -3551,7 +3551,7 @@ function multiplier(x, y) {
 
 ---
 
-Lesson: Tests and Test Driven Design
+[Tests and Test Driven Design](TestsandTestDrivenDesign.md)
 
 # Author feature tests using Jest for an Express app  
 
@@ -3706,7 +3706,7 @@ Note that we included the argument --forceExit. Supertest starts a server for us
 
 ---
 
-Lesson: Tests and Test Driven Design
+[Tests and Test Driven Design](TestsandTestDrivenDesign.md)
 
 # Author unit tests for Express models  
 
@@ -3806,7 +3806,7 @@ You want to make sure your tests are deterministic -- that is, that when you run
 
 ---
 
-Lesson: Tests and Test Driven Design
+[Tests and Test Driven Design](TestsandTestDrivenDesign.md)
 
 # Naming Conventions and Class/Function Length Best Practices  
 
@@ -3906,7 +3906,7 @@ The use of the variable i obviously ins't very descriptive here. In this case i 
 
 ---
 
-Lesson: Web Security: Introduction
+[Web Security: Introduction](WebSecurityIntroduction.md)
 
 # Appropriate Use cases To Run next()  
 
@@ -4073,7 +4073,7 @@ function errorHandler (err, req, res, next) {
 
 ---
 
-Lesson: Web Security: Introduction
+[Web Security: Introduction](WebSecurityIntroduction.md)
 
 # Lecture Notes  
 
@@ -4278,7 +4278,7 @@ Bobby Tables
 
 ---
 
-Lesson: Web Security: Introduction
+[Web Security: Introduction](WebSecurityIntroduction.md)
 
 # The Impact Of XSS On User Privacy  
 
@@ -4384,7 +4384,7 @@ app.post('/login', function(request, response){
 
 ---
 
-Lesson: Web Security: Introduction
+[Web Security: Introduction](WebSecurityIntroduction.md)
 
 # Protecting User Password  
 
@@ -4534,7 +4534,7 @@ Lesson Footnotes
 
 ---
 
-Lesson: Productivity and UNIX: Introduction
+[Productivity and UNIX: Introduction](ProductivityUNIXIntroduction.md)
 
 # Agile Software Development  
 
@@ -4588,7 +4588,7 @@ Standup: (scrum ceremony) a team meeting in which story progress is discussed fo
 
 ---
 
-Lesson: Productivity and UNIX: Introduction
+[Productivity and UNIX: Introduction](ProductivityUNIXIntroduction.md)
 
 # Using npm package.json scripts to start node and run arbitrary tasks  
 
@@ -4970,7 +4970,7 @@ Watch: Nordic.js 2015 • Kate Hudson - Advanced front-end automation with npm s
 
 ---
 
-Lesson: Productivity and UNIX: Introduction
+[Productivity and UNIX: Introduction](ProductivityUNIXIntroduction.md)
 
 # Using ESLint to find errors and coding style irregularities  
 
@@ -5194,7 +5194,7 @@ Lesson Footnotes
 
 ---
 
-Lesson: Cloud Computing: Introduction
+[Cloud Computing: Introduction](CloudComputingIntroduction.md)
 
 # Platform-as-a-service And Virtual-private-servers  
 
@@ -5247,7 +5247,7 @@ Some VPS providers: Digital Ocean, Linode.
 
 ---
 
-Lesson: Cloud Computing: Introduction
+[Cloud Computing: Introduction](CloudComputingIntroduction.md)
 
 # Deploying A Node application on Heroku  
 
@@ -5352,7 +5352,7 @@ Lesson Footnotes
 
 ---
 
-Lesson: Cloud Computing: Introduction
+[Cloud Computing: Introduction](CloudComputingIntroduction.md)
 
 # Sending Emails with SendGrid  
 
@@ -5466,7 +5466,7 @@ SendGrid App Example
 
 ---
 
-Lesson: Cloud Computing: Introduction
+[Cloud Computing: Introduction](CloudComputingIntroduction.md)
 
 # Storing and retrieving objects in S3 block storage  
 
@@ -6027,7 +6027,7 @@ s3_example.zip (9 MB)
 
 ---
 
-Lesson: Cloud Computing: Introduction
+[Cloud Computing: Introduction](CloudComputingIntroduction.md)
 
 # Block Level Storage  
 
