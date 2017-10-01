@@ -488,37 +488,48 @@ node trivial-app.js
 
 Terminology  
 
-URI: 1 A Uniform Resource Identifier (URI) is a string of characters used to identify a resource. Such identification enables interaction with representations of the resource over a network, typically the World Wide Web, using specific protocols.
+**URI**: 1 A Uniform Resource Identifier (URI) is a string of characters used to identify a resource. Such identification enables interaction with representations of the resource over a network, typically the World Wide Web, using specific protocols.
 
-URL: 2 A Uniform Resource Locator (URL), colloquially termed a web address,[1] is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it.
+**URL**: 2 A Uniform Resource Locator (URL), colloquially termed a web address,[1] is a reference to a web resource that specifies its location on a computer network and a mechanism for retrieving it.
 
-URN: 3 A Uniform Resource Name (URN) is a Uniform Resource Identifier (URI) that uses the urn scheme.
+**URN**: 3 A Uniform Resource Name (URN) is a Uniform Resource Identifier (URI) that uses the urn scheme.
 
-HTTP: The Hypertext Transfer Protocol (HTTP) is a set of rules used to describe ow information is passed via hyperlinks between hypertext nodes. HTTP is the foundation of data communication for the World Wide Web.
+**HTTP**: The Hypertext Transfer Protocol (HTTP) is a set of rules used to describe ow information is passed via hyperlinks between hypertext nodes. HTTP is the foundation of data communication for the World Wide Web.
 
-Examples  
+## Examples  
 
-Structure
+### Structure
 
-URI
-URL
-URN
-Protocol
+* URI
 
-HTTP
-HTTPS
-Domain name
+* URL
 
-Second level domain name
-Subdomain
-Host name
-Top level domain name
-Extensions
+* URN
 
-Port
-Path to a file
-Parameters
-Anchor
+### Protocol
+
+* HTTP
+* HTTPS
+
+### Domain name
+
+* Second level domain name
+
+  * Subdomain
+
+  * Host name
+
+*Top level domain name
+
+### Extensions
+
+* Port
+
+* Path to a file
+
+* Parameters
+
+* Anchor
 
 | protocol |	domain name |	domain name |	domain name |	port |	path to file |	parameters |	anchor |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -526,24 +537,34 @@ Anchor
 | | subdomain |	host name	| | | | | |				
 | https:// |	www. |	example |	.com |	:80 |	/path/to/somefile.html |	?key1=value1&key2=value2 |	#somewhereInTheDocument ||
 
-Absolute v relative
+### Absolute v relative
 
-Used within an HTML document
-Full URL
-Implicit protocol
-Implicit domain name
-URL Naming - Semantic URL Considerations
+* Used within an HTML document
 
-Simplicity
-Memorability
-Interpretability
-Consistency
-References  
+* Full URL
+
+* Implicit protocol
+
+* Implicit domain name
+
+### URL Naming - Semantic URL Considerations
+
+* Simplicity
+
+* Memorability
+
+* Interpretability
+
+* Consistency
+
+## References  
 
 Lesson Footnotes
-1: Wikipedia - Uniform Resource Identifier
-2: Wikipedia - Uniform Resource Locator
-3: Wikipedia - Uniform Resource Name
+* 1: [Wikipedia - Uniform Resource Identifier](https://en.wikipedia.org/wiki/Uniform_Resource_Identifier)
+
+* 2: [Wikipedia - Uniform Resource Locator](https://en.wikipedia.org/wiki/URL)
+
+* 3: [Wikipedia - Uniform Resource Name](https://en.wikipedia.org/wiki/Uniform_Resource_Name)
 
 --- 
 
