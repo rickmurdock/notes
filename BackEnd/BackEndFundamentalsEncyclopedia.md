@@ -73,49 +73,49 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 * **Internet Protocol Versions**:
 
-  * IPv4: Most widely used Internet protocol. (Covered in this lesson)
+  * `IPv4`: Most widely used Internet protocol. (Covered in this lesson)
 
     * Made up of four sets of numbers divided by periods.
 
     * Each set containing 1-3 digits, ranging from 0 to 255.
 
-    * Static: number never changes.
+    * `Static`: number never changes.
 
       * Reveals a device's continent, country, region, and city.
 
-    * Dynamic: temporary. Assigned each time a machine accesses the internet.
+    * `Dynamic`: temporary. Assigned each time a machine accesses the internet.
 
-  * IPv6: Evolutionary upgrade to IPv4. Designed to address the decreasing number of Internet addresses.
+  * `IPv6`: Evolutionary upgrade to `IPv4`. Designed to address the decreasing number of Internet addresses.
 
     * Uses a 128-bit address scheme that uses hexadecimal and separated by colons. i.e., 2bbe:1850:3:300:h8gg:ba21:68ce
 
     * See references for more details.
 
-* Ports: an operating system's communication endpoint.
+* `Ports`: an operating system's communication endpoint.
 
-  * Port number: 16-bit integer, ranging from 0 to 65535.
+  * **Port number**: 16-bit integer, ranging from 0 to 65535.
 
     * 0 - 1023: system/well-know ports. Widely used network services. i.e., 80 HTTP, 443 HTTPS, 22 SSH, 21 FTP, 70 gopher, etc. (see references)
 
-    * 1024 - 49151: registered ports. Assigned by IANA to an entity. i.e., 1020 Quicktime, 23399 Skype, 2375 Docker REST API.
+    * 1024 - 49151: registered ports. Assigned by [IANA](https://www.iana.org/) to an entity. i.e., 1020 Quicktime, 23399 Skype, 2375 Docker REST API.
 
     * 49152 - 65536: private/dynamic ports. Cannot be registered with IANA.
 
-  * Transport layer: specify source and destination port number in the header.
+  * **Transport layer**: specify source and destination port number in the header.
 
-  * Protocol: interaction rules used by endpoints in order to communicate.
+  * **Protocol**: interaction rules used by endpoints in order to communicate.
 
-    * TCP (Transmission Control Protocol): connection-based transmission of data.
+    * `TCP` (Transmission Control Protocol): connection-based transmission of data.
 
       * Dependent on successful connection between endpoints.
 
       * Data is sent and received in sequential order.
       
 
-* IP/Port relationship: the IP address is used to locate a particular device. The port is used to access a network service on that device.
+* **IP/Port relationship**: the `IP address` is used to locate a particular device. The `port` is used to access a network service on that device.
 
-> * All communication on the internet is from IP address to IP address.
-> * A router assigns both 'private' and 'public' IP addresses. 'Public' addresses can be accessed over the internet. 'Private' addresses are only accessible from within the device's network.
+> * All communication on the internet is from `IP address` to `IP address`.
+> * A router assigns both 'private' and 'public' `IP addresses`. 'Public' addresses can be accessed over the internet. 'Private' addresses are only accessible from within the device's network.
 
 ### Example  
 
@@ -135,19 +135,19 @@ In this example we run a local server on a local network, accessing port 3000.
 
 ## Terminology  
 
-* Node.js: open-source and cross-platform JavaScript runtime used to build network application.
+* **Node.js**: open-source and cross-platform JavaScript runtime used to build network application.
 
-  * Provides JavaScript modules for web application development.
+  * Provides JavaScript [modules](https://medium.com/startup-study-group/40-npm-modules-we-can-t-live-without-36e29e352e3a) for web application development.
 
   * It is fast and never buffers data.
 
   * Scalable.
 
-* Express.js: open-source Node.js framework designed to build web applications and API's.
+* **Express.js**: open-source Node.js framework designed to build web applications and API's.
 
 ## Pre-requisite  
 
-* Install node:
+* **Install node**:
 
 Check node version:
 
@@ -155,7 +155,7 @@ Check node version:
   $ node -v
 ```
 
-Install node: brew install node
+Install node: `brew install node`
 
 ```
   $ brew install node
@@ -192,16 +192,25 @@ app.listen(3000, function () {
 });
 ```
 
-Start application:
+### Start application:
 
-Simply call 'node' followed by the app's name in terminal.
+Call `node` followed by the app's name in terminal.
 
+```
 $ node express-app.js
-Open browser to: localhost:3000
-starting-node-app.jpeg
-Try it!  
+```
 
-Starting Node.zip (424 KB)
+* Open browser to: 
+
+```
+localhost:3000
+```
+
+starting-node-app.jpeg
+
+## Try it!  
+
+> Starting Node.zip (424 KB)
 
 ---
 
