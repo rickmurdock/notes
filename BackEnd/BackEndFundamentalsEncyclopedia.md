@@ -1766,7 +1766,7 @@ User.findOne({
 
 * In this example, we use an id of 1234.
 
-```
+```js
 User.findById(1234).then(function (user) {
   //Code here
 })
@@ -1829,7 +1829,7 @@ User.findAll({
 
 #### Get a count
 
-```
+```js
 User.count({
   where: { state: 'NC' }
 }).then(function (count) {
@@ -1841,7 +1841,7 @@ User.count({
 
 #### limit
 
-```
+```js
 // Limit the results to 20.
 User.findAll({ limit: 20 })
 ```
@@ -1907,13 +1907,15 @@ User.destroy({
 
 # Express/Sequelize CRUD Operations  
 
-Terminology  
+## Terminology  
 
-CRUD: stands for create, read, update, and delete -- the four major actions you take on data through most web applications
-Examples  
+* *CRUD*: stands for create, read, update, and delete -- the four major actions you take on data through most web applications
 
-Here is an example set of routes for a bookmarking application that show a list of links; let you add, edit, and delete links; and track the number of clicks on each link. You can find the entire application with discrete commits to see how it was built at world-of-links.
+## Examples  
 
+Here is an example set of routes for a bookmarking application that show a list of links; let you add, edit, and delete links; and track the number of clicks on each link. You can find the entire application with discrete commits to see how it was built at [world-of-links](https://github.com/tiycnd/world-of-links).
+
+```js
 // index of all links
 router.get("/links", function (req, res) {
     models.Link.findAll().then(function (links) {
@@ -2030,9 +2032,11 @@ router.post("/links/:linkId/delete", function (req, res) {
         }
     })
 });
-References  
+```
 
-Sequelize Tutorial - Instances
+## References  
+
+[Sequelize Tutorial - Instances](http://docs.sequelizejs.com/manual/tutorial/instances.html)
 
 ---
 
