@@ -2044,22 +2044,33 @@ router.post("/links/:linkId/delete", function (req, res) {
 
 # Associations: belongsTo, hasOne, hasMany, and belongsToMany  
 
-Terminology  
+## Terminology  
 
-associations: relationships between models.
-source model: the model defining an association
-target model: the model to which an association is being defined
-foreign key: a database column that contains references to another table
-target key: a database column that a foreign key references.
-Sequelize associations:
-belongsTo: creates an association in which the foreign key for the relationship exists on the source model. Establishes a one-to-one or many-to-one relationship.
-hasMany: creates an association in which the foreign key for the relationship exists on the target model. Establishes a one-to-many relationship.
-hasOne: creates an association in which the foreign key for the relationship exists on the target model. Establishes a one-to-one relationship.
-belongsToMany: creates an association in which there are two foreign keys on a third table. Establishes a many-to-many relationship.
-Examples  
+* *associations*: relationships between models.
 
-A migration adding a foreign key  
+* *source model*: the model defining an association
 
+* *target model*: the model to which an association is being defined
+
+* *foreign key*: a database column that contains references to another table
+
+* *target key*: a database column that a foreign key references.
+
+* Sequelize associations:
+
+  * `belongsTo`: creates an association in which the foreign key for the relationship exists on the source model. Establishes a one-to-one or many-to-one relationship.
+
+  * `hasMany`: creates an association in which the foreign key for the relationship exists on the target model. Establishes a one-to-many relationship.
+
+  * `hasOne`: creates an association in which the foreign key for the relationship exists on the target model. Establishes a one-to-one relationship.
+
+  * `belongsToMany`: creates an association in which there are two foreign keys on a third table. Establishes a many-to-many relationship.
+
+## Examples  
+
+### A migration adding a foreign key  
+
+```js
 // migrations/20170625173808-add-user-id-to-todo.js
 'use strict';
 
@@ -2083,38 +2094,51 @@ module.exports = {
     return queryInterface.removeColumn('Todos', 'userId');
   }
 };
-Tables for examples  
+```
+
+### Tables for examples  
 
 The "users" table:
 
-id	username
-1	alexis
-2	river
-3	dorian
+| id |	username |
+| --- | --- |
+| 1	| alexis |
+| 2	| river |
+| 3	| dorian |
+
 The "todos" table:
 
-id	userId	text
-1	1	Do homework
-2	1	Feed cat
-3	3	Plan vacation
+| id	| userId	| text |
+| --- | --- | :--- |
+| 1	| 1	| Do homework |
+| 2	| 1	| Feed cat |
+| 3	| 3	| Plan vacation |
+
 The "authors" table:
 
-id	name	userId
-1	Alexis Tseng	1
-2	River Whitaker	2
-3	Dorian Ramirez	3
+| id	| name	| userId |
+| --- | :--- | --- |
+| 1	| Alexis Tseng	| 1 |
+| 2	| River Whitaker	| 2 |
+| 3	| Dorian Ramirez	| 3 |
+
 The "books" table:
 
-id	title
-1	Vacation Planning for Type A Personalities
-2	An Exploration of the Netherworld
+| id	| title |
+| --- | :--- |
+| 1	| Vacation Planning for Type A Personalities |
+| 2	| An Exploration of the Netherworld |
+
 The "authors_books" table:
 
-id	authorId	bookId
-1	1	1
-2	2	1
-3	3	2
-4	1	2
+| id	| authorId	| bookId |
+| --- | --- | --- |
+| 1	| 1	| 1 |
+| 2	| 2	| 1 |
+| 3	| 3	| 2 |
+| 4	| 1	| 2 |
+
+```js
 const User = this.sequelize.define('User', {/* attributes */});
 const Todo  = this.sequelize.define('Todo', {/* attributes */});
 const Author = this.sequelize.define('Author', {/* attributes */});
@@ -2130,8 +2154,11 @@ Author.belongsToMany(Book, {
 Book.belongsToMany(Author, {
   through: 'authors_books', foreignKey: 'bookId', otherKey: 'authorId'
 });
-NOTE: The above associations would be distributed into their models' source file in associate methods, like so:
+```
 
+**NOTE**: The above associations would be distributed into their models' source file in associate methods, like so:
+
+```js
 // models/todo.js
 'use strict';
 module.exports = function(sequelize, DataTypes) {
@@ -2147,6 +2174,7 @@ module.exports = function(sequelize, DataTypes) {
   }
   return Todo;
 };
+```
 
 ---
 
@@ -2154,15 +2182,21 @@ module.exports = function(sequelize, DataTypes) {
 
 # Author Model Class Methods, Attributes, And Instance methods  
 
-Model validation  
+## Model validation  
 
-Sequelize automatically runs validations on create, update and save.
-Validations are defined in the model's attribute definitions.
-Set validate as follows: validate: validation-method.
-See complete list of validations.
-Validations are implemented with validator.js. See that library for documentation on individual validations.
+* Sequelize automatically runs validations on `create`, `update` and `save`.
+
+* Validations are defined in the model's attribute definitions.
+
+* Set `validate` as follows: `validate: validation-method`.
+
+* [See complete list of validations.](http://docs.sequelizejs.com/manual/tutorial/models-definition.html#validations)
+
+* Validations are implemented with [validator.js](https://github.com/chriso/validator.js). See that library for documentation on individual validations.
+
 An example:
 
+```js
 var User = sequelize.define('user', {
   username: {
     type: Sequelize.STRING,
@@ -2180,10 +2214,13 @@ var User = sequelize.define('user', {
     }
   }
 });
-Handling validation and other errors  
+```
 
-When an error occurs in a Sequelize method that returns a promise (like create or save), you have to use a catch method to handle it. An example:
+## Handling validation and other errors  
 
+When an error occurs in a Sequelize method that returns a promise (like `create` or `save`), you have to use a `catch` method to handle it. An example:
+
+```js
 // invalid username
 User.create({username: "!!!", email: "a@example.org"}).then(function (user) {
   console.log(user);
@@ -2191,8 +2228,11 @@ User.create({username: "!!!", email: "a@example.org"}).then(function (user) {
   console.log("Error", err);
 })
 // will log the error
-You can handle specific types of errors by passing the error type as the first argument to catch.
+```
 
+You can handle specific types of errors by passing the error type as the first argument to `catch`.
+
+```js
 User.create({username: "me", email: "me@example.org"})
 
 // creating a second one will cause a UniqueConstraintError
@@ -2206,12 +2246,15 @@ User.create({username: "me", email: "woot@example.org"}).then(function (user) {
   // handle all other errors
   console.log("Oh no!", err);
 })
-Bulk methods  
+```
 
-Create instances in bulk  
+## Bulk methods  
 
-Use the bulkCreate() method to create multiple instances at once. An example:
+### Create instances in bulk  
 
+Use the `bulkCreate()` method to create multiple instances at once. An example:
+
+```js
 User.bulkCreate([{
     username: 'Emerson',
     role: 'admin',
@@ -2229,12 +2272,17 @@ User.bulkCreate([{
 }).then(function(users){
     console.log(users) // Returns an array of user objects.
 });
-Validating bulk insertions  
+```
 
-Set validate attribute to true as a second option of the createBulk() method.
-The validate attribute must also be set in the model.
+### Validating bulk insertions  
+
+* Set `validate` attribute to `true` as a second option of the `createBulk()` method.
+
+* The `validate` attribute must also be set in the model.
+
 An example:
 
+```js
 // Define model.
 // Set validation.
 User.bulkCreate([{
@@ -2248,9 +2296,13 @@ User.bulkCreate([{
 }).catch(function(errors) {
     console.log(errors);
 })
-Update instances in bulk  
+```
 
-Use the update() in conjunction with an attribute(s) to be updated and a where clause to update many instances at once.
+### Update instances in bulk  
+
+* Use the `update()` in conjunction with an attribute(s) to be updated and a `where` clause to update many instances at once.
+
+```js
 User.update({
   { isActive: 'true'}, // Set attribute value for update.
   { where: { user_role: 'admin'}}
@@ -2260,9 +2312,13 @@ User.update({
 }).then(function (users) {
   // Do something with users
 })
-Delete instances in bulk  
+```
 
-Use the destroy() in conjunction with the where clause to delete many instances at once.
+### Delete instances in bulk  
+
+* Use the `destroy()` in conjunction with the `where` clause to delete many instances at once.
+
+```js
 User.destroy({
   where: {
     user_role: 'user'
@@ -2273,13 +2329,17 @@ User.destroy({
 }).then(function (users) {
   // Do something with users.
 });
-Defining Instance Methods  
+```
 
-Instance methods add functionality to models.
-To add them, we assign them to the model's prototype.
+## Defining Instance Methods  
 
-In this example we include a fullEmail function so that it is available in all instances of the model.
+* Instance methods add functionality to models.
 
+* To add them, we assign them to the model's *prototype*.
+
+* In this example we include a `fullEmail` function so that it is available in all instances of the model.
+
+```js
 'use strict';
 module.exports = function(sequelize, DataTypes){
   var User = sequelize.define('user', {
@@ -2291,13 +2351,18 @@ module.exports = function(sequelize, DataTypes){
   }
   return User;
 };
-Use this to gain access to the method.
+```
+
+* Use `this` to gain access to the method.
+
+```js
 User.create({
   username: 'cadence',
   email: 'cadence@example.org'
 }).then(function(user){
   console.log(user.fullEmail()); //Prints 'cadence <cadence@example.org>'
 });
+```
 
 ---
 
@@ -2305,14 +2370,17 @@ User.create({
 
 # Installing and setting up MongoDB  
 
-Terminology  
+## Terminology  
 
-NoSQL: a blanket name for databases that are not relational and do not use SQL
-MongoDB: a document database. Stores data in a JSON-like format. Uses JavaScript for queries.
-Examples  
+* *NoSQL*: a blanket name for databases that are not relational and do not use SQL
+
+* *MongoDB*: a document database. Stores data in a JSON-like format. Uses JavaScript for queries.
+
+## Examples  
 
 This example shows how to connect to MongoDB, create a database, and delete it.
 
+```
 $ mongo
 MongoDB shell version v3.4.4
 connecting to: mongodb://127.0.0.1:27017
@@ -2323,9 +2391,11 @@ switched to db testdb
 testdb
 > db.dropDatabase()
 { "ok" : 1 }
-References  
+```
 
-MongoDB docs
+## References  
+
+* [MongoDB docs](https://docs.mongodb.com/)
 
 ---
 
@@ -2333,18 +2403,23 @@ MongoDB docs
 
 # MongoDB databases, collections, and documents  
 
-Terminology  
+## Terminology  
 
-database: (in MongoDB) a storage area for collections
-collection: a named set of documents, analogous to a table in a relational database
-document: a JSON-like object with keys and values, analogous to a row in a relational database
-How does MongoDB differ from PostgreSQL?  
+* *database*: (in MongoDB) a storage area for collections
 
-There is no schema. You can store freeform data in the database.
-There is no easy way to join data from multiple collections, unlike in a relational database, where you can join multiple tables.
-Can I really store anything in MongoDB?  
+* *collection*: a named set of documents, analogous to a table in a relational database
 
-Not exactly. There is a formal list of what you can store, but for all purposes, you can store whatever you could use in a JSON object.
+* document*: a JSON-like object with keys and values, analogous to a row in a relational database
+
+## How does MongoDB differ from PostgreSQL?  
+
+* There is no schema. You can store freeform data in the database.
+
+* There is no easy way to join data from multiple collections, unlike in a relational database, where you can join multiple tables.
+
+## Can I really store anything in MongoDB?  
+
+Not exactly. There is a [formal list of what you can store](https://docs.mongodb.com/manual/reference/bson-types/), but for all purposes, you can store whatever you could use in a JSON object.
 
 ---
 
@@ -2352,12 +2427,15 @@ Not exactly. There is a formal list of what you can store, but for all purposes,
 
 # Importing and exporting data from MongoDB  
 
-Vocabulary  
+## Vocabulary  
 
-JSON: JavaScript Object Notation. A restricted version of object literals and JavaScript. Used for MongoDB exports.
-BSON: Binary JSON, the format used by MongoDB internally. Can store more types than JSON.
-Importing and exporting from MongoDB  
+* *JSON*: JavaScript Object Notation. A restricted version of object literals and JavaScript. Used for MongoDB exports.
 
+* *BSON*: [Binary JSON](https://en.wikipedia.org/wiki/BSON), the format used by MongoDB internally. Can store more types than JSON.
+
+## Importing and exporting from MongoDB  
+
+```
 $ mongoimport --db databaseName --collection collectionName --file inputFile.json
 2017-06-28T23:34:57.090-0400    connected to: localhost
 2017-06-28T23:34:58.550-0400    imported 25359 documents
@@ -2368,75 +2446,128 @@ $ mongoexport --db databaseName --collection collectionName --out outputFile.jso
 2017-06-28T23:35:55.004-0400    [###############.........]  newdb.restaurants  16000/25359  (63.1%)
 2017-06-28T23:35:55.452-0400    [########################]  newdb.restaurants  25359/25359  (100.0%)
 2017-06-28T23:35:55.452-0400    exported 25359 records
+```
 
 ---
 
 [NoSQL: MongoDB](NoSQLMongoDB.md)
 
-# MongoDB Operations  
+# MongoDB Operations   
 
-Terminology  
+## Examples  
 
-Examples  
+* Review connecting to MongoDB and selecting a database.
+
+* Show how to find many documents or a single document.
+
+* Show how to filter your search based on document fields, including nested fields.
+
+* Show how to insert documents.
+
+* Show how to update documents.
+
+* Show how to delete documents.
+
+* Show how to call the same Mongo commands from Node.
 
 All the below examples were written using the provided sample database. To import the database, run:
 
+```
 curl -o primer-dataset.json https://raw.githubusercontent.com/mongodb/docs-assets/primer-dataset/primer-dataset.json
 mongoimport --db newdb --collection restaurants --file primer-dataset.json
+```
 
-Setting the default number of records to show at once  
+### Setting the default number of records to show at once  
 
+```
 > DBQuery.shellBatchSize = 4
-Finding all documents  
+```
 
+### Finding all documents  
+
+```js
 db.restaurants.find()
-Finding one document  
+```
 
+### Finding one document  
+
+```js
 db.restaurants.findOne()
-Filtering records while finding  
+```
 
-Use a query filter document to filter records.
+### Filtering records while finding  
 
+Use a *[query filter document](https://docs.mongodb.com/manual/core/document/#document-query-filter)* to filter records.
+
+```js
 db.restaurants.find({name: "Wendy'S"})
 db.restaurants.find({cuisine: "Chinese", borough: "Brooklyn"})
 db.restaurants.find({cuisine: {$in: ["Chinese", "Thai", "Vietnamese"]}})
 db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}})
-See all the MongoDB query operators.
+```
 
-You can sort by calling .sort on the results with an object of fields to sort by:
+See [all the MongoDB query operators](https://docs.mongodb.com/manual/reference/operator/query/#query-selectors).
 
+You can sort by calling `.sort` on the results with an object of fields to sort by:
+
+```js
 db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"name": 1})
-1 means to sort ascending, -1 means to sort descending. The order of keys in the object is preserved, so you can specify multiple fields and it will sort in order.
+```
 
+`1` means to sort ascending, `-1` means to sort descending. The order of keys in the object is preserved, so you can specify multiple fields and it will sort in order.
+
+```js
 db.restaurants.find({cuisine: {$in: ["Thai", "Vietnamese"]}}).sort({"borough": 1, "name": 1})
-Filtering using nested documents  
+```
 
-You can use dot notation to search inside nested documents.
+### Filtering using nested documents  
 
+You can use *dot notation* to search inside nested documents.
+
+```js
 db.restaurants.find({"address.zipcode": "11218"});
-If you want to search for all documents based off an array value, you can reference the array like normal and you will get all records where any value in the array matches.
+```
 
+If you want to search for all documents based off an array value, you can reference the array like normal and you will get all records where *any* value in the array matches.
+
+```js
 // Find all restaurants that have ever gotten a C score.
 db.restaurants.find({"grades.grade": "C"})
+```
+
 To get records where all values in the array match, you have to get tricky. Here's one to get all restaurants that have only ever had "A" scores:
 
+```js
 db.restaurants.find({"grades.grade": {$not: {$in: ["B", "C", "Z"]}}});
+```
+
 To understand how this works, step through it:
 
-$in matches values that are in the array ["B", "C", "Z"]. This will bring back records where any grade in the array grades returns true for this test.
-This brings back all records where the restaurant has ever gotten a "B", "C", or "Z" (the only grades outside of "A" I saw.)
-$not gives us the opposite of that -- all records that the $in didn't match.
-So, we get all records where no grades.grade was "B", "C", or "Z".
+1. `$in` matches values that are in the array `["B", "C", "Z"]`. This will bring back records where any `grade` in the array `grades` returns true for this test.
+
+2. This brings back all records where the restaurant has ever gotten a "B", "C", or "Z" (the only grades outside of "A" I saw.)
+
+3. `$not` gives us the opposite of that -- all records that the `$in` didn't match.
+
+4. So, we get all records where no `grades.grade` was "B", "C", or "Z".
+
 You can simplify the above a little:
 
+```js
 db.restaurants.find({"grades.grade": {$nin: ["B", "C", "Z"]}});
+```
+
 You can reference specific elements of an array using dot notation. To find all restaurants where their last grade was an "A" (assuming that the grades are in descending order by date):
 
+```js
 db.restaurants.find({"grades.0.grade": "A"});
-Inserting documents  
+```
 
-When you insert a document, it will be given a unique _id unless you provide one.
+### Inserting documents  
 
+When you insert a document, it will be given a unique `_id` unless you provide one.
+
+```js
 // This will insert a new document. The result object contains two values,
 // `acknowledged` and `insertedId`. `insertedId` lets us look up the document
 // we inserted.
@@ -2448,8 +2579,11 @@ var result = db.restaurants.insertOne({
   ],
   "name": "Favorite Delights", "restaurant_id": "1"})
 db.restaurants.findOne({"_id": result.insertedId})
-insertMany can insert more than one document at a time:
+```
 
+`insertMany` can insert more than one document at a time:
+
+```js
 db.restaurants.insertMany([{
   "address": {"building": "100", "street": "Fiction St", "zipcode": "00001" },
   "borough": "Yonkers",
@@ -2468,21 +2602,30 @@ db.restaurants.insertMany([{
   ],
   "name": "Garbage Delights",
   "restaurant_id": "2"}])
-Creating a unique index  
+```
 
-You will have fields in your documents that you want to ensure are unique. To do this, you need to create a unique index.
+### Creating a unique index  
 
+You will have fields in your documents that you want to ensure are unique. To do this, you need to [create a unique index](https://docs.mongodb.com/manual/core/index-unique/#index-type-unique).
+
+```js
 // Ensure restaurant_id is unique.
 db.restaurants.createIndex( { "restaurant_id": 1 }, { unique: true } )
+```
+
 You can see your collection's indexes like so:
 
+```js
 db.restaurants.getIndexes()
-Updating documents  
+```
 
-There are two main functions to update documents, updateOne and updateMany. Each of these take a filter -- like we used with find -- and an object made of update operators. These operators tell us how to manipulate the document.
+### Updating documents  
+
+There are two main functions to update documents, `updateOne` and `updateMany`. Each of these take a filter -- like we used with `find` -- and an object made of [update operators](https://docs.mongodb.com/manual/reference/operator/update/). These operators tell us how to manipulate the document.
 
 Some examples:
 
+```js
 // Add city and state to all addresses
 db.restaurants.updateMany({},
   {$set: {"address.city": "New York", "address.state": "NY"}});
@@ -2501,8 +2644,11 @@ db.restaurants.updateOne({restaurant_id: "30191841"},
 // Fix an error in data entry across multiple documents
 db.restaurants.updateMany({"address.street": "West   57 Street"},
   {$set: {"address.street": "West 57 Street"}})
-You can also upsert documents. Upsert means to update if records are found, or insert a document if they are not found. Add a third object of options with upsert equal to true to do so.
+```
 
+You can also upsert documents. *Upsert* means to update if records are found, or insert a document if they are not found. Add a third object of options with `upsert` equal to true to do so.
+
+```js
 db.restaurants.updateOne(
   {restaurant_id: "99"},
   {
@@ -2511,12 +2657,15 @@ db.restaurants.updateOne(
   },
   {upsert: true}
 );
+```
+
 Your search parameters must be unique for an upsert to work.
 
-Deleting records  
+### Deleting records  
 
-To delete records, use deleteOne or deleteMany. These take a query like find and findOne.
+To delete records, use `deleteOne` or `deleteMany`. These take a query like `find` and `findOne`.
 
+```js
 // Delete restaurant id 99
 db.restaurants.deleteOne({restaurant_id: "99"})
 
@@ -2525,19 +2674,27 @@ db.restaurants.deleteMany({"borough": "Manhattan"})
 
 // Delete all restaurants
 db.restaurants.deleteMany({})
-Using MongoDB from Node  
+```
+
+### Using MongoDB from Node  
 
 All the commands we have run so far run inside the MongoDB shell, but you can run them from Node, too. To do so, install the Node MongoDB library:
 
+```
 npm install mongodb --save
-The majority of method names are the same, but instead of directly returning data, they take callbacks, or if you don't provide a callback, return promises. See the Node.js MongoDB quickstart to see it in action.
+```
 
-References  
+The majority of method names are the same, but instead of directly returning data, they take callbacks, or if you don't provide a callback, return promises. See the [Node.js MongoDB quickstart](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/) to see it in action.
 
-MongoDB shell quickstart
-Node.js MongoDB quickstart
-Query operators
-Update operators
+## References  
+
+* [MongoDB shell quickstart](https://docs.mongodb.com/getting-started/shell/)
+
+* [Node.js MongoDB quickstart](http://mongodb.github.io/node-mongodb-native/2.2/quick-start/quick-start/)
+
+* [Query operators](https://docs.mongodb.com/manual/reference/operator/query/#query-selectors)
+
+* [Update operators](https://docs.mongodb.com/manual/reference/operator/update/)
 
 ---
 
