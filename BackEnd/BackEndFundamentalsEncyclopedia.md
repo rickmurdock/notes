@@ -383,7 +383,7 @@ app.listen(3000, function () {
 
 #### index.html:
 
-```jsx
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1629,37 +1629,51 @@ DELETE FROM students WHERE height_cm >= 213.36;
 
 # Create models with Sequelize  
 
-Terminology  
+## Terminology  
 
-ORM: stands for Object-Relational Mapper. Provides a way to access a database from your program while treating your database as an object and individual rows as objects.
-model: an object that holds data and is responsible for saving and updating its associated database record.
-migration: a file that programmatically alters your database schema.
-Setting up Sequelize  
+* *ORM*: stands for Object-Relational Mapper. Provides a way to access a database from your program while treating your database as an object and individual rows as objects.
 
-Make sure you have run npm install -g sequelize-cli!
+* *model*: an object that holds data and is responsible for saving and updating its associated database record.
 
-cd into a directory with an Express app.
-Run npm install sequelize pg --save. pg is the library for using PostgreSQL.
-Run sequelize init. This will create the config, migrations, seeders, and models directories.
-Edit config/config.json. The dialect should be "postgres" and the username should be your local username. Change the database names to reflect the actual project.
-Create the development database using createdb on the command line.
-Run sequelize db:migrate to test your connection.
-Note: At this time, pg gives a deprecation notice with sequelize. This is nothing to worry about.
+* *migration*: a file that programmatically alters your database schema.
 
-Creating a model  
+## Setting up Sequelize  
 
-To create a model with Sequelize, you run sequelize model:create on the command line with a set of flags. As an example, to create a User model with a name, an email, and a bio:
+Make sure you have run `npm install -g sequelize-cli`!
 
+1. `cd` into a directory with an Express app.
+
+2. Run `npm install sequelize pg --save`. `pg` is the library for using PostgreSQL.
+
+3. Run `sequelize init`. This will create the `config`, `migrations`, `seeders`, and `models` directories.
+
+4. Edit `config/config.json`. The dialect should be `"postgres"` and the username should be your local username. Change the database names to reflect the actual project.
+
+5. Create the development database using `createdb` on the command line.
+
+6. Run `sequelize db:migrate` to test your connection.
+
+**Note**: At this time, `pg` gives a deprecation notice with `sequelize`. This is nothing to worry about.
+
+## Creating a model  
+
+To create a model with Sequelize, you run `sequelize model:create` on the command line with a set of flags. As an example, to create a `User` model with a name, an email, and a bio:
+
+```
 sequelize model:create --name User --attributes 'name:string email:string bio:text'
-The types specified here are named differently than PostgreSQL calls them. See "Data Types" to get a full list. While these are upper-cased in the documentation, they can be lower-case on the command line. Options passed to them, like Sequelize.TEXT('tiny'), will have to be edited in the generated migration.
+```
 
-Run sequelize db:migrate to run the migration and update your database.
+The types specified here are named differently than PostgreSQL calls them. See ["Data Types"](http://docs.sequelizejs.com/manual/tutorial/models-definition.html#data-types) to get a full list. While these are upper-cased in the documentation, they can be lower-case on the command line. Options passed to them, like `Sequelize.TEXT('tiny')`, will have to be edited in the generated migration.
+
+Run `sequelize db:migrate` to run the migration and update your database.
 
 References  
 
-Getting started with Sequelize
-"Data types" in Model definition
-Migrations
+* [Getting started with Sequelize](http://docs.sequelizejs.com/manual/installation/getting-started.html)
+
+* ["Data types" in Model definition](http://docs.sequelizejs.com/manual/tutorial/models-definition.html)
+
+* [Migrations](http://docs.sequelizejs.com/manual/tutorial/migrations.html)
 
 ---
 
@@ -1667,39 +1681,50 @@ Migrations
 
 # Use Sequelize models  
 
-Terminology  
+## Terminology  
 
-promise: an alternative to callbacks for handling asynchronous code. See Why Promises?
-Examples  
+* *promise*: an alternative to callbacks for handling asynchronous code. See **[Why Promises?](http://bluebirdjs.com/docs/why-promises.html)**
 
-Requiring models  
+## Examples  
 
-To require a model, const models = require("./models") and use the models object to access the model, like so:
+### Requiring models  
 
+To require a model, `const models = require("./models")` and use the `models` object to access the model, like so:
+
+```js
 const models = require("./models");
 models.User.findOne().then(function (user) {
   console.log(user);
 })
-If you try to require the model file directly (like require("./models/user")), you will get a function, not your model class.
+```
 
-Building and saving model instances  
+If you try to require the model file directly (like `require("./models/user")`), you will get a function, not your model class.
+
+### Building and saving model instances  
 
 To build an unsaved instance:
 
+```js
 const todo = models.Todo.build({
   title: 'Finish writing learning objective',
   description: 'Sequelize has a lot of concepts to learn',
   deadline: new Date()
 });
-To save the instance, call save. If you want to do something with the saved instance, you will have to use .then on the returned value from save.
+```
 
+To save the instance, call `save`. If you want to do something with the saved instance, you will have to use `.then` on the returned value from `save`.
+
+```js
 todo.save().then(function (newTodo) {
   console.log(newTodo.id);
 })
-todo will be updated, but it is asynchronous, so there isn't a guarantee when that will happen. save() returns a promise.
+```
 
-create will build and save in one step. It is really easy to make a mistake with create, though: it returns a promise, not a model instance.
+`todo` will be updated, but it is asynchronous, so there isn't a guarantee when that will happen. `save()` returns a promise.
 
+`create` will build and save in one step. It is really easy to make a mistake with `create`, though: it returns a promise, not a model instance.
+
+```js
 // BAD
 const todo = models.Todo.create({
   title: 'Finish writing learning objective',
@@ -1713,11 +1738,17 @@ console.log(todo);
 //   _bitField: 67108864,
 //   _fulfillmentHandler0: undefined,
 // ...
-Querying for models  
+```
 
-Finding by attributes using findOne()
-Returns the first instance that matches the where clause.
-Returns null if not found.
+### Querying for models  
+
+#### Finding by attributes using findOne()
+
+* Returns the first instance that matches the `where` clause.
+
+* Returns `null` if not found.
+
+```js
 User.findOne({
   where: {
     username: 'kerry'
@@ -1725,15 +1756,27 @@ User.findOne({
 }).then(function (user) {
   //Code here
 });
-Finding by id using findById()
-Returns only one instance.
-Returns null if not found.
-In this example, we use an id of 1234.
+```
+
+#### Finding by id using findById()
+
+* Returns only one instance.
+
+* Returns `null` if not found.
+
+* In this example, we use an id of 1234.
+
+```
 User.findById(1234).then(function (user) {
   //Code here
 })
-Finding or creating an instance using findOrCreate()
-spread: spreads an array of values to parameters. Only used with findOrCreate(). Works like then, but makes it easier to work with multiple parameters.
+```
+
+#### Finding or creating an instance using findOrCreate()
+
+* `spread`: spreads an array of values to parameters. Only used with `findOrCreate()`. Works like `then`, but makes it easier to work with multiple parameters.
+
+```js
 User.findOrCreate({
   where: {
     username: 'brody'
@@ -1744,13 +1787,23 @@ User.findOrCreate({
 }).spread(function (user, created) {
   console.log(user.id, created);
 });
-Finding multiple instances using findAll()
-Returns all instances.
+```
+
+#### Finding multiple instances using findAll()
+
+* Returns *all* instances.
+
+```js
 User.findAll().then(function (users) {
   // code here
 })
-Search using specific attributes
-Returns all instances that match the where clause.
+```
+
+#### Search using specific attributes
+
+* Returns *all* instances that match the `where` clause.
+
+```js
 User.findAll({
   where: {
     user_name: 'Dan',
@@ -1758,8 +1811,13 @@ User.findAll({
 }).then(function (users) {
   // code here
 });
-Search using a range
-Returns an array containing instances specified in the range.
+```
+
+#### Search using a range
+
+* Returns an array containing instances specified in the range.
+
+```js
 User.findAll({
   where: {
     id: [1234, 1256, 1345]
@@ -1767,32 +1825,56 @@ User.findAll({
 }).then(function (users) {
   // code here
 });
-Get a count
+```
+
+#### Get a count
+
+```
 User.count({
   where: { state: 'NC' }
 }).then(function (count) {
   console.log(count);
 })
-Limiting, Offsetting, and Ordering  
+```
 
-limit
+### Limiting, Offsetting, and Ordering  
+
+#### limit
+
+```
 // Limit the results to 20.
 User.findAll({ limit: 20 })
-offset
+```
+
+#### offset
+
+```js
 // Steps over the first 5 elements.
 User.findAll({ offset: 5 })
-offset and limit
+```
+
+#### offset and limit
+
+```js
 // Step over the first 15 elements, and limits it to 5
 User.findAll({ offset: 15, limit: 5 })
-order
+```
+
+#### order
+
+```js
 User.findAll({order: ['startDate']})
 // Returns ORDER BY startDate
 
 User.findAll({order: [['startDate', 'DESC']]})
 // Returns ORDER BY startDate DESC
-Updating and Destroying Instances  
+```
 
-Updating an instance using update()
+### Updating and Destroying Instances  
+
+#### Updating an instance using update()
+
+```js
 User.update({
   email: 'awesomewinter@email.com',
   age: 34
@@ -1804,7 +1886,11 @@ User.update({
   // Code here.
   // Do something after updating instance.
 })
-Deleting an instance using destroy()
+```
+
+#### Deleting an instance using destroy()
+
+```js
 User.destroy({
   where: {
     user_name: 'ryan'
@@ -1813,6 +1899,7 @@ User.destroy({
   // Code here.
   // Do something after destroying instance.
 });
+```
 
 ---
 
