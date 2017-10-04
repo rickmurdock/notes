@@ -2970,14 +2970,19 @@ recipe.save(function(error) {
 
 ## Terminology  
 
-virtual field: This appears to be a field and can even be set if configured to, but is not stored in the database, and cannot be used in queries.
-instance method: A method available on all individual model instances.
-static method: A method available on the model class.
-query helper method: A method available when chaining query methods.
-Examples  
+* *virtual field*: This appears to be a field and can even be set if configured to, but is not stored in the database, and cannot be used in queries.
 
-Recipe schema used throughout lesson  
+* *instance method*: A method available on all individual model instances.
 
+* *static method*: A method available on the model class.
+
+* *query helper method*: A method available when chaining query methods.
+
+## Examples  
+
+### Recipe schema used throughout lesson  
+
+```js
 const recipeSchema = new mongoose.Schema({
     name: { type: String, required: true, unique: true },
     prepTime: Number,
@@ -2992,8 +2997,11 @@ const recipeSchema = new mongoose.Schema({
 })
 
 const Recipe = mongoose.model(recipeSchema);
-Virtual fields  
+```
 
+### Virtual fields  
+
+```js
 recipeSchema.virtual('totalTime').get(function () {
   return (this.prepTime || 0) + (this.cookTime || 0);
 });
@@ -3004,8 +3012,11 @@ pancakes.prepTime = 10;
 pancakes.cookTime = 20;
 console.log(pancakes.totalTime);
 // => 30
+```
+
 You can even have a virtual field that you can set:
 
+```js
 recipeSchema.virtual('allSteps')
     .get(function () {
         return this.steps.join("\n");
@@ -3030,8 +3041,11 @@ console.log(recipe.allSteps);
 // => Cook until golden brown.
 console.log(steps[2]);
 // => Cook until golden brown.
-Instance methods  
+```
 
+### Instance methods  
+
+```js
 recipeSchema.methods.findRecipesFromSameSource = function (callback) {
   return this.model('Recipe').find({
     source: this.source,
@@ -3045,8 +3059,11 @@ grandmasPancakes.findRecipesFromSameSource()
     console.log(recipes)
   })
   .catch(handleError);
-Static methods  
+```
 
+### Static methods  
+
+```js
 recipeSchema.statics.findByMaxIngredients = function (maxIngredients, callback) {
     return this.find({ingredients: {$lte: {$size: maxIngredients}}});
 };
@@ -3054,8 +3071,11 @@ recipeSchema.statics.findByMaxIngredients = function (maxIngredients, callback) 
 // later...
 
 Recipe.findByMaxIngredients(3).then(handleSuccess).catch(handleError);
-Query methods  
+```
 
+### Query methods  
+
+```js
 recipeSchema.query.maxIngredients = function (maxIngredients, callback) {
     return this.where({ingredients: {$lte: {$size: maxIngredients}}});
 };
@@ -3066,9 +3086,11 @@ Recipe.find({cookTime: {$lte: 30}})
   .maxIngredients(3)
   .then(handleSuccess)
   .catch(handleError);
-References  
+```
 
-Mongoose schema docs
+## References  
+
+* [Mongoose schema docs](http://mongoosejs.com/docs/guide.html)
 
 ---
 
@@ -3078,51 +3100,81 @@ Mongoose schema docs
 
 ## Terminology  
 
-Curl (curl): a command line tool for URL manipulations and transfers, commonly used for making HTTP requests.
-Postman (Postman): a Graphical user interface for making HTTP requests.
-Postman features  
+* **Curl** (`curl`): a command line tool for URL manipulations and transfers, commonly used for making HTTP requests.
+
+* **Postman** ([Postman](https://www.getpostman.com/)): a Graphical user interface for making HTTP requests.
+
+### Postman features  
 
 Request builder
 
-method
-URL
-headers
-body
-cookies
-URL encoded vs Raw
+* method
+
+* URL
+
+* headers
+
+* body
+
+* cookies
+
+* URL encoded vs Raw
+
 Response
 
-body
-headers
-status code
-response time
-response size
-cookies
+* body
+
+* headers
+
+* status code
+
+* response time
+
+* response size
+
+* cookies
+
 Other
 
-Examine History
-Save a request
-Save collections of requests
-Save a response
-Examples  
+* Examine History
 
-Show curl usage and options
+* Save a request
 
+* Save collections of requests
+
+* Save a response
+
+## Examples  
+
+Show `curl` usage and options
+
+```
 $ curl --help
-Show curl manual (verbose)
+```
 
+Show `curl` manual (verbose)
+
+```
 $ curl --manual
 # or pipe it to less to page it
 $ curl --manual | less
+```
+
 GET assets from a URL
 
+```
 $ curl https://someserver.com/api
+```
+
 POST data to a URL
 
+```
 curl --data "price=19%2E99&qty=3"  https://someserver.com/api
-References  
+```
 
-Postman - Docs
+## References  
+
+[Postman - Docs](https://www.getpostman.com/docs/)
 
 ---
 
@@ -3132,13 +3184,15 @@ Postman - Docs
 
 ## Terminology  
 
-Content type: 1In responses, a Content-Type header tells the client what the content type of the returned content actually is.
+* **Content type**: 1In responses, a `Content-Type` header tells the client what the content type of the returned content actually is.
+
 When sending a JSON response we have to tell the client that the response we're sending is JSON in order for the client to accurately communicate and interpret the response.
 
-Examples  
+## Examples  
 
-Using the Express res.json() method to send an object and an array of objects.
+Using the Express `res.json()` method to send an object and an array of objects.
 
+```ja
 app.get('/todo', function(req, res) {
   res.json({title: 'Return some JSON data', complete: false});
 })
@@ -3160,8 +3214,11 @@ app.get('/todos', function(req, res) {
   ]
   res.json(todos);
 })
-Using the Express res.jsonp() method to send an object and an array of objects with support for JSONP.
+```
 
+Using the Express `res.jsonp()` method to send an object and an array of objects with support for JSONP.
+
+```js
 app.get('/todo', function(req, res) {
   res.jsonp({title: 'Return some JSONP data', complete: false});
 })
@@ -3183,12 +3240,17 @@ app.get('/todos', function(req, res) {
   ]
   res.jsonp(todos);
 })
-References  
+```
 
-MDN - Content Type
-Express - res.json
+## References  
+
+* [MDN - Content Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
+
+* [Express - res.json](https://expressjs.com/en/api.html#res.json)
+
 Lesson Footnotes
-1: MDN - Content Type
+
+* 1: [MDN - Content Type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type)
 
 ---
 
@@ -3198,40 +3260,59 @@ Lesson Footnotes
 
 Use appropriate HTTP verb for the action being performed:
 
-GET: Gets data from the server
-POST: Sends data to the server
-PUT: Update data on a server; overwrites a resource with a complete new body
-PATCH: Update data on a server; applies partial modifications to a resource
-DELETE: Deletes data from the server
+* `GET`: Gets data from the server
+
+* `POST`: Sends data to the server
+
+* `PUT`: Update data on a server; overwrites a resource with a complete new body
+
+* `PATCH`: Update data on a server; applies partial modifications to a resource
+
+* `DELETE`: Deletes data from the server
 
 ## Terminology  
 
-HTTP verbs also known as HTTP request methods. Verbs used by an application to indicate the desired action to be performed for a given resource.
-Examples  
+* **HTTP verbs** also known as HTTP request methods. Verbs used by an application to indicate the desired action to be performed for a given resource.
+
+## Examples  
 
 Use nouns for resources (route names)
 
-GET /items - Retrieves a list of items
-GET /items/7 - Retrieves a specific item
-POST /items - Creates a new item
-PUT /items/7 - Updates item #7
-PATCH /items/7 - Partially updates item #7
-DELETE /items/7 - Deletes item #7
-Notice the single endpoint /items has multiple functionalities based on the HTTP method. Also, we're using the plural /items instead of a potential /item, even for requests that only effect one model instance. This is for consistency and makes the API easier to implement and use.
+* `GET /items` - Retrieves a list of items
+
+* `GET /items/7` - Retrieves a specific item
+
+* `POST /items` - Creates a new item
+
+* `PUT /items/7` - Updates item #7
+
+* `PATCH /items/7` - Partially updates item #7
+
+* `DELETE /items/7` - Deletes item #7
+
+Notice the single endpoint `/items` has multiple functionalities based on the HTTP method. Also, we're using the plural `/items` instead of a potential `/item`, even for requests that only effect one model instance. This is for consistency and makes the API easier to implement and use.
 
 Relations can be defined by extending a resource route in cases where the relation is commonly requested along with the resource.
 
-GET /items/7/relations - Retrieves list of relations for item #7
-GET /items/7/relations/3 - Retrieves relation #3 for item #7
-POST /items/7/relations - Creates a new relation in item #7
-PUT /items/7/relations/3 - Updates relation #3 for item #7
-PATCH /items/7/relations/3 - Partially updates relation #3 for item #7
-DELETE /items/7/relations/3 - Deletes relation #3 for item #7
-Furthermore, if the id of a relation is unique among other relations it is possible to eliminate the use of /items in the routes used to update or delete an existing relation.
+* `GET /items/7/relations` - Retrieves list of relations for item #7
 
-PUT /relations/3 - Updates relation #3 for item #7
-PATCH /relations/3 - Partially updates relation #3 for item #7
-DELETE /relations/3 - Deletes relation #3 for item #7
+* `GET /items/7/relations/3` - Retrieves relation #3 for item #7
+
+* `POST /items/7/relations` - Creates a new relation in item #7
+
+* `PUT /items/7/relations/3` - Updates relation #3 for item #7
+
+* `PATCH /items/7/relations/3` - Partially updates relation #3 for item #7
+
+* `DELETE /items/7/relations/3` - Deletes relation #3 for item #7
+
+Furthermore, `if` the id of a relation is unique among other relations it is possible to eliminate the use of `/items` in the routes used to update or delete an existing relation.
+
+* `PUT /relations/3` - Updates relation #3 for item #7
+
+* `PATCH /relations/3` - Partially updates relation #3 for item #7
+
+* `DELETE /relations/3` - Deletes relation #3 for item #7
 
 ---
 
