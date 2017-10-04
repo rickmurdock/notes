@@ -3322,45 +3322,69 @@ Furthermore, `if` the id of a relation is unique among other relations it is pos
 
 ## Terminology  
 
-spinal-case: using a hyphen "-" to separate words
-Examples  
+* **spinal-case**: using a hyphen "-" to separate words
+
+## Examples  
 
 Use best practices when defining resources (URIs)
 
-Describe resources with nouns, not verbs.
-In NodeJS, spinal-case is most commonly used to describe a resource name.
+* Describe resources with nouns, not verbs.
+
+* In NodeJS, spinal-case is most commonly used to describe a resource name.
+
 Use the appropriate HTTP methods for the related CRUD operations.
 
-GET: Gets data from the server
-POST: Sends data to the server
-PUT: Update data on a server; overwrites a resource with a complete new body
-PATCH: Update data on a server; applies partial modifications to a resource
-DELETE: Deletes data from the server
+* `GET`: Gets data from the server
+
+* `POST`: Sends data to the server
+
+* `PUT`: Update data on a server; overwrites a resource with a complete new body
+
+* `PATCH`: Update data on a server; applies partial modifications to a resource
+
+* `DELETE`: Deletes data from the server
+
 Use HTTP headers to provide information about the request or response or about the object sent in the body.
 
 Make proper use of the various types HTTP headers.
 
-General Header: For general use in both request and response
-Client Request Header: Used only for request headers
-Server Response Header: used only for response headers
-Entity Header: Used to communicate meta information about the body or the resource identified by the request.
+* General Header: For general use in both request and response
+
+* Client Request Header: Used only for request headers
+
+* Server Response Header: used only for response headers
+
+* Entity Header: Used to communicate meta information about the body or the resource identified by the request.
+
 Use query parameters to provide further specificity to queried results
 
-Paging: When limiting the release of data to small increments or page-fulls
-Filtering: Restrict queried results to certain attributes containing specific values
-Sorting: Organize a set of queried results based on attributes' values
-Searching: Like filtering but with approximate matching
+* Paging: When limiting the release of data to small increments or page-fulls
+
+* Filtering: Restrict queried results to certain attributes containing specific values
+
+* Sorting: Organize a set of queried results based on attributes' values
+
+* Searching: Like filtering but with approximate matching
+
 Make proper use of status codes in API responses
 
-200: OK
-201: New resource created
-204: Successful action, no response body
-304: Data returned has not been modified
-400: Bad request
-401: Unauthorized request, requires authentication
-403: Valid request but the server refuses access
-404: Not Found, no resource at the provided URI
-500: Internal server error, these should not be returned to the client. The error should be logged server-side
+* `200`: OK
+
+* `201`: New resource created
+
+* `204`: Successful action, no response body
+
+* `304`: Data returned has not been modified
+
+* `400`: Bad request
+
+* `401`: Unauthorized request, requires authentication
+
+* `403`: Valid request but the server refuses access
+
+* `404`: Not Found, no resource at the provided URI
+
+* `500`: Internal server error, these should not be returned to the client. The error should be logged server-side
 
 ---
 
@@ -3370,25 +3394,29 @@ Make proper use of status codes in API responses
 
 ## Terminology  
 
-Route Parameters: 1Route parameters are named URL segments used to capture the values specified at their position in the URL. The named segments are prefixed with a colon and then the name (e.g. /:your_parameter_name/. The captured values are stored in the req.params object using the parameter names as keys (e.g. req.params.your_parameter_name).
+**Route Parameters**: 1Route parameters are named URL segments used to capture the values specified at their position in the URL. The named segments are prefixed with a colon and then the name (e.g. `/:your_parameter_name/`. The captured values are stored in the req.params object using the parameter names as keys (e.g. `req.params.your_parameter_name`).
 
-Query String: 2a query string is the part of a uniform resource locator (URL) containing data that does not fit conveniently into a hierarchical path structure. The query string commonly includes fields added to a base URL by a Web browser or other client application, for example as part of an HTML form.
+**Query String**: 2a query string is the part of a uniform resource locator (URL) containing data that does not fit conveniently into a hierarchical path structure. The query string commonly includes fields added to a base URL by a Web browser or other client application, for example as part of an HTML form.
 
-Examples  
+## Examples  
 
-Using Express, Sequelize, and Body Parser with a Todo model defined, the following routes describe our API endpoints.
+Using Express, Sequelize, and Body Parser with a `Todo` model defined, the following routes describe our API endpoints.
 
-A get() request to the /todos endpoint will respond with all model instances in the todo table.
+A `get()` request to the `/todos` endpoint will respond with all model instances in the `todo` table.
 
+```js
 app.get('/todos', function(req, res){
   Todo.findAll().then( function(data) {
     res.send(data);
   });
 });
-A get() request to the /todos/:id endpoint will respond with the model instance with the provided :id.
+```
 
-Ex /todos/7
+A `get()` request to the `/todos/:id` endpoint will respond with the model instance with the provided `:id`.
 
+Ex `/todos/7`
+
+```js
 app.get('/todos/:id', function(req, res){
   id = req.query.id
 
@@ -3396,64 +3424,105 @@ app.get('/todos/:id', function(req, res){
       res.send(todo);
   });
 });
-A get() request to the /todos/complete/:bool endpoint will respond with the model instances whose complete property value equals the :bool value provided.
+```
 
-Ex: /todos/complete/true
+A `get()` request to the `/todos/completed` endpoint will respond with the model instances whose `complete` property value equals `true`.
 
-app.get('/todos/complete/:bool', function(req, res){
-  isComplete = req.query.bool
+Ex: `/todos/completed`
 
+```js
+app.get('/todos/completed', function(req, res){
   Todo.findAll({
     where: {
-      complete: isComplete
+      complete: true
     }
-  }).then( function(data) {
+  }).then(function(data) {
       res.send(data);
   });
 });
 // SELECT * FROM todo WHERE complete = true;
-A get() request to the /todos/length/:num endpoint will respond with the model instances whose description property value's length equals the :num value provided.
+```
 
-Ex: /todos/length/12
+A `get()` request to the `/todos/uncompleted` endpoint will respond with the model instances whose `complete` property value equals `false`.
 
-app.get('/todos/length/:num', function(req, res){
-  num = req.query.num
+Ex: `/todos/uncompleted`
 
+```js
+app.get('/todos/uncompleted', function(req, res){
   Todo.findAll({
-    where: sequelize.where(sequelize.fn('char_length', sequelize.col('description')), num)
-  }).then( function(data) {
+    where: {
+      complete: false
+    }
+  }).then(function(data) {
       res.send(data);
+  });
+});
+// SELECT * FROM todo WHERE complete = false;
+```
+
+Using query parameters, a `get()` request to the `/todos?length=:num` endpoint will respond with the model instances whose `description` property value's length equals the `:num` value provided.
+
+Ex: `/todos/length/12`
+
+```js
+app.get('/todos', function(req, res){
+  let query = {};
+  if (parseInt(req.query.length)) {
+    let length = parseInt(req.query.length);
+    query = {
+      where: sequelize.where(
+        sequelize.fn('char_length', sequelize.col('description')),
+        length
+      )
+    }
+  }
+
+  Todo.findAll(query).then(function(data) {
+    res.send(data);
   });
 });
 // SELECT * FROM todo WHERE char_length(description) = 12;
-Using query parameters, a get() request to the /todos/range endpoint will respond with the model instances whose id property value is greater than or equal to the min value provided and whose id property value is less than or equal to the max value provided.
+```
 
-Ex: GET /todos/range?min=3&max=6
+Using query parameters, a `get()` request to the `/todos?range=:min,:max` endpoint will respond with the model instances whose `id` property value is greater than or equal to the `min` value provided and whose `id` property value is less than or equal to the `max` value provided.
 
-app.get('/todos/range', function(req, res){
-  const min = req.query.min;
-  const max = req.query.max;
+Ex: `GET /todos?range=3,6`
 
-  Todo.findAll({
-    where: {
-      id: {
-        $and: {
-          $gte: min,
-          $lte: max
+```js
+app.get('/todos', function(req, res){
+  let query = {};
+  if (req.query.range) {
+    const range = req.query.range.split(',');
+    const min = range[0];
+    const max = range[1];
+    query = {
+      where: {
+        id: {
+          $and: {
+            $gte: min,
+            $lte: max
+          }
         }
       }
     }
-  }).then( function(data) {
-      res.send(data);
+  }
+
+  Todo.findAll(query).then(function(data) {
+    res.send(data);
   });
 });
 // SELECT * FROM todo WHERE id >= 3 AND id <= 6
+```
 
 ## References  
 
-Lesson Footnotes
-1: MDN - Express Tutorial Part 4: Routes and controllers
-2: Wikipedia- Query String
+* [Best Practices for Designing a Pragmatic RESTful API](http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)
+
+#### Lesson Footnotes
+
+* 1: [MDN - Express Tutorial Part 4: Routes and controllers](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes)
+
+* 2: [Wikipedia- Query String](https://en.wikipedia.org/wiki/Query_string)
 
 ---
 
