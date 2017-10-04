@@ -2702,7 +2702,7 @@ The majority of method names are the same, but instead of directly returning dat
 
 # Schemas and Models with Mongoose  
 
-Terminology  
+## Terminology  
 
 schema (for Mongoose): A schema defines the shape of your data to be stored in MongoDB, along with rules about that data. A Mongoose schema is different than a SQL schema in that it's an app-level definition of your data structure, not imposed by the database.
 Examples  
@@ -2904,7 +2904,7 @@ Mongoose - Validation
 
 # Extending Mongoose models  
 
-Terminology  
+## Terminology  
 
 virtual field: This appears to be a field and can even be set if configured to, but is not stored in the database, and cannot be used in queries.
 instance method: A method available on all individual model instances.
@@ -3012,7 +3012,7 @@ Mongoose schema docs
 
 # Use and verify express JSON APIs using postman and curl  
 
-Terminology  
+## Terminology  
 
 Curl (curl): a command line tool for URL manipulations and transfers, commonly used for making HTTP requests.
 Postman (Postman): a Graphical user interface for making HTTP requests.
@@ -3066,7 +3066,7 @@ Postman - Docs
 
 # Return objects and arrays of data using JSON  
 
-Terminology  
+## Terminology  
 
 Content type: 1In responses, a Content-Type header tells the client what the content type of the returned content actually is.
 When sending a JSON response we have to tell the client that the response we're sending is JSON in order for the client to accurately communicate and interpret the response.
@@ -3139,7 +3139,8 @@ POST: Sends data to the server
 PUT: Update data on a server; overwrites a resource with a complete new body
 PATCH: Update data on a server; applies partial modifications to a resource
 DELETE: Deletes data from the server
-Terminology  
+
+## Terminology  
 
 HTTP verbs also known as HTTP request methods. Verbs used by an application to indicate the desired action to be performed for a given resource.
 Examples  
@@ -3174,7 +3175,7 @@ DELETE /relations/3 - Deletes relation #3 for item #7
 
 # Describe standard REST conventions in NodeJS  
 
-Terminology  
+## Terminology  
 
 spinal-case: using a hyphen "-" to separate words
 Examples  
@@ -3222,7 +3223,7 @@ Make proper use of status codes in API responses
 
 # Filter results based on URL parameters in NodeJS  
 
-Terminology  
+## Terminology  
 
 Route Parameters: 1Route parameters are named URL segments used to capture the values specified at their position in the URL. The named segments are prefixed with a colon and then the name (e.g. /:your_parameter_name/. The captured values are stored in the req.params object using the parameter names as keys (e.g. req.params.your_parameter_name).
 
@@ -3302,7 +3303,8 @@ app.get('/todos/range', function(req, res){
   });
 });
 // SELECT * FROM todo WHERE id >= 3 AND id <= 6
-References  
+
+## References  
 
 Lesson Footnotes
 1: MDN - Express Tutorial Part 4: Routes and controllers
@@ -3314,7 +3316,7 @@ Lesson Footnotes
 
 # Adding token based user authentication to an Express API  
 
-Terminology  
+## Terminology  
 
 JSON Web Token(JWT): a secured base64url encoded JSON object based protocol for transmitting restricted data.
 JSON object: made up of zero or more name and value pairs. names are strings and values are arbitrary JSON values.
@@ -3596,7 +3598,7 @@ jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
 
 # Restricting Access To Information Based On User Role  
 
-Terminology  
+## Terminology  
 
 User authorization: the process of granting resource access rights to specified entities based on role.
 
@@ -3781,7 +3783,8 @@ can be difficult to convince stakeholders that time spent on TDD is necessary an
 the same developer writing tests and functionality can still allow for blindspots
 false sense of security can lead to lack of integration testing or compliance testing
 tests require additional maintenance
-Terminology  
+
+## Terminology  
 
 Test Driven Development (TDD): the process of writing tests that gauge functionality against a set of requirements, then writing the software to match the tests. Software that does not meet requirements is not allowed in the code base. The process of writing tests, programming to pass tests, and improving code is repeated indefinitely in a growing application. New features are are added through TDD. Legacy code (including tests) are refactored along the same cycle. TDD can and should be applied to applications from conception through development but it can also be used to refactor legacy applications. TDD inspires confidence in development by ensuring code is functionally sound and meets requirements.
 Examples  
@@ -3803,7 +3806,7 @@ function multiplier(x, y) {
 
 # Author feature tests using Jest for an Express app  
 
-Terminology  
+## Terminology  
 
 Jest: Jest is a testing framework for NodeJS and client side JavaScript applications. Jest provides asynchronous testing with reporting.
 Supertest: Supertest is a library that allows to you make and test web requests and responses. Uses Superagent methods as well as its own .expect method.
@@ -4058,7 +4061,7 @@ You want to make sure your tests are deterministic -- that is, that when you run
 
 # Naming Conventions and Class/Function Length Best Practices  
 
-Terminology  
+## Terminology  
 
 function scope: Functions create a pocket of scope. Nested functions create internal pockets of scope which can access outer functions' scopes and global scopes. Outer scopes cannot access inner functions' scopes.
 block scope: Encapsulating scope in contexts other than functions; if statements and for loops, for example.
@@ -4158,7 +4161,7 @@ The use of the variable i obviously ins't very descriptive here. In this case i 
 
 # Appropriate Use cases To Run next()  
 
-Terminology  
+## Terminology  
 
 middleware:
 A function that comes before route handlers or even other middleware functions.
@@ -4325,7 +4328,7 @@ function errorHandler (err, req, res, next) {
 
 # Lecture Notes  
 
-Terminology  
+## Terminology  
 
 Injection: text-based attack that exploits an interpreter's syntax.
 Implications: data corruption, data loss, data theft, denial of access.
@@ -4530,7 +4533,7 @@ Bobby Tables
 
 # The Impact Of XSS On User Privacy  
 
-Terminology  
+## Terminology  
 
 XSS (Cross-site scripting):
 Allows an attacker to inject malicious code into a website through various methods.
@@ -4636,7 +4639,7 @@ app.post('/login', function(request, response){
 
 # Protecting User Password  
 
-Terminology  
+## Terminology  
 
 PBKDF2: a “password-strengthening algorithm” (HMAC) use to safeguard a password during a brute force attack by making it difficult, using iterations, to check whether or not that password is the master password.
 Iterations: the number of times the encryption algorithm is applied.
@@ -4840,7 +4843,7 @@ Standup: (scrum ceremony) a team meeting in which story progress is discussed fo
 
 # Using npm package.json scripts to start node and run arbitrary tasks  
 
-Terminology  
+## Terminology  
 
 npm scripts: command strings defined under the scripts property in the package.json main object.
 
@@ -5222,7 +5225,7 @@ Watch: Nordic.js 2015 • Kate Hudson - Advanced front-end automation with npm s
 
 # Using ESLint to find errors and coding style irregularities  
 
-Terminology  
+## Terminology  
 
 ESLint: open source JavaScript linting utility used to find problematic patterns or code that doesn't adhere to certain style guidelines.1
 
@@ -5499,7 +5502,7 @@ Some VPS providers: Digital Ocean, Linode.
 
 # Deploying A Node application on Heroku  
 
-Terminology  
+## Terminology  
 
 Heroku: a cloud platform as a service used for the deployment of web applications.1
 
@@ -5604,7 +5607,7 @@ Lesson Footnotes
 
 # Sending Emails with SendGrid  
 
-Terminology  
+## Terminology  
 
 SendGrid: cloud-based SMTP provider.
 
@@ -5718,7 +5721,7 @@ SendGrid App Example
 
 # Storing and retrieving objects in S3 block storage  
 
-Terminology  
+## Terminology  
 
 `S3`: stands for simple storage service.
 
