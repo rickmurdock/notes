@@ -2704,24 +2704,32 @@ The majority of method names are the same, but instead of directly returning dat
 
 ## Terminology  
 
-schema (for Mongoose): A schema defines the shape of your data to be stored in MongoDB, along with rules about that data. A Mongoose schema is different than a SQL schema in that it's an app-level definition of your data structure, not imposed by the database.
-Examples  
+* *schema* (for Mongoose): A schema defines the shape of your data to be stored in MongoDB, along with rules about that data. A Mongoose schema is different than a SQL schema in that it's an app-level definition of your data structure, not imposed by the database.
 
-Connecting to MongoDB with Mongoose  
+## Examples  
+
+### Connecting to MongoDB with Mongoose  
 
 Install Mongoose and Bluebird via NPM:
 
+```
 npm install mongoose@4.10.8 bluebird --save
-NOTE: Make sure to use the version number above. Version 4.11 will not work and will cause problems.
+```
 
-Then in app.js:
+**NOTE**: Make sure to use the version number above. Version 4.11 will not work and will cause problems.
 
+Then in `app.js`:
+
+```js
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 // Replace "test" with your database name.
 mongoose.connect('mongodb://localhost:27017/test');
-Creating a schema and model  
+```
 
+### Creating a schema and model  
+
+```js
 // models/recipe.js
 const mongoose = require('mongoose');
 
@@ -2741,8 +2749,11 @@ const recipeSchema = new mongoose.Schema({
 const Recipe = mongoose.model('Recipe', recipeSchema);
 
 module.exports = Recipe;
-Making an instance of your model  
+```
 
+### Making an instance of your model  
+
+```js
 var recipe = new Recipe({name: "Pancakes"});
 recipe.ingredients.push({ingredient: 'sugar', measure: " Tbsp"});
 console.log(recipe.toObject());
@@ -2754,10 +2765,13 @@ console.log(recipe.toObject());
 //        measure: 'tbsp',
 //        _id: 59553335625ccdda459e09b5,
 //        amount: 1 } ] }
-References  
+```
 
-Mongoose.js
-MDN Express Tutorial - Part 3 - Using Mongoose
+## References  
+
+* [Mongoose.js](http://mongoosejs.com/)
+
+* [MDN Express Tutorial - Part 3 - Using Mongoose](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/mongoose)
 
 ---
 
@@ -2765,10 +2779,11 @@ MDN Express Tutorial - Part 3 - Using Mongoose
 
 # Create, query, update, and delete models with Mongoose  
 
-Examples  
+## Examples  
 
 Creating an unsaved model:
 
+```js
 const recipe = new Recipe({name: "Pancakes", source: "Grandma"});
 recipe.save()
   .then(function () {
@@ -2777,23 +2792,35 @@ recipe.save()
   .catch(function () {
     // handle error
   })
+```
+
 Creating a model and saving in one command:
 
+```js
 Recipe.create({name: "Pancakes"})
   .then(handleSuccess)
   .catch(handleError);
+```
+
 Finding one record:
 
+```js
 Recipe.findOne({name: "Pancakes"})
   .then(handleSuccess)
   .catch(handleError);
+```
+
 Finding multiple records:
 
+```js
 Recipe.find({cookTime: {$gt: 15, $lt: 60}})
   .then(handleSuccess)
   .catch(handleError);
+```
+
 Complex queries:
 
+```js
 Recipe.find({source: "Grandma"})
   .where('cookTime').lt('30') // only cookTimes < 30
   .where({ingredients: {
@@ -2802,23 +2829,37 @@ Recipe.find({source: "Grandma"})
   .skip(5) // skip the first five
   .sort("-cookTime") // sort by cookTime descending
   .select("name cookTime") // only return name and cookTime
+```
+
 Updating one model:
 
+```js
 Recipe.updateOne({source: "Grandma"},
   {$push: {steps: "Call Grandma and tell her how it was."}})
+```
+
 Updating multiple models:
 
+```js
 Recipe.updateMany({source: "Grandma"},
   {$push: {steps: "Call Grandma and tell her how it was."}})
+```
+
 Deleting one model:
 
+```js
 Recipe.deleteOne({name: "Green Bean Casserole"})
+```
+
 Deleting multiple models:
 
+```js
 Recipe.deleteOne({prepTime: {$gt: 60}})
-References  
+```
 
-Mongoose docs
+## References  
+
+* [Mongoose docs](http://mongoosejs.com/docs/guide.html)
 
 ---
 
@@ -2826,33 +2867,53 @@ Mongoose docs
 
 # Validating models with Mongoose  
 
-Mongoose Validation  
+### Mongoose Validation  
 
-Used to validate model instances
-Defined in the SchemaType
-Middleware construct
-runs before save with a pre('save') hook on every schema
-Can be called manually
-doc.validate(callback)
-doc.validateSync()
-Can be customized
-Built-in Validators  
+* Used to validate model instances
 
-required properties are checked before saving. Their values must be present.
-min values can be required of Number property types
-max values can be required of Number property types
-enum values can be required of String property types
-match values can be required of String property types
-maxLength values can be required of String property types
-minLength values can be required of String property types
-Custom Validators  
+* Defined in the SchemaType
 
-Can be added to a model property with the validate property
-The validate property expects either a function value or an array containing a function and an error message
-The validate function accepts the value of the model property as it's argument, allowing you to validate the value of the model property and return a boolean value
-unique is a helper, not a validator
-Examples  
+* Middleware construct
 
+  * runs before save with a `pre('save')` hook on every schema
+  
+* Can be called manually
+
+  * `doc.validate(callback)`
+
+  * `doc.validateSync()`
+
+* Can be customized
+
+### Built-in Validators  
+
+* `required` properties are checked before saving. Their values must be present.
+
+* `min` values can be required of `Number` property types
+
+* `max` values can be required of `Number` property types
+
+* `enum` values can be required of `String` property types
+
+* `match` values can be required of `String` property types
+
+* `maxLength` values can be required of `String` property types
+
+* `minLength` values can be required of `String` property types
+
+*** Custom Validators  
+
+* Can be added to a model property with the `validate` property
+
+* The `validate` property expects either a function value or an array containing a function and an error message
+
+* The `validate` function accepts the value of the model property as it's argument, allowing you to validate the value of the model property and return a boolean value
+
+> `unique` is a helper, not a validator
+
+## Examples  
+
+```js
 const recipeSchema = new mongoose.Schema({
   // Using the `required` validator
   name: { type: String, required: true, unique: true },
@@ -2893,10 +2954,13 @@ recipe.save(function(error) {
   assert.equal(error.errors.name.message, 'Path `name` is required.');
   assert.equal(error.errors.prepTime.message, 'Some prep time must be considered');
 });
-{PATH} is replaced with the invalid document path
-References  
+```
 
-Mongoose - Validation
+> `{PATH}` is replaced with the invalid document path
+
+## References  
+
+* [Mongoose - Validation](http://mongoosejs.com/docs/validation.html)
 
 ---
 
