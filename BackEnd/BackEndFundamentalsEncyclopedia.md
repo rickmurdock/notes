@@ -3532,45 +3532,72 @@ app.get('/todos', function(req, res){
 
 ## Terminology  
 
-JSON Web Token(JWT): a secured base64url encoded JSON object based protocol for transmitting restricted data.
-JSON object: made up of zero or more name and value pairs. names are strings and values are arbitrary JSON values.
-Advantages  
+* `JSON Web Token`**(JWT)**: a secured base64url encoded JSON object based protocol for transmitting restricted data.
 
-The JWT contains all the information needed to identify a user.
-It eliminates the need for session state.
-Safe against CSRF attacks. Token is signed using secure methods such as HMAC SHA-256 or RSA.
-The same JWT can be used by several servers / domains. Single Sign On.
-The JWT can be sent with the HTTP request in the body or header.
-How It Works  
+  * JSON object: made up of zero or more `name` and `value` pairs. `names` are strings and `values` are arbitrary JSON values.
 
-Two-way protocol: request/response.
-response (JWT) generated from the server.
-The browser makes a request for JWT data.
-The server generates a signed token and returns it to the browser.
-Subsequent requests: JWT can be sent with every HTTP request to the server in order to validate it and return secure resources.
-Structure  
+## Advantages  
 
-JWT has three parts
-Header.
-Payload.
-Signature.
-Header  
+* The JWT contains all the information needed to identify a user.
 
-Includes the token type and hashing algorithm.
+* It eliminates the need for `session state`.
+
+* Safe against CSRF attacks. Token is signed using secure methods such as HMAC SHA-256 or RSA.
+
+* The same JWT can be used by several servers / domains. Single Sign On.
+
+* The JWT can be sent with the `HTTP` request in the `body` or `header`.
+
+## How It Works  
+
+* Two-way protocol: `request`/`response`.
+
+  * `response` (JWT) generated from the server.
+
+  * The browser makes a `request` for JWT data.
+
+  * The server generates a signed token and returns it to the browser.
+
+* Subsequent requests: JWT can be sent with every `HTTP` request to the server in order to validate it and return secure resources.
+
+## Structure  
+
+* JWT has three parts
+
+  * `Header`.
+
+  * `Payload`.
+
+  * `Signature`.
+
+### Header  
+
+* Includes the token type and hashing algorithm.
+
+```js
 {
   "alg": "HS256",
   "typ": "JWT"
 }
-Payload  
+```
 
-Claims: user statements.
-3 types of claims:
-public: defined at will by the JWT user (developer).
-private: share predefined information between parties.
-reversed: predefined claims: iss, issuer; exp, expiration time; sub, subject; aud, audience.
-Base64Url encoded.
-Example
+### Payload  
 
+* `Claims`: user statements.
+
+* 3 types of `claims`:
+
+  * `public`: defined at will by the JWT user (developer).
+
+  * `private`: share predefined information between parties.
+
+  * `reversed`: predefined claims: `iss`, issuer; `exp`, expiration time; `sub`, subject; `aud`, audience.
+
+* Base64Url encoded.
+
+#### Example
+
+```js
 {
     "iss": "https://www.theironyard.com", // issuer
     "iat": 1497892326, // issued date
@@ -3580,55 +3607,90 @@ Example
     "name": "John", // additional public claim
     "admin": "true" // additional public claim
 }
-Signature  
+```
 
-Structure: encoded header, encoded payload, asecret and encryption algorithm.
-Example
+### Signature  
+
+* Structure: `encoded header`, `encoded payload`, a `secret` and `encryption algorithm`.
+
+#### Example
 
 The above JWT object, along with a key and HS256 encryption would generate:
 
 Key: qwertyuiopasdfghjklzxcvbnm123456
 
+```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3d3dy50aGVpcm9ueWFyZC5jb20iLCJpYXQiOjE0OTc4OTIzMjYsImV4cCI6MTUyOTQyODMyNiwiYXVkIjoiaHR0cHM6Ly93d3cubWVkaXVtLmNvbSIsInN1YiI6ImV4YW1wbGUiLCJuYW1lIjoiSm9obiIsImFkbWluIjoidHJ1ZSJ9.fYSVpviIN3Igi55RtVQaygTm2b7NDlrHXP5oboTiOhI
-Decode the token here
+```
 
-Generating And Verifying A JWT  
+Decode the token [here](https://jwt.io/#debugger)
 
-For this demonstration we are not using views.
-Prerequisites  
+## Generating And Verifying A JWT  
 
-Install jsonwebtoken.
+* For this demonstration we are not using views.
+
+### Prerequisites  
+
+* Install `jsonwebtoken`.
+
+```
 npm install jsonwebtoken --save
-Install Express.
-Install Body parser.
-Connect to Database (optional)
-Install, configure, and initialize Sequelize.
-Create a user model with user_name, password and user_email Sequelize attributes.
-Run migration.
-Structure  
+```
 
-JWT-auth-example
-Controllers
-example.js
-user.js
-Middlewares
-auth.js
-Models
-user.js
-index.js
-config.js
-package.json
-config.js  
+* Install Express.
 
-Author a configuration file.
-Here we will store the key we use to sign the JWT. For best practices and security reasons it is best not to commit into the repository.
+* Install Body parser.
+
+* Connect to Database (optional)
+
+* Install, configure, and initialize `Sequelize`.
+
+  * Create a user model with `user_name`, `password` and `user_email` `Sequelize` attributes.
+
+  * Run migration.
+  
+### Structure  
+
+* JWT-auth-example
+
+  * Controllers
+  
+    * example.js
+
+    * user.js
+    
+  * Middlewares
+
+    * auth.js
+    
+  * Models
+
+    * user.js
+
+  * index.js
+
+  * config.js
+
+  * package.json
+
+### config.js  
+
+* Author a configuration file.
+
+* Here we will store the key we use to sign the JWT. For best practices and security reasons it is best **not to commit** into the repository.
+
+```js
 module.exports = {
   // You may include other configuration options here.
   secret: 'supersecurepassword'
 }
-models/user.js  
+```
 
-Model sample.
+### models/user.js  
+
+* Model sample.
+
+```js
 var Sequelize = require('sequelize');
 // Set database
 var sequelize = {}; // Dev. Database
@@ -3668,10 +3730,15 @@ module.export = function(sequelize, DataTypes){
   });
   return User;
 };
-generating the JWT - controllers/user.js  
+```
 
-Here a JWT object is created and sent with the request.
-In this example, the app will look for the user. If not found it will use the sequelize create() method to create one.
+### generating the JWT - controllers/user.js  
+
+* Here a JWT object is created and sent with the request.
+
+* In this example, the app will look for the user. If not found it will use the `sequelize` `create()` method to create one.
+
+```js
 var jwt = require('jsonwebtoken');
 // Require the config file containing the key to sign the JWT.
 var config = require('../config.js');
@@ -3729,14 +3796,19 @@ module.exports = function(router){
   });
   return router;
 }
+```
 
-token verification - middlewares/auth.js  
+### token verification - middlewares/auth.js  
 
-Here we verify the JWT.
-We check for a token. If token is available, we verify.
-If it is invalid, or it has expired, we return a 401 status code with an error message.
-If token is not found, we redirect back to login.
+* Here we verify the JWT.
 
+* We check for a token. If token is available, we verify.
+
+  * If it is invalid, or it has expired, we return a 401 status code with an error message.
+
+  * If token is not found, we redirect back to login.
+
+```js
 var jwt = require('jsonwebtoken');
 var config = require('../config.js');
 
@@ -3757,17 +3829,24 @@ var auth = function(req, res, next) {
    res.redirect(401, '/')
    }
 }
-controllers/example.js  
+```
 
-Here we create a route, which we will protect later.
+### controllers/example.js  
+
+* Here we create a route, which we will protect later.
+
+```js
 module.exports = function(router){
   router.get('/example', function(req, res){
     res.json({data: 'JWT authentication implementation!'});
   });
   return router;
 }
-Implementation in index.js  
+```
 
+### Implementation in index.js  
+
+```js
 var express = require('express');
 var app = express();
 var router = express.Router();
@@ -3785,12 +3864,19 @@ app.use('/api', require('./controllers/example.js')(router));
 app.use('/', require('./controllers/user.js')(router));
 
 app.listen(3000);
-client side  
+```
 
-Manually set headers so that the middleware knows if the route is authenticated.
+### client side  
+
+* Manually set headers so that the middleware knows if the route is authenticated.
+
+```
 headers[‘x-access-token’] = [jwt-token]
-Changing Default Algorithm And Signing Asynchronously  
+```
 
+## Changing Default Algorithm And Signing Asynchronously  
+
+```js
 // Default algorith (HMAC SHA256)
 var jwt = require('jsonwebtoken');
 var token = jwt.sign({ foo: 'bar' }, 'secret');
@@ -3805,6 +3891,7 @@ var token = jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256'});
 jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
   console.log(token);
 });
+```
 
 ---
 
