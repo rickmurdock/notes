@@ -5090,53 +5090,83 @@ Lesson Footnotes
 
 # Agile Software Development  
 
-Agile Software Development Manifesto  
+## Agile Software Development Manifesto  
 
-Individuals and interactions: self-organization and motivation are an integral part of the collaborative development process.
+* **Individuals and interactions**: self-organization and motivation are an integral part of the collaborative development process.
 
-Working software: functional software is favored over document presentation during meetings.
+* **Working software**: functional software is favored over document presentation during meetings.
 
-Customer collaboration: continuous stakeholder and customer involvement is a key aspect of the development process.
+* **Customer collaboration**: continuous stakeholder and customer involvement is a key aspect of the development process.
 
-Responding to change: Agile Software Development methods are focused on responding and adapting to development changes.
+* **Responding to change**: `Agile Software Development` methods are focused on responding and adapting to development changes.
 
-Agile Software Development Principles  
+## Agile Software Development Principles  
 
-Improve customer satisfaction by delivering software early and continuously.
-Be receptive to changing requirements throughout the development process.
-Frequently deliver working software.
-Developers should collaborate daily with stakeholders.
-Support motivated individuals.
-Face-to-face communication is always best.
-Measure progress by the delivery of working software.
-Stakeholders, developers and users should be able to maintain a constant pace.
-Focused and continuous attention to technical excellence and good design.
-Simplicity is essential.
-Self-organizing teams produce the designs, requirements, and architectures.
-Regularly self assess the team in order to become more effective and to adjust to new circumstances.
-Agile Software Development Terminology  
+1. Improve customer satisfaction by delivering software early and continuously.
+
+2. Be receptive to changing requirements throughout the development process.
+
+3. Frequently deliver working software.
+
+4.Developers should collaborate daily with stakeholders.
+
+5. Support motivated individuals.
+
+6. Face-to-face communication is always best.
+
+7. Measure progress by the delivery of working software.
+
+8. Stakeholders, developers and users should be able to maintain a constant pace.
+
+9. Focused and continuous attention to technical excellence and good design.
+
+10. Simplicity is essential.
+
+11. Self-organizing teams produce the designs, requirements, and architectures.
+
+12. Regularly self assess the team in order to become more effective and to adjust to new circumstances.
+
+## Agile Software Development Terminology  
 
 This represents a handful of core terms. See references for more.
 
-Agile Software Development: methods and practices based on the Agile Manifesto, focusing on the development of solutions through the collaboration of self-organizing and cross-functional teams.
-Scrum: framework for the interactive development of complex products. Comprised of the product owner, scrum master, and scrum team. It is also comprise of iterations and ceremonies.
-Scrum master: responsible for maintaining scrum processes, such as stand-ups, removing obstacles that impede progress, facilitating the self-organization of the team.
-Iteration: period of time in which the team produces an increment of completed software, which encompasses the complete lifecycle phases (requirements, design, code and test).
-Sprint: scrum term for iteration. A sprint starts with a sprint planning meeting, it ends with a review and it is followed by a sprint retrospective meeting.
-Velocity: A form of measurement that measures a teams output.
-Fail-fast: rapid deployment of experiments focused gathering the feedback needed to improve software.
-Pair programming: two programmers working together on the same code from the one workstation. The 'driver' types the code and the 'navigator' reviews each line of code. It is a form of extreme programming.
-Extreme programming: software development framework focused on producing higher quality software. Comprised of frequent releases in short development cycles.
-Test Driven Development: process of 1-writing failing automated test cases focuses on improvement or new functionality. 2-writing code to make the test pass. 3-refactoring code.
-Burndown chart: a public chart displaying the total task hours remaining per day. It shows backlog progress.
-Backlog: a collection of tasks and stories to be completed.
-Story (user): basic unit of communication and planning between the scrum and the team.
-Task: description of work to be performed in order to complete a story.
-Task board: a chart use to organize a team's work by using three columns (at a minimum): "to do", "in progress", and "done".
-Product owner: represents the business stakeholder "voice" to the sprint team
-Stakeholder: anyone, not pertaining to the team, who has a vested interested in the outcome of the project.
-Team: a committed group of people working together to produce a product and improve performance over time.
-Standup: (scrum ceremony) a team meeting in which story progress is discussed focusing on: 1 - What has been done since yesterday. 2 - What is planned for the day. 3 - What obstacles are blocking progress.
+* **Agile Software Development**: methods and practices based on the `Agile Manifesto`, focusing on the development of solutions through the collaboration of self-organizing and cross-functional teams.
+
+* **Scrum**: framework for the interactive development of complex products. Comprised of the `product owner`, `scrum master`, and `scrum team`. It is also comprise of `iterations` and `ceremonies`.
+
+* **Scrum master**: responsible for maintaining `scrum` processes, such as `stand-ups`, removing obstacles that impede progress, facilitating the self-organization of the team.
+
+* **Iteration**: period of time in which the team produces an increment of completed software, which encompasses the complete lifecycle phases (requirements, design, code and test).
+
+* **Sprint**: `scrum` term for `iteration`. A sprint starts with a sprint planning meeting, it ends with a review and it is followed by a sprint retrospective meeting.
+
+* **Velocity**: A form of measurement that measures a teams output.
+
+* **Fail-fast**: rapid deployment of experiments focused gathering the feedback needed to improve software.
+
+* **Pair programming**: two programmers working together on the same code from the one workstation. The 'driver' types the code and the 'navigator' reviews each line of code. It is a form of `extreme programming`.
+
+* **Extreme programming**: software development framework focused on producing higher quality software. Comprised of frequent releases in short development cycles.
+
+* **Test Driven Development**: process of 1-writing failing automated test cases focuses on improvement or new functionality. 2-writing code to make the test pass. 3-refactoring code.
+
+* **Burndown chart**: a public chart displaying the total task hours remaining per day. It shows `backlog` progress.
+
+* **Backlog**: a collection of `tasks` and `stories` to be completed.
+
+* **Story (user)**: basic unit of communication and planning between the `scrum` and the `team`.
+
+* **Task**: description of work to be performed in order to complete a `story`.
+
+* **Task board**: a chart use to organize a team's work by using three columns (at a minimum): "to do", "in progress", and "done".
+
+* **Product owner**: represents the business `stakeholder` "voice" to the `sprint team`.
+
+* **Stakeholder**: anyone, not pertaining to the `team`, who has a vested interested in the outcome of the project.
+
+* **Team**: a committed group of people working together to produce a product and improve performance over time.
+
+* **Standup**: (`scrum` ceremony) a team meeting in which `story` progress is discussed focusing on: 1 - What has been done since yesterday. 2 - What is planned for the day. 3 - What obstacles are blocking progress.
 
 ---
 
