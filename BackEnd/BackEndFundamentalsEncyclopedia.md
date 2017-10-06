@@ -5910,44 +5910,63 @@ Lesson Footnotes
 
 ## Terminology  
 
-SendGrid: cloud-based SMTP provider.
+`SendGrid`: cloud-based SMTP provider.
 
-Setup and Installation  
+## Setup and Installation  
 
-Register for a trial SendGrid account.
-Login and retrieve your API key from 'settings' in the dashboard.
-Install SendGrid in your project directory: $ npm install sendgrid --save
-SendGrid API  
+* Register for a trial [SendGrid account](https://app.sendgrid.com/signup?id=71713987-9f01-4dea-b3d4-8d0bcd9d53ed&co=true).
 
-See docs for full implementation details.
-Node.js implementation with mail helper class and without mail helper class.
-Basic Implementation  
+  * Login and retrieve your API key from 'settings' in the dashboard.
 
-In this example we use the 'mail helper class'.
-Context  
+* Install SendGrid in your project directory: `$ npm install sendgrid --save`
 
-An app that uses a basic form to send emails.
-Email form:
+## SendGrid API  
 
-sendgrid-send.jpeg
-Confirmation page:
+* See [docs](https://sendgrid.com/docs/API_Reference/api_v3.html) for full implementation details.
 
-sendgrid-sent.jpeg
-App Structure  
+  * [Node.js implementation with mail helper class and without mail helper class.](https://github.com/sendgrid/sendgrid-nodejs)
 
-App
-views
-index.mustache
-sent.mustache
-app.js
-package.json
-Environmental Variable Setup  
+## Basic Implementation  
 
+* In this example we use the 'mail helper class'.
+
+### Context  
+
+* An app that uses a basic form to send emails.
+
+#### Email form:
+
+![sendgrid-send](./images/sendgrid-send.jpeg)
+
+#### Confirmation page:
+
+![sendgrid-sent](./images/sendgrid-sent.jpeg)
+
+### App Structure  
+
+* App
+
+  * views
+
+    * index.mustache
+    
+    * sent.mustache
+
+  * app.js
+  
+  * package.json
+  
+### Environmental Variable Setup  
+
+```
 echo "export SENDGRID_API_KEY='YOUR_API_KEY'" > sendgrid.env
 echo "sendgrid.env" >> .gitignore
 source ./sendgrid.env
-App Setup  
+```
 
+### App Setup  
+
+```
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -6012,9 +6031,11 @@ var mail = new helper.Mail(fromEmail, subject, toEmail, content);
 app.listen(3000, function () {
   console.log('Successfully started node application!')
 })
-Try it!  
+```
 
-SendGrid App Example
+### Try it!  
+
+[SendGrid App Example]()
 
 ---
 
@@ -6042,7 +6063,7 @@ SendGrid App Example
 
 * Basic bucket creation.
 
-```
+```js
 var params = {
  Bucket: "examplebucket" /* required */
 };
@@ -6054,7 +6075,7 @@ s3.createBucket(params, function(err, data) {
 
 * Advanced bucket creation, specifying access rights and location constraints.
 
-```
+```js
 var params = {
   Bucket: 'STRING_VALUE', /* required */
   ACL: private | public-read | public-read-write | authenticated-read,
@@ -6071,6 +6092,7 @@ s3.createBucket(params, function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
 });
+```
 
 ### Uploading an object  
 
@@ -6078,7 +6100,7 @@ s3.createBucket(params, function(err, data) {
 
 * See 'Implementation' for details about using the [Multer](https://www.npmjs.com/package/multer) / [Multer-s3](https://www.npmjs.com/package/multer-s3) modules and `AWS` to upload a file.
 
-```
+```js
 var params = {
  Body: <Binary String>,
  Bucket: "examplebucket",
@@ -6100,7 +6122,7 @@ s3.putObject(params, function(err, data) {
 
 * For the latest method, see the `GetObject` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getObject-property).
 
-```
+```js
 var params = {
   Bucket: "examplebucket", /* required */
   Key: "HappyFace.jpg" /* required */
@@ -6128,7 +6150,7 @@ var params = {
 
 * For the latest method, see the `ListBuckets` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listBuckets-property).
 
-```
+```js
 s3.listBuckets(function(err, data) {
   if (err) console.log(err, err.stack); // an error occurred
   else     console.log(data);           // successful response
@@ -6141,7 +6163,7 @@ s3.listBuckets(function(err, data) {
 
 > Bucket must be empty first!
 
-```
+```js
 var params = {
   Bucket: 'STRING_VALUE' /* required */
 };
@@ -6155,7 +6177,7 @@ s3.deleteBucket(params, function(err, data) {
 
 * For the latest method, see the `DeleteObject` [docs](http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#deleteObject-property).
 
-```
+```js
 var params = {
  Bucket: "examplebucket", /* required */
  Key: "objectkey.jpg" /* required */
@@ -6216,7 +6238,7 @@ npm install multer multer-s3 aws-sdk mustache-express --save
 
 * Save to your project folder and save your credentials.
 
-```
+```ja
 {
    "accessKeyId": "access key id goes here",
    "secretAccessKey": "secret access key goes here",
