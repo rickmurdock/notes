@@ -3901,20 +3901,27 @@ jwt.sign({ foo: 'bar' }, cert, { algorithm: 'RS256' }, function(err, token) {
 
 ## Terminology  
 
-User authorization: the process of granting resource access rights to specified entities based on role.
+`User authorization`: the process of granting resource access rights to specified entities based on role.
 
-Workflow  
+### Workflow  
 
-Incorporate user authentication (session or token).
-Create user model which includes a role (enum) field, i.e., admin, owner, user.
-Restrict information access:
-Get user role from request.
-Restrict resources based on user role.
-Authoring A Simple Middleware  
+* Incorporate user *authentication (session or token)*.
 
-For demonstration purposes.
-Example
+* Create user model which includes a role (enum) field, i.e., `admin`, `owner`, `user`.
 
+* Restrict information access:
+
+  * Get user role from request.
+
+  * Restrict resources based on user role.
+
+## Authoring A Simple Middleware  
+
+* For demonstration purposes.
+
+#### Example
+
+```js
 // Incorporate session / token authentication
 
 function userRole (role) {
@@ -3957,15 +3964,25 @@ app.get("/post/:id", userRole("owner"), function(req, res){
   res.send(selectedSelected);
   */
 });
-Using An Express Add-on  
+```
 
-Production setting consideration:
-Use an add-on such as Connect Roles.
-Connect Roles  
+## Using An Express Add-on  
 
-Installation:
+* Production setting consideration:
+
+  * Use an add-on such as Connect Roles.
+  
+### Connect Roles  
+
+  * Installation:
+
+```
 npm install connect-roles --save
-Usage
+```
+
+* Usage
+
+```js
 var authentication = require('your-authentication-module-here'); // Session or token authentication.
 var ConnectRoles = require('connect-roles');
 var express = require('express');
@@ -4038,7 +4055,9 @@ app.get('/post', user.can('access admin page'), function (req, res) {
 });
 
 app.listen(3000);
-See docs for Connect Roles method details.
+```
+
+* See [docs](http://documentup.com/ForbesLindesay/connect-roles#installation) for Connect Roles method details.
 
 ---
 
@@ -4048,58 +4067,91 @@ See docs for Connect Roles method details.
 
 TDD Process
 
-Requirements form test cases
-Tests are written to describe functionality
-functionality is written and improved to pass tests
-Repeat the process
+* Requirements form test cases
+
+* Tests are written to describe functionality
+
+* functionality is written and improved to pass tests
+
+* Repeat the process
+
 A unit usually consists of either a class or a module (group of related functions)
 
 Test Structure
 
-setup: set the state for the unit or overall environment to run the test
-execution: run the unit and capture output
-validation: ensure the output passes the test
-cleanup: restore the state of the unit or environment
+* setup: set the state for the unit or overall environment to run the test
+
+* execution: run the unit and capture output
+
+* validation: ensure the output passes the test
+
+* cleanup: restore the state of the unit or environment
+
 TDD looks like:
 
-simple design
-only write tests that match requirements
-only write code that passes tests
-modular design
-writing smaller units that perform limited tasks can provide reusable code
-units are intended to be tested independently and integrated later
-short development cycles
-repetition
-increased productivity
-test suite provides constant feedback
-less running of debuggers
-tests can act as documentation
+* simple design
+
+  * only write tests that match requirements
+
+  * only write code that passes tests
+
+* modular design
+
+  * writing smaller units that perform limited tasks can provide reusable code
+
+  * units are intended to be tested independently and integrated later
+
+* short development cycles
+
+* repetition
+
+* increased productivity
+
+* test suite provides constant feedback
+
+* less running of debuggers
+
+* tests can act as documentation
+
 TDD Limitations and Considerations:
 
-more time spent in early stages of development
-not reliable for user interfaces
-not reliable for working with databases
-can be difficult or limited when dependent on specific network configurations
-can be difficult to convince stakeholders that time spent on TDD is necessary and profitable
-the same developer writing tests and functionality can still allow for blindspots
-false sense of security can lead to lack of integration testing or compliance testing
-tests require additional maintenance
+* more time spent in early stages of development
+
+* not reliable for user interfaces
+
+* not reliable for working with databases
+
+* can be difficult or limited when dependent on specific network configurations
+
+* can be difficult to convince stakeholders that time spent on TDD is necessary and profitable
+
+* the same developer writing tests and functionality can still allow for blindspots
+
+* false sense of security can lead to lack of integration testing or compliance testing
+
+* tests require additional maintenance
 
 ## Terminology  
 
-Test Driven Development (TDD): the process of writing tests that gauge functionality against a set of requirements, then writing the software to match the tests. Software that does not meet requirements is not allowed in the code base. The process of writing tests, programming to pass tests, and improving code is repeated indefinitely in a growing application. New features are are added through TDD. Legacy code (including tests) are refactored along the same cycle. TDD can and should be applied to applications from conception through development but it can also be used to refactor legacy applications. TDD inspires confidence in development by ensuring code is functionally sound and meets requirements.
-Examples  
+* **Test Driven Development (TDD)**: the process of writing tests that gauge functionality against a set of requirements, then writing the software to match the tests. Software that does not meet requirements is not allowed in the code base. The process of writing tests, programming to pass tests, and improving code is repeated indefinitely in a growing application. New features are are added through TDD. Legacy code (including tests) are refactored along the same cycle. TDD can and should be applied to applications from conception through development but it can also be used to refactor legacy applications. TDD inspires confidence in development by ensuring code is functionally sound and meets requirements.
+
+## Examples  
 
 A basic Jest unit test example:
 
+```js
 test("multiplier", function () {
   expect(multiplier(3, 5)).toBe(15);
 })
+```
+
 The corresponding function:
 
+```
 function multiplier(x, y) {
   return x * y;
 }
+```
 
 ---
 
@@ -4109,10 +4161,13 @@ function multiplier(x, y) {
 
 ## Terminology  
 
-Jest: Jest is a testing framework for NodeJS and client side JavaScript applications. Jest provides asynchronous testing with reporting.
-Supertest: Supertest is a library that allows to you make and test web requests and responses. Uses Superagent methods as well as its own .expect method.
-Examples  
+* *Jest*: [Jest](https://facebook.github.io/jest/) is a testing framework for NodeJS and client side JavaScript applications. Jest provides asynchronous testing with reporting.
 
+* *Supertest*: [Supertest](https://github.com/visionmedia/supertest) is a library that allows to you make and test web requests and responses. Uses [Superagent](https://github.com/visionmedia/superagent) methods as well as its own `.expect` method.
+
+## Examples  
+
+```js
 // app.js
 const express = require('express');
 const app = express();
@@ -4128,6 +4183,9 @@ if (require.main === "module") {
 }
 
 module.exports = app;
+```
+
+```js
 // test/hello_test.js
 const request = require("supertest");
 const app = require("../app");
@@ -4143,14 +4201,17 @@ describe("GET /hello", function () {
       });
   })
 })
-Jest  
+```
 
-Jest is a library for writing tests.
+## Jest  
 
-By default, Jest runs all files that end in .test.js.
+[Jest](https://facebook.github.io/jest/) is a library for writing tests.
 
-Jest uses two functions, test and describe, to define tests. The important thing to remember about these is that you do not have to require them. They are made available to your tests by Jest.
+By default, Jest runs all files that end in `.test.js`.
 
+Jest uses two functions, `test` and `describe`, to define tests. The important thing to remember about these is that you do not have to require them. They are made available to your tests by Jest.
+
+```js
 // test/sample.test.js
 describe("A string", function () {
   test("it can be uppercased", function () {
@@ -4161,6 +4222,9 @@ describe("A string", function () {
     expect("Hello".toLowerCase()).toBe("hello");
   })
 });
+```
+
+```
 $ jest
 PASS  test/sample.test.js
  ✓ it can be uppercased (4ms)
@@ -4171,25 +4235,31 @@ Tests:       2 passed, 2 total
 Snapshots:   0 total
 Time:        1.069s
 Ran all test suites matching "sample.test.js".
-describe is used to set a context for tests. It can be nested, with multiple describe calls inside a parent. test is used to write individual test cases. You can use test outside of a describe block with no problem.
+```
+
+`describe` is used to set a context for tests. It can be nested, with multiple `describe` calls inside a parent. `test` is used to write individual test cases. You can use `test` outside of a describe block with no problem.
 
 You can test simple functions and methods this way.
 
-Testing controller functions  
+## Testing controller functions  
 
-In an Express app, you often want to test the functions that handle your routes -- your controller functions. To do this, install the library supertest. This library lets you make HTTP requests and run tests against the results. In addition, you will need to make your app object available. To do that, add module.exports = app; to the bottom of your app.js file (or whatever you have called the file where your Express app is created.)
+In an Express app, you often want to test the functions that handle your routes -- your *controller functions*. To do this, install the library `supertest`. This library lets you make HTTP requests and run tests against the results. In addition, you will need to make your `app` object available. To do that, add `module.exports = app;` to the bottom of your `app.js` file (or whatever you have called the file where your Express app is created.)
 
-You will also want to change your code that calls app.listen to look like the following:
+You will also want to change your code that calls `app.listen` to look like the following:
 
+```js
 if (require.main === "module") {
   app.listen(3000, function () {
       console.log('Express running on http://localhost:3000/.')
   });
 }
-require is an object available in your module. When your module is run as a script (node app.js), require.main will equal "module" and the app.listen code will be run. When your module is required from another module -- like we will do with the tests -- the app.listen code will not be run.
+```
 
-To test your controller functions, you will need to require supertest and learn about how Jest handles asynchronous code. Let's look at an app and a controller test and then see how they work.
+`require` is an object available in your module. When your module is run as a script (`node app.js`), `require.main` will equal "module" and the `app.listen` code will be run. When your module is required from another module -- like we will do with the tests -- the `app.listen` code will not be run.
 
+To test your controller functions, you will need to require `supertest` and learn about how Jest handles asynchronous code. Let's look at an app and a controller test and then see how they work.
+
+```js
 // app.js
 const express = require('express');
 const app = express();
@@ -4205,6 +4275,9 @@ if (require.main === "module") {
 }
 
 module.exports = app;
+```
+
+```js
 // test/hello_test.js
 const request = require("supertest");
 const app = require("../app");
@@ -4220,14 +4293,17 @@ describe("GET /hello", function () {
       });
   })
 })
-Notice that we are returning something from our test. request(app) and the methods we call on it return a promise. To wait for a promise to resolve and run all the tests, we must return it. If we do not, Jest will think the test has run successfully before any of our expectations run.
+```
 
-request(app) sets up Supertest to make requests against your app. This handles running the app for you, so you don't have to know the address and port of the web application.
+Notice that we are returning something from our test. `request(app)` and the methods we call on it return a promise. To wait for a promise to resolve and run all the tests, we must return it. If we do not, Jest will think the test has run successfully before any of our expectations run.
 
-.get("/hello") makes a GET web request to /hello, as you might expect. This returns a promise that we can then run tests against.
+`request(app)` sets up Supertest to make requests against your app. This handles running the app for you, so you don't have to know the address and port of the web application.
 
-.expect is a Supertest method that is very flexible and allows you to test multiple features of the response from the server. See the API documentation to learn all the ways in which .expect can be called. We are calling it three ways here:
+`.get("/hello")` makes a `GET` web request to `/hello`, as you might expect. This returns a promise that we can then run tests against.
 
+`.expect` is a Supertest method that is very flexible and allows you to test multiple features of the response from the server. [See the API documentation](https://github.com/visionmedia/supertest#api) to learn all the ways in which `.expect` can be called. We are calling it three ways here:
+
+```js
 request(app)
   .get("/hello")
   // Checks to see if the status code is 200.
@@ -4239,10 +4315,13 @@ request(app)
   .expect(function (res) {
     expect(res.body['hello']).toBe("world");
   })
-npm test  
+```
 
-Our package.json file has a section we have not explored until now. The scripts object can contain terminal commands that we need to run frequently, including a command to test our code. Change your package.json to have the following scripts object:
+## npm test  
 
+Our `package.json` file has a section we have not explored until now. The `scripts` object can contain terminal commands that we need to run frequently, including a command to test our code. Change your `package.json` to have the following `scripts` object:
+
+```js
 {
   "private": true,
   "dependencies": {
@@ -4252,9 +4331,11 @@ Our package.json file has a section we have not explored until now. The scripts 
     "test": "jest --forceExit"
   }
 }
-Now run npm test. Jest should run. This gives us an easy-to-remember standard way to run tests for any Node project we come across, no matter what tools or configuration those tests may need.
+```
 
-Note that we included the argument --forceExit. Supertest starts a server for us to run our tests against. Jest does not know how to clean this up, so it will hang after the tests are run. --forceExit tells it to shutdown even though there is a server still running.
+Now run `npm test`. Jest should run. This gives us an easy-to-remember standard way to run tests for any Node project we come across, no matter what tools or configuration those tests may need.
+
+Note that we included the argument `--forceExit`. Supertest starts a server for us to run our tests against. Jest does not know how to clean this up, so it will hang after the tests are run. `--forceExit` tells it to shutdown even though there is a server still running.
 
 ---
 
