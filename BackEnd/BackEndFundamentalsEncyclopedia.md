@@ -4796,8 +4796,8 @@ app.listen(3000);
 ### Default Error Handler  
 
 > Express comes with a built-in error handler, which takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.
-
-If you pass an error to next() and you do not handle it in an error handler, it will be handled by the built-in error handler; the error will be written to the client with the stack trace. The stack trace is not included in the production environment. - expressjs.com
+> 
+> If you pass an error to next() and you do not handle it in an error handler, it will be handled by the built-in error handler; the error will be written to the client with the stack trace. The stack trace is not included in the production environment. - expressjs.com
 
 * Custom error handler:
 
@@ -4821,25 +4821,33 @@ function errorHandler (err, req, res, next) {
 
 ## Terminology  
 
-Injection: text-based attack that exploits an interpreter's syntax.
-Implications: data corruption, data loss, data theft, denial of access.
-SQL Injection  
+* `Injection`: text-based attack that exploits an interpreter's syntax.
 
-Database  
+  * Implications: data corruption, data loss, data theft, denial of access.
 
-In this example the X-Men have an 'accounts' database with three fields: username, role, and password.
-To make the problems worse, the passwords are stored as plain text!
-id	username	role	password
-1	wolverine	owner	claws!
-2	profx	admin	mindgames
-3	cyclops	owner	lookskill
-4	storm	owner	umbrella
-5	beast	admin	bluevelvet
-Vulnerable Code  
+## SQL Injection  
+
+### Database  
+
+* In this example the X-Men have an 'accounts' database with three fields: username, role, and password.
+
+* To make the problems worse, the passwords are stored as plain text!
+
+| id	| username	| role	| password |
+| :--- | :--- | :--- | :--- |
+| 1	| wolverine	| owner	| claws! |
+| 2	| profx	| admin	| mindgames |
+| 3	| cyclops	| owner	| lookskill |
+| 4	| storm	| owner	| umbrella |
+| 5	| beast	| admin	| bluevelvet |
+
+### Vulnerable Code  
 
 Even though legitimate, the code is vulnerable to injections since anything can be passed into the query.
+
+```js
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -4857,36 +4865,65 @@ app.get('/mutants/:role', function(req, res, next){
     // Handle errors
   }
 });
-Legitimate Query  
+```
 
-Searching for all fields, *, who are admins.
-Input query: admin
-Resulting query:
+### Legitimate Query  
+
+* Searching for all fields, `*`, who are admins.
+
+  * **Input query**: `admin`
+
+  * **Resulting query**:
+  
+```  
 SELECT * FROM accounts WHERE role = ('admin')
-This query would return:
+```
+
+* This query would return:
+
+```
 profx
 beast
-Malicious Query  
+```
 
-Here Magneto uses a single-quote ' to break out of the string context and into the query.
-Then, he passes in the following malicious query:
-Input query: ') UNION SELECT username||'_'||password FROM accounts --
-This would append the username and passwords for all X-Men in the database who are admins!
-double pipes, ||, are used for concatenating.
-The -- comments out the remaining text. This "consumes" the final code provided by the application.
-Resulting query:
-SELECT * FROM accounts WHERE role = ('%') UNION SELECT username || '_' ||password FROM accounts --
-This query would return the following:
+### Malicious Query  
+
+* Here Magneto uses a single-quote `'` to break out of the string context and into the query.
+
+* Then, he passes in the following malicious query:
+
+  * **Input query**: `') UNION SELECT username||'_'||password FROM accounts --`
+
+  * This would append the username and passwords for all X-Men in the database who are admins!
+
+    * double pipes, `||`, are used for concatenating.
+
+    * The `--` comments out the remaining text. This "consumes" the final code provided by the application.
+    
+* **Resulting query**:
+
+> SELECT * FROM accounts WHERE role = ('`%') UNION SELECT username || '_' ||password FROM accounts --`
+
+* This query would return the following:
+
+```
 profx_mindgames
 beast_bluevelvet
-Input Validation  
+```
 
-Input sanitation is one way of preventing injections by limiting input in order to avoid problem characters.
-One method of sanitation is whitelisting.
-Whitelisting  
+## Input Validation  
 
-Defining allowed inputs values (letters, digits, spaces) and conditions.
-Example
+* Input sanitation is one way of preventing injections by limiting input in order to avoid problem characters.
+
+* One method of sanitation is whitelisting.
+
+### Whitelisting  
+
+* Defining *allowed* inputs values (letters, digits, spaces) and conditions.
+
+#### Example
+
+```
 // Limiting input to letters.
 /[a-zA-Z]/
 
@@ -4898,10 +4935,15 @@ Example
 
 // Limiting input to letters, digits and Spaces
 /[a-zA-Z0-9 ]/
-Implementation
-Validate that the role contains only letters.
+```
+
+### Implementation
+
+* Validate that the role contains only letters.
+
+```js
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -4928,14 +4970,19 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // varError middleware.
-Escaping  
+```
 
-Escaping is a widely used method.
-It is a ready-to-go function, provided by many libraries, for escaping well-know problem characters.
-Implementation  
+## Escaping  
 
+* Escaping is a widely used method.
+
+* It is a ready-to-go function, provided by many libraries, for escaping well-know problem characters.
+
+### Implementation  
+
+```js
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -4956,20 +5003,31 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // Error handlers
-Prepared Statements  
+```
 
-The SQL query code is predefined by the developer so that parameters are passed into the query later.
-The variable data is replaced by a placeholder, such as a ?, which is then processed by the database as a parameter.
-Prepared statements (parameterized statements) are parsed, compiled, and optimized by the database separately from any parameters before they are executed.
-Why is it effective against injections?
-The input values in an SQL query are sent to the server after the query is sent to the server.
-Incoming input is interpreted as data, instead of SQL code.
-Check ORM and database documentation for details.
-Implementation  
+## Prepared Statements  
 
-Sequelize example.
+* The `SQL` query code is predefined by the developer so that parameters are passed into the query later.
+
+* The variable data is replaced by a *placeholder*, such as a `?`, which is then processed by the database as a parameter.
+
+* `Prepared statements (parameterized statements)` are parsed, compiled, and optimized by the database **separately** from any parameters before they are executed.
+
+* Why is it effective against injections?
+
+  * The input values in an `SQL` query are sent to the server *after* the query is sent to the server.
+
+  * Incoming input is interpreted as data, instead of `SQL` code.
+
+* Check ORM and database documentation for details.
+
+### Implementation  
+
+* `Sequelize` example.
+
+```js
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -4990,15 +5048,21 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // Error handlers
-ORM Built-in Query Methods  
+```
 
-ORM built in methods automatically take care of escaping.
-Check ORM documentation for details.
-Example
+## ORM Built-in Query Methods  
 
-Sequelize example.
+* ORM built in methods automatically take care of escaping.
+
+* Check ORM documentation for details.
+
+#### Example
+
+* `Sequelize` example.
+
+```js
 var sequelize = require('sequelize');
-​var​ app = express();
+var app = express();
 
 // app.use middleware here.
 
@@ -5014,9 +5078,11 @@ app.get('/mutants/:role', function(req, res, next){
 });
 // Other Routes
 // Error handlers
-Programming Culture  
+```
 
-Bobby Tables
+## Programming Culture  
+
+[Bobby Tables](http://www.bobby-tables.com/)
 
 ---
 
