@@ -4343,12 +4343,13 @@ Note that we included the argument `--forceExit`. Supertest starts a server for 
 
 # Author unit tests for Express models  
 
-Configuration  
+## Configuration  
 
-To test more complicated applications -- ones with databases, for example -- we will require more set up. This has two steps. First, you will need to configure your application differently depending on how you are running it. A common way to do this is to set the NODE_ENV environment variable to a value like development, production, or test and then use that value to look up a configuration object. If you've looked at the models/index.js file that Sequelize creates, then you may have seen this.
+To test more complicated applications -- ones with databases, for example -- we will require more set up. This has two steps. First, you will need to configure your application differently depending on how you are running it. A common way to do this is to set the `NODE_ENV` environment variable to a value like `development`, `production`, or `test` and then use that value to look up a configuration object. If you've looked at the models/index.js file that Sequelize creates, then you may have seen this.
 
-To do this yourself, first create a file called config.json. Here is one for an app that uses MongoDB.
+To do this yourself, first create a file called `config.json`. Here is one for an app that uses MongoDB.
 
+```js
 // config.json
 {
   "development": {
@@ -4358,8 +4359,11 @@ To do this yourself, first create a file called config.json. Here is one for an 
     "mongoURL": "mongodb://localhost:27017/coolapp_test"
   }
 }
-Then in app.js, we would write code like this:
+```
 
+Then in `app.js`, we would write code like this:
+
+```js
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
@@ -4369,19 +4373,25 @@ const nodeEnv = process.env.NODE_ENV || "development";
 const config = require("./config.json")[nodeEnv];
 
 mongoose.connect(config.mongoURL);
-You can set up any configuration variables you need to in this way. Note that to make sure your tests use the test configuration, you will have to run NODE_ENV=test jest --forceExit. Change your test script in package.json to run this:
+```
 
+You can set up any configuration variables you need to in this way. Note that to make sure your tests use the test configuration, you will have to run `NODE_ENV=test jest --forceExit`. Change your `test` script in `package.json` to run this:
+
+```js
 {
   "scripts": {
     "test": "NODE_ENV=test jest --forceExit"
   }
 }
-There is a config library you can install via NPM that takes this pattern and extends it. You may want to look at it if you need more support than this provides.
+```
 
-Test hooks  
+There is a `config` [library you can install via NPM](https://www.npmjs.com/package/config) that takes this pattern and extends it. You may want to look at it if you need more support than this provides.
 
-Jest provides four hooks for us to use in our tests.
+## Test hooks  
 
+Jest provides four *hooks* for us to use in our tests.
+
+```js
 describe('hooks', function() {
   beforeAll(function() {
     // runs before all tests in this block
@@ -4401,10 +4411,13 @@ describe('hooks', function() {
 
   // test cases
 });
-These hooks can be used to set up data we need for our tests, clear out databases, or anything else we might need. They apply both inside the same describe function they are in and in any nested describe functions. They can even be defined outside of a describe. In that case, they will apply to all tests in the module. They also provide a done function in the case we have asynchronous actions we want to take. (We can also return promises like we would from a test to wait for asynchronous actions.)
+```
+
+These hooks can be used to set up data we need for our tests, clear out databases, or anything else we might need. They apply both inside the same `describe` function they are in and in any nested `describe` functions. They can even be defined outside of a `describe`. In that case, they will apply to all tests in the module. They also provide a `done` function in the case we have asynchronous actions we want to take. (We can also return promises like we would from a test to wait for asynchronous actions.)
 
 For example, we may want to connect to MongoDB before our tests, and clear out a collection before each test to make sure we have a clean setup. Here is an example:
 
+```js
 const mongoose = require('mongoose');
 const config = require("../config")[process.env.NODE_ENV || 'test'];
 const Recipe = require("../models/recipe");
@@ -4433,9 +4446,11 @@ describe("Recipe", function () {
         });
     });
 })
-Why worry about this?  
+```
 
-You want to make sure your tests are deterministic -- that is, that when you run them, you get the same results each time. In the above code, it's assumed that the name field on recipes is unique. In this case, the test would fail if we didn't delete all recipes before each test and had multiple tests making a recipe with the name "Pancakes." Having a fresh database for each test is imperative to ensure your tests are deterministic.
+## Why worry about this?  
+
+You want to make sure your tests are *deterministic* -- that is, that when you run them, you get the same results each time. In the above code, it's assumed that the `name` field on recipes is unique. In this case, the test would fail if we didn't delete all recipes before each test and had multiple tests making a recipe with the name "Pancakes." Having a fresh database for each test is imperative to ensure your tests are deterministic.
 
 ---
 
@@ -4445,72 +4460,123 @@ You want to make sure your tests are deterministic -- that is, that when you run
 
 ## Terminology  
 
-function scope: Functions create a pocket of scope. Nested functions create internal pockets of scope which can access outer functions' scopes and global scopes. Outer scopes cannot access inner functions' scopes.
-block scope: Encapsulating scope in contexts other than functions; if statements and for loops, for example.
-let: The let keyword includes the variable declaration in the scope of any block it's contained in (usually a { .. } pair). let implicitly uses any block's scope for its variable declaration.
-const: Like let, const uses block scope, however, const has a value which is fixed. Attempts to change a const declared variable will result in an error.
-Variables  
+* **function scope**: Functions create a pocket of scope. Nested functions create internal pockets of scope which can access outer functions' scopes and global scopes. Outer scopes cannot access inner functions' scopes.
 
-Variables should be declared with const or let before they are used.
-var is declared with function scope.
-const and let are declared with block scope.
-Use let and const in order isolate scope to containing blocks.
-Use let if a variable's value will change.
-Use const to declare variables whose values will not change (preferred method).
-Make variable names descriptive.
-Never use abbreviations in variables.
-Use camel case for two word variables.
-Avoid global variables.
-Avoid changing the type of a variable.
-Functions  
+* **block scope**: Encapsulating scope in contexts other than functions; if statements and for loops, for example.
 
-Functions should be declared before they are used.
-Inner functions should be stored in a variable. Doing so makes it easier to read scope.
-Always use a verb in function names.
-Function names should be descriptive of their actions performed.
-Never use abbreviations in function names.
-Use camel case for two word function names.
-Each function/method should do only one thing.
-Characters in Naming  
+* **let**: The `let` keyword includes the variable declaration in the scope of any block it's contained in (usually a `{ .. }` pair). `let` implicitly uses any block's scope for its variable declaration.
 
-Use any letter of the alphabet, uppercase or lowercase.
-Use any number, 0 - 9.
-Do not use backslash \.
-Most variables start with a lowercase letter.
-Constructors start with an uppercase letter.
-Whitespace  
+* **const**: Like `let`, `const` uses block scope, however, `const` has a value which is fixed. Attempts to change a `const` declared variable will result in an error.
 
-The word function should be followed with one space.
-Apply one space after a keyword when followed by a left parentheses (.
-Functions are the exception to this rule.
-The second parentheses ) following a function, before an opening brace { should be followed by a space.
-Follow a comma , with one space.
-Within a for statement, follow a semicolon ; with one space.
-A semicolon ; at the end of a statement should be followed by a line break.
-When using a plus symbol + to concatenate values, include a space before and after the plus +.
-Line Breaks  
+### Variables  
 
-Nested statements should be indented.
-Avoid excessively long lines.
-When breaking a line, do so after a left brace {, left bracket [, left parentheses (, comma ,, or before a period ., question mark ?, or colon :.
-Try to include just one statement per line.
-When a function statement is broken onto multiple lines, the closing brace } should be on the same level of indentation as the beginning of the function declaration.
-When an array is broken onto multiple lines, the closing bracket ] should be on the same level of indentation as the beginning of the array.
-When an object is broken onto multiple lines, the closing brace } should be on the same level of indentation as the beginning of the object.
-Comments  
+* Variables should be declared with `const` or `let` before they are used.
 
-Use comments sparingly.
-Using descriptive keywords and writing smaller statements will provide clarity to the reader, requiring no comments.
-When writing a comment make sure it is describing something that may not be immediately recognizable.
-Other  
+  * `var` is declared with function scope.
 
-Use === whenever possible to ensure matching data types and to avoid type conversion. Avoid == value matching only.
-In general, make classes and objects as short as possible.
-Use prototypal inheritance to distribute properties and methods.
-Try to isolate values and functionality to small reusable components or modules.
-Don't repeat yourself (DRY).
-Examples  
+  * `const` and `let` are declared with block scope.
 
+  * Use `let` and `const` in order isolate scope to containing blocks.
+
+  * Use `let` if a variable's value will change.
+
+  * Use `const` to declare variables whose values will not change (preferred method).
+
+* Make variable names descriptive.
+
+* Never use abbreviations in variables.
+
+* Use camel case for two word variables.
+
+* Avoid global variables.
+
+* Avoid changing the type of a variable.
+
+### Functions  
+
+* Functions should be declared before they are used.
+
+  * Inner functions should be stored in a variable. Doing so makes it easier to read scope.
+
+* Always use a verb in function names.
+
+* Function names should be descriptive of their actions performed.
+
+* Never use abbreviations in function names.
+
+* Use camel case for two word function names.
+
+* Each function/method should do only one thing.
+
+### Characters in Naming  
+
+* Use any letter of the alphabet, uppercase or lowercase.
+
+* Use any number, 0 - 9.
+
+* Do not use backslash `\`.
+
+* Most variables start with a lowercase letter.
+
+* Constructors start with an uppercase letter.
+
+### Whitespace  
+
+* The word `function` should be followed with one space.
+
+* Apply one space after a keyword when followed by a left parentheses `(`.
+
+  * Functions are the exception to this rule.
+
+* The second parentheses `)` following a function, before an opening brace `{` should be followed by a space.
+
+* Follow a comma `,` with one space.
+
+* Within a `for` statement, follow a semicolon `;` with one space.
+
+* A semicolon `;` at the end of a statement should be followed by a line break.
+
+* When using a plus symbol `+` to concatenate values, include a space before and after the plus `+`.
+
+### Line Breaks  
+
+* Nested statements should be indented.
+
+* Avoid excessively long lines.
+
+* When breaking a line, do so after a left brace `{`, left bracket `[`, left parentheses `(`, comma `,`, or before a period `.`, question mark `?`, or colon `:`.
+
+* Try to include just one statement per line.
+
+* When a function statement is broken onto multiple lines, the closing brace `}` should be on the same level of indentation as the beginning of the function declaration.
+
+* When an array is broken onto multiple lines, the closing bracket `]` should be on the same level of indentation as the beginning of the array.
+
+* When an object is broken onto multiple lines, the closing brace `}` should be on the same level of indentation as the beginning of the object.
+
+### Comments  
+
+* Use comments sparingly.
+
+* Using descriptive keywords and writing smaller statements will provide clarity to the reader, requiring no comments.
+
+* When writing a comment make sure it is describing something that may not be immediately recognizable.
+
+### Other  
+
+* Use `===` whenever possible to ensure matching data types and to avoid type conversion. Avoid `==` value matching only.
+
+* In general, make classes and objects as short as possible.
+
+  * Use prototypal inheritance to distribute properties and methods.
+
+  * Try to isolate values and functionality to small reusable components or modules.
+
+* Don't repeat yourself (DRY).
+
+## Examples  
+
+```js
 const bookList = [
   {
     title: 'Turtles All the Way Down',
@@ -4535,51 +4601,79 @@ function makeSentence(object) {
 for (let i = 0; i < bookList.length; i++) {
   makeSentence(bookList[i]);
 }
-The use of the variable i obviously ins't very descriptive here. In this case i is a commonly known and widely used variable to describe an iterator. Another common one character variable you may encounter is e in place of event.
+```
+
+> The use of the variable `i` obviously ins't very descriptive here. In this case `i` is a commonly known and widely used variable to describe an `iterator`. Another common one character variable you may encounter is `e` in place of `event`.
 
 ---
 
 [Web Security: Introduction](WebSecurityIntroduction.md)
 
-# Appropriate Use cases To Run next()  
+# Appropriate Use cases To Run `next()`  
 
 ## Terminology  
 
-middleware:
-A function that comes before route handlers or even other middleware functions.
-It has access to the request and response, as well as the next callback in the request - response cycle.
-Use middleware functions to:
-Execute code:
-body parsing.
-cookie parsing.
-json request.
-etc.
-Change the request and/or the response objects.
-End the request - response cycle.
-Call the next middleware function.
-next:
-When authoring middleware, use next to indicate that the middleware function has finished.
-next functions as a callback.
-Calling next continues the processing of the request.
-Failing to call next will cause the process to hang.
-This is because Express has no way of knowing that the operation is done and that it needs to move down the pipeline to the next middleware or route.
-Using Next  
+* `middleware`:
 
-Asynchronous setting:
-Example: looking up data that results in a callback.
-Call next inside the callback.
-Invoking a route:
-invoking next('route') will skip to the next route handler.
-Subsequent functions will not be executed.
-Passing errors:
-Pass errors to next to handle them separately.
-If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging. - Expressjs.com
+  * A function that comes before `route handlers` or even other `middleware` functions.
 
-Calling Next()  
+  * It has access to the `request` and `response`, as well as the `next` callback in the `request - response` cycle.
 
-Example  
+  * Use `middleware` functions to:
 
+    * Execute code:
 
+      * body parsing.
+
+      * cookie parsing.
+
+      * json request.
+
+      * etc.
+      
+    * Change the `request` and/or the `response` objects.
+
+    * End the `request - response` cycle.
+
+    * Call the `next middleware` function.
+
+* `next`:
+
+  * When authoring `middleware`, use `next` to indicate that the `middleware` function has finished.
+
+  * `next` functions as a callback.
+
+  * Calling next continues the processing of the `request`.
+
+  * Failing to call `next` will cause the process to hang.
+
+  * This is because `Express` has no way of knowing that the operation is done and that it needs to move down the pipeline to the next `middleware` or `route`.
+
+### Using Next  
+
+* Asynchronous setting:
+
+  * Example: looking up data that results in a `callback`.
+
+  * Call `next` inside the callback.
+
+* Invoking a route:
+
+  * invoking `next('route')` will skip to the next route handler.
+
+  * Subsequent functions will not be executed.
+
+* Passing errors:
+
+  * Pass errors to `next` to handle them separately.
+  
+> *If the current middleware function does not end the request-response cycle, it must call next() to pass control to the next middleware function. Otherwise, the request will be left hanging. - Expressjs.com*
+
+## Calling Next()  
+
+### Example  
+
+```js
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -4605,11 +4699,15 @@ app.get('/', function(req, res, next){
   // We can now use the req.session.user object in the view template.
   res.render('index', {title: 'home'});
 });
-Invoking The Next Route  
+```
 
-Example  
+## Invoking The Next Route  
 
-Use next('route') when using multiple callback function in the route handler.
+### Example  
+
+* Use `next('route')` when using multiple callback function in the route handler.
+
+```js
 app.get('/foo',
 function checkRegistration (req, res, next){
   if(!req.user.registered){
@@ -4623,14 +4721,19 @@ function checkRegistration (req, res, next){
     res.json(data)
   });
 });
-Passing anything into next other than the string 'route', will cause Express to process the request as being in error. Subsequent middleware functions and non-error handling routing will be skipped.
-Passing Errors  
+```
 
-Example  
+> Passing anything into `next` other than the string 'route', will cause `Express` to process the request as being in *error*. Subsequent `middleware` functions and non-error handling routing will be skipped.
 
-Passing an error into next() instructs Express to process the error middleware.
-Using next() to pass an error(s) helps consolidate error processing into a single point in the application, instead of defining an error from within each route.
+## Passing Errors  
 
+### Example  
+
+* Passing an error into `next()` instructs `Express` to process the `error` middleware.
+
+* Using `next()` to pass an error(s) helps consolidate error processing into a single point in the application, instead of defining an error from within each route.
+
+```js
 var express = require('express');
 var bodyParser = require('body-parser');
 var Sequelize = require('sequelize');
@@ -4688,14 +4791,19 @@ app.use(function(err, req, res, next) {
 });
 
 app.listen(3000);
-Default Error Handler  
+```
 
-Express comes with a built-in error handler, which takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.
+### Default Error Handler  
+
+> Express comes with a built-in error handler, which takes care of any errors that might be encountered in the app. This default error-handling middleware function is added at the end of the middleware function stack.
 
 If you pass an error to next() and you do not handle it in an error handler, it will be handled by the built-in error handler; the error will be written to the client with the stack trace. The stack trace is not included in the production environment. - expressjs.com
 
-Custom error handler:
-When the headers have already been sent, delegate the default error handling mechanism in Express.
+* Custom error handler:
+
+  * When the headers have already been sent, delegate the default error handling mechanism in Express.
+  
+```js
 function errorHandler (err, req, res, next) {
   if (res.headersSent) {
     return next(err)
@@ -4703,6 +4811,7 @@ function errorHandler (err, req, res, next) {
   res.status(500)
   res.render('error', { error: err })
 }
+```
 
 ---
 
@@ -5189,7 +5298,7 @@ Lesson Footnotes
 
 3. Frequently deliver working software.
 
-4.Developers should collaborate daily with stakeholders.
+4. Developers should collaborate daily with stakeholders.
 
 5. Support motivated individuals.
 
