@@ -2167,58 +2167,76 @@ Google Chrome specific. Other browsers offer similar tools and features.
 
 ## Terminology  
 
-git: A Distributed Version Control System used to track changes to and coordinate work on code. With git, a developer's working copy of code serves as a repository with a full history of changes.
+`git`: A Distributed Version Control System used to track changes to and coordinate work on code. With git, a developer's working copy of code serves as a repository with a full history of changes.
 
 ## Installing And Setting Up Git  
 
 ### Install Git  
 
-Add SSH key to GitHub https://help.github.com/articles/generating-ssh-keys/
+* Add SSH key to GitHub https://help.github.com/articles/generating-ssh-keys/
 
-Download and install Git.
+* [Download and install Git](https://git-scm.com/download/mac).
 
 Also, install hub with brew:
 
+```sh
 brew install hub
+```
 
 ### Configure Git  
 
+```sh
 git config --global user.email "<Your email>"
 git config --global user.name "<Your name>"
+```
 
 ## Creating A Local Repository  
 
-Important: replace <project>, and <"description">
-$ mkdir <project>Creates a folder in local machine with the name <project>.
-$ cd <project>
-$ git init. Creates a git repository in the current directory.
+> Important: replace `<project>`, and `<"description">`
+
+1. `$ mkdir <project>` Creates a folder in local machine with the name <project>.
+
+2. `$ cd <project>`
+
+3. `$ git init`. Creates a git repository in the current directory.
 
 ## Staging  
 
-Add a file(s) to staging.
-$ git add <file-name>. Add single file.
-$ git add . To track all files in the current directory. You can do this by adding the current directory.
-$ git status. See the current status of your directory and repository.
-$ git commit -m <description>. Saves a snapshot of the staging area.
+1. Add a file(s) to staging.
+
+  * `$ git add <file-name>`. Add single file.
+
+  * `$ git add .` To track all files in the current directory. You can do this by adding the current directory.
+
+2. `$ git status`. See the current status of your directory and repository.
+
+3. `$ git commit -m <description>`. Saves a snapshot of the staging area.
 
 ### Example
 
-A commit output might look something like this.
+A `commit` output might look something like this.
 
+```sh
 $ git commit
 [master 7b84c79] Fix font in index.html
 1 file changed, 12 insertions(+), 2 deletions(-)
-use $ git reset <file-name> to remove file from staging.
-It is good practice to check the status of the repository after adding a file(s).
-Think of a commit as saving a game. You want to save and save often.
+```
+
+> * use `$ git reset <file-name>` to remove file from staging.
+> * It is good practice to check the `status` of the repository after adding a file(s).
+> * Think of a `commit` as saving a game. You want to save and save often.
 
 ## Using Vim To Edit A Commit  
 
-$ git commit
-Type i to enter insert mode.
-Type your message.
-Hit the esc key to enter command mode.
-Type :wq to save the message
+1. `$ git commit`
+
+2. Type `i` to enter insert mode.
+
+3. Type your message.
+
+4. Hit the esc key to enter command mode.
+
+5. Type `:wq` to save the message
 
 ### Example
 
@@ -2226,7 +2244,7 @@ Type :wq to save the message
 
 ## Git Practice  
 
-> *Practice makes perfect! Go to try.github.io and complete the challenges 1-9.*
+> *Practice makes perfect! Go to [try.github.io](https://try.github.io/levels/1/challenges/1) and complete the challenges 1-9.*
 
 ---
 
