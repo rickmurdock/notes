@@ -6167,11 +6167,11 @@ npm install eslint@latest --save-dev
 
 ### Atom  
 
-atom-eslint.png
+![atom-eslint.png](./images/atom-eslint.png)
 
 ### Sublime  
 
-sublim-jshint.png
+![sublim-jshint.png](./images/sublim-jshint.png)
 
 ## Project Specific Configuration  
 
@@ -6185,7 +6185,7 @@ sublim-jshint.png
 
 * The cli will present you with some configuration prompts. Answer according to project specifications.
 
-eslint-cli.png
+![eslint-cli.png](./images/eslint-cli.png)
 
 * The cli generates three main objects: rules, env, and extends
 
@@ -6398,13 +6398,14 @@ eslint-cli.png
 
 * Output organization:
 
-| File name |
+| File name | | | |
 | ---	| --- | ---	| --- |
 | line:column	| warning/error	| error reason	| rule name |
 
 #### Example
 
-lint-cli-output.png
+![lint-cli-output.png](./images/lint-cli-output.png)
+
 Lesson Footnotes
 1: About-ESLint
 
