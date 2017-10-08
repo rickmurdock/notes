@@ -39,7 +39,7 @@ Lecture notes from The Iron Yard
 
 * [Working with Remote Data (Part 2)](https://github.com/rickmurdock/notes/blob/master/FrontEnd/WorkingWithRemoteDataPart2.md)
 
-* Front-End Fundamentals - Encyclopedia
+* [Front-End Fundamentals - Encyclopedia](./FrontEnd/FrontEndFundamentalsEncyclopedia.md)
 
 --- 
 
