@@ -6101,62 +6101,97 @@ npm run start
 
 ## Terminology  
 
-ESLint: open source JavaScript linting utility used to find problematic patterns or code that doesn't adhere to certain style guidelines.1
+`ESLint`: open source JavaScript linting utility used to find problematic patterns or code that doesn't adhere to certain style guidelines.1
 
-Installation  
+## Installation  
 
-Global  
+### Global  
 
+```
 npm install --global eslint
-Local from project directory  
+```
 
-When upgrading from a previous version, npm will not update to the latest release, so to be safe use the latest tag.
+### Local from project directory  
+
+* When upgrading from a previous version, npm *will not* update to the latest release, so to be safe use the `latest` tag.
+
+```
 npm install eslint@latest --save-dev  
-Editor Installation  
+```
 
-Atom  
+## Editor Installation  
 
-Preferences
-Install
-Search for and install: linter-eslint. Docs
-Search for and install: linter by steelbrain. Docs
-Restart atom.
-Sublime  
+### Atom  
 
-Preferences
-Browse packages
-Browse up a folder and then go into the Installed Packages folder.
-Download Package Control.sublime-package
-Copy this package into the Installed Packages directory.
-Restart Sublime.
-From the editor:
-shift-command-p
-Type Install packages and click on it.
-Search for SublimeLinter-jshint.
-This will pull up the docs.
-At the bottom it will ask you to npm install the plugin: npm install -g jshint
-You are all done!
-When the linter detects an error, it will highlight it and denote it with a dot. Clicking on the dot will show the error message at the bottom of the editor.
-Editor Examples  
+* Preferences
 
-Atom  
+  * Install
+
+    * Search for and install: `linter-eslint`. [Docs](https://atom.io/packages/linter-eslint)
+
+    * Search for and install: `linter` by steelbrain. [Docs](https://atom.io/packages/linter)
+
+    * Restart atom.
+
+### Sublime  
+
+* Preferences
+
+  * Browse packages
+
+  * Browse up a folder and then go into the `Installed Packages` folder.
+
+  * Download [Package Control.sublime-package]()
+
+  * Copy this package into the `Installed Packages` directory.
+
+  * Restart Sublime.
+
+* From the editor:
+
+  * `shift-command-p`
+
+  * Type `Install packages` and click on it.
+
+  * Search for `SublimeLinter-jshint`.
+
+    * This will pull up the docs.
+
+    * At the bottom it will ask you to npm install the plugin: `npm install -g jshint`
+
+    * You are all done!
+
+    * When the linter detects an error, it will highlight it and denote it with a dot. Clicking on the dot will show the error message at the bottom of the editor.
+
+## Editor Examples  
+
+### Atom  
 
 atom-eslint.png
-Sublime  
+
+### Sublime  
 
 sublim-jshint.png
-Project Specific Configuration  
 
-Adding the configuration file  
+## Project Specific Configuration  
 
-Use the ESLint cli command:
-If global installation: eslint --init
-If local installation: ./node_modules/.bin/eslint --init
-The cli will present you with some configuration prompts. Answer according to project specifications.
+### Adding the configuration file  
+
+* Use the ESLint cli command:
+
+  * If global installation: eslint --init
+
+  * If local installation: ./node_modules/.bin/eslint --init
+
+* The cli will present you with some configuration prompts. Answer according to project specifications.
+
 eslint-cli.png
-The cli generates three main objects: rules, env, and extends
-Example
 
+* The cli generates three main objects: rules, env, and extends
+
+### Example
+
+```js
 {
   "rules": {
       "indent": [
@@ -6182,36 +6217,58 @@ Example
   },
   "extends": "eslint:recommended"
 }
-Adding rules  
+```
 
-Rules are not automatically added by default.
-You can add 'rules' by adding them to the rules object.
-You must specify the error lever for each rule.
-Basic rules:
-0: turns rule off.
-1: turns on warning.
-ESLint exits with a 0 code.
-2: turns on error.
-ESLint exits with a 1 code, breaking the build.
-You can also include error level options for each rule.
-See full rules configuration docs..
-See complete list of rules..
-Node.js and common js rules.
-Example
+### Adding rules  
 
+* Rules are not automatically added by *default*.
+
+* You can add 'rules' by adding them to the `rules` object.
+
+  * You must specify the error lever for each `rule`.
+
+    * Basic rules:
+
+      * `0`: turns rule off.
+
+      * `1`: turns on warning.
+
+        * `ESLint` exits with a `0` code.
+
+      * `2`: turns on error.
+
+        * `ESLint` exits with a `1` code, breaking the build.
+
+    * You can also include error level options for each `rule`.
+
+    * See full `rules` configuration [docs](https://eslint.org/docs/user-guide/configuring#configuring-rules).
+
+* See complete list of [rules](https://eslint.org/docs/rules/#nodejs-and-commonjs).
+
+  * Node.js and common js [rules](https://eslint.org/docs/rules/#nodejs-and-commonjs).
+
+### Example
+
+```js
 {
     "rules": {
         "quotes": [2, "double"], // Error level of 2 and option
         "curly": 1 // Error level only
     }
 }
-Adding environments  
+```
 
-You can specify environment specific behavior by specify the environment you are developing for.
-For example, setting an env of broswer to true, will tell ESLint not to have a meltdown when you use global variables without defining them first.
-To a an environment, simple add the specific environment under the env object.
-Example
+### Adding environments  
 
+* You can specify environment specific behavior by specify the environment you are developing for.
+
+* For example, setting an `env` of `broswer` to `true`, will tell `ESLint` not to have a meltdown when you use global variables without defining them first.
+
+* To a an environment, simple add the specific environment under the `env` object.
+
+### Example
+
+```js
 //Adding 'browser' to the above example.
 {
     "rules": {
@@ -6224,51 +6281,76 @@ Example
     },
     // extends
 }
-Adding globals  
+```
 
-You can specify global variables by adding them in globals object.
-Setting the variable name to true allows for the variable to be overwritten.
-Setting the variable name to false disallows overwriting the variable.
-Example
+### Adding globals  
 
+* You can specify global variables by adding them in `globals` object.
+
+  * Setting the variable name to `true` allows for the variable to be overwritten.
+
+  * Setting the variable name to `false` disallows overwriting the variable.
+
+#### Example
+
+```js
 {
     "globals": {
         "var1": true,
         "var2": false
     }
 }
-Adding extends  
+```
 
-extends makes it possible to add recommended rules in order to prevent bugs.
-recommended rules do not include styling rules.
-In the example above we opted-in for the ESLint recommended rules by adding the line: "extends": "eslint:recommended"
-Specifying Parser  
+### Adding extends  
 
-The defaul parser is Espree.
-See docs for full list of parser options and configuration.
-To specify a different parser, add the following:
+* `extends` makes it possible to add `recommended rules` in order to prevent bugs.
+
+* `recommended rules` *do not* include styling `rules`.
+
+* In the example above we opted-in for the `ESLint` recommended rules by adding the line: `"extends": "eslint:recommended"`
+
+### Specifying Parser  
+
+* The defaul parser is `Espree`.
+
+* See [docs](https://eslint.org/docs/user-guide/configuring#specifying-parser-options) for full list of parser options and configuration.
+
+* To specify a different parser, add the following:
+
+```js
 {
     "parser": "esprima",
     "rules": {
         "semi": "error"
     }
 }
-Specifying parser options  
+```
 
-We can specify parser options by adding this to the parserOptions object.
-For example, if we want to enable ES2015 and enable JSX, we would add the following:
+### Specifying parser options  
+
+* We can specify parser options by adding this to the `parserOptions` object.
+
+* For example, if we want to enable ES2015 and enable JSX, we would add the following:
+
+```js
 "parserOptions": {
   "ecmaVersion": 6,
   "ecmaFeatures": {
     "jsx": true
   }
 },
-Adding plugins  
+```
 
-Plugins come packed with their on set of rules. For example, if working in a react project, you might want to use the react ESLint plugin.
-Install eslin-plugin-react: npm install eslint-plugin-react --save-dev
-Configuration
+### Adding plugins  
 
+* Plugins come packed with their on set of rules. For example, if working in a react project, you might want to use the react ESLint plugin.
+
+  * Install `eslin-plugin-react`: `npm install eslint-plugin-react --save-dev`
+
+#### Configuration
+
+```js
 {
   "rules": {
       "indent": [
@@ -6300,18 +6382,27 @@ Configuration
   },
   "extends": "eslint:recommended"
 }
-Online Rule Generators  
+```
 
-To quickly create rules, you could use an online generator, such as the eslintrc-generator.
-ESLint CLI  
+## Online Rule Generators  
 
-The general cli format is: eslint [options] [file/dir].
-Linting a directory: eslint app.js
-Linting a single file: eslint app-dir/
-Output organization:
-File name			
-line:column	warning/error	error reason	rule name
-Example
+* To quickly create rules, you could use an online generator, such as the [eslintrc-generator](http://rapilabs.github.io/eslintrc-generator/).
+
+## ESLint CLI  
+
+* The general cli format is: `eslint [options] [file/dir]`.
+
+  * Linting a directory: `eslint app.js`
+
+  * Linting a single file: `eslint app-dir/`
+
+* Output organization:
+
+| File name |
+| ---	| --- | ---	| --- |
+| line:column	| warning/error	| error reason	| rule name |
+
+#### Example
 
 lint-cli-output.png
 Lesson Footnotes
