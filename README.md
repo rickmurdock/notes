@@ -79,7 +79,7 @@ Lecture notes from The Iron Yard
 
 * [Cloud Computing: Introduction](https://github.com/rickmurdock/notes/blob/master/BackEnd/CloudComputingIntroduction.md)
 
-* Back-End Fundamentals - Encyclopedia
+* [Back-End Fundamentals - Encyclopedia](./BackEnd/BackEndFundamentalsEncyclopedia.md)
 
 ---
 
