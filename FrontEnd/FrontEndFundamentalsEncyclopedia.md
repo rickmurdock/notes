@@ -1007,17 +1007,17 @@ aside {
 
 ## Terminology  
 
-** CSS** - A simple declarative language used to define the visual styling of HTML.
+**CSS** - A simple declarative language used to define the visual styling of HTML.
 
-** Cascade** - The concept that CSS styles cascade one after another. style declarations are read from top to bottom by the browser. This means that styles declared later in the document will override styles written earlier in the document.
+**Cascade** - The concept that CSS styles cascade one after another. style declarations are read from top to bottom by the browser. This means that styles declared later in the document will override styles written earlier in the document.
 
-** Selector** - A text string that specifies which HTML element will be styled.
+**Selector** - A text string that specifies which HTML element will be styled.
 
-** Declaration** - The combination of a property and the value applied to it within a style block.
+**Declaration** - The combination of a property and the value applied to it within a style block.
 
-** Property** - The visual attribute being styled by a declaration.
+**Property** - The visual attribute being styled by a declaration.
 
-** Value** - The specific quantity or quality assigned to a property.
+**Value** - The specific quantity or quality assigned to a property.
 
 ## Examples  
 
@@ -1836,47 +1836,53 @@ Attached: resources/completed.html
 
 ## References  
 
-Inspect and Edit Pages and Styles - Chrome Developer Tools
+[Inspect and Edit Pages and Styles - Chrome Developer Tools](https://developers.google.com/web/tools/chrome-devtools/inspect-styles/)
 
 ---
 
-Lesson: Responsive Web Design
+[Responsive Web Design](ResponsiveWebDesign.md)
 
 # Responsive Media Queries  
 
 ## Terminology  
 
-Media Query: A CSS module that uses expressions to define tailored styling for specified ranges of output devices, dimensions and settings.
+* **Media Query**: A CSS module that uses expressions to define tailored styling for specified ranges of output devices, dimensions and settings.
 
 ## Examples  
 
-
+```css
 @media screen and (min-width: 640px) and (max-width: 1024px) {
     /* styles */
 }
+```
 
 ## References  
 
-MDN - Using Media Queries
+[MDN - Using Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
 
-MDN - Media Features
+[MDN - Media Features](https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_features)
 
-MDN - Logical Operators
+[MDN - Logical Operators](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#Logical_operators)
 
-CSS-Tricks - All Stylesheet Media Types
+[CSS-Tricks - All Stylesheet Media Types](https://css-tricks.com/snippets/css/all-stylesheet-media-types/)
 
 ---
 
-Lesson: Responsive Web Design
+[Responsive Web Design](ResponsiveWebDesign.md)
+
 # Responsive Breakpoints  
 
 ## Terminology  
 
-Responsive: A web application responds to various device outputs by rendering a tailored experience for all.
-Media Query: A CSS module that uses expressions to define tailored styling for specified ranges of output devices, dimensions and settings.
-breakpoint range: a defined range of window width in which certain styles are applied.
-min-width: A minimum width at which to start implementing a described set of declarations within a media query.
-max-width: A maximum width at which to stop implementing a described set of declarations within a media query.
+* **Responsive**: A web application responds to various device outputs by rendering a tailored experience for all.
+
+* **Media Query**: A CSS module that uses expressions to define tailored styling for specified ranges of output devices, dimensions and settings.
+
+* **breakpoint range**: a defined range of window width in which certain styles are applied.
+
+* **min-width**: A minimum width at which to start implementing a described set of declarations within a media query.
+
+* **max-width**: A maximum width at which to stop implementing a described set of declarations within a media query.
 
 ## Examples  
 
@@ -1884,155 +1890,181 @@ attached
 
 ## References  
 
-MDN - Using Media Queries
+[MDN - Using Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries)
 
 ---
 
-Lesson: Creating HTML Forms and Inspecting Your Code
+[Creating HTML Forms and Inspecting Your Code](CreatingHTMLFormsAndInspectingYourCode.md)
+
 # Form Input Types  
 
 ## Terminology  
 
-Controls: used by users to interact with the form.
+**Controls**: used by users to interact with the form.
 
-input (text) - standard
-input (email) - displays email keyboard on mobile
-input (number) - displays number keyboard on mobile
-input (password) - masks the entry with *
-input (file) - allow the user to select a file to upload
-input (tel) - one-line plaintext edit control for entering a phone number
-select - drop down
-textarea - multiple line entry
-checkboxes - can select multiple values for the same name
-radio buttons - can select one value for the same name
-name - the name of the control, submitted with the form data and used by the server to identify fields when submitting. Note: only elements with a name attribute will have their values passed when the form is submitted!.
+* input (text) - standard
+
+* input (email) - displays email keyboard on mobile
+
+* input (number) - displays number keyboard on mobile
+
+* input (password) - masks the entry with *
+
+* input (file) - allow the user to select a file to upload
+
+* input (tel) - one-line plaintext edit control for entering a phone number
+
+* select - drop down
+
+* textarea - multiple line entry
+
+* checkboxes - can select multiple values for the same name
+
+* radio buttons - can select one value for the same name
+
+* name - the name of the control, submitted with the form data and used by the server to identify fields when submitting. **Note: only elements with a name attribute will have their values passed when the form is submitted!.**
 
 ## Examples  
 
-Editor
-Browser View
-index.html
-
-1
+```html
 <form>
-2
   <fieldset>
-3
     <legend>Radio Buttons</legend>
-4
-​
-5
+
     <label>
-6
       <input type="radio" name="chooseone" value="HTML" checked>
-7
       HTML
-8
     </label>
-9
-​
-10
+
     <label>
-11
       <input type="radio" name="chooseone" value="CSS">
-12
       CSS
-13
     </label>
-14
-​
-15
+
     <label>
-16
       <input type="radio" name="chooseone" value="JS">
-17
       JavaScript
-18
     </label>
-19
   </fieldset>
-20
-​
-21
+
   <fieldset>
-22
     <legend>Check Boxes</legend>
-23
     <label>
- 
+      <input type="checkbox" id="checkboxes" value="hi" checked required>
+      Hi there!
+    </label>
+    <label>
+      <input type="checkbox" id="checkboxes" value="bye">
+      See ya later!
+    </label>
+  </fieldset>
 
-Fullscreen
+  <fieldset>
+    <legend>Select (Drop Down)</legend>
+    <label for="dropdown">Select</label>
+    <select type="select" id="dropdown">
+      <option value="">Please select a greeting</option>
+      <option value="Hello">Hello</option>
+      <option value="Goodbye">Goodbye</option>
+    </select>
+  </fieldset>
+</form>
 
-Reset Code
-Preview 
-
-
+<style media="screen">
+  label {
+    display: block;
+  }
+  fieldset {
+    margin-bottom: 1em;
+  }
+</style>
+```
 
 ---
 
-Lesson: Creating HTML Forms and Inspecting Your Code
+[Creating HTML Forms and Inspecting Your Code](CreatingHTMLFormsAndInspectingYourCode.md)
+
 # Action and Method Attributes  
 
 ## Terminology  
 
-Action: An attribute which determines where the form-data is sent. The value must be a valid URL.
+* **Action**: An attribute which determines where the form-data is sent. The value must be a valid URL.
 
-Method: refers to the HTTP method used to transmit the form data.
+* **Method**: refers to the HTTP method used to transmit the form data.
 
-GET: Method which requests information from the web server.
+* **GET**: Method which requests information from the web server.
 
-Data is appended to the URL.
-The length of the URL is limited to about three thousand characters.
-Better used to send non-secure data.
-Allows the user to bookmark the page once the form has been submitted.
-POST: Method which submits new or changed information to the web server.
+  * Data is appended to the URL.
 
-It appends form-data inside the body of the HTTP request.
-Compared to GET, it does not have size limitations.
-Does not allow the user to bookmark the page.
-Idempotent: A request which can be re-run multiple times without side-effects. Example: If I submit an order multiple times, it is idempotent if only one order is created.
+  * The length of the URL is limited to about three thousand characters.
 
-Script: A server side program which processes the form and acts accordingly. An example could be inserting a record in a database, or sending a confirmation email.
+  * Better used to send non-secure data.
+
+  * Allows the user to bookmark the page once the form has been submitted.
+
+* **POST**: Method which submits new or changed information to the web server.
+
+  * It appends form-data inside the body of the HTTP request.
+
+  * Compared to GET, it does not have size limitations.
+
+  * Does not allow the user to bookmark the page.
+
+* **Idempotent**: A request which can be re-run multiple times without side-effects. Example: If I submit an order multiple times, it is idempotent if only one order is created.
+
+* **Script**: A server side program which processes the form and acts accordingly. An example could be inserting a record in a database, or sending a confirmation email.
 
 ## Examples  
 
 Say we wanted to create a guest list of visitors to our website. The guest list would be displayed at "guestlist.html" -- so we'd link to it with something like:
 
+```html
 <a href="guestlist.html">View our Guest List</a>
-On that page, we'd see a table of visitors. If we wanted to add ourselves to this guest list, we'd need a form. And we'd need to tell the form where to submit it. That location of where to submit the form is very similar to the href location of where a link gets submitted.
+```
 
-If our web server had a script named "processguestlist.php" in the "scripts" directory, we would set the action attribute value to /scripts/process_guest_list.php.
+On that page, we'd see a table of visitors. If we wanted to add ourselves to this guest list, we'd need a form. And we'd need to tell the form where to submit it. That location of where to submit the form is very similar to the `href` location of where a link gets submitted.
+
+If our web server had a script named "processguestlist.php" in the "scripts" directory, we would set the action attribute value to `/scripts/process_guest_list.php`.
 
 Next, we would need to set the "method" for the form. There are two main methods used in HTML:
 
-GET: used to retrieve information. Like an a link, a GET form should not change information. It's used in search engines.
-POST: used to add or change information. Most forms are 'post' forms.
+1. **GET**: used to retrieve information. Like an a link, a GET form should not change information. It's used in search engines.
+
+2. **POST**: used to add or change information. Most forms are 'post' forms.
+
 Since we want to add our name to the guest list, we'd use a POST action.
 
+```html
 <form action="/scripts/process_guest_list.php" method="POST">
   <label for="name">Your Name</label>
   <input type="text" name="name">
 </form>
+```
+
 If we only wanted to search for a name on the guest list, our form would look like the following. Note the action is GET because we are searching for information.
 
+```html
 <form action="/scripts/process_guest_list.php" method="GET">
   <label for="name">Your Name</label>
   <input type="text" name="name">
 </form>
+```
 
 ---
 
-Lesson: Creating HTML Forms and Inspecting Your Code
+[Creating HTML Forms and Inspecting Your Code](CreatingHTMLFormsAndInspectingYourCode.md)
+
 # Creating Web Forms  
 
 ## Terminology  
 
-Web form: A section of a document made up of content, markup, controls, and labels. Users complete the form by modifying the controls.
+**Web form**: A section of a document made up of content, markup, controls, and labels. Users complete the form by modifying the controls.
 
-Controls: Utilized by users to interact with the form. Some of these controls are checkboxes, menus, radio buttons, etc. The value of these controls are strings and each control has an initial and current value.
+**Controls**: Utilized by users to interact with the form. Some of these controls are checkboxes, menus, radio buttons, etc. The value of these controls are strings and each control has an initial and current value.
 
-The initial value 'may' be specified with the element's value attribute and it does not change after a form reset.
-The current value 'may' be modified through user interaction or scripts and it changes back to the initial value after a form reset.
+* The initial value 'may' be specified with the element's value attribute and it does not change after a form reset.
+
+* The current value 'may' be modified through user interaction or scripts and it changes back to the initial value after a form reset.
 
 ## Examples  
 
@@ -2040,74 +2072,53 @@ Sample Good Practices Form:
 
 Things to note:
 
-Marking the email field as type 'email'. This will bring up an email keyboard on a mobile device.
-Adding a placeholder which appears inside the text field.
-Adding a required attribute which will force browsers to have a value inside them before submitting.
-Wrapping related inputs inside a fieldset
-Using labels which are links to inputs
-Editor
-Browser View
-index.html
+1. Marking the email field as type 'email'. This will bring up an email keyboard on a mobile device.
 
-1
+2. Adding a placeholder which appears inside the text field.
+
+3. Adding a required attribute which will force browsers to have a value inside them before submitting.
+
+4. Wrapping related inputs inside a fieldset
+
+5. Using labels which are links to inputs
+
+```html
 <form>
-2
   <fieldset>
-3
     <div>
-4
       <label for="name">Your Name</label>
-5
       <br>
-6
       <input type="text" id="name" name="name" placeholder="Your Name" required>
-7
     </div>
-8
-​
-9
+
     <div>
-10
       <label for="email">Your Email</label>
-11
       <br>
-12
       <input type="email" id="email" name="email" placeholder="Your Email" required>
-13
     </div>
-14
-​
-15
+
     <div>
-16
       <input type="submit" value="Sign Up!">
-17
     </div>
-18
   </fieldset>
-19
 </form>
- 
-
-Fullscreen
-
-Reset Code
-Preview 
+```
 
 ## References  
 
-MDN - Form Data Validation
+[MDN - Form Data Validation](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation)
 
-MDN - How To Structure An HTML Form
+[MDN - How To Structure An HTML Form](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/How_to_structure_an_HTML_form)
 
 ---
 
-Lesson: Creating HTML Forms and Inspecting Your Code
+[Creating HTML Forms and Inspecting Your Code](CreatingHTMLFormsAndInspectingYourCode.md)
+
 # Inspecting & Editing The DOM with DevTools  
 
 ## Terminology  
 
-Developer Tools: (DevTools) Web-authoring and debugging tools.
+**Developer Tools**: (DevTools) Web-authoring and debugging tools.
 
 ## Using The Tools  
 
@@ -2115,32 +2126,43 @@ Google Chrome specific. Other browsers offer similar tools and features.
 
 ### Accessing DevTools  
 
-Right click on an element and select Inspect Element. This will not only open the tool, but it will take you exactly to the selected DOM node.
-Using the keyboard: On a Mac select cmd + opt + i. In Windows select ctrl + shift + i.
-Chrome browser: menu > More Tools > Developer Tools.
+* Right click on an element and select `Inspect Element`. This will not only open the tool, but it will take you exactly to the selected DOM node.
+
+* Using the keyboard: On a Mac select `cmd + opt + i`. In Windows select `ctrl + shift + i`.
+
+* Chrome browser: `menu > More Tools` > `Developer Tools`.
 
 ### Editing a node  
 
-Right click on an element to:
+* Right click on an element to:
 
-Add Attribute: add attributes, such class, src, or width.
-Edit Attribute: edit current attribute(s).
-Edit as HTML: opens an HTML edit windows. From here you can edit the entire content of the node as if you were using an editor. You can even add an element(s).
-Copy: lets you perform several different copy operations. The most useful being copy outerHTML. This copies the entire content of the node (tags and content).
-Click and drag an element to rearrange.
+  * `Add Attribute`: add attributes, such `class`, `src`, or `width`.
 
-Style pane
+  * `Edit Attribute`: edit current attribute(s).
 
-Editing a style: Clicking on an element lets us edit then name and value of a style. To save, press Enter or Tab.
-Adding a style: Click outside the style name or value. This adds a new style line to which you must provide a CSS style.
-Style modification is not saved by default. Reloading the page reverts all styling. Set up Persistent authoring to save changes.
-Computed pane
+  * `Edit as HTML`: opens an HTML edit windows. From here you can edit the *entire content* of the node as if you were using an editor. You can even add an element(s).
 
-Access to box model. All properties are editable.
+  * `Copy`: lets you perform several different `copy` operations. The most useful being `copy outerHTML`. This copies the entire content of the node (tags and content).
+
+* Click and drag an element to rearrange.
+
+* Style pane
+
+  * Editing a style: Clicking on an element lets us edit then name and value of a style. To save, press `Enter` or `Tab`.
+
+  * Adding a style: Click outside the `style` `name` or `value`. This adds a new `style` line to which you must provide a `CSS style`.
+
+  * Style modification is not saved by default. Reloading the page reverts all styling. Set up `Persistent authoring` to save changes.
+
+* `Computed pane`
+
+
+  * Access to `box model`. All properties are editable.
 
 ---
 
-Lesson: Version Control with Git
+[Version Control with Git](VersionControlWithGit.md)
+
 # Local Version Control Using Git  
 
 ## Terminology  
@@ -2208,7 +2230,8 @@ Type :wq to save the message
 
 ---
 
-Lesson: Version Control with Git
+[Version Control with Git](VersionControlWithGit.md)
+
 # Managing Remote Repositories  
 
 ## Terminology  
@@ -2336,7 +2359,8 @@ If the branch is not in the server, one will be created.
 
 ---
 
-Lesson: Version Control with Git
+[Version Control with Git](VersionControlWithGit.md)
+
 # Git Fetch And Pull  
 
 ## Terminology  
@@ -2389,7 +2413,8 @@ Already up-to-date.
 
 ---
 
-Lesson: Version Control with Git
+[Version Control with Git](VersionControlWithGit.md)
+
 # Stashing  
 
 ## Terminology  
@@ -2469,7 +2494,8 @@ Dropped stash@{1} (0b1478540189f30fef9804684673907c65865d8f)
 
 ---
 
-Lesson: Using Git Remotely with a Team
+[Using Git Remotely with a Team](UsingGitRemotelyWithATeam.md)
+
 # Cloning A Remote Repository  
 
 ## Terminology  
@@ -2546,7 +2572,8 @@ Deleted branch delete-this-branch (was 78b2670).
 
 ---
 
-Lesson: Using Git Remotely with a Team
+[Using Git Remotely with a Team](UsingGitRemotelyWithATeam.md)
+
 # Merging Branches  
 
 ## Terminology  
@@ -2620,7 +2647,8 @@ At this point you can either push or continue working and push at a later time (
 
 ---
 
-Lesson: Using Git Remotely with a Team
+[Using Git Remotely with a Team](UsingGitRemotelyWithATeam.md)
+
 # Git Team Best Practices  
 
 ## Terminology  
@@ -2734,7 +2762,8 @@ Create a repository on GitHub named git-immersion and push your local repository
 
 ---
 
-Lesson: Getting Started with JavaScript
+[Getting Started with JavaScript](GettingStartedWithJavaScript.md)
+
 # JavaScript Dependencies  
 
 ## Terminology  
@@ -2801,7 +2830,8 @@ Example
 
 ---
 
-Lesson: Getting Started with JavaScript
+[Getting Started with JavaScript](GettingStartedWithJavaScript.md)
+
 # JavaScript Data Types  
 
 ## Terminology  
@@ -2867,7 +2897,8 @@ lines"
 
 ---
 
-Lesson: Getting Started with JavaScript
+[Getting Started with JavaScript](GettingStartedWithJavaScript.md)
+
 # Using Variable  
 
 ## Terminology  
@@ -3143,7 +3174,8 @@ Run Code
 
 ---
 
-Lesson: Getting Started with JavaScript
+[Getting Started with JavaScript](GettingStartedWithJavaScript.md)
+
 # Truthy vs Falsey  
 
 ## Terminology  
@@ -3373,7 +3405,8 @@ Run Code
 
 ---
 
-Lesson: Getting Started with JavaScript
+[Getting Started with JavaScript](GettingStartedWithJavaScript.md)
+
 # Debugging Programs  
 
 ## Terminology  
@@ -3407,7 +3440,8 @@ console.log("%s and Jill went up a hill", name); // Jack and Jill went up a hill
 
 ---
 
-Lesson: Getting Started with JavaScript
+[Getting Started with JavaScript](GettingStartedWithJavaScript.md)
+
 # Conditional Statements  
 
 Conditional statements are code that executes specific blocks of code under particular circumstances. You can think of conditional statements like a series of dams on a river. The dams can control and redirect the flow of the river as needed.
@@ -3615,7 +3649,8 @@ JavaScript will evaluate the first if statement. If that's false, it will check 
 
 ---
 
-Lesson: Functions and Complex Expressions
+Functions and Complex Expressions](FunctionsAndComplexExpressions.md)
+
 # Function Parameters  
 
 ### Parameters and Arguments  
@@ -3694,7 +3729,8 @@ JavaScript functions are also syntactically complex. Make sure you're comfortabl
 
 ---
 
-Lesson: Functions and Complex Expressions
+[Functions and Complex Expressions](FunctionsAndComplexExpressions.md)
+
 # The `this` keyword  
 
 ## Terminology  
@@ -4113,7 +4149,8 @@ Above: In order to obtain the invocation context of the outer function using `th
 
 ---
 
-Lesson: Functions and Complex Expressions
+Functions and Complex Expressions](FunctionsAndComplexExpressions.md)
+
 # Logical Operators  
 
 Logical operators are used to create complex logical expressions. Logical expressions in english are made up of the words and, or, and not. For example, consider this statement that describes the circumstances under which you will go out to eat:
@@ -4273,7 +4310,8 @@ As such, our program will determine that we have a latte.
 
 ---
 
-Lesson: Creating Arrays and Loops
+[Creating Arrays and Loops](CreatingArraysAndLoops.md)
+
 # Arrays  
 
 Terminology  
@@ -4329,7 +4367,8 @@ Because the array is zero indexed we can see that item #1 (the second in the lis
 
 ---
 
-Lesson: Creating Arrays and Loops
+[Creating Arrays and Loops](CreatingArraysAndLoops.md)
+
 # Accessing Elements of an Array  
 
 Terminology  
@@ -4401,7 +4440,8 @@ console.log(characters);
 
 ---
 
-Lesson: Creating Arrays and Loops
+[Creating Arrays and Loops](CreatingArraysAndLoops.md)
+
 # Control Flow  
 
 Programs don't usually execute top to bottom in a straight line. Instead, a program may execute a section of code many times over or only run some code under certain circumstances.
@@ -4426,7 +4466,8 @@ Examples
 
 ---
 
-Lesson: Creating Arrays and Loops
+[Creating Arrays and Loops](CreatingArraysAndLoops.md)
+
 # For Loops  
 
 Initialization expression  
@@ -4581,7 +4622,8 @@ Running this gives us the desired output!
 
 ---
 
-Lesson: Using JavaScript to Modify HTML
+[Using JavaScript to Modify HTML](UsingJavaScriptToModifyHTML.md)
+
 # Query Selectors  
 
 Terminology  
@@ -4686,7 +4728,8 @@ for (var i = 0; i < children.length; i++) {
 
 ---
 
-Lesson: Using JavaScript to Modify HTML
+[Using JavaScript to Modify HTML](UsingJavaScriptToModifyHTML.md)
+
 # Creating, Updating, and Removing DOM Nodes  
 
 Terminology  
@@ -4809,7 +4852,8 @@ console.log(element.children.length); //was 3 before the change, now 2. Adds bol
 
 ---
 
-Lesson: Using JavaScript to Modify HTML
+[Using JavaScript to Modify HTML](UsingJavaScriptToModifyHTML.md)
+
 # Select Event Add Listener  
 
 Terminology  
@@ -4851,7 +4895,8 @@ MDN - JavaScript Event Reference - list of events that can be sent
 
 ---
 
-Lesson: Using JavaScript to Modify HTML
+[Using JavaScript to Modify HTML](UsingJavaScriptToModifyHTML.md)
+
 # Run Code After a Delay or Periodically  
 
 Examples  
@@ -4880,7 +4925,8 @@ This example changes the color of a box every half second. You can pause on a co
 
 ---
 
-Lesson: Building Objects and Maintaining Proper Scope
+[Building Objects and Maintaining Proper Scope](BuildingObjectsAndMaintainingProperScope.md)
+
 # Math and Date  
 
 Terminology  
@@ -4978,7 +5024,8 @@ The Math Object- MDN
 
 ---
 
-Lesson: Building Objects and Maintaining Proper Scope
+[Building Objects and Maintaining Proper Scope](BuildingObjectsAndMaintainingProperScope.md)
+
 Arithmetic Operators in JavaScript  
 
 Terminology  
@@ -5327,7 +5374,8 @@ MDN - Expressions and operators
 
 ---
 
-Lesson: Building Objects and Maintaining Proper Scope
+[Building Objects and Maintaining Proper Scope](BuildingObjectsAndMaintainingProperScope.md)
+
 ## Terminology  
 
 Window Object: The window object represents a window containing a DOM document; the window.document property points to the DOM document loaded in that window. global scope: Available throughout the entire application. IIFE: Immediately Invoked Function expression.
@@ -5352,7 +5400,8 @@ Isolate Variables in JS
 
 ---
 
-Lesson: Building Objects and Maintaining Proper Scope
+[Building Objects and Maintaining Proper Scope](BuildingObjectsAndMaintainingProperScope.md)
+
 # Hoisting  
 
 ## Terminology  
@@ -5477,7 +5526,8 @@ hoistedFunction()
 
 ---
 
-Lesson: Building Objects and Maintaining Proper Scope
+[Building Objects and Maintaining Proper Scope](BuildingObjectsAndMaintainingProperScope.md)
+
 # Study Notes  
 
 Terminology  
@@ -5552,7 +5602,8 @@ You can only update a method using the dot notation.
 
 ---
 
-Lesson: Algorithms and Data Modeling
+[Algorithms and Data Modeling](AlgorithmsAndDataModeling.md)
+
 # Algorithms  
 
 Terminology  
@@ -5714,7 +5765,8 @@ Run Code
 
 ---
 
-Lesson: Algorithms and Data Modeling
+[Algorithms and Data Modeling](AlgorithmsAndDataModeling.md)
+
 # Objects Containing Other Types  
 
 Terminology  
@@ -5769,7 +5821,8 @@ console.log( personObject.appearance.hair['color'] ); // brown
 
 ---
 
-Lesson: Working with Remote Data
+[Working with Remote Data](WorkingWithRemoteData.md)
+
 # Define Event Loop  
 
 Terminology  
@@ -5812,7 +5865,8 @@ MDN - JavaScript Event Loop
 
 ---
 
-Lesson: Working with Remote Data
+[Working with Remote Data](WorkingWithRemoteData.md)
+
 # Promises and Callbacks  
 
 Terminology  
@@ -5924,7 +5978,8 @@ First Class Citizen - Wikipedia
 
 ---
 
-Lesson: Working with Remote Data
+[Working with Remote Data](WorkingWithRemoteData.md)
+
 # FETCH: GET & POST  
 
 Terminology  
@@ -6000,7 +6055,8 @@ fetch(url, {
   
 ---
 
-Lesson: Working with Remote Data (Part 2)
+[Working with Remote Data (Part 2)](FrontEnd/WorkingWithRemoteDataPart2.md)
+
 # Cookies & Tokens  
 
 Terminology  
@@ -6057,7 +6113,7 @@ Lesson Footnotes
 
 ---
 
-Lesson: Working with Remote Data (Part 2)
+[Working with Remote Data (Part 2)](FrontEnd/WorkingWithRemoteDataPart2.md)
 
 # Understanding CORS  
 
