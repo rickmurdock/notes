@@ -2861,7 +2861,7 @@ If someone has to type out the gh-pages link to visit it, they won't (including 
 
 We highly encourage you to put all these new skills into practice by doing the following:
 
-* Got to gitimmersion.com.
+* Got to [gitimmersion.com](http://gitimmersion.com/).
 
 * Complete Labs 1-12, 24, and 25.
 
@@ -2875,16 +2875,17 @@ We highly encourage you to put all these new skills into practice by doing the f
 
 ## Terminology  
 
-<script>: the <script> tag is used for declaring a script from within the HTML document.
+`<script>`: the `<script>` tag is used for declaring a script from within the HTML document.
 
-CDN: a system of distributed servers that deliver web content based on the geographic locations of the user, of the content delivery server, and of the origin of the web page.
+**CDN**: a system of distributed servers that deliver web content based on the geographic locations of the user, of the content delivery server, and of the origin of the web page.
 
 ## Including JavaScript  
 
 ### Including JavaScript Code From Body  
 
-Example
+#### Example
 
+```html
 <head>...</head>
 <body>
  <!--Document content -->
@@ -2892,23 +2893,27 @@ Example
     console.log("I'm running from within the HTML body!")
  </script>
 </body>
+```
 
 ### Linking To An External JavaScript File  
 
-Example
+#### Example
 
+```html
 <body>
  <head>...</head>
  <!--Document content-->
  <script type="text/javascript" src="scripts/main.js"></script>
 </body>
+```
 
 ### Including Other Dependencies  
 
 Include jQuery from the body of the HTML document.
 
-Example
+#### Example
 
+```html
 <body>
   <head>...</head>
   <!--Load jQuery first. This will make jQuery syntax available when JS loads-->
@@ -2917,23 +2922,30 @@ Example
   <!--Then load JS-->
   <script type="text/javascript" src="scripts/main.js"></script>
 </body>
-Include jQuery in the <head>.
+```
 
+Include jQuery in the `<head>`.
+
+```html
 <head>
   <title>Title</title>
   <link type="text/css" rel="stylesheet" href="styles/main.css"></link>
   <!--Make sure to download jQuery. http://jquery.com/download/-->
   <script src="scripts/jquery-1.11.1.min.js"></script>
 </head>
+```
+
 Include jQuery using a CDN.
 
-Example
+#### Example
 
+```html
 <head>
   <title>Title</title>
   <link type="text/css" rel="stylesheet" href="styles/main.css"></link>
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
+```
 
 ---
 
@@ -2943,17 +2955,23 @@ Example
 
 ## Terminology  
 
-Data Type: a particular kind of data item. It is defined by the values it can take, the programming language used, or the operations that can be performed on it.
-Boolean: a binary variable, having two possible values called “true” and “false".
-Null: a representation of the intentional absence of any object value.
-Undefined: a variable that has not been assigned a value.
-Number: a wrapper object allowing you to work with numerical values.
-String: a sequence of characters surrounded by quotation marks.
-Escape sequence: Combining \ with another character enables that character to be represented in a string. This is called an escape sequence. It allows you to 'escape' from the normal string interpretation.
+* **Data Type**: a particular kind of data item. It is defined by the values it can take, the programming language used, or the operations that can be performed on it.
+
+* **Boolean**: a binary variable, having two possible values called “true” and “false".
+
+* **Null**: a representation of the intentional absence of any object value.
+
+* **Undefined**: a variable that has not been assigned a value.
+
+* **Number**: a wrapper object allowing you to work with numerical values.
+
+* **String**: a sequence of characters surrounded by quotation marks.
+
+* **Escape sequence**: Combining `\` with another character enables that character to be represented in a string. This is called an `escape sequence`. It allows you to 'escape' from the normal string interpretation.
 
 ## Examples  
 
-
+```js
 var boolean = true;
 var foo = null;
 var bar = undefined;
@@ -2961,13 +2979,15 @@ var number = 123;
 var string = "string";
 
 console.log(typeof boolean, typeof foo, typeof bar, typeof number, typeof string);
+```
 
 ### Null And Undefined  
 
-The equality operator, ==, considers them equal. To distinguish them, use the strict equality operator, ===.
+The equality operator, `==`, considers them equal. To distinguish them, use the strict equality operator, `===`.
 
-Example
+#### Example
 
+```js
 typeof null        // "object" (not "null" for legacy reasons)
 typeof undefined   // "undefined"
 null === undefined // false
@@ -2977,19 +2997,23 @@ null == null //true
 !null // true
 isNaN(1 + null) //false
 isNaN(1 + undefined) //true
+```
 
 ## Strings  
 
-Example
+#### Example
 
+```js
 //String concatenation below.
 
 var concat = "My name is" + " " + "Joe" // evaluates to My name is Joe
+```
 
 ## Escape sequence  
 
-Example
+#### Example
 
+```js
 // Writing a string on 5 lines.
 
 "This\
@@ -3001,6 +3025,7 @@ lines"
 // Using `\` makes it possible to include an apostrophe since the string was wrapped in single quotes.
 
 'I\m always right. I can\'t be wrong.'
+```
 
 ---
 
@@ -3010,17 +3035,17 @@ lines"
 
 ## Terminology  
 
-var: (variable) keyword used to create a variable.
+`var`: (variable) keyword used to create a variable.
 
-const: (constant) keyword used to declare a variable that is immutable. Cannot be reassigned or redeclared. const can be a global or local variable. Another variable in the same scope cannot have the same const name.
+`const`: (constant) keyword used to declare a variable that is immutable. Cannot be reassigned or redeclared. `const` can be a `global` or `local` variable. Another variable in the same scope *cannot* have the same `const` name.
 
-let: keyword used to declare a variable that is strictly limited in scope to the code block or expression that it is being used within.
+`let`: keyword used to declare a variable that is strictly limited in scope to the code block or expression that it is being used within.
 
-bucket: Variables are named "buckets" that hold data and make that data available for reuse later. A variable can hold data of any type.
+`bucket`: Variables are named "buckets" that hold data and make that data available for reuse later. A variable can hold data of any type.
 
-=: It is the assignment operator. We will discuss operators in a future lesson. For now, know that the assignment operator takes the value on its right and assigns it to the variable on its left.
+`=`: It is the `assignment operator`. We will discuss operators in a future lesson. For now, know that the assignment operator takes the value on its right and assigns it to the variable on its left.
 
-;: the semicolon at the end of the line tells JavaScript that the statement is complete. A JavaScript statement is a single, complete instruction to be executed.
+`;`: the semicolon at the end of the line tells JavaScript that the *statement* is complete. A JavaScript statement is a single, complete instruction to be executed.
 
 ## buckets  
 
@@ -3032,252 +3057,155 @@ bucket: Variables are named "buckets" that hold data and make that data availabl
 
 ### Assigning Variables  
 
-Let's look at the difference between variable declaration and variable assignment. Notice what happens when we assign a new value to basket:
+Let's look at the difference between variable **declaration** and variable **assignment**. Notice what happens when we assign a new value to `basket`:
 
-
-1
+```js
 // we declare the variable and assign a value to it
-2
 var basket = 1;
-3
 console.log(basket);
-4
-​
-5
+
 // now, we assign a new value to basket
-6
 basket = 2
-7
 console.log(basket);
+```
 
-Fullscreen
+`basket = 2;` is an example of a variable assignment. The value `2` overwrites the existing value of `1`, and it is now stored in the variable `basket`.
 
-Reset Code
-Run Code 
-basket = 2; is an example of a variable assignment. The value 2 overwrites the existing value of 1, and it is now stored in the variable basket.
+A variable without a value returns `undefined`.
 
-A variable without a value returns undefined.
-
-
-1
+```js
 var chair; // This is a variable declaration. No value assigned.
-2
 console.log(chair);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Let's take a closer look with an example:
 
-
-1
+```js
 var favoriteAnimal = "llama";
-2
 console.log(favoriteAnimal);
-3
-​
-4
+
 favoriteAnimal = "river otter";
-5
 console.log(favoriteAnimal);
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ### var usage  
 
-Single variable declaration:
+Single `variable` declaration:
 
-
-1
+```js
 var x = "hi there!";
-2
 var concat = "hi" + " " +  "awesome" + " " + "you!";
-3
-​
-4
+
 console.log(x);
-5
 console.log(concat);
+```
 
-Fullscreen
+Multiple `variable` declaration:
 
-Reset Code
-Run Code 
-Multiple variable declaration:
-
-
-1
+```js
 var x = 1, string = "hello", array = [1, 2, 3];
-2
 console.log(x, string, array);
+```
 
-Fullscreen
+Combining `variable` declarations and `variable initializations`:
 
-Reset Code
-Run Code 
-Combining variable declarations and variable initializations:
-
-
-1
+```js
 var x = "hi", y = 1, z = ["cat", "dog"];
-2
 var sum = 2 + 3 + 4;
-3
-​
-4
+
 console.log(x, y, z);
-5
 console.log(sum);
+```
 
-Fullscreen
+In a `for loop` and `for/in loop`:
 
-Reset Code
-Run Code 
-In a for loop and for/in loop:
-
-
-1
+```js
 for (var i = 0; i < 5; i++);
-2
 console.log("for loop:", i);
-3
-​
-4
+
 var a = 2;
-5
 var b = 1;
-6
 for ( var a in b);
-7
 console.log("for/in loop:", a);
+```
 
-Fullscreen
+#### Example
 
-Reset Code
-Run Code 
-Example
+In this example, we create a 'magicNumber' `variable` with a value of '1'. Then we create a 'sum' `variable` that adds `magicNumber` onto itself.
 
-In this example, we create a 'magicNumber' variable with a value of '1'. Then we create a 'sum' variable that adds magicNumber onto itself.
-
-
-1
+```js
 var magicNumber = 1;
-2
 var sum = magicNumber + magicNumber;
-3
 console.log(sum);
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ## Const  
 
-Run some examples of const to see what happens:
+Run some examples of `const` to see what happens:
 
-
-1
+```js
 const bestFood = 'beans';
-2
 bestFood = 'sushi';
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 This should throw an error!
 
-
-1
+```js
 const bestFood = 'beans';
-2
 console.log('Sit down and have yourself some ' + bestFood);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 This should offer some great advice.
 
-
-1
+```js
 const bestFood = 'beans';
-2
 const bestFood = 'sushi';
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-This should also throw an error. Once a variable name has been taken, you can't alter it like you could when you used var.
+This should also throw an error. Once a variable name has been taken, you can't alter it like you could when you used `var`.
 
 ## Let  
 
-let can be used:
+`let` can be used:
 
-In for loop or for/in loop. let variables do not exist outside the loop.
-As a variable declaration, just like var.
-When defining variables scoped to a single expression.
-In a block statement to define new variables. This would explicitly limit their scope to that block.
-Example
+* In `for loop` or `for/in loop`. `let` variables do not exist outside the loop.
 
-for loop
+* As a variable declaration, just like var.
 
+* When defining variables scoped to a single expression.
 
-1
+* In a `block statement` to define new variables. This would explicitly limit their scope to that block.
+
+#### Example
+
+`for loop`
+
+```js
 function iterationDoubler (x) {
-2
   let total = 0, output = [];
-3
   for (let y = 1; y <= x; y++) {
-4
     let double = y * 2;
-5
     total = double;
-6
     output.push(total);
-7
   }
-8
   return output;
-9
 }
-10
 iterationDoubler();
-11
 console.log(iterationDoubler(10));
+```
 
-Fullscreen
+#### Example
 
-Reset Code
-Run Code 
-Example
+`for/in loop`
 
-for/in loop
-
-
-1
+```js
 a  = { b:1, c:2 };
-2
 for (let d in a)
-3
 console.log(d);
-4
 for each (let e in a)
-5
 console.log(e);
-6
 console.log(d);
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ---
 
@@ -3287,228 +3215,132 @@ Run Code
 
 ## Terminology  
 
-Falsey: A falsey expression in JavaScript is considered to be false in logical statements.
+**Falsey**: A `falsey` expression in JavaScript is considered to be `false` in logical statements.
 
-Truthy: A truthy expression in JavaScript is considered to be true in logical expressions. In a nutshell, anything that isn't a falsey value is true.
+**Truthy**: A `truthy` expression in JavaScript is considered to be `true` in logical expressions. In a nutshell, anything that isn't a `falsey` value is true.
 
 ### Falsey  
 
-False
+#### False
 
-
-1
+```js
 if(false){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
+#### 0
 
-Reset Code
-Run Code 
-0
-
-
-1
+```js
 if(0){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
+#### Empty String
 
-Reset Code
-Run Code 
-Empty String
-
-
-1
+```js
 if(""){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
+#### Undefined
 
-Reset Code
-Run Code 
-Undefined
-
-
-1
+```js
 var x;
-2
-​
-3
+
 if(x){
-4
     console.log("The logical expression is true!");
-5
 } else {
-6
     console.log("The logical expression is false...");
-7
 }
+```
 
-Fullscreen
+#### Null
 
-Reset Code
-Run Code 
-Null
-
-
-1
+```js
 if(null){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-NaN
+#### NaN
 
 NaN is a special value in JavaScript that indicates something that is not a number. For example
 
-
-1
+```js
 // this expression will set x to NaN
-2
 var x = 1 * undefined;
-3
-​
-4
+
 if(x){
-5
     console.log("The logical expression is true!");
-6
 } else {
-7
     console.log("The logical expression is false...");
-8
 }
-
-Fullscreen
-
-Reset Code
-
-Run Code 
+```
 
 ### Truthy  
 
-A truthy expression in JavaScript is one considered to be true in logical expressions. In a nutshell, anything that isn't a falsey value is true.
+A `truthy` expression in JavaScript is one considered to be true in logical expressions. In a nutshell, anything that isn't a `falsey` value is `true`.
 
-Numbers Other Than 0
+#### Numbers Other Than 0
 
-
-1
+```js
 if(-5 && 5){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
+Both -5 and 5 are `truthy` values. `true` and `true` equals `true`, so the logical expression evaluates to `true`.
 
-Reset Code
-Run Code 
-Both -5 and 5 are truthy values. true and true equals true, so the logical expression evaluates to true.
+#### Non-empty Strings
 
-Non-empty Strings
-
-
-1
+```js
 if("Hello World!"){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Objects
+#### Objects
 
 Any type of object in JavaScript evaluates to true.
 
-
-1
+```js
 if({}){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-
-1
+```js
 if({name: "Wangchuk Cleophas"}){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-
-1
+```js
 if(new Date()){
-2
     console.log("The logical expression is true!");
-3
 } else {
-4
     console.log("The logical expression is false...");
-5
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ---
 
@@ -3518,32 +3350,40 @@ Run Code
 
 ## Terminology  
 
-Developer tools: These tools allow developers to interact with the front-end of their website.
+`Developer tools`: These tools allow developers to interact with the front-end of their website.
 
-console: The console object is available through a web API. It provides access to the browser's debugging console, and it is attached to the global window object.
+`console`: The `console` object is available through a web API. It provides access to the browser's debugging console, and it is attached to the global `window` object.
 
-console.log: The log method is used to output a message to the web console. The log method can take unlimited arguments.
+`console.log`: The `log` method is used to output a message to the web console. The `log` method can take unlimited arguments.
 
 ### Console Log Method  
 
-Example
+#### Example
 
+```js
 var name = "Jeff";
 
 console.log(name); // logs "Jeff"
+```
+
 You can also specify multiple pieces of data like this.
 
+```js
 var name1 = "Jeff";
 var name2 = "Martha";
 var name3 = "Stacy"
 var name4 = "Gwen";
 
 console.log(name1, name2, name3, name4); // Logs "Jeff, Martha, Stacy, Gwen"
-Lastly, you can also specify a message as a string first and use string substitution following it.
+```
 
+Lastly, you can also specify a message as a string first and use [string substitution](https://developer.mozilla.org/en-US/docs/Web/API/console#Outputting_text_to_the_console) following it.
+
+```js
 var name = "Jack";
 
 console.log("%s and Jill went up a hill", name); // Jack and Jill went up a hill
+```
 
 ---
 
