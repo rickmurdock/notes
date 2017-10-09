@@ -2254,60 +2254,70 @@ $ git commit
 
 ## Terminology  
 
-git remote add: Add a new remote repository of to project.
+`git remote add`: Add a new remote repository of to project.
 
-git remote: View remote alias.
+`git remote`: View remote alias.
 
-git remote -v: View alias's URL.
+`git remote -v`: View alias's URL.
 
-git remote rm [ALIAS]: Remove an existing remote alias.
+`git remote rm [ALIAS]`: Remove an existing remote alias.
 
-git remote rename [old-alias] [new-alias]: Rename remote aliases.
+`git remote rename [old-alias] [new-alias]`: Rename remote aliases.
 
-git remote set-url: Change an existing remote URL
+`git remote set-url`: Change an existing remote URL
 
-git push: Push changes to remote repository.
+`git push`: Push changes to remote repository.
 
 ## Adding, Listing And Removing Remote Repositories  
 
 ### Adding Remote Repository  
 
-Syntax
+#### Syntax
 
-$ git remote add origin git@github.com:<USERNAME>/<REPO-NAME>.git
+`$ git remote add origin git@github.com:<USERNAME>/<REPO-NAME>.git`
 
-Example
+#### Example
 
+```sh
 $ git remote
 $ git remote add github git@github.com:supercoder/code.git
 $ git remote -v
 github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
+```
 
 ### Listing Remote Repository  
 
-Syntax
+#### Syntax
 
+```sh
 $ git remote
+```
 
-Example
+#### Example
 
+```sh
 $ git remote
 origin
-$ git remote -v
+```
 
+`$ git remote -v`
+
+```sh
 $ git remote -v
 origin  git@github.com:github/code.git (fetch)
 origin  git@github.com:github/code.git (push)
+```
 
 ### Removing Remote Repository  
 
-Syntax
+#### Syntax
 
-$ git remote rm [ALIAS]
+`$ git remote rm [ALIAS]`
 
-Example
+#### Example
 
+```sh
 $ git remote -v
 github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
@@ -2321,15 +2331,17 @@ $ git remote rm origin
 $ git remote -v
 github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
+```
 
 ### Renaming Remote Repository  
 
-Syntax
+#### Syntax
 
-git remote rename [old-alias] [new-alias]
+`git remote rename [old-alias] [new-alias]`
 
-Example
+#### Example
 
+```sh
 $ git remote add github git@github.com:supercoder/code.git
 $ git remote -v
 github  git@github.com:supercoder/code.git (fetch)
@@ -2338,15 +2350,17 @@ $ git remote rename github origin
 $ git remote -v
 origin  git@github.com:supercoder/code.git (fetch)
 origin  git@github.com:supercoder/code.git (push)
+```
 
 ### Changing An Existing Remote URL  
 
-Syntax
+#### Syntax
 
-$ git remote set-url
+`$ git remote set-url`
 
-Example
+#### Example
 
+```sh
 $ git remote -v
 github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
@@ -2358,22 +2372,26 @@ github  git@github.com:supercoder/code.git (fetch)
 github  git@github.com:supercoder/code.git (push)
 origin  git://github.com/github/git-reference.git (fetch)
 origin  git://github.com/github/git-reference.git (push)
+```
 
 ### Pushing Changes to Remote Repository  
 
-Syntax
+#### Syntax
 
-git push [alias] [branch]
+`git push [alias] [branch]`
 
-Example
+#### Example
 
+```sh
 $ git push origin my-dev-branch
-We can push to any branch we have 'write' access to.
-If the branch is not in the server, one will be created.
+```
+
+> * We can `push` to any branch we have 'write' access to.
+> * If the branch is not in the server, one will be created.
 
 ## Git Practice  
 
-> *Practice makes perfect! Go to try.github.io and complete challenges 10-12.*
+> *Practice makes perfect! Go to [try.github.io](https://try.github.io/levels/1/challenges/10) and complete challenges 10-12.*
 
 ---
 
@@ -2383,24 +2401,25 @@ If the branch is not in the server, one will be created.
 
 ## Terminology  
 
-$ git fetch: It pulls down any data not found locally and it does not merge the data.
+`$ git fetch`: It pulls down any data not found locally and it does not merge the data.
 
-$ git pull: Runs a git fetch immediately followed by a git merge.
+`$ git pull`: Runs a `git fetch` immediately followed by a `git merge`.
 
 ## When To Use Fetch And Pull  
 
-Fetch: This is a good one to use when working in a collaborative environment. Performing a fetch will pull down the data and let you see what has changed.
+`Fetch`: This is a good one to use when working in a collaborative environment. Performing a `fetch` will pull down the data and let you see what has changed.
 
-pull: It is recommended to use pull when starting with a clean working copy. There should be no uncommitted local changes before performing a pull. Keep in mind that git pull might cause a merge conflict when merging remote changes with local ones.
+`pull`: It is recommended to use `pull` when starting with a **clean working copy**. There should be no uncommitted local changes before performing a `pull`. Keep in mind that `git pull` might cause a `merge conflict` when merging remote changes with local ones.
 
 ### How To Use Fetch  
 
-Syntax
+#### Syntax
 
-$ git fetch [alias]
+`$ git fetch [alias]`
 
-Example
+#### Example
 
+```sh
 $ git fetch example-branch
 remote: Counting objects: 4006, done.
 remote: Compressing objects: 100% (1322/1322), done.
@@ -2413,21 +2432,24 @@ From github.com:supercoder/code
    6684f82..ae06d2b  ruby       -> example-branch/ruby
  * [new branch]      css        -> example-branch/css
  * [new branch]      html       -> example-branch/html
+```
 
 ### How To Use Pull  
 
-Syntax
+#### Syntax
 
-$ git pull [alias] [branch]
+`$ git pull [alias] [branch]`
 
+```sh
 $ git pull origin test-branch
 From github.com:myproject/content
  * branch              test-branch -> FETCH_HEAD
 Already up-to-date.
+```
 
 ## Git Practice  
 
-> *Go to learngitbranching.js.org and complete exercises 3 and 4 under the 'remote' tab.*
+> *Go to [learngitbranching.js.org](https://learngitbranching.js.org/) and complete exercises 3 and 4 under the 'remote' tab.*
 
 ---
 
@@ -2437,24 +2459,27 @@ Already up-to-date.
 
 ## Terminology  
 
-git stash: Adds current changes to the stack for later use. Gives back a clean working directory based on the last commit.
+`git stash`: Adds current changes to the stack for later use. Gives back a clean working directory based on the last commit.
 
-Untracked files will not be included.
-Use git stash -u (version 1.7.7 and later) to stash untracked files.
-git stash list: View stashes currently on the stack.
+* Untracked files **will not** be included.
 
-git stash apply: Applies an item from the stash list to current working directory.
+* Use `git stash -u` (version 1.7.7 and later) to stash untracked files.
 
-git stash drop: Removes an item from the stash list.
+`git stash list`: View stashes currently on the stack.
+
+`git stash apply`: Applies an item from the stash list to current working directory.
+
+`git stash drop`: Removes an item from the stash list.
 
 ## Git Stash  
 
-Syntax
+#### Syntax
 
-$ git stash
+`$ git stash`
 
-Example
+#### Example
 
+```sh
 $ git status -s
 M hello-world.html
 $ git stash
@@ -2463,32 +2488,40 @@ HEAD is now at 5857ac1 we are trying git stash
 $ git status
 # On branch master
 nothing to commit (working directory clean)
-git status -s shows the output in the short-format.
+```
+
+> `git status -s` shows the output in the short-format.
 
 ## Git Stash List  
 
-Syntax
+#### Syntax
 
-$ git stash list
+`$ git stash list`
 
-Example
+#### Example
 
+```sh
 $ git stash list
 stash@{0}: WIP on master: 5857ac1 we are trying git stash
-Incremental stashes will be noted inside the { }. stash@{0} represents the last stashed item.
+```
 
+Incremental stashes will be noted inside the `{ }`. `stash@{0}` represents the **last** stashed item.
+
+```sh
 $ git stash list
 stash@{0}: WIP on master: ee2d2c6 we added one stash
 stash@{1}: WIP on master: 5857ac1 we added two stashes
+```
 
 ## Git Stash Apply  
 
-Syntax
+#### Syntax
 
-$ git stash apply
+`$ git stash apply`
 
-Example
+#### Example
 
+```sh
 $ git stash apply
 # On branch master
 # Changes not staged for commit:
@@ -2498,17 +2531,20 @@ $ git stash apply
 # modified:   hello-world.html
 #
 no changes added to commit (use "git add" and/or "git commit -a")
+```
 
 ## Git Stash Drop  
 
-Syntax
+#### Syntax
 
-$ git stash drop stash@{#}
+`$ git stash drop stash@{#}`
 
-Example
+#### Example
 
+```sh
 $ git stash drop stash@{1}
 Dropped stash@{1} (0b1478540189f30fef9804684673907c65865d8f)
+```
 
 ---
 
@@ -2518,28 +2554,37 @@ Dropped stash@{1} (0b1478540189f30fef9804684673907c65865d8f)
 
 ## Terminology  
 
-clone: Copy a git repository in order to collaborate.
+`clone`: Copy a git repository in order to collaborate.
 
-checkout: Switch to a new branch.
+`checkout`: Switch to a new branch.
 
-checkout -b: Create and immediately switch to a branch.
+`checkout -b`: Create and immediately switch to a branch.
 
 ## How To Clone A Remote Repository  
 
-Important: replace [project], and [branch-name]
+> Important: replace `[project]`, and `[branch-name]`
 
 ### Cloning a remote repository  
 
-$ mkdir <project>Creates a folder in local machine with the name [project].
-$ cd [project]
-Navigate to the main page of the repository on Github.
-In the Clone with SSH section, copy the code URL for the repository.
-Type git clone and paste the url.
-Example
+1. `$ mkdir <project>` Creates a folder in local machine with the name `[project]`.
 
+2. `$ cd [project]`
+
+3. Navigate to the main page of the repository on Github.
+
+4. In the `Clone with SSH` section, copy the code URL for the repository.
+
+5. Type `git clone` and paste the url.
+
+#### Example
+
+```sh
 $ git clone https://github.com/USERNAME/REPOSITORY
-Output Example
+```
 
+#### Output Example
+
+```sh
 $ git clone git://github.com/schacon/simplegit.git
 Initialized empty Git repository in /private/tmp/simplegit/.git/
 remote: Counting objects: 100, done.
@@ -2547,46 +2592,54 @@ remote: Compressing objects: 100% (86/86), done.
 remote: Total 100 (delta 35), reused 0 (delta 0)
 Receiving objects: 100% (100/100), 9.51 KiB, done.
 Resolving deltas: 100% (35/35), done.
+```
 
 > It is highly unlikely that you will be making changes to the code in the master branch. Think of this branch as the finished product. You will also be working in a collaborative environment where you will be assigned responsibility over a portion of the project. In order to keep the master branch intact, you will create your own working branch. Once your work is done, the changes from your branch will be merged into the master branch.
 
-## Creating a branch and switching into it  
+### Creating a branch and switching into it  
 
-Syntax
+#### Syntax
 
-$ git checkout -b [branch-name]
+`$ git checkout -b [branch-name]`
 
-Example
+#### Example
 
+```sh
 $ git checkout -b branching-out
 Switched to a new branch 'branching-out'
+```
 
 > Another way of creating a branch and switching into it is to: `$ git branch [branch-name]` and then `$ git checkout [branch-name]`
 
-Going back to the master branch
+#### Going back to the master branch
 
-Syntax
+#### Syntax
 
-$ git checkout master
+`$ git checkout master`
 
-Example
+#### Example
 
+```sh
 $ git checkout master
 Switched to branch 'master'
-Deleting a branch
+```
 
-Syntax
+#### Deleting a branch
 
-$ git branch -d [branch-name]
+#### Syntax
 
-Example
+`$ git branch -d [branch-name]`
 
+#### Example
+
+```sh
 $ git branch -d delete-this-branch
 Deleted branch delete-this-branch (was 78b2670).
+```
 
 ## Git Practice  
 
-> *Got to learngitbranching.js.org and complete exercise 1 under the 'remote' tab.*
+> *Got to [learngitbranching.js.org](https://learngitbranching.js.org/) and complete exercise 1 under the 'remote' tab.*
 
 ---
 
@@ -2596,22 +2649,23 @@ Deleted branch delete-this-branch (was 78b2670).
 
 ## Terminology  
 
-git merge: Merges a branch context into a current branch.
+`git merge:` Merges a branch context into a current branch.
 
-merge conflict: When the same block of code is edited in different branches and Git cannot complete a merge automatically without first resolving the conflict manually.
+`merge conflict`: When the same block of code is edited in different branches and Git cannot complete a merge automatically without first resolving the conflict manually.
 
-git merge --abort: Returns to state prior to merge.
+`git merge --abort`: Returns to state prior to merge.
 
 `git reset --hard`: Rolls back to the commit before the merge.
 
 ## Merging Two Files  
 
-Syntax
+#### Syntax
 
-$ git merge [branch]
+`$ git merge [branch]`
 
-Example
+#### Example
 
+```sh
 $ git branch
 * master
   merge-example
@@ -2627,6 +2681,7 @@ Fast-forward
  delete mode 100644 products.html
 $ ls
 README   index.html
+```
 
 > The Git `ls` command lists all branches.
 
@@ -2634,34 +2689,40 @@ README   index.html
 
 When a merge conflict is detected, you will get a merge conflict message in the console.
 
-Example
+#### Example
 
+```sh
 Auto-merging index.html
 CONFLICT (content): Merge conflict in index.html
 Automatic merge failed; fix conflicts and then commit the result.
+```
+
 The error message denotes the location of the conflict. Open the file in your editor and notice that Git has very nicely marked the merge conflict as follows.
 
-Example
+#### Example
 
+```sh
 Please visit us here
 <<<<<<< HEAD
 <a href="https://theironyard.com">The Iron Yard</a>
 =======
 <a href="https://theironyard.com">theironyard.com</a>
 >>>>>>> branch-a
-The conflict is wrapped between <<<<<<< and >>>>>>> and divided by ========. To resolve the conflict, delete the conflicting code (It is always best to discuss this with the other developer) and makers. After you have done so, simply save your work and stage the changes, i.e., $ git add index.html and commit, $ git commit -m 'resolve Iron Yard link merge conflict'.
+```
+
+The conflict is wrapped between `<<<<<<<` and `>>>>>>>` and divided by `========`. To resolve the conflict, delete the conflicting code (It is always best to discuss this with the other developer) and makers. After you have done so, simply save your work and stage the changes, i.e., `$ git add index.html` and commit, `$ git commit -m 'resolve Iron Yard link merge conflict'`.
 
 You can also simplify the above commands by combining both as follows:
 
-$ git commit -a -m 'resolve Iron Yard link merge conflict.'
+`$ git commit -a -m 'resolve Iron Yard link merge conflict.'`
 
-The -a switch simplifies things by automatically adding all known files as well as removing all files that have been removed from the working tree before performing the actual commit.
+The `-a` switch simplifies things by automatically adding all known files as well as removing all files that have been removed from the working tree before performing the actual commit.
 
-At this point you can either push or continue working and push at a later time (remember, $ git add <filename>, $ git commit -m 'message' and $ git push.) The merge conflict has been resolved!
+At this point you can either push or continue working and push at a later time (remember, `$ git add <filename>`, `$ git commit -m 'message'` and `$ git push`.) The merge conflict has been resolved!
 
 ## Git Practice  
 
-> *Got to learngitbranching.js.org and complete exercise 2 under 'To Origin And Beyond' found in the 'remote' tab.*
+> *Got to [learngitbranching.js.org](https://learngitbranching.js.org/) and complete exercise 2 under 'To Origin And Beyond' found in the 'remote' tab.*
 
 ---
 
@@ -2671,52 +2732,57 @@ At this point you can either push or continue working and push at a later time (
 
 ## Terminology  
 
-Github-flow: A lightweight, branch-based workflow revolving around regular deployments.
+`Github-flow`: A lightweight, branch-based workflow revolving around regular deployments.
 
-Vincent Driessen's branching model: Branch model well suited for collaboration and scaling. It revolves around a master and develop branch, with other supporting branches, such as hotfix, feature, and release.
+`Vincent Driessen's branching model`: Branch model well suited for collaboration and scaling. It revolves around a `master` and `develop` branch, with other supporting branches, such as `hotfix`, `feature`, and `release`.
 
 ## Github-flow  
 
-Create a single feature branch with a descriptive name.
-Commit changes keeping messages short, descriptive and in the present tense.
-Push changes.
-Pull Request and code review.
-Merge/deployment.
+1. Create a single feature branch with a descriptive name.
+
+2. Commit changes keeping messages short, descriptive and in the present tense.
+
+3. Push changes.
+
+4. Pull Request and code review.
+
+5. Merge/deployment.
 
 ## Vincent Driessen's Branching Model  
 
-Installing git-flow will make using Driessen's high-level repository operations a breeze.
-Review Driessen's branch model
+* Installing `git-flow` will make using Driessen's high-level repository operations a breeze.
+
+* **[Review Driessen's branch model](http://nvie.com/posts/a-successful-git-branching-model/)**
 
 ## Tips  
 
 ### DO's  
 
-Pull the master branch daily. Other people's branches most likely will be merged while you are working on your code. This might affect your current/future code. Therefore, pull in the master branch. Make sure to commit and push your branch changes and checkout into the master branch before pulling. Once you are ready to start new work, go back to the beginning of the Github-flow cycle by creating a branch, etc.
+* Pull the master branch daily. Other people's branches most likely will be merged while you are working on your code. This might affect your current/future code. Therefore, pull in the master branch. Make sure to commit and push your branch changes and checkout into the master branch before pulling. Once you are ready to start new work, go back to the beginning of the Github-flow cycle by creating a branch, etc.
 
-Test your code thoroughly. Make sure there are no side effects.
+* Test your code thoroughly. Make sure there are no side effects.
 
-Commit related code changes. An HTML change and a JavaScript change should produce two separate commits.
+* Commit related code changes. An HTML change and a JavaScript change should produce two separate commits.
 
-Commit small changes. Large commits make it hard to track down issues.
+* Commit small changes. Large commits make it hard to track down issues.
 
-Be careful when using git reset --hard. This will throw away all your uncommitted changes.
+* Be careful when using `git reset --hard`. This will throw away all your uncommitted changes.
 
-Keep your repository synced by performing a git pull daily and/or starting a new branch when needed.
+* Keep your repository synced by performing a `git pull` daily and/or starting a new branch when needed.
 
 ### DON'Ts  
 
-Do not develop on the master branch.
+* Do not develop on the master branch.
 
-Do not merge the upstream master branch with your branch. Remember your code must be tested, reviewed and approved in order to be merged. You merging your branch does not conform with the Gitub-flow model. Rely on Pull Requests for code integration.
+* Do not merge the upstream master branch with your branch. Remember your code must be tested, reviewed and approved in order to be merged. You merging your branch does not conform with the `Github-flow` model. Rely on Pull Requests for code integration.
 
-Do not create a branch to track more than one code change. Each code change should have its own branch.
+* Do not create a branch to track more than one code change. Each code change should have its own branch.
 
-Do not use Git as a backup tool.
+* Do not use Git as a backup tool.
 
-Do not use git pull --rebase in a public environment. Performing a git pull -rebase in a private branch is fine, but doing the same on a branch where many developers are working on in a bad idea. It changes the starting point of the branch to the newest commit, effectively removing everybody else's commits!
+* Do not use `git pull --rebase` in a public environment. Performing a git pull -rebase in a private branch is fine, but doing the same on a branch where many developers are working on in a bad idea. It changes the starting point of the branch to the newest commit, effectively removing everybody else's commits!
 
-Do not use git push --force in a public environment. When your local repository is out of sync with the authoritative repository git push will fail. Do not be tempted to do a git push --force. This will override the structure and sequence of commits of the authoritative repository, deleting other people's commits.
+* Do not use `git push --force` in a public environment. When your local repository is out of sync with the authoritative repository `git push` will fail. **Do not be tempted to do a** `git push --force`. This will override the structure and sequence of commits of the authoritative repository, deleting other people's commits.
 
 > Other branching workflow worth exploring; `long-running branches` and `topic branches`.
 
@@ -2724,6 +2790,7 @@ Do not use git push --force in a public environment. When your local repository 
 
 1- Create a repo by cloning or initting (only done once per project)
 
+```sh
 cd <projectsDirectory>
 git init .
 
@@ -2733,31 +2800,49 @@ git pull
 
 # if it doesn't exist on GitHub (default -- new project)
 hub create <projectname>
+```
+
 2- Always check the status before each step.
 
+```sh
 git status
+```
+
 3- If you add files to the directory... nothing is stored in Git until you add it to the staging area.
 
+```sh
 git add <filename> <filename>
 
 # or add everything in the directory
 
 git add .
+```
+
 4- Nothing in the staging area is logged into Git until you commit.
 
+```sh
 git commit -m "a message about the commit"
+```
+
 5- Nothing will be on GitHub until you push.
 
+```sh
 git push origin master
-6- You can create publicly visible websites on GitHub with gh-pages.
+```
 
-GitHub allows you to create a branch called gh-pages. These files (like an index.html file) will then be accessible at <github-username>.github.io/<projectname>/index.html.
+6- You can create publicly visible websites on GitHub with `gh-pages`.
+
+GitHub allows you to create a branch called `gh-pages`. These files (like an index.html file) will then be accessible at `<github-username>.github.io/<projectname>/index.html`.
 
 Here's a Bookmark URL you can use to easily convert project page URLs to gh-pages URLs:
 
+```
 javascript: (function() {    var s = location.href;    var r = /^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$/g;    location.href = s.replace(r, "http:/$5.github.io/$6");})();
-7- Pushing to gh-pages.
+```
 
+7- Pushing to `gh-pages`.
+
+```sh
 # first time pushing to gh-pages
 git branch gh-pages
 git fetch . master:gh-pages
@@ -2766,6 +2851,8 @@ git push origin --all
 # after first time...
 git fetch . master:gh-pages
 git push origin --all
+```
+
 8- Always modify your README.md file and the GitHub link and description of your repos.
 
 If someone has to type out the gh-pages link to visit it, they won't (including employers). Always put your gh-pages link in the Website field at the top of your repo page.
@@ -2774,9 +2861,11 @@ If someone has to type out the gh-pages link to visit it, they won't (including 
 
 We highly encourage you to put all these new skills into practice by doing the following:
 
-Got to gitimmersion.com.
-Complete Labs 1-12, 24, and 25.
-Create a repository on GitHub named git-immersion and push your local repository to GitHub.
+* Got to gitimmersion.com.
+
+* Complete Labs 1-12, 24, and 25.
+
+* Create a repository on GitHub named `git-immersion` and push your local repository to GitHub.
 
 ---
 
