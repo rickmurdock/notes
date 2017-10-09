@@ -3393,7 +3393,7 @@ console.log("%s and Jill went up a hill", name); // Jack and Jill went up a hill
 
 Conditional statements are code that executes specific blocks of code under particular circumstances. You can think of conditional statements like a series of dams on a river. The dams can control and redirect the flow of the river as needed.
 
-Conditional Expressions  
+### Conditional Expressions  
 
 Conditional expressions are the code that goes in the parenthesis of a conditional statement. The conditional expression must evaluate to truefor the associated block of code to run.
 
@@ -3401,198 +3401,112 @@ Conditional expressions are the code that goes in the parenthesis of a condition
 
 ### if  
 
-An if statement is the simplest type of conditional statement in JavaScript. It executes a block of code if the conditional expression in parenthesis evaluates to true.
+An `if` statement is the simplest type of conditional statement in JavaScript. It executes a block of code if the conditional expression in parenthesis evaluates to `true`.
 
 Here's a super simple example of conditional statements:
 
-
-1
+```js
 if(true){
-2
     console.log("This will be printed out!");
-3
 }
-4
-​
-5
+
 if(false){
-6
     console.log("This will NOT be printed out!");
-7
 }
-8
-​
+```
 
-Fullscreen
+The conditional examples above are rather useless. Why bother writing a conditional statement like `if(false){...}` where the body can never run? Luckily we can combine conditional statements with expressions that produce boolean values. For example:
 
-Reset Code
-Run Code 
-The conditional examples above are rather useless. Why bother writing a conditional statement like if(false){...} where the body can never run? Luckily we can combine conditional statements with expressions that produce boolean values. For example:
-
-
-1
+```js
 var quantity = 13;
-2
-​
-3
+
 if(quantity < 12){
-4
     console.log("Quantity is less than a dozen");
-5
 }
-6
-​
-7
+
 if(quantity == 12){
-8
     console.log("Quantity is a dozen!");
-9
 }
-10
-​
-11
+
 if(quantity == 13){
-12
     console.log("Quantity is a baker's dozen");
-13
 }
-14
-​
-15
+
 if(quantity > 13){
-16
     console.log("Quantity is more than a dozen");
-17
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ### if/else  
 
-If/else statements are conditional expressions similar to the basic if statement. If/else statements allow you to specify another block of code to run if the conditional expression evaluates to false.
+If/else statements are conditional expressions similar to the basic `if` statement. If/else statements allow you to specify another block of code to run if the conditional expression evaluates to `false`.
 
-An else block is tacked onto the end of an if statement. The block of code after the else keyword is executed if the original conditional expression evaluates to false.
+An `else` block is tacked onto the end of an `if` statement. The block of code after the `else` keyword is executed if the original conditional expression evaluates to `false`.
 
-
-1
+```js
 var milk = true;
-2
 var cream = false;
-3
 var soyMilk = false;
-4
-​
-5
+
 var caffeinatedEspresso = false;
-6
 var decaffeinatedEspresso = false;
-7
-​
-8
+
 var darkChocolate = false;
-9
 var lightChocolate = false;
-10
-​
-11
+
 if( (milk || cream || soyMilk) &&
-12
         (caffeinatedEspresso || decaffeinatedEspresso) &&
-13
         (darkChocolate || lightChocolate) ){
-14
     console.log("This is a mocha!");
-15
 } else {
-16
     console.log("I don't know what this is, but it's not a mocha!");
-17
 }
+```
 
-Fullscreen
+Because the conditional expression is `not` true this code outputs:
 
-Reset Code
-Run Code 
-Because the conditional expression is not true this code outputs:
-
-I don't know what this is, but it's not a mocha!
+> I don't know what this is, but it's not a mocha!
 
 ### if/else if/else  
 
-Often you will want to make decisions based on more than only one conditional statement. In this case, you can use else if statements. else if statements are similar to else statements in that they are appended to the original if statement. For example:
+Often you will want to make decisions based on more than only one conditional statement. In this case, you can use *else if* statements. `else if` statements are similar to `else` statements in that they are appended to the original `if` statement. For example:
 
-
-1
+```js
 var milk = true;
-2
 var cream = false;
-3
 var soyMilk = false;
-4
-​
-5
+
 var caffeinatedEspresso = false;
-6
 var decaffeinatedEspresso = false;
-7
-​
-8
+
 var darkChocolate = false;
-9
 var lightChocolate = false;
-10
-​
-11
+
 // is this a mocha?
-12
 if( (milk || cream || soyMilk) &&
-13
         (caffeinatedEspresso || decaffeinatedEspresso) &&
-14
         (darkChocolate || lightChocolate) ){
-15
     console.log("This is a mocha!");
-16
-​
-17
+
 // is this a latte?
-18
 } else if( (milk || cream || soyMilk) &&
-19
         (caffeinatedEspresso || decaffeinatedEspresso) &&
-20
         !(darkChocolate || lightChocolate) ) {
-21
     console.log("This is a latte!");
-22
-​
-23
+
 // is this just milk?
-24
 } else if(milk && !cream && !soyMilk &&
-25
         !caffeinatedEspresso && !decaffeinatedEspresso &&
-26
         !darkChocolate && !lightChocolate ) {
-27
     console.log("This is just milk!");
-28
-​
-29
+
 // who knows what the heck this is?!...
-30
 } else {
-31
     console.log("I don't know what this is.");
+}
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-JavaScript will evaluate the first if statement. If that's false, it will check the next else if statement. If that's false, it will continue checking else if statements until one evaluates to true. If none of them evaluate to true the else block will be executed if provided. Only one block of code in the entire statement can be executed.
+JavaScript will evaluate the first `if` statement. If that's `false`, it will check the next `else if` statement. If that's `false`, it will continue checking `else if` statements until one evaluates to `true`. If none of them evaluate to `true` the else block will be executed if provided. Only one block of code in the entire statement can be executed.
 
 ---
 
@@ -3602,7 +3516,7 @@ Functions and Complex Expressions](FunctionsAndComplexExpressions.md)
 
 ### Parameters and Arguments  
 
-Parameters are variables that are only accessible inside the function and are used to represent any values that are passed in as arguments when the function is called. As we've already seen, parameters first appear inside the parentheses in a function declaration. That same parameter can then be used like a variable inside the function body as a placeholder for the actual value you that will used in the function call.
+Parameters are variables that are only accessible inside the function and are used to represent any values that are passed in as **arguments** when the function is called. As we've already seen, parameters first appear inside the parentheses in a function declaration. That same parameter can then be used like a variable inside the function body as a placeholder for the actual value you that will used in the function call.
 
 ![js-mini-functiondec.png](./images/js-mini-functiondec.png)
 
@@ -3612,65 +3526,41 @@ Notice that when we call the function, we specify a value that the parameter wil
 
 ### Multiple Parameters  
 
-JavaScript functions can accept more than one parameter (or none at all). The order of the arguments will relate directly to the order of the parameters. Additional parameters and arguments (sometimes shortened to params and args) should be separated by commas.
+JavaScript functions can accept more than one parameter (or none at all). The order of the arguments will relate directly to the order of the parameters. Additional parameters and arguments (sometimes shortened to **params** and **args**) should be separated by commas.
 
-
-1
+```js
 function announceParams(a, b, c){
-2
   console.log("Param a is " + a);
-3
   console.log("Param b is " + b);
-4
   console.log("Param c is " + c);
-5
 }
-6
-​
-7
+
 announceParams("root beer", 24, "$3.40");
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Above, the first argument is stored in the first parameter, and the pattern continues with the second and third arguments.
 
 You may be curious about what happens if you don't call the function with the same number of arguments as parameters. Run the code below to find out:
 
-
-1
+```js
 function announceParams(a, b, c){
-2
   console.log("Param a is " + a);
-3
   console.log("Param b is " + b);
-4
   console.log("Param c is " + c);
-5
 }
-6
-​
-7
+
 // a function call with too few arguments
-8
 announceParams("root beer");
-9
-​
-10
+
 // and a function call with too many arguments
-11
 announceParams(5, 10, 15, 20);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-It may surprise you that the first function call doesn't throw an error, but instead considers params b and c to have undefined as their value. This is actually quite useful, in that we can write functions that have "optional" parameters. Many functions in JavaScript accept extra arguments, but don't strictly require them. In the second example, we can see that there's also no error for providing too many arguments.
+It may surprise you that the first function call doesn't throw an error, but instead considers params `b` and `c` to have `undefined` as their value. This is actually quite useful, in that we can write functions that have "optional" parameters. Many functions in JavaScript accept extra arguments, but don't strictly require them. In the second example, we can see that there's also no error for providing too many arguments.
 
 ## Recap  
 
-Functions are a huge part of JavaScript. They let you encapsulate a process so you can repeat it with little effort. This is one thing computers are great at - performing repetitive tasks quickly!
+Functions are a *huge* part of JavaScript. They let you encapsulate a process so you can repeat it with little effort. This is one thing computers are great at - performing repetitive tasks quickly!
 
 JavaScript functions are also syntactically complex. Make sure you're comfortable with writing simple functions, including those with multiple parameters, before moving on to our last lesson in this unit. We'll be looking at the "global scope" in JavaScript.
 
@@ -3706,7 +3596,7 @@ JavaScript functions are also syntactically complex. Make sure you're comfortabl
 
 ### Function Invocation  
 
-**Example 1.a**
+#### Example 1.a
 
 ```js
 function address(streetNumber, streetName){
@@ -3725,7 +3615,7 @@ console.log(window.myAddress); // Logs: My address is
 
 Above: when address() is called, `this` is set to the window (global object), therefore the windows gets assigned "My address is".
 
-**Example 1.b**
+#### Example 1.b
 
 ```js
 console.log(this === true); //Logs: true
@@ -3735,7 +3625,7 @@ console.log(window.contextExample); //Logs: This is set to the global object
 
 ### Function Invocation, Strict Mode  
 
-**Example**
+#### Example
 
 ```js
 function address(streetNumber, streetName){
@@ -3754,7 +3644,7 @@ Above: when address is called, `this` is set to undefined.
 
 ### Method Invocation  
 
-**Example**
+#### Example
 
 ```js
 var greeting = {
@@ -3773,7 +3663,7 @@ Above: when the method is invoked, `this` is "greeting", so this.say target the 
 
 ### Constructor Invocation  
 
-**Example 1.a**
+#### Example 1.a
 
 ```js
 function constructorExample () {  
@@ -3787,7 +3677,7 @@ console.log(constructorInstance.property); //Logs: 'this' is assigned with a val
 
 Above: `this` is the newly created object, "constructorInstance", in the "new constructorExampe()" invocation.
 
-**Example 1.b**
+#### Example 1.b
 
 ```js
 class constructorExample {  
@@ -3805,7 +3695,7 @@ Above: example 1.a rewritten using the ES2015 `class` syntax.
 
 ### Indirect Invocation, .call() or .apply()  
 
-**Example**
+#### Example
 
 ```js
 var car = { model: "Camry" };
@@ -3823,7 +3713,7 @@ console.log(printName.apply(car, ["Toyota" + " "])) // Logs: Toyota Camry
 
 ### Indirect Invocation, .bind()  
 
-**Example**
+#### Example
 
 ```js
 var words = {
@@ -3841,7 +3731,7 @@ Above: `this` is the first argument of .bind() when invoking a bound function.
 
 ### Arrow Function  
 
-**Example**
+#### Example
 
 ```js
 class Address {  
@@ -3865,7 +3755,7 @@ Above: setTimeout calls the arrow function with the same context, myAddress obje
 
 ## Self  
 
-**Example**
+#### Example
 
 ```js
 var selfExample = {
@@ -3884,7 +3774,9 @@ var selfExample = {
 selfExample.methodExample();
 ```
 
-Above: In order to obtain the invocation context of the outer function using this, the value needs to be stored into a variable in the scope of the inner function.
+Above: In order to obtain the invocation context of the outer function using `this`, the value needs to be stored into a variable in the scope of the inner function.
+
+---
 
 # Study Notes  
 
@@ -3914,7 +3806,7 @@ Above: In order to obtain the invocation context of the outer function using thi
 
 ### Function Invocation  
 
-**Example 1.a**
+#### Example 1.a
 
 ```js
 function address(streetNumber, streetName){
@@ -3933,7 +3825,7 @@ console.log(window.myAddress); // Logs: My address is
 
 Above: when address() is called, `this` is set to the window (global object), therefore the windows gets assigned "My address is".
 
-**Example 1.b**
+#### Example 1.b
 
 ```js
 console.log(this === true); //Logs: true
@@ -3943,7 +3835,7 @@ console.log(window.contextExample); //Logs: This is set to the global object
 
 ### Function Invocation, Strict Mode  
 
-**Example**
+#### Example
 
 ```js
 function address(streetNumber, streetName){
@@ -3962,7 +3854,7 @@ Above: when address is called, `this` is set to undefined.
 
 ### Method Invocation  
 
-**Example**
+#### Example
 
 ```js
 var greeting = {
@@ -3981,7 +3873,7 @@ Above: when the method is invoked, `this` is "greeting", so this.say target the 
 
 ### Constructor Invocation  
 
-**Example 1.a**
+#### Example 1.a
 
 ```js
 function constructorExample () {  
@@ -3995,7 +3887,7 @@ console.log(constructorInstance.property); //Logs: 'this' is assigned with a val
 
 Above: `this` is the newly created object, "constructorInstance", in the "new constructorExampe()" invocation.
 
-**Example 1.b**
+#### Example 1.b
 
 ```js
 class constructorExample {  
@@ -4013,7 +3905,7 @@ Above: example 1.a rewritten using the ES2015 `class` syntax.
 
 ### Indirect Invocation, .call() or .apply()  
 
-**Example**
+#### Example
 
 ```js
 var car = { model: "Camry" };
@@ -4031,7 +3923,7 @@ console.log(printName.apply(car, ["Toyota" + " "])) // Logs: Toyota Camry
 
 ### Indirect Invocation, .bind()  
 
-** Example **
+#### Example
 
 ```js
 var words = {
@@ -4049,7 +3941,7 @@ Above: `this` is the first argument of .bind() when invoking a bound function.
 
 ### Arrow Function  
 
-**Example** 
+#### Example
 
 ```js
 class Address {  
@@ -4073,7 +3965,7 @@ Above: setTimeout calls the arrow function with the same context, myAddress obje
 
 ### Self  
 
-** Example **
+#### Example
 
 ```js
 var selfExample = {
@@ -4102,157 +3994,174 @@ Functions and Complex Expressions](FunctionsAndComplexExpressions.md)
 
 Logical operators are used to create complex logical expressions. Logical expressions in english are made up of the words and, or, and not. For example, consider this statement that describes the circumstances under which you will go out to eat:
 
-You will go out to eat if you are hungry and your fridge is empty or there's not something in it you want to eat.
+> You will go out to eat if you are hungry and your fridge is empty or there's not something in it you want to eat.
 
 For you to go out to eat two things must must be true:
 
-You are hungry
-The fridge is empty or there's not something in it you want to eat
+* You are hungry
+
+* The fridge is empty or there's not something in it you want to eat
+
 The first expression is simple. You are either hungry or not. If not, you don't go out to eat. If you are hungry, then you'll need to evaluate the second expression.
 
 The second expression is more complex than the first. For it to be true, at least one of two things must be true:
 
-The fridge is empty
-The fridge does not contain something you want to eat
+* The fridge is empty
+
+* The fridge does not contain something you want to eat
+
 If the fridge is empty you don't need to consider whether or not there is something in it you wish to eat.
 
 But, again, the second statement here is complex. It's a negation of:
 
-The fridge contains something you want to eat
+* The fridge contains something you want to eat
+
 So, if the fridge doesn't contain something you want to eat, the statement is true. If the fridge does contain something you want to eat, the statement is false.
 
 Either way, the fridge has to be empty or there's not something you want to eat and you have to be hungry to go out to eat.
 
 Ultimately, logical expressions evaluate to true or false. In JavaScript we have operators to perform this logic.
 
-Examples  
+## Examples  
 
-And operator  
+### And operator  
 
-Operator: &&
+#### Operator: `&&`
 
 The and operator returns true if both operands are true, otherwise it returns false. As with comparison operators and operators on two values, the value on the left of the operator and the value to the right.
 
+```
 true && true // this is true
 true && false // this is false
 false && true // this is false
 false && false // this is false
-Or operator  
+```
 
-Operator: ||
+### Or operator  
+
+#### Operator: `||`
 
 The or operator returns true if at least one operand is true. It also operates on two values on each side.
 
 The logical or operator is similar to the and operator, but is only false if both operands are false.
 
+```
 true || true // this is true
 true || false // this is true
 false || true // this is true
 false || false // this is false
-Not operator  
+```
 
-Operator: !
+### Not operator  
+
+#### Operator: `!`
 
 The not operator returns the opposite of the value to the right.
 
 In English the word "not" negates what comes next. The not operator in JavaScript does the same thing. You can make something not-true or not-false using the ! operator. The not operator only acts on the value to its right.
 
+```
 !false // this is true
 !true // this is false
+```
+
 You might want to note that there a few ways that people refer to the ! symbol. Non-programmers would call this an exclamation point. Some programmers like to call it "bang". In this class we'll call it "not" as in, "not true" or "not false".
 
-Logical operators order of operations  
+### Logical operators order of operations  
 
 As with arithmetic operators, logical operators have an order of operations they adhere to. In order these are:
 
-() - parenthesis
-! - not
-&& - and
-|| - or
+* `()` - parenthesis
+
+* `!` - not
+
+* `&&` - and
+
+* `||` - or
+
 Knowing this, lets write some code that determines if a given combination of ingredients add up to a latte:
 
-
-1
+```js
 // milks
-2
 var milk = true;
-3
 var cream = false;
-4
 var soyMilk = false;
-5
-​
-6
+
 // expressos
-7
 var caffeinatedEspresso = true;
-8
 var decaffeinatedEspresso = false;
-9
-​
-10
+
 // chocolates
-11
 var darkChocolate = false;
-12
 var lightChocolate = false;
-13
-​
-14
+
 // this is a latte!
-15
 var isLatte = (milk || cream || soyMilk) &&
-16
         (caffeinatedEspresso || decaffeinatedEspresso) &&
-17
         !(darkChocolate || lightChocolate); 
-18
-​
-19
+
 // print if this is a latte
-20
 console.log(isLatte);
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 First we define a few booleans to indicate the presence of different types of milks. Next we do the same thing for types of espresso and chocolate.
 
 The conditional statement's conditional expression is this:
 
+```js
 (milk || cream || soyMilk) &&
     (caffeinatedEspresso || decaffeinatedEspresso) &&
     !(darkChocolate || lightChocolate)
+```
+
 When JavaScript runs this code it will substitute in the actual values for each of the variables in the expression:
 
+```js
 (true || false || false) &&
     (true || false) &&
     !(false || false)
-JavaScript will first evaluate the parenthesis, left to right. The first set of parenthesis contains true || false || false. Since all of the operators are ors, they will be processed left to right:
+```
 
-true || false || false
-true || false
-true
+JavaScript will first evaluate the parenthesis, left to right. The first set of parenthesis contains `true || false || false`. Since all of the operators are ors, they will be processed left to right:
+
+* `true || false || false`
+
+* `true || false`
+
+* `true`
+
 JavaScript will do the same thing with the next two sets of parenthesis:
 
-true || false
-true
+* `true || false`
+
+* `true`
+
 And:
 
-false || false
-false
+* `false || false`
+
+* `false`
+
 This leaves us with:
 
+```js
 true && true && !false
-Since ! has a higher precedence than than && we get:
+```
 
+Since `!` has a higher precedence than than `&&` we get:
+
+```js
 true && true && true
+```
+
 Which evaluates like this:
 
-true && true && true
-true && true
-true
+* `true && true && true`
+
+* `true && true`
+
+* `true`
+
 As such, our program will determine that we have a latte.
 
 ---
@@ -4261,55 +4170,74 @@ As such, our program will determine that we have a latte.
 
 # Arrays  
 
-Terminology  
+## Terminology  
 
-Arrays  
+### Arrays  
 
 As a programmer you will often have to work with sets of related data or objects. Think about websites like Amazon, or Twitter, or Netflix. These sites show lists of data all over the place.
 
 Amazon shows lists of...
 
-search results
-related purchases
-reviews
-your order history
-your kindle library
+* search results
+
+* related purchases
+
+* reviews
+
+* your order history
+
+* your kindle library
+
 Twitter shows lists of...
 
-tweets from the people you follow
-people to follow
-trending topics
-notifications
+* tweets from the people you follow
+
+* people to follow
+
+* trending topics
+
+* notifications
+
 Netflix shows lists of...
 
-movies
-tv shows
-more movies
-other tv shows
+* movies
+
+* tv shows
+
+* more movies
+
+* other tv shows
+
 Let's ruminate on grocery lists for a while. A grocery list contains a list of items to purchase.
 
 ![grocery-list.jpg](./images/grocery-list.jpg)
 
 We can see that the first item in this list is eggs. The fourth is Bread. We can see that there are nine items in the list. When we go to the store we can start at the top of the list work our way down as we put items in our basket.
 
-In JavaScript we make lists of things using arrays. Arrays are just numbered lists. Another way of saying this is that arrays are ordered lists indexed by numbers.
+In JavaScript we make lists of things using *arrays*. Arrays are just numbered lists. Another way of saying this is that arrays are ordered lists indexed by numbers.
 
 Arrays allow you to add items to the list, remove items, retrieve items at specific indexes (such as the third item), reorder items, and iterate over the items one at a time, and much more.
 
-Zero Indexed  
+### Zero Indexed  
 
 As humans, when we write down a numbered list of information, we usually start the list at 1. For example:
 
-Learn about arrays
-???
-Profit!
+1. Learn about arrays
+
+2. ???
+
+3. Profit!
+
 We can see that item 2 in our list stills needs additional thought.
 
-However, JavaScript and most other programming languages start counting at 0. Arrays in JavaScript count from zero, so the first item in the list is at index 0. That is to say, arrays are zero indexed. Here's that same list, as JavaScript would see it:
+However, JavaScript and most other programming languages start counting at 0. Arrays in JavaScript count from zero, so the first item in the list is at index 0. That is to say, arrays are *zero indexed*. Here's that same list, as JavaScript would see it:
 
-Learn about arrays
-???
-Profit!
+0. Learn about arrays
+
+1. ???
+
+2. Profit!
+
 Because the array is zero indexed we can see that item #1 (the second in the list) in our list still needs additional thought.
 
 ---
