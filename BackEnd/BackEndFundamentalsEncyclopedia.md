@@ -7026,7 +7026,7 @@ npm install multer multer-s3 aws-sdk mustache-express --save
 
     * select_create_bucket
 
-delete_bucket
+    * delete_bucket
 
   * app.js
   
