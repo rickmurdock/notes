@@ -4534,8 +4534,9 @@ Running this gives us the desired output!
 
 ### document.querySelector( )  
 
-Example
+#### Example
 
+```js
 var firstParagraph = document.querySelector('#first-paragraph');
 console.log('first paragraph', firstParagraph);
 // logs: first paragraph: <p id="first-paragraph">This is a paragraph.</p>
@@ -4555,10 +4556,13 @@ console.log('first favorite food', firstFavoriteFood);
 var nonExistentElement = document.querySelector('ol');
 console.log('non-existent element', nonExistentElement);
 // logs: non-existent element: null
-document.querySelectorAll( )  
+```
 
-Example
+### document.querySelectorAll( )  
 
+#### Example
+
+```js
 var allParagraphs = document.querySelectorAll('p');
 console.log('all paragraphs', allParagraphs);
 // Logs: all paragrapsh: [p#first-paragraph, p]
@@ -4574,10 +4578,13 @@ console.log('all sodas', allSodas);
 var nonExistentElements = document.querySelector('ol');
 console.log('non-existent elements', nonExistentElements);
 // Logs: non-existent elements []
-Iterating over selected elements  
+```
 
-Example
+### Iterating over selected elements  
 
+#### Example
+
+```js
 var favoriteFoodsList = document.querySelector('.favorite-foods');
 
 for (var i = 0; i < favoriteFoodsList.children.length; i++) {
@@ -4585,8 +4592,11 @@ for (var i = 0; i < favoriteFoodsList.children.length; i++) {
 // This for loop gets the text out of the children.
 // Logs: steak, shrimp, wings
 }
-Element Query Selectors  
+```
 
+### Element Query Selectors  
+
+```js
 var selectedItem = document.querySelector('.favorite-foods').querySelector('.seafood');
 console.log('selectedItem', selectedItem);
 // Returns "selectedItem" "<li class='seafood'>Shrimp</li>"
@@ -4598,6 +4608,7 @@ for (var i = 0; i < children.length; i++) {
   console.log(children[i].textContent);
 }
 // Returns the content of all 'li' items from 'favorite-foods'
+```
 
 ---
 
@@ -4605,29 +4616,33 @@ for (var i = 0; i < children.length; i++) {
 
 # Creating, Updating, and Removing DOM Nodes  
 
-Terminology  
+## Terminology  
 
-createElement(): creates a new HTML element, attaches it to the document, and returns it.
+`createElement()`: creates a new HTML element, attaches it to the document, and returns it.
 
-appendChild(): adds a child element on the node it's invoked upon.
+`appendChild()`: adds a child element on the node it's invoked upon.
 
-ChildNode.remove(): removes a node object from its parent.
+`ChildNode.remove()`: removes a node object from its parent.
 
-element.innerHTML: sets or returns HTML content. Style aware.
+`element.innerHTML`: sets or returns HTML content. Style aware.
 
-element.textContent: set HTML content. Not style aware.
+`element.textContent`: set HTML content. Not style aware.
 
-element.setAttribute: sets or changes element attribute.
+`element.setAttribute`: sets or changes element attribute.
 
-element.classList: returns a list of class attributes.
+`element.classList`: returns a list of class attributes.
 
-element.classList.add(): adds a class to an element.
-element.classList.toggle(): toggles the class of an element.
-element.classList.remove(): removes the class of an element.
-Examples  
+* `element.classList.add()`: adds a class to an element.
+
+* `element.classList.toggle()`: toggles the class of an element.
+
+* `element.classList.remove()`: removes the class of an element.
+
+## Examples  
 
 The following examples are based upon this HTML example.
 
+```html
 <!DOCTYPE html>
 
 <html>
@@ -4665,8 +4680,11 @@ The following examples are based upon this HTML example.
   </body>
 
 </html>
-Creating And Appending An Element  
+```
 
+### Creating And Appending An Element  
+
+```html
 var element = document.querySelector('.favorite-sodas');
 
 //create the element
@@ -4677,19 +4695,28 @@ listItem.textContent = 'Sprite'; // Add text content to the 'li' item. Notice no
 element.appendChild(listItem); // Appends the 'li' to the parent 'ul' node.
 
 console.log(element.children.length); //4
-Removing An Element  
+```
 
+### Removing An Element  
+
+```html
 var element = document.querySelector('.favorite-sodas');
 element.remove()
 //Completely removes the element with class of 'favorite-sodas'
-Setting and Changing Attributes  
+```
 
+### Setting and Changing Attributes  
+
+```html
 var link = document.querySelector('.link');
 link.setAttribute("href", "http://www.theironyard.com");
 //Changes the "href" attribute from http://www.google.com to http://www.theironyard.com
 //If the element did not have an href attribute, it would have added it.
-Manipulating classes with the classList method  
+```
 
+### Manipulating classes with the classList method  
+
+```html
 var element = document.querySelector('#first-paragraph');
 
 //adds the class
@@ -4706,8 +4733,11 @@ element.classList.toggle('highlighted');
 
 //removes it since it was just added.
 element.classList.toggle('highlighted');
-Changing Classes with the classname method  
+```
 
+### Changing Classes with the classname method  
+
+```html
 var element = document.querySelector('#first-paragraph');
 element.className = 'highlighted';
 
@@ -4716,12 +4746,16 @@ var element = document.querySelector('#first-paragraph');
 element.className += " highlighted";
 //Notice that a space is used between the opening quote and the class name.
 // The updated class is now "first-paragraph highlighted"
-Changing HTML Content  
+```
 
+### Changing HTML Content  
+
+```html
 var element = document.querySelector('.favorite-sodas');
 element.innerHTML = '<li>Pepsi</li><li><b>Sprite</b></li>';
 
 console.log(element.children.length); //was 3 before the change, now 2. Adds bold style to 'Sprite.'
+```
 
 ---
 
@@ -4729,15 +4763,15 @@ console.log(element.children.length); //was 3 before the change, now 2. Adds bol
 
 # Select Event Add Listener  
 
-Terminology  
+## Terminology  
 
-Event: Any event which takes place in the DOM; an event can be user generated, such as a click or mouse event, or generated by an API, such as an animation ending.
+**Event**: Any event which takes place in the DOM; an event can be user generated, such as a click or mouse event, or generated by an API, such as an animation ending.
 
-Event Listener: The object that receives a notification (an object that implements the Event interface) when an event of the specified type occurs.
+**Event Listener**: The object that receives a notification (an object that implements the Event interface) when an event of the specified type occurs.
 
-Examples  
+## Examples  
 
-
+```html
 var alertHello = function() {
   alert("Hello World!");
 }
@@ -4746,8 +4780,9 @@ var buttonEl = document.querySelector('button');
 // Add event listener to 'button'
 // Event lister listens for a 'click' event
 buttonEl.addEventListener('click', alertHello);
+```
 
-
+```html
 var buttonEl = document.querySelector('button');
 
 // Add event listener to 'button'
@@ -4757,14 +4792,15 @@ buttonEl.addEventListener('click', function(event) {
   // Print the type of event emitted (click)
   console.log(event.type);
 });
+```
 
-References  
+## References  
 
-MDN - Creating and Triggering Events
+[MDN - Creating and Triggering Events](https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events)
 
-MDN - JavaScript Event
+[MDN - JavaScript Event](https://developer.mozilla.org/en-US/docs/Web/API/Event)
 
-MDN - JavaScript Event Reference - list of events that can be sent
+[MDN - JavaScript Event Reference - list of events that can be sent](https://developer.mozilla.org/en-US/docs/Web/Events)
 
 ---
 
@@ -4772,25 +4808,25 @@ MDN - JavaScript Event Reference - list of events that can be sent
 
 # Run Code After a Delay or Periodically  
 
-Examples  
+## Examples  
 
-Run Code After a Delay  
+### Run Code After a Delay  
 
-From time to time you will want to run code after a delay. This can be accomplished using the setTimeout() function. The simplest way to use setTimeout() is to pass two arguments, an anonymous function to execute, and the number of milliseconds to wait before executing it.
+From time to time you will want to run code after a delay. This can be accomplished using the `setTimeout()` function. The simplest way to use `setTimeout()` is to pass two arguments, an anonymous function to execute, and the number of milliseconds to wait before executing it.
 
-This example shows how you can use setTimeout() to cause a cartoon bomb to explode after a delay of three seconds.
+This example shows how you can use `setTimeout()` to cause a cartoon bomb to explode after a delay of three seconds.
 
 {==see resources/bomb==}
 
-When invoked, the setTimeout() function returns a timerId. This is a number that identifies the specific timeout. You can pass this value to clearTimeout() timeout to stop a timer. Here's the same bomb example with an option to defuse it.
+When invoked, the `setTimeout()` function returns a timerId. This is a number that identifies the specific timeout. You can pass this value to `clearTimeout()` timeout to stop a timer. Here's the same bomb example with an option to defuse it.
 
 {==see resources/bomb_defuse==}
 
-Run Code Periodically  
+### Run Code Periodically  
 
-You can run code periodically using the setInterval() function. The setInterval() works just like setTimeout(). You can pass it an anonymous function to run and an number indicating a number of milliseconds. However, setInterval() will run the specified function every time the specified number of milliseconds has passed.
+You can run code periodically using the `setInterval()` function. The `setInterval()` works just like `setTimeout()`. You can pass it an anonymous function to run and an number indicating a number of milliseconds. However, `setInterval()` will run the specified function every time the specified number of milliseconds has passed.
 
-The setInterval() function also returns a timerId which can be used to cancel the timer.
+The `setInterval()` function also returns a timerId which can be used to cancel the timer.
 
 This example changes the color of a box every half second. You can pause on a color by clicking the "stop" button. When stopped you can restart it by clicking the "go" button.
 
@@ -4802,55 +4838,48 @@ This example changes the color of a box every half second. You can pause on a co
 
 # Math and Date  
 
-Terminology  
+## Terminology  
 
-Arguments to new Date():
-value: This integer represents the number of milliseconds since 1 January 1970 00:00:00 UTC.
-dateString; This string represents a date.
-year, month, date, hours, minutes, seconds, milliseconds: These integers correspond to the namespace they represent.
-Examples  
+* Arguments to `new Date()`:
 
-The Date Constructor  
+  * **value**: This `integer` represents the number of milliseconds since 1 January 1970 00:00:00 UTC.
 
-The Date object creates an instance that represents a specific moment in time. It does this in an "odd" way. Each instance created using the Date object calculates based upon the amount of milliseconds that have occurred since 1 January, 1970 UTC.
+  * **dateString**; This `string` represents a date.
 
-The Date object is a constructor, so you can call it by initializing the new keyword and calling on the date object. You can instantiate a Date object in four different ways.
+  * **year, month, date, hours, minutes, seconds, milliseconds**: These `integers` correspond to the namespace they represent.
 
+## Examples  
+
+### The Date Constructor  
+
+The `Date` object creates an instance that represents a specific moment in time. It does this in an "odd" way. Each instance created using the `Date` object calculates based upon the amount of milliseconds that have occurred since 1 January, 1970 UTC.
+
+The `Date` object is a constructor, so you can call it by initializing the `new` keyword and calling on the date object. You can instantiate a `Date` object in four different ways.
+
+```js
 new Date();
 new Date(value);
 new Date(dateString);
 new Date(year, month[, date[, hours[, minutes[, seconds[, milliseconds]]]]]);
-Creating Date Objects  
+```
 
+### Creating Date Objects  
 
-1
+```js
 // Example #1
-2
 var date = new Date();
-3
-​
-4
+
 console.log("New Date: ", date); // current date and time in Unix time
-
-Fullscreen
-
-Reset Code
-Run Code 
-
-1
+```
+ 
+```js
 // Example #3
-2
 var date = new Date("November 6, 1987");
-3
-​
-4
+
 console.log("New Date: ", date); // Fri Nov 06 1987 00:00:00 GMT-0500 (EST)
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Math  
+### Math  
 
 The Math object functions differently than our Date object. Unlike the Date object, the Math object isn't initialized through a constructor, but by accessing the properties and methods located on the object itself. The methods located on the Math object, as you might expect, relate to common mathematical functions and equations.
 
