@@ -1828,7 +1828,7 @@ div {
 
 The Chrome Developer Tools (DevTools for short), are a set of web authoring and debugging tools built into Google Chrome. The DevTools provide web developers deep access into the internals of the browser and their web application. Use the DevTools to efficiently track down layout issues, set JavaScript breakpoints, and get insights for code optimization.
 
-source
+[source](https://developer.chrome.com/devtools)
 
 ## Examples  
 
@@ -4246,20 +4246,21 @@ Because the array is zero indexed we can see that item #1 (the second in the lis
 
 # Accessing Elements of an Array  
 
-Terminology  
+## Terminology  
 
-Bracket Notation  
+### Bracket Notation  
 
 Arrays in JavaScript provide a special syntax called bracket notation. Bracket notation allows you to reference a specific element in an array to either read its value or set its value.
 
-In bracket notation you follow a variable name immediately with a set of square brackets that contains the index of the element you want to access. For example, assuming you have a variable named todo, you can access the third item in the array using todo[2]. Remember, arrays are zero indexed, so the first item is at index 0, the second at index 1, etc.
+In bracket notation you follow a variable name immediately with a set of square brackets that contains the index of the element you want to access. For example, assuming you have a variable named `todo`, you can access the third item in the array using `todo[2]`. Remember, arrays are zero indexed, so the first item is at index 0, the second at index 1, etc.
 
 In general, you can think of bracket notation as being a variable that points to a particular place in an array.
 
-Examples  
+## Examples  
 
-Reading From Arrays Using Bracket Notation  
+### Reading From Arrays Using Bracket Notation  
 
+```js
 var characters = ["Iron Man", "Thor", "Captain America", "Hulk", "Black Widow"];
 
 // output the character at index 0
@@ -4267,18 +4268,24 @@ console.log(characters[0]);
 
 // output the character at index 3
 console.log(characters[3]);
+```
+
 This example shows how we can read elements from an array at the specified index using bracket notation.
 
-Take note, if you try to read an element in an array that doesn't exist you will receive an undefined value.
+Take note, if you try to read an element in an array that doesn't exist you will receive an `undefined` value.
 
+```js
 var characters = ["Iron Man", "Thor", "Captain America", "Hulk", "Black Widow"];
 
 // this logs "undefined"
 console.log(characters[99]);
-Writing To Arrays Using Bracket Notation  
+```
+
+### Writing To Arrays Using Bracket Notation  
 
 We can add and update items to in arrays using bracket notation.
 
+```js
 // create an array
 var characters = [];
 characters[0] = "Iron Man";
@@ -4296,10 +4303,13 @@ characters[1] = "Iron Patriot";
 
 // output the array to the console again.
 console.log(characters);
+```
+
 This example shows how we can add items to an array using bracket notation. It also shows how we can change the value at an index.
 
-Take note, any time you add an element to an array, any missing elements before that item become undefined. For example:
+Take note, any time you add an element to an array, any missing elements before that item become `undefined`. For example:
 
+```js
 // create an array
 var characters = [];
 
@@ -4312,6 +4322,7 @@ characters[5] = "Black Widow";
 // output the array to the console.
 // note that indexes 1 to 4 are "undefined"
 console.log(characters);
+```
 
 ---
 
@@ -4321,23 +4332,19 @@ console.log(characters);
 
 Programs don't usually execute top to bottom in a straight line. Instead, a program may execute a section of code many times over or only run some code under certain circumstances.
 
-Block  
+### Block  
 
 A block is multiple lines of code (often including other blocks) that are grouped together. Blocks of code can be run multiple times using loops or only under certain conditions.
 
-Loops  
+### Loops  
 
 Loops are used to execute a block of code multiple times. They often rely on counters to control how many times a block is executed. For example, you could execute a block of code ten times by counting from 1 to 10.
 
 You can also loop over a collection of things. For example, if you have a list of employees, you can loop over the list, and execute code for each individual employee.
 
-Conditionals  
+### Conditionals  
 
 Conditionals are used to control the circumstances under which a block of code is executed. Conditionals are used to tell code "if this then that". For example, if a user of your application has not filed their TPS report, then send them an email reminding them to.
-
-Examples  
-
-???
 
 ---
 
@@ -4345,11 +4352,11 @@ Examples
 
 # For Loops  
 
-Initialization expression  
+### Initialization expression  
 
 An initialization expression is the first item in a for loop's parenthesis. It sets up a control variable for use in the loop's body.
 
-Conditional expression  
+### Conditional expression  
 
 The conditional expression is the second item in a for loop's parenthesis. The conditional expression is evaluated before each execution of the loop. The loop's body is only executed if the conditional expression evaluates to true. If it's not true JavaScript ends the loop and moves to the next line of code.
 
@@ -4357,142 +4364,130 @@ The conditional expression often checks the value of the variable defined in the
 
 If the conditional expression never evaluates to false then the loop will continue forever, causing your program to hang.
 
-Afterthought expression  
+### Afterthought expression  
 
 The afterthought expression is the third item in a for loop's parenthesis. It is evaluated after each execution of the loop's body.
 
 The afterthought expression usually increments the variable defined in the initialization expression and checked in the conditional expression.
 
-Nesting  
+### Nesting  
 
 Nesting is a technique where a block of code is placed within another block of code. Loops can be nested within each other to create loops that run in entirety once for each step through another loop.
 
-Examples  
+## Examples  
 
-for  
+### for  
 
 Let's break down an example for loop:
 
-
-1
+```
 for(var x = 0 ; x <= 10 ; x = x + 1){
-2
     console.log(x);
-3
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 The for keyword tells JavaScript that this is a loop. Inside the parenthesis we have three distinct expressions separated by semicolons.
 
-In our example above, the initializing expression is var x = 0. We are telling JavaScript that when we start the loop to create a variable named x and set its initial value to 0. This variable x will act as a counter, being incremented each time we complete the loop.
+In our example above, the initializing expression is `var x = 0`. We are telling JavaScript that when we start the loop to create a variable named x and set its initial value to 0. This variable `x` will act as a counter, being incremented each time we complete the loop.
 
-The conditional expression is x <= 10. JavaScript will repeatedly execute the body of our loop while x, the variable we defined in the initialization expression, is less than or equal to 10.
+The conditional expression is `x <= 10`. JavaScript will repeatedly execute the body of our loop while x, the variable we defined in the initialization expression, is less than or equal to 10.
 
-The afterthought expression is x = x + 1. This tells Java to set x to x + 1 after each iteration. Remember that x is the variable we defined in the initializing expression and what we're checking after each iteration through body of the for loop.
+The afterthought expression is `x = x + 1`. This tells Java to set x to `x + 1` after each iteration. Remember that x is the variable we defined in the initializing expression and what we're checking after each iteration through body of the for loop.
 
-Putting it together
+### Putting it together
+
 Putting all of this together, our example loop from above will follow this flow:
 
-Initialization: Define a variable named x and set its value to 0.
+1. **Initialization**: Define a variable named x and set its value to 0.
 
-Conditional: Is x less than or equal to 10? Yes.
+2. **Conditional**: Is x less than or equal to 10? Yes.
 
-Body: Output 0 to the console.
+3. **Body**: Output 0 to the console.
 
-Afterthought: Increment x, setting it to 1.
+4. **Afterthought**: Increment x, setting it to 1.
 
-Conditional: Is x less than or equal to 10? Yes.
+5. **Conditional**: Is x less than or equal to 10? Yes.
 
-Body: Output 1 to the console.
+6. **Body**: Output 1 to the console.
 
-Afterthought: Increment x, setting it to 2.
+7. **Afterthought**: Increment x, setting it to 2.
 
-Conditional: Is x less than or equal to 10? Yes.
+8. **Conditional**: Is x less than or equal to 10? Yes.
 
-Body: Output 2 to the console.
+9. **Body**: Output 2 to the console.
 
-Afterthought: Increment x, setting it to 3.
+10. **Afterthought**: Increment x, setting it to 3.
 
 ... ect, etc ...
 
-Afterthought: Increment x, setting it to 10.
+11. **Afterthought**: Increment x, setting it to 10.
 
-Conditional: Is x less than or equal to 10? Yes.
+12. **Conditional**: Is x less than or equal to 10? Yes.
 
-Body: Output 10 to the console.
+13. **Body**: Output 10 to the console.
 
-Afterthought: Increment x, setting it to 11.
+14. **Afterthought**: Increment x, setting it to 11.
 
-Conditional: Is x less than or equal to 10? No.
+15. **Conditional**: Is x less than or equal to 10? No.
 
 We're done with our loop!
 
-Nested Loops  
+### Nested Loops  
 
-The last thing to note about loops - or really any other blocks of code - is that they can be nested within each other.
+The last thing to note about loops - or really any other blocks of code - is that they can be *nested* within each other.
 
 Let's say I wanted to output the numbers from 1 to 10 the number of times of their value. For example:
 
-1
-2
-2
-3
-3
-3
-4
-4
-4
-4
-etc ...
-I can accomplish this by writing nested loops. The outer loop will iterate from 1 to 10 and will have a control variable named n (for number). Each time we step through the loop, n will increase by 1.
+* 1
 
+* 2
 
-1
+* 2
+
+* 3
+
+* 3
+
+* 3
+
+* 4
+
+* 4
+
+* 4
+
+* 4
+
+* etc ...
+
+I can accomplish this by writing nested loops. The outer loop will iterate from 1 to 10 and will have a control variable named `n` (for number). Each time we step through the loop, `n` will increase by 1.
+
+```js
 // loop from 1 to 10
-2
 for(var n = 1 ; n <= 10 ; n++){
-3
     // print n, n times
-4
 }
+```
 
-Fullscreen
+I need to print `n`, `n` times. I know that the body of a loop is executed once for each iteration through the loop. So, if I place another loop inside this loop, it will run entirely, once for each iteration through the outer loop.
 
-Reset Code
-Run Code 
-I need to print n, n times. I know that the body of a loop is executed once for each iteration through the loop. So, if I place another loop inside this loop, it will run entirely, once for each iteration through the outer loop.
+I must give the inner loop its own control variable so that it knows what step it's on, separate from the outer loop. I'll call this `t` for "times", as in the number of times `n` has been printed. I'll default this to 0. Because `t` only exists within the inner loop, it will be reinitialized to 0 on each iteration through the outer loop.
 
-I must give the inner loop its own control variable so that it knows what step it's on, separate from the outer loop. I'll call this t for "times", as in the number of times n has been printed. I'll default this to 0. Because t only exists within the inner loop, it will be reinitialized to 0 on each iteration through the outer loop.
+Since I want to print `n` a variable number of times, I'll write the conditional expression of the inner loop to be limited by `n`.
 
-Since I want to print n a variable number of times, I'll write the conditional expression of the inner loop to be limited by n.
+Finally, I'll have to increment `t` each time we complete an iteration of the inner loop.
 
-Finally, I'll have to increment t each time we complete an iteration of the inner loop.
-
-
-1
+```js
 // loop from 1 to 10
-2
 for(var n = 1 ; n <= 10 ; n++){
-3
     // print n, n times
-4
     for(var t = 0 ; t < n ; t++){
-5
         // print n
-6
         console.log(n);
-7
     }
-8
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Running this gives us the desired output!
 
 ---
@@ -4501,18 +4496,19 @@ Running this gives us the desired output!
 
 # Query Selectors  
 
-Terminology  
+## Terminology  
 
-document.querySelector(): Returns a reference to any single element in the DOM. This function takes a CSS selector and returns the first element that matches. If more than one element matches, it returns only the first. If the query matches no element, it returns null. document.querySelector( "p" ) would return the first p tag in the document.
+* `document.querySelector()`: Returns a reference to *any single element* in the DOM. This function takes a CSS selector and returns the *first element* that matches. If more than one element matches, it returns only the first. If the query matches no element, it returns `null`. `document.querySelector( "p" )` would return the first `p` tag in the document.
 
-element.querySelector(): Returns a reference to the first descendant of the base element on which it is invoked. This function takes a CSS selector and returns the first element that matches. element.querySelector( "a" ) would return the first a tag that is a descendant of element.
+* `element.querySelector()`: Returns a reference to the *first descendant* of the base element on which it is invoked. This function takes a CSS selector and returns the *first element* that matches. `element.querySelector( "a" )` would return the first `a` tag that is a descendant of `element`.
 
-document.querySelectorAll(): Returns a group of elements in the DOM. This function takes a CSS selector and returns an array containing all elements selected, even if only one element was found with the query. document.querySelectorAll( ".special" ) would contain all page elements with a class of .special.
+* `document.querySelectorAll()`: Returns *a group of elements* in the DOM. This function takes a CSS selector and *returns an array* containing all elements selected, even if only one element was found with the query. `document.querySelectorAll( ".special" )` would contain all page elements with a class of `.special`.
 
-element.querySelectorAll(): Returns a node list of the elements on which it is invoked. This function takes a CSS selector and returns an array containing all elements selected, even if only one element was found with the query. It does not return the base element. element.querySelectorAll( "li" ) will return a node list of all li elements that are descendants of element.
+* `element.querySelectorAll()`: Returns *a node list* of the elements on which it is invoked. This function takes a CSS selector and *returns an array* containing all elements selected, even if only one element was found with the query. It does not return the base element. `element.querySelectorAll( "li" )` will return a node list of all `li` elements that are descendants of `element`.
 
-Query Selectors in Action  
+## Query Selectors in Action  
 
+```html
 <!DOCTYPE html>
 
 <html>
@@ -4534,7 +4530,9 @@ Query Selectors in Action
     </ul>
   </body>
 </html>
-document.querySelector( )  
+```
+
+### document.querySelector( )  
 
 Example
 
