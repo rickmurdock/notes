@@ -4881,114 +4881,126 @@ console.log("New Date: ", date); // Fri Nov 06 1987 00:00:00 GMT-0500 (EST)
 
 ### Math  
 
-The Math object functions differently than our Date object. Unlike the Date object, the Math object isn't initialized through a constructor, but by accessing the properties and methods located on the object itself. The methods located on the Math object, as you might expect, relate to common mathematical functions and equations.
+The `Math` object functions differently than our `Date` object. Unlike the `Date` object, the `Math` object isn't initialized through a constructor, but by accessing the properties and methods located on the object itself. The methods located on the `Math` object, as you might expect, relate to common mathematical functions and equations.
 
-Math.pow()  
+### Math.pow()  
 
+```js
 // Returns base to the exponent power, that is, base^exponent.
 Math.pow(6, 2); // 36
 Math.pow(3, 3); // 27
 Math.pow(-7, 2); // 49 (squares are positive)
 Math.pow(-7, 3); // -343
-Math.round()  
+```
 
+### Math.round()  
+
+```js
 // Returns the value of a number rounded to the nearest integer.
 Math.round(25.49); // 25
 Math.round(20.5);  // 21
 Math.round(19);  // 19
 Math.round(-25.5);  // -25
 Math.round(-25.51); // -26
-Math.ceil()  
+```
 
+### Math.ceil()  
+
+```js
 // Returns the smallest integer greater than or equal to a number.
 Math.ceil(.89); // 1
 Math.ceil(5); // 5
 Math.ceil(20.001); // 21
 Math.ceil(-.98); // 0
 Math.ceil(-10.678); // 10
-Math.floor()  
+```
 
+### Math.floor()  
+
+```js
 // Returns the largest integer less than or equal to a number.
 Math.floor(25.46); //  25
 Math.floor(25.99); //  25
 Math.floor(-25.46); //  26
 Math.floor(-25.99); //  26
-Math.sqrt()  
+```
 
+### Math.sqrt()  
+
+```js
 // Returns the positive square root of a number.
 Math.sqrt(9); // 3
 Math.sqrt(1); // 1
 Math.sqrt(0); // 0
-References  
+```
 
-The Date Object- MDN
-The Math Object- MDN
+## References  
+
+* [The Date Object- MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+* [The Math Object- MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math)
 
 ---
 
 [Building Objects and Maintaining Proper Scope](BuildingObjectsAndMaintainingProperScope.md)
 
-Arithmetic Operators in JavaScript  
+# Arithmetic Operators in JavaScript  
 
-Terminology  
+## Terminology  
 
-Arithmetic Operators  
+### Arithmetic Operators  
 
 Computers excel at arithmetic. After all, that's what they're designed to do! JavaScript comes with a standard compliment of mathematical operators.
 
 Operators are special bits of syntax that take action on operands. For example, arithmetic operators are used to perform mathematical operations such as addition, multiplication, subtraction, and division.
 
-Order of Operations  
+### Order of Operations  
 
-Do you remember PEMDAS from math class? PEMDAS is an acronym used to remember the order that operations must be performed in a mathematical expression. JavaScript follows the same rules for arithmetic. This would be:
+Do you remember [PEMDAS](https://www.mathsisfun.com/operation-order-pemdas.html) from math class? PEMDAS is an acronym used to remember the order that operations must be performed in a mathematical expression. JavaScript follows the same rules for arithmetic. This would be:
 
-Parenthesis
-Exponents
-Multiplication (and Modulo) and Division (left to right)
-Addition and Subtraction (left to right)
-Using this, we know that 42 - 8 * 34 = -230 because the * multiplication operator has higher precedence than the - subtraction operator. 8 * 34 = 272 and 42 - 272 = -230. If we didn't follow the correct order of operations, we might have incorrectly found the answer to be 1156.
+* Parenthesis
 
-You may remember a mnemonic from school: Please Excuse My Dear Aunt Sally.
+* Exponents
 
-Examples  
+* Multiplication (and Modulo) and Division (left to right)
 
-Addition operator  
+* Addition and Subtraction (left to right)
 
-Operator: +
+Using this, we know that `42 - 8 * 34 = -230` because the `*` multiplication operator has higher precedence than the `-` subtraction operator. `8 * 34 = 272` and `42 - 272 = -230`. If we didn't follow the correct order of operations, we might have incorrectly found the answer to be `1156`.
 
-Syntax: <a value> + <another value>
+You may remember a mnemonic from school: **P**lease **E**xcuse **M**y **D**ear **A**unt **S**ally.
 
-Returns: The sum of the two values.
+## Examples  
 
-The addition operator adds two values together. The value to the left of the + sign is added to the value on the right. This works more or less as you would think it should.
+### Addition operator  
 
+**Operator**: `+`
 
-1
+**Syntax**: `<a value> + <another value>`
+
+**Returns**: The sum of the two values.
+
+The addition operator adds two values together. The value to the left of the `+` sign is added to the value on the right. This works more or less as you would think it should.
+
+```js
 4 + 8
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-This code returns 12, as expected.
+This code returns `12`, as expected.
 
 Now consider this expression:
 
-
-1
+```js
 4 + 8 + 5
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Running this expression returns 17, also as expected.
 
-JavaScript evaluates arithmetic operators by applying the operation to the value to the left of the operator and the value to the right of the operator. That leads one to wonder, in the example above, is 8 to the right of the first + operator or to the left of the second one?
+JavaScript evaluates arithmetic operators by applying the operation to the value to the left of the operator and the value to the right of the operator. That leads one to wonder, in the example above, is `8` to the right of the first `+` operator or to the left of the second one?
 
-The answer is that it's to the right of the first one. JavaScript will process this expression by first adding 4 and 8. This evaluates to 12. JavaScript will next replace 4 + 8 with 12 (this is called referential transparency, by the way). This means that we're left with a new expression 12 + 5. This is easier to understand and evaluates to the expected 17.
+The answer is that it's to the right of the first one. JavaScript will process this expression by first adding `4` and `8`. This evaluates to `12`. JavaScript will next replace `4 + 8` with `12` (this is called *referential transparency*, by the way). This means that we're left with a new expression `12 + 5`. This is easier to understand and evaluates to the expected `17`.
 
-Subtraction operator  
+### Subtraction operator  
 
 Operator: -
 
