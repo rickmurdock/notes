@@ -5002,289 +5002,204 @@ The answer is that it's to the right of the first one. JavaScript will process t
 
 ### Subtraction operator  
 
-Operator: -
+**Operator**: -
 
-Syntax: <a value> - <another value>
+**Syntax**: <a value> - <another value>
 
-Returns: The difference of the two values.
+**Returns**: The difference of the two values.
 
-Similar to the addition operator, the subtraction operator subtracts the value to the right of the - symbol from the value on the left and returns the result.
+Similar to the addition operator, the subtraction operator subtracts the value to the right of the `-` symbol from the value on the left and returns the result.
 
-
-1
+```js
 6 - 15
+```
 
-Fullscreen
+This evaluates to `-9`.
 
-Reset Code
-Run Code 
-This evaluates to -9.
+### Multiplication operator  
 
-Multiplication operator  
+**Operator**: `*`
 
-Operator: *
+**Syntax**: `<a value> * <another value>`
 
-Syntax: <a value> * <another value>
+**Returns**: The product of the two values.
 
-Returns: The product of the two values.
+The multiplication operator multiplies the value to the left of the `*` symbol by the value on the right and returns the result.
 
-The multiplication operator multiplies the value to the left of the * symbol by the value on the right and returns the result.
-
-
-1
+```js
 9 * 5
+```
 
-Fullscreen
+This evaluates to `45`.
 
-Reset Code
-Run Code 
-This evaluates to 45.
+### Division operator  
 
-Division operator  
+**Operator**: `/`
 
-Operator: /
+**Syntax**: `<a value> / <another value>`
 
-Syntax: <a value> / <another value>
+**Returns**: The quotient of the two values.
 
-Returns: The quotient of the two values.
+The division operator divides the value to the left of the `/` symbol by the value on the right and returns the result.
 
-The division operator divides the value to the left of the / symbol by the value on the right and returns the result.
-
-
-1
+```js
 9 / 3
+```
 
-Fullscreen
+### Remainder operator  
 
-Reset Code
-Run Code 
-This evaluates to 3.
+**Operator**: `%`
 
-Remainder operator  
+**Syntax**: `<a value> % <another value>`
 
-Operator: %
-
-Syntax: <a value> % <another value>
-
-Returns: The remainder left when dividing the two values.
+**Returns**: The remainder left when dividing the two values.
 
 Remember long division from elementary school?
 
 ![dec-long-division.gif](./images/dec-long-division.gif)
 
-Long division - the bane of 4th graders everywhere.
-The remainder operator, often called the modulo operator or mod, returns the remainder left over when dividing the value to the left of the % symbol by the value to the right.
+The remainder operator, often called the *modulo operator* or *mod*, returns the remainder left over when dividing the value to the left of the `%` symbol by the value to the right.
 
 Imagine you run a breakfast restaurant that makes three-egg omelets and have 116 eggs. You want to know how many eggs will be left over if you sell all the omelets you can make.
 
-
-1
+```js
 116 % 3
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 This tells us there will be two eggs left over once we've made all of our three-egg omelets.
 
-Parenthesis  
+### Parenthesis  
 
 Just like in math, you can use parenthesis in JavaScript to explicitly indicate order of operations. JavaScript treats each set of parenthesis as a separate expression. JavaScript evaluates parenthesis starting from the innermost pair, and works outward. Each set of parenthesis is replaced with its evaluated value before the outer set of parenthesis are evaluated.
 
 Imagine we have this expression in JavaScript:
 
-
-1
+```js
 (42 - (8 + 24)) * ((7 + (4 + 3)) / 2)
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 JavaScript would step through this like so:
 
-(42 - (8 + 24)) * ((7 + (4 + 3)) / 2)
-(42 - 32) * ((7 + 7) / 2)
-10 * (14 / 2)
-10 * 7
-70
-Arithmetic Operator Precedence  
+1. `(42 - (8 + 24)) * ((7 + (4 + 3)) / 2)`
+
+2. `(42 - 32) * ((7 + 7) / 2)`
+
+3. `10 * (14 / 2)`
+
+4. `10 * 7`
+
+5. `70`
+
+### Arithmetic Operator Precedence  
 
 Let's take a look at an example expression and determine how JavaScript would evaluate it. This is the same expression as before, just without parenthesis:
 
-
-1
+```js
 42 - 8 + 24 * 7 + 4 + 3 / 2
+```
 
-Fullscreen
+JavaScript starts by looking for multiplication, division and remainder operators. Since JavaScript reads left to right, the first operator found is a `*` multiplication operator. The value immediately to the left of the `*` operator is 24 and to the right is 7.
 
-Reset Code
-Run Code 
-JavaScript starts by looking for multiplication, division and remainder operators. Since JavaScript reads left to right, the first operator found is a * multiplication operator. The value immediately to the left of the * operator is 24 and to the right is 7.
-
-
-1
+```js
 42 - 8 + 24 * 7 + 4 + 3 / 2
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 Effectively becomes...
 
-
-1
+```js
 42 - 8 + (24 * 7) + 4 + 3 / 2
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... and evaluates to:
 
-
-1
+```js
 42 - 8 + 168 + 4 + 3 / 2
+```
 
-Fullscreen
+Continuing to the right, JavaScript next finds the `/` division operator. The value to the left of the `/` operator is 3 and to the right is 2.
 
-Reset Code
-Run Code 
-Continuing to the right, JavaScript next finds the / division operator. The value to the left of the / operator is 3 and to the right is 2.
-
-
-1
+```js
 42 - 8 + 168 + 4 + 3 / 2
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 Effectively becomes...
 
-
-1
+```js
 42 - 8 + 168 + 4 + (3 / 2)
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... and evaluates to:
 
-
-1
+```js
 42 - 8 + 168 + 4 + 1.5
+```
 
-Fullscreen
+Having completed evaluating multiplication, division and remainder operators, JavaScript starts looking for addition and subtraction. Again, this is done left to right. JavaScript will first find the `-` operator followed by an `+` operator followed by two more.
 
-Reset Code
-Run Code 
-Having completed evaluating multiplication, division and remainder operators, JavaScript starts looking for addition and subtraction. Again, this is done left to right. JavaScript will first find the - operator followed by an + operator followed by two more.
-
-
-1
+```js
 42 - 8 + 168 + 4 + 1.5
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 Effectively becomes...
 
-
-1
+```js
 (42 - 8) + 168 + 4 + 1.5
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 ... and evaluates to:
 
-
-1
+```js
 34 + 168 + 4 + 1.5
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 The pattern continues.
 
-
-1
+```js
 34 + 168 + 4 + 1.5
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... becomes ...
 
-
-1
+```js
 (34 + 168) + 4 + 1.5
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... becomes ...
 
-
-1
+```js
 202 + 4 + 1.5
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... etc...
 
-
-1
+```js
 (202 + 4) + 1.5
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... etc...
 
-
-1
+```js
 206 + 1.5
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 At last we reach the final expression and evaluate that to 207.5! Therefore, the original expression...
 
 
-1
+```js
 42 - 8 + 24 * 7 + 4 + 3 / 2
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 ... is logically the same as this expression with parenthesis:
 
-
-1
+```js
 ((((42 - 8) + (24 * 7)) + 4) + (3 / 2))
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 My advice to you is to always make judicious use of parenthesis. Be explicit in your expressions. This not only helps reduce difficult to debug errors, it also makes your code easier for humans to understand.
 
-References  
+## References  
 
-MDN - Expressions and operators
+[MDN - Expressions and operators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Expressions_and_Operators#String_operators)
 
 ---
 
@@ -5292,25 +5207,30 @@ MDN - Expressions and operators
 
 ## Terminology  
 
-Window Object: The window object represents a window containing a DOM document; the window.document property points to the DOM document loaded in that window. global scope: Available throughout the entire application. IIFE: Immediately Invoked Function expression.
+**Window Object**: The window object represents a window containing a DOM document; the window.document property points to the DOM document loaded in that window. 
 
-Examples  
+**global scope**: Available throughout the entire application. 
 
+**IIFE**: Immediately Invoked Function expression.
 
+## Examples  
+
+```js
 (function(window) {
     var prop = 'new property';
     window.prop = prop;
 })(window);
+```
 
-References  
+## References  
 
-MDN - Window
+[MDN - Window](https://developer.mozilla.org/en-US/docs/Web/API/Window)
 
-MDN - Scope
+[MDN - Scope](https://developer.mozilla.org/en-US/docs/Glossary/Scope)
 
-Wikipedia - IIFE
+[Wikipedia - IIFE](https://en.wikipedia.org/wiki/Immediately-invoked_function_expression)
 
-Isolate Variables in JS
+[Isolate Variables in JS](http://www.nicoespeon.com/en/2013/05/properly-isolate-variables-in-javascript/)
 
 ---
 
