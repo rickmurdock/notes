@@ -5461,9 +5461,7 @@ Where `hotel.name` is the object name + `.` + variable name.
 Accessing the same property using `square bracket` notation would be shown as:
 
 ```js
-
 var hotelname = hotel['name']
-
 ```
 
 Where `hotel['name']` is the object name + `[` + `'` + variable name + `'` + `]`.
@@ -5494,162 +5492,90 @@ You can only update a method using the `dot notation`.
 
 # Algorithms  
 
-Terminology  
+## Terminology  
 
-algorithm: an explicit and sequential step-by-step set instructions for performing a specific task
+*algorithm*: an explicit and sequential step-by-step set instructions for performing a specific task
 
-Big O: a notation used to show algorithm complexity
+*Big O*: a notation used to show algorithm complexity
 
-Examples  
+## Examples  
 
-An algorithm to calculate tips - O(n)  
+### An algorithm to calculate tips - O(n)  
 
-
-1
+```js
 function calculateTips(tipPercentage, checks) {
-2
   // Step 1: Create an empty array for tips.
-3
   const tips = [];
-4
-​
-5
+
   // Combines step 2 and 6: starts with the first check and iterates through.
-6
   for (var idx = 0; idx < checks.length; idx++) {
-7
     const check = checks[idx];
-8
     // Step 3: Calculate the tip by multiplying the total by the tip percentage.
-9
     const tipAmount = check.amount * tipPercentage;
-10
     // Step 4: Store the tip percentage and check name in a new object.
-11
     const tip = {
-12
       name: check.name,
-13
       amount: tipAmount
-14
     };
-15
     // Step 5: Put this object in the tip array.
-16
     tips.push(tip);
-17
   }
-18
-​
-19
+
   return tips;
-20
 }
+```
 
-Fullscreen
+### Binary search algorithm - O(log n)  
 
-Reset Code
-Run Code 
-Binary search algorithm - O(log n)  
-
-
-1
+```js
 function averageRoundDown(x, y) {
-2
   return Math.floor((x + y) / 2);
-3
 }
-4
-​
-5
+
 function binarySearch(searchItem, arrayToSearch) {
-6
   let firstIdx = 0;
-7
   let lastIdx = arrayToSearch.length - 1;
-8
   let midpoint;
-9
-​
-10
+
   while (firstIdx <= lastIdx) {
-11
     midpoint = averageRoundDown(firstIdx, lastIdx);
-12
     if (arrayToSearch[midpoint] === searchItem) {
-13
       return true;
-14
     } else if (arrayToSearch[midpoint] > searchItem) {
-15
       lastIdx = midpoint - 1;
-16
     } else {
-17
       firstIdx = midpoint + 1;
-18
     }
-19
   }
-20
-​
-21
+
   return false;
-22
 }
+```
 
-Fullscreen
+### Generate pairs of students - O(n2)  
 
-Reset Code
-Run Code 
-Generate pairs of students - O(n2)  
-
-
-1
+```js
 function generatePairs(students) {
-2
   const pairs = [];
-3
   let student1, student2;
-4
-​
-5
+
   for (let idx1 = 0; idx1 < students.length; idx1++) {
-6
     student1 = students[idx1];
-7
     for (let idx2 = 0; idx2 < students.length; idx2++) {
-8
       if (idx1 != idx2) {
-9
         student2 = students[idx2];
-10
         pairs.push([student1, student2])
-11
       }
-12
     }
-13
   }
-14
-​
-15
+
   return pairs;
-16
 }
-17
-​
-18
+
 const students = ["Blake", "Emerson", "Sam", "Ariel", "Quinn"];
-19
-​
-20
+
 console.log(generatePairs(students));
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ---
 
@@ -5657,22 +5583,23 @@ Run Code
 
 # Objects Containing Other Types  
 
-Terminology  
+## Terminology  
 
-Object literal: A comma-separated list of name-value pairs wrapped in curly braces
+**Object literal**: A comma-separated list of name-value pairs wrapped in curly braces
 
-Dot notation: The object is referenced first, followed by a dot (.), followed by a property name, optionally followed by another dot (.), then another nested property name (continuing this pattern as deeply into the object as desired).
+**Dot notation**: The object is referenced first, followed by a dot (`.`), followed by a property name, optionally followed by another dot (`.`), then another nested property name (continuing this pattern as deeply into the object as desired).
 
-Bracket notation: The object is referenced first, followed by opening and closing square brackets containing a string matching the name of a property on the object.
+**Bracket notation**: The object is referenced first, followed by opening and closing square brackets containing a string matching the name of a property on the object.
 
-Method: A object's property whose value is a function
+**Method**: A object's property whose value is a function
 
-Chaining: Using dot notation to reference an object's property or to attach a property to an object
+**Chaining**: Using dot notation to reference an object's property or to attach a property to an object
 
-Examples  
+## Examples  
 
-Object literal with a method attached  
+### Object literal with a method attached  
 
+```js
 var personObject = {
   name: "Jesse",
   age: 35,
@@ -5691,21 +5618,31 @@ var personObject = {
 }
 
 personObject.introduce() // "Hi, my name is Jesse"
-Dot Notation  
+```
+
+### Dot Notation  
 
 Chain nested properties
 
+```js
 console.log( personObject.appearance.hair.length ); // short
-Bracket Notation  
+```
+
+### Bracket Notation  
 
 Pass in a string matching the name of a property.
 
+```js
 console.log( personObject['appearance']['height'] ); // 69in
-Combination  
+```
+
+### Combination  
 
 Combine dot notation and bracket notation to access a property.
 
+```js
 console.log( personObject.appearance.hair['color'] ); // brown
+```
 
 ---
 
