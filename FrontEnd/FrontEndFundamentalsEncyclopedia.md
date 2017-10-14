@@ -5461,10 +5461,12 @@ Where `hotel.name` is the object name + `.` + variable name.
 Accessing the same property using `square bracket` notation would be shown as:
 
 ```js
+
 var hotelname = hotel['name']
+
 ```
 
-Where `hotel['name']` is the object name + `[` + `'` + variable name _ `'` + `]`.
+Where `hotel['name']` is the object name + `[` + `'` + variable name + `'` + `]`.
 
 ## Updating an Object  
 
