@@ -119,18 +119,18 @@ Lecture notes from The Iron Yard
 
 * [Redux Tutorial Playlist](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTutorialPlaylist.md)
 
-* [Redux: Part 1](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart1.md)
+* [Redux: Part 1](./ReactJS/ReduxPart1.md)
 
-* [Redux: Part 2](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart2.md)
+* [Redux: Part 2](./ReactJS/ReduxPart2.md)
 
-* [Redux: Part 3](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxPart3.md)
+* [Redux: Part 3](./ReactJS/ReduxPart3.md)
 
-* [Redux Todos Part 2 (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxTodosPart2.md)
+* [Redux Todos Part 2 (video)](./ReactJS/ReduxTodosPart2.md)
 
-* [Redux Review (video)](https://github.com/rickmurdock/notes/blob/master/ReactJS/ReduxReview.md)
+* [Redux Review (video)](./ReactJS/ReduxReview.md)
 
 * [Redux Counter Review (video)](./ReactJS/ReduxCounter.md)
 
-* [Unit Tests for React](https://github.com/rickmurdock/notes/blob/master/ReactJS/UnitTestsForReact.md)
+* [Unit Tests for React](./ReactJS/UnitTestsForReact.md)
 
 * [Language Specialization: ReactJS Encyclopedia](./ReactJS/ReactJSEncyclopedia.md)
