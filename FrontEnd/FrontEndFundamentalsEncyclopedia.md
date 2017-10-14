@@ -5240,28 +5240,37 @@ My advice to you is to always make judicious use of parenthesis. Be explicit in 
 
 ## Terminology  
 
-Hoisting: A JavaScript declaration is lifted to the top of its scope.
+**Hoisting**: A JavaScript declaration is lifted to the top of its scope.
 
-Variable hoisting:
+* Variable hoisting:
 
-Variable must be defined in a function.
-If outside a function, a variable must be defined at the top of the global scope.
-Only variable declarations are hoisted, not the variable initialization or assignment.
-Function hoisting:
+  * Variable must be defined in a function.
 
-Function declaration vs variable declaration.
-Function declaration takes precedence over variable declaration. NOTE: It does not take precedence over variable assignment.
-Function expressions are not hoisted.
-Function hoisting also allows us to call the function before the function declaration. The benefit is that it allows for high-level logic to be expressed at the beginning of the code. Therefore, we can communicate our intentions more clearly.
-Since variables are hoisted before function, naming conflicts might happen. Pay close attention to variable and function naming in order to avoid conflicts!
-Strict mode: error will occur when a variable is assigned a value without first declaring the variable.
+  * If outside a function, a variable must be defined at the top of the global scope.
 
-Examples  
+  * **Only** variable declarations are hoisted, not the variable initialization or assignment.
 
-Hoisting  
+* Function hoisting:
 
-Example 1
+  * Function declaration vs variable declaration.
 
+    * Function declaration takes precedence over variable declaration. **NOTE**: It does not take precedence over variable assignment.
+
+  * Function expressions are not hoisted.
+
+  * Function hoisting also allows us to call the function before the function declaration. The benefit is that it allows for high-level logic to be expressed at the beginning of the code. Therefore, we can communicate our intentions more clearly.
+
+  * Since variables are hoisted before function, naming conflicts might happen. Pay close attention to variable and function naming in order to avoid conflicts!
+
+* Strict mode: error will occur when a variable is assigned a value without first declaring the variable.
+
+## Examples  
+
+### Hoisting  
+
+#### Example 1
+
+```js
 // Variable hoisting
 function hoistingExample() {
     console.log(hoistedVar);
@@ -5271,17 +5280,23 @@ function hoistingExample() {
 hoistingExample();
 
 //Logs: undefined.
+```
+
 In the example above, the variable declaration alone gets hoisted, not the declaration and value. Therefore, since 'var hoistedVar' has no value attached to it, we get 'undefined'. Below is how the JavaScript interpreters runs the function.
 
-Example 2
+#### Example 2
 
+```js
 function hoistingExample() {
     var hoistedVar //<--var declaration hoisted
     console.log(hoistedVar);
     hoistedVariable = "Hoist me!" //<-- variable assignment
 }
+```
+
 Changing the order of the functions will yield the desired result.
 
+```js
 // Variable hoisting
 function hoistingExample() {
     var hoistedVar = "Hoist me!";
@@ -5291,8 +5306,11 @@ function hoistingExample() {
 hoistingExample();
 
 //Logs: Hoist me!
-Example 3
+```
 
+#### Example 3
+
+```js
 // function hoisting
 
 hoistedFunction();
@@ -5302,10 +5320,13 @@ function hoistedFunction(){
 }
 
 //Logs: Function is hoisted!
+```
+
 Above: the function is hoisted to the top by the JavaScript interpreter.
 
-Example 4
+#### Example 4
 
+```js
 //Function expressions are not hoisted!
 
 hoistedDefinition();
@@ -5321,10 +5342,13 @@ function hoistedDefinition(){
 var functionExpression = function(){
     console.log("Expression not hoisted!")
 };
+```
+
 Above: notice how the function expression is not hoisted.
 
-Example 5.a
+#### Example 5.a
 
+```js
 // Naming conglict and variable precedence.
 
 function hoistedFunction() {
@@ -5340,10 +5364,13 @@ function hoistedFunction() {
 hoistedFunction();
 // Logs: I take precedence over functions.
 // Logs: error.
+```
+
 Above: variable hoisting takes precedence, but poor naming convention creates an error. Below is how the interpreter runs the code.
 
-**Example 5.b"
+#### Example 5.b"
 
+```js
 function hoistedFunction(){
     //Hoisted code
     var namingConflict;
@@ -5357,6 +5384,7 @@ function hoistedFunction(){
 hoistedFunction()
 // Logs: I take precedence over functions.
 // Logs: error.
+```
 
 ---
 
@@ -5364,28 +5392,29 @@ hoistedFunction()
 
 # Study Notes  
 
-Terminology  
+## Terminology  
 
-Object: an object groups together a set of variables and functions to create a model. This model takes on a new name and represents a concept.
+**Object**: an object groups together a set of variables and functions to create a model. This model takes on a new name and represents a concept.
 
-Remember that in an object, variables become known as properties. Functions become known as methods. These methods represent tasks that are associated with the object.
+*Remember* that in an object, variables become known as properties. Functions become known as methods. These methods represent tasks that are associated with the object.
 
-Like variables and named functions, properties and methods have a name and value. In an object, that name is a key. Each key within an object is unique and can be used to access a corresponding value.
+Like variables and named functions, properties and methods have a name and value. In an object, that name is a **key**. Each key within an object is unique and can be used to access a corresponding value.
 
-Dot notation: using the name of the object, followed by a period. Then the name of the property or method that you want to access.
+**Dot notation**: using the name of the object, followed by a period. Then the name of the property or method that you want to access.
 
-Square bracket: a notation that uses brackets next to the name of the object to access and edit data.
+**Square bracket**: a notation that uses brackets next to the name of the object to access and edit data.
 
-Accessing an object  
+## Accessing an object  
 
-You can access the properties of a object using either dot notation or square bracket notation. Only methods can be accessed using the dot notation.
+You can access the properties of a object using either `dot notation` or `square bracket notation`. Only methods can be accessed using the `dot notation`.
 
-Remember, square bracket notation is useful for properties that contain special characters. Square bracket notation is also useful for properties where a variable is being used.
+*Remember*, square bracket notation is useful for properties that contain special characters. Square bracket notation is also useful for properties where a variable is being used.
 
-Examples  
+### Examples  
 
 This example shows an object in literal notation with keys, values and a method.
 
+```js
 var hotel = {
 name: 'Hilton',
 room: 224,
@@ -5393,46 +5422,69 @@ checkAvailability: function() {
   return this.rooms - this.booked;
 };
 }
+```
+
 In the above example the keys are:
 
-name
-room
-checkAvailablity
+* name
+
+* room
+
+* checkAvailablity
+
 The values are:
 
-Hilton
-224
-function() { return this.rooms - this.booked; }
+* Hilton
+
+* 224
+
+* `function() { return this.rooms - this.booked; }`
+
 Where
 
+```js
 checkAvailability: function() {
   return this.rooms - this.booked;
 };
+```
+
 is a method.
 
-If you wanted to access the hotel name using dot notation that would be shown as:
+If you wanted to access the hotel name using `dot notation` that would be shown as:
 
- var hotelname = hotel.name;
-Where hotel.name is the object name + . + variable name.
+```js
+var hotelname = hotel.name;
+```
 
-Accessing the same property using square bracket notation would be shown as:
+Where `hotel.name` is the object name + `.` + variable name.
 
+Accessing the same property using `square bracket` notation would be shown as:
+
+```js
 var hotelname = hotel['name']
-Where hotel['name'] is the object name + [ + ' + variable name _ ' + ].
+```
 
-Updating an Object  
+Where `hotel['name']` is the object name + `[` + `'` + variable name _ `'` + `]`.
 
-You can update the value of properties using either dot notation or square bracket notation.
+## Updating an Object  
 
-Examples  
+You can update the value of properties using either `dot notation` or `square bracket notation`.
 
-Updating a property is the same technique as adding a property. Using dot notation, it looks like:
+### Examples  
 
+Updating a property is the same technique as adding a property. Using `dot notation`, it looks like:
+
+```js
 var hotel.name = 'Marriott';
-Using square bracket notation, looks like:
+```
 
+Using `square bracket notation`, looks like:
+
+```js
 var hotel['name'] = 'Marriott'
-You can only update a method using the dot notation.
+```
+
+You can only update a method using the `dot notation`.
 
 ---
 
