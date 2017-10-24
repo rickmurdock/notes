@@ -236,21 +236,21 @@ then all h1 tags have a color of orange'
 }
 ```
 
-In the above code snippet we've defined `h1` styles 3 times, so the question is: What color is the `h1`? The answer is: It depends on the width of the screen.
+In the above code snippet we've defined `h1` styles 3 times, so the question is: *What color is the `h1`?* The answer is: *It depends on the width of the screen.*
 
-Consider this: Let's pretend that we are visiting a site with these h1 styles. We visit the site using our phone and the width of the phone screen is 360px. Which styles apply? Well, the first h1 style certainly applies. It's at the top of our document and has no restrictions for when it applies. Right off the bat, we know that the default value of the h1 will be red.
+Consider this: Let's pretend that we are visiting a site with these `h1` styles. We visit the site using our phone and the width of the phone screen is `360px`. Which styles apply? Well, the first `h1` style certainly applies. It's at the top of our document and has no restrictions for when it applies. Right off the bat, we know that the default value of the `h1` will be red.
 
-The next h1 style is wrapped in a media query, so we'll need to determine if the query has been satisfied. Let's reiterate the media query. Interpreted into layman's terms, the media query states: "If the rendering device has a screen and it is at least 300px wide, then all h1 tags have a color of blue".
+The next `h1` style is wrapped in a media query, so we'll need to determine if the query has been satisfied. Let's reiterate the media query. Interpreted into layman's terms, the media query states: *"If the rendering device has a screen and it is at least `300px` wide, then all h1 tags have a color of blue".*
 
-We know that our phone has a screen, so that part of the query is true. And we know that the screen is 360px wide, clearly wider than the 300px stated in the query. This means that this media query is satisfied and the h1 style it contains is active.
+We know that our phone has a screen, so that part of the query is true. And we know that the screen is `360px` wide, clearly wider than the `300px` stated in the query. This means that this media query is satisfied and the `h1` style it contains is active.
 
-So, our second h1 style applies as well. Because it is wrapped in a media query, it has a higher degree of specifiability than the first h1 style and overrides the color red. At this point the h1 tag is blue.
+So, our second `h1` style applies as well. Because it is wrapped in a media query, it has a higher degree of specifiability than the first `h1` style and overrides the color red. At this point the `h1` tag is blue.
 
-The third h1 style is also wrapped in a media query and reads much the same as the first media query. It states: 'If the rendering device is a screen and it is at least 600px wide, then all h1 tags have a color of orange'.
+The third `h1` style is also wrapped in a media query and reads much the same as the first media query. It states: 'If the rendering device is a screen and it is at least `600px` wide, then all `h1` tags have a color of orange'.
 
-We know that the device has a screen, so the first item in the media query is satisfied, but the screen width (360px) is clearly less then 600px. Because of this, the media query is NOT satisfied and therefore the styles it contains do not apply.
+We know that the device has a screen, so the first item in the media query is satisfied, but the screen width (`360px`) is clearly less then `600px`. Because of this, the media query *is NOT* satisfied and therefore the styles it contains do not apply.
 
-Were we to look at our site through a desktop monitor with a screen width of 1200px, then the third h1 style would apply and h1 tags would have a color of orange.
+Were we to look at our site through a desktop monitor with a screen width of `1200px`, then the third `h1` style would apply and `h1` tags would have a color of orange.
 
 **Enough talk, lets see it in action:**
 
@@ -292,7 +292,7 @@ h1{
 }
 ```
 
-> I've changed the min-width pixel values of the demo so that it's easier to see the effects. Click on the "full screen" icon in the bottom left of the demo and resize the width of your browser window to see the responsive code take effect. You h1 tag should be red if the screen width is less than 850px, blue if less than 950px, and orange otherwise.
+> I've changed the `min-width` pixel values of the demo so that it's easier to see the effects. Click on the "full screen" icon in the bottom left of the demo and resize the width of your browser window to see the responsive code take effect. Your `h1` tag should be red if the screen width is less than `850px`, blue if less than `950px`, and orange otherwise.
 
 ### Breakpoints  
 
