@@ -140,3 +140,9 @@ Lecture notes from The Iron Yard
 ## Language Specialization: Java and Spring
 
 * [Getting Started](./Java/GettingStarted.md)
+
+* [Type System](./Java/TypeSystem.md)
+
+* [Basic Tools](./Java/BasicTools.md)
+
+* [Intro to OOP](./Java/IntroToOOP.md)
