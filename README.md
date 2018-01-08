@@ -134,3 +134,9 @@ Lecture notes from The Iron Yard
 * [Unit Tests for React](./ReactJS/UnitTestsForReact.md)
 
 * [Language Specialization: ReactJS Encyclopedia](./ReactJS/ReactJSEncyclopedia.md)
+
+---
+
+## Language Specialization: Java and Spring
+
+* [Getting Started](./Java/GettingStarted.md)
