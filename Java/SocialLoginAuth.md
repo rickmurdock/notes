@@ -1,12 +1,12 @@
 # Spring Social Login (OAuth2)
 
-We see [OAuth2](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) in action anytime we use a third-party login (Facebook, Google, GitHub) to access another website. The result is that the user is authenticated, and the client receives a token to call back into the server. In this lesson we are only interested in the user being authenticated.
+We see [**OAuth2**](https://www.digitalocean.com/community/tutorials/an-introduction-to-oauth-2) in action anytime we use a third-party login (Facebook, Google, GitHub) to access another website. The result is that the user is authenticated, and the client receives a token to call back into the server. In this lesson we are only interested in the user being authenticated.
 
 ## Spring Boot and OAuth2
 
-The [Spring Boot and OAuth2]() tutorial was used as a basis for this lesson.
+The **Spring Boot and OAuth2** tutorial was used as a basis for this lesson.
 
-*Note* that Spring has introduced the [Spring Social](http://projects.spring.io/spring-social/) project to make the steps simpler. Spring Social is not used in this lesson.
+*Note* that Spring has introduced the [**Spring Social**](http://projects.spring.io/spring-social/) project to make the steps simpler. Spring Social is not used in this lesson.
 
 ## Setup
 
@@ -44,9 +44,9 @@ After registering your app, you will see a "Client ID" and a "Client Secret" (th
 
 ### Google app
 
-Register an application with Google. The following is from [Setting up API keys](https://support.google.com/googleapi/answer/6158862). (If you don't already have a Google account, you should create one now)
+Register an application with Google. The following is from [**Setting up API keys**](https://support.google.com/googleapi/answer/6158862). (If you don't already have a Google account, you should create one now)
 
-* Go to the [API Console](https://console.developers.google.com/apis/dashboard).
+* Go to the [**API Console**](https://console.developers.google.com/apis/dashboard).
 
 * If the API Manager page isn't already open, open the left side menu and select API Manager
 
