@@ -8,39 +8,39 @@ The Java Development Kit (JDK) is a whole environment of tools you'll need to de
 
 First, double check that we have Homebrew and cask installed.
 
-```
+```sh
 # verifies we have cask installed
 brew tap caskroom/cask
 ```
 
 Then, install Java.
 
-```
+```sh
 brew cask install java
 ```
 
 Once the JDK installation is complete, open up the terminal and type:
 
-```
+```sh
 javac -version
 ```
 
 That should display something along the lines of:
 
-```
+```sh
 javac 1.8.0_25
 ```
 Don't worry if the version ("0_25" above) does not match.
 
 To see where Java has been installed, type:
 
-```
+```sh
 which java
 ```
 
 You should see something like this:
 
-```
+```sh
 /usr/bin/java
 ```
 You now have the JDK installed and configured, which means you can now "speak" Java and your computer will understand you!
@@ -51,7 +51,7 @@ Next, we're going to download an Integrated Development Environment (IDE), Intel
 
 IntelliJ will become an essential tool for building Java Applications.
 
-```
+```sh
 brew cask install intellij-idea-ce
 ```
 
@@ -81,7 +81,7 @@ This command should install IntelliJ in your Applications folder. If not, then s
 
 Maven is a dependency management system that we'll be using later. For now, we just want to install it:
 
-```
+```sh
 brew install maven
 ```
 
@@ -103,7 +103,7 @@ When working with compiled code, like Java, you must make a distinction between 
 
 **Byte code is the compiled version of our source code.** Byte code isn't human readable; it's just for the JVM. Here is an example of byte code:
 
-```
+```sh
 //These are just a few lines of Java Byte code to go through a for loop.
 iconst_2
 istore_1
@@ -143,7 +143,7 @@ Back to `Party.java`. Create a new file in your text editor of choice. We aren't
 
 Copy the code in the following snippet into `Party.java` and save the file to the `Documents/JavaProjects/Party folder`.
 
-```
+```java
 public class Party {
     public static void main(String[] args) {
         System.out.println("It's a big ol' Java party!");
@@ -155,7 +155,7 @@ public class Party {
 
 Next, open the terminal and navigate to `Documents/JavaProjects/Party`. Use the "java compile" command `javac` to compile the code.
 
-```
+```sh
     javac Party.java
 ```
 
@@ -165,7 +165,7 @@ The compiler generates a `Party.class` file that consists of byte code. It will 
 
 Finally, run the application by using the command `java` followed by your class name. The Java Virtual Machine (JVM) will translate it and successfully execute the application.
 
-```
+```sh
     java Party
 ```
 
