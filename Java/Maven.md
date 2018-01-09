@@ -14,7 +14,7 @@ Maven is a tool used to build and manage Java-based projects.
 
 * Maven enables users to update their installations so that they can take full advantage of changes the most up-to-date technologies.
 
-You can read a more in-depth breakdown of Maven's core goals and features in the [Maven Docs](https://maven.apache.org/what-is-maven.html).
+You can read a more in-depth breakdown of Maven's core goals and features in the [**Maven Docs**](https://maven.apache.org/what-is-maven.html).
 
 ---
 
@@ -54,7 +54,7 @@ Maven can compile the `.java` files into `.class` files and will move those file
 
 ```sh
 mvn compile
-``
+```
 
 **Run Tests with Maven**
 
