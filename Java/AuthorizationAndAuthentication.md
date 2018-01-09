@@ -123,7 +123,7 @@ Created a users table
 
 Created a authorities table
 
-* `CREATE TABLE authorities (username text not null, authority text not null, constraint authorities_pkey primary key (username, authority)); 
+* `CREATE TABLE authorities (username text not null, authority text not null, constraint authorities_pkey primary key (username, authority));`
 
 Added users
 
