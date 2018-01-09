@@ -34,7 +34,7 @@ Now let's take one of our previous Spring apps and deploy it to Heroku.
 
 * Add Heroku remote for your app
 
-```
+```sh
 heroku git:remote -a <your app>
 ```
 
@@ -42,7 +42,7 @@ heroku git:remote -a <your app>
 
 * Push to heroku:
 
-```
+```sh
 git push heroku master
 ```
 
@@ -52,13 +52,13 @@ Additional Reading: https://devcenter.heroku.com/articles/deploying-spring-boot-
 
 Once the deployment messages stop you will want to watch your application start up. You can "tail" the logs with the following command:
 
-```
+```sh
 heroku logs --tail
 ```
 
 To run a bash terminal on the remote system
 
-```
+```sh
 heroku run bash
 ```
 
@@ -84,7 +84,7 @@ You can see the Procfile that Heroku generates
 
 A "Procfile" belongs in the project root. For a Spring Boot project it should look like
 
-```
+```sh
 web: java -Dserver.port=$PORT $JAVA_OPTS -jar target/<name of your jar>
 ```
 
@@ -92,9 +92,9 @@ where "" is the JAR file in the target directory. And yes, the `:` after the wor
 
 Use the maven command to find the name of a Spring Boot JAR. In a terminal at the root of the project type
 
-* mvn clean
+* `mvn clean`
 
-* mvn package
+* `mvn package`
 
 Now the JAR is in the `target` directory.
 
@@ -110,7 +110,7 @@ Assuming a project will be run locally (which we call the `dev` environment) and
 
 Provide the following property when running locally:
 
-```
+```sh
 -Dspring.profiles.active=dev
 ```
 
@@ -138,13 +138,13 @@ The third is to run the JAR from the command line by typing `java -jar -Dspring.
 
 To set the profile property when running the app on Heroku add the flag to the Procfile. For example
 
-```
+```sh
 web: java -Dspring.profiles.active=prod -Dserver.port=$PORT $JAVA_OPTS -jar target/<name of your jar>
 ```
 
 and then
 
-```
+```sh
 git add .
 git commit -m "set profile in procfile"
 git push heroku master
