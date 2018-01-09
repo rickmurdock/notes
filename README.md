@@ -146,3 +146,7 @@ Lecture notes from The Iron Yard
 * [Basic Tools](./Java/BasicTools.md)
 
 * [Intro to OOP](./Java/IntroToOOP.md)
+
+* [OOP Discussion](./Java/OOPDiscussion.md)
+
+* [Inheritance and Encapsulation](./Java/InheritanceAndEncapsulation.md)
