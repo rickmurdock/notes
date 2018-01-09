@@ -160,3 +160,29 @@ Lecture notes from The Iron Yard
 * [Interfaces and Abstract Classes](./Java/InterfacesAndAbstractClasses.md)
 
 * [Boxed Types, Enums, and Recursion](./Java/BoxedTypesEnumsAndRecursion.md)
+
+* [Collections](./Java/Collections.md)
+
+* [Unit Testing and HashCode](./Java/UnitTestingAndHashCode.md)
+
+* [Lambda Expressions](./Java/LambdaExpressions.md)
+
+* [Java 8 Streams](./Java/Java8Streams.md)
+
+* [Maven](./Java/Maven.md)
+
+* [Spring HTML](./Java/SpringHTML.md)
+
+* [Thymeleaf](./Java/Thymeleaf.md)
+
+* [REST APIs](./Java/RESTAPIs.md)
+
+* [JDBC and Transactional](./Java/JDBCAndTransactional.md)
+
+* [JPA](./Java/JPA.md)
+
+* [Authorization and Authentication](./Java/AuthorizationAndAuthentication.md)
+
+* [Social Login Auth](./Java/SocialLoginAuth.md)
+
+* [Deployment](./Java/Deployment.md)
