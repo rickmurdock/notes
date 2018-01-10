@@ -20,7 +20,7 @@ We will use the `File` and `FileWriter` classes (in the java.io package). The `F
 
 **Call To Action**: Copy the code below into an IntelliJ project and run it.
 
-``
+```java
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -48,7 +48,7 @@ You should see a `greetings.txt` file appear with the greeting we wrote.
 
 In practice, reading from a file is usually a bit more complex because the data from the file might be interpreted and parsed as its read. For now, we won't worry about parsing the data.
 
-```
+```java
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -89,7 +89,7 @@ public class FileIOExample2 {
 
 **Call To Action**: Copy the code above into an IntelliJ project and create a file called list.txt. Add some content to it, for example:
 
-```
+```sh
 apples
 bananas
 raspberries
@@ -104,7 +104,7 @@ When you run the code above, you should see those lines printed out.
 
 In Java, all classes extend the `Object` class. A class method of `Object` is `toString()`, which converts the object into a String.
 
-```
+```java
 public class Test {
     public static void main (String[] args) {
         Object o1 = new Object();
@@ -117,7 +117,7 @@ By default, the `toString` will print the Object's class and its address in memo
 
 Most of the time, this information isn't useful - we don't interface directly with memory addresses in Java. When you define new classes, it can be helpful to override `toString()` to provide *useful* information for debugging or displaying to the user.
 
-```
+```java
 public class Spaceship {
     String name;
     int numLasers;
