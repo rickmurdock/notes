@@ -1,13 +1,14 @@
 # Static Keyword
 
-Static fields and methods are attached to the class and not the objects instantiated from a class. Each instance doesn't get a copy of anything marked static. Instead, all instances share static field or method and effect it universally.
+Static fields and methods are attached to the class and not the objects instantiated from a class. Each instance doesn't get a copy of anything marked `static`. Instead, all instances *share* static field or method and effect it universally.
 
-This article discusses the static keyword.
+This article discusses the `static` keyword.
 
 ## Understanding Static Fields
 
-To understand the static keyword, it's easier to understand what "non-static" means: "non-static" fields get attached to class instances. In the following example, int processingSpeed and boolean isLaptop are both non-static variables. Whenever an object is instantiated from the Computer class, that instance gets a copy of those fields.
+To understand the `static` keyword, it's easier to understand what "non-static" means: "non-static" fields get attached to class instances. In the following example, `int processingSpeed` and `boolean isLaptop` are both non-static variables. Whenever an object is instantiated from the `Computer` class, that instance gets a copy of those fields.
 
+```java
 class Computer {
     int processingSpeed;
     boolean isLaptop;
@@ -23,117 +24,76 @@ public class ComputerApplication{
         Computer slowDesktop = new Computer(800, false);
     }
 }
-slowDesktop.processingSpeed is entirely independent from fastLaptop.processingSpeed. If I change fastLaptop.processingSpeed, slowDesktop.processingSpeed is unaffected.
+```
 
-In contrast, static variables belong to the class. A classic example of this would is to count the total number of Computers that have instantiated.
+`slowDesktop.processingSpeed` is entirely independent from `fastLaptop.processingSpeed`. If I change `fastLaptop.processingSpeed`, `slowDesktop.processingSpeed` is unaffected.
 
+In contrast, `static` variables belong to the class. A classic example of this would is to count the total number of Computers that have instantiated.
 
-1
+```java
 public class Computer {
-2
     int processingSpeed;
-3
     boolean isLaptop;
-4
     static int numComputersMade;
-5
-​
-6
+
     public Computer (int processingSpeed, boolean isLaptop) {
-7
         this.processingSpeed = processingSpeed;
-8
         this.isLaptop = isLaptop;
-9
         numComputersMade++;
-10
     }
-11
-​
-12
+
     public static void main (String[] args) {
-13
         Computer myComputer = new Computer(5000, true);
-14
         Computer slowComputer = new Computer(800, false);
-15
         Computer otherComputer = new Computer(4000, false);
-16
-​
-17
+
         System.out.println(myComputer.numComputersMade);
-18
         System.out.println(slowComputer.numComputersMade);
-19
     }
-20
 }
+```
 
-Fullscreen
+## Static Methods
 
-Reset Code
-Run Code 
-Static Methods  
-You've already encountered the static method in Java. The main method of any application is static.
+You've already encountered the `static` method in Java. The `main` method of any application is `static`.
 
+```java
 public static void main (String[] args){}
-The static keyword can also be applied to other methods. Just like fields, static methods don't relate to a particular instance of a class. They belong to the class as a whole. An important consequence of this is that we cannot reference non-static fields inside of a static method without an object instance.
+```
 
+The `static` keyword can also be applied to other methods. Just like fields, static methods don't relate to a particular instance of a class. They belong to the class as a whole. An important consequence of this is that we cannot reference non-static fields inside of a static method without an object instance.
 
-1
+```java
 public class Computer {
-2
     int processingSpeed;
-3
     boolean isLaptop;
-4
     int numComputersMade;
-5
-​
-6
+
     public Computer (int processingSpeed, boolean isLaptop) {
-7
         this.processingSpeed = processingSpeed;
-8
         this.isLaptop = isLaptop;
-9
         numComputersMade++;
-10
     }
-11
-​
-12
+
     public static void main (String[] args) {
-13
-​
-14
+
     }
-15
-​
-16
+
     public static void doSomething () {
-17
         this.processingSpeed = 5; //<- Compilation error
-18
         //Java is going to tell us we can't reference a non-static variable here
-19
         //But if we have an object we can work with it normally
-20
         Computer someComputer = new Computer(1000, false);
-21
         someComputer.processingSpeed = 5; //This works fine
-22
     }
-23
 }
+```
 
-Fullscreen
+## When to Use Static Methods/Variables  
 
-Reset Code
-Run Code 
-When to Use Static Methods/Variables  
-The circumstances of what you're trying to do will determine if you need to use static variables/methods or not. In general, it's always possible to write a method as static. The example below illustrates this with a function that checks to see if a computer is "fast enough" to perform a task.
+The circumstances of what you're trying to do will determine if you need to use static variables/methods or not. In general, it's always *possible* to write a method as `static`. The example below illustrates this with a function that checks to see if a computer is "fast enough" to perform a task.
 
+```java
 public class Computer {
     int processingSpeed;
 
@@ -153,17 +113,21 @@ public class Computer {
         return false;
     }
 }
+```
+
 As a rule of thumb, try to make methods non-static if possible. Only make methods static if they "really are" i.e. they don't have anything to do with a particular instance of the class. The example above violates this rule because we're passing in that particular instance to the method. The advantage of static methods is that they CAN be accessed without an instance of the class, which can be important.
 
-Conclusion  
-We are now in a better position to understand public static void main (String[] args). Namely, the main() method does not relate to a specific instance of the Computer class. We don't need to create a Computer object to run main(). (If you think about it, main() must be static because when it's called, we couldn't possibly have an instance of Computer - our program just started).
+## Conclusion
+
+We are now in a better position to understand `public static void main (String[] args)`. Namely, the `main()` method does not relate to a specific instance of the Computer class. We don't need to create a Computer object to run `main()`. (If you think about it, `main()` must be static because when it's called, we couldn't possibly have an instance of Computer - our program just started).
 
 ---
 
 # Exceptions and Control Flow  
-What is Exception Handling? Essentially, it is a form of control flow (like if statements, loops, etc.) that allows us to decide how our program should react to various circumstances. For example, let's say we need the user to enter a number. But what if they don't enter a number? Try running the code below and inputting something other than a number. "Yellow" for example.
 
+What is Exception Handling? Essentially, it is a form of control flow (like `if` statements, loops, etc.) that allows us to decide how our program should react to various circumstances. For example, let's say we need the user to enter a number. But what if they don't enter a number? Try running the code below and inputting something other than a number. "Yellow" for example.
 
+```java
 1
 public class Main {
 2
@@ -180,14 +144,11 @@ public class Main {
   }
 8
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 You should see that a NumberFormatException is thrown (assuming you did not enter a number). Exception handling allows us to decide what happens in this "error circumstance" - the user did not behave as expected. In the example below, you will see that (if you do not enter a number) the line System.out.println("You entered " + userNumber) does not run. This is because as soon as the exception is thrown (in this case from the Integer.parseInt(String) call) the JVM will skip to the appropriate catch block (if one exists).
 
-
+```java
 1
 public class Main {
 2
@@ -212,14 +173,12 @@ public class Main {
     }
 12
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 The Syntax  
 Let's lay out the basic syntax of exception handling. We will go into more details and examples later in the lesson.
 
+```java
 try {
     //Code to attempt that might throw an exception
     //This block could contain nested try/catch blocks
@@ -231,12 +190,14 @@ finally {
     //Code to execute at the end of the block
     //Usually used to clean up resources
 }
+```
+
 Using Multiple Catch Blocks  
 It's possible to have try/catch blocks with multiple catch statements. We'll see an example of that next.
 
 "FizzBuzz" is a common early programming challenge that you may have encountered before. The challenge is as follows: write a program that prints out the numbers 1-100, but if the number is divisible by three, print "Fizz" instead. If it's divisible by five, print "Buzz", and if it's divisible by both three and five print "FizzBuzz". Here is a standard solution for this problem for comparison.
 
-
+```java
 1
 public class FizzBuzzNoEx {
 2
@@ -267,20 +228,20 @@ public class FizzBuzzNoEx {
     }
 15
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Now let's solve this challenge using Java's Exception handling. We will start out by defining three new types of exceptions for use in our project; DivBy15, DivBy3, and DivBy5. To define our own custom exceptions all we have to do is extend the Exception class. If we needed to, we could add constructors or additional functionality to these special exceptions.
 
+```java
 class DivBy3 extends Exception{
 }
 class DivBy5 extends Exception {
 }
 class DivBy15 extends Exception {
 }
+```
 
+```java
 1
 public class FizzBuzzExceptions {
 2
@@ -343,19 +304,17 @@ public class FizzBuzzExceptions {
 }
 31
 class DivBy3 extends Exception{
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
+ 
 Note: the specific order we chose for our custom exceptions does not matter because none of them inherit from each other (they all extend Exception). However, if you move the last catch block to the top and try to run the code, you will see a compiler error. Because all of our custom exceptions extend Exception, this means they ARE Exceptions, and would be caught by the "generic" Exception block if it were first.
 
 Also note that this is not really a good use case for exception handling and is only an example. In general, an exception should only be thrown as the result of some unexpected/error-type circumstance.
 
-Just When You Thought It Was FINALLY Over...  
+## Just When You Thought It Was FINALLY Over...  
+
 There's one last piece of the puzzle. try/catch blocks can have a third section, finally. This defines a block of code that will always run after the try/catch block. Let's look at the syntax and basic control flow first.
 
-
+```java
 1
 public class FinalTime {
 2
@@ -382,15 +341,13 @@ public class FinalTime {
     }
 13
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Call To Action: Experiment with the above code by uncommenting line 6 (s.toUpperCase()). This will cause a NullPointerException to be thrown (remember, this happens any time we attempt to use dot notation on a null object). You can see that the finally block executes regardless of whether an exception is thrown or not.
 
 Now that we've covered the basic syntax and flow, let's look at an example where we would actually want to use finally.
 
+```java
 PrintWriter printWriter = null;
 try {
     printWriter = new PrintWriter("stuff.txt");
@@ -401,12 +358,14 @@ try {
         printWriter.close();
     }
 }
+```
+
 The main use for a finally block is to clean up resources. We always want to clean up after ourselves by closing resources we're not using. The finally block guarantees that the PrintWriter will be closed at the end of our block.
 
 Exceptions Without Try/Catch  
 So far we've seen examples of functions that throw exceptions, like the PrintWriter constructor above. It throws a FileNotFoundException, which is caught by the more general IOException - FileNotFoundException extends IOException. We've also seen examples of direct throw statements (if (index % 5 == 0) {throw new DivBy5();}). All of our examples except the first one have been using try/catch. It's important to understand what happens when an exception is NOT caught: the exception is thrown up.
 
-
+```java
 1
 public class ThrowUp {
 2
@@ -435,21 +394,22 @@ public class ThrowUp {
     }
 14
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 In this example, we have main() calling helperFunction1() which calls helperFunction2(). Unfortunately, helperFunction2() generates an ArithmeticException because we are dividing by zero (an undefined operation). This exception isn't caught anywhere in helperFunction2(), so it's thrown up to the calling function to deal with (helperFunction1()). In this case, that function doesn't catch the exception either! Sad days. The exception is thrown up again, finally to main(), which still doesn't know how to deal with the exception. At this point, the exception is thrown up to the JVM, which prints the stack trace (all of the methods that were involved in this chain of events).
 
-Try With Resources  
+## Try With Resources  
+
 Java 7 has added a new "twist" on try statements known as "try with resources". You can now pass in a parameter to the try statement, just as you would to an if statement. Instead of the try parameter being a boolean (like with an if/while statement) the parameter must be a "resource" that can be closed. More formally, the parameter must implement AutoCloseable - this will apply to all the resources we use to read and write files.
 
+```java
 try (PrintWriter printWriter = new PrintWriter("stuff.txt")) {
     //Do things with printWriter
 } catch (IOException ex) {
     ex.printStackTrace();
 }
+```
+
 The try-with-resources statement will close() the resource after the try/catch block is finished executing. This is a great way to use resources because you will never accidentally forget to close them.
 
 ## Conclusion
