@@ -128,54 +128,35 @@ We are now in a better position to understand `public static void main (String[]
 What is Exception Handling? Essentially, it is a form of control flow (like `if` statements, loops, etc.) that allows us to decide how our program should react to various circumstances. For example, let's say we need the user to enter a number. But what if they don't enter a number? Try running the code below and inputting something other than a number. "Yellow" for example.
 
 ```java
-1
 public class Main {
-2
   public static void main (String [] args) {
-3
     System.out.println("Please enter a number.");
-4
     String input = System.console().readLine();
-5
     int userNumber = Integer.parseInt(input);
-6
     System.out.println("You entered " + userNumber);
-7
   }
-8
 }
 ```
  
-You should see that a NumberFormatException is thrown (assuming you did not enter a number). Exception handling allows us to decide what happens in this "error circumstance" - the user did not behave as expected. In the example below, you will see that (if you do not enter a number) the line System.out.println("You entered " + userNumber) does not run. This is because as soon as the exception is thrown (in this case from the Integer.parseInt(String) call) the JVM will skip to the appropriate catch block (if one exists).
+You should see that a `NumberFormatException` is thrown (assuming you did not enter a number). Exception handling allows us to decide what happens in this "error circumstance" - the user did not behave as expected. In the example below, you will see that (if you do not enter a number) the line `System.out.println("You entered " + userNumber)` does not run. This is because as soon as the exception is thrown (in this case from the `Integer.parseInt(String)` call) the JVM will skip to the appropriate `catch` block (if one exists).
 
 ```java
-1
 public class Main {
-2
     public static void main (String [] args) {
-3
         System.out.println("Please enter a number.");
-4
         String input = System.console().readLine();
-5
         try {
-6
             int userNumber = Integer.parseInt(input);
-7
             System.out.println("You entered " + userNumber);
-8
         } catch (NumberFormatException ex) {
-9
             System.out.println("You did not enter a number. Goodbye.");
-10
         }
-11
     }
-12
 }
 ```
  
-The Syntax  
+## The Syntax  
+
 Let's lay out the basic syntax of exception handling. We will go into more details and examples later in the lesson.
 
 ```java
@@ -192,45 +173,31 @@ finally {
 }
 ```
 
-Using Multiple Catch Blocks  
-It's possible to have try/catch blocks with multiple catch statements. We'll see an example of that next.
+## Using Multiple Catch Blocks  
+
+It's possible to have `try/catch` blocks with multiple `catch` statements. We'll see an example of that next.
 
 "FizzBuzz" is a common early programming challenge that you may have encountered before. The challenge is as follows: write a program that prints out the numbers 1-100, but if the number is divisible by three, print "Fizz" instead. If it's divisible by five, print "Buzz", and if it's divisible by both three and five print "FizzBuzz". Here is a standard solution for this problem for comparison.
 
 ```java
-1
 public class FizzBuzzNoEx {
-2
     public static void main(String[] args) {
-3
         for (int index = 1; index <= 100; index++) {
-4
             if (index % 15 == 0) {
-5
                 System.out.println("FizzBuzz");
-6
             } else if (index % 3 == 0) {
-7
                 System.out.println("Fizz");
-8
             } else if (index % 5 == 0) {
-9
                 System.out.println("Buzz");
-10
             } else {
-11
                 System.out.println(index);
-12
             }
-13
         }
-14
     }
-15
 }
 ```
 
-Now let's solve this challenge using Java's Exception handling. We will start out by defining three new types of exceptions for use in our project; DivBy15, DivBy3, and DivBy5. To define our own custom exceptions all we have to do is extend the Exception class. If we needed to, we could add constructors or additional functionality to these special exceptions.
+Now let's solve this challenge using Java's Exception handling. We will start out by defining three new types of exceptions for use in our project; `DivBy15`, `DivBy3`, and `DivBy5`. To define our own custom exceptions all we have to do is extend the `Exception` class. If we needed to, we could add constructors or additional functionality to these special exceptions.
 
 ```java
 class DivBy3 extends Exception{
@@ -242,110 +209,71 @@ class DivBy15 extends Exception {
 ```
 
 ```java
-1
 public class FizzBuzzExceptions {
-2
-​
-3
+
     public static void main(String[] args) {
-4
         for (int index = 1; index <= 100; index++) {
-5
             try {
-6
                 if (index % 15 == 0) {
-7
                     //The "throw" keyword allows us to throw our own exceptions
-8
                     throw new DivBy15();
-9
                 }
-10
                 if (index % 3 == 0) {
-11
                     throw new DivBy3();
-12
                 }
-13
                 if (index % 5 == 0) {
-14
                     throw new DivBy5();
-15
                 }
-16
                 //We will only get here if the number is not a multiple of 3 or 5
-17
                 System.out.println(index);
-18
             } catch (DivBy15 ex) {
-19
                 System.out.println("FizzBuzz");
-20
             } catch (DivBy3 ex) {
-21
                 System.out.println("Fizz");
-22
             } catch (DivBy5 ex) {
-23
                 System.out.println("Buzz");
-24
             } catch (Exception ex) {
-25
                 System.out.println("Some other kind of exception occured.");
-26
                 //This should never be called
-27
             }
-28
         }
-29
     }
-30
 }
-31
 class DivBy3 extends Exception{
+}
+class DivBy5 extends Exception {
+}
+class DivBy15 extends Exception {
+}
 ```
  
-Note: the specific order we chose for our custom exceptions does not matter because none of them inherit from each other (they all extend Exception). However, if you move the last catch block to the top and try to run the code, you will see a compiler error. Because all of our custom exceptions extend Exception, this means they ARE Exceptions, and would be caught by the "generic" Exception block if it were first.
+Note: the specific order we chose for our custom exceptions does not matter because none of them inherit from each other (they all extend Exception). However, if you move the last `catch` block to the top and try to run the code, you will see a compiler error. Because all of our custom exceptions extend `Exception`, this means they ARE Exceptions, and would be caught by the "generic" Exception block if it were first.
 
 Also note that this is not really a good use case for exception handling and is only an example. In general, an exception should only be thrown as the result of some unexpected/error-type circumstance.
 
 ## Just When You Thought It Was FINALLY Over...  
 
-There's one last piece of the puzzle. try/catch blocks can have a third section, finally. This defines a block of code that will always run after the try/catch block. Let's look at the syntax and basic control flow first.
+There's one last piece of the puzzle. try/catch blocks can have a third section, `finally`. This defines a block of code that will always run after the try/catch block. Let's look at the syntax and basic control flow first.
 
 ```java
-1
 public class FinalTime {
-2
     public static void main (String[] args) {
-3
         try {
-4
             System.out.println("We're in the try block.");
-5
             String s = null;
-6
             //s.toUpperCase();
-7
         } catch (NullPointerException ex) {
-8
             System.out.println("Uh oh, null pointers are bad.");
-9
         } finally {
-10
             System.out.println("Finally, we're done!");
-11
         }
-12
     }
-13
 }
 ```
 
-Call To Action: Experiment with the above code by uncommenting line 6 (s.toUpperCase()). This will cause a NullPointerException to be thrown (remember, this happens any time we attempt to use dot notation on a null object). You can see that the finally block executes regardless of whether an exception is thrown or not.
+**Call To Action**: Experiment with the above code by uncommenting line 6 (`s.toUpperCase()`). This will cause a `NullPointerException` to be thrown (remember, this happens any time we attempt to use dot notation on a null object). You can see that the `finally` block executes regardless of whether an exception is thrown or not.
 
-Now that we've covered the basic syntax and flow, let's look at an example where we would actually want to use finally.
+Now that we've covered the basic syntax and flow, let's look at an example where we would actually want to use `finally`.
 
 ```java
 PrintWriter printWriter = null;
@@ -360,47 +288,34 @@ try {
 }
 ```
 
-The main use for a finally block is to clean up resources. We always want to clean up after ourselves by closing resources we're not using. The finally block guarantees that the PrintWriter will be closed at the end of our block.
+The main use for a `finally` block is to clean up resources. We always want to clean up after ourselves by closing resources we're not using. The finally block guarantees that the `PrintWriter` will be closed at the end of our block.
 
-Exceptions Without Try/Catch  
-So far we've seen examples of functions that throw exceptions, like the PrintWriter constructor above. It throws a FileNotFoundException, which is caught by the more general IOException - FileNotFoundException extends IOException. We've also seen examples of direct throw statements (if (index % 5 == 0) {throw new DivBy5();}). All of our examples except the first one have been using try/catch. It's important to understand what happens when an exception is NOT caught: the exception is thrown up.
+## Exceptions Without Try/Catch  
+
+So far we've seen examples of functions that throw exceptions, like the `PrintWriter` constructor above. It throws a `FileNotFoundException`, which is caught by the more general `IOException` - `FileNotFoundException` extends `IOException`. We've also seen examples of direct `throw` statements (`if (index % 5 == 0) {throw new DivBy5();}`). All of our examples except the first one have been using `try/catch`. It's important to understand what happens when an exception is NOT caught: the exception is **thrown up**.
 
 ```java
-1
 public class ThrowUp {
-2
-​
-3
+
     public static void main (String[] args) {
-4
         helperFunction1();
-5
     }
-6
-​
-7
+
     public static void helperFunction1 () {
-8
         helperFunction2();
-9
     }
-10
-​
-11
+
     public static void helperFunction2 () {
-12
         int x = 0/0;
-13
     }
-14
 }
 ```
 
-In this example, we have main() calling helperFunction1() which calls helperFunction2(). Unfortunately, helperFunction2() generates an ArithmeticException because we are dividing by zero (an undefined operation). This exception isn't caught anywhere in helperFunction2(), so it's thrown up to the calling function to deal with (helperFunction1()). In this case, that function doesn't catch the exception either! Sad days. The exception is thrown up again, finally to main(), which still doesn't know how to deal with the exception. At this point, the exception is thrown up to the JVM, which prints the stack trace (all of the methods that were involved in this chain of events).
+In this example, we have `main()` calling `helperFunction1()` which calls `helperFunction2()`. Unfortunately, `helperFunction2()` generates an `ArithmeticException` because we are dividing by zero (an undefined operation). This exception isn't caught anywhere in `helperFunction2()`, so it's thrown up to the calling function to deal with (`helperFunction1()`). In this case, that function doesn't catch the exception either! Sad days. The exception is thrown up *again*, finally to `main()`, which still doesn't know how to deal with the exception. At this point, the exception is thrown up to the JVM, which prints the stack trace (all of the methods that were involved in this chain of events).
 
 ## Try With Resources  
 
-Java 7 has added a new "twist" on try statements known as "try with resources". You can now pass in a parameter to the try statement, just as you would to an if statement. Instead of the try parameter being a boolean (like with an if/while statement) the parameter must be a "resource" that can be closed. More formally, the parameter must implement AutoCloseable - this will apply to all the resources we use to read and write files.
+Java 7 has added a new "twist" on try statements known as "try with resources". You can now pass in a parameter to the `try` statement, just as you would to an `if` statement. Instead of the `try` parameter being a boolean (like with an if/while statement) the parameter must be a "resource" that can be closed. More formally, the parameter must implement `AutoCloseable` - this will apply to all the resources we use to read and write files.
 
 ```java
 try (PrintWriter printWriter = new PrintWriter("stuff.txt")) {
@@ -410,11 +325,11 @@ try (PrintWriter printWriter = new PrintWriter("stuff.txt")) {
 }
 ```
 
-The try-with-resources statement will close() the resource after the try/catch block is finished executing. This is a great way to use resources because you will never accidentally forget to close them.
+The try-with-resources statement will `close()` the resource after the try/catch block is finished executing. This is a great way to use resources because you will never accidentally forget to close them.
 
 ## Conclusion
 
-We've discussed the ins and outs of exception handling in Java. More than the specific syntax, think of exception handling as a way to determine how your program behaves when things don't go as you expect - analogous to the errorCallBack() functions you've defined in JavaScript.
+We've discussed the ins and outs of exception handling in Java. More than the specific syntax, think of exception handling as a way to determine how your program behaves when things don't go as you expect - analogous to the `errorCallBack()` functions you've defined in JavaScript.
 
 ---
 
@@ -422,126 +337,97 @@ We've discussed the ins and outs of exception handling in Java. More than the sp
 
 It's important and useful to be able to organize our data into collections. There will be a later lesson that explains all the details. This lesson will cover how to use the most basic collection: Lists.
 
-Creating a new List  
+## Creating a new List  
+
 Let's say we want the user to type in several "messages" and we want to store these messages somewhere.
 
+```java
 List<String> messageList = new ArrayList<>();
-We've declared a new variable here and initialized it. The <String> token after List tells us the type of variable that will be stored in the List. Lists are type safe, so you will only be able to add Strings to the list, and anything you retrieve from it will be a String.
+```
 
-Adding Elements  
-To add something to the List we use the add() method:
+We've declared a new variable here and initialized it. The `<String>` token after `List` tells us the type of variable that will be stored in the List. Lists are type safe, so you will only be able to add Strings to the list, and anything you retrieve from it will be a String.
 
+## Adding Elements  
+
+To add something to the List we use the `add()` method:
+
+```java
 String myMessage = "Lists are super useful!";
 //All of these work to add new messages
 messageList.add(myMessage);
 messageList.add("Also they are fun!");
 messageList.add(new String("And great!"));
 messageList.add(5); //<- Compiler error! 5 is not a String. (Though "5" is)
-Retrieving Elements  
+```
+
+## Retrieving Elements  
+
 We can retrieve individual elements from the list by index. So for example, to get the first element, we would do:
 
+```java
 String retrieved = messageList.get(0);
-If we haven't added anything to the list this would cause an error (an IndexOutOfBoundsException).
+```
 
-Removing Elements  
-To remove an element, we can use the remove(int index) or remove(Object o) methods:
+If we haven't added anything to the list this would cause an error (an `IndexOutOfBoundsException`).
 
+## Removing Elements  
 
-1
+To remove an element, we can use the `remove(int index)` or `remove(Object o)` methods:
+
+```java
 import java.util.List;
-2
 import java.util.ArrayList;
-3
-​
-4
+
 public class ListXample {
-5
-​
-6
+
     public static void main (String[] args) {
-7
         String firstMessage = "Test message";
-8
         String secondMessage = "?????";
-9
         List<String> messageList = new ArrayList<>();
-10
         messageList.add(firstMessage);
-11
         messageList.add(secondMessage);
-12
-​
-13
+
         System.out.println("messageList has " + messageList.size() + " elements");
-14
-​
-15
+
         messageList.remove(firstMessage);
-16
         messageList.remove(0); //This works because 2nd message moved up
-17
-​
-18
+
         System.out.println("messageList has " + messageList.size() + " elements");
-19
     }
-20
 }
+```
 
-Fullscreen
+## Iterating Over the List  
 
-Reset Code
-Run Code 
-Iterating Over the List  
 To iterate over the list we will want to use a for-each loop.
 
+```java
 for (String message : messageList) {
     System.out.println(message);
 }
-Putting It All Together  
+```
 
-1
+## Putting It All Together  
+
+```java
 import java.util.Scanner;
-2
 import java.util.ArrayList;
-3
 import java.util.List;
-4
-​
-5
+
 public class ListXample {
-6
-​
-7
+
     public static void main (String[] args) {
-8
         Scanner inputScanner = new Scanner(System.in);
-9
         List<String> messageList = new ArrayList<>();
-10
         for (int i = 0; i < 3; i++) {
-11
             System.out.println("Please type in a message.");
-12
             messageList.add(inputScanner.nextLine());
-13
         }
-14
-​
-15
+
         System.out.println("Printing all messages now:");
-16
         for (String message : messageList) {
-17
             System.out.println(message);
-18
         }
-19
     }
-20
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+``` 
