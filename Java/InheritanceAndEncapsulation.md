@@ -16,12 +16,13 @@ All computers have some things in common. They have processors, memory, and stor
 
 However, some computers can also do a lot more. Some computers have a screen, and others do not. Laptops have touchpads while desktop computers do not. Laptop computers have a built-in webcam and microphone, while desktop computers do not.
 
-If we think about modeling computers as classes with inheritance, we can think of the class Computer as the "base class". It will have all of the generic fields and methods shared by all computers. Then, we can define some classes that inherit from Computer. Laptop will inherit all the fields and methods from Computer and then we can add more methods and fields.
+If we think about modeling computers as classes with inheritance, we can think of the class `Computer` as the "base class". It will have all of the generic fields and methods shared by *all* computers. Then, we can define some classes that inherit from `Computer`. `Laptop` will inherit all the fields and methods from `Computer` and then we can add more methods and fields.
 
 ## Authoring a Class From a Super Class
 
 Here's the Computer class:
 
+```java
 public class Computer {
     int ramInGigabytes;
     int storageInGigabytes;
@@ -36,8 +37,11 @@ public class Computer {
       isOn = false;
     }
 }
-The Laptop class that extends the Computer class to inherit from it.
+```
 
+The `Laptop` class that `extends` the `Computer` class to inherit from it.
+
+```java
 public class Laptop extends Computer {
 
     // The Laptop Class will automatically inherit the
@@ -57,8 +61,11 @@ public class Laptop extends Computer {
         // start recording
     }
 }
-More than one class can extend a base class. Tablet inherits all the fields and methods from Computer.
+```
 
+More than one class can extend a base class. `Tablet` inherits all the fields and methods from `Computer`.
+
+```java
 public class Tablet extends Computer {
 
   TouchScreen myTouchScreen;
@@ -69,113 +76,105 @@ public class Tablet extends Computer {
     // scan fingerprint
   }
 }
-Laptop and Tablet both have everything Computer has and more. Laptop and Tablet extend the Computer class to inherit the properties ramInGigabytes, storageInGigabytes, brand, and isOn. They also inherits the methods turnOn() and turnOff().
+```
+
+`Laptop` and `Tablet` both have everything `Computer` has and more. `Laptop` and `Tablet` extend the `Computer` class to inherit the properties `ramInGigabytes`, `storageInGigabytes`, `brand`, and `isOn`. They also inherits the methods `turnOn()` and `turnOff()`.
 
 In their class definitions, they also add new properties and methods that are related to the specific types of computers they represent.
 
 Using inheritance may seem insignificant, but imagine a more detailed Computer class with 100 properties and 70 methods. The time that would be saved by inheriting that big Computer class is well worth it.
 
-Formal Terminology:
-Computer is the superclass of Laptop and Tablet
-Laptop and Tablet are subclasses of Computer
-Less formally, people will say:
-Computer is the parent class of Laptop and Tablet
-Laptop and Tablet are children of Computer
+* Formal Terminology:
+
+  * `Computer` is the **superclass** of `Laptop` and `Tablet`
+
+  * `Laptop` and `Tablet` are **subclasses** of `Computer`
+
+* Less formally, people will say:
+
+  * `Computer` is the **parent class** of `Laptop` and `Tablet`
+
+  * `Laptop` and `Tablet` are **children** of `Computer`
 
 # super Keyword
 
-Just like the this keyword provides a reference to the current object, sometimes we need to reference our superclass. The super keyword is that reference. A common use of this keyword is to call the constructor of the superclass. In this case, the syntax is super(arguments). The call to the super constructor must be the first line of the constructor. Take a look at the code below - in particular, the constructors - and run the code.
+Just like the `this` keyword provides a reference to the current object, sometimes we need to reference our superclass. The `super` keyword is that reference. A common use of this keyword is to call the constructor of the superclass. In this case, the syntax is `super(arguments)`. The call to the super constructor must be the first line of the constructor. Take a look at the code below - in particular, the constructors - and run the code.
 
-
-1
+```java
 class Animal {
-2
-​
-3
+
     String name;
-4
     int age;
-5
-​
-6
+
     public Animal (String name, int age) {
-7
         System.out.println("In the Animal constructor");
-8
         this.name = name;
-9
         this.age = age;
-10
     }
-11
-​
-12
+
     public String toString () {
-13
         return "Name: " + name + "\nAge: " + age;
-14
     }
-15
 }
-16
 class Lion extends Animal {
-17
-​
-18
+
     String roar;
-19
-​
-20
+
     public Lion (String roar, String name, int age) {
-21
         super(name, age);
-22
         System.out.println("In Lion constructor");
-23
         this.roar = roar;
-24
     }
-25
-​
-26
+
     public void workOnRoar () {
-27
         System.out.println(roar);
-28
         System.out.println("Working on my roar!");
-29
         roar += "!!!";
-30
         System.out.println(roar);
-31
     }
 
-Fullscreen
+    public String toString () {
+        return super.toString() + "\nRoar: " + roar;
+    }
+}
 
-Reset Code
-Run Code 
-The example above contains another use of super: to call the toString() method of Animal to print out the variables of that class.
+public class AnimalApplication{
+    public static void main (String[] args) {
+        Lion lion = new Lion ("Roarrr", "Alfred", 3);
+        lion.workOnRoar();
+
+        System.out.println(lion);
+    }
+}
+```
+  
+The example above contains another use of `super`: to call the `toString()` method of `Animal` to print out the variables of that class.
 
 ## Conclusion
 
-We've discussed the concept of inheritance, a key part of Object Oriented Programming. We can extend classes and inherit their data and behavior, which can save a lot of time in building objects. The superclass is extended by the subclass. Lion is the subclass of Animal, and Animal is the superclass of Lion. We also discussed the super keyword. Inheritance is a core concept of OOP, and you will be seeing a good amount of it moving forward.
+We've discussed the concept of **inheritance**, a key part of Object Oriented Programming. We can `extend` classes and inherit their data and behavior, which can save a lot of time in building objects. The superclass is extended by the subclass. Lion is the subclass of Animal, and Animal is the superclass of Lion. We also discussed the `super` keyword. Inheritance is a core concept of OOP, and you will be seeing a good amount of it moving forward.
 
 ---
 
 # Access Modifiers - Public, Private, Protected
 
-One of the important aspects of object oriented programming is the concept of controlling access to properties and methods. OOP languages accomplish this by adding an access modifier to the class, data, and methods. Three access modifiers provide different levels of access: public, private, and protected.
+One of the important aspects of object oriented programming is the concept of controlling access to properties and methods. OOP languages accomplish this by adding an **access modifier** to the class, data, and methods. Three access modifiers provide different levels of access: `public`, `private`, and `protected`.
 
-public - accessible anywhere
-private - accessible from within the class
-protected - access is the same as private except it provides access to classes that inherit from this class.
-(default) - There's no "default" keyword, but if you don't use one of the above keywords to specify an access level, variables can be accessed by any files in the same package
-It is good programming practice to have fields private or protected. To provide access to the data from outside the class, we create "getters" and "setters" for private fields. Getters are methods that return the value of a private field. Setters are methods that change the value of a private field.
+* `public` - accessible anywhere
+
+* `private` - accessible from within the class
+
+* `protected` - access is the same as `private` except it provides access to classes that inherit from this class.
+
+* `(default)` - There's no "default" keyword, but if you don't use one of the above keywords to specify an access level, variables can be accessed by any files in the same package
+
+It is good programming practice to have fields `private` or `protected`. To provide access to the data from outside the class, we create "getters" and "setters" for private fields. Getters are methods that return the value of a private field. Setters are methods that change the value of a private field.
 
 ## Access Modifiers Example - Banking Application
 
-Assume we're creating a banking application. We'll start by creating the Account class.
+Assume we're creating a banking application. We'll start by creating the `Account` class.
 
+```java
 public class Account {
     //Private variables
     private int id;
@@ -198,84 +197,58 @@ public class Account {
         this.balance = balance;
     }
 }
-In our Account class, the three fields (data), id, description, and balance all have the private access modifiers and cannot be accessed outside of the Account class. An instance of Account won't provide access to those fields. For example, say I've instantiated Account as myAccount. myAccount.id will throw an error. Run the following code sample to see the error.
+```
 
+In our `Account` class, the three fields (data), `id`, `description`, and `balance` all have the `private` access modifiers and cannot be accessed outside of the `Account` class. An instance of `Account` won't provide access to those fields. For example, say I've instantiated `Account` as `myAccount`. `myAccount.id` will throw an error. Run the following code sample to see the error.
 
-1
+```java
 class Account {
-2
-​
-3
+
     //Private variables
-4
     private int id;
-5
     private String description;
-6
     private double balance;
-7
-​
-8
+
     //Getters and setters
-9
     public int getId() {
-10
         return this.id;
-11
     }
-12
-​
-13
+
     public String getDescription() {
-14
         return this.description;
-15
     }
-16
-​
-17
+
     public void setDescription(String description) {
-18
         this.description = description;
-19
     }
-20
-​
-21
+
     public double getBalance() {
-22
         return this.balance;
-23
     }
-24
-​
-25
+
     protected void setBalance(double balance) {
-26
         this.balance = balance;
-27
     }
-28
 }
-29
-​
-30
+
 public class BankingApplication{
-31
     public static void main (String[] args) {
+        Account myAccount = new Account();
+        System.out.println(myAccount.id);
+    }
+}
+```
 
-Fullscreen
+Four of the five methods are marked `public` meaning they can be called from any class. The `setBalance()` method is marked `protected` meaning it can only be called from within the Account class and from any class that inherits Account.
 
-Reset Code
-Run Code 
-Four of the five methods are marked public meaning they can be called from any class. The setBalance() method is marked protected meaning it can only be called from within the Account class and from any class that inherits Account.
-
-It's also worth noting that we did not choose to include a setId() method at all. This is because (presumably) within the context of our program, an Account's ID does not need to change. Remember, when authoring a class, you decide what fields users of the class will need access to and how they can access them.
+It's also worth noting that we did not choose to include a `setId()` method at all. This is because (presumably) within the context of our program, an Account's ID does not need to change. Remember, when authoring a class, **you** decide what fields users of the class will need access to and how they can access them.
 
 ## Java Bean/POJO
 
 A Java Bean, also sometimes referred to as a Plain Old Java Object ("POJO"). These terms refer to classes that meet the following qualifications:
 
-Must have a public default constructor that takes no arguments (may have additional constructors)
-Must have getters and setters for all variables which follow appropriate naming conventions (int numTigers -> getNumTigers())
-Must be serializable. This is a term we'll discuss more later, but essentially it means that your class can be saved into a database or other format.
+* Must have a public default constructor that takes no arguments (may have additional constructors)
+
+* Must have getters and setters for all variables which follow appropriate naming conventions (`int numTigers -> getNumTigers()`)
+
+* Must be **serializable**. This is a term we'll discuss more later, but essentially it means that your class can be saved into a database or other format.
