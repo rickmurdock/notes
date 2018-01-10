@@ -87,7 +87,7 @@ public class FileIOExample2 {
 }
 ```
 
-**Call To Action**: Copy the code above into an IntelliJ project and create a file called list.txt. Add some content to it, for example:
+**Call To Action**: Copy the code above into an IntelliJ project and create a file called `list.txt`. Add some content to it, for example:
 
 ```sh
 apples
