@@ -14,7 +14,7 @@ To demonstrate this concept, let's talk through an analogy.
 
 All computers have some things in common. They have processors, memory, and storage. They can compute data and return values. All computers share these features (more or less).
 
-However, some computers can also do a lot more. Some computers have a screen, and others do not. Laptops have touchpads while desktop computers do not. Laptop computers have a built-in webcam and microphone, while desktop computers do not.
+However, some computers can *also do a lot more*. Some computers have a screen, and others do not. Laptops have touchpads while desktop computers do not. Laptop computers have a built-in webcam and microphone, while desktop computers do not.
 
 If we think about modeling computers as classes with inheritance, we can think of the class `Computer` as the "base class". It will have all of the generic fields and methods shared by *all* computers. Then, we can define some classes that inherit from `Computer`. `Laptop` will inherit all the fields and methods from `Computer` and then we can add more methods and fields.
 
