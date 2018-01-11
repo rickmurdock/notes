@@ -1,86 +1,79 @@
 # Boxed Types
 
-By now you should be familiar with the basic primitive data types (int, boolean, double, and so on). Primitive types are useful because they are the simplest form of data. However, that simplicity comes at a cost. Primitive types aren't handled like proper objects and classes.
+By now you should be familiar with the basic primitive data types (`int`, `boolean`, `double`, and so on). Primitive types are useful because they are the simplest form of data. However, that simplicity comes at a cost. Primitive types aren't handled like proper objects and classes.
 
 Primitive types have a related class "boxed type" class that represents the primitive type as an object with methods.
 
 For example:
 
-int => Integer
-double => Double
-char => Character
-boolean => Boolean
+* `int` => `Integer`
+
+* `double` => `Double`
+
+* `char` => `Character`
+
+* `boolean` => `Boolean`
+
 There are two main reasons you will want to be familiar with these classes:
 
-Boxed types provide static libraries that don't exist for the primitive types.
-Primitive types can't be added to collections, but their associated boxed type can.
+1. Boxed types provide static libraries that don't exist for the primitive types.
+
+2. Primitive types can't be added to collections, but their associated boxed type can.
+
 We'll discuss both of these points in more depth, but first, let's examine how these classes work in more detail.
 
-Autoboxing  
+## Autoboxing  
+
 Java will allow you to work with these classes as if they are primitive types. So for example, while we certainly can say:
 
-Integer x = new Integer(7);
+`Integer x = new Integer(7);`
 
 we are not required to, and can use the simpler syntax of primitives:
 
-Integer x = 7;
+`Integer x = 7;`
 
 We can also use arithmetic operators (+, - for example, or combined assignment operators like +=):
 
-x += 5;
+`x += 5;`
 
 What's happening behind the scenes is that Java is automatically converting (boxing and unboxing) these types for us.
 
 Here is an example of Java automatically boxing things for us. How nice!
 
+```java
 List<Integer> numbers = new ArrayList<>();
 int x = 5;
 numbers.add(x); //This works even though x is an int and `numbers` expects Integers
-Static Methods  
-Each of these boxed type classes also has several static methods associated with it. The most common of these are the "parse" methods: Integer.parseInt(), Double.parseDouble() etc. These methods convert Strings (for example, from user input) into their "actual" types. Try running the example below.
+```
 
+## Static Methods  
 
-1
+Each of these boxed type classes also has several static methods associated with it. The most common of these are the "parse" methods: `Integer.parseInt()`, `Double.parseDouble()` etc. These methods convert Strings (for example, from user input) into their "actual" types. Try running the example below.
+
+```java
 import java.util.Scanner;
-2
 public class BoxedExample {
-3
   public static void main (String[] args) {
-4
     System.out.println("Do you want to ride the merry go round?");
-5
     System.out.println("Please enter true or false.");
-6
     String input = new Scanner(System.in).nextLine();
-7
-​
-8
+
     //** The Boolean.parseBoolean() method
-9
     boolean flag = Boolean.parseBoolean(input);
-10
     if (flag) {
-11
       System.out.println("Wheeeeee!!!");
-12
     } else {
-13
       System.out.println("Aw... Ok.");
-14
     }
-15
   }
-16
 }
+```
 
-Fullscreen
+User input comes in as a String. Here we used the `Boolean.parseBoolean()` method to convert the user input String into what we wanted; a `true` or `false` value we could use in an `if` statement.
 
-Reset Code
-Run Code 
-User input comes in as a String. Here we used the Boolean.parseBoolean() method to convert the user input String into what we wanted; a true or false value we could use in an if statement.
+## When To Use Boxed types  
 
-When To Use Boxed types  
-As a general rule, only use boxed types when you have a reason to do so. For example, if you needed a list of numbers in your code, a List<int> is not possible - collections can't hold primitive types. If you don't have a reason to declare an Integer, declare an int.
+As a general rule, only use boxed types when you have a reason to do so. For example, if you needed a list of numbers in your code, a `List<int>` is not possible - collections can't hold primitive types. If you don't have a reason to declare an `Integer`, declare an `int`.
 
 ---
 
@@ -90,8 +83,9 @@ Let's say we are writing an Event class. Each Event occurs on a given day of the
 
 If we use a String, someone using our class can put whatever value they want in. We have to be concerned that they might use different capitalization or abbreviation ("Thurs" or "thursday" instead of the "Thursday" that we expect).
 
-If we use an integer value, every time we want to actually "know" the day we'll need to use a cumbersome switch/case statement.
+If we use an integer value, every time we want to actually "know" the day we'll need to use a cumbersome `switch/case` statement.
 
+```java
 int dayOfWeek;
 switch (dayOfWeek) {
   case 0:
@@ -100,18 +94,25 @@ switch (dayOfWeek) {
     return "Monday";
   //Etc etc
 }
+```
+
 And again, there is nothing to prevent someone from entering a value out of the expected range. There are only seven days of the week. Introducing...
 
-Enums!  
+## Enums!  
+
 Java provides a great way for us to keep track of a variable that should only have a limited set of possibilities - like days of the week. It's called an enum short for "enumeration". Enums are great to use anytime you can list ALL of the possibilities for a value that your program cares about. Let's define an enum for days of the week. It's very simple!
 
+```java
 public enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
 }
+```
+
 Reminder: by convention Java uses "UPPERSNAKECASE" to represent constant values, and everything in an enum is constant (TUESDAY is always TUESDAY and always will be).
 
 Now we can define our Event class:
 
+```java
 public class Event {
   Day dayOfWeek; //<- Our enum!
   String address;
@@ -119,26 +120,39 @@ public class Event {
   List<Person> eventAttendees;
 
 }
+```
+
 Here is how we'd use that variable:
 
+```java
 dayOfWeek = Day.MONDAY; //Assignment
 if (dayOfWeek == Day.TUESDAY) {
   System.out.println("It's Tuesday!");
 }
+```
+
 If you want to be able to quickly refer to your enum you can use a static import:
 
+```java
 import static Day.*;
 dayOfWeek = MONDAY; //Assignment
 if (dayOfWeek == TUESDAY) {
   System.out.println("It's Tuesday!");
 }
-Enum Class  
-Even though we are treating enums like simple types (no using "new" to assign a value) they are actually Objects. All enums extend the Enum class, which extends Object. So in addition to the standard toString() and equals() methods, we also have compareTo() (because Enum implements Comparable) and ordinal(), which tells us the number associated with the particular value. For the Day Enum that would look like this:
+```
 
-SUNDAY - 0
-MONDAY - 1
-TUESDAY - 2
-Etc Etc
+## Enum Class  
+
+Even though we are treating enums like simple types (no using "new" to assign a value) they are actually Objects. All enums extend the `Enum` class, which extends Object. So in addition to the standard `toString()` and `equals()` methods, we also have `compareTo()` (because Enum implements Comparable) and `ordinal()`, which tells us the number associated with the particular value. For the Day Enum that would look like this:
+
+* SUNDAY - 0
+
+* MONDAY - 1
+
+* TUESDAY - 2
+
+* Etc Etc
+
 Because enums have these constant values, Java lets us use them in a switch/case statement.
 
 Properties, Constructors, and Methods (Oh my!)  
