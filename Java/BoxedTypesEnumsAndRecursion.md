@@ -155,86 +155,69 @@ Even though we are treating enums like simple types (no using "new" to assign a 
 
 Because enums have these constant values, Java lets us use them in a switch/case statement.
 
-Properties, Constructors, and Methods (Oh my!)  
+## Properties, Constructors, and Methods (Oh my!)  
+
 Java Enums allow us to define properties, much like we can have variables in classes. Let's improve our Day enum to have a String status, which will have some comment about the day, and a boolean isWeekday.
 
-
-1
+```java
 public enum Day {
-2
-​
-3
+
     //These values are defined using the constructor (see below)
-4
     SUNDAY (false, "Some people go to church"),
-5
     MONDAY (true, "Most don't like this day"),
-6
     TUESDAY (true, "Better than Monday"),
-7
     WEDNESDAY (true, "Hump day"),
-8
     THURSDAY (true, "Almost Friday!"),
-9
     FRIDAY (true, "Yay!"),
-10
     SATURDAY (false, "The best day, and some go to temple");
-11
-​
-12
+
     private boolean isWeekday; //These fields should be private
-13
     private String status; //Just like a regular class's fields
-14
-​
-15
+
     //Here we are declaring a constructor
-16
     Day (boolean isWeekday, String status) {
-17
         this.isWeekday = isWeekday;
-18
         this.status = status;
-19
     }
-20
-​
-21
+
     //Accessor methods for properties
-22
     public boolean isWeekday() {
-23
         return isWeekday;
-24
     }
-25
-​
-26
+
     public String getStatus() {
-27
         return status;
-28
     }
-29
-​
-30
+
     public boolean daysAdjacent (Day otherDay) {
-31
         int difference = Math.abs(this.ordinal() - otherDay.ordinal());
+        if (difference <= 1) {
+            return true;
+        }
+        return false;
+    }
 
-Fullscreen
+    public static void main(String[] args) {
+        for (Day day : Day.values()) {
+            System.out.println(day.toString() + " (" + day.isWeekday + ") - " + day.status);
+        }
+    }
+}
+```
 
-Reset Code
-Run Code 
 Notes:
 
-Since we've defined a constructor we are now forced to define our enum constants with that constructor.
-We want to make the variables private and use accessor methods for the same reason we would do that with a class (protected access)
-We aren't limited to accessor methods. We've defined a daysAdjacent() method that will tell us if two days are adjacent (next to each other, like Tuesday and Wednesday).
-Closing  
+* Since we've defined a constructor we are now forced to define our enum constants with that constructor.
+
+* We want to make the variables private and use accessor methods for the same reason we would do that with a class (protected access)
+
+* We aren't limited to accessor methods. We've defined a `daysAdjacent()` method that will tell us if two days are adjacent (next to each other, like Tuesday and Wednesday).
+
+## Closing  
+
 This example shows some very simple things that can be done with enums. But just like classes, you can make these as complicated as you need - the sky's the limit.
 
-The Java tutorial contains another example of this with some interesting functions, and provides more formal definitions. I highly encourage you to read it here
+The Java tutorial contains another example of this with some interesting functions, and provides more formal definitions. I highly encourage you to read it [here](https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html)
 
 ---
 
@@ -244,116 +227,86 @@ Imagine that you are a sous-chef in a restaurant. The chef has asked you to cut 
 
 Instead, you'll have to slice the meat into progressively smaller pieces. Depending on how big of a piece of meat you started with and how small the cubes are supposed to be, you'll cut the large piece into medium pieces. Then, you'll cut the medium pieces into small pieces. You'd repeat this process until you have cubes of the desired size.
 
-Recursion is a problem-solving technique whereby data is fed back into a process over and over again until the desired result is achieved.
+**Recursion is a problem-solving technique whereby data is fed back into a process over and over again until the desired result is achieved.**
 
 Think about the meat example above. The same piece of meat is run through the cutting process over and over. Each time the meat gets run through the cutting process, each piece gets smaller. Eventually, each piece is the desired size, and the cutting process stops.
 
 In Java, recursion can be achieved by having a function call itself. In this article, we'll discuss recursion and provide some examples.
 
-Factorial  
-The function factorial(x) calculates the product of all positive integers less than or equal to x. Factorials are a mathematical concept with a wide variety of applications in multiple fields.
+## Factorial  
+
+The function `factorial(x)` calculates the product of all positive integers less than or equal to x. Factorials are a mathematical concept with a wide variety of applications in multiple fields.
 
 For example:
 
-factorial(5) = 5 * 4 * 3 * 2 * 1
+`factorial(5) = 5 * 4 * 3 * 2 * 1`
 
-factorial(5) = 120
+`factorial(5) = 120`
 
-factorial(6) = 6 * 5 * 4 * 3 * 2 * 1
+`factorial(6) = 6 * 5 * 4 * 3 * 2 * 1`
 
-factorial(6) = 720
+`factorial(6) = 720`
 
 Here is a non-recursive implementation of factorial:
 
-
-1
+```java
 public class SimpleRecursionExample {
-2
     public static void main(String[] args) {
-3
         for (int i = 0; i < 10; i++) {
-4
             System.out.println(noRecursionFactorial(i));
-5
         }
-6
     }
-7
     public static int noRecursionFactorial (int n) {
-8
         int out = 1;
-9
         for (int i = 1; i <= n; i++) {
-10
             out *= i;
-11
         }
-12
         return out;
-13
     }
-14
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Note: factorials grow fast! Try playing around to see how large of a factorial we can calculate before overflowing our integer.
 
 Before we solve this with recursion, let's briefly discuss why a recursive approach works. Here is our example from before:
 
-factorial(5) = 5 * 4 * 3 * 2 * 1
+`factorial(5) = 5 * 4 * 3 * 2 * 1`
 
-factorial(5) = 120
+`factorial(5) = 120`
 
-factorial(6) = 6 * 5 * 4 * 3 * 2 * 1
+`factorial(6) = 6 * 5 * 4 * 3 * 2 * 1`
 
-factorial(6) = 720
+`factorial(6) = 720`
 
-If you compare factorial(5) and factorial(6) you can see that factorial(6) = 6 * factorial(5). So another way to define the factorial function would be:
+If you compare `factorial(5)` and `factorial(6)` you can see that `factorial(6) = 6 * factorial(5)`. So another way to define the factorial function would be:
 
-factorial(x) = x * factorial(x - 1) where x is a positive integer. Hey - a function calling itself!
+`factorial(x) = x * factorial(x - 1)` where x is a positive integer. Hey - a function calling itself!
 
 Now let's use recursion to re-write the factorial function:
 
-
-1
+```java
 public class RecursionExample{
-2
     public static void main( String[] args ){
-3
         for (int i = 0; i < 10; i++) {
-4
            System.out.println( factorial( i ) );
-5
         }
-6
     }
-7
     public static int factorial( int n ){
-8
         if( n == 0 ){
-9
             return 1;
-10
         }
-11
         return factorial( n - 1 ) * n;
-12
     }
-13
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 That's great and all, but we don't need recursion to calculate factorials. So why do we need recursion?
 
-Tree Search  
+## Tree Search  
+
 Let's say we have a Tree structure that is modeled by the following class:
 
+```java
 public class MessageTree {
 
     private String message;
@@ -372,8 +325,11 @@ public class MessageTree {
         return children;
     }
 }
+```
+
 This forms a "Tree" because each MessageTree can have "children" that it owns. Each MessageTree object is a "Node" on the tree. We will define a specific instance as follows:
 
+```java
 List<MessageTree> firstGroup = new ArrayList<>();
 
 firstGroup.add(new MessageTree("1c of 1c", null));
@@ -395,8 +351,11 @@ mainGroup.add(new MessageTree("2c", secondGroup));
 mainGroup.add(new MessageTree("3c", thirdGroup));
 
 return new MessageTree("Root", mainGroup);
+```
+
 Let's suppose we want to search through this data structure to see if it contains a node with a particular message. If we know what the data structure looks like (i.e. the number of "levels," in this case, 3), we could write a function like this:
 
+```java
 public static boolean containsMessage (String message, MessageTree root) {
   //First check the root
   if (root.getMessage().equals(message)) {
@@ -419,80 +378,91 @@ public static boolean containsMessage (String message, MessageTree root) {
     return false;
   }
 }
+```
+
 This algorithm is already looking messy, and it only covers a tree exactly three levels deep. If we want a solution that works on any size tree, we will need a recursive search algorithm.
 
 Why is this problem best solved with a recursive algorithm? The data structure is arbitrarily deep. We can't write a search algorithm for each possible tree structure.
 
-
-1
+```java
 import java.util.ArrayList;
-2
 import java.util.List;
-3
-​
-4
+
 public class RecursionExample {
-5
-​
-6
+
     public static void main(String[] args) {
-7
         MessageTree root = buildTree();
-8
         System.out.println(searchTree("3c of 3c", root));
-9
         System.out.println(searchTree("1c", root));
-10
         System.out.println(searchTree("Foo", root));
-11
     }
-12
-​
-13
+
     public static boolean searchTree (String message, MessageTree root) {
-14
         if (root.getMessage().equals(message)) {
-15
             return true;
-16
         }
-17
         if (root.getChildren() != null) {
-18
             for (MessageTree child : root.getChildren()) {
-19
                 if (child.getMessage().equals(message)) {
-20
                     return true;
-21
                 }
-22
             }
-23
             for (MessageTree child : root.getChildren()) {
-24
                 if (searchTree(message, child)) {
-25
                     return true;
-26
                 }
-27
             }
-28
         }
-29
         return false;
-30
     }
-31
-​
 
-Fullscreen
+    public static MessageTree buildTree () {
+        List<MessageTree> firstGroup = new ArrayList<>();
+        firstGroup.add(new MessageTree("1c of 1c", null));
+        firstGroup.add(new MessageTree("2c of 1c", null));
+        firstGroup.add(new MessageTree("3c of 1c", null));
 
-Reset Code
-Run Code 
+        List<MessageTree> secondGroup = new ArrayList<>();
+        secondGroup.add(new MessageTree("1c of 2c", null));
+        secondGroup.add(new MessageTree("2c of 2c", null));
+
+        List<MessageTree> thirdGroup = new ArrayList<>();
+        thirdGroup.add(new MessageTree("1c of 3c", null));
+        thirdGroup.add(new MessageTree("2c of 3c", null));
+        thirdGroup.add(new MessageTree("3c of 3c", null));
+
+        List<MessageTree> mainGroup = new ArrayList<>();
+        mainGroup.add(new MessageTree("1c", firstGroup));
+        mainGroup.add(new MessageTree("2c", secondGroup));
+        mainGroup.add(new MessageTree("3c", thirdGroup));
+
+        return new MessageTree("Root", mainGroup);
+    }
+}
+
+class MessageTree {
+
+    private String message;
+    private List<MessageTree> children;
+
+    public MessageTree (String message, List<MessageTree> children) {
+        this.message = message;
+        this.children = children;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public List<MessageTree> getChildren() {
+        return children;
+    }
+}
+```
+
 Note: if we are lucky enough to have access to the MessageTree class, we could use the following (slightly more elegant) solution:
 
+```java
 public class MessageTree {
     //...
     public boolean contains (String message) {
@@ -509,40 +479,29 @@ public class MessageTree {
         return false;
     }
 }
+```
+
 This solution shows a method we have written for the MessageTree class that will recursively search its Tree! Pretty nifty.
 
-Call to Action: (Optional) Re-write the MessageTree class using Generics. This is an extra that we haven't covered in detail, but you can read about them here.
+**Call to Action**: (Optional) Re-write the MessageTree class using Generics. This is an extra that we haven't covered in detail, but you can read about them [here](https://docs.oracle.com/javase/tutorial/extra/generics/simple.html).
 
-Exiting and Stack Overflow  
-When writing recursive functions, it's important to make sure that they will exit. If your recursive function calls itself too many times, you will encounter a StackOverflowError before long.
+## Exiting and Stack Overflow  
+When writing recursive functions, it's important to make sure that they will exit. If your recursive function calls itself too many times, you will encounter a `StackOverflowError` before long.
 
-
-1
+```java
 public class Overflow {
-2
   static numCalls;
-3
   public static void main (String[] args) {
-4
     myFunction();
-5
   }
-6
-​
-7
+
   public static void myFunction () {
-8
     myFunction();
-9
     //There is no condition under which this function *won't* recursively call itself
-10
   }
-11
 }
+```
 
-Fullscreen
+## Conclusion  
 
-Reset Code
-Run Code 
-Conclusion  
 Recursion is an advanced programming topic and isn't strictly necessary in most cases. However, once you understand the fundamental principle of recursion and learn to recognize it in code, then it can be a powerful tool that makes your code simpler to understand and easier to write.
