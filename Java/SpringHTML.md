@@ -44,7 +44,7 @@ Annotations are a form of "metadata." "Meta" is a prefix from Greek that means "
 
 In addition to acting as documentation and metadata, annotations provide information to any frameworks included in a project.
 
-For example, Spring MVC uses the `@RequestMapping`` annotation. This annotation tells the framework that when a user of the app goes to a particular URL "route" or path, we want Spring to call this method. For example:
+For example, Spring MVC uses the `@RequestMapping` annotation. This annotation tells the framework that when a user of the app goes to a particular URL "route" or path, we want Spring to call this method. For example:
 
 ```java
 @RequestMapping(path = "/login", method = RequestMethod.POST)
