@@ -1,7 +1,8 @@
 # Java 8 Streams
 
-Let's imagine that we have an abstract data structure and want to query it. This data structure contains Robot object data. Here is the Robot class:
+Let's imagine that we have an abstract data structure and want to query it. This data structure contains `Robot` object data. Here is the `Robot` class:
 
+```java
 class Robot {
     private String name;
     private int liftCapacity;
@@ -9,24 +10,29 @@ class Robot {
     private boolean isPrototype;
     private boolean isFunctional;
     //Constructor and accessor methods omitted
+```
+
 I want a list of all "functional" robots that can lift at least 50 pounds. If the data is in a SQL database we could write a query like this:
 
-SELECT * FROM robots WHERE isFunctional = true AND liftCapacity >= 50
+`SELECT * FROM robots WHERE isFunctional = true AND liftCapacity >= 50`
 
-Or, if we already have a List<Robot> we could loop through it as follows:
+Or, if we already have a `List<Robot>` we could loop through it as follows:
 
+```java
 List<Robot> strongFunctionalBots = new ArrayList<>();
 for (Robot robot : robots) {
   if (robot.isFunctional() && robot.getLiftCapacity() >= 50) {
     strongFunctionalBots.add(robot);
   }
 }
+```
+
 Either of these approaches can work depending on the type of data (whether we are dealing with a SQL database or an existing list).
 
-Episode VIII - A New Approach  
+## Episode VIII - A New Approach  
 Java 8 introduces a new way of working with data called Streams (not related to InputStream, OutputStream, etc.). Streams have some advantages over regular iteration that we'll discuss later. For now, let's take a look at an example with the Robot class we mentioned earlier.
 
-
+```java
 1
 import java.util.ArrayList;
 2
@@ -89,17 +95,17 @@ public class StreamExample {
 }
 31
 class Robot {
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Let's take a closer look at the stream() functions we've used.
 
+```java
 robots.stream()
     .filter(e -> e.isFunctional())
     .filter(e -> e.getLiftCapacity() >= 50)
     .forEach(e -> System.out.println("\t" + e.getName()));
+```
+
 Each Stream consists of the following elements:
 
 An initial .stream() call.
@@ -117,7 +123,7 @@ Filters the stream again, removing robots that can't lift 50 pounds
 For each remaining element in the Stream, calls the System.out.println() method to print the name of the robot.
 Let's look at another interesting example of the work Streams can do for us.
 
-
+```java
 1
 import java.util.ArrayList;
 2
@@ -180,17 +186,14 @@ public class StreamExample {
 ​
 31
     public static List<Robot> makeRobots () {
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Here we are using the mapToInt() function to collect the lift capacities of the robots we're interested in. mapToInt() returns an IntStream, which is a special type of Stream that contains (you guessed it) Integers. We then use the terminal function .sum() to sum up that IntStream and get the total.
 
 Method Reference Syntax  
 You may encounter Method References in Streams. Take a look at the example below (line 10):
 
-
+```java
 1
 import java.util.*;
 2
@@ -215,11 +218,8 @@ public class MethodReferenceExample  {
   }
 12
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 forEach(System.out::println) is equivalent to forEach(e -> System.out.println(e)) The double colon (::) is the method reference.
 
 Why Use Streams  
@@ -246,7 +246,7 @@ We have seen examples of using Java 8 Streams to filter and perform basic tasks 
 
 In the example below, we have three classes representing origami objects: PaperCrane, PaperSnake, and PaperTiger. They each can be "folded" into another shape. (PaperCrane has a constructor that accepts a PaperTiger, and so on). There's currently no data or behavior associated with these origami classes. Feel free to add your own.
 
-
+```java
 1
 import java.util.ArrayList;
 2
@@ -309,17 +309,14 @@ class PaperCrane {
     public PaperCrane (PaperTiger pt) {
 31
         System.out.println("Folded a Paper Tiger into a Paper Crane");
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Optional Exercise: Create a new class PaperHippo that takes a paperSnake as input for it's constructor function. Create a new list in the main function to hold PaperHippos and stream your list of PaperSnakes to create the Hippos.
 
 Another Example  
 Let's say we have an array of Person objects, and we want to extract a property from them (for this example, their e-mail address).
 
-
+```java
 1
 import java.util.Arrays;
 2
@@ -382,12 +379,10 @@ class Person {
         this.email = email;
 31
     }
+```
 
-Fullscreen
+The two different syntax options for the `map()` function used above are interchangeable. The first (non-commented out) uses the "traditional" lambda syntax, whereas the second uses the method reference syntax. They are interchangeable here.
 
-Reset Code
-Run Code 
-The two different syntax options for the map() function used above are interchangeable. The first (non-commented out) uses the "traditional" lambda syntax, whereas the second uses the method reference syntax. They are interchangeable here.
+## Summary
 
-Summary  
-The map() function allows us to change the type of the data we're working with in any way. Unlike mapToInt() it is not limited in the types it can handle (mapToInt() returns an IntStream, so the associated lambda function must return integer values).
+The `map()` function allows us to change the type of the data we're working with in any way. Unlike `mapToInt()` it is not limited in the types it can handle (`mapToInt()` returns an IntStream, so the associated lambda function must return integer values).
