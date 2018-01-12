@@ -155,7 +155,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 
 There is a lot going on in this class.
 
-*** @Repository  
+### @Repository  
 
 The class is annotated with `@Repository`. This informs Spring that this is a class that will be accessing a database. Spring translates the different exceptions from the underlying database into common spring data exceptions.
 
