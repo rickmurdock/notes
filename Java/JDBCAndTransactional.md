@@ -4,7 +4,7 @@ In this lesson, you will be learning one method of talking to databases in Java.
 
 JDBC stands for the Java DataBase Connectivity API. It's one of many tools in Java that allows us to communicate with a database. We will be writing standard SQL queries and the JDBC will take care of executing those queries and getting results back.
 
-JDBC is part of Java SE (Standard Edition, or what you might think of as "core Java"). The JdbcTemplate class you will use later is Spring's implementation of JDBC.
+JDBC is part of Java SE (Standard Edition, or what you might think of as "core Java"). The `JdbcTemplate` class you will use later is Spring's implementation of JDBC.
 
 ## Setup Postgres  
 
