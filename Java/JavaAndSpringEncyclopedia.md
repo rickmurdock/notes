@@ -436,9 +436,12 @@ x = "hello";
 
 ---
 
-Lesson: Java Lesson 4 - Intro to OOP
-CLASSES VS OBJECTS  
-Terminology  
+[Lesson: Java Lesson 4 - Intro to OOP](IntroToOOP.md)
+
+# CLASSES VS OBJECTS  
+
+## Terminology  
+
 template - A definition of what some object will look like
 instance - A concrete object
 Examples  
@@ -528,9 +531,13 @@ aStudent.print(aStudent.id, aStudent.name);
 
 ## Terminology
 
-logic error - An error created by doing something incorrectly
-model the world - Creating program constructs that operate like real world objects
-Examples  
+* logic error - An error created by doing something incorrectly
+
+* model the world - Creating program constructs that operate like real world objects
+
+# Examples
+
+```
 -- pseudocode
 Definition of Account
     Data description, balance
@@ -550,6 +557,7 @@ Definition of Savings USING Account
         Assign (balance * interestRate) + balance => balance
     End
 End
+```
 
 ---
 
@@ -607,10 +615,15 @@ public class Snake extends Animal {
 
 ## Terminology  
 
-public - Accessible to all classes
-private - Accessible only within the current class
-protected - Same as private except provides access to inheriting classes
-Examples  
+* `public` - Accessible to all classes
+
+* `private` - Accessible only within the current class
+
+* `protected` - Same as private except provides access to inheriting classes
+
+## Examples  
+
+```java
 // public access so class can be create from any other class
 public class Account {
     // properties of a class are typically private
@@ -625,6 +638,7 @@ public class Account {
     // method that is private except for inheriting classes
     protected void setBalance(double aBalance) { this.balance = aBalance; }
 }
+```
 
 ---
 
@@ -634,8 +648,11 @@ public class Account {
 
 ## Terminology  
 
-static - Not related to an instance of the class. A static variable belongs to the class itself.
-Examples  
+* `static` - Not related to an instance of the class. A static variable belongs to the class itself.
+
+## Examples  
+
+```java
 public class BankAccount {
 
     //This is a static (final) variable that represents a default interest rate
@@ -662,6 +679,7 @@ public class BankAccount {
         balance *= interestRate;
     }
 }
+```
 
 ---
 
@@ -739,11 +757,15 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 7 - Exceptions and Static
-Using Lists Study Notes  
-Terminology  
+[Lesson: Java Lesson 7 - Exceptions and Static](ExceptionsAndStatic.md)
+
+# Using Lists Study Notes  
+
+## Terminology  
+
 List - a basic collection for storing objects.
-Examples  
+
+## Examples  
 
 1
 import java.util.List;
@@ -783,10 +805,14 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 8 - Arrays
-Arrays with Multiple Values  
+[Lesson: Java Lesson 8 - Arrays](Arrays.md)
+
+# Arrays with Multiple Values  
+
 Terminology  
-Examples  
+
+## Examples  
+
 Arrays can be created with multiple values by providing values within { } during initialization. String[] names = {"John", "Mary", "David", "Paula"};
 
 Here are some additional examples.
@@ -811,12 +837,16 @@ class ArraysDemo {
 
 ---
 
-Lesson: Java Lesson 8 - Arrays
-Iteration  
-Terminology  
+[Lesson: Java Lesson 8 - Arrays)](Arrays.md)
+
+# Iteration  
+
+## Terminology  
+
 for-each loop: syntactic sugar to loop over elements in a collection (arrays are collections)
 
-Examples  
+## Examples  
+
 Here is an example of using a for-each loop to iterate over an array of Strings.
 
 
@@ -846,11 +876,16 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 8 - Arrays
-Filtering an Array  
-Terminology  
+[Lesson: Java Lesson 8 - Arrays](Arrays.md)
+
+# Filtering an Array  
+
+## Terminology  
+
 toArray() - a method in the List interface that allows us to convert a List into an array automatically
-Examples  
+
+## Examples  
+
 The toArray() function unfortunately can't create an array of simple types (i.e. int[], double[], etc). In the following example we'll work around that limitation:
 
 
@@ -920,14 +955,19 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 9 - File I/O and toString()
-File I/O Study Notes  
-Terminology  
+[Lesson: Java Lesson 9 - File I/O and toString()](FileIOAndToString.md)
+
+# File I/O Study Notes  
+
+## Terminology  
+
 FileWriter - a class Java provides us to take care of writing contents to a file. Scanner - we've used Scanner before, to get input from the user. Here we are using it to read a file.
 
-Examples  
+## Examples  
+
 The following code constructs a Bank object from the bank.txt file. This file is expected to have a specific format. Read through the code and see if you can figure out what the file is supposed to look like.
 
+```java
 public static Bank readBank() {
     try {
         File bankFile = new File("bank.txt");
@@ -953,17 +993,22 @@ public static Bank readBank() {
 
     return null;
 }
+```
 
 ---
 
-Lesson: Java Lesson 9 - File I/O and toString()
-Override toString Study Notes  
-Terminology  
+[Lesson: Java Lesson 9 - File I/O and toString()](FileIOAndToString.md)
+
+# Override toString Study Notes  
+
+## Terminology  
+
 toString() - All objects in Java have a toString() method. By default, this will print out the memory address of the object (usually not very useful). You can override this method to provide useful information.
 
 @Override - this is an example of an annotation, something we will get into more later. For now, just be aware that this is a way of passing information to the compiler, telling it that we are overriding a method from the superclass
 
-Examples  
+## Examples  
+
 Here is an example of a BankAccount class with an overridden toString() method. We've added a little "box" around the info to make it pretty.
 
 
@@ -1031,25 +1076,31 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 10 - Interfaces and Abstract Classes
-Implementing Comparable Study Notes  
-Terminology  
+[Lesson: Java Lesson 10 - Interfaces and Abstract Classes](InterfacesAndAbstractClasses.md)
+
+# Implementing Comparable Study Notes  
+
+## Terminology  
 Interface - defines a contract (list of methods) that any class implementing the interface must implement.
 
 Comparable - this is an interface with only one method: compareTo(). Implementing this interface allows us to determine the "natural order" of our objects.
 
 Collections.sort() - the Collections class is a grouping of static methods for working with Collections (Lists, Maps, Sets, etc.). The sort() method sorts the objects according to their natural order.
 
-Examples  
+## Examples  
 
 ---
 
-Lesson: Java Lesson 10 - Interfaces and Abstract Classes
-Abstract Classes  
-Terminology  
+[Lesson: Java Lesson 10 - Interfaces and Abstract Classes](InterfacesAndAbstractClasses.md)
+
+# Abstract Classes  
+
+## Terminology  
+
 abstract - an abstract class cannot be directly instantiated; instead you must first extend it into a non-abstract subclass. Abstract classes can serve as a "template" for a group of related subclasses, similar to interfaces.
 
-Examples  
+## Examples  
+
 Here is a more complex example of abstract classes. We have two abstract base classes (BodyPart and ClothingItem) which each have two subclasses (Arm and Leg for BodyPart, and Shirt and Pants for ClothingItem).
 
 public abstract class BodyPart {
@@ -1157,12 +1208,16 @@ public class Shirt extends ClothingItem {
 
 ---
 
-Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion
-Box Types  
-Terminology  
+[Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion](BoxedTypesEnumsAndRecursion.md)
+
+# Box Types  
+
+## Terminology  
+
 Boxed Type - AKA "Wrapper Class", every primitive type (e.g. int, double) has a box type associated with it (int -> Integer, double -> Double, etc). They are treated as a mix between primitives and full Objects, and they have useful static methods.
 
-Examples  
+## Examples  
+
 //Here are some examples of how the compiler will effectively convert from primitive to box types for us
 List<Integer> numbers = new ArrayList<>();
 int x = 5;
@@ -1229,14 +1284,19 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion
-Enumerations  
-Terminology  
+[Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion](BoxedTypesEnumsAndRecursion.md)
+
+# Enumerations  
+
+## Terminology  
+
 Enum - Short for enumeration, enums are a way of defining a set of constant values.
 
-Examples  
+## Examples  
+
 Here is an example of a Color enum that keeps track of RGB colors.
 
+```java
 public enum Color {
 
     RED (255, 0, 0),
@@ -1271,19 +1331,25 @@ public enum Color {
         return blue;
     }
 }
+```
+
 Note: in Java you will probably never have a reason to define your own Color enum, because whichever graphics framework/library you are working with will have already done so.
 
 ---
 
-Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion
-Recursion  
-Terminology  
+[Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion](BoxedTypesEnumsAndRecursion.md)
+
+# Recursion  
+
+## Terminology  
+
 Recursion - solving problems by breaking them into smaller versions of themselves. A function that calls itself is an example of this.
 
-Examples  
+## Examples  
+
 The following is a recursive example to numbers in the Fibonacci sequence (which is explained in the example if you're not familiar with it). Start with small values (10-20) and observe how the number of recursive function calls increases exponentially. (Side note for the mathematically-inclined: the rate of increase is equal to the golden ratio, ~1.61803. So the number of function calls required to calculate Fibonacci(40) is ~1.618 times the number required to calculate Fibonacci(39))
 
-
+```java
 1
 public class FibonacciExample {
 2
@@ -1346,30 +1412,34 @@ public class FibonacciExample {
         System.out.println("Goodbye!");
 31
     }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ---
 
-Lesson: Java Lesson 12 - Collections
-Java Collections  
-Terminology  
+[Lesson: Java Lesson 12 - Collections](Collections.md)
+
+# Java Collections  
+
+## Terminology  
+
 JCF - Java Collections Framework, a library that contains collections; ways of grouping data/objects together.
 
 Examples  
 
 ---
 
-Lesson: Java Lesson 13 - Unit Testing and HashCode
-Unit Testing Study Notes  
-Terminology  
+[Lesson: Java Lesson 13 - Unit Testing and HashCode](UnitTestingAndHashCode.md)
+
+# Unit Testing Study Notes  
+
+## Terminology  
+
 Unit Test - unit tests test a small "unit" of code (a single method) to see if it is working properly
 JUnit - a Java unit testing framework
 ExpectedException rule - a tool in JUnit that allows us to make sure exceptions are being thrown in the way we expect. If an exception isn't thrown, the test will fail
-Examples  
+
+## Examples  
+
 Consider the following function which should return true if the given number is within 2 of a multiple of 10 (i.e. number ends in 0, 1, 2, 8, or 9). The input will be non-negative.
 
 public boolean nearMultTen (int n) {
@@ -1387,16 +1457,20 @@ These three asserts do not test a wide enough range of values. Consider addition
 
 ---
 
-Lesson: Java Lesson 13 - Unit Testing and HashCode
-Override HashCode Study Notes  
-Terminology  
+[Lesson: Java Lesson 13 - Unit Testing and HashCode](UnitTestingAndHashCode.md)
+
+# Override HashCode Study Notes  
+
+## Terminology  
+
 @Override - (Reminder) this annotation tells the compiler we are overriding a method form our superclass.
 
 HashCode - a numerical representation of an object, used for organizing the data in collections.
 
 Bucket - buckets are how some collections like HashMap organize their data. All of the objects in the same bucket share the same hashcode.
 
-Examples  
+# Examples  
+
 Here is an example of a very simple Animal class, with a hashCode() method provided by IntelliJ.
 
 public class Animal {
@@ -1414,9 +1488,11 @@ public class Animal {
 
 ---
 
-Lesson: Java Lesson 14 - Lambda Expressions
-Lambda Expressions  
-Terminology  
+[Lesson: Java Lesson 14 - Lambda Expressions](LambdaExpressions.md)
+
+# Lambda Expressions  
+
+## Terminology  
 Functional Interface - an interface with only one method; Comparator for example.
 
 Higher-Order Function - A function that accepts another function as one of its arguments.
@@ -1427,7 +1503,8 @@ Anonymous Function - a function that has no name (Lambda Expressions in Java).
 
 Functional Programming - a different style of programming that places higher value on functions. A "theme" in Functional Programming is that we want methods to not have any side effects (i.e. make changes to variables or other data). Instead of x = x + 5 we would say int x2 = x + 5.
 
-Examples  
+# Examples  
+
 Here are two examples of simple Lambda Expressions to solve a problem we've already seen, FizzBuzz. To briefly restate the problem: we are supposed to print the numbers 1-100, but if the number is divisible by three we will instead print "Fizz"; if divisible by 5 "Buzz", and if both "FizzBuzz". In the first example, we have defined the Functional Interface DivisibilityCheck. We have three implementations, divBy3, divBy5, and divBy15, which are only responsible for checking whether the given number is cleanly divisible.
 
 
@@ -1484,6 +1561,7 @@ Fullscreen
 
 Reset Code
 Run Code 
+
 Here is another example that solves the same problem with Lambda Expressions. This time, we are going to ask the Lambda to do a bit more of the work for us (actually all of it). Instead of just outputting a boolean, fizzBuzzOutput(int n) produces the String we need.
 
 
@@ -1543,16 +1621,20 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 15 - Java8 Streams
-Java 8 Streams  
-Terminology  
+[Lesson: Java Lesson 15 - Java8 Streams](Java8Streams.md)
+
+# Java 8 Streams  
+
+## Terminology  
+
 Stream - a new way of working with collections in Java 8. Streams provides methods that filter or otherwise manipulate data in collections. Stream methods return Streams, so they can be "chained" together.
 
 Aggregate Operations - also known as Stream Operations, Aggregate Operations are related to Iterators but work a little differently under the hood. Multiple aggregate operations chained together form a "pipeline".
 
 Pipeline - a chain of Aggregate Operations.
 
-Examples  
+## Examples  
+
 The code below shows examples of how we can use Stream functions to manipulate a collection. In this case, we start with a List<Animal>. Animal is a Java Bean (a simple class that just contains data, no real behavior/methods) that has the simple types: String name, String type, int age, boolean canFly, boolean canSwim.
 
 Remember that Java supports dynamic whitespace.
@@ -1638,12 +1720,16 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 15 - Java8 Streams
-Java 8 Stream Map Transpose  
-Terminology  
+[Lesson: Java Lesson 15 - Java8 Streams](Java8Streams.md)
+
+# Java 8 Stream Map Transpose  
+
+## Terminology  
+
 map() - this function allows us to change the type of data we are working with. Don't get confused with the data type Map<K, V>. The terms are related because both of them contain a mapping. In the case of the data structure Map<K, V> the mapping is from Key to Value. In the case of the map() function the mapping is from one data type to another.
 
-Examples  
+## Examples  
+
 Let's say we are interested in the lengths of String objects. We have a NumberString class, which accepts an int in its constructor and sets its String value parameter as the English version of that number (for example, new NumberString(3).getValue() produces "Three").
 
 
@@ -1718,18 +1804,22 @@ Extension excercise: notice anything wrong with the NumberString class? Think ab
 
 ---
 
-Lesson: Java Lesson 16 - Maven
-Maven  
-Terminology  
-Maven - Maven is a tool used for building and managing Java-based projects.
+[Lesson: Java Lesson 16 - Maven](Maven.md)
 
-Examples  
+# Maven  
+
+## Terminology  
+
+Maven - Maven is a tool used for building and managing Java-based projects.  
 
 ---
 
-Lesson: Java Lesson 16 - Maven
-Using Maven  
-Terminology  
+[Lesson: Java Lesson 16 - Maven](Maven)
+
+# Using Maven  
+
+## Terminology  
+
 compile - compiles the Java code
 
 test - runs the tests
@@ -1738,13 +1828,13 @@ package - creates the JAR
 
 clean - removes the target direct (leaves you with just the src and the pom.xml)
 
-Examples 
-
 ---
 
-Lesson: Java Lesson 17 - Spring HTML
-Java Annotations  
-Terminology  
+[Lesson: Java Lesson 17 - Spring HTML](SpringHTML.md)
+
+# Java Annotations  
+
+## Terminology  
 Annotation - a way of passing information to either the compiler or to a framework. A form of metadata.
 
 Metadata - The Greek prefix "meta" means about; metadata is data about data.
@@ -1753,45 +1843,51 @@ Metadata - The Greek prefix "meta" means about; metadata is data about data.
 
 @RequestMapping - this annotation asks Spring to call the attached function whenever the given path is reached.
 
-@Autowired - this annotation asks Spring to automatically "hook up" the item associated with the annotation.
-
-Examples  
+@Autowired - this annotation asks Spring to automatically "hook up" the item associated with the annotation.  
 
 ---
 
-Lesson: Java Lesson 17 - Spring HTML
+[Lesson: Java Lesson 17 - Spring HTML](SpringHTML.md)
 Basic @Controller Study Notes  
 Terminology  
 Examples  
 
 ---
 
-Lesson: Java Lesson 18 - Thymeleaf
-Thymeleaf Study Notes  
-Terminology  
+[Lesson: Java Lesson 18 - Thymeleaf](Thymeleaf.md)
+
+# Thymeleaf Study Notes  
+
+## Terminology  
+
 Thymeleaf - a templating engine that allows us to author dynamic HTML. Similar to Mustache, Django, or Handlebars (other template engines).
 
 Standard Expression - Thymeleaf has different types of expressions. The most common one you will use to start will be:
 
-Variable Expression: ${variableName} Thymeleaf will fill in values based on the Model.
-
-Examples  
+Variable Expression: ${variableName} Thymeleaf will fill in values based on the Model.  
 
 ---
 
-Lesson: Java Lesson 19 - REST APIs
-RestTemplate Study Notes  
-Terminology  
+[Lesson: Java Lesson 19 - REST APIs](RESTAPIs.md)
+
+# RestTemplate Study Notes  
+
+## Terminology  
+
 RestTemplate - a Spring tool that makes it easy to query an API and get data back.
 
-Examples  
+## Examples  
+
 Spring guide for getting started with RestTemplate
 
 ---
 
-Lesson: Java Lesson 19 - REST APIs
-REST APIs  
-Terminology  
+[Lesson: Java Lesson 19 - REST APIs](RESTAPIs.md)
+
+# REST APIs  
+
+## Terminology  
+
 REST - stands for REpresentational State Transfer. It is a way to transfer data between a server and client, often in JSON.
 
 API - Application Programming Interface (this is a reminder)
@@ -1800,7 +1896,8 @@ API - Application Programming Interface (this is a reminder)
 
 @RestController - this annotation identifies the file as the REST controller for our app. It tells Spring where to look for those JSON endpoints.
 
-Examples  
+## Examples
+
 The code below is a REST Controller that is part of a "Mastermind" web app. Mastermind is a board game where players take turns trying to guess a "secret code" of colored pegs. In this case, there are four endpoints:
 
 board.json : tells the app the state of the current board so that it can be rendered
