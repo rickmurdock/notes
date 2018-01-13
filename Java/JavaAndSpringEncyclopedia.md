@@ -1973,43 +1973,49 @@ public class MastermindRestController {
 
 ---
 
-Lesson: Java Lesson 20 - JDBC and Transactional
-Java Annotations  
-Terminology  
-Repository - where CRUDding the database is done
+[Lesson: Java Lesson 20 - JDBC and Transactional](JDBCAndTransactional.md)
 
-@Autowired - this annotation tells Spring that we want it to "set things up for us". An autowired object (connection to the repository) is created "behind the scenes" for us by Spring.
+# Java Annotations  
 
-model or domain - common package names where the JavaBeans that map to tables live.
+## Terminology  
 
-Examples  
+`Repository` - where CRUDding the database is done
 
----
+`@Autowired` - this annotation tells Spring that we want it to "set things up for us". An autowired object (connection to the repository) is created "behind the scenes" for us by Spring.
 
-Lesson: Java Lesson 20 - JDBC and Transactional
-Java Annotations  
-Terminology  
-@Transactional - A transaction is a way to wrap up a group of database operations and say "these are all part of the same transaction. If one of them fails, roll them all back."
-
-Examples  
+`model` or `domain` - common package names where the JavaBeans that map to tables live.
 
 ---
 
-Lesson: Java Lesson 21 - JPA
+[Lesson: Java Lesson 20 - JDBC and Transactional](JDBCAndTransactional.md)
+
+# Java Annotations  
+
+## Terminology  
+
+`@Transactional` - A transaction is a way to wrap up a group of database operations and say "these are all part of the same transaction. If one of them fails, roll them all back."  
+
+---
+
+[Lesson: Java Lesson 21 - JPA](JPA.md)
+
 Google "JPA tutorial" and there are a bunch of them. Pick the one that works for you.
 
 ---
 
-Lesson: Java Lesson 22 - Authorization and Authentication
+[Lesson: Java Lesson 22 - Authorization and Authentication](AuthorizationAndAuthentication.md)
+
 Spring guide. https://spring.io/guides/gs/securing-web/
 
 Spring security http://docs.spring.io/spring-security/site/docs/4.2.1.RELEASE/reference/htmlsingle/
 
 ---
 
-Lesson: Java Lesson 24 - Deployment
-Heroku Deployment  
-Terminology  
+[Lesson: Java Lesson 24 - Deployment]Deployment.md)
+
+# Heroku Deployment  
+
+## Terminology  
+
 Heroku - a (free) hosting service for our apps.
 
-Examples
