@@ -186,3 +186,5 @@ Lecture notes from The Iron Yard
 * [Social Login Auth](./Java/SocialLoginAuth.md)
 
 * [Deployment](./Java/Deployment.md)
+
+* [Java and Spring Encyclopedia](./Java/JavaAndSpringEncyclopedia.md)
