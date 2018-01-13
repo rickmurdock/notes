@@ -24,9 +24,12 @@ IntelliJ - IntelliJ is a Java IDE used for developing computer software.
 
 ---
 
-Lesson: Java Lesson 1 - Getting Started
-Install Party  
-Terminology  
+[Lesson: Java Lesson 1 - Getting Started](GettingStarted.md)
+
+# Install Party  
+
+## Terminology  
+
 Java - Java is one of the most versatile languages in the world. It runs behind the scenes for a large portion of the websites you use daily, as well as in many desktop and smartphone apps. It’s well-suited for large programs that need performance and scalability.
 
 Java Virtual Machine (JVM) - The JVM interprets byte code into the correct machine code based off of the underlying operating system and hardware combination.
@@ -43,9 +46,12 @@ istore_2
 
 ---
 
-Lesson: Java Lesson 2 - Type System
-Primitive Data Types  
-Terminology  
+[Lesson: Java Lesson 2 - Type System](TypeSystem.md)
+
+# Primitive Data Types  
+
+## Terminology  
+
 integer: counting numbers or whole numbers (...-1, 0, 1, 2, 3...)
 int: 32-bit integer
 short: 16-bit integer (very rarely used)
@@ -189,9 +195,12 @@ Run Code
 
 ---
 
-Lesson: Java Lesson 2 - Type System
-Variables  
-Terminology  
+[Lesson: Java Lesson 2 - Type System](TypeSystem.md)
+
+# Variables  
+
+## Terminology  
+
 Variable - A piece of memory that contains a data value.
 
 Null - used to tell Java that a variable has an absence of value. Remember, null and zero are not the same.
@@ -298,9 +307,12 @@ Examples
 
 ---
 
-Lesson: Java Lesson 3 - Basic Tools
-Printing to the Command Line  
-Examples  
+[Lesson: Java Lesson 3 - Basic Tools](BasicTools.md)
+
+# Printing to the Command Line  
+
+## Examples  
+
 Below is an example of System.out.println():
 
 
@@ -345,9 +357,12 @@ As you can see, println() creates a new line, whereas print() does not. Generall
 
 ---
 
-Lesson: Java Lesson 3 - Basic Tools
-Command Line Input  
-Terminology  
+[Lesson: Java Lesson 3 - Basic Tools](BasicTools.md)
+
+# Command Line Input  
+
+## Terminology  
+
 Standard Streams - refer to the input and output streams that are provided for us by default.
 
 Scanner - a class introduced in Java 5. It is a good default option for reading files or getting input from the user.
@@ -401,9 +416,12 @@ As you can see, you can use information from the command line and store it in va
 
 ---
 
-Lesson: Java Lesson 3 - Basic Tools
-Java & JavaScript  
-Terminology  
+[Lesson: Java Lesson 3 - Basic Tools](BasicTools.md)
+
+# Java & JavaScript  
+
+## Terminology  
+
 Strongly-Typed vs. Weakly-Typed - A strongly-typed programming language enforces a type discipline. A weakly-typed programming language does not enforce any type disciplines. Take a look at the examples below.
 
 Examples  
@@ -436,9 +454,12 @@ Student student1 = new Student();
 
 ---
 
-Lesson: Java Lesson 4 - Intro to OOP
-TURN CONCEPT INTO CLASS  
-Terminology  
+[Lesson: Java Lesson 4 - Intro to OOP](IntroToOOP.md)
+
+# TURN CONCEPT INTO CLASS  
+
+# Terminology 
+
 concept - An idea. Nouns are easier to turn into classes.
 methods - Operations on a class
 variables - Data maintaining state of a class
@@ -482,9 +503,12 @@ public class House {
 
 ---
 
-Lesson: Java Lesson 5 - OOP Discussion
-USING DOT NOTATION WITH OBJECTS  
-Terminology  
+[Lesson: Java Lesson 5 - OOP Discussion](OOPDiscussion.md)
+
+# USING DOT NOTATION WITH OBJECTS  
+
+## Terminology  
+
 properties - The data within an object
 methods - The operations or functions within an object
 Examples  
@@ -498,9 +522,12 @@ aStudent.print(aStudent.id, aStudent.name);
 
 ---
 
-Lesson: Java Lesson 5 - OOP Discussion
-REASON FOR OOP  
-Terminology  
+[Lesson: Java Lesson 5 - OOP Discussion](OOPDiscussion.md)
+
+# REASON FOR OOP  
+
+## Terminology
+
 logic error - An error created by doing something incorrectly
 model the world - Creating program constructs that operate like real world objects
 Examples  
@@ -526,9 +553,12 @@ End
 
 ---
 
-Lesson: Java Lesson 6 - Inheritance and Encapsulation
-Authoring classes with Inheritance  
-Terminology  
+[Lesson: Java Lesson 6 - Inheritance and Encapsulation](InheritanceAndEncapsulation.md)
+
+# Authoring classes with Inheritance  
+
+## Terminology 
+
 Inheritance - Inheritance allows a class to use the properties and methods of another class. In other words, the derived class inherits the states and behaviors from the base class. The derived class is also called subclass and the base class is also known as super-class.
 
 extends keyword - used when creating a subclass from another class.
@@ -571,9 +601,12 @@ public class Snake extends Animal {
 
 ---
 
-Lesson: Java Lesson 6 - Inheritance and Encapsulation
-Using Public, Private, and Protected Access Modifiers  
-Terminology  
+[Lesson: Java Lesson 6 - Inheritance and Encapsulation](InheritanceAndEncapsulation.md)
+
+# Using Public, Private, and Protected Access Modifiers  
+
+## Terminology  
+
 public - Accessible to all classes
 private - Accessible only within the current class
 protected - Same as private except provides access to inheriting classes
@@ -595,9 +628,12 @@ public class Account {
 
 ---
 
-Lesson: Java Lesson 7 - Exceptions and Static
-Static Keyword  
-Terminology  
+[Lesson: Java Lesson 7 - Exceptions and Static](ExceptionsAndStatic.md)
+
+# Static Keyword  
+
+## Terminology  
+
 static - Not related to an instance of the class. A static variable belongs to the class itself.
 Examples  
 public class BankAccount {
@@ -629,9 +665,12 @@ public class BankAccount {
 
 ---
 
-Lesson: Java Lesson 7 - Exceptions and Static
-Exceptions and Control Flow  
-Terminology  
+[Lesson: Java Lesson 7 - Exceptions and Static](ExceptionsAndStatic.md)
+
+# Exceptions and Control Flow  
+
+## Terminology
+
 Exception - an Object representing unexpected or undesirable circumstances of execution.
 
 try - This defines the main code block that we will attempt to execute. If an exception is encountered, it will either be thrown up or caught in a catch block.
