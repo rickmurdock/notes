@@ -52,19 +52,33 @@ istore_2
 
 ## Terminology  
 
-integer: counting numbers or whole numbers (...-1, 0, 1, 2, 3...)
-int: 32-bit integer
-short: 16-bit integer (very rarely used)
-long: 64-bit integer
-byte: 8-bit integer (very rarely used)
-float: 32-bit floating point (rarely used)
-double: 64-bit floating point
-char: 16-bit unicode character
-boolean: 1-bit value, true of false
-String: A collection of chars in a sequential order.
-Concatenation: the joining of two or more strings together.
-Literal: refers to an actual value of the given type. For example, "Hello" is a String literal. true is a boolean literal.
-Examples  
+* `integer`: counting numbers or whole numbers (...-1, 0, 1, 2, 3...)
+
+* `int`: 32-bit integer
+
+* `short`: 16-bit integer (very rarely used)
+
+* `long`: 64-bit integer
+
+* `byte`: 8-bit integer (very rarely used)
+
+* `float`: 32-bit floating point (rarely used)
+
+* `double`: 64-bit floating point
+
+* `char`: 16-bit unicode character
+
+* `boolean`: 1-bit value, true of false
+
+* `String`: A collection of chars in a sequential order.
+
+* Concatenation: the joining of two or more strings together.
+
+* Literal: refers to an actual value of the given type. For example, "Hello" is a String literal. `true` is a boolean literal.
+
+## Examples  
+
+```java
 public class ExampleClass {
   int exampleInt = 25;
   short exampleShort = 25;
@@ -76,7 +90,9 @@ public class ExampleClass {
   String exampleString = "a string is a collection of chars";
   boolean exampleBoolean = false;
 }
-This example shows that an int, short, long, byte, float, and double could all have the same value. Remember that the point of having the different numeric data types is for memory efficiency. i.e. a byte takes up less memory than an int.
+```
+
+This example shows that an int, short, long, byte, float, and double **could** all have the same value. Remember that the point of having the different numeric data types is for memory efficiency. i.e. a `byte` takes up less memory than an `int`.
 
 Below are a few examples of concatenation:
 
@@ -229,11 +245,9 @@ public class Example {
 9
 }
 
-Fullscreen
 
-Reset Code
-Run Code 
 Null  
+
 
 1
 public class Example {
@@ -427,12 +441,17 @@ Strongly-Typed vs. Weakly-Typed - A strongly-typed programming language enforces
 Examples  
 Below is a code sample in Java that would not compile:
 
+```java
 int x = 5;
 x = "hello";
+```
+
 This is an example of Java having strongly-typed data types. If you declare a variable an int, then it will always be an int. In contrast JavaScript has very limited typing of variables.
 
+```javasript
 var x = 5;
 x = "hello";
+```
 
 ---
 
@@ -442,9 +461,13 @@ x = "hello";
 
 ## Terminology  
 
-template - A definition of what some object will look like
-instance - A concrete object
-Examples  
+* template - A definition of what some object will look like
+
+* instance - A concrete object
+
+## Examples  
+
+```java
 // class definition
 class Student {
     int id;
@@ -454,6 +477,7 @@ class Student {
 // an instance of Student
 // student1 is an object
 Student student1 = new Student();
+```
 
 ---
 
@@ -461,14 +485,21 @@ Student student1 = new Student();
 
 # TURN CONCEPT INTO CLASS  
 
-# Terminology 
+## Terminology 
 
-concept - An idea. Nouns are easier to turn into classes.
-methods - Operations on a class
-variables - Data maintaining state of a class
-public & private - Determines whether access outside of class is permitted
-getter & setter methods - Methods to read & write private data in a class
-Examples  
+* concept - An idea. Nouns are easier to turn into classes.
+
+* methods - Operations on a class
+
+* variables - Data maintaining state of a class
+
+* public & private - Determines whether access outside of class is permitted
+
+* getter & setter methods - Methods to read & write private data in a class
+
+## Examples 
+
+```java
 // models a generic bank account
 public class Account {
     // private data
@@ -486,6 +517,9 @@ public class Account {
         return balance;
     }
 }
+```
+
+```java
 public class House {
 
   // these are properties (or data)
@@ -503,6 +537,7 @@ public class House {
     return value;
   }
 }
+```
 
 ---
 
@@ -512,9 +547,13 @@ public class House {
 
 ## Terminology  
 
-properties - The data within an object
-methods - The operations or functions within an object
-Examples  
+* properties - The data within an object
+
+* methods - The operations or functions within an object
+
+### Examples  
+
+```java
 // create an instance of Student
 Student aStudent = new Student();
 // set the value of id and name
@@ -522,6 +561,7 @@ aStudent.id = 1001;
 aStudent.name = "George Washington";
 // call the print method passing in the id and name
 aStudent.print(aStudent.id, aStudent.name);
+```
 
 ---
 
@@ -569,36 +609,47 @@ End
 
 Inheritance - Inheritance allows a class to use the properties and methods of another class. In other words, the derived class inherits the states and behaviors from the base class. The derived class is also called subclass and the base class is also known as super-class.
 
-extends keyword - used when creating a subclass from another class.
+`extends` keyword - used when creating a subclass from another class.
 
-Examples  
-Let's start with a base class of Animal:
+## Examples  
 
+Let's start with a base class of `Animal`:
+
+```java
 public class Animal {
     public String name;
 
     public void makeNoise() {
           System.out.println("Boo?");
     }
-}  
+}
+```
+
 Then let's create a Dog class, because dogs make their own kind of noise, so we want makeNoise() to do something specific when the animal is a dog:
 
+```java
 public class Dog extends Animal {
 
     public void makeNoise() {
           System.out.println("Bark!");
     }
 }
+```
+
 What about a cow?
 
+```java
 public class Cow extends Animal {
 
     public void makeNoise() {
           System.out.println("Mooh!");
     }
 }
+```
+
 What about a snake?
 
+```java
 public class Snake extends Animal {
 
     public void makeNoise() {
@@ -606,6 +657,7 @@ public class Snake extends Animal {
     }
 
 }
+```
 
 ---
 
@@ -691,69 +743,40 @@ public class BankAccount {
 
 Exception - an Object representing unexpected or undesirable circumstances of execution.
 
-try - This defines the main code block that we will attempt to execute. If an exception is encountered, it will either be thrown up or caught in a catch block.
+`try` - This defines the main code block that we will attempt to execute. If an exception is encountered, it will either be thrown up or caught in a `catch` block.
 
-catch - This block defines what will happen if the specified exception is thrown. One common step is to print the stack trace of an exception by calling ex.printStackTrace().
+`catch` - This block defines what will happen if the specified exception is thrown. One common step is to print the stack trace of an exception by calling `ex.printStackTrace()`.
 
-finally - the finally block will always run at after the try block exits, whether an Exception was thrown or not.
+`finally` - the `finally` block will always run at after the `try` block exits, whether an Exception was thrown or not.
 
-Examples  
-
-1
+## Examples  
+```java
 public class ExceptionExample {
-2
-​
-3
+
     public static void main(String[] args) {
-4
         System.out.println("Please input a number");
-5
         getNumberAndDiscuss();
-6
-​
-7
+
         System.out.println("Now input something that's not a number.");
-8
         getNumberAndDiscuss();
-9
-​
-10
+
         System.out.println("(No discussion if you didn't enter a number)");
-11
     }
-12
-​
-13
+
     public static void getNumberAndDiscuss() throws NumberFormatException {
-14
         String input = System.console().readLine();
-15
         //String input = new Scanner(System.in).nextLine();
-16
-​
-17
+
         int response = Integer.parseInt(input);
-18
-​
-19
+
         //This "discussion" will only take place if an exception is NOT thrown
-20
         System.out.println("Now let's have a long discussion about the number.");
-21
         System.out.println(".....");
-22
         System.out.println("The number you entered was " + response + ". Cool number!");
-23
         System.out.println("Great discussion!");
-24
     }
-25
-  }
-
-Fullscreen
-
-Reset Code
-Run Code 
+  } 
+```
 
 ---
 
@@ -763,45 +786,27 @@ Run Code
 
 ## Terminology  
 
-List - a basic collection for storing objects.
+* List - a basic collection for storing objects.
 
 ## Examples  
 
-1
+```java
 import java.util.List;
-2
 import java.util.ArrayList;
-3
-​
-4
+
 public class AnotherListXample {
-5
-​
-6
+
     public static void main (String[] args) {
-7
         List<Integer> squareNums = new ArrayList<>();
-8
         for (int i = 0; i < 10; i++) {
-9
             squareNums.add(i * i);
-10
         }
-11
         for (Integer square : squareNums) {
-12
             System.out.println(square);
-13
         }
-14
     }
-15
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ---
 
@@ -809,14 +814,13 @@ Run Code
 
 # Arrays with Multiple Values  
 
-Terminology  
-
 ## Examples  
 
-Arrays can be created with multiple values by providing values within { } during initialization. String[] names = {"John", "Mary", "David", "Paula"};
+Arrays can be created with multiple values by providing values within { } during initialization. `String[] names = {"John", "Mary", "David", "Paula"};`
 
 Here are some additional examples.
 
+```java
 class ArraysDemo {
 
     public static void main(String[] args) {
@@ -834,6 +838,7 @@ class ArraysDemo {
         };
     }
 }
+```
 
 ---
 
@@ -843,36 +848,23 @@ class ArraysDemo {
 
 ## Terminology  
 
-for-each loop: syntactic sugar to loop over elements in a collection (arrays are collections)
+`for-each` loop: syntactic sugar to loop over elements in a collection (arrays are collections)
 
 ## Examples  
 
 Here is an example of using a for-each loop to iterate over an array of Strings.
 
-
-1
+```java
 public class ArrayExample {
-2
     public static void main (String[] args) {
-3
         String[] tolkienBooks = {"Fellowship", "Two Towers", "Return", "Silmarillion"};
-4
-​
-5
+
         for (String book : tolkienBooks) {
-6
             System.out.println(book + " is a great book!");
-7
         }
-8
     }
-9
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ---
 
@@ -882,11 +874,11 @@ Run Code
 
 ## Terminology  
 
-toArray() - a method in the List interface that allows us to convert a List into an array automatically
+* `toArray()` - a method in the List interface that allows us to convert a List into an array automatically
 
 ## Examples  
 
-The toArray() function unfortunately can't create an array of simple types (i.e. int[], double[], etc). In the following example we'll work around that limitation:
+The `toArray()` function unfortunately can't create an array of simple types (i.e. `int[]`, `double[]`, etc). In the following example we'll work around that limitation:
 
 
 1
@@ -948,10 +940,6 @@ public class ArraySimple {
 29
 }
 
-Fullscreen
-
-Reset Code
-Run Code 
 
 ---
 
@@ -1068,11 +1056,7 @@ public class BankAccount {
     }
 28
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+ 
 
 ---
 
@@ -1103,6 +1087,7 @@ abstract - an abstract class cannot be directly instantiated; instead you must f
 
 Here is a more complex example of abstract classes. We have two abstract base classes (BodyPart and ClothingItem) which each have two subclasses (Arm and Leg for BodyPart, and Shirt and Pants for ClothingItem).
 
+```java
 public abstract class BodyPart {
     private String ownerName;
 
@@ -1128,6 +1113,9 @@ public class Arm extends BodyPart {
         super(ownerName);
     }
 }
+```
+
+```java
 import java.util.List;
 
 public abstract class ClothingItem {
@@ -1155,8 +1143,11 @@ public abstract class ClothingItem {
         return weight;
     }
 }
-Pants will require two Leg objects.
+```
 
+Pants will require two `Leg` objects.
+
+```java
 public class Pants extends ClothingItem {
 
     public Pants (double weight) {
@@ -1180,8 +1171,11 @@ public class Pants extends ClothingItem {
         return true;
     }
 }
-A shirt requires two Arm objects.
+```
 
+A shirt requires two `Arm` objects.
+
+```java
 public class Shirt extends ClothingItem {
 
     public Shirt (double weight) {
@@ -1205,6 +1199,7 @@ public class Shirt extends ClothingItem {
         return true;
     }
 }
+```
 
 ---
 
@@ -1218,6 +1213,7 @@ Boxed Type - AKA "Wrapper Class", every primitive type (e.g. int, double) has a 
 
 ## Examples  
 
+```java
 //Here are some examples of how the compiler will effectively convert from primitive to box types for us
 List<Integer> numbers = new ArrayList<>();
 int x = 5;
@@ -1231,7 +1227,9 @@ Double d = 2.9;
 Float f = 2.129f;
 d += 1.0; //We can use arithmetic operators (+, -, *, /) as normal
 f /= 9293;
-Here is an example of a static method from the Integer class, Integer.parseInt(). It allows us to take a String (for example "4572") and attempt to parse it as an Integer. If the String can't be successfully parsed as an Integer (for example, if the input was not a number, like "hello") a NumberFormatException will be thrown. Exceptions are covered in a separate lesson; for now just experiment with the code below and see how it works, and look at the use of the Integer.parseInt(String) function.
+```
+
+Here is an example of a static method from the Integer class, `Integer.parseInt()`. It allows us to take a String (for example "4572") and attempt to parse it as an Integer. If the String can't be successfully parsed as an Integer (for example, if the input was not a number, like "hello") a `NumberFormatException` will be thrown. Exceptions are covered in a separate lesson; for now just experiment with the code below and see how it works, and look at the use of the `Integer.parseInt(String)` function.
 
 
 1
@@ -1277,10 +1275,6 @@ public class BoxTypes {
 21
 }
 
-Fullscreen
-
-Reset Code
-Run Code 
 
 ---
 
@@ -1422,9 +1416,7 @@ public class FibonacciExample {
 
 ## Terminology  
 
-JCF - Java Collections Framework, a library that contains collections; ways of grouping data/objects together.
-
-Examples  
+JCF - Java Collections Framework, a library that contains collections; ways of grouping data/objects together. 
 
 ---
 
@@ -1434,19 +1426,25 @@ Examples
 
 ## Terminology  
 
-Unit Test - unit tests test a small "unit" of code (a single method) to see if it is working properly
-JUnit - a Java unit testing framework
-ExpectedException rule - a tool in JUnit that allows us to make sure exceptions are being thrown in the way we expect. If an exception isn't thrown, the test will fail
+* Unit Test - unit tests test a small "unit" of code (a single method) to see if it is working properly
+
+* JUnit - a Java unit testing framework
+
+* ExpectedException rule - a tool in JUnit that allows us to make sure exceptions are being thrown in the way we expect. If an exception isn't thrown, the test will fail
 
 ## Examples  
 
 Consider the following function which should return true if the given number is within 2 of a multiple of 10 (i.e. number ends in 0, 1, 2, 8, or 9). The input will be non-negative.
 
+```java
 public boolean nearMultTen (int n) {
     return false;
 }
+```
+
 Here are a few asserts you could write to test the function:
 
+```java
 @Test
 public void someTests () throws Exception {
     assertTrue(nearMultTen(10));
@@ -1454,6 +1452,7 @@ public void someTests () throws Exception {
     assertFalse(55);
 }
 These three asserts do not test a wide enough range of values. Consider additional values you could test to make sure your function works in all cases.
+```
 
 ---
 
@@ -1471,8 +1470,9 @@ Bucket - buckets are how some collections like HashMap organize their data. All 
 
 # Examples  
 
-Here is an example of a very simple Animal class, with a hashCode() method provided by IntelliJ.
+Here is an example of a very simple Animal class, with a `hashCode()` method provided by IntelliJ.
 
+```java
 public class Animal {
 
     int yearBorn;
@@ -1485,6 +1485,7 @@ public class Animal {
         return result;
     }
 }
+```
 
 ---
 
@@ -1493,7 +1494,7 @@ public class Animal {
 # Lambda Expressions  
 
 ## Terminology  
-Functional Interface - an interface with only one method; Comparator for example.
+Functional Interface - an interface with only one method; `Comparator` for example.
 
 Higher-Order Function - A function that accepts another function as one of its arguments.
 
@@ -1501,11 +1502,11 @@ Lambda Expression - an anonymous function that is passed as an argument to a hig
 
 Anonymous Function - a function that has no name (Lambda Expressions in Java).
 
-Functional Programming - a different style of programming that places higher value on functions. A "theme" in Functional Programming is that we want methods to not have any side effects (i.e. make changes to variables or other data). Instead of x = x + 5 we would say int x2 = x + 5.
+Functional Programming - a different style of programming that places higher value on functions. A "theme" in Functional Programming is that we want methods to not have any side effects (i.e. make changes to variables or other data). Instead of `x = x + 5` we would say `int x2 = x + 5`.
 
 # Examples  
 
-Here are two examples of simple Lambda Expressions to solve a problem we've already seen, FizzBuzz. To briefly restate the problem: we are supposed to print the numbers 1-100, but if the number is divisible by three we will instead print "Fizz"; if divisible by 5 "Buzz", and if both "FizzBuzz". In the first example, we have defined the Functional Interface DivisibilityCheck. We have three implementations, divBy3, divBy5, and divBy15, which are only responsible for checking whether the given number is cleanly divisible.
+Here are two examples of simple Lambda Expressions to solve a problem we've already seen, FizzBuzz. To briefly restate the problem: we are supposed to print the numbers 1-100, but if the number is divisible by three we will instead print "Fizz"; if divisible by 5 "Buzz", and if both "FizzBuzz". In the first example, we have defined the Functional Interface DivisibilityCheck. We have three implementations, `divBy3`, `divBy5`, and `divBy15`, which are only responsible for checking whether the given number is cleanly divisible.
 
 
 1
@@ -1557,12 +1558,8 @@ public class LambdaExample {
 24
 }
 
-Fullscreen
 
-Reset Code
-Run Code 
-
-Here is another example that solves the same problem with Lambda Expressions. This time, we are going to ask the Lambda to do a bit more of the work for us (actually all of it). Instead of just outputting a boolean, fizzBuzzOutput(int n) produces the String we need.
+Here is another example that solves the same problem with Lambda Expressions. This time, we are going to ask the Lambda to do a bit more of the work for us (actually all of it). Instead of just outputting a `boolean`, `fizzBuzzOutput(int n)` produces the `String` we need.
 
 
 1
@@ -1614,10 +1611,6 @@ public class LambdaExample {
 24
 }
 
-Fullscreen
-
-Reset Code
-Run Code 
 
 ---
 
@@ -1637,15 +1630,18 @@ Pipeline - a chain of Aggregate Operations.
 
 The code below shows examples of how we can use Stream functions to manipulate a collection. In this case, we start with a List<Animal>. Animal is a Java Bean (a simple class that just contains data, no real behavior/methods) that has the simple types: String name, String type, int age, boolean canFly, boolean canSwim.
 
-Remember that Java supports dynamic whitespace.
+Remember that Java supports *dynamic whitespace*.
 
+```java
 animalList.stream()
         .filter(e -> !e.canFly())
         .filter(e -> !e.canSwim())
         .forEach(e -> System.out.println("\t" + e.getName()));
+```
+
 is the same as
 
-animalList.stream().filter(e -> !e.canFly()).filter(e -> !e.canSwim()).forEach(e -> System.out.println("\t" + e.getName()));
+`animalList.stream().filter(e -> !e.canFly()).filter(e -> !e.canSwim()).forEach(e -> System.out.println("\t" + e.getName()));`
 
 The first option is more user-friendly and easier to read. Always remember that people other than you have to read your code!
 
@@ -1713,11 +1709,6 @@ public class StreamExample {
 31
         animalList.stream()
 
-Fullscreen
-
-Reset Code
-Run Code 
-
 ---
 
 [Lesson: Java Lesson 15 - Java8 Streams](Java8Streams.md)
@@ -1726,7 +1717,7 @@ Run Code
 
 ## Terminology  
 
-map() - this function allows us to change the type of data we are working with. Don't get confused with the data type Map<K, V>. The terms are related because both of them contain a mapping. In the case of the data structure Map<K, V> the mapping is from Key to Value. In the case of the map() function the mapping is from one data type to another.
+map() - this function allows us to change the type of data we are working with. Don't get confused with the data type `Map<K, V>`. The terms are related because both of them contain a mapping. In the case of the data structure `Map<K, V>` the mapping is from Key to Value. In the case of the map() function the mapping is from one data type to another.
 
 ## Examples  
 
@@ -1796,10 +1787,7 @@ class NumberString {
 31
                 value = "Two";
 
-Fullscreen
 
-Reset Code
-Run Code 
 Extension excercise: notice anything wrong with the NumberString class? Think about the range of possible inputs and how it would handle them. Change the class by having it throw an exception for bad input.
 
 ---
@@ -1820,13 +1808,13 @@ Maven - Maven is a tool used for building and managing Java-based projects.
 
 ## Terminology  
 
-compile - compiles the Java code
+**compile** - compiles the Java code
 
-test - runs the tests
+**test** - runs the tests
 
-package - creates the JAR
+**package** - creates the JAR
 
-clean - removes the target direct (leaves you with just the src and the pom.xml)
+**clean** - removes the target direct (leaves you with just the src and the `pom.xml`)
 
 ---
 
@@ -1835,6 +1823,7 @@ clean - removes the target direct (leaves you with just the src and the pom.xml)
 # Java Annotations  
 
 ## Terminology  
+
 Annotation - a way of passing information to either the compiler or to a framework. A form of metadata.
 
 Metadata - The Greek prefix "meta" means about; metadata is data about data.
@@ -1900,10 +1889,15 @@ API - Application Programming Interface (this is a reminder)
 
 The code below is a REST Controller that is part of a "Mastermind" web app. Mastermind is a board game where players take turns trying to guess a "secret code" of colored pegs. In this case, there are four endpoints:
 
-board.json : tells the app the state of the current board so that it can be rendered
-submit-move.json : allows us to attempt to submit a new move to the board
-get-settings.json : gets the current "settings" information
-save-settings.json : attempts to update settings
+* board.json : tells the app the state of the current board so that it can be rendered
+
+* submit-move.json : allows us to attempt to submit a new move to the board
+
+* get-settings.json : gets the current "settings" information
+
+* save-settings.json : attempts to update settings
+
+```java
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -1970,7 +1964,7 @@ public class MastermindRestController {
         return settings;
     }
 }
-
+```
 ---
 
 [Lesson: Java Lesson 20 - JDBC and Transactional](JDBCAndTransactional.md)
