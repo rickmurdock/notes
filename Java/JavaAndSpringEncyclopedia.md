@@ -1,9 +1,15 @@
 Language Specialization: Java and Spring Encyclopedia
+
 The Encyclopedia is a compilation of all the lesson study notes in this course. Use it to look up the a term or concept that you have covered.
 
-Lesson: Java Lesson 1 - Getting Started
-Install Party  
-Terminology  
+---
+
+[Lesson: Java Lesson 1 - Getting Started](GettingStarted.md)
+
+# Install Party  
+
+## Terminology
+
 Java - Java is one of the most versatile languages in the world. It runs behind the scenes for a large portion of the websites you use daily, as well as in many desktop and smartphone apps. It’s well-suited for large programs that need performance and scalability.
 
 Java Development Kit (JDK) - The JDK is what turns the code you write into something the JRE can actually execute on your computer.
@@ -15,6 +21,8 @@ Java Virtual Machine (JVM) - The JVM interprets byte code into the correct machi
 Maven - Maven is a Java build tool that allows a project to build using its project object model (POM) and a set of plugins that are shared by all projects using Maven, providing a uniform build system.
 
 IntelliJ - IntelliJ is a Java IDE used for developing computer software.
+
+---
 
 Lesson: Java Lesson 1 - Getting Started
 Install Party  
@@ -32,6 +40,9 @@ sipush  100
 if_icmpge       44
 iconst_2
 istore_2
+
+---
+
 Lesson: Java Lesson 2 - Type System
 Primitive Data Types  
 Terminology  
@@ -175,6 +186,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 2 - Type System
 Variables  
 Terminology  
@@ -275,10 +289,15 @@ Reset Code
 Run Code 
 Here I'm saying that I don't have a home. The value of myHome is nothing and therefore I'm homeless.
 
+---
+
 Lesson: Java Lesson 3 - Basic Tools
 Method Return Study Notes  
 Terminology  
 Examples  
+
+---
+
 Lesson: Java Lesson 3 - Basic Tools
 Printing to the Command Line  
 Examples  
@@ -323,6 +342,8 @@ Fullscreen
 Reset Code
 Run Code 
 As you can see, println() creates a new line, whereas print() does not. Generally, println() will make outputs easier to read.
+
+---
 
 Lesson: Java Lesson 3 - Basic Tools
 Command Line Input  
@@ -378,6 +399,8 @@ Reset Code
 Run Code 
 As you can see, you can use information from the command line and store it in variables. This is cool stuff!
 
+---
+
 Lesson: Java Lesson 3 - Basic Tools
 Java & JavaScript  
 Terminology  
@@ -392,6 +415,9 @@ This is an example of Java having strongly-typed data types. If you declare a va
 
 var x = 5;
 x = "hello";
+
+---
+
 Lesson: Java Lesson 4 - Intro to OOP
 CLASSES VS OBJECTS  
 Terminology  
@@ -407,6 +433,9 @@ class Student {
 // an instance of Student
 // student1 is an object
 Student student1 = new Student();
+
+---
+
 Lesson: Java Lesson 4 - Intro to OOP
 TURN CONCEPT INTO CLASS  
 Terminology  
@@ -450,6 +479,9 @@ public class House {
     return value;
   }
 }
+
+---
+
 Lesson: Java Lesson 5 - OOP Discussion
 USING DOT NOTATION WITH OBJECTS  
 Terminology  
@@ -463,6 +495,9 @@ aStudent.id = 1001;
 aStudent.name = "George Washington";
 // call the print method passing in the id and name
 aStudent.print(aStudent.id, aStudent.name);
+
+---
+
 Lesson: Java Lesson 5 - OOP Discussion
 REASON FOR OOP  
 Terminology  
@@ -488,6 +523,9 @@ Definition of Savings USING Account
         Assign (balance * interestRate) + balance => balance
     End
 End
+
+---
+
 Lesson: Java Lesson 6 - Inheritance and Encapsulation
 Authoring classes with Inheritance  
 Terminology  
@@ -530,6 +568,9 @@ public class Snake extends Animal {
     }
 
 }
+
+---
+
 Lesson: Java Lesson 6 - Inheritance and Encapsulation
 Using Public, Private, and Protected Access Modifiers  
 Terminology  
@@ -551,6 +592,9 @@ public class Account {
     // method that is private except for inheriting classes
     protected void setBalance(double aBalance) { this.balance = aBalance; }
 }
+
+---
+
 Lesson: Java Lesson 7 - Exceptions and Static
 Static Keyword  
 Terminology  
@@ -582,6 +626,9 @@ public class BankAccount {
         balance *= interestRate;
     }
 }
+
+---
+
 Lesson: Java Lesson 7 - Exceptions and Static
 Exceptions and Control Flow  
 Terminology  
@@ -650,6 +697,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 7 - Exceptions and Static
 Using Lists Study Notes  
 Terminology  
@@ -691,6 +741,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 8 - Arrays
 Arrays with Multiple Values  
 Terminology  
@@ -716,6 +769,9 @@ class ArraysDemo {
         };
     }
 }
+
+---
+
 Lesson: Java Lesson 8 - Arrays
 Iteration  
 Terminology  
@@ -748,6 +804,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 8 - Arrays
 Filtering an Array  
 Terminology  
@@ -819,6 +878,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 9 - File I/O and toString()
 File I/O Study Notes  
 Terminology  
@@ -852,6 +914,9 @@ public static Bank readBank() {
 
     return null;
 }
+
+---
+
 Lesson: Java Lesson 9 - File I/O and toString()
 Override toString Study Notes  
 Terminology  
@@ -924,6 +989,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 10 - Interfaces and Abstract Classes
 Implementing Comparable Study Notes  
 Terminology  
@@ -934,6 +1002,9 @@ Comparable - this is an interface with only one method: compareTo(). Implementin
 Collections.sort() - the Collections class is a grouping of static methods for working with Collections (Lists, Maps, Sets, etc.). The sort() method sorts the objects according to their natural order.
 
 Examples  
+
+---
+
 Lesson: Java Lesson 10 - Interfaces and Abstract Classes
 Abstract Classes  
 Terminology  
@@ -1044,6 +1115,9 @@ public class Shirt extends ClothingItem {
         return true;
     }
 }
+
+---
+
 Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion
 Box Types  
 Terminology  
@@ -1113,6 +1187,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion
 Enumerations  
 Terminology  
@@ -1156,6 +1233,8 @@ public enum Color {
     }
 }
 Note: in Java you will probably never have a reason to define your own Color enum, because whichever graphics framework/library you are working with will have already done so.
+
+---
 
 Lesson: Java Lesson 11 - Boxed Types, Enums, and Recursion
 Recursion  
@@ -1233,12 +1312,18 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 12 - Collections
 Java Collections  
 Terminology  
 JCF - Java Collections Framework, a library that contains collections; ways of grouping data/objects together.
 
 Examples  
+
+---
+
 Lesson: Java Lesson 13 - Unit Testing and HashCode
 Unit Testing Study Notes  
 Terminology  
@@ -1260,6 +1345,8 @@ public void someTests () throws Exception {
     assertFalse(55);
 }
 These three asserts do not test a wide enough range of values. Consider additional values you could test to make sure your function works in all cases.
+
+---
 
 Lesson: Java Lesson 13 - Unit Testing and HashCode
 Override HashCode Study Notes  
@@ -1285,6 +1372,9 @@ public class Animal {
         return result;
     }
 }
+
+---
+
 Lesson: Java Lesson 14 - Lambda Expressions
 Lambda Expressions  
 Terminology  
@@ -1411,6 +1501,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 15 - Java8 Streams
 Java 8 Streams  
 Terminology  
@@ -1503,6 +1596,9 @@ Fullscreen
 
 Reset Code
 Run Code 
+
+---
+
 Lesson: Java Lesson 15 - Java8 Streams
 Java 8 Stream Map Transpose  
 Terminology  
@@ -1581,12 +1677,17 @@ Reset Code
 Run Code 
 Extension excercise: notice anything wrong with the NumberString class? Think about the range of possible inputs and how it would handle them. Change the class by having it throw an exception for bad input.
 
+---
+
 Lesson: Java Lesson 16 - Maven
 Maven  
 Terminology  
 Maven - Maven is a tool used for building and managing Java-based projects.
 
 Examples  
+
+---
+
 Lesson: Java Lesson 16 - Maven
 Using Maven  
 Terminology  
@@ -1598,7 +1699,10 @@ package - creates the JAR
 
 clean - removes the target direct (leaves you with just the src and the pom.xml)
 
-Examples  
+Examples 
+
+---
+
 Lesson: Java Lesson 17 - Spring HTML
 Java Annotations  
 Terminology  
@@ -1613,10 +1717,16 @@ Metadata - The Greek prefix "meta" means about; metadata is data about data.
 @Autowired - this annotation asks Spring to automatically "hook up" the item associated with the annotation.
 
 Examples  
+
+---
+
 Lesson: Java Lesson 17 - Spring HTML
 Basic @Controller Study Notes  
 Terminology  
 Examples  
+
+---
+
 Lesson: Java Lesson 18 - Thymeleaf
 Thymeleaf Study Notes  
 Terminology  
@@ -1627,6 +1737,9 @@ Standard Expression - Thymeleaf has different types of expressions. The most com
 Variable Expression: ${variableName} Thymeleaf will fill in values based on the Model.
 
 Examples  
+
+---
+
 Lesson: Java Lesson 19 - REST APIs
 RestTemplate Study Notes  
 Terminology  
@@ -1634,6 +1747,8 @@ RestTemplate - a Spring tool that makes it easy to query an API and get data bac
 
 Examples  
 Spring guide for getting started with RestTemplate
+
+---
 
 Lesson: Java Lesson 19 - REST APIs
 REST APIs  
@@ -1719,6 +1834,9 @@ public class MastermindRestController {
         return settings;
     }
 }
+
+---
+
 Lesson: Java Lesson 20 - JDBC and Transactional
 Java Annotations  
 Terminology  
@@ -1729,19 +1847,29 @@ Repository - where CRUDding the database is done
 model or domain - common package names where the JavaBeans that map to tables live.
 
 Examples  
+
+---
+
 Lesson: Java Lesson 20 - JDBC and Transactional
 Java Annotations  
 Terminology  
 @Transactional - A transaction is a way to wrap up a group of database operations and say "these are all part of the same transaction. If one of them fails, roll them all back."
 
 Examples  
+
+---
+
 Lesson: Java Lesson 21 - JPA
 Google "JPA tutorial" and there are a bunch of them. Pick the one that works for you.
+
+---
 
 Lesson: Java Lesson 22 - Authorization and Authentication
 Spring guide. https://spring.io/guides/gs/securing-web/
 
 Spring security http://docs.spring.io/spring-security/site/docs/4.2.1.RELEASE/reference/htmlsingle/
+
+---
 
 Lesson: Java Lesson 24 - Deployment
 Heroku Deployment  
