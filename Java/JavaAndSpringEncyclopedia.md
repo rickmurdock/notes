@@ -10,17 +10,17 @@ The Encyclopedia is a compilation of all the lesson study notes in this course. 
 
 ## Terminology
 
-Java - Java is one of the most versatile languages in the world. It runs behind the scenes for a large portion of the websites you use daily, as well as in many desktop and smartphone apps. It’s well-suited for large programs that need performance and scalability.
+`Java` - Java is one of the most versatile languages in the world. It runs behind the scenes for a large portion of the websites you use daily, as well as in many desktop and smartphone apps. It’s well-suited for large programs that need performance and scalability.
 
-Java Development Kit (JDK) - The JDK is what turns the code you write into something the JRE can actually execute on your computer.
+`Java Development Kit (JDK)` - The JDK is what turns the code you write into something the JRE can actually execute on your computer.
 
-Java Runtime Environment (JRE) - the space and container in which the JVM will run.
+`Java Runtime Environment (JRE)` - the space and container in which the JVM will run.
 
-Java Virtual Machine (JVM) - The JVM interprets byte code into the correct machine code based off of the underlying operating system and hardware combination.
+`Java Virtual Machine (JVM)` - The JVM interprets byte code into the correct machine code based off of the underlying operating system and hardware combination.
 
-Maven - Maven is a Java build tool that allows a project to build using its project object model (POM) and a set of plugins that are shared by all projects using Maven, providing a uniform build system.
+`Maven` - Maven is a Java build tool that allows a project to build using its project object model (POM) and a set of plugins that are shared by all projects using Maven, providing a uniform build system.
 
-IntelliJ - IntelliJ is a Java IDE used for developing computer software.
+`IntelliJ` - IntelliJ is a Java IDE used for developing computer software.
 
 ---
 
@@ -30,19 +30,22 @@ IntelliJ - IntelliJ is a Java IDE used for developing computer software.
 
 ## Terminology  
 
-Java - Java is one of the most versatile languages in the world. It runs behind the scenes for a large portion of the websites you use daily, as well as in many desktop and smartphone apps. It’s well-suited for large programs that need performance and scalability.
+`Java` - Java is one of the most versatile languages in the world. It runs behind the scenes for a large portion of the websites you use daily, as well as in many desktop and smartphone apps. It’s well-suited for large programs that need performance and scalability.
 
-Java Virtual Machine (JVM) - The JVM interprets byte code into the correct machine code based off of the underlying operating system and hardware combination.
+`Java Virtual Machine (JVM)` - The JVM interprets byte code into the correct machine code based off of the underlying operating system and hardware combination.
 
-byte code - these are the most basic instructions the JVM can accept. It is not very easy to read (see example below). There's a reason we don't want to be writing directly in byte code.
+`byte code` - these are the most basic instructions the JVM can accept. It is not very easy to read (see example below). There's a reason we don't want to be writing directly in byte code.
 
-Examples  
+## Examples 
+
 Here are a few lines of Java byte code.
 
+```sh
 sipush  100
 if_icmpge       44
 iconst_2
 istore_2
+```
 
 ---
 
@@ -96,118 +99,62 @@ This example shows that an int, short, long, byte, float, and double **could** a
 
 Below are a few examples of concatenation:
 
-
-1
+```java
 public class ExampleClass {
-2
   public static void main(String args[])
-3
     {
-4
       int myAge = 23;
-5
       System.out.println("You are " + myAge + " years old.");
-6
     }
-7
 }
+`` 
 
-Fullscreen
-
-Reset Code
-Run Code 
-
-1
+```java
 public class ExampleClass {
-2
   public static void main(String args[])
-3
   {
-4
     String a = "Hello";
-5
     String b = "World";
-6
     System.out.println(a + " " + b + "!");
-7
   }  
-8
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Here is another example of data types.
 
-
-1
+```java
 public class Main {
-2
     public static void main(String[] args) {
-3
        System.out.println("Hello Java Basic Types!");
-4
-​
-5
+
        //create a java variable assign valid values and print
-6
-​
-7
+
        boolean likesToCode = true;
-8
        System.out.println("likesToCode: " + likesToCode);
-9
-​
-10
+
        char aLetter = 'y';
-11
        System.out.println("aLetter: " + aLetter);
-12
-​
-13
+
        byte byteNumber  =  127;
-14
        System.out.println("byteNumber: " + byteNumber);
-15
-​
-16
+
        //a number of type short
-17
        short longestShortNumber = 32767;
-18
        System.out.println("longestShortNumber: " + longestShortNumber);
-19
-​
-20
+
        //a large number of type long
-21
        //Note the lower case 'l' at the end. This specifies the type of the
-22
        //literal as long
-23
        long longestLongNumber  =  9223372036854775807l;
-24
        System.out.println("longestLongNumber: " + longestLongNumber);
-25
-​
-26
+
        //a large number of type double, note 'E' notation for exponent
-27
        double largestDouble  =  1.7976931348623157E308;
-28
        System.out.println("largestDouble: " + largestDouble);
-29
-​
-30
+
     }
-31
 }
-
-Fullscreen
-
-Reset Code
-Run Code 
+```
 
 ---
 
@@ -217,107 +164,64 @@ Run Code
 
 ## Terminology  
 
-Variable - A piece of memory that contains a data value.
+`Variable` - A piece of memory that contains a data value.
 
-Null - used to tell Java that a variable has an absence of value. Remember, null and zero are not the same.
+`Null` - used to tell Java that a variable has an absence of value. Remember, null and zero are not the same.
 
-camelCase - camelCase is a common naming convention across programming that helps the reader recognize the beginning of the next word. e.g. howAreYouToday
+`camelCase` - camelCase is a common naming convention across programming that helps the reader recognize the beginning of the next word. e.g. howAreYouToday
 
-Examples  
-Updating Variables  
+## Examples  
 
-1
+### Updating Variables  
+
+```java
 public class Example {
-2
   public static void main(String[] args) {
-3
     int x = 42;
-4
     System.out.println(x + 5);
-5
     System.out.println("Now we are going to update the value of x");
-6
     x = 95;
-7
     System.out.println(x + 5);
-8
   }
-9
 }
+```
 
+### Null  
 
-Null  
-
-
-1
+```
 public class Example {
-2
   public static void main(String[] args) {
-3
     String myHome = "condo in Midtown";
-4
     System.out.println("I live in a " + myHome);
-5
   }
-6
 }
-7
-​
 
-Fullscreen
+```
 
-Reset Code
-Run Code 
 Here I'm saying that I have a condo in Midtown.
 
-
-1
+```java
 public class Example {
-2
   public static void main(String[] args) {
-3
     String myHome = " ";
-4
     System.out.println("I live in a " + myHome);
-5
-​
-6
+
   }
-7
-}    
+}        
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 Here I'm saying that I have a home, but maybe it doesn't have a name. Or if it does have a name, the name of it is just .
 
-
-1
+```java
 public class Example {
-2
   public static void main(String[] args) {
-3
     String myHome = null;
-4
     System.out.println("I live in a " + myHome);
-5
   }
-6
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-Here I'm saying that I don't have a home. The value of myHome is nothing and therefore I'm homeless.
-
----
-
-Lesson: Java Lesson 3 - Basic Tools
-Method Return Study Notes  
-Terminology  
-Examples  
+Here I'm saying that I don't have a home. The value of myHome is *nothing* and therefore I'm homeless.
 
 ---
 
@@ -327,47 +231,29 @@ Examples
 
 ## Examples  
 
-Below is an example of System.out.println():
+Below is an example of `System.out.println()`:
 
-
-1
+```java
 public class Example {
-2
   public static void main(String[] args) {
-3
     System.out.println("This sentence will be printed to the console.");
-4
     System.out.println("This sentence will be underneath the previous sentence.");
-5
   }
-6
 }
+```
 
-Fullscreen
+Now, look at this example of `System.out.print()`:
 
-Reset Code
-Run Code 
-Now, look at this example of System.out.print():
-
-
-1
+```java
 public class Example {
-2
   public static void main(String[] args) {
-3
     System.out.print("This sentence will be printed to the console.");
-4
     System.out.print("This sentence will be connected to the previous sentence.");
-5
   }
-6
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
-As you can see, println() creates a new line, whereas print() does not. Generally, println() will make outputs easier to read.
+As you can see, `println()` creates a new line, whereas `print()` does not. Generally, `println()` will make outputs easier to read.
 
 ---
 
@@ -377,55 +263,34 @@ As you can see, println() creates a new line, whereas print() does not. Generall
 
 ## Terminology  
 
-Standard Streams - refer to the input and output streams that are provided for us by default.
+`Standard Streams` - refer to the input and output streams that are provided for us by default.
 
-Scanner - a class introduced in Java 5. It is a good default option for reading files or getting input from the user.
+`Scanner` - a class introduced in Java 5. It is a good default option for reading files or getting input from the user.
 
-Examples  
+## Examples  
 
-1
+```java
 import java.util.Scanner;
-2
-​
-3
+
 public class Example {
-4
   public static void main(String[] args) {
-5
     System.out.println("Hello! What's your name?");
-6
     Scanner scanner = new Scanner(System.in);
-7
     String name = scanner.nextLine();
-8
     // the user is asked to input on the command line through the Scanner class
-9
     System.out.println("Nice to meet you, " + name + "!");
-10
-​
-11
+
     System.out.println("What city do you live in?");
-12
     String city = scanner.nextLine();
-13
     System.out.println(name + " lives in " + city);
-14
-​
-15
+
     System.out.println("How many years have you lived in " + city + "?");
-16
     String yearsLived = scanner.nextLine();
-17
     System.out.println(name + " has been living in " + city + " for " + yearsLived + " years.");
-18
   }
-19
 }
+```
 
-Fullscreen
-
-Reset Code
-Run Code 
 As you can see, you can use information from the command line and store it in variables. This is cool stuff!
 
 ---
@@ -436,17 +301,17 @@ As you can see, you can use information from the command line and store it in va
 
 ## Terminology  
 
-Strongly-Typed vs. Weakly-Typed - A strongly-typed programming language enforces a type discipline. A weakly-typed programming language does not enforce any type disciplines. Take a look at the examples below.
+Strongly-Typed vs. Weakly-Typed - A strongly-typed programming language enforces a type discipline. A weakly-typed programming language *does not* enforce any type disciplines. Take a look at the examples below.
 
 Examples  
-Below is a code sample in Java that would not compile:
+Below is a code sample in Java that would *not* compile:
 
 ```java
 int x = 5;
 x = "hello";
 ```
 
-This is an example of Java having strongly-typed data types. If you declare a variable an int, then it will always be an int. In contrast JavaScript has very limited typing of variables.
+This is an example of Java having strongly-typed data types. If you declare a variable an `int`, then it will always be an int. In contrast JavaScript has very limited typing of variables.
 
 ```javasript
 var x = 5;
@@ -547,9 +412,9 @@ public class House {
 
 ## Terminology  
 
-* properties - The data within an object
+* `properties` - The data within an object
 
-* methods - The operations or functions within an object
+* `methods` - The operations or functions within an object
 
 ### Examples  
 
@@ -625,7 +490,7 @@ public class Animal {
 }
 ```
 
-Then let's create a Dog class, because dogs make their own kind of noise, so we want makeNoise() to do something specific when the animal is a dog:
+Then let's create a Dog class, because dogs make their own kind of noise, so we want `makeNoise()` to do something specific when the animal is a dog:
 
 ```java
 public class Dog extends Animal {
@@ -741,7 +606,7 @@ public class BankAccount {
 
 ## Terminology
 
-Exception - an Object representing unexpected or undesirable circumstances of execution.
+`Exception` - an Object representing unexpected or undesirable circumstances of execution.
 
 `try` - This defines the main code block that we will attempt to execute. If an exception is encountered, it will either be thrown up or caught in a `catch` block.
 
@@ -750,6 +615,7 @@ Exception - an Object representing unexpected or undesirable circumstances of ex
 `finally` - the `finally` block will always run at after the `try` block exits, whether an Exception was thrown or not.
 
 ## Examples  
+
 ```java
 public class ExceptionExample {
 
@@ -816,7 +682,8 @@ public class AnotherListXample {
 
 ## Examples  
 
-Arrays can be created with multiple values by providing values within { } during initialization. `String[] names = {"John", "Mary", "David", "Paula"};`
+Arrays can be created with multiple values by providing values within { } during initialization. 
+`String[] names = {"John", "Mary", "David", "Paula"};`
 
 Here are some additional examples.
 
@@ -852,7 +719,7 @@ class ArraysDemo {
 
 ## Examples  
 
-Here is an example of using a for-each loop to iterate over an array of Strings.
+Here is an example of using a `for-each` loop to iterate over an array of Strings.
 
 ```java
 public class ArrayExample {
@@ -881,65 +748,37 @@ public class ArrayExample {
 The `toArray()` function unfortunately can't create an array of simple types (i.e. `int[]`, `double[]`, etc). In the following example we'll work around that limitation:
 
 
-1
+```java
 public class ArraySimple {
-2
-​
-3
-    public static void main (String[] args) {
-4
-        int[] numbers = {1, 2, 3, 5, 9, 12, 24};
-5
-​
-6
-        int divisibility = 3;
-7
-        int numKeeping = 0;
-8
-​
-9
-        //Search through first to find the size of array necessary
-10
-        for (int n : numbers) {
-11
-            if (n % divisibility == 0) {
-12
-                numKeeping++;
-13
-            }
-14
-        }
-15
-        int[] filteredNumbers = new int[numKeeping];
-16
-        int filteredIndex = 0;
-17
-        for (int i = 0; i < numbers.length; i++) {
-18
-            if (numbers[i] % divisibility == 0) {
-19
-                filteredNumbers[filteredIndex] = numbers[i];
-20
-                filteredIndex++;
-21
-            }
-22
-        }
-23
-​
-24
-        System.out.println("Remaining values: ");
-25
-        for (int n : filteredNumbers) {
-26
-            System.out.print(n + " ");
-27
-        }
-28
-    }
-29
-}
 
+    public static void main (String[] args) {
+        int[] numbers = {1, 2, 3, 5, 9, 12, 24};
+
+        int divisibility = 3;
+        int numKeeping = 0;
+
+        //Search through first to find the size of array necessary
+        for (int n : numbers) {
+            if (n % divisibility == 0) {
+                numKeeping++;
+            }
+        }
+        int[] filteredNumbers = new int[numKeeping];
+        int filteredIndex = 0;
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] % divisibility == 0) {
+                filteredNumbers[filteredIndex] = numbers[i];
+                filteredIndex++;
+            }
+        }
+
+        System.out.println("Remaining values: ");
+        for (int n : filteredNumbers) {
+            System.out.print(n + " ");
+        }
+    }
+}
+```
 
 ---
 
@@ -949,11 +788,11 @@ public class ArraySimple {
 
 ## Terminology  
 
-FileWriter - a class Java provides us to take care of writing contents to a file. Scanner - we've used Scanner before, to get input from the user. Here we are using it to read a file.
+`FileWriter` - a class Java provides us to take care of writing contents to a file. `Scanner` - we've used Scanner before, to get input from the user. Here we are using it to read a file.
 
 ## Examples  
 
-The following code constructs a Bank object from the bank.txt file. This file is expected to have a specific format. Read through the code and see if you can figure out what the file is supposed to look like.
+The following code constructs a `Bank` object from the `bank.txt` file. This file is expected to have a specific format. Read through the code and see if you can figure out what the file is supposed to look like.
 
 ```java
 public static Bank readBank() {
@@ -991,72 +830,44 @@ public static Bank readBank() {
 
 ## Terminology  
 
-toString() - All objects in Java have a toString() method. By default, this will print out the memory address of the object (usually not very useful). You can override this method to provide useful information.
+`toString()` - All objects in Java have a `toString()` method. By default, this will print out the memory address of the object (usually not very useful). You can override this method to provide useful information.
 
-@Override - this is an example of an annotation, something we will get into more later. For now, just be aware that this is a way of passing information to the compiler, telling it that we are overriding a method from the superclass
+`@Override` - this is an example of an annotation, something we will get into more later. For now, just be aware that this is a way of passing information to the compiler, telling it that we are overriding a method from the superclass
 
 ## Examples  
 
-Here is an example of a BankAccount class with an overridden toString() method. We've added a little "box" around the info to make it pretty.
+Here is an example of a BankAccount class with an overridden `toString()` method. We've added a little "box" around the info to make it pretty.
 
-
-1
+```java
 public class BankAccount {
-2
     double balance;
-3
     String accountType;
-4
     String accountOwner;
-5
-​
-6
+
     public static void main(String[] args) {
-7
         BankAccount ba1 = new BankAccount(1140.50, "Checking", "John");
-8
         BankAccount ba2 = new BankAccount(60.00, "Savings", "Sal");
-9
-​
-10
+
         System.out.println(ba1);
-11
         System.out.println(ba2);
-12
     }
-13
-​
-14
+
     public BankAccount(double balance, String accountType, String accountOwner) {
-15
         this.balance = balance;
-16
         this.accountType = accountType;
-17
         this.accountOwner = accountOwner;
-18
     }
-19
-​
-20
+
     @Override
-21
     public String toString () {
-22
         String response = "-------" + "\nAccount Owner: " + accountOwner;
-23
         response += "\nAccount Type: " + accountType;
-24
         response += "\nCurrent Balance: $" + balance;
-25
         response += "\n-------";
-26
         return response;
-27
     }
-28
 }
- 
+```
 
 ---
 
@@ -1067,11 +878,9 @@ public class BankAccount {
 ## Terminology  
 Interface - defines a contract (list of methods) that any class implementing the interface must implement.
 
-Comparable - this is an interface with only one method: compareTo(). Implementing this interface allows us to determine the "natural order" of our objects.
+`Comparable` - this is an interface with only one method: `compareTo()`. Implementing this interface allows us to determine the "natural order" of our objects.
 
-Collections.sort() - the Collections class is a grouping of static methods for working with Collections (Lists, Maps, Sets, etc.). The sort() method sorts the objects according to their natural order.
-
-## Examples  
+`Collections.sort()` - the Collections class is a grouping of static methods for working with Collections (Lists, Maps, Sets, etc.). The sort() method sorts the objects according to their natural order.
 
 ---
 
@@ -1081,11 +890,11 @@ Collections.sort() - the Collections class is a grouping of static methods for w
 
 ## Terminology  
 
-abstract - an abstract class cannot be directly instantiated; instead you must first extend it into a non-abstract subclass. Abstract classes can serve as a "template" for a group of related subclasses, similar to interfaces.
+`abstract` - an `abstract` class cannot be directly instantiated; instead you must first extend it into a non-abstract subclass. Abstract classes can serve as a "template" for a group of related subclasses, similar to interfaces.
 
 ## Examples  
 
-Here is a more complex example of abstract classes. We have two abstract base classes (BodyPart and ClothingItem) which each have two subclasses (Arm and Leg for BodyPart, and Shirt and Pants for ClothingItem).
+Here is a more complex example of abstract classes. We have two abstract base classes (`BodyPart` and `ClothingItem`) which each have two subclasses (`Arm` and `Leg` for `BodyPart`, and `Shirt` and `Pants` for `ClothingItem`).
 
 ```java
 public abstract class BodyPart {
