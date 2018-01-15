@@ -1209,7 +1209,7 @@ public class Shirt extends ClothingItem {
 
 ## Terminology  
 
-Boxed Type - AKA "Wrapper Class", every primitive type (e.g. int, double) has a box type associated with it (int -> Integer, double -> Double, etc). They are treated as a mix between primitives and full Objects, and they have useful static methods.
+Boxed Type - AKA "Wrapper Class", every primitive type (e.g. `int`, `double`) has a box type associated with it (`int` -> `Integer`, `double` -> `Double`, etc). They are treated as a mix between primitives and full Objects, and they have useful `static` methods.
 
 ## Examples  
 
@@ -1231,50 +1231,29 @@ f /= 9293;
 
 Here is an example of a static method from the Integer class, `Integer.parseInt()`. It allows us to take a String (for example "4572") and attempt to parse it as an Integer. If the String can't be successfully parsed as an Integer (for example, if the input was not a number, like "hello") a `NumberFormatException` will be thrown. Exceptions are covered in a separate lesson; for now just experiment with the code below and see how it works, and look at the use of the `Integer.parseInt(String)` function.
 
-
-1
+```java
 import java.util.Scanner;
-2
 public class BoxTypes {
-3
-​
-4
-    public static void main(String[] args) {
-5
-        //Integer.parseInt example
-6
-        while (true) {
-7
-            System.out.println("Please input a number.");
-8
-​
-9
-            String input = new Scanner(System.in).nextLine();
-10
-​
-11
-            try {
-12
-                // **Here is the Integer.parseInt(String s) call**
-13
-                int value = Integer.parseInt(input);
-14
-                System.out.println("You typed in the number " + value + ". Multiplied by 5 that's " + value * 5 + ".");
-15
-            } catch (NumberFormatException ex) {
-16
-                System.out.println("That wasn't a number. Goodbye.");
-17
-                break;
-18
-            }
-19
-        }
-20
-    }
-21
-}
 
+    public static void main(String[] args) {
+        //Integer.parseInt example
+        while (true) {
+            System.out.println("Please input a number.");
+
+            String input = new Scanner(System.in).nextLine();
+
+            try {
+                // **Here is the Integer.parseInt(String s) call**
+                int value = Integer.parseInt(input);
+                System.out.println("You typed in the number " + value + ". Multiplied by 5 that's " + value * 5 + ".");
+            } catch (NumberFormatException ex) {
+                System.out.println("That wasn't a number. Goodbye.");
+                break;
+            }
+        }
+    }
+}
+```
 
 ---
 
@@ -1344,68 +1323,49 @@ Recursion - solving problems by breaking them into smaller versions of themselve
 The following is a recursive example to numbers in the Fibonacci sequence (which is explained in the example if you're not familiar with it). Start with small values (10-20) and observe how the number of recursive function calls increases exponentially. (Side note for the mathematically-inclined: the rate of increase is equal to the golden ratio, ~1.61803. So the number of function calls required to calculate Fibonacci(40) is ~1.618 times the number required to calculate Fibonacci(39))
 
 ```java
-1
 public class FibonacciExample {
-2
-​
-3
+
     static long numFunctionCalls;
-4
-​
-5
+
     public static void main(String[] args) {
-6
         System.out.println("Welcome to Fibonacci calculation. Put in a negative number to exit.");
-7
         System.out.println("Fibonacci(0) = 0");
-8
         System.out.println("Fibonacci(1) = 1");
-9
         System.out.println("Fibonacci(2) = Fibonacci(2-1) + Fibonacci (2-2)");
-10
         System.out.println("(i.e. sum of the previous two)");
-11
         System.out.println("Beginning sequence goes like this: 1, 1, 2, 3, 5, 8, 13, 21...");
-12
         while (true) {
-13
             System.out.println("Calculate which Fibonacci number?");
-14
             String input = System.console().readLine();
-15
             int response = Integer.parseInt(input);
-16
             if (response < 0) {
-17
                 break;
-18
             }
-19
             if (response > 92) {
-20
                 System.out.println("Sorry, we cannot easily calculate over 92 as it overflows.");
-21
                 response = 92;
-22
             }
-23
             long startTime = System.currentTimeMillis();
-24
             numFunctionCalls = 0;
-25
             System.out.println("The " + response + "th Fibonacci is " + calcFibonacci(response));
-26
             long endTime = System.currentTimeMillis();
-27
             System.out.println("Processing completed in " + (endTime - startTime) + " milliseconds.");
-28
             System.out.println("Completed in " + numFunctionCalls + " function calls.");
-29
         }
-30
         System.out.println("Goodbye!");
-31
     }
+
+    public static long calcFibonacci (int index) {
+        numFunctionCalls++;
+        if (index == 0) {
+            return 0;
+        }
+        if (index == 1) {
+            return 1;
+        }
+        return calcFibonacci(index - 1) + calcFibonacci(index - 2);
+    }
+  }
 ```
 
 ---
@@ -1451,8 +1411,9 @@ public void someTests () throws Exception {
     assertTrue(nearMultTen(159));
     assertFalse(55);
 }
-These three asserts do not test a wide enough range of values. Consider additional values you could test to make sure your function works in all cases.
 ```
+
+These three asserts do not test a wide enough range of values. Consider additional values you could test to make sure your function works in all cases.
 
 ---
 
@@ -1508,109 +1469,61 @@ Functional Programming - a different style of programming that places higher val
 
 Here are two examples of simple Lambda Expressions to solve a problem we've already seen, FizzBuzz. To briefly restate the problem: we are supposed to print the numbers 1-100, but if the number is divisible by three we will instead print "Fizz"; if divisible by 5 "Buzz", and if both "FizzBuzz". In the first example, we have defined the Functional Interface DivisibilityCheck. We have three implementations, `divBy3`, `divBy5`, and `divBy15`, which are only responsible for checking whether the given number is cleanly divisible.
 
-
-1
+```java
 public class LambdaExample {
-2
-​
-3
-    interface DivisibilityCheck {
-4
-        boolean checkDivisibility (int d);
-5
-    }
-6
-​
-7
-    public static void main(String[] args) {
-8
-        DivisibilityCheck divBy3 = (d) -> d % 3 == 0;
-9
-        DivisibilityCheck divBy5 = (d) -> d % 5 == 0;
-10
-        DivisibilityCheck divBy15 = (d) -> d % 15 == 0;
-11
-​
-12
-        for (int i = 1; i <= 100; i++) {
-13
-            if (divBy15.checkDivisibility(i)) {
-14
-                System.out.println("FizzBuzz");
-15
-            } else if (divBy3.checkDivisibility(i)) {
-16
-                System.out.println("Fizz");
-17
-            } else if (divBy5.checkDivisibility(i)) {
-18
-                System.out.println("Buzz");
-19
-            } else {
-20
-                System.out.println(i);
-21
-            }
-22
-        }  
-23
-    }
-24
-}
 
+    interface DivisibilityCheck {
+        boolean checkDivisibility (int d);
+    }
+
+    public static void main(String[] args) {
+        DivisibilityCheck divBy3 = (d) -> d % 3 == 0;
+        DivisibilityCheck divBy5 = (d) -> d % 5 == 0;
+        DivisibilityCheck divBy15 = (d) -> d % 15 == 0;
+
+        for (int i = 1; i <= 100; i++) {
+            if (divBy15.checkDivisibility(i)) {
+                System.out.println("FizzBuzz");
+            } else if (divBy3.checkDivisibility(i)) {
+                System.out.println("Fizz");
+            } else if (divBy5.checkDivisibility(i)) {
+                System.out.println("Buzz");
+            } else {
+                System.out.println(i);
+            }
+        }  
+    }
+}
+```
 
 Here is another example that solves the same problem with Lambda Expressions. This time, we are going to ask the Lambda to do a bit more of the work for us (actually all of it). Instead of just outputting a `boolean`, `fizzBuzzOutput(int n)` produces the `String` we need.
 
-
-1
+```java
 public class LambdaExample {
-2
     interface FizzBuzz {
-3
         String fizzBuzzOutput (int n);
-4
     }
-5
-​
-6
-    public static void main(String[] args) {
-7
-        FizzBuzz fizzBuzz = (n) -> {
-8
-            String response = "";
-9
-            if (n % 3 == 0) {
-10
-                response += "Fizz";
-11
-            }
-12
-            if (n % 5 == 0) {
-13
-                response += "Buzz";
-14
-            }
-15
-            if (response.equals("")) {
-16
-                response = "" + n;
-17
-            }
-18
-            return response;
-19
-        };
-20
-        for (int i = 1; i <= 100; i++) {
-21
-            System.out.println(fizzBuzz.fizzBuzzOutput(i));
-22
-        }
-23
-    }
-24
-}
 
+    public static void main(String[] args) {
+        FizzBuzz fizzBuzz = (n) -> {
+            String response = "";
+            if (n % 3 == 0) {
+                response += "Fizz";
+            }
+            if (n % 5 == 0) {
+                response += "Buzz";
+            }
+            if (response.equals("")) {
+                response = "" + n;
+            }
+            return response;
+        };
+        for (int i = 1; i <= 100; i++) {
+            System.out.println(fizzBuzz.fizzBuzzOutput(i));
+        }
+    }
+}
+```
 
 ---
 
@@ -1628,7 +1541,8 @@ Pipeline - a chain of Aggregate Operations.
 
 ## Examples  
 
-The code below shows examples of how we can use Stream functions to manipulate a collection. In this case, we start with a List<Animal>. Animal is a Java Bean (a simple class that just contains data, no real behavior/methods) that has the simple types: String name, String type, int age, boolean canFly, boolean canSwim.
+The code below shows examples of how we can use `Stream` functions to manipulate a collection. In this case, we start with a `List<Animal>`. `Animal` is a Java Bean (a simple class that just contains data, no real behavior/methods) that has the simple types: 
+`String name, String type, int age, boolean canFly, boolean canSwim`.
 
 Remember that Java supports *dynamic whitespace*.
 
@@ -1645,69 +1559,103 @@ is the same as
 
 The first option is more user-friendly and easier to read. Always remember that people other than you have to read your code!
 
-
-1
+```java
 import java.util.ArrayList;
-2
 import java.util.List;
-3
-​
-4
+
 public class StreamExample {
-5
-​
-6
+
     public static void main(String[] args) {
-7
         List<Animal> animalList = initializeList();
-8
-​
-9
+
         System.out.println("Animals that can fly:");
-10
         animalList.stream()
-11
                 .filter(e -> e.canFly())
-12
                 .forEach(e -> System.out.println("\t" + e.getName()));
-13
-​
-14
+
         System.out.println("Animals with two names:");
-15
         animalList.stream()
-16
                 .filter(e -> e.getName().contains(" "))
-17
                 .forEach(e -> System.out.println("\t" + e.getName()));
-18
-​
-19
+
         System.out.println("Elephants:");
-20
         animalList.stream()
-21
                 .filter(e -> e.getType().equals("Elephant"))
-22
                 .forEach(e -> System.out.println("\t" + e.getName()));
-23
-​
-24
+
         System.out.println("Animals that can't swim OR fly:");
-25
         animalList.stream()
-26
                 .filter(e -> !e.canFly())
-27
                 .filter(e -> !e.canSwim())
-28
                 .forEach(e -> System.out.println("\t" + e.getName()));
-29
-​
-30
+
         System.out.println("Animals whose name matches their type:");
-31
         animalList.stream()
+                .filter(e -> e.getName().equals(e.getType()))
+                .forEach(e -> System.out.println("\t" + e.getName()));
+
+        int totalAgeOfSwimmers = animalList.stream()
+                .filter(e -> e.canSwim())
+                .mapToInt(e -> e.getAge())
+                .sum();
+        System.out.println("Total age of swimmers = " + totalAgeOfSwimmers);
+    }
+
+    public static List<Animal> initializeList () {
+        List<Animal> animalList = new ArrayList<>();
+        animalList.add(new Animal("Babar", "Elephant", 10, false, false));
+        animalList.add(new Animal("Argulor", "Eagle", 2, true, false));
+        animalList.add(new Animal("Baldy", "Eagle", 20, false, false));
+        animalList.add(new Animal("Tommy", "Dolphin", 9, false, true));
+        animalList.add(new Animal("Sol", "Sea Turtle", 125, false, true));
+        animalList.add(new Animal("Dumbo", "Elephant", 3, true, false));
+        animalList.add(new Animal("Gurgl", "Flying Fish", 1, true, true));
+        animalList.add(new Animal("Curious George", "Monkey", 5, false, false));
+        animalList.add(new Animal("Cowardly Lion", "Lion", 12, false, false));
+        animalList.add(new Animal("Robin", "Robin", 2, true, false));
+        animalList.add(new Animal("Spiky", "Sea Urchin", 45, false, true));
+        animalList.add(new Animal("Arbez", "Zebra", 5, false, false));
+        animalList.add(new Animal("Pegasus", "Pegasus", 1000, true, false));
+        return animalList;
+    }
+}
+class Animal {
+
+    private String name;
+    private String type;
+    private int age;
+    private boolean canFly;
+    private boolean canSwim;
+
+    public Animal(String name, String type, int age, boolean canFly, boolean canSwim) {
+        this.name = name;
+        this.type = type;
+        this.age = age;
+        this.canFly = canFly;
+        this.canSwim = canSwim;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public boolean canFly() {
+        return canFly;
+    }
+
+    public boolean canSwim() {
+        return canSwim;
+    }
+}
+```
 
 ---
 
@@ -1721,72 +1669,76 @@ map() - this function allows us to change the type of data we are working with. 
 
 ## Examples  
 
-Let's say we are interested in the lengths of String objects. We have a NumberString class, which accepts an int in its constructor and sets its String value parameter as the English version of that number (for example, new NumberString(3).getValue() produces "Three").
+Let's say we are interested in the lengths of `String` objects. We have a `NumberString` class, which accepts an `int` in its constructor and sets its `String value` parameter as the English version of that number (for example, `new NumberString(3).getValue()` produces "Three").
 
-
-1
+```java
 import java.util.Arrays;
-2
 import java.util.List;
-3
 import java.util.stream.Collectors;
-4
-​
-5
-public class StreamMapExample {
-6
-​
-7
-    public static void main(String[] args) {
-8
-        List<NumberString> numberStrings = Arrays.asList("Blah", "Bli p", "Bloo op", "Beeple").stream()
-9
-                .map(name -> name.length()) //Go from the Strings ^^ to their lengths
-10
-                .map(e -> new NumberString(e)) //Go from the lengths to NumberString objects
-11
-                .collect(Collectors.toList());
-12
-​
-13
-        for (NumberString ns : numberStrings) {
-14
-            System.out.println(ns.getValue());
-15
-        }
-16
-    }
-17
-}
-18
-class NumberString {
-19
-​
-20
-    private String value;
-21
-​
-22
-    public NumberString (int num) {
-23
-        switch (num) {
-24
-            case 0:
-25
-                value = "Zero";
-26
-                break;
-27
-            case 1:
-28
-                value = "One";
-29
-                break;
-30
-            case 2:
-31
-                value = "Two";
 
+public class StreamMapExample {
+
+    public static void main(String[] args) {
+        List<NumberString> numberStrings = Arrays.asList("Blah", "Bli p", "Bloo op", "Beeple").stream()
+                .map(name -> name.length()) //Go from the Strings ^^ to their lengths
+                .map(e -> new NumberString(e)) //Go from the lengths to NumberString objects
+                .collect(Collectors.toList());
+
+        for (NumberString ns : numberStrings) {
+            System.out.println(ns.getValue());
+        }
+    }
+}
+class NumberString {
+
+    private String value;
+
+    public NumberString (int num) {
+        switch (num) {
+            case 0:
+                value = "Zero";
+                break;
+            case 1:
+                value = "One";
+                break;
+            case 2:
+                value = "Two";
+                break;
+            case 3:
+                value = "Three";
+                break;
+            case 4:
+                value = "Four";
+                break;
+            case 5:
+                value = "Five";
+                break;
+            case 6:
+                value = "Six";
+                break;
+            case 7:
+                value = "Seven";
+                break;
+            case 8:
+                value = "Eight";
+                break;
+            case 9:
+                value = "Nine";
+                break;
+            case 10:
+                value = "Ten";
+                break;
+            default:
+                value = "More than ten";
+                break;
+        }
+    }
+
+    public String getValue () {
+        return value;
+    }
+}
+```
 
 Extension excercise: notice anything wrong with the NumberString class? Think about the range of possible inputs and how it would handle them. Change the class by having it throw an exception for bad input.
 
@@ -1832,14 +1784,7 @@ Metadata - The Greek prefix "meta" means about; metadata is data about data.
 
 @RequestMapping - this annotation asks Spring to call the attached function whenever the given path is reached.
 
-@Autowired - this annotation asks Spring to automatically "hook up" the item associated with the annotation.  
-
----
-
-[Lesson: Java Lesson 17 - Spring HTML](SpringHTML.md)
-Basic @Controller Study Notes  
-Terminology  
-Examples  
+@Autowired - this annotation asks Spring to automatically "hook up" the item associated with the annotation.   
 
 ---
 
@@ -1849,11 +1794,11 @@ Examples
 
 ## Terminology  
 
-Thymeleaf - a templating engine that allows us to author dynamic HTML. Similar to Mustache, Django, or Handlebars (other template engines).
+* [Thymeleaf](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html) - a templating engine that allows us to author dynamic HTML. Similar to Mustache, Django, or Handlebars (other template engines).
 
-Standard Expression - Thymeleaf has different types of expressions. The most common one you will use to start will be:
+* [Standard Expression](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#standard-expression-syntax) - Thymeleaf has different types of expressions. The most common one you will use to start will be:
 
-Variable Expression: ${variableName} Thymeleaf will fill in values based on the Model.  
+* Variable Expression: `${variableName}` Thymeleaf will fill in values based on the Model.  
 
 ---
 
@@ -1867,7 +1812,7 @@ RestTemplate - a Spring tool that makes it easy to query an API and get data bac
 
 ## Examples  
 
-Spring guide for getting started with RestTemplate
+[Spring guide](https://spring.io/guides/gs/consuming-rest/) for getting started with RestTemplate
 
 ---
 
