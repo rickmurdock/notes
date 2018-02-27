@@ -125,8 +125,6 @@ Lecture notes from The Iron Yard
 
 * [Redux Todos Part 2 (video)](./ReactJS/ReduxTodosPart2.md)
 
-* [Redux Counter Review (video)](./ReactJS/ReduxCounter.md)
-
 * [Unit Tests for React](./ReactJS/UnitTestsForReact.md)
 
 * [Language Specialization: ReactJS Encyclopedia](./ReactJS/ReactJSEncyclopedia.md)
