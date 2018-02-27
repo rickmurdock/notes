@@ -313,7 +313,7 @@ x = "hello";
 
 This is an example of Java having strongly-typed data types. If you declare a variable an `int`, then it will always be an int. In contrast JavaScript has very limited typing of variables.
 
-```javasript
+```js
 var x = 5;
 x = "hello";
 ```
