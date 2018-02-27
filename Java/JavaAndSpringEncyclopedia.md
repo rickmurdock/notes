@@ -107,7 +107,7 @@ public class ExampleClass {
       System.out.println("You are " + myAge + " years old.");
     }
 }
-`` 
+```
 
 ```java
 public class ExampleClass {
