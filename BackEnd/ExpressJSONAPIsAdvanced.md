@@ -170,7 +170,7 @@ app.get('/todos/range', function(req, res){
   
   * `private`: share predefined information between parties.
 
-  * `reversed`: predefined claims: iss, issuer; exp, expiration time; sub, subject; aud, audience.
+  * `registered`: predefined claims: iss, issuer; exp, expiration time; sub, subject; aud, audience.
   
 * Base64Url encoded.
 
